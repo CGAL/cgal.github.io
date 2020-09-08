@@ -1,0 +1,1436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Isosurfacing_3/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 3D Isosurfacing: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 3D Isosurfacing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_Isosurfacing3"></a> </p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Author</dt><dd>Mael Rouxel-Labbé, Julian Stahl, Daniel Zint, and Pierre Alliez</dd></dl>
+<p><a class="anchor" id="fig__IsosurfacingTeaser"></a></p><center> <img src="isosurfacing_teaser.png" alt="" style="max-width:50%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingTeaser">Figure 64.1</a> Generating a surface from a 3D gray level image using Marching Cubes (3D input image from qim.dk) </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="SecIsoSurfacingIntroduction"></a>
+Introduction</h1>
+<p>Given a field of a scalar values, an isosurface is defined as the locus of points where the field has a given constant value; in other words, it is a level set. This constant value is referred to as the "isovalue", and, for well-behaved fields, the level set forms a surface. In the following, we shall refer to the field of scalar values as the value field. "Isosurfacing", also known as "isosurface extraction" or "contouring", is the process of constructing the isosurface corresponding to a given value field and isovalue. Isosurfacing is often needed for volume visualization and for the simulation of physical phenomena.</p>
+<p>This CGAL package provides methods to extract isosurfaces from 3D value fields. These contouring techniques rely on the partition of the 3D space and of the field to construct an approximate representation of the isosurface. The 3D value field can be described through various representations: an implicit function, an interpolated set of discrete sampling values, a 3D image, etc. (see <a class="el" href="index.html#SecIsosurfacingExamples">Examples</a>). The isovalue is user-defined. The output is a polygon soup, made either of triangles or quads depending on the method, and may consist of a single connected component, or multiple, disjoint components. Note that due to the inherent approximate nature of these discrete methods that only sample 3D value fields, parts of the "true" isosurface may be missing from the output, and the output may contain artifacts that are not present in the true isosurface.</p>
+<h1><a class="anchor" id="SecIsosurfacingMethods"></a>
+Isosurfacing Methods</h1>
+<p>The scientific literature abounds with algorithms for extracting isosurfaces, each coming with different properties for the output and requirements for the input <a class="el" href="citelist.html#CITEREF_cgal:dljjaw-sisp-15">[2]</a>. This package offers the following methods</p>
+<ul>
+<li>
+<a class="el" href="index.html#SubSecMarchingCubes">Marching Cubes (MC)</a> : a simple and efficient method that generates a triangle mesh, with almost no guarantees. </li>
+<li>
+<a class="el" href="index.html#SubSecTMC">Topologically Correct Marching Cubes (TMC)</a> : an extension to Marching Cubes that provides additional guarantees for the output. </li>
+<li>
+<a class="el" href="index.html#SubSecDualContouring">Dual Contouring (DC)</a> : a method that generates a polygon mesh, with a focus on sharp features recovery. </li>
+</ul>
+<h2><a class="anchor" id="SubSecMarchingCubes"></a>
+Marching Cubes (MC)</h2>
+<p>Marching Cubes (MC) <a class="el" href="citelist.html#CITEREF_LC87">[6]</a> uses a volumetric grid, i.e., a 3D iso-cuboid partitioned into hexahedral cells. All cells of the grid are processed individually using values of the value field sampled at the grid corners. Each cell corner is assigned a sign (+/-) to indicate whether its value field value is above or below the user-defined isovalue. A vertex is created along each grid edge where a sign change occurs, i.e., where the edge intersects the isosurface. More specifically, the vertex location is computed using linear interpolation of the value field values evaluated at the cell corners forming the edge. These vertices are connected to form triangles within the cell, depending on the configuration of signs at the cell corners. <a class="el" href="index.html#fig__IsosurfacingMCCases">Figure 64.2</a> illustrates the configurations in 2D. In 3D, there are no less than 33 configurations (not shown) <a class="el" href="citelist.html#CITEREF_cgal:c-mcctci-95">[1]</a>.</p>
+<p><a class="anchor" id="fig__IsosurfacingMCCases"></a></p><center> <img src="MC_cases.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingMCCases">Figure 64.2</a> Examples of some configurations for 2D Marching Cubes. </p> </div> <p> <br>
+</p>
+<p>The implementation within CGAL is generic in the sense that it can process any grid-like data structure that consists of hexahedral cells. When the hexahedral grid is a conforming grid (meaning that the intersection of two hexahedral cells is a face, an edge, or a vertex), the Marching Cubes algorithm generates as output a surface triangle mesh that is almost always combinatorially 2-manifold, yet can still exhibit topological issues such as holes or non-conforming edges.</p>
+<p>If the mesh is 2-manifold and the isosurface does not intersect the domain boundary, then the output mesh is watertight. As the Marching Cubes algorithm uses linear interpolation of the sampled value field along the grid edges, it can miss details or components that are not captured by the sampling of the value field.</p>
+<p>Compared to other meshing approaches such as Delaunay refinement, Marching Cubes is substantially faster, but often tends to generate more triangle facets for an equivalent desired sizing field. In addition, the quality of the triangle facets is in general poor, with many needle or cap-shaped triangles.</p>
+<p>Furthermore, Marching Cubes does not preserve the sharp features present in the isovalue of the input value field (see <a class="el" href="index.html#fig__IsosurfacingMCDC">Figure 64.4</a>).</p>
+<h2><a class="anchor" id="SubSecTMC"></a>
+Topologically Correct Marching Cubes (TMC)</h2>
+<p>Topologically Correct Marching Cubes is an extension to the Marching Cubes algorithm which provides additional guarantees for the output <a class="el" href="citelist.html#CITEREF_cgal:g-ctcmi-16">[4]</a>. More specifically, it generates as output a mesh that is homeomorphic to the trilinear interpolant of the input value field inside each cube. This means that the output mesh can accurately represent small complex features. For example, a tunnel of the isosurface within a single cell is topologically resolved. To achieve this, the algorithm can insert additional vertices within cells. Furthermore, the mesh is guaranteed to be 2-manifold and watertight, as long as the isosurface does not intersect the domain boundaries.</p>
+<p><a class="anchor" id="fig__IsosurfacingMCTMC"></a></p><center> <img src="MC_TMC.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingMCTMC">Figure 64.3</a> Marching Cubes vs Topologically Correct Marching Cubes. Some vertex values can represent complex surfaces within a single cell: on the left, the values at the vertices of the cell have been interpolated within the cell and correspond to a tunnel-like surface. This surface is not correctly recovered when applying the cases of the Marching Cubes algorithm to the cell: 2 independent disk-like sheets are created (middle). However, by inserting new vertices, TMC correctly captures the topology within a single cell (right). </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="SubSecDualContouring"></a>
+Dual Contouring (DC)</h2>
+<p>Dual Contouring (DC) <a class="el" href="citelist.html#CITEREF_cgal:jlsw-dchd-02">[5]</a> is a method that does not generate vertices on the grid edges, but within cells instead. A facet is created for each edge that intersects the isosurface by connecting the vertices of the incident cells. For a uniform hexahedral grid, this results in a quadrilateral surface mesh. Dual Contouring can deal with any domain but guarantees neither a 2-manifold nor a watertight mesh. On the other hand, it generates fewer faces and higher quality faces than Marching Cubes, in general. Finally, its main advantage over Marching Cubes is its ability to recover sharp creases and corners.</p>
+<p><a class="anchor" id="fig__IsosurfacingMCDC"></a></p><center> <img src="MC_DC.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingMCDC">Figure 64.4</a> Comparison between a mesh of a CSG shape generated by Marching Cubes (left) and Dual Contouring (right). </p> </div> <p> <br>
+</p>
+<p>In addition to the 3D value field, Dual Contouring requires knowledge about the gradient of the value field.</p>
+<p>The CGAL implementation uses a vertex positioning strategy based on <em>Quadric Error Metrics</em> <a class="el" href="citelist.html#CITEREF_gh-ssqem-97">[3]</a> : for a cell, the vertex location is computed by minimizing the error to the sum of the quadrics defined at each edge-isosurface intersection. Using this approach, the vertex may be located outside the cell, which is a desirable property to improve the odds of recovering sharp features, but it might also create self-intersections. Users can choose to constrain the vertex location inside the cell.</p>
+<p>By default, Dual Contouring generates quads, but using edge-isosurface intersections, one can "star" these quads to generate four triangles. Triangulating the quads is the default behavior in CGAL, but this can be changed using a named parameter.</p>
+<h2><a class="anchor" id="SubSecIsosurfacingComparison"></a>
+Comparisons</h2>
+<p>The following table summarizes the differences between the algorithms in terms of constraints over the input 3D domain, the facets of the output surface mesh, and the properties of the output surface mesh.</p>
+<center> <table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Algorithm   </th><th class="markdownTableHeadNone">Facets   </th><th class="markdownTableHeadNone">2-Manifold   </th><th class="markdownTableHeadNone">Watertight*   </th><th class="markdownTableHeadNone">Topologically Correct   </th><th class="markdownTableHeadNone">Recovery of Sharp Features    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">MC   </td><td class="markdownTableBodyNone">Triangles   </td><td class="markdownTableBodyNone">no   </td><td class="markdownTableBodyNone">no   </td><td class="markdownTableBodyNone">no   </td><td class="markdownTableBodyNone">no    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">TMC   </td><td class="markdownTableBodyNone">Triangles   </td><td class="markdownTableBodyNone">yes   </td><td class="markdownTableBodyNone">yes   </td><td class="markdownTableBodyNone">yes   </td><td class="markdownTableBodyNone">no    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">DC   </td><td class="markdownTableBodyNone">Quads**   </td><td class="markdownTableBodyNone">no   </td><td class="markdownTableBodyNone">no   </td><td class="markdownTableBodyNone">no   </td><td class="markdownTableBodyNone">yes (not guaranteed)   </td></tr>
+</table>
+</center><center>(* assuming the isosurface does not exit the specified bounding box of the input 3D domain)</center><center>(** which can be triangulated on-the-fly) </center><p>Note that the output mesh has boundaries when the isosurface intersects the domain boundaries, regardless of the method (see <a class="el" href="index.html#fig__IsosurfacingOpen">Figure 64.5</a>).</p>
+<p><a class="anchor" id="fig__IsosurfacingOpen"></a></p><center> <img src="MC_DC_open.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingOpen">Figure 64.5</a> Outputs of Marching Cubes (left) and Dual Contouring (right) for an implicit sphere of radius <code>1.1</code> and a domain of size <code>2x2x2</code>, both centered at the origin. Output meshes can have boundaries when the isosurface intersects the domain boundary. </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="SecInterface"></a>
+Interface</h1>
+<p>The following functions are the main entry points to the isosurfacing algorithms of this package: </p><ul>
+<li>
+Marching Cubes: <code><a class="el" href="group__IS__Methods__grp.html#ga9e0c17507c5625c6e58afd1c64867c07" title="creates a triangle soup that represents an isosurface generated by the Marching Cubes algorithm.">CGAL::Isosurfacing::marching_cubes()</a></code>, using the named parameter: <code>use_topologically_correct_marching_cubes</code> set to <code>false</code>; </li>
+<li>
+Topologically Correct Marching Cubes: <code><a class="el" href="group__IS__Methods__grp.html#ga9e0c17507c5625c6e58afd1c64867c07" title="creates a triangle soup that represents an isosurface generated by the Marching Cubes algorithm.">CGAL::Isosurfacing::marching_cubes()</a></code>, using the named parameter: <code>use_topologically_correct_marching_cubes</code> set to <code>true</code>; </li>
+<li>
+Dual Contouring: <code><a class="el" href="group__IS__Methods__grp.html#ga71f276d2f7a8f0826890c97abacc346a" title="creates a polygon soup that discretizes an isosurface using the Dual Contouring algorithm.">CGAL::Isosurfacing::dual_contouring()</a></code>. </li>
+</ul>
+<p>All these free functions share the same signature:</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ConcurrencyTag = <a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1Sequential__tag.html">CGAL::Sequential_tag</a>,</div>
+<div class="line">          <span class="keyword">typename</span> Domain,</div>
+<div class="line">          <span class="keyword">typename</span> PointRange,</div>
+<div class="line">          <span class="keyword">typename</span> PolygonRange&gt;</div>
+<div class="line"><span class="keywordtype">void</span> ...(const Domain&amp; domain,</div>
+<div class="line">         <span class="keyword">const</span> <span class="keyword">typename</span> Domain::FT isovalue,</div>
+<div class="line">         PointRange&amp; points,</div>
+<div class="line">         PolygonRange&amp; polygons,</div>
+<div class="line">         ...);</div>
+<div class="ttc" id="astructCGAL_1_1Sequential__tag_html"><div class="ttname"><a href="../STL_Extension/structCGAL_1_1Sequential__tag.html">CGAL::Sequential_tag</a></div></div>
+</div><!-- fragment --><p>The input (space partition, value field, gradient field) is provided in the form of a <code>domain</code>, see <a class="el" href="index.html#SubSecIsosurfacingDomains">Domains</a> for a complete description.</p>
+<p>The <code>isovalue</code> scalar parameter is the value that defines the isosurface being approximated.</p>
+<p>The output discrete surface is provided in the form of a polygon soup, which is stored into two containers: <code>points</code> and <code>polygons</code>. Depending on the algorithm, the polygon soup may store either unorganized polygons with no relationship to one another (i.e., no connectivity is shared between them) or polygons sharing points (the same point in adjacent polygons will be the same point in the point range).</p>
+<p>All isosurfacing algorithms can run either sequentially in one thread or in parallel using multithreading. The template parameter <code>ConcurrencyTag</code> is used to specify how the algorithm is executed. To enable parallelism, CGAL must be linked with the <a href="https://github.com/oneapi-src/oneTBB">Intel TBB library</a> (see the CMakeLists.txt file in the examples folder).</p>
+<h2><a class="anchor" id="SubSecIsosurfacingDomains"></a>
+Domains</h2>
+<p>A domain is an object that provides functions to access the partition of the 3D volume, the value field, and, optionally, the gradient field at a given point query. These requirements are described through two concepts: <code><a class="el" href="classIsosurfacingDomain__3.html" title="The concept IsosurfacingDomain_3 describes the set of requirements to be fulfilled by any class used ...">IsosurfacingDomain_3</a></code> and <code><a class="el" href="classIsosurfacingDomainWithGradient__3.html" title="The concept IsosurfacingDomainWithGradient_3 describes the set of requirements to be fulfilled by any...">IsosurfacingDomainWithGradient_3</a></code>.</p>
+<p>Two domains, <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html" title="A domain that can be used with the Marching Cubes algorithm.">CGAL::Isosurfacing::Marching_cubes_domain_3</a></code> and <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html" title="A domain that can be used as input in the Dual Contouring algorithm.">CGAL::Isosurfacing::Dual_contouring_domain_3</a></code>, are provided as the respective default class models that fulfill the requirements of the concepts. Both these domain models have template parameters enabling the user to customize the domain:</p><ul>
+<li><b>Partition:</b> this must be a class that describes the partition of the 3D volume into cells. The most basic example of such a class is <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html" title="The class Cartesian_grid_3 represents a 3D Cartesian grid, that is the partition of an iso-cuboid int...">CGAL::Isosurfacing::Cartesian_grid_3</a></code>, but users can pass their own partition, provided it meets the requirements described by the concept <code><a class="el" href="classIsosurfacingPartition__3.html" title="The concept IsosurfacingPartition_3 describes the set of requirements to be fulfilled by the partitio...">IsosurfacingPartition_3</a></code>.</li>
+<li><b>ValueField:</b> this must be a class that provides the 3D value field at the vertices of the partition. A few classes are provided, such as <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html" title="The class Value_function_3 represents a field of scalars computed using a user-provided unary functio...">CGAL::Isosurfacing::Value_function_3</a></code> and <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__values__3.html" title="Class template for a field of values that are calculated using discrete values and interpolation.">CGAL::Isosurfacing::Interpolated_discrete_values_3</a></code>. Users can pass their own value class, provided it meets the requirements described by the concept <code><a class="el" href="classIsosurfacingValueField__3.html" title="The concept IsosurfacingValueField_3 describes the set of requirements to be fulfilled by the value f...">IsosurfacingValueField_3</a></code>.</li>
+<li><b>GradientField:</b> (<code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html" title="A domain that can be used as input in the Dual Contouring algorithm.">CGAL::Isosurfacing::Dual_contouring_domain_3</a></code> only) this must be a class that provides the gradient of the value field at the vertices of the partition. A few classes are provided by default, such as <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Finite__difference__gradient__3.html" title="Class template for a gradient that is calculated using finite differences.">CGAL::Isosurfacing::Finite_difference_gradient_3</a></code> and <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__gradients__3.html" title="Class template for a gradient field that is computed using discrete values and interpolation.">CGAL::Isosurfacing::Interpolated_discrete_gradients_3</a></code>. Users can pass their own gradient class, provided it meets the requirements described by the concept <code><a class="el" href="classIsosurfacingGradientField__3.html" title="The concept IsosurfacingGradientField_3 describes the set of requirements to be fulfilled by the grad...">IsosurfacingGradientField_3</a></code>.</li>
+<li><b>EdgeIntersectionOracle:</b> this must be a class that provides a function to compute the intersection between an edge and the isosurface. The default is linear interpolation for <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html" title="A domain that can be used with the Marching Cubes algorithm.">CGAL::Isosurfacing::Marching_cubes_domain_3</a></code>, and a dichotomy for <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html" title="A domain that can be used as input in the Dual Contouring algorithm.">CGAL::Isosurfacing::Dual_contouring_domain_3</a></code>. This parameter should be adjusted depending on how the value field is defined: there is for example no point incorporating a dichotomy in Dual Contouring if the value field is defined through linear interpolation. Users can pass their own edge intersection oracle, provided it meets the requirements described by the concept <code><a class="el" href="classIsosurfacingEdgeIntersectionOracle__3.html">IsosurfacingEdgeIntersectionOracle_3</a></code>.</li>
+</ul>
+<h1><a class="anchor" id="SecIsosurfacingExamples"></a>
+Examples</h1>
+<p>The first two examples are very basic examples for Marching Cubes and Dual Contouring. Afterwards, the focus is shifted from the method to the type of input data, and examples run both methods on different types of input data.</p>
+<h2><a class="anchor" id="SubSecMCExample"></a>
+Marching Cubes</h2>
+<p>The following example illustrates a basic run of the Marching Cubes algorithm, and in particular the free function to create a domain from a Cartesian grid, and the named parameter that enables the user to switch from Marching Cubes to Topologically Correct Marching Cubes. The resulting triangle soup is converted to a triangle mesh, and is remeshed using the isotropic remeshing algorithm.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2marching_cubes_8cpp-example.html">Isosurfacing_3/marching_cubes.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Value_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/marching_cubes_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Marching_cubes_domain_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Bbox_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/polygon_soup_to_polygon_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/remesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Vector = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Grid = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html">CGAL::Isosurfacing::Value_function_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html">CGAL::Isosurfacing::Marching_cubes_domain_3&lt;Grid, Values&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Mesh = CGAL::Surface_mesh&lt;Point&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> value_fn = [](<span class="keyword">const</span> Point&amp; p) -&gt; FT</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT&amp; x = p.x(), y = p.y(), z = p.z();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// "Klein Bottle" - https://www-sop.inria.fr/galaad/surface/</span></div>
+<div class="line">  <span class="keywordflow">return</span> -1-4*y*z*z*x*x-2*y+6*z*z*x*x*y*y-16*x*z+16*x*z*y*y+3*x*x+7*y*y+11*z*z-11*z*z*z*z+z*z*z*z*z*z-3*x*x*x*x-7*y*y*y*y+x*x*x*x*x*x+y*y*y*y*y*y-14*z*z*x*x-18*z*z*y*y+3*z*z*z*z*x*x+3*z*z*z*z*y*y-10*x*x*y*y-4*y*y*y*z*z+3*z*z*x*x*x*x+3*z*z*y*y*y*y+16*x*x*x*z+3*x*x*x*x*y*y+3*x*x*y*y*y*y+4*x*x*y-12*z*z*y-2*x*x*x*x*y-4*x*x*y*y*y-2*z*z*z*z*y+16*x*z*z*z+12*y*y*y-2*y*y*y*y*y-32*x*z*y;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT isovalue = (argc &gt; 1) ? std::stod(argv[1]) : 0.1;</div>
+<div class="line">  <span class="keyword">const</span> FT box_c = (argc &gt; 2) ? std::abs(std::stod(argv[2])) : 5.;</div>
+<div class="line">  <span class="keyword">const</span> std::size_t grid_n = (argc &gt; 3) ? std::stoi(argv[3]) : 50;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// create bounding box and grid</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> bbox { -box_c, -box_c, -box_c, box_c, box_c, box_c };</div>
+<div class="line">  Grid grid { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>, CGAL::make_array&lt;std::size_t&gt;(grid_n, grid_n, grid_n) };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Span: "</span> &lt;&lt; grid.span() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell dimensions: "</span> &lt;&lt; grid.spacing()[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[2] &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell #: "</span> &lt;&lt; grid.xdim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.ydim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.zdim() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values</span></div>
+<div class="line">  Values values { value_fn, grid };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Below is equivalent to:</span></div>
+<div class="line">  <span class="comment">//   Domain domain { grid, values };</span></div>
+<div class="line">  Domain domain = <a class="code hl_function" href="group__IS__Domains__grp.html#ga1502bc079f54727cf541291b14d6e816">CGAL::Isosurfacing::create_marching_cubes_domain_3</a>(grid, values);</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run marching cubes isosurfacing</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Marching Cubes with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line">  CGAL::Isosurfacing::marching_cubes&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles,</div>
+<div class="line">                                                                      CGAL::parameters::use_topologically_correct_marching_cubes(<span class="keyword">true</span>));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Soup #vertices: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Soup #triangles: "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(!CGAL::Polygon_mesh_processing::is_polygon_soup_a_polygon_mesh(triangles)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Warning: the soup is not a 2-manifold surface, non-manifoldness?..."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Convert the soup to a triangle mesh..."</span> &lt;&lt; std::endl;</div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  CGAL::Polygon_mesh_processing::polygon_soup_to_polygon_mesh(points, triangles, mesh);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(<span class="stringliteral">"marching_cubes.off"</span>, mesh, CGAL::parameters::stream_precision(17));</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Let's remesh it to something nicer looking</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Remeshing..."</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">const</span> FT target_edge_length = box_c / 50;</div>
+<div class="line">  CGAL::Polygon_mesh_processing::isotropic_remeshing(faces(mesh), target_edge_length, mesh,</div>
+<div class="line">                                                     CGAL::parameters::number_of_iterations(5)</div>
+<div class="line">                                                                      .number_of_relaxation_steps(5));</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(<span class="stringliteral">"marching_cubes-remeshed.off"</span>, mesh, CGAL::parameters::stream_precision(17));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Cartesian__grid__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a></div><div class="ttdoc">The class Cartesian_grid_3 represents a 3D Cartesian grid, that is the partition of an iso-cuboid int...</div><div class="ttdef"><b>Definition:</b> Cartesian_grid_3.h:148</div></div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html">CGAL::Isosurfacing::Marching_cubes_domain_3</a></div><div class="ttdoc">A domain that can be used with the Marching Cubes algorithm.</div><div class="ttdef"><b>Definition:</b> Marching_cubes_domain_3.h:50</div></div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Value__function__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html">CGAL::Isosurfacing::Value_function_3</a></div><div class="ttdoc">The class Value_function_3 represents a field of scalars computed using a user-provided unary functio...</div><div class="ttdef"><b>Definition:</b> Value_function_3.h:40</div></div>
+<div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Vector__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a></div></div>
+<div class="ttc" id="agroup__IS__Domains__grp_html_ga1502bc079f54727cf541291b14d6e816"><div class="ttname"><a href="group__IS__Domains__grp.html#ga1502bc079f54727cf541291b14d6e816">CGAL::Isosurfacing::create_marching_cubes_domain_3</a></div><div class="ttdeci">Marching_cubes_domain_3&lt; Partition, ValueField, EdgeIntersectionOracle &gt; create_marching_cubes_domain_3(const Partition &amp;partition, const ValueField &amp;values, const EdgeIntersectionOracle &amp;intersection_oracle=EdgeIntersectionOracle())</div><div class="ttdoc">creates a new instance of a domain that can be used with the Marching Cubes algorithm.</div><div class="ttdef"><b>Definition:</b> Marching_cubes_domain_3.h:92</div></div>
+<div class="ttc" id="agroup__PMP__misc__grp_html_gaf633ec6397f5f065b01462fe42235d56"><div class="ttname"><a href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">CGAL::Polygon_mesh_processing::bbox</a></div><div class="ttdeci">CGAL::Bbox_3 bbox(const PolygonMesh &amp;pmesh, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_gafa143949a33371dc6df8307be1ab8a66"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a></div><div class="ttdeci">bool write_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+</div><!-- fragment --> </details>
+<p><a class="anchor" id="fig__IsosurfacingMC"></a></p><center> <img src="MC.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingMC">Figure 64.6</a> Results of the Marching Cubes algorithm, and the final result after remeshing. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="SubSecDCExample"></a>
+Dual Contouring</h2>
+<p>The following example illustrates a basic run of the Dual Contouring algorithm, and in particular the free function to create a domain from a Cartesian grid, and the named parameters that enable (or disable) triangulation of the output, and to constrain the vertex location within the cell.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2dual_contouring_8cpp-example.html">Isosurfacing_3/dual_contouring.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/dual_contouring_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Dual_contouring_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Value_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Gradient_function_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Bbox_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/polygon_soup_to_polygon_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Vector = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Grid = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html">CGAL::Isosurfacing::Value_function_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Gradients = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Gradient__function__3.html">CGAL::Isosurfacing::Gradient_function_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html">CGAL::Isosurfacing::Dual_contouring_domain_3&lt;Grid, Values, Gradients&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Mesh = CGAL::Surface_mesh&lt;Point&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// "Devil" - https://www-sop.inria.fr/galaad/surface/</span></div>
+<div class="line"><span class="keyword">auto</span> devil_value = [](<span class="keyword">const</span> Point&amp; point)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT x = point.x(), y = point.y(), z = point.z();</div>
+<div class="line">  <span class="keywordflow">return</span> x*x*x*x + 2*x*x*z*z - 0.36*x*x - y*y*y*y + 0.25*y*y + z*z*z*z;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> devil_gradient = [](<span class="keyword">const</span> Point&amp; point)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT x = point.x(), y = point.y(), z = point.z();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> FT gx = 4*x*x*x + 4*x*z*z - 0.72*x;</div>
+<div class="line">  <span class="keyword">const</span> FT gy = -4*y*y*y + 0.5*y;</div>
+<div class="line">  <span class="keyword">const</span> FT gz = 4*x*x*z + 4*z*z*z;</div>
+<div class="line">  Vector g(gx, gy, gz);</div>
+<div class="line">  <span class="keywordflow">return</span> g / std::sqrt(gx*gx + gy*gy + gz*gz);</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT isovalue = (argc &gt; 1) ? std::stod(argv[1]) : 0;</div>
+<div class="line">  <span class="keyword">const</span> FT box_c = (argc &gt; 2) ? std::abs(std::stod(argv[2])) : 1.;</div>
+<div class="line">  <span class="keyword">const</span> std::size_t grid_n = (argc &gt; 3) ? std::stoi(argv[3]) : 50;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// create bounding box and grid</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> { -box_c, -box_c, -box_c, box_c, box_c, box_c };</div>
+<div class="line">  Grid grid { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>, CGAL::make_array&lt;std::size_t&gt;(grid_n, grid_n, grid_n) };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Span: "</span> &lt;&lt; grid.span() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell dimensions: "</span> &lt;&lt; grid.spacing()[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[2] &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell #: "</span> &lt;&lt; grid.xdim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.ydim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.zdim() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values &amp; gradients</span></div>
+<div class="line">  Values values { devil_value, grid };</div>
+<div class="line">  Gradients gradients { devil_gradient, grid };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Below is equivalent to:</span></div>
+<div class="line">  <span class="comment">//   Domain domain { grid, values, gradients };</span></div>
+<div class="line">  Domain domain = <a class="code hl_function" href="group__IS__Domains__grp.html#ga0a5ee83705cbc6aa8622fc787eafdbc0">CGAL::Isosurfacing::create_dual_contouring_domain_3</a>(grid, values, gradients);</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run dual contouring isosurfacing</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line">  CGAL::Isosurfacing::dual_contouring&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles,</div>
+<div class="line">                                                                       CGAL::parameters::do_not_triangulate_faces(<span class="keyword">true</span>)</div>
+<div class="line">                                                                                        .constrain_to_cell(<span class="keyword">false</span>));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Soup #vertices: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Soup #triangles: "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(!CGAL::Polygon_mesh_processing::is_polygon_soup_a_polygon_mesh(triangles)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Warning: the soup is not a 2-manifold surface, non-manifoldness?..."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Create the mesh..."</span> &lt;&lt; std::endl;</div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  CGAL::Polygon_mesh_processing::polygon_soup_to_polygon_mesh(points, triangles, mesh);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(<span class="stringliteral">"dual_contouring.off"</span>, mesh, CGAL::parameters::stream_precision(17));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html">CGAL::Isosurfacing::Dual_contouring_domain_3</a></div><div class="ttdoc">A domain that can be used as input in the Dual Contouring algorithm.</div><div class="ttdef"><b>Definition:</b> Dual_contouring_domain_3.h:52</div></div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Gradient__function__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Gradient__function__3.html">CGAL::Isosurfacing::Gradient_function_3</a></div><div class="ttdoc">The class Gradient_function_3 represents a field of vectors computed using a user-provided unary func...</div><div class="ttdef"><b>Definition:</b> Gradient_function_3.h:39</div></div>
+<div class="ttc" id="agroup__IS__Domains__grp_html_ga0a5ee83705cbc6aa8622fc787eafdbc0"><div class="ttname"><a href="group__IS__Domains__grp.html#ga0a5ee83705cbc6aa8622fc787eafdbc0">CGAL::Isosurfacing::create_dual_contouring_domain_3</a></div><div class="ttdeci">Dual_contouring_domain_3&lt; Partition, ValueField, GradientField, EdgeIntersectionOracle &gt; create_dual_contouring_domain_3(const Partition &amp;partition, const ValueField &amp;values, const GradientField &amp;gradients, const EdgeIntersectionOracle &amp;intersection_oracle=EdgeIntersectionOracle())</div><div class="ttdoc">creates a new instance of a domain that can be used with the Dual Contouring algorithm.</div><div class="ttdef"><b>Definition:</b> Dual_contouring_domain_3.h:99</div></div>
+<div class="ttc" id="astructCGAL_1_1Simple__cartesian_html"><div class="ttname"><a href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian</a></div></div>
+</div><!-- fragment --> </details>
+<p><a class="anchor" id="fig__IsosurfacingDC"></a></p><center> <img src="DC.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingDC">Figure 64.7</a> Results of the Dual Contouring algorithm: untriangulated (left column) or triangulated (right column), unconstrained vertex location (top row) or constrained vertex location (bottom row). </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="SubSecImplicitDataExample"></a>
+Implicit Data</h2>
+<p>The following example shows the usage of Marching Cubes and Dual Contouring algorithms to extract an isosurface. The domain is implicit and describes the unit sphere by the distance to its center (set to the origin) as an implicit 3D value field.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2contouring_implicit_data_8cpp-example.html">Isosurfacing_3/contouring_implicit_data.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/dual_contouring_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Dual_contouring_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Value_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Gradient_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/marching_cubes_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Marching_cubes_domain_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Bbox_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Vector = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// using Grid = CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel, CGAL::Isosurfacing::Do_not_cache_vertex_locations&gt;;</span></div>
+<div class="line"><span class="keyword">using </span>Grid = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel, CGAL::Isosurfacing::Cache_vertex_locations&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html">CGAL::Isosurfacing::Value_function_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Gradients = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Gradient__function__3.html">CGAL::Isosurfacing::Gradient_function_3&lt;Grid&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ---</span></div>
+<div class="line"><span class="keyword">const</span> FT alpha = 5.01;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> iwp_value = [](<span class="keyword">const</span> Point&amp; point)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT x = alpha * (point.x() + FT(1.0)) * CGAL_PI;</div>
+<div class="line">  <span class="keyword">const</span> FT y = alpha * (point.y() + FT(1.0)) * CGAL_PI;</div>
+<div class="line">  <span class="keyword">const</span> FT z = alpha * (point.z() + FT(1.0)) * CGAL_PI;</div>
+<div class="line">  <span class="keywordflow">return</span> cos(x)*cos(y) + cos(y)*cos(z) + cos(z)*cos(x) - cos(x)*cos(y)*cos(z);  <span class="comment">// isovalue = 0</span></div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> iwp_gradient = [](<span class="keyword">const</span> Point&amp; point)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT x = alpha * (point.x() + FT(1.0)) * CGAL_PI;</div>
+<div class="line">  <span class="keyword">const</span> FT y = alpha * (point.y() + FT(1.0)) * CGAL_PI;</div>
+<div class="line">  <span class="keyword">const</span> FT z = alpha * (point.z() + FT(1.0)) * CGAL_PI;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> FT gx = CGAL_PI * alpha * sin(x) * (cos(y) * (cos(z) - FT(1.0)) - cos(z));</div>
+<div class="line">  <span class="keyword">const</span> FT gy = CGAL_PI * alpha * sin(y) * (cos(x) * (cos(z) - FT(1.0)) - cos(z));</div>
+<div class="line">  <span class="keyword">const</span> FT gz = CGAL_PI * alpha * sin(z) * (cos(x) * (cos(y) - FT(1.0)) - cos(y));</div>
+<div class="line">  <span class="keywordflow">return</span> Vector(gx, gy, gz);</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_marching_cubes(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                        <span class="keyword">const</span> FT isovalue)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html">CGAL::Isosurfacing::Marching_cubes_domain_3&lt;Grid, Values&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Marching Cubes with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  CGAL::Real_timer timer;</div>
+<div class="line">  timer.start();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values</span></div>
+<div class="line">  Values values { iwp_value, grid };</div>
+<div class="line">  Domain domain { grid, values };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// output containers</span></div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run Marching Cubes</span></div>
+<div class="line">  CGAL::Isosurfacing::marching_cubes&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  timer.stop();</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices (MC): "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles (MC): "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Elapsed time: "</span> &lt;&lt; timer.time() &lt;&lt; <span class="stringliteral">" seconds"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"marching_cubes_implicit.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_dual_contouring(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                         <span class="keyword">const</span> FT isovalue)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html">CGAL::Isosurfacing::Dual_contouring_domain_3&lt;Grid, Values, Gradients&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  CGAL::Real_timer timer;</div>
+<div class="line">  timer.start();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values and gradients</span></div>
+<div class="line">  Values values { iwp_value, grid };</div>
+<div class="line">  Gradients gradients { iwp_gradient, grid };</div>
+<div class="line">  Domain domain { grid, values, gradients };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// output containers</span></div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run Dual Contouring</span></div>
+<div class="line">  CGAL::Isosurfacing::dual_contouring&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles,</div>
+<div class="line">                                                                       CGAL::parameters::do_not_triangulate_faces(<span class="keyword">true</span>));</div>
+<div class="line"> </div>
+<div class="line">  timer.stop();</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices (DC): "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles (DC): "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Elapsed time: "</span> &lt;&lt; timer.time() &lt;&lt; <span class="stringliteral">" seconds"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"dual_contouring_implicit.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT isovalue = (argc &gt; 1) ? std::stod(argv[1]) : 0.;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>{-1, -1, -1,  1, 1, 1};</div>
+<div class="line">  <span class="keyword">const</span> FT step = 0.02;</div>
+<div class="line">  <span class="keyword">const</span> Vector spacing { step, step, step };</div>
+<div class="line">  Grid grid { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>, spacing };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Span: "</span> &lt;&lt; grid.span() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell dimensions: "</span> &lt;&lt; grid.spacing()[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[2] &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell #: "</span> &lt;&lt; grid.xdim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.ydim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.zdim() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  run_marching_cubes(grid, isovalue);</div>
+<div class="line"> </div>
+<div class="line">  run_dual_contouring(grid, isovalue);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__IOstreamFunctions_html_ga030115449f48c379b0c080328fd730b0"><div class="ttname"><a href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a></div><div class="ttdeci">bool write_polygon_soup(const std::string &amp;fname, const PointRange &amp;points, const PolygonRange &amp;polygons, const NamedParameters &amp;np=parameters::default_values())</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="SubSecDiscreteDataExample"></a>
+Discrete Data</h2>
+<p>In the following example, the input data is sampled at the vertices of a grid, and interpolated.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2contouring_discrete_data_8cpp-example.html">Isosurfacing_3/contouring_discrete_data.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/dual_contouring_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Dual_contouring_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Interpolated_discrete_gradients_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Interpolated_discrete_values_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/marching_cubes_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Marching_cubes_domain_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Vector = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Grid = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__values__3.html">CGAL::Isosurfacing::Interpolated_discrete_values_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Gradients = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__gradients__3.html">CGAL::Isosurfacing::Interpolated_discrete_gradients_3&lt;Grid&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>IS = <a class="code hl_namespace" href="namespaceCGAL_1_1Isosurfacing.html">CGAL::Isosurfacing</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_marching_cubes(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                        <span class="keyword">const</span> FT isovalue)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = IS::Marching_cubes_domain_3&lt;Grid, Values, IS::Linear_interpolation_edge_intersection&gt;;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Marching Cubes with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values</span></div>
+<div class="line">  Values values { grid };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(std::size_t i=0; i&lt;grid.xdim(); ++i) {</div>
+<div class="line">    <span class="keywordflow">for</span>(std::size_t j=0; j&lt;grid.ydim(); ++j) {</div>
+<div class="line">      <span class="keywordflow">for</span>(std::size_t k=0; k&lt;grid.zdim(); ++k)</div>
+<div class="line">      {</div>
+<div class="line">        <span class="keyword">const</span> Point&amp; p = grid.point(i,j,k);</div>
+<div class="line">        <span class="keyword">const</span> FT d = <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#gab922269072ee9ee99ba8c541418b2e11">sqrt</a>(<a class="code hl_functionRef" href="../Kernel_23/group__squared__distance__grp.html#ga1ff73525660a052564d33fbdd61a4f71">CGAL::squared_distance</a>(p, Point(<a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga9d272a8e3a8080b851741b6d3a44afdc">CGAL::ORIGIN</a>)));</div>
+<div class="line">        values(i,j,k) = d;</div>
+<div class="line">      }</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Domain domain { grid, values };</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run marching cubes isosurfacing</span></div>
+<div class="line">  IS::marching_cubes&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles: "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"marching_cubes_discrete.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_dual_contouring(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                         <span class="keyword">const</span> FT isovalue)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = IS::Dual_contouring_domain_3&lt;Grid, Values, Gradients, IS::Linear_interpolation_edge_intersection&gt;;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values and gradients</span></div>
+<div class="line">  Values values { grid };</div>
+<div class="line">  Gradients gradients { grid };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(std::size_t i=0; i&lt;grid.xdim(); ++i) {</div>
+<div class="line">    <span class="keywordflow">for</span>(std::size_t j=0; j&lt;grid.ydim(); ++j) {</div>
+<div class="line">      <span class="keywordflow">for</span>(std::size_t k=0; k&lt;grid.zdim(); ++k)</div>
+<div class="line">      {</div>
+<div class="line">        <span class="keyword">const</span> Point&amp; p = grid.point(i,j,k);</div>
+<div class="line">        <span class="keyword">const</span> FT d = <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#gab922269072ee9ee99ba8c541418b2e11">sqrt</a>(<a class="code hl_functionRef" href="../Kernel_23/group__squared__distance__grp.html#ga1ff73525660a052564d33fbdd61a4f71">CGAL::squared_distance</a>(p, Point(<a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga9d272a8e3a8080b851741b6d3a44afdc">CGAL::ORIGIN</a>)));</div>
+<div class="line">        values(i,j,k) = d;</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">if</span>(d != 0)</div>
+<div class="line">          gradients(i,j,k) = Vector(<a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga9d272a8e3a8080b851741b6d3a44afdc">CGAL::ORIGIN</a>, p) / d;</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">          gradients(i,j,k) = <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga4a98ec6bd9dfd8fe8c46fea553b5d238">CGAL::NULL_VECTOR</a>;</div>
+<div class="line">      }</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// If the gradient was not known analytically, we could use:</span></div>
+<div class="line">  <span class="comment">// - Finite_difference_gradient_3 to use finite difference to compute it from values;</span></div>
+<div class="line">  <span class="comment">// - the function below to use finite difference _and_ store the values at the grid vertices</span></div>
+<div class="line">  <span class="comment">//     gradients.compute_discrete_gradients(values);</span></div>
+<div class="line"> </div>
+<div class="line">  Domain domain { grid, values, gradients };</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run dual contouring isosurfacing</span></div>
+<div class="line">  IS::dual_contouring&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles: "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"dual_contouring_discrete.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT isovalue = (argc &gt; 1) ? std::stod(argv[1]) : 0.8;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// create bounding box and grid</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> { -1., -1., -1., 1., 1., 1. };</div>
+<div class="line">  Grid grid { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>, CGAL::make_array&lt;std::size_t&gt;(30, 30, 30) };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Span: "</span> &lt;&lt; grid.span() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell dimensions: "</span> &lt;&lt; grid.spacing()[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[2] &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell #: "</span> &lt;&lt; grid.xdim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.ydim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.zdim() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  run_marching_cubes(grid, isovalue);</div>
+<div class="line"> </div>
+<div class="line">  run_dual_contouring(grid, isovalue);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Interpolated__discrete__gradients__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__gradients__3.html">CGAL::Isosurfacing::Interpolated_discrete_gradients_3</a></div><div class="ttdoc">Class template for a gradient field that is computed using discrete values and interpolation.</div><div class="ttdef"><b>Definition:</b> Interpolated_discrete_gradients_3.h:40</div></div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Interpolated__discrete__values__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__values__3.html">CGAL::Isosurfacing::Interpolated_discrete_values_3</a></div><div class="ttdoc">Class template for a field of values that are calculated using discrete values and interpolation.</div><div class="ttdef"><b>Definition:</b> Interpolated_discrete_values_3.h:41</div></div>
+<div class="ttc" id="agroup__PkgAlgebraicFoundationsRef_html_gab922269072ee9ee99ba8c541418b2e11"><div class="ttname"><a href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#gab922269072ee9ee99ba8c541418b2e11">CGAL::sqrt</a></div><div class="ttdeci">NT sqrt(const NT &amp;x)</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ga4a98ec6bd9dfd8fe8c46fea553b5d238"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ga4a98ec6bd9dfd8fe8c46fea553b5d238">CGAL::NULL_VECTOR</a></div><div class="ttdeci">const CGAL::Null_vector NULL_VECTOR</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ga9d272a8e3a8080b851741b6d3a44afdc"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ga9d272a8e3a8080b851741b6d3a44afdc">CGAL::ORIGIN</a></div><div class="ttdeci">const CGAL::Origin ORIGIN</div></div>
+<div class="ttc" id="agroup__squared__distance__grp_html_ga1ff73525660a052564d33fbdd61a4f71"><div class="ttname"><a href="../Kernel_23/group__squared__distance__grp.html#ga1ff73525660a052564d33fbdd61a4f71">CGAL::squared_distance</a></div><div class="ttdeci">Kernel::FT squared_distance(Type1&lt; Kernel &gt; obj1, Type2&lt; Kernel &gt; obj2)</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1Isosurfacing_html"><div class="ttname"><a href="namespaceCGAL_1_1Isosurfacing.html">CGAL::Isosurfacing</a></div><div class="ttdef"><b>Definition:</b> partition_traits.h:2</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="SubSecImageDataExample"></a>
+3D Image</h2>
+<p>The following example shows how to load data from an <code><a class="elRef" href="../Mesh_3/classCGAL_1_1Image__3.html">Image_3</a></code>, and generates an isosurface from this voxel data.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2contouring_inrimage_8cpp-example.html">Isosurfacing_3/contouring_inrimage.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/dual_contouring_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Dual_contouring_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Finite_difference_gradient_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Interpolated_discrete_values_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/marching_cubes_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Marching_cubes_domain_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Image_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/IO/Image_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Grid = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Interpolated__discrete__values__3.html">CGAL::Isosurfacing::Interpolated_discrete_values_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Gradients = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Finite__difference__gradient__3.html">CGAL::Isosurfacing::Finite_difference_gradient_3&lt;Kernel&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>IS = <a class="code hl_namespace" href="namespaceCGAL_1_1Isosurfacing.html">CGAL::Isosurfacing</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_marching_cubes(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                        <span class="keyword">const</span> FT isovalue,</div>
+<div class="line">                        <span class="keyword">const</span> Values&amp; values)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = IS::Marching_cubes_domain_3&lt;Grid, Values, IS::Linear_interpolation_edge_intersection&gt;;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Marching Cubes with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// create a domain from the grid</span></div>
+<div class="line">  Domain domain { grid, values };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// prepare collections for the output indexed soup</span></div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// execute marching cubes</span></div>
+<div class="line">  IS::marching_cubes&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles: "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// save output indexed mesh to a file, in the OFF format</span></div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"marching_cubes_inrimage.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_dual_contouring(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                         <span class="keyword">const</span> FT isovalue,</div>
+<div class="line">                         <span class="keyword">const</span> Values&amp; values)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = IS::Dual_contouring_domain_3&lt;Grid, Values, Gradients, IS::Linear_interpolation_edge_intersection&gt;;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values and gradients</span></div>
+<div class="line">  <span class="keyword">const</span> FT step = CGAL::approximate_sqrt(grid.spacing().squared_length()) * 0.01; <span class="comment">// finite difference step</span></div>
+<div class="line">  Gradients gradients { values, step };</div>
+<div class="line">  Domain domain { grid, values, gradients };</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run dual contouring isosurfacing</span></div>
+<div class="line">  IS::dual_contouring&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles: "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"dual_contouring_inrimage.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string fname = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"images/skull_2.9.inr"</span>);</div>
+<div class="line">  <span class="keyword">const</span> FT isovalue = (argc &gt; 2) ? std::stod(argv[2]) : - 2.9;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// load volumetric image from a file</span></div>
+<div class="line">  <a class="code hl_classRef" href="../Mesh_3/classCGAL_1_1Image__3.html">CGAL::Image_3</a> image;</div>
+<div class="line">  <span class="keywordflow">if</span>(!image.<a class="code hl_functionRef" href="../Mesh_3/classCGAL_1_1Image__3.html#a6be029d7a0ee6dbd5eab1fd0adae42ba">read</a>(fname))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: Cannot read image file "</span> &lt;&lt; fname &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// convert image to a Cartesian grid</span></div>
+<div class="line">  Grid grid;</div>
+<div class="line">  Values values { grid }; <span class="comment">// 'values' keeps a reference to the grid</span></div>
+<div class="line">  <span class="keywordflow">if</span>(!IS::IO::convert_image_to_grid(image, grid, values))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: Cannot convert image to Cartesian grid"</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Span: "</span> &lt;&lt; grid.span() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell dimensions: "</span> &lt;&lt; grid.spacing()[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[2] &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell #: "</span> &lt;&lt; grid.xdim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.ydim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.zdim() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  run_marching_cubes(grid, isovalue, values);</div>
+<div class="line"> </div>
+<div class="line">  run_dual_contouring(grid, isovalue, values);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Image__3_html"><div class="ttname"><a href="../Mesh_3/classCGAL_1_1Image__3.html">CGAL::Image_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Image__3_html_a6be029d7a0ee6dbd5eab1fd0adae42ba"><div class="ttname"><a href="../Mesh_3/classCGAL_1_1Image__3.html#a6be029d7a0ee6dbd5eab1fd0adae42ba">CGAL::Image_3::read</a></div><div class="ttdeci">bool read(const char *file)</div></div>
+<div class="ttc" id="aclassCGAL_1_1Isosurfacing_1_1Finite__difference__gradient__3_html"><div class="ttname"><a href="classCGAL_1_1Isosurfacing_1_1Finite__difference__gradient__3.html">CGAL::Isosurfacing::Finite_difference_gradient_3</a></div><div class="ttdoc">Class template for a gradient that is calculated using finite differences.</div><div class="ttdef"><b>Definition:</b> Finite_difference_gradient_3.h:39</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+</div><!-- fragment --> </details>
+<p><a class="anchor" id="fig__IsosurfacingDCEx"></a></p><center> <img src="isosurfacing_inrimage.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingDCEx">Figure 64.8</a> Results of the Topologically Correct Marching Cubes algorithm for different isovalues (1, 2, and 2.9) on the skull model. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="SubSecOffsetDataExample"></a>
+Offset Mesh</h2>
+<p>The following example illustrates how to generate a mesh approximating a signed offset to an input closed surface mesh. The input mesh is stored into an <code><a class="elRef" href="../AABB_tree/classCGAL_1_1AABB__tree.html">AABB_tree</a></code> data structure to provide fast distance queries. Via the <code><a class="elRef" href="../Polygon_mesh_processing/classCGAL_1_1Side__of__triangle__mesh.html">Side_of_triangle_mesh</a></code> functor, the sign of the distance field is made negative inside the mesh.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2contouring_mesh_offset_8cpp-example.html">Isosurfacing_3/contouring_mesh_offset.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/dual_contouring_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Dual_contouring_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Value_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Finite_difference_gradient_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/marching_cubes_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Marching_cubes_domain_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/AABB_face_graph_triangle_primitive.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/AABB_traits_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/AABB_tree.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Bbox_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/bbox.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Side_of_triangle_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Vector = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Mesh = CGAL::Surface_mesh&lt;Point&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Grid = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3&lt;Kernel&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html">CGAL::Isosurfacing::Value_function_3&lt;Grid&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Gradients = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Finite__difference__gradient__3.html">CGAL::Isosurfacing::Finite_difference_gradient_3&lt;Kernel&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>Offset_oracle</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Primitive = <a class="code hl_classRef" href="../AABB_tree/classCGAL_1_1AABB__face__graph__triangle__primitive.html">CGAL::AABB_face_graph_triangle_primitive&lt;Mesh&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>Traits = <a class="code hl_classRef" href="../AABB_tree/classCGAL_1_1AABB__traits__3.html">CGAL::AABB_traits_3&lt;Kernel, Primitive&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>Tree = <a class="code hl_classRef" href="../AABB_tree/classCGAL_1_1AABB__tree.html">CGAL::AABB_tree&lt;Traits&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">bool</span> is_closed;</div>
+<div class="line">  <span class="keyword">const</span> Tree tree;</div>
+<div class="line">  <a class="code hl_classRef" href="../Polygon_mesh_processing/classCGAL_1_1Side__of__triangle__mesh.html">CGAL::Side_of_triangle_mesh&lt;Mesh, Kernel&gt;</a> sotm;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  Offset_oracle(<span class="keyword">const</span> Mesh&amp; mesh)</div>
+<div class="line">    : is_closed(<a class="code hl_namespaceRef" href="../Manual/namespaceCGAL.html">CGAL</a>::is_closed(mesh)), tree(mesh.faces_begin(), mesh.faces_end(), mesh), sotm(mesh)</div>
+<div class="line">  { }</div>
+<div class="line"> </div>
+<div class="line">  FT distance(<span class="keyword">const</span> Point&amp; p)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    <span class="keyword">const</span> Point cp = tree.closest_point(p);</div>
+<div class="line">    FT d = sqrt((p - cp).squared_length());</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span>(is_closed &amp;&amp; sotm(p) == (<a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe">CGAL::ON_BOUNDED_SIDE</a>))</div>
+<div class="line">      d *= -1.0;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> d;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_marching_cubes(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                         <span class="keyword">const</span> FT offset_value,</div>
+<div class="line">                         <span class="keyword">const</span> Offset_oracle&amp; offset_oracle)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html">CGAL::Isosurfacing::Marching_cubes_domain_3&lt;Grid, Values&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Marching Cubes with offset value = "</span> &lt;&lt; offset_value &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values</span></div>
+<div class="line">  <span class="keyword">auto</span> mesh_distance = [&amp;offset_oracle](<span class="keyword">const</span> Point&amp; p) { <span class="keywordflow">return</span> offset_oracle.distance(p); };</div>
+<div class="line">  Values values { mesh_distance, grid };</div>
+<div class="line">  Domain domain { grid, values };</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run marching cubes</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Marching Cubes with isovalue = "</span> &lt;&lt; offset_value &lt;&lt; std::endl;</div>
+<div class="line">  CGAL::Isosurfacing::marching_cubes&lt;CGAL::Parallel_if_available_tag&gt;(domain, offset_value, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices (MC): "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles (MC): "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"marching_cubes_offsets.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> run_dual_contouring(<span class="keyword">const</span> Grid&amp; grid,</div>
+<div class="line">                         <span class="keyword">const</span> FT offset_value,</div>
+<div class="line">                         <span class="keyword">const</span> Offset_oracle&amp; offset_oracle)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html">CGAL::Isosurfacing::Dual_contouring_domain_3&lt;Grid, Values, Gradients&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n ---- "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with offset value = "</span> &lt;&lt; offset_value &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values and gradients</span></div>
+<div class="line">  <span class="keyword">auto</span> mesh_distance = [&amp;offset_oracle](<span class="keyword">const</span> Point&amp; p) { <span class="keywordflow">return</span> offset_oracle.distance(p); };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> FT step = CGAL::approximate_sqrt(grid.spacing().squared_length()) * 0.01;</div>
+<div class="line"> </div>
+<div class="line">  Values values { mesh_distance, grid };</div>
+<div class="line">  Gradients gradients { values, step };</div>
+<div class="line">  Domain domain { grid, values, gradients };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// output containers</span></div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run dual contouring</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with isovalue = "</span> &lt;&lt; offset_value &lt;&lt; std::endl;</div>
+<div class="line">  CGAL::Isosurfacing::dual_contouring&lt;CGAL::Parallel_if_available_tag&gt;(</div>
+<div class="line">                        domain, offset_value, points, triangles,</div>
+<div class="line">                        CGAL::parameters::do_not_triangulate_faces(<span class="keyword">true</span>));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices (DC): "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles (DC): "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"dual_contouring_mesh_offset.off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/cross.off"</span>);</div>
+<div class="line">  <span class="keyword">const</span> FT offset_value = (argc &gt; 2) ? std::stod(argv[2]) : 0.2;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(offset_value &lt; 0)</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Offset value must be positive"</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, mesh) || <a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#gab6e6f18e6de73b9f85e38d0b56145172">is_empty</a>(mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Could not read input mesh"</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#gae04c8044cf1eee6a84baa5b79ab99fef">CGAL::is_closed</a>(mesh))</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Input mesh is closed - using signed distance offset"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keywordflow">else</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Input mesh is not closed - using unsigned distance offset"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// construct loose bounding box from input mesh</span></div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> = <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">CGAL::Polygon_mesh_processing::bbox</a>(mesh);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> FT diag_length = <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#gab922269072ee9ee99ba8c541418b2e11">sqrt</a>(<a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>() - <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>()) +</div>
+<div class="line">                              <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>() - <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>()) +</div>
+<div class="line">                              <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>() - <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>()));</div>
+<div class="line">  <span class="keyword">const</span> FT loose_offset = offset_value + 0.1 * diag_length;</div>
+<div class="line"> </div>
+<div class="line">  Vector aabb_increase_vec = Vector(loose_offset, loose_offset, loose_offset);</div>
+<div class="line">  <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> += (Point(<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>()) + aabb_increase_vec).<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>();</div>
+<div class="line">  <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> += (Point(<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>()) - aabb_increase_vec).<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">int</span> nv = 15;</div>
+<div class="line"> </div>
+<div class="line">  Grid grid { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>, CGAL::make_array&lt;std::size_t&gt;(nv, nv, nv) };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Span: "</span> &lt;&lt; grid.span() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell dimensions: "</span> &lt;&lt; grid.spacing()[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; grid.spacing()[2] &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Cell #: "</span> &lt;&lt; grid.xdim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.ydim() &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; grid.zdim() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  Offset_oracle offset_oracle(mesh);</div>
+<div class="line"> </div>
+<div class="line">  run_marching_cubes(grid, offset_value, offset_oracle);</div>
+<div class="line"> </div>
+<div class="line">  run_dual_contouring(grid, offset_value, offset_oracle);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1AABB__face__graph__triangle__primitive_html"><div class="ttname"><a href="../AABB_tree/classCGAL_1_1AABB__face__graph__triangle__primitive.html">CGAL::AABB_face_graph_triangle_primitive</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1AABB__traits__3_html"><div class="ttname"><a href="../AABB_tree/classCGAL_1_1AABB__traits__3.html">CGAL::AABB_traits_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1AABB__tree_html"><div class="ttname"><a href="../AABB_tree/classCGAL_1_1AABB__tree.html">CGAL::AABB_tree</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a2088e16a1f0a20e011e5b94c2e9c222a"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">CGAL::Bbox_3::ymin</a></div><div class="ttdeci">double ymin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a3f5e323700e1509624a02d151237cc4c"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">CGAL::Bbox_3::xmax</a></div><div class="ttdeci">double xmax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a6c55430abc7fda54571cf1075c7f2f8b"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">CGAL::Bbox_3::zmin</a></div><div class="ttdeci">double zmin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a98def8b9515f31ded759d781969ddaf6"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">CGAL::Bbox_3::zmax</a></div><div class="ttdeci">double zmax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a9d06f61bd89faa841e011ff53edf745f"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">CGAL::Bbox_3::ymax</a></div><div class="ttdeci">double ymax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_aab574470a2591f187553ca1166e682e1"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">CGAL::Bbox_3::xmin</a></div><div class="ttdeci">double xmin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Side__of__triangle__mesh_html"><div class="ttname"><a href="../Polygon_mesh_processing/classCGAL_1_1Side__of__triangle__mesh.html">CGAL::Side_of_triangle_mesh</a></div></div>
+<div class="ttc" id="agroup__PkgAlgebraicFoundationsRef_html_ga07001b5ddc5c43096c811c91a306be9a"><div class="ttname"><a href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a></div><div class="ttdeci">NT square(const NT &amp;x)</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_gab6e6f18e6de73b9f85e38d0b56145172"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#gab6e6f18e6de73b9f85e38d0b56145172">CGAL::is_empty</a></div><div class="ttdeci">bool is_empty(const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_gae04c8044cf1eee6a84baa5b79ab99fef"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#gae04c8044cf1eee6a84baa5b79ab99fef">CGAL::is_closed</a></div><div class="ttdeci">bool is_closed(const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe">CGAL::ON_BOUNDED_SIDE</a></div><div class="ttdeci">ON_BOUNDED_SIDE</div></div>
+<div class="ttc" id="anamespaceCGAL_html"><div class="ttname"><a href="../Manual/namespaceCGAL.html">CGAL</a></div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="SubSecContouringOctreeExample"></a>
+Contouring using Octrees</h2>
+<p>The following example shows the use of an octree as discretization instead of a Cartesian grid for both Dual Contouring and Marching Cubes. Note that in this configuration, all methods lose guarantees, and cracks can easily appear in the surface for Marching Cubes if the octree is not adapted to the surface being extracted.</p>
+<p><b>Example: </b> <a class="el" href="Isosurfacing_3_2contouring_octree_8cpp-example.html">Isosurfacing_3/contouring_octree.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/dual_contouring_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Dual_contouring_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/marching_cubes_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Marching_cubes_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Value_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Gradient_function_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Isosurfacing_3/Octree_partition.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Bbox_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span>Vector = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Point = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_range = std::vector&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polygon_range = std::vector&lt;std::vector&lt;std::size_t&gt; &gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_typedefRef" href="../Orthtree/group__PkgOrthtreeRef.html#ga937c2cf9aa6adc991f40c30071f0adad">Octree</a> = <a class="code hl_classRef" href="../Orthtree/classCGAL_1_1Orthtree.html">CGAL::Octree&lt;Kernel, std::vector&lt;Point&gt;</a> &gt;;</div>
+<div class="line"><span class="keyword">using </span>Values = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Value__function__3.html">CGAL::Isosurfacing::Value_function_3&lt;Octree&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Gradients = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Gradient__function__3.html">CGAL::Isosurfacing::Gradient_function_3&lt;Octree&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>MC_Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html">CGAL::Isosurfacing::Marching_cubes_domain_3&lt;Octree, Values&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Domain = <a class="code hl_class" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html">CGAL::Isosurfacing::Dual_contouring_domain_3&lt;Octree, Values, Gradients&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>IS = <a class="code hl_namespace" href="namespaceCGAL_1_1Isosurfacing.html">CGAL::Isosurfacing</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> sphere_function = [](<span class="keyword">const</span> Point&amp; p) -&gt; FT</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordflow">return</span> std::sqrt(p.x()*p.x() + p.y()*p.y() + p.z()*p.z());</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> sphere_gradient = [](<span class="keyword">const</span> Point&amp; p) -&gt; Vector</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> Vector g = p - <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga9d272a8e3a8080b851741b6d3a44afdc">CGAL::ORIGIN</a>;</div>
+<div class="line">  <span class="keywordflow">return</span> g / std::sqrt(g.squared_length());</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> blobby_function = [](<span class="keyword">const</span> Point&amp; p) -&gt; FT</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordflow">return</span> std::exp(-1.5 * ((p.x() - 0.2) * (p.x() - 0.2) + (p.y() - 0.2) * (p.y() - 0.2) + (p.z() - 0.2) * (p.z() - 0.2))) +</div>
+<div class="line">         std::exp(-1.5 * ((p.x() + 0.2) * (p.x() + 0.2) + (p.y() + 0.2) * (p.y() + 0.2) + (p.z() + 0.2) * (p.z() + 0.2))) +</div>
+<div class="line">         std::exp(-1.5 * ((p.x() - 0.4) * (p.x() - 0.4) + (p.y() + 0.4) * (p.y() + 0.4) + (p.z() - 0.4) * (p.z() - 0.4))) +</div>
+<div class="line">         std::exp(-6 * ((p.x() - 0.1) * (p.x() - 0.1) + (p.y() - 0.1) * (p.y() - 0.1))) +</div>
+<div class="line">         std::exp(-6 * ((p.y() + 0.1) * (p.y() + 0.1) + (p.z() + 0.1) * (p.z() + 0.1))) +</div>
+<div class="line">         std::exp(-6 * ((p.x() + 0.1) * (p.x() + 0.1) + (p.z() - 0.1) * (p.z() - 0.1))) -</div>
+<div class="line">         0.3;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> blobby_gradient = [](<span class="keyword">const</span> Point&amp; p) -&gt; Vector</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT g1 = -3 * std::exp(-1.5 * ((p.x() - 0.2) * (p.x() - 0.2) + (p.y() - 0.2) * (p.y() - 0.2) + (p.z() - 0.2) * (p.z() - 0.2)));</div>
+<div class="line">  <span class="keyword">const</span> FT g2 = -3 * std::exp(-1.5 * ((p.x() + 0.2) * (p.x() + 0.2) + (p.y() + 0.2) * (p.y() + 0.2) + (p.z() + 0.2) * (p.z() + 0.2)));</div>
+<div class="line">  <span class="keyword">const</span> FT g3 = -3 * std::exp(-1.5 * ((p.x() - 0.4) * (p.x() - 0.4) + (p.y() + 0.4) * (p.y() + 0.4) + (p.z() - 0.4) * (p.z() - 0.4)));</div>
+<div class="line">  <span class="keyword">const</span> FT g4 = -12 * std::exp(-6 * ((p.x() - 0.1) * (p.x() - 0.1) + (p.y() - 0.1) * (p.y() - 0.1)));</div>
+<div class="line">  <span class="keyword">const</span> FT g5 = -12 * std::exp(-6 * ((p.y() + 0.1) * (p.y() + 0.1) + (p.z() + 0.1) * (p.z() + 0.1)));</div>
+<div class="line">  <span class="keyword">const</span> FT g6 = -12 * std::exp(-6 * ((p.x() + 0.1) * (p.x() + 0.1) + (p.z() - 0.1) * (p.z() - 0.1)));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> Vector(g1 * (p.x() - 0.2) + g2 * (p.x() + 0.2) + g3 * (p.x() - 0.4) + g4 * (p.x() - 0.1) + g6 * (p.x() + 0.1),</div>
+<div class="line">                g1 * (p.y() - 0.2) + g2 * (p.y() + 0.2) + g3 * (p.y() + 0.4) + g4 * (p.y() - 0.1) + g5 * (p.y() + 0.1),</div>
+<div class="line">                g1 * (p.z() - 0.2) + g2 * (p.z() + 0.2) + g3 * (p.z() - 0.4) + g5 * (p.z() + 0.1) + g6 * (p.z() - 0.1));</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// This is a naive refinement that is adapted to the isosurface:</span></div>
+<div class="line"><span class="comment">// This refines:</span></div>
+<div class="line"><span class="comment">// - at the minimum till minimum depth</span></div>
+<div class="line"><span class="comment">// - at the maximum till maximum depth</span></div>
+<div class="line"><span class="comment">// - we split if the isovalue goes through the voxel, i.e. if not all vertices of the cell</span></div>
+<div class="line"><span class="comment">//   are on the same side of the isosurface defined by a function</span></div>
+<div class="line"><span class="comment">// It's not a great refinement technique because the surface can enter and leave a cell</span></div>
+<div class="line"><span class="comment">// without involving the cell's vertex. In practice, that means a hole if at nearby adjacent</span></div>
+<div class="line"><span class="comment">// cells the voxels did get refined and registered the surface.</span></div>
+<div class="line"><span class="keyword">struct </span>Refine_around_isovalue</div>
+<div class="line">{</div>
+<div class="line">  std::size_t min_depth_;</div>
+<div class="line">  std::size_t max_depth_;</div>
+<div class="line">  std::function&lt;FT(<span class="keyword">const</span> Point&amp;)&gt; function_;</div>
+<div class="line">  FT isovalue_;</div>
+<div class="line"> </div>
+<div class="line">  Refine_around_isovalue(std::size_t min_depth,</div>
+<div class="line">                         std::size_t max_depth,</div>
+<div class="line">                         std::function&lt;FT(<span class="keyword">const</span> Point&amp;)&gt; function,</div>
+<div class="line">                         FT isovalue)</div>
+<div class="line">    : min_depth_(min_depth),</div>
+<div class="line">      max_depth_(max_depth),</div>
+<div class="line">      function_(function),</div>
+<div class="line">      isovalue_(isovalue)</div>
+<div class="line">  {}</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">bool</span> operator()(<span class="keyword">const</span> Octree::Node_index&amp; ni, <span class="keyword">const</span> Octree&amp; octree)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    <span class="comment">// Ensure minimum depth refinement</span></div>
+<div class="line">    <span class="keywordflow">if</span> (octree.depth(ni) &lt; min_depth_)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Stop refinement at maximum depth</span></div>
+<div class="line">    <span class="keywordflow">if</span> (octree.depth(ni) &gt;= max_depth_)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get the bounding box of the node</span></div>
+<div class="line">    <span class="keyword">auto</span> <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> = octree.bbox(ni);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Evaluate the function at the corners of the bounding box</span></div>
+<div class="line">    std::array&lt;FT, 8&gt; corner_values;</div>
+<div class="line">    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line">    <span class="keywordflow">for</span> (FT x : {<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>()})</div>
+<div class="line">      <span class="keywordflow">for</span> (FT y : {<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>()})</div>
+<div class="line">        <span class="keywordflow">for</span> (FT z : {<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>()})</div>
+<div class="line">          corner_values[index++] = function_(Point(x, y, z));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Check if the function values cross the isovalue</span></div>
+<div class="line">    <span class="keywordtype">bool</span> has_positive = <span class="keyword">false</span>, has_negative = <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; value : corner_values)</div>
+<div class="line">    {</div>
+<div class="line">      <span class="keywordflow">if</span> (value &gt; isovalue_)</div>
+<div class="line">        has_positive = <span class="keyword">true</span>;</div>
+<div class="line">      <span class="keywordflow">if</span> (value &lt; isovalue_)</div>
+<div class="line">        has_negative = <span class="keyword">true</span>;</div>
+<div class="line">      <span class="keywordflow">if</span> (has_positive &amp;&amp; has_negative)</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// Refine if the isosurface intersects the voxel</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// No refinement needed</span></div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// This is a refinement that is NOT adapted to the isosurface</span></div>
+<div class="line"><span class="keyword">struct </span>Refine_one_eighth</div>
+<div class="line">{</div>
+<div class="line">  std::size_t min_depth_;</div>
+<div class="line">  std::size_t max_depth_;</div>
+<div class="line"> </div>
+<div class="line">  std::size_t octree_dim_;</div>
+<div class="line"> </div>
+<div class="line">  Refine_one_eighth(std::size_t min_depth,</div>
+<div class="line">                    std::size_t max_depth)</div>
+<div class="line">    : min_depth_(min_depth),</div>
+<div class="line">      max_depth_(max_depth)</div>
+<div class="line">  {</div>
+<div class="line">    octree_dim_ = std::size_t(1) &lt;&lt; max_depth_;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Octree::Global_coordinates uniform_coordinates(<span class="keyword">const</span> Octree::Node_index&amp; node_index, <span class="keyword">const</span> Octree&amp; octree)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    <span class="keyword">auto</span> coords = octree.global_coordinates(node_index);</div>
+<div class="line">    <span class="keyword">const</span> std::size_t depth_factor = std::size_t(1) &lt;&lt; (max_depth_ - octree.depth(node_index));</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; 3; ++i)</div>
+<div class="line">      coords[i] *= uint32_t(depth_factor);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> coords;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">bool</span> operator()(<span class="keyword">const</span> Octree::Node_index&amp; ni, <span class="keyword">const</span> Octree&amp; octree)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    <span class="keywordflow">if</span>(octree.depth(ni) &lt; min_depth_)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span>(octree.depth(ni) == max_depth_)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> leaf_coords = uniform_coordinates(ni, octree);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span>(leaf_coords[0] &gt;= octree_dim_ / 2)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span>(leaf_coords[1] &gt;= octree_dim_ / 2)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span>(leaf_coords[2] &gt;= octree_dim_ / 2)</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Splitter&gt;</div>
+<div class="line"><span class="keywordtype">void</span> run_DC_octree(<span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> bbox,</div>
+<div class="line">                   <span class="keyword">const</span> Splitter&amp; split_predicate,</div>
+<div class="line">                   <span class="keyword">const</span> std::function&lt;FT(<span class="keyword">const</span> Point&amp;)&gt; function,</div>
+<div class="line">                   <span class="keyword">const</span> std::function&lt;Vector(<span class="keyword">const</span> Point&amp;)&gt; gradient,</div>
+<div class="line">                   <span class="keyword">const</span> FT isovalue,</div>
+<div class="line">                   <span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line">{</div>
+<div class="line">  std::vector&lt;Point&gt; bbox_points { { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>() },</div>
+<div class="line">                                   { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>() } };</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_typedefRef" href="../Orthtree/group__PkgOrthtreeRef.html#ga937c2cf9aa6adc991f40c30071f0adad">Octree</a> octree(bbox_points);</div>
+<div class="line">  octree.refine(split_predicate);</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> leaf_range = octree.traverse(<a class="code hl_structRef" href="../Orthtree/structCGAL_1_1Orthtrees_1_1Leaves__traversal.html">CGAL::Orthtrees::Leaves_traversal&lt;Octree&gt;</a>(octree));</div>
+<div class="line">  std::size_t leaf_counter = std::distance(leaf_range.begin(), leaf_range.end());</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"octree has "</span> &lt;&lt; leaf_counter &lt;&lt; <span class="stringliteral">" leaves"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// fill up values and gradients</span></div>
+<div class="line">  Values values { function, octree };</div>
+<div class="line">  Gradients gradients { gradient, octree };</div>
+<div class="line">  Domain domain { octree, values, gradients };</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// output containers</span></div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running Dual Contouring with isovalue = "</span> &lt;&lt; isovalue &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// run Dual Contouring</span></div>
+<div class="line">  IS::dual_contouring&lt;CGAL::Parallel_if_available_tag&gt;(domain, isovalue, points, triangles,</div>
+<div class="line">                                                       CGAL::parameters::do_not_triangulate_faces(<span class="keyword">true</span>)</div>
+<div class="line">                                                                        .constrain_to_cell(<span class="keyword">false</span>));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices (DC): "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles (DC): "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream oo(<span class="stringliteral">"octree_DC_"</span> + name + <span class="stringliteral">".polylines.txt"</span>);</div>
+<div class="line">  oo.precision(17);</div>
+<div class="line">  octree.dump_to_polylines(oo);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"DC_"</span> + name + <span class="stringliteral">".off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Splitter&gt;</div>
+<div class="line"><span class="keywordtype">void</span> run_MC_octree(<span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> bbox,</div>
+<div class="line">                   <span class="keyword">const</span> Splitter&amp; split_predicate,</div>
+<div class="line">                   <span class="keyword">const</span> std::function&lt;FT(<span class="keyword">const</span> Point&amp;)&gt; function,</div>
+<div class="line">                   <span class="keyword">const</span> FT isovalue,</div>
+<div class="line">                   <span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line">{</div>
+<div class="line">  std::vector&lt;Point&gt; bbox_points { { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>() },</div>
+<div class="line">  { <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>(), <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a>.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>() } };</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_typedefRef" href="../Orthtree/group__PkgOrthtreeRef.html#ga937c2cf9aa6adc991f40c30071f0adad">Octree</a> octree(bbox_points);</div>
+<div class="line">  octree.refine(split_predicate);</div>
+<div class="line"> </div>
+<div class="line">  Values values { function, octree };</div>
+<div class="line"> </div>
+<div class="line">  Point_range points;</div>
+<div class="line">  Polygon_range triangles;</div>
+<div class="line">  MC_Domain mcdomain { octree, values };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Running MC"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  CGAL::Isosurfacing::marching_cubes&lt;CGAL::Parallel_if_available_tag&gt;(mcdomain, isovalue, points, triangles);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #vertices (MC): "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Output #triangles (MC): "</span> &lt;&lt; triangles.size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream oo(<span class="stringliteral">"octree_MC_"</span> + name + <span class="stringliteral">".polylines.txt"</span>);</div>
+<div class="line">  oo.precision(17);</div>
+<div class="line">  octree.dump_to_polylines(oo);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(<span class="stringliteral">"MC_"</span> + name + <span class="stringliteral">".off"</span>, points, triangles);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Whether you are using MC, TMC, or DC, there is no guarantee for an octree:</span></div>
+<div class="line"><span class="comment">// it should behave well if your nodes are split with a uniform size around the surface,</span></div>
+<div class="line"><span class="comment">// but it is sure to produce cracks if you have varying depths around the isosurface.</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> FT isovalue = (argc &gt; 1) ? std::stod(argv[1]) : 0.3;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__misc__grp.html#gaf633ec6397f5f065b01462fe42235d56">bbox</a> { -1., -1., -1.,  1., 1., 1. };</div>
+<div class="line"> </div>
+<div class="line">  Refine_one_eighth one_eight_splitter(3, 5);</div>
+<div class="line">  run_DC_octree(bbox, one_eight_splitter, sphere_function, sphere_gradient, isovalue, <span class="stringliteral">"one_eight"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// This is</span></div>
+<div class="line">  Refine_around_isovalue isovalue_splitter(3, 5, sphere_function, isovalue);</div>
+<div class="line">  run_DC_octree(bbox, isovalue_splitter, sphere_function, sphere_gradient, isovalue, <span class="stringliteral">"sphere_adapted"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Refine_around_isovalue isvalue_splitter_2(3, 5, blobby_function, isovalue);</div>
+<div class="line">  run_DC_octree(bbox, isvalue_splitter_2, blobby_function, blobby_gradient, isovalue, <span class="stringliteral">"blobby_adapted"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// to illustrate cracks</span></div>
+<div class="line">  run_MC_octree(bbox, isovalue_splitter, sphere_function, isovalue, <span class="stringliteral">"adapted"</span>);</div>
+<div class="line"> </div>
+<div class="line">  run_MC_octree(bbox, one_eight_splitter, sphere_function, isovalue, <span class="stringliteral">"one_eight"</span>);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Orthtree_html"><div class="ttname"><a href="../Orthtree/classCGAL_1_1Orthtree.html">CGAL::Orthtree</a></div></div>
+<div class="ttc" id="agroup__PkgOrthtreeRef_html_ga937c2cf9aa6adc991f40c30071f0adad"><div class="ttname"><a href="../Orthtree/group__PkgOrthtreeRef.html#ga937c2cf9aa6adc991f40c30071f0adad">CGAL::Octree</a></div><div class="ttdeci">Orthtree&lt; Orthtree_traits_point&lt; GeomTraits, PointRange, PointMap, cubic_nodes, 3 &gt; &gt; Octree</div></div>
+<div class="ttc" id="astructCGAL_1_1Orthtrees_1_1Leaves__traversal_html"><div class="ttname"><a href="../Orthtree/structCGAL_1_1Orthtrees_1_1Leaves__traversal.html">CGAL::Orthtrees::Leaves_traversal</a></div></div>
+</div><!-- fragment --> </details>
+<p><a class="anchor" id="fig__IsosurfacingMCOctree"></a></p><center> <img src="MC_octree.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__IsosurfacingMCOctree">Figure 64.9</a> Running Marching Cubes with an octree: left, the octree (blue wireframe) has been applied arbitrary refinement in one eighth of the domain and the resulting mesh exhibits cracks (boundaries) at the regions where octree levels are discontinuous. Right, the octree was constructed to be dense around the isosurface, and the surface is manifold. </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="SecIsosurfacingHistory"></a>
+Design and Implementation History</h1>
+<p>The development of this package started during the 2022 Google Summer of Code, with the contribution of Julian Stahl, mentored by Daniel Zint and Pierre Alliez, providing a first implementation of Marching Cubes, Topologically Correct Marching Cubes, and Dual Contouring. Marching Cubes tables were provided by Roberto Grosso (FAU Erlangen-Nürnberg). Mael Rouxel-Labbé worked on improving the initial Dual Contouring implementation, and on the first complete version of the package. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>
