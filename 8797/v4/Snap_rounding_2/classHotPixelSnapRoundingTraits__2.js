@@ -1,0 +1,28 @@
+var classHotPixelSnapRoundingTraits__2 =
+[
+    [ "Cartesian_const_iterator_2", "classHotPixelSnapRoundingTraits__2.html#a365851bfd6bb3ef74bf4f92c355cfbd1", null ],
+    [ "Compare_x_2", "classHotPixelSnapRoundingTraits__2.html#af8f37f23acbb606f1de491c29041da86", null ],
+    [ "Compare_y_2", "classHotPixelSnapRoundingTraits__2.html#a66d2a6e292f9dc5a9988b2dcb006f048", null ],
+    [ "Construct_cartesian_const_iterator_2", "classHotPixelSnapRoundingTraits__2.html#ad88ec39b29a53b2fd6ee37cbda247190", null ],
+    [ "Construct_iso_rectangle_2", "classHotPixelSnapRoundingTraits__2.html#ac0557a57c0837ddf84d0a80b20d25ebc", null ],
+    [ "Construct_max_vertex_2", "classHotPixelSnapRoundingTraits__2.html#a136888a1a9856668111f1543effa5a11", null ],
+    [ "Construct_min_vertex_2", "classHotPixelSnapRoundingTraits__2.html#a4e779bb0b1a8d852e35ba864b287f478", null ],
+    [ "Construct_segment_2", "classHotPixelSnapRoundingTraits__2.html#a87ec05a49ea7bb0a25126d13a5b2a86a", null ],
+    [ "Construct_vertex_2", "classHotPixelSnapRoundingTraits__2.html#a0c3dc4e968cade3b230aecc5c24444f9", null ],
+    [ "FT", "classHotPixelSnapRoundingTraits__2.html#a61f03faa7c2c5d66a9839c3b1aced3b3", null ],
+    [ "Integer_grid_point_2", "classHotPixelSnapRoundingTraits__2.html#ab1b18b984a4b670ef85787cff5f056c1", null ],
+    [ "Iso_rectangle_2", "classHotPixelSnapRoundingTraits__2.html#a9651e47e695ecd632acf317b188b614d", null ],
+    [ "Minkowski_sum_with_pixel_2", "classHotPixelSnapRoundingTraits__2.html#ae0d2a960ff90ee309638bc2c06ada2dc", null ],
+    [ "Point_2", "classHotPixelSnapRoundingTraits__2.html#a13fede3efd788d1e4dafed031a177c71", null ],
+    [ "Segment_2", "classHotPixelSnapRoundingTraits__2.html#a70bb27a3dfb99328a3e5b9640d3e445b", null ],
+    [ "Snap_2", "classHotPixelSnapRoundingTraits__2.html#a89f8007774785f6d5ab0d0667d58438c", null ],
+    [ "To_double", "classHotPixelSnapRoundingTraits__2.html#ab6c6b5b12ac6a32f048ad69c1a87f3c3", null ],
+    [ "compare_x_2_object", "classHotPixelSnapRoundingTraits__2.html#a37c238df6bd17647d28dbab8b9972939", null ],
+    [ "compare_y_2_object", "classHotPixelSnapRoundingTraits__2.html#a403e96028818cbdbeb96a0e76e5a04a2", null ],
+    [ "construct_iso_rectangle_2_object", "classHotPixelSnapRoundingTraits__2.html#ab4f1d5e5f8c8e1b36f763cfb613b7d98", null ],
+    [ "construct_segment_2_object", "classHotPixelSnapRoundingTraits__2.html#a5e83b977c8a9bdf89f537aeb856fbafc", null ],
+    [ "construct_vertex_2_object", "classHotPixelSnapRoundingTraits__2.html#af4f0023bfc1795680642de5e982aff36", null ],
+    [ "integer_grid_point_2_object", "classHotPixelSnapRoundingTraits__2.html#a3b61b22b07f95d92fc8aac718a8e03bf", null ],
+    [ "minkowski_sum_with_pixel_2_object", "classHotPixelSnapRoundingTraits__2.html#a429fe51fcf7d087ca3ad37e32b75fe11", null ],
+    [ "snap_2_object", "classHotPixelSnapRoundingTraits__2.html#a3f7255189c09f60ad993a0d46ca7e91d", null ]
+];
