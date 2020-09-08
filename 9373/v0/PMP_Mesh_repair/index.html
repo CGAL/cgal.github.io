@@ -1,0 +1,998 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/PMP_Mesh_repair/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Polygon Mesh Repair: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Polygon Mesh Repair
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_PMPMeshRepair"></a> </p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Authors</dt><dd>Sébastien Loriot, Mael Rouxel-Labbé, and Ilker O. Yaz</dd></dl>
+<div class="image">
+<img src="neptun_head.jpg" alt="">
+</div>
+<p>  <br>
+</p>
+<h1><a class="anchor" id="PMPMeshRepairIntro"></a>
+Introduction</h1>
+<p>Geometric models, whether acquired through imprecise tools or imperfect processes, frequently exhibit defects such as inconsistent orientations, degeneracies, gaps, missing data, non-manifold features, or self-intersections.</p>
+<p>This CGAL package provides a comprehensive set of functions to detect and address both combinatorial and geometric defects. The first part of this documentation focuses on combinatorial repairs, with particular attention to orienting and repairing polygon soups—a necessary step to obtain a valid combinatorial polygon mesh structure. The second part describes functions for geometric repairs, such as removing nearly degenerate faces, or filling holes.</p>
+<h1><a class="anchor" id="PMPOrientation"></a>
+Orientation</h1>
+<p>This package offers multiple functions to compute consistent face orientations for set of faces (Section <a class="el" href="index.html#PMPPolygonSoups">Polygon Soups</a>) and polygon meshes (see Section <a class="el" href="index.html#OrientingPolygonMeshes">Polygon Meshes</a>).</p>
+<h2><a class="anchor" id="PMPPolygonSoups"></a>
+Polygon Soups</h2>
+<p>When the faces of a polygon mesh are given but the connectivity is unknown, this set of faces is called a <em>polygon soup</em>.</p>
+<p>Before running any of the algorithms on a polygon soup, one should ensure that the polygons are consistently oriented. To do so, this package provides the function <code><a class="el" href="group__PMP__orientation__grp.html#gad380465ee62d858d27fab4cfda6c1764" title="tries to consistently orient a soup of polygons in 3D space.">CGAL::Polygon_mesh_processing::orient_polygon_soup()</a></code>, described in <a class="el" href="citelist.html#CITEREF_gueziec2001cutting">[1]</a>.</p>
+<p>To deal with polygon soups that cannot be converted to a combinatorially manifold surface, some points must be duplicated. Because a polygon soup does not have any connectivity (each point has as many occurrences as the number of polygons it belongs to), duplicating one point (or a pair of points) amounts to duplicating the polygon to which it belongs. The duplicated points are either an endpoint of an edge incident to more than two polygons, an endpoint of an edge between two polygons with incompatible orientations (during the re-orientation process), or more generally a point <em>p</em> at which the intersection of an infinitesimally small ball centered at <em>p</em> with the polygons incident to it is not a topological disk.</p>
+<p>Once the polygon soup is consistently oriented, possibly with duplicated points, connectivity can be recovered and made consistent to build a valid polygon mesh. The function <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga2ba9722ec8472a1455107ffce7145e46" title="builds a polygon mesh from a soup of polygons.">CGAL::Polygon_mesh_processing::polygon_soup_to_polygon_mesh()</a></code> performs this mesh construction step.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2orient_polygon_soup_example_8cpp-example.html">PMP_Mesh_repair/orient_polygon_soup_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_items_with_id_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/orient_polygon_soup.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/polygon_soup_to_polygon_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/orientation.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>          K;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3&lt;K, CGAL::Polyhedron_items_with_id_3&gt;</a>      Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Optional visitor for orientating a polygon soup to demonstrate usage for some functions.</span></div>
+<div class="line"><span class="comment">// inherits from the default class as some functions are not overloaded</span></div>
+<div class="line"><span class="keyword">struct </span>Visitor : <span class="keyword">public</span> <a class="code hl_struct" href="structCGAL_1_1Polygon__mesh__processing_1_1Default__orientation__visitor.html">CGAL::Polygon_mesh_processing::Default_orientation_visitor</a></div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">void</span> non_manifold_edge(std::size_t id1, std::size_t id2, std::size_t nb_poly)</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"The edge "</span> &lt;&lt; id1 &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; id2 &lt;&lt; <span class="stringliteral">" is not manifold: "</span> &lt;&lt; nb_poly &lt;&lt; <span class="stringliteral">" incident polygons."</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordtype">void</span> non_manifold_vertex(std::size_t <span class="keywordtype">id</span>, std::size_t nb_cycles)</div>
+<div class="line">  {</div>
+<div class="line">     std::cout &lt;&lt; <span class="stringliteral">"The vertex "</span> &lt;&lt; <span class="keywordtype">id</span> &lt;&lt; <span class="stringliteral">" is not manifold: "</span>  &lt;&lt; nb_cycles &lt;&lt; <span class="stringliteral">" connected components of vertices in the link."</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordtype">void</span> duplicated_vertex(std::size_t v1, std::size_t v2)</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"The vertex "</span> &lt;&lt; v1 &lt;&lt; <span class="stringliteral">" has been duplicated, its new id is "</span> &lt;&lt; v2 &lt;&lt; <span class="stringliteral">"."</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordtype">void</span> vertex_id_in_polygon_replaced(std::size_t p_id, std::size_t i1, std::size_t i2)</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"In the polygon "</span> &lt;&lt; p_id &lt;&lt; <span class="stringliteral">", the index "</span> &lt;&lt; i1 &lt;&lt; <span class="stringliteral">" has been replaced by "</span> &lt;&lt; i2 &lt;&lt; <span class="stringliteral">"."</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordtype">void</span> polygon_orientation_reversed(std::size_t p_id)</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"The polygon "</span> &lt;&lt; p_id &lt;&lt; <span class="stringliteral">" has been reversed."</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/tet-shuffled.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;K::Point_3&gt; points;</div>
+<div class="line">  std::vector&lt;std::vector&lt;std::size_t&gt; &gt; polygons;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#gaafb0e02f4669802c727709743065804c">CGAL::IO::read_polygon_soup</a>(filename, points, polygons) || points.empty())</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Cannot open file "</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Visitor visitor;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__orientation__grp.html#gad380465ee62d858d27fab4cfda6c1764">CGAL::Polygon_mesh_processing::orient_polygon_soup</a>(points, polygons, CGAL::parameters::visitor(visitor));</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga2ba9722ec8472a1455107ffce7145e46">CGAL::Polygon_mesh_processing::polygon_soup_to_polygon_mesh</a>(points, polygons, mesh);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Number the faces because 'orient_to_bound_a_volume' needs a face &lt;--&gt; index map</span></div>
+<div class="line">  <span class="keywordtype">int</span> index = 0;</div>
+<div class="line">  <span class="keywordflow">for</span>(Mesh::Face_iterator fb=mesh.facets_begin(), fe=mesh.facets_end(); fb!=fe; ++fb)</div>
+<div class="line">    fb-&gt;id() = index++;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#gae04c8044cf1eee6a84baa5b79ab99fef">CGAL::is_closed</a>(mesh))</div>
+<div class="line">    <a class="code hl_function" href="group__PMP__orientation__grp.html#gadf6efc8f4475792ccafe36f3e8734302">CGAL::Polygon_mesh_processing::orient_to_bound_a_volume</a>(mesh);</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out(<span class="stringliteral">"tet-oriented1.off"</span>);</div>
+<div class="line">  out.precision(17);</div>
+<div class="line">  out &lt;&lt; mesh;</div>
+<div class="line">  out.close();</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__orientation__grp.html#gad8a3439883e3e76651f96d15ba58b2bc">CGAL::Polygon_mesh_processing::reverse_face_orientations</a>(mesh);</div>
+<div class="line">  std::ofstream out2(<span class="stringliteral">"tet-oriented2.off"</span>);</div>
+<div class="line">  out2.precision(17);</div>
+<div class="line">  out2 &lt;&lt; mesh;</div>
+<div class="line">  out2.close();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Polyhedron__3_html"><div class="ttname"><a href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a></div></div>
+<div class="ttc" id="agroup__IOstreamFunctions_html_gaafb0e02f4669802c727709743065804c"><div class="ttname"><a href="../Stream_support/group__IOstreamFunctions.html#gaafb0e02f4669802c727709743065804c">CGAL::IO::read_polygon_soup</a></div><div class="ttdeci">bool read_polygon_soup(const std::string &amp;fname, PointRange &amp;points, PolygonRange &amp;polygons, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PMP__combinatorial__repair__grp_html_ga2ba9722ec8472a1455107ffce7145e46"><div class="ttname"><a href="group__PMP__combinatorial__repair__grp.html#ga2ba9722ec8472a1455107ffce7145e46">CGAL::Polygon_mesh_processing::polygon_soup_to_polygon_mesh</a></div><div class="ttdeci">void polygon_soup_to_polygon_mesh(const PointRange &amp;points, const PolygonRange &amp;polygons, PolygonMesh &amp;out, const NamedParameters_PS &amp;np_ps=parameters::default_values(), const NamedParameters_PM &amp;np_pm=parameters::default_values())</div><div class="ttdoc">builds a polygon mesh from a soup of polygons.</div><div class="ttdef"><b>Definition:</b> polygon_soup_to_polygon_mesh.h:330</div></div>
+<div class="ttc" id="agroup__PMP__orientation__grp_html_gad380465ee62d858d27fab4cfda6c1764"><div class="ttname"><a href="group__PMP__orientation__grp.html#gad380465ee62d858d27fab4cfda6c1764">CGAL::Polygon_mesh_processing::orient_polygon_soup</a></div><div class="ttdeci">bool orient_polygon_soup(PointRange &amp;points, PolygonRange &amp;polygons, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">tries to consistently orient a soup of polygons in 3D space.</div><div class="ttdef"><b>Definition:</b> orient_polygon_soup.h:543</div></div>
+<div class="ttc" id="agroup__PMP__orientation__grp_html_gad8a3439883e3e76651f96d15ba58b2bc"><div class="ttname"><a href="group__PMP__orientation__grp.html#gad8a3439883e3e76651f96d15ba58b2bc">CGAL::Polygon_mesh_processing::reverse_face_orientations</a></div><div class="ttdeci">void reverse_face_orientations(PolygonMesh &amp;pmesh)</div><div class="ttdoc">reverses for each face the order of the vertices along the face boundary.</div><div class="ttdef"><b>Definition:</b> orientation.h:274</div></div>
+<div class="ttc" id="agroup__PMP__orientation__grp_html_gadf6efc8f4475792ccafe36f3e8734302"><div class="ttname"><a href="group__PMP__orientation__grp.html#gadf6efc8f4475792ccafe36f3e8734302">CGAL::Polygon_mesh_processing::orient_to_bound_a_volume</a></div><div class="ttdeci">void orient_to_bound_a_volume(TriangleMesh &amp;tm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">orients the connected components of tm to make it bound a volume.</div><div class="ttdef"><b>Definition:</b> orientation.h:1347</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_gae04c8044cf1eee6a84baa5b79ab99fef"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#gae04c8044cf1eee6a84baa5b79ab99fef">CGAL::is_closed</a></div><div class="ttdeci">bool is_closed(const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+<div class="ttc" id="astructCGAL_1_1Polygon__mesh__processing_1_1Default__orientation__visitor_html"><div class="ttname"><a href="structCGAL_1_1Polygon__mesh__processing_1_1Default__orientation__visitor.html">CGAL::Polygon_mesh_processing::Default_orientation_visitor</a></div><div class="ttdoc">Default visitor model of PMPPolygonSoupOrientationVisitor.</div><div class="ttdef"><b>Definition:</b> orient_polygon_soup.h:50</div></div>
+</div><!-- fragment --> </details>
+<p>Inversely, a polygon soup can be constructed from a polygon mesh, using the function <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga3be94f1f7968022a294dd533400ad554" title="adds the vertices and faces of a mesh into a (possibly non-empty) polygon soup.">CGAL::Polygon_mesh_processing::polygon_mesh_to_polygon_soup()</a></code>.</p>
+<h2><a class="anchor" id="OrientingPolygonMeshes"></a>
+Polygon Meshes</h2>
+<p>This package provides functions for orienting faces in a closed polygon mesh:</p>
+<ul>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#ga6e71985647e2705328a6df45b7961994" title="makes each closed connected component of a triangulated surface mesh inward or outward oriented.">CGAL::Polygon_mesh_processing::orient()</a></code> orients each connected component of a closed polygon mesh outward or inward.</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#gadf6efc8f4475792ccafe36f3e8734302" title="orients the connected components of tm to make it bound a volume.">CGAL::Polygon_mesh_processing::orient_to_bound_a_volume()</a></code> orients the connected components of a closed polygon mesh so that they bound a volume (see <a class="elRef" href="../PMP_Boolean_operations/index.html#coref_def_subsec">Definitions</a> for a precise definition).</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#gabdb85ef9ccc1a4da632f1a697c6d5163" title="tests whether a closed triangle mesh has a positive orientation.">CGAL::Polygon_mesh_processing::is_outward_oriented()</a></code> checks whether an oriented polygon mesh is oriented such that the normals to all faces point outward from the domain bounded by the mesh.</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#gad8a3439883e3e76651f96d15ba58b2bc" title="reverses for each face the order of the vertices along the face boundary.">CGAL::Polygon_mesh_processing::reverse_face_orientations()</a></code> reverses the orientation of halfedges around faces, thereby reversing the computed normals (see Section <a class="elRef" href="../Polygon_mesh_processing/index.html#PMPNormalComp">Computing Normals</a>).</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#gab43990ca5541b788c6db2ba509a73ee3" title="assigns to each face of tm an id corresponding to the volume connected component it contributes to.">CGAL::Polygon_mesh_processing::volume_connected_components()</a></code> provides information about the 3D arrangement of surface connected components in a triangle mesh, with many named parameter options, making it a generalization of <code>is_outward_oriented()</code>.</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#ga2aa4f7b500dc51d1fc4747705a050946" title="duplicates each point p at which the intersection of an infinitesimally small ball centered at p with...">CGAL::Polygon_mesh_processing::duplicate_non_manifold_edges_in_polygon_soup()</a></code> duplicates points and edges to make a soup orientable, without altering face orientations.</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#ga2f504990a24f599c20cd57161f9755f0" title="orients each triangle of a triangle soup using the orientation of its closest non degenerate triangle...">CGAL::Polygon_mesh_processing::orient_triangle_soup_with_reference_triangle_mesh()</a></code> orients the triangles of a soup according to a reference mesh.</li>
+<li><code><a class="el" href="group__PMP__orientation__grp.html#ga10325d30c17096eed40938545b53cb14" title="reverses the connected components of tm having compatible boundary cycles that could be merged if the...">CGAL::Polygon_mesh_processing::merge_reversible_connected_components()</a></code> merges the connected components of a polygon mesh when possible.</li>
+</ul>
+<p>The following example demonstrates how to repair and orient a soup to obtain a mesh from a reference:</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2orientation_pipeline_example_8cpp-example.html">PMP_Mesh_repair/orientation_pipeline_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/orientation.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/polygon_soup_to_polygon_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/orient_polygon_soup_extension.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/algorithm.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Timer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_soup_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>   K;</div>
+<div class="line"><span class="keyword">typedef</span> K::Point_3                                            Point_3;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a>                           Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string input_filename = (argc &lt; 2) ? <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby-shuffled.off"</span>) : argv[1];</div>
+<div class="line">  <span class="keyword">const</span> std::string reference_filename = (argc &lt; 2) ? <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby.off"</span>) : argv[2];</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;Point_3&gt; points;</div>
+<div class="line">  std::vector&lt;std::vector&lt;std::size_t&gt; &gt; polygons;</div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#gaafb0e02f4669802c727709743065804c">CGAL::IO::read_polygon_soup</a>(input_filename, points, polygons) ||</div>
+<div class="line">     points.size() == 0 || polygons.size() == 0)</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: can not read input file.\n"</span>;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Mesh ref1;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(reference_filename, ref1))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Is the soup a polygon mesh ? : "</span> &lt;&lt; <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga8b9d12d817b5cc76f5a42d74eac75bf3">PMP::is_polygon_soup_a_polygon_mesh</a>(polygons)  &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  PMP::orient_triangle_soup_with_reference_triangle_mesh&lt;CGAL::Sequential_tag&gt;(ref1, points, polygons);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"And now ? : "</span> &lt;&lt; <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga8b9d12d817b5cc76f5a42d74eac75bf3">PMP::is_polygon_soup_a_polygon_mesh</a>(polygons) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__orientation__grp.html#ga2aa4f7b500dc51d1fc4747705a050946">PMP::duplicate_non_manifold_edges_in_polygon_soup</a>(points, polygons);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"And now ? : "</span> &lt;&lt; <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga8b9d12d817b5cc76f5a42d74eac75bf3">PMP::is_polygon_soup_a_polygon_mesh</a>(polygons) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  Mesh poly;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga2ba9722ec8472a1455107ffce7145e46">PMP::polygon_soup_to_polygon_mesh</a>(points, polygons, poly);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> boost::property_map&lt;Mesh, CGAL::dynamic_face_property_t&lt;std::size_t&gt; &gt;::type Fccmap;</div>
+<div class="line">  Fccmap fccmap = get(<a class="code hl_structRef" href="../BGL/structCGAL_1_1dynamic__face__property__t.html">CGAL::dynamic_face_property_t&lt;std::size_t&gt;</a>(), poly);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9">PMP::connected_components</a>(poly, fccmap) &lt;&lt; <span class="stringliteral">" CCs before merge."</span> &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__orientation__grp.html#ga10325d30c17096eed40938545b53cb14">PMP::merge_reversible_connected_components</a>(poly);</div>
+<div class="line"> </div>
+<div class="line">  std::cout&lt;&lt;<a class="code hl_functionRef" href="../Polygon_mesh_processing/group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9">PMP::connected_components</a>(poly, fccmap) &lt;&lt; <span class="stringliteral">" remaining CCs."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
+<div class="ttc" id="agroup__PMP__combinatorial__repair__grp_html_ga8b9d12d817b5cc76f5a42d74eac75bf3"><div class="ttname"><a href="group__PMP__combinatorial__repair__grp.html#ga8b9d12d817b5cc76f5a42d74eac75bf3">CGAL::Polygon_mesh_processing::is_polygon_soup_a_polygon_mesh</a></div><div class="ttdeci">bool is_polygon_soup_a_polygon_mesh(const PolygonRange &amp;polygons)</div><div class="ttdoc">returns true if the soup of polygons defines a valid polygon mesh that can be handled by CGAL::Polygo...</div><div class="ttdef"><b>Definition:</b> polygon_soup_to_polygon_mesh.h:195</div></div>
+<div class="ttc" id="agroup__PMP__keep__connected__components__grp_html_ga239704e9a2752ed67d361be55acf3bf9"><div class="ttname"><a href="../Polygon_mesh_processing/group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9">CGAL::Polygon_mesh_processing::connected_components</a></div><div class="ttdeci">boost::property_traits&lt; FaceComponentMap &gt;::value_type connected_components(const PolygonMesh &amp;pmesh, FaceComponentMap fcm, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PMP__orientation__grp_html_ga10325d30c17096eed40938545b53cb14"><div class="ttname"><a href="group__PMP__orientation__grp.html#ga10325d30c17096eed40938545b53cb14">CGAL::Polygon_mesh_processing::merge_reversible_connected_components</a></div><div class="ttdeci">void merge_reversible_connected_components(PolygonMesh &amp;pm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">reverses the connected components of tm having compatible boundary cycles that could be merged if the...</div><div class="ttdef"><b>Definition:</b> orientation.h:1456</div></div>
+<div class="ttc" id="agroup__PMP__orientation__grp_html_ga2aa4f7b500dc51d1fc4747705a050946"><div class="ttname"><a href="group__PMP__orientation__grp.html#ga2aa4f7b500dc51d1fc4747705a050946">CGAL::Polygon_mesh_processing::duplicate_non_manifold_edges_in_polygon_soup</a></div><div class="ttdeci">bool duplicate_non_manifold_edges_in_polygon_soup(PointRange &amp;points, PolygonRange &amp;polygons)</div><div class="ttdoc">duplicates each point p at which the intersection of an infinitesimally small ball centered at p with...</div><div class="ttdef"><b>Definition:</b> orient_polygon_soup_extension.h:65</div></div>
+<div class="ttc" id="astructCGAL_1_1dynamic__face__property__t_html"><div class="ttname"><a href="../BGL/structCGAL_1_1dynamic__face__property__t.html">CGAL::dynamic_face_property_t</a></div></div>
+</div><!-- fragment --> </details>
+<h1><a class="anchor" id="PMPCombinatorialRepair"></a>
+Combinatorial Repair</h1>
+<h2><a class="anchor" id="PSRepairing"></a>
+Polygon Soup Repairing</h2>
+<p>To ensure that a polygon soup can be oriented (see Section <a class="el" href="index.html#PMPPolygonSoups">Polygon Soups</a>) and transformed into a usable polygon mesh, it might be necessary to preprocess the data to remove combinatorial and geometrical errors. This package offers the following functions:</p><ul>
+<li><code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga1f215926ed8794db827e2993d2960870" title="merges the duplicate points in a polygon soup.">CGAL::Polygon_mesh_processing::merge_duplicate_points_in_polygon_soup()</a></code>,</li>
+<li><code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga93d14c26c259b5844dbd5a7753278e5f" title="merges the duplicate polygons in a polygon soup.">CGAL::Polygon_mesh_processing::merge_duplicate_polygons_in_polygon_soup()</a></code>,</li>
+<li><code><a class="el" href="group__PMP__combinatorial__repair__grp.html#gaef5c13fc9dd4cae14c860351c479a45f" title="removes the isolated points from a polygon soup.">CGAL::Polygon_mesh_processing::remove_isolated_points_in_polygon_soup()</a></code>,</li>
+</ul>
+<p>as well as the function <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga3b35133783759402828325b91ab559cc" title="cleans a given polygon soup through various repairing operations.">CGAL::Polygon_mesh_processing::repair_polygon_soup()</a></code>, which bundles the previous functions and an additional handful of repairing techniques to obtain an as-clean-as-possible polygon soup.</p>
+<h2><a class="anchor" id="Stitching"></a>
+Stitching</h2>
+<p>When handling polygon meshes, it might happen that a mesh has several edges and vertices that are duplicated. For those edges and vertices, the connectivity of the mesh is incomplete, if not considered incorrect.</p>
+<p>Stitching the borders of a polygon mesh can be done to fix some of the duplication. It consists in two main steps. First, border edges that are geometrically identical but duplicated are detected and paired. Then, they are "stitched" together so that edges and vertices duplicates are removed from the mesh, and each of these remaining edges is incident to exactly two faces.</p>
+<p>The functions <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga31bf16dbfb6e46202ca4277df8e69908" title="stitches together, whenever possible, two halfedges belonging to the boundary cycle described by the ...">CGAL::Polygon_mesh_processing::stitch_boundary_cycle()</a></code>, <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga621eebea618dc7d2356fa7fddb026905" title="stitches together, whenever possible, two halfedges belonging to the same boundary cycle.">CGAL::Polygon_mesh_processing::stitch_boundary_cycles()</a></code>, and <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#gaa0ca177eb85fafc4be1f88c5b27c25bd" title="stitches together border halfedges in a polygon mesh.">CGAL::Polygon_mesh_processing::stitch_borders()</a></code> can perform such repairing operations: the first two functions can be used to stitch halfedges that are part of the same boundary(ies), whereas the third function is more generic and can also stitch halfedges that live on different borders.</p>
+<p>The input mesh should represent a manifold surface; otherwise, stitching may not succeed.</p>
+<h3><a class="anchor" id="StitchingExample"></a>
+Stitching Example</h3>
+<p>The following example applies the stitching operation to a simple quad mesh with duplicated border edges.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2stitch_borders_example_8cpp-example.html">PMP_Mesh_repair/stitch_borders_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/stitch_borders.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>   K;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3&lt;K&gt;</a>                                 Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/quads_to_stitch.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Before stitching : "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\t Number of vertices  :\t"</span> &lt;&lt; mesh.size_of_vertices() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\t Number of halfedges :\t"</span> &lt;&lt; mesh.size_of_halfedges() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\t Number of facets    :\t"</span> &lt;&lt; mesh.size_of_facets() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#gaa0ca177eb85fafc4be1f88c5b27c25bd">PMP::stitch_borders</a>(mesh);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Stitching done : "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\t Number of vertices  :\t"</span> &lt;&lt; mesh.size_of_vertices() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\t Number of halfedges :\t"</span> &lt;&lt; mesh.size_of_halfedges() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\t Number of facets    :\t"</span> &lt;&lt; mesh.size_of_facets() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(<span class="stringliteral">"mesh_stitched.off"</span>, mesh, CGAL::parameters::stream_precision(17));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__combinatorial__repair__grp_html_gaa0ca177eb85fafc4be1f88c5b27c25bd"><div class="ttname"><a href="group__PMP__combinatorial__repair__grp.html#gaa0ca177eb85fafc4be1f88c5b27c25bd">CGAL::Polygon_mesh_processing::stitch_borders</a></div><div class="ttdeci">std::size_t stitch_borders(PolygonMesh &amp;pmesh, const HalfedgePairsRange &amp;hedge_pairs_to_stitch, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">stitches together border halfedges in a polygon mesh.</div><div class="ttdef"><b>Definition:</b> stitch_borders.h:1306</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_gafa143949a33371dc6df8307be1ab8a66"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a></div><div class="ttdeci">bool write_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="PMPManifoldness"></a>
+Polygon Mesh Manifoldness</h2>
+<p>Non-manifold vertices can be detected using the function <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga121f588ac324938d9a6b6931a08661e1" title="returns whether a vertex of a polygon mesh is non-manifold.">CGAL::Polygon_mesh_processing::is_non_manifold_vertex()</a></code>. The function <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga25901cbedcc6123d7760ac5b9dc8d14e" title="duplicates all the non-manifold vertices of the input mesh.">CGAL::Polygon_mesh_processing::duplicate_non_manifold_vertices()</a></code> can be used to attempt to create a combinatorially manifold surface mesh by splitting any non-manifold vertex into as many vertices as there are manifold sheets at this geometric position. Note however that the mesh will still not be manifold from a geometric point of view, as the positions of the new vertices introduced at a non-manifold vertex are identical to the input non-manifold vertex.</p>
+<h3><a class="anchor" id="FixNMVerticeExample"></a>
+Manifoldness Repair Example</h3>
+<p>In the following example, a non-manifold configuration is artificially created and fixed with the help of the functions described above.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2manifoldness_repair_example_8cpp-example.html">PMP_Mesh_repair/manifoldness_repair_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/repair.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/iterator.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"><span class="keyword">namespace </span>NP = <a class="code hl_namespaceRef" href="../STL_Extension/namespaceCGAL_1_1parameters.html">CGAL::parameters</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>          K;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;K::Point_3&gt;</a>                               Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor                 vertex_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::halfedge_descriptor               halfedge_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> merge_vertices(vertex_descriptor v_keep, vertex_descriptor v_rm, Mesh&amp; mesh)</div>
+<div class="line">{</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"merging vertices "</span> &lt;&lt; v_keep &lt;&lt; <span class="stringliteral">" and "</span> &lt;&lt; v_rm &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(halfedge_descriptor h : <a class="code hl_functionRef" href="../BGL/group__PkgBGLIterators.html#ga295060a50555471eab7f24addbb9bb49">CGAL::halfedges_around_target</a>(v_rm, mesh))</div>
+<div class="line">    set_target(h, v_keep, mesh); <span class="comment">// to ensure that no halfedge points at the deleted vertex</span></div>
+<div class="line"> </div>
+<div class="line">  remove_vertex(v_rm, mesh);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh) || <a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#gab6e6f18e6de73b9f85e38d0b56145172">CGAL::is_empty</a>(mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Artificially create non-manifoldness for the sake of the example by merging some vertices</span></div>
+<div class="line">  vertex_descriptor v0 = *(vertices(mesh).begin());</div>
+<div class="line">  vertex_descriptor v1 = *(--(vertices(mesh).end()));</div>
+<div class="line">  merge_vertices(v0, v1, mesh);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Count non manifold vertices</span></div>
+<div class="line">  <span class="keywordtype">int</span> counter = 0;</div>
+<div class="line">  <span class="keywordflow">for</span>(vertex_descriptor v : vertices(mesh))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga121f588ac324938d9a6b6931a08661e1">PMP::is_non_manifold_vertex</a>(v, mesh))</div>
+<div class="line">    {</div>
+<div class="line">      std::cout &lt;&lt; <span class="stringliteral">"vertex "</span> &lt;&lt; v &lt;&lt; <span class="stringliteral">" is non-manifold"</span> &lt;&lt; std::endl;</div>
+<div class="line">      ++counter;</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; counter &lt;&lt; <span class="stringliteral">" non-manifold occurrence(s)"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Fix manifoldness by splitting non-manifold vertices</span></div>
+<div class="line">  std::vector&lt;std::vector&lt;vertex_descriptor&gt; &gt; duplicated_vertices;</div>
+<div class="line">  std::size_t new_vertices_nb = <a class="code hl_function" href="group__PMP__combinatorial__repair__grp.html#ga25901cbedcc6123d7760ac5b9dc8d14e">PMP::duplicate_non_manifold_vertices</a>(mesh,</div>
+<div class="line">                                                                     NP::output_iterator(</div>
+<div class="line">                                                                       std::back_inserter(duplicated_vertices)));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; new_vertices_nb &lt;&lt; <span class="stringliteral">" vertices have been added to fix mesh manifoldness"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(std::size_t i=0; i&lt;duplicated_vertices.size(); ++i)</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Non-manifold vertex "</span> &lt;&lt; duplicated_vertices[i].front() &lt;&lt; <span class="stringliteral">" was fixed by creating"</span>;</div>
+<div class="line">    <span class="keywordflow">for</span>(std::size_t j=1; j&lt;duplicated_vertices[i].size(); ++j)</div>
+<div class="line">      std::cout &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; duplicated_vertices[i][j];</div>
+<div class="line">    std::cout &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__combinatorial__repair__grp_html_ga121f588ac324938d9a6b6931a08661e1"><div class="ttname"><a href="group__PMP__combinatorial__repair__grp.html#ga121f588ac324938d9a6b6931a08661e1">CGAL::Polygon_mesh_processing::is_non_manifold_vertex</a></div><div class="ttdeci">bool is_non_manifold_vertex(typename boost::graph_traits&lt; PolygonMesh &gt;::vertex_descriptor v, const PolygonMesh &amp;pm)</div><div class="ttdoc">returns whether a vertex of a polygon mesh is non-manifold.</div><div class="ttdef"><b>Definition:</b> manifoldness.h:52</div></div>
+<div class="ttc" id="agroup__PMP__combinatorial__repair__grp_html_ga25901cbedcc6123d7760ac5b9dc8d14e"><div class="ttname"><a href="group__PMP__combinatorial__repair__grp.html#ga25901cbedcc6123d7760ac5b9dc8d14e">CGAL::Polygon_mesh_processing::duplicate_non_manifold_vertices</a></div><div class="ttdeci">std::size_t duplicate_non_manifold_vertices(PolygonMesh &amp;pm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">duplicates all the non-manifold vertices of the input mesh.</div><div class="ttdef"><b>Definition:</b> manifoldness.h:428</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_gab6e6f18e6de73b9f85e38d0b56145172"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#gab6e6f18e6de73b9f85e38d0b56145172">CGAL::is_empty</a></div><div class="ttdeci">bool is_empty(const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="agroup__PkgBGLIterators_html_ga295060a50555471eab7f24addbb9bb49"><div class="ttname"><a href="../BGL/group__PkgBGLIterators.html#ga295060a50555471eab7f24addbb9bb49">CGAL::halfedges_around_target</a></div><div class="ttdeci">Iterator_range&lt; Halfedge_around_target_iterator&lt; Graph &gt; &gt; halfedges_around_target(typename boost::graph_traits&lt; Graph &gt;::halfedge_descriptor h, const Graph &amp;g)</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1parameters_html"><div class="ttname"><a href="../STL_Extension/namespaceCGAL_1_1parameters.html">CGAL::parameters</a></div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="PMPDuplicateVertexBoundaryCycle"></a>
+Duplicated Vertices in Boundary Cycles</h2>
+<p>Similarly to the problematic configuration described in the previous section, another issue that can be present in a polygon mesh is the occurrence of a "pinched" hole, that is the configuration where, when starting from a border halfedge and walking the halfedges of this border, a geometric position appears more than once (although, with different vertices) before reaching the initial border halfedge again. The functions <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga95ff13c1578f509fa8ed58b1884d0e46" title="merges identical vertices around a cycle of boundary edges.">CGAL::Polygon_mesh_processing::merge_duplicated_vertices_in_boundary_cycle()</a></code> and <code><a class="el" href="group__PMP__combinatorial__repair__grp.html#ga95ff13c1578f509fa8ed58b1884d0e46" title="merges identical vertices around a cycle of boundary edges.">CGAL::Polygon_mesh_processing::merge_duplicated_vertices_in_boundary_cycle()</a></code>, which merge vertices at identical positions, can be used to repair this configuration. During the operation, the boundary cycle is split into several boundary cycles, at each duplicated position.</p>
+<h1><a class="anchor" id="PMPGeometricRepair"></a>
+Geometric Repair</h1>
+<h2><a class="anchor" id="PMPRemoveCapsNeedles"></a>
+Removal of Almost Degenerate Triangle Faces</h2>
+<p>Triangle faces of a mesh made up of almost collinear points are badly shaped elements that might not be desirable to have in a mesh. The function <code><a class="el" href="group__PMP__geometric__repair__grp.html#ga48008d2b66de8a68a7068f29db15dad6" title="removes almost degenerate faces in a range of faces from a triangulated surface mesh.">CGAL::Polygon_mesh_processing::remove_almost_degenerate_faces()</a></code> enables removing such elements, with user-defined parameters to qualify what <em>almost</em> means (<code>cap_threshold</code> and <code>needle_threshold</code>). As some badly shaped elements are inevitable (the triangulation of a long cylinder with only vertices on the top and bottom circles for example), extra parameters can be passed to prevent the removal of such elements (<code>collapse_length_threshold</code> and <code>flip_triangle_height_threshold</code>).</p>
+<h2><a class="anchor" id="PMPAutoref"></a>
+Self-intersection Resolution (Autorefinement) in Triangle Soups</h2>
+<p>Given a soup of triangles, a self-intersection is defined as the intersection of two triangles from the soup such that the intersection is not defined by the convex hull of one, two or three shared vertices. In other words, it is an intersection that happens in the interior of one of the two triangles, or in the interior of one of their edges, except if identical points are associated to different vertices of the triangle soup which would then also include overlaps of duplicated points.</p>
+<p>The function <code><a class="elRef" href="../PMP_Boolean_operations/group__PMP__corefinement__grp.html#gaf7747d676c459d9e5da9b13be7d12bb5">CGAL::Polygon_mesh_processing::autorefine_triangle_soup()</a></code> provides a way to refine a triangle soup using the intersections of the triangles from the soup. In particular, if some points are duplicated they will be merged. Note that if a kernel with exact predicates but inexact constructions is used, some new self-intersections might be introduced due to the rounding of the coordinates of intersection points. The <code>apply_iterative_snap_rounding</code> option can be used to resolve this issue. When set to <code>true</code>, it ensures that the coordinates are rounded to fit in <code>double</code> with potential additional subdivisions, preventing any self-intersections from occurring.</p>
+<h1><a class="anchor" id="PMPHoleFilling"></a>
+Hole Filling</h1>
+<p>This package provides an algorithm for filling one closed hole that is either in a triangulated surface mesh or defined by a sequence of points that describe a polyline. The main steps of the algorithm are described in <a class="el" href="citelist.html#CITEREF_liepa2003filling">[2]</a> and can be summarized as follows.</p>
+<p>First, the largest patch triangulating the boundary of the hole is generated without introducing any new vertex. The patch is selected so as to minimize a quality function evaluated for all possible triangular patches. The quality function first minimizes the worst dihedral angle between patch triangles, then the total surface area of the patch as a tiebreaker. Following the suggestions in <a class="el" href="citelist.html#CITEREF_zou2013algorithm">[3]</a>, the performance of the algorithm is significantly improved by narrowing the search space to faces of a 3D Delaunay triangulation of the hole boundary vertices, from all possible patches, while searching for the best patch with respect to the aforementioned quality criteria.</p>
+<p>For complex hole boundaries, the generated patch may have self-intersections. After hole filling, the patch can be refined and faired using the meshing functions <code><a class="elRef" href="../PMP_Remeshing/group__PMP__local__remeshing__grp.html#ga047c58233b234917fd310e190103e0cd">CGAL::Polygon_mesh_processing::refine()</a></code> and <code><a class="elRef" href="../PMP_Remeshing/group__PMP__local__remeshing__grp.html#ga9988e9a2eaf92740b3009d06c792f2cd">CGAL::Polygon_mesh_processing::fair()</a></code> (see Section <a class="elRef" href="../PMP_Remeshing/index.html#Chapter_PMPRemeshing">Chapter_PMPRemeshing</a>).</p>
+<p><a class="anchor" id="fig__Mech_steps"></a> </p><div class="image">
+<img src="mech_hole_horz.jpg" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Mech_steps">Figure 78.1</a> Results of the main steps of the algorithm. From left to right: (a) the hole, (b) after triangulation, (c) after triangulation and refinement, (d) after triangulation, refinement, and fairing. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="HoleFillingAPI"></a>
+API</h2>
+<p>This package provides four functions for hole filling:</p><ul>
+<li><code><a class="el" href="group__PMP__hole__filling__grp.html#gac1054e734715493e32e78d65fc1f0baf" title="creates triangles to fill the hole defined by points in the range points.">CGAL::Polygon_mesh_processing::triangulate_hole_polyline()</a></code> : given a sequence of points defining the hole, triangulates the hole.</li>
+<li><code><a class="el" href="group__PMP__hole__filling__grp.html#ga3abdf2d0558822e85f060966b69cae98" title="triangulates a hole in a polygon mesh.">CGAL::Polygon_mesh_processing::triangulate_hole()</a></code> : given a border halfedge on the boundary of the hole on a mesh, triangulates the hole.</li>
+<li><code><a class="el" href="group__PMP__hole__filling__grp.html#ga9868fac4d9dca77462ad7828bc99d8a1" title="triangulates and refines a hole in a polygon mesh.">CGAL::Polygon_mesh_processing::triangulate_and_refine_hole()</a></code> : in addition to <code><a class="el" href="group__PMP__hole__filling__grp.html#ga3abdf2d0558822e85f060966b69cae98" title="triangulates a hole in a polygon mesh.">CGAL::Polygon_mesh_processing::triangulate_hole()</a></code> the generated patch is refined.</li>
+<li><code><a class="el" href="group__PMP__hole__filling__grp.html#ga18eac756a8f8e5d5f73e645fd4e26cad" title="triangulates, refines and fairs a hole in a polygon mesh.">CGAL::Polygon_mesh_processing::triangulate_refine_and_fair_hole()</a></code> : in addition to <code><a class="el" href="group__PMP__hole__filling__grp.html#ga9868fac4d9dca77462ad7828bc99d8a1" title="triangulates and refines a hole in a polygon mesh.">CGAL::Polygon_mesh_processing::triangulate_and_refine_hole()</a></code> the generated patch is also faired.</li>
+</ul>
+<h2><a class="anchor" id="HFExamples"></a>
+Examples</h2>
+<h3><a class="anchor" id="HFExample_1"></a>
+Triangulate a Polyline</h3>
+<p>The following example triangulates a hole described by an input polyline.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2triangulate_polyline_example_8cpp-example.html">PMP_Mesh_repair/triangulate_polyline_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/triangulate_hole.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/utility.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                     Point;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  std::vector&lt;Point&gt; polyline;</div>
+<div class="line">  polyline.push_back(Point( 1.,0.,0.));</div>
+<div class="line">  polyline.push_back(Point( 0.,1.,0.));</div>
+<div class="line">  polyline.push_back(Point(-1.,0.,0.));</div>
+<div class="line">  polyline.push_back(Point( 1.,1.,0.));</div>
+<div class="line">  <span class="comment">// repeating first point (i.e. polyline.push_back(Point(1.,0.,0.)) ) is optional</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// any type, having Type(int, int, int) constructor available, can be used to hold output triangles</span></div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple&lt;int, int, int&gt;</a> Triangle_int;</div>
+<div class="line">  std::vector&lt;Triangle_int&gt; patch;</div>
+<div class="line">  patch.reserve(polyline.size() -2); <span class="comment">// there will be exactly n-2 triangles in the patch</span></div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__hole__filling__grp.html#gac1054e734715493e32e78d65fc1f0baf">CGAL::Polygon_mesh_processing::triangulate_hole_polyline</a>(</div>
+<div class="line">          polyline,</div>
+<div class="line">          std::back_inserter(patch));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(std::size_t i = 0; i &lt; patch.size(); ++i)</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Triangle "</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">": "</span></div>
+<div class="line">      &lt;&lt; patch[i].first &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; patch[i].second &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; patch[i].third</div>
+<div class="line">      &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// note that no degenerate triangles are generated in the patch</span></div>
+<div class="line">  std::vector&lt;Point&gt; polyline_collinear;</div>
+<div class="line">  polyline_collinear.push_back(Point(1.,0.,0.));</div>
+<div class="line">  polyline_collinear.push_back(Point(2.,0.,0.));</div>
+<div class="line">  polyline_collinear.push_back(Point(3.,0.,0.));</div>
+<div class="line">  polyline_collinear.push_back(Point(4.,0.,0.));</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;Triangle_int&gt; patch_will_be_empty;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__hole__filling__grp.html#gac1054e734715493e32e78d65fc1f0baf">CGAL::Polygon_mesh_processing::triangulate_hole_polyline</a>(polyline_collinear,</div>
+<div class="line">                                                           back_inserter(patch_will_be_empty));</div>
+<div class="line">  assert(patch_will_be_empty.empty());</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Triple_html"><div class="ttname"><a href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
+<div class="ttc" id="agroup__PMP__hole__filling__grp_html_gac1054e734715493e32e78d65fc1f0baf"><div class="ttname"><a href="group__PMP__hole__filling__grp.html#gac1054e734715493e32e78d65fc1f0baf">CGAL::Polygon_mesh_processing::triangulate_hole_polyline</a></div><div class="ttdeci">OutputIterator triangulate_hole_polyline(const PointRange1 &amp;points, const PointRange2 &amp;third_points, OutputIterator out, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">creates triangles to fill the hole defined by points in the range points.</div><div class="ttdef"><b>Definition:</b> triangulate_hole.h:723</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+</div><!-- fragment --> </details>
+<h3><a class="anchor" id="HFExample_2"></a>
+Hole Filling From the Border of the Hole</h3>
+<p>If the input polygon mesh contains one or more holes, they can be filled iteratively by detecting border edges (edges with only one incident non-null face) after each filling step.</p>
+<p>Holes are filled sequentially, and the process stops when no border edge remains.</p>
+<p>The example below illustrates this process, where holes are iteratively filled, refined, and faired. Optionally, only holes not exceeding a specified diameter or number of edges can be filled. This example assumes the mesh is stored in a <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code> data structure. Analogous examples for <code><a class="elRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a></code> and other classes are available in the code base.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2hole_filling_example_SM_8cpp-example.html">PMP_Mesh_repair/hole_filling_example_SM.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/border.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/triangulate_hole.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                     Point;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point&gt;</a>                           Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor        vertex_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::halfedge_descriptor      halfedge_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor          face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> is_small_hole(halfedge_descriptor h, Mesh &amp; mesh,</div>
+<div class="line">                   <span class="keywordtype">double</span> max_hole_diam, <span class="keywordtype">int</span> max_num_hole_edges)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> num_hole_edges = 0;</div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> hole_bbox;</div>
+<div class="line">  <span class="keywordflow">for</span> (halfedge_descriptor hc : <a class="code hl_functionRef" href="../BGL/group__PkgBGLIterators.html#gaf157993cd9a52470eb96b12bcc0b67ab">CGAL::halfedges_around_face</a>(h, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> Point&amp; p = mesh.point(target(hc, mesh));</div>
+<div class="line"> </div>
+<div class="line">    hole_bbox += p.bbox();</div>
+<div class="line">    ++num_hole_edges;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Exit early, to avoid unnecessary traversal of large holes</span></div>
+<div class="line">    <span class="keywordflow">if</span> (num_hole_edges &gt; max_num_hole_edges) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>() - hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>() &gt; max_hole_diam) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>() - hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>() &gt; max_hole_diam) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>() - hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>() &gt; max_hole_diam) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Incrementally fill the holes that are no larger than given diameter</span></div>
+<div class="line"><span class="comment">// and with no more than a given number of edges (if specified).</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/mech-holes-shark.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Both of these must be positive in order to be considered</span></div>
+<div class="line">  <span class="keywordtype">double</span> max_hole_diam   = (argc &gt; 2) ? boost::lexical_cast&lt;double&gt;(argv[2]): -1.0;</div>
+<div class="line">  <span class="keywordtype">int</span> max_num_hole_edges = (argc &gt; 3) ? boost::lexical_cast&lt;int&gt;(argv[3]) : -1;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nb_holes = 0;</div>
+<div class="line">  std::vector&lt;halfedge_descriptor&gt; border_cycles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// collect one halfedge per boundary cycle</span></div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#ga28bba3efbd0352497f28c3c8185be09f">CGAL::extract_boundary_cycles</a>(mesh, std::back_inserter(border_cycles));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(halfedge_descriptor h : border_cycles)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span>(max_hole_diam &gt; 0 &amp;&amp; max_num_hole_edges &gt; 0 &amp;&amp;</div>
+<div class="line">       !is_small_hole(h, mesh, max_hole_diam, max_num_hole_edges))</div>
+<div class="line">      <span class="keywordflow">continue</span>;</div>
+<div class="line"> </div>
+<div class="line">    std::vector&lt;face_descriptor&gt;  patch_facets;</div>
+<div class="line">    std::vector&lt;vertex_descriptor&gt; patch_vertices;</div>
+<div class="line">    <span class="keywordtype">bool</span> success = std::get&lt;0&gt;(<a class="code hl_function" href="group__PMP__hole__filling__grp.html#ga18eac756a8f8e5d5f73e645fd4e26cad">PMP::triangulate_refine_and_fair_hole</a>(mesh, h,</div>
+<div class="line">                                                                     CGAL::parameters::face_output_iterator(std::back_inserter(patch_facets))</div>
+<div class="line">                                                                                      .vertex_output_iterator(std::back_inserter(patch_vertices))));</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"* Number of facets in constructed patch: "</span> &lt;&lt; patch_facets.size() &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  Number of vertices in constructed patch: "</span> &lt;&lt; patch_vertices.size() &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  Is fairing successful: "</span> &lt;&lt; success &lt;&lt; std::endl;</div>
+<div class="line">    ++nb_holes;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; nb_holes &lt;&lt; <span class="stringliteral">" holes have been filled"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(<span class="stringliteral">"filled_SM.off"</span>, mesh, CGAL::parameters::stream_precision(17));</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Mesh written to: filled_SM.off"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a2088e16a1f0a20e011e5b94c2e9c222a"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">CGAL::Bbox_3::ymin</a></div><div class="ttdeci">double ymin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a3f5e323700e1509624a02d151237cc4c"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">CGAL::Bbox_3::xmax</a></div><div class="ttdeci">double xmax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a6c55430abc7fda54571cf1075c7f2f8b"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">CGAL::Bbox_3::zmin</a></div><div class="ttdeci">double zmin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a98def8b9515f31ded759d781969ddaf6"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">CGAL::Bbox_3::zmax</a></div><div class="ttdeci">double zmax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_a9d06f61bd89faa841e011ff53edf745f"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">CGAL::Bbox_3::ymax</a></div><div class="ttdeci">double ymax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html_aab574470a2591f187553ca1166e682e1"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">CGAL::Bbox_3::xmin</a></div><div class="ttdeci">double xmin() const</div></div>
+<div class="ttc" id="agroup__PMP__hole__filling__grp_html_ga18eac756a8f8e5d5f73e645fd4e26cad"><div class="ttname"><a href="group__PMP__hole__filling__grp.html#ga18eac756a8f8e5d5f73e645fd4e26cad">CGAL::Polygon_mesh_processing::triangulate_refine_and_fair_hole</a></div><div class="ttdeci">auto triangulate_refine_and_fair_hole(PolygonMesh &amp;pmesh, typename boost::graph_traits&lt; PolygonMesh &gt;::halfedge_descriptor border_halfedge, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">triangulates, refines and fairs a hole in a polygon mesh.</div><div class="ttdef"><b>Definition:</b> triangulate_hole.h:561</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_ga28bba3efbd0352497f28c3c8185be09f"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#ga28bba3efbd0352497f28c3c8185be09f">CGAL::extract_boundary_cycles</a></div><div class="ttdeci">OutputIterator extract_boundary_cycles(const Graph &amp;g, OutputIterator out)</div></div>
+<div class="ttc" id="agroup__PkgBGLIterators_html_gaf157993cd9a52470eb96b12bcc0b67ab"><div class="ttname"><a href="../BGL/group__PkgBGLIterators.html#gaf157993cd9a52470eb96b12bcc0b67ab">CGAL::halfedges_around_face</a></div><div class="ttdeci">Iterator_range&lt; Halfedge_around_face_iterator&lt; Graph &gt; &gt; halfedges_around_face(typename boost::graph_traits&lt; Graph &gt;::halfedge_descriptor h, const Graph &amp;g)</div></div>
+</div><!-- fragment --> </details>
+<p><a class="anchor" id="fig__Triangulated_fork"></a> </p><div class="image">
+<img src="fork.jpg" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulated_fork">Figure 78.2</a> Holes in the fork model are filled with triangle patches. </p> </div> <p> <br>
+</p>
+<p>An additional parameter, <code>visitor</code>, can be used to track the algorithm's phases, enabling users to implement timeouts or monitor progress.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Mesh_repair_2hole_filling_visitor_example_8cpp-example.html">PMP_Mesh_repair/hole_filling_visitor_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/border.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/triangulate_hole.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> CGAL::Real_timer                                    Timer;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                     Point;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point&gt;</a>                           Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor        vertex_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::halfedge_descriptor      halfedge_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor          face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> is_small_hole(halfedge_descriptor h, Mesh &amp; mesh,</div>
+<div class="line">                   <span class="keywordtype">double</span> max_hole_diam, <span class="keywordtype">int</span> max_num_hole_edges)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> num_hole_edges = 0;</div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> hole_bbox;</div>
+<div class="line">  <span class="keywordflow">for</span> (halfedge_descriptor hc : <a class="code hl_functionRef" href="../BGL/group__PkgBGLIterators.html#gaf157993cd9a52470eb96b12bcc0b67ab">CGAL::halfedges_around_face</a>(h, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> Point&amp; p = mesh.point(target(hc, mesh));</div>
+<div class="line"> </div>
+<div class="line">    hole_bbox += p.bbox();</div>
+<div class="line">    ++num_hole_edges;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Exit early, to avoid unnecessary traversal of large holes</span></div>
+<div class="line">    <span class="keywordflow">if</span> (num_hole_edges &gt; max_num_hole_edges) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a3f5e323700e1509624a02d151237cc4c">xmax</a>() - hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#aab574470a2591f187553ca1166e682e1">xmin</a>() &gt; max_hole_diam) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a9d06f61bd89faa841e011ff53edf745f">ymax</a>() - hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a2088e16a1f0a20e011e5b94c2e9c222a">ymin</a>() &gt; max_hole_diam) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a98def8b9515f31ded759d781969ddaf6">zmax</a>() - hole_bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html#a6c55430abc7fda54571cf1075c7f2f8b">zmin</a>() &gt; max_hole_diam) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>Stop : std::exception</div>
+<div class="line">{</div>
+<div class="line">    Stop()</div>
+<div class="line">    {}</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>Progress :</div>
+<div class="line">    <span class="keyword">public</span> PMP::Hole_filling::Default_visitor</div>
+<div class="line">{</div>
+<div class="line">  Progress(<span class="keywordtype">double</span> time_limit)</div>
+<div class="line">      : time_limit(time_limit)</div>
+<div class="line">  {}</div>
+<div class="line"> </div>
+<div class="line">  Progress(<span class="keyword">const</span> Progress&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> start_planar_phase()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Start planar phase"</span>&lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> end_planar_phase(<span class="keywordtype">bool</span> success)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"End planar phase "</span> &lt;&lt; (success? <span class="stringliteral">"(success)"</span> : <span class="stringliteral">"(failed)"</span>) &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> start_quadratic_phase(std::size_t n)</div>
+<div class="line">  {</div>
+<div class="line">    timer.start();</div>
+<div class="line">    quadratic_i = 0;</div>
+<div class="line">    quadratic_n = n;</div>
+<div class="line">    quadratic_report = n / 10;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Start quadratic phase with estimated "</span> &lt;&lt; n &lt;&lt; <span class="stringliteral">" steps"</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> quadratic_step()</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span> (quadratic_i++ == quadratic_report) {</div>
+<div class="line">      std::cout &lt;&lt; double(quadratic_i) / double(quadratic_n) * 100 &lt;&lt; <span class="stringliteral">"%"</span> &lt;&lt; std::endl;</div>
+<div class="line">      quadratic_report += quadratic_n / 10;</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> end_quadratic_phase(<span class="keywordtype">bool</span> success)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    timer.stop();</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"End quadratic phase "</span> &lt;&lt; timer.time() &lt;&lt; <span class="stringliteral">" sec. "</span> &lt;&lt; (success ? <span class="stringliteral">"(success)"</span> : <span class="stringliteral">"(failed)"</span>) &lt;&lt; std::endl;</div>
+<div class="line">    timer.reset();</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> start_cubic_phase(std::size_t n)</div>
+<div class="line">  {</div>
+<div class="line">    timer.start();</div>
+<div class="line">      cubic_n = n;</div>
+<div class="line">      cubic_report = n / 10;</div>
+<div class="line">      std::cout &lt;&lt; <span class="stringliteral">"Start cubic phase with "</span> &lt;&lt; n &lt;&lt; <span class="stringliteral">" steps"</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> cubic_step()</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span> (timer.time() &gt; time_limit) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"Let's stop here"</span> &lt;&lt; std::endl;</div>
+<div class="line">        <span class="keywordflow">throw</span> Stop();</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">if</span> (cubic_i++ == cubic_report) {</div>
+<div class="line">      std::cout &lt;&lt; double(cubic_i) / double(cubic_n) * 100 &lt;&lt; <span class="stringliteral">"%"</span> &lt;&lt; std::endl;</div>
+<div class="line">      cubic_report += cubic_n / 10;</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> end_cubic_phase()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"End cubic phase "</span> &lt;&lt; timer.time() &lt;&lt; <span class="stringliteral">" sec. "</span>  &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">mutable</span> Timer timer;</div>
+<div class="line">  <span class="keywordtype">double</span> time_limit;</div>
+<div class="line">  std::size_t quadratic_n = 0, quadratic_i = 0, quadratic_report = 0;</div>
+<div class="line">  std::size_t cubic_n = 0, cubic_i = 0, cubic_report = 0;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Incrementally fill the holes that are no larger than given diameter</span></div>
+<div class="line"><span class="comment">// and with no more than a given number of edges (if specified).</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/mech-holes-shark.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Both of these must be positive in order to be considered</span></div>
+<div class="line">  <span class="keywordtype">double</span> max_hole_diam   = (argc &gt; 2) ? boost::lexical_cast&lt;double&gt;(argv[2]): -1.0;</div>
+<div class="line">  <span class="keywordtype">int</span> max_num_hole_edges = (argc &gt; 3) ? boost::lexical_cast&lt;int&gt;(argv[3]) : -1;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nb_holes = 0;</div>
+<div class="line">  std::vector&lt;halfedge_descriptor&gt; border_cycles;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// collect one halfedge per boundary cycle</span></div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#ga28bba3efbd0352497f28c3c8185be09f">CGAL::extract_boundary_cycles</a>(mesh, std::back_inserter(border_cycles));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(halfedge_descriptor h : border_cycles)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span>(max_hole_diam &gt; 0 &amp;&amp; max_num_hole_edges &gt; 0 &amp;&amp;</div>
+<div class="line">       !is_small_hole(h, mesh, max_hole_diam, max_num_hole_edges))</div>
+<div class="line">      <span class="keywordflow">continue</span>;</div>
+<div class="line"> </div>
+<div class="line">    Progress progress(10.0);</div>
+<div class="line">    <span class="keywordtype">bool</span> success = <span class="keyword">false</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">try</span> {</div>
+<div class="line">        success = std::get&lt;0&gt;(<a class="code hl_function" href="group__PMP__hole__filling__grp.html#ga18eac756a8f8e5d5f73e645fd4e26cad">PMP::triangulate_refine_and_fair_hole</a>(mesh, h,</div>
+<div class="line">            CGAL::parameters::visitor(std::ref(progress)).use_delaunay_triangulation(<span class="keyword">true</span>)));</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">catch</span> (<span class="keyword">const</span> Stop&amp;) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"We stopped with a timeout"</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  Is fairing successful: "</span> &lt;&lt; success &lt;&lt; std::endl;</div>
+<div class="line">    ++nb_holes;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; nb_holes &lt;&lt; <span class="stringliteral">" holes have been filled"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(<span class="stringliteral">"filled_SM.off"</span>, mesh, CGAL::parameters::stream_precision(17));</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Mesh written to: filled_SM.off"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="HFPerformance"></a>
+Performance</h2>
+<p>The hole filling algorithm has a complexity which depends on the number of vertices. While <a class="el" href="citelist.html#CITEREF_liepa2003filling">[2]</a> has a running time of \(O(n^3)\) , <a class="el" href="citelist.html#CITEREF_zou2013algorithm">[3]</a> in most cases has running time of \(O(n \log n)\). We benchmarked the function <code>triangulate_refine_and_fair_hole()</code> for the two meshes below (as well as two more meshes with smaller holes). The machine used was a PC running Windows 10 with an Intel Core i7 CPU clocked at 2.70 GHz. The program was compiled with the Visual C++ 2013 compiler with the O2 option, which maximizes speed.</p>
+<p><a class="anchor" id="fig__Elephants"></a> </p><div class="image">
+<img src="elephants-with-holes.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Elephants">Figure 78.3</a> The elephant on the left/right has a hole with 963/7657 vertices. </p> </div> <p> <br>
+</p>
+<p>The following running times were observed:</p>
+<center> <table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight"># vertices   </th><th class="markdownTableHeadRight">without Delaunay (sec.)   </th><th class="markdownTableHeadRight">with Delaunay (sec.)    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">565   </td><td class="markdownTableBodyRight">8.5   </td><td class="markdownTableBodyRight">0.03    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">774   </td><td class="markdownTableBodyRight">21   </td><td class="markdownTableBodyRight">0.035    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">967   </td><td class="markdownTableBodyRight">43   </td><td class="markdownTableBodyRight">0.06    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">7657   </td><td class="markdownTableBodyRight">na   </td><td class="markdownTableBodyRight">0.4   </td></tr>
+</table>
+</center><h1><a class="anchor" id="PMPMeshRepairHistory"></a>
+Implementation History</h1>
+<p>Functionalities related to mesh and polygon soup repair have been introduced steadily over multiple versions since CGAL 4.10, in joint work between Sébastien Loriot and Mael Rouxel-Labbé. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

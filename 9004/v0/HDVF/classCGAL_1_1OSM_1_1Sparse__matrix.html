@@ -1,0 +1,1642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1OSM_1_1Sparse__matrix.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: CGAL::OSM::Sparse_matrix&lt; CoefficientRing, StorageFormat &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1OSM_1_1Sparse__matrix.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1OSM_1_1Sparse__matrix-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pro-methods">Protected Member Functions</a> |
+<a href="#pro-attribs">Protected Attributes</a> |
+<a href="#friends">Friends</a> |
+<a href="#related">Related Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::OSM::Sparse_matrix&lt; CoefficientRing, StorageFormat &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a> » <a class="el" href="group__PkgHDVFAlgorithmClasses.html">Sparse Matrices and Vectors</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/OSM/Sparse_matrix.h&gt;</code></p>
+
+<p>Inherited by <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">CGAL::OSM::Sub_sparse_matrix&lt; CoefficientRing, StorageFormat &gt;</a>.</p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename CoefficientRing, int StorageFormat&gt;<br>
+class CGAL::OSM::Sparse_matrix&lt; CoefficientRing, StorageFormat &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html" title="The class Sparse_matrix implements the concept SparseMatrix, that is, sparse matrices optimized for t...">Sparse_matrix</a></code> implements the concept <code><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></code>, that is, sparse matrices optimized for topological computations. </p>
+<p>It provides standard linear algebra operators and fast iterators and block operations (set, get and nullify) which are required to implement efficiently HDVFs.</p>
+<p>The implementation is based on mapped sparse matrices. Hence matrices of the <code><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html" title="The class Sparse_matrix implements the concept SparseMatrix, that is, sparse matrices optimized for t...">Sparse_matrix</a></code> class are either column of row major (the <code>StorageFormat</code> parameter determines this storage format). A column-major (resp. row-major) <code><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html" title="The class Sparse_matrix implements the concept SparseMatrix, that is, sparse matrices optimized for t...">Sparse_matrix</a></code> is a vector of <code><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html" title="The class Sparse_chain implements the concept SparseChain, that is, sparse vectors (encoding homologi...">Sparse_chain</a></code> which encode columns (res. rows). Moreover, in order to efficiently iterate over non empty columns (resp. rows) the <code><a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html" title="The class Bitboard implements an accelerating structure, derived from the chess community.">Bitboard</a></code> data structure implements the concept <code>SparseMatrix::NonZeroChainIndices</code>. A bitboard is basically a bucket of bits recording the indices of non empty chains. However, this data structure has been designed in order to efficiently remove or add indices, as well as provide efficient iterators to visit non empty chains.</p>
+<p>For instance, let us consider the \(5\times 4\) matrix:  </p><p class="formulaDsp">
+\[
+A = \left(\begin{array}{cccc}
+1 &amp; \cdot &amp; \cdot &amp; \cdot \\
+-1 &amp; \cdot &amp; 2 &amp; \cdot\\
+\cdot &amp; \cdot &amp; 1 &amp; \cdot \\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot \\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot \\
+\end{array}\right)
+\]
+</p>
+<p> where \(\cdot\) means \(0\).</p>
+<p>Figures below shows the data structures are created according to the chosen representation (left: column-major, right: row-major):</p>
+<p><img src="Sparse_matrix_example_col.pdf" alt="" align="center" width="20%/" class="inline"> <img src="Sparse_matrix_example_row.pdf" alt="" align="center" width="20%/" class="inline"></p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></code> </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CoefficientRing</td><td>a model of the <code><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></code> concept, providing the ring used to compute homology. </td></tr>
+    <tr><td class="paramname">StorageFormat</td><td>an integer constant encoding the storage format of matrices (<code><a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e" title="StorageFormat for column chain.">OSM::COLUMN</a></code> or <code><a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946" title="StorageFormat flag for row chain.">OSM::ROW</a></code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="HDVF_2matrix_chain_8cpp-example.html#_a2">HDVF/matrix_chain.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a4ddbfa9ed291ed8346b4c4751a243912"><td class="memItemLeft" align="right" valign="top"><a id="a4ddbfa9ed291ed8346b4c4751a243912" name="a4ddbfa9ed291ed8346b4c4751a243912"></a>
+typedef CoefficientRing </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a4ddbfa9ed291ed8346b4c4751a243912"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficient ring. <br></td></tr>
+<tr class="separator:a4ddbfa9ed291ed8346b4c4751a243912"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8c0fc5581671dd6a25626e78d40f4b27"><td class="memItemLeft" align="right" valign="top"><a id="a8c0fc5581671dd6a25626e78d40f4b27" name="a8c0fc5581671dd6a25626e78d40f4b27"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; CoefficientRing, StorageFormat &gt; </td><td class="memItemRight" valign="bottom"><b>Matrix_chain</b></td></tr>
+<tr class="memdesc:a8c0fc5581671dd6a25626e78d40f4b27"><td class="mdescLeft"> </td><td class="mdescRight">Type of chains associated to the matrix. <br></td></tr>
+<tr class="separator:a8c0fc5581671dd6a25626e78d40f4b27"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a83927d45519b641499555a0c77277a8b"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a83927d45519b641499555a0c77277a8b">Sparse_matrix</a> ()</td></tr>
+<tr class="memdesc:a83927d45519b641499555a0c77277a8b"><td class="mdescLeft"> </td><td class="mdescRight">Default constructor.  <br></td></tr>
+<tr class="separator:a83927d45519b641499555a0c77277a8b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8e6eac4b450115a883b423e9d222aaa6"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a8e6eac4b450115a883b423e9d222aaa6">Sparse_matrix</a> (const size_t rowCount, const size_t columnCount)</td></tr>
+<tr class="memdesc:a8e6eac4b450115a883b423e9d222aaa6"><td class="mdescLeft"> </td><td class="mdescRight">Constructor with given rows/columns sizes.  <br></td></tr>
+<tr class="separator:a8e6eac4b450115a883b423e9d222aaa6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afb09309b7b10f48d76009722c316b1fb"><td class="memTemplParams" colspan="2">template&lt;int CTF&gt; </td></tr>
+<tr class="memitem:afb09309b7b10f48d76009722c316b1fb"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#afb09309b7b10f48d76009722c316b1fb">Sparse_matrix</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, CTF &gt; &amp;otherToCopy)</td></tr>
+<tr class="memdesc:afb09309b7b10f48d76009722c316b1fb"><td class="mdescLeft"> </td><td class="mdescRight">Copy constructor.  <br></td></tr>
+<tr class="separator:afb09309b7b10f48d76009722c316b1fb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aba6be4dde2fea0cb7b3e459cf78bfe99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#aba6be4dde2fea0cb7b3e459cf78bfe99">operator=</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp;otherToCopy)</td></tr>
+<tr class="memdesc:aba6be4dde2fea0cb7b3e459cf78bfe99"><td class="mdescLeft"> </td><td class="mdescRight">Assignment.  <br></td></tr>
+<tr class="separator:aba6be4dde2fea0cb7b3e459cf78bfe99"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad4a2f3af2bda3f9f4662ade4d3173346"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#ad4a2f3af2bda3f9f4662ade4d3173346">nullify</a> ()</td></tr>
+<tr class="memdesc:ad4a2f3af2bda3f9f4662ade4d3173346"><td class="mdescLeft"> </td><td class="mdescRight">Cleans a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> (set all coefficients to zero).  <br></td></tr>
+<tr class="separator:ad4a2f3af2bda3f9f4662ade4d3173346"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a26c37aaf03e6aa010f06571de860786c"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a26c37aaf03e6aa010f06571de860786c">is_null</a> ()</td></tr>
+<tr class="memdesc:a26c37aaf03e6aa010f06571de860786c"><td class="mdescLeft"> </td><td class="mdescRight">Tests if a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> is null.  <br></td></tr>
+<tr class="separator:a26c37aaf03e6aa010f06571de860786c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a69bd4ca60ed550d46966e7834ee1c91f"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a69bd4ca60ed550d46966e7834ee1c91f">is_empty</a> ()</td></tr>
+<tr class="memdesc:a69bd4ca60ed550d46966e7834ee1c91f"><td class="mdescLeft"> </td><td class="mdescRight">Tests if a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> is empty.  <br></td></tr>
+<tr class="separator:a69bd4ca60ed550d46966e7834ee1c91f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa41d8c7cc47b691195c2ec2eeef98d20"><td class="memTemplParams" colspan="2">template&lt;int _CTF&gt; </td></tr>
+<tr class="memitem:aa41d8c7cc47b691195c2ec2eeef98d20"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#aa41d8c7cc47b691195c2ec2eeef98d20">operator+</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, _CTF &gt; &amp;other)</td></tr>
+<tr class="memdesc:aa41d8c7cc47b691195c2ec2eeef98d20"><td class="mdescLeft"> </td><td class="mdescRight">Adds two matrices into a new matrix.  <br></td></tr>
+<tr class="separator:aa41d8c7cc47b691195c2ec2eeef98d20"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4e06422e0faed94bc732d66fed3bb506"><td class="memTemplParams" colspan="2">template&lt;int _CTF&gt; </td></tr>
+<tr class="memitem:a4e06422e0faed94bc732d66fed3bb506"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a4e06422e0faed94bc732d66fed3bb506">operator-</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, _CTF &gt; &amp;other)</td></tr>
+<tr class="memdesc:a4e06422e0faed94bc732d66fed3bb506"><td class="mdescLeft"> </td><td class="mdescRight">Subtracts two matrices into a new matrix.  <br></td></tr>
+<tr class="separator:a4e06422e0faed94bc732d66fed3bb506"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0ce126fd4ca045b9e9980defee94361b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a0ce126fd4ca045b9e9980defee94361b">operator*</a> (const CoefficientRing &amp;lambda)</td></tr>
+<tr class="memdesc:a0ce126fd4ca045b9e9980defee94361b"><td class="mdescLeft"> </td><td class="mdescRight">Applies factor on each coefficients into a new matrix.  <br></td></tr>
+<tr class="separator:a0ce126fd4ca045b9e9980defee94361b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1cb7ee8af48cbe7895be7ce1d8708d32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a1cb7ee8af48cbe7895be7ce1d8708d32">operator*=</a> (const CoefficientRing &amp;lambda)</td></tr>
+<tr class="memdesc:a1cb7ee8af48cbe7895be7ce1d8708d32"><td class="mdescLeft"> </td><td class="mdescRight">Applies factor on each coefficients and assign.  <br></td></tr>
+<tr class="separator:a1cb7ee8af48cbe7895be7ce1d8708d32"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a54c43e0a7707c04f2543bff1841ed984"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a54c43e0a7707c04f2543bff1841ed984">operator-</a> ()</td></tr>
+<tr class="memdesc:a54c43e0a7707c04f2543bff1841ed984"><td class="mdescLeft"> </td><td class="mdescRight">Computes the negative of a matrix (unary operator).  <br></td></tr>
+<tr class="separator:a54c43e0a7707c04f2543bff1841ed984"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a40e03dedd38eb603952ac0b34c77df60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a8c0fc5581671dd6a25626e78d40f4b27">Matrix_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a40e03dedd38eb603952ac0b34c77df60">operator[]</a> (size_t index) const</td></tr>
+<tr class="memdesc:a40e03dedd38eb603952ac0b34c77df60"><td class="mdescLeft"> </td><td class="mdescRight">Gets the value of a chain from a const matrix.  <br></td></tr>
+<tr class="separator:a40e03dedd38eb603952ac0b34c77df60"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8309d27993d2920370646cf60d2beee8"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memItemRight" valign="bottom"><b>operator/</b> (const std::vector&lt; size_t &gt; &amp;_indices)</td></tr>
+<tr class="memdesc:ga8309d27993d2920370646cf60d2beee8"><td class="mdescLeft"> </td><td class="mdescRight">Removes a set of chains from a copy of the matrix. <br></td></tr>
+<tr class="separator:ga8309d27993d2920370646cf60d2beee8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae1ae18f8eb466868b4e5123ff8ca16f5"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memItemRight" valign="bottom"><b>operator/</b> (size_t index)</td></tr>
+<tr class="memdesc:gae1ae18f8eb466868b4e5123ff8ca16f5"><td class="mdescLeft"> </td><td class="mdescRight">Removes the chain at a given <code>index</code> from a copy of the matrix. <br></td></tr>
+<tr class="separator:gae1ae18f8eb466868b4e5123ff8ca16f5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga46868b49d58fea20d450261444a65e1a"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const std::vector&lt; size_t &gt; &amp;indices)</td></tr>
+<tr class="memdesc:ga46868b49d58fea20d450261444a65e1a"><td class="mdescLeft"> </td><td class="mdescRight">Removes a set of chains from a matrix. <br></td></tr>
+<tr class="separator:ga46868b49d58fea20d450261444a65e1a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga91edd7274dd62c683d98b1f274d01f1a"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const size_t index)</td></tr>
+<tr class="memdesc:ga91edd7274dd62c683d98b1f274d01f1a"><td class="mdescLeft"> </td><td class="mdescRight">Removes the chain at a given <code>index</code> from a matrix. <br></td></tr>
+<tr class="separator:ga91edd7274dd62c683d98b1f274d01f1a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a39b0eca6280f631061ccc51a12b717ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1iterator.html">Bitboard::iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a39b0eca6280f631061ccc51a12b717ca">begin</a> () const noexcept</td></tr>
+<tr class="memdesc:a39b0eca6280f631061ccc51a12b717ca"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the index of the first non null chain.  <br></td></tr>
+<tr class="separator:a39b0eca6280f631061ccc51a12b717ca"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a86f3c4a5634e6389dec6a7200d6b7101"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1iterator.html">Bitboard::iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a86f3c4a5634e6389dec6a7200d6b7101">end</a> () const noexcept</td></tr>
+<tr class="memdesc:a86f3c4a5634e6389dec6a7200d6b7101"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> past-the-end of chain indices.  <br></td></tr>
+<tr class="separator:a86f3c4a5634e6389dec6a7200d6b7101"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab22a904bad756bb51a4ced2640ca521d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1reverse__iterator.html">Bitboard::reverse_iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#ab22a904bad756bb51a4ced2640ca521d">reverse_begin</a> () noexcept</td></tr>
+<tr class="memdesc:ab22a904bad756bb51a4ced2640ca521d"><td class="mdescLeft"> </td><td class="mdescRight">Reverse iterator to the index of the last non null chain.  <br></td></tr>
+<tr class="separator:ab22a904bad756bb51a4ced2640ca521d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6036f22e8f2bb7a82d3964aa1b92804b"><td class="memItemLeft" align="right" valign="top"><a id="a6036f22e8f2bb7a82d3964aa1b92804b" name="a6036f22e8f2bb7a82d3964aa1b92804b"></a>
+<a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1reverse__iterator.html">Bitboard::reverse_iterator</a> </td><td class="memItemRight" valign="bottom"><b>reverse_begin</b> (size_t index) noexcept</td></tr>
+<tr class="separator:a6036f22e8f2bb7a82d3964aa1b92804b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6006878bb9e1f0e567dcbda640bb3ecd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1reverse__iterator.html">Bitboard::reverse_iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a6006878bb9e1f0e567dcbda640bb3ecd">reverse_end</a> () noexcept</td></tr>
+<tr class="memdesc:a6006878bb9e1f0e567dcbda640bb3ecd"><td class="mdescLeft"> </td><td class="mdescRight">Reverse iterator past-the-end of chain indices.  <br></td></tr>
+<tr class="separator:a6006878bb9e1f0e567dcbda640bb3ecd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9c8a15392c6dc3916cd44fac1b8a83b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a>+<a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> - StorageFormat &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a9c8a15392c6dc3916cd44fac1b8a83b2">transpose</a> ()</td></tr>
+<tr class="memdesc:a9c8a15392c6dc3916cd44fac1b8a83b2"><td class="mdescLeft"> </td><td class="mdescRight">Transposes a matrix.  <br></td></tr>
+<tr class="separator:a9c8a15392c6dc3916cd44fac1b8a83b2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1ac5f9dab4a3708ee45194773b87b63e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; size_t, size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a1ac5f9dab4a3708ee45194773b87b63e">dimensions</a> () const</td></tr>
+<tr class="memdesc:a1ac5f9dab4a3708ee45194773b87b63e"><td class="mdescLeft"> </td><td class="mdescRight">Gets the matrix sizes.  <br></td></tr>
+<tr class="separator:a1ac5f9dab4a3708ee45194773b87b63e"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:aa3ac4dc98655e59f1c5340acbefcdfa1"><td class="memItemLeft" align="right" valign="top"><a id="aa3ac4dc98655e59f1c5340acbefcdfa1" name="aa3ac4dc98655e59f1c5340acbefcdfa1"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a8c0fc5581671dd6a25626e78d40f4b27">Matrix_chain</a> &amp; </td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_t _index)</td></tr>
+<tr class="separator:aa3ac4dc98655e59f1c5340acbefcdfa1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a556b8ef84f124110ea9a812b0319a5f6"><td class="memItemLeft" align="right" valign="top"><a id="a556b8ef84f124110ea9a812b0319a5f6" name="a556b8ef84f124110ea9a812b0319a5f6"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_coefficient</b> (const size_t i, const size_t j, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a4ddbfa9ed291ed8346b4c4751a243912">Coefficient_ring</a> <a class="el" href="group__PkgHDVFConcepts.html#gadf5d4a420e488675a634571bc1829880">d</a>)</td></tr>
+<tr class="separator:a556b8ef84f124110ea9a812b0319a5f6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aef293799ed1915abe43b1e71601d7339"><td class="memItemLeft" align="right" valign="top"><a id="aef293799ed1915abe43b1e71601d7339" name="aef293799ed1915abe43b1e71601d7339"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a4ddbfa9ed291ed8346b4c4751a243912">Coefficient_ring</a> </td><td class="memItemRight" valign="bottom"><b>get_coefficient</b> (const size_t i, const size_t j) const</td></tr>
+<tr class="separator:aef293799ed1915abe43b1e71601d7339"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac57edd20f7601b2d7f2fc2f69b2509e2"><td class="memItemLeft" align="right" valign="top"><a id="ac57edd20f7601b2d7f2fc2f69b2509e2" name="ac57edd20f7601b2d7f2fc2f69b2509e2"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>remove_column</b> (size_t index)</td></tr>
+<tr class="separator:ac57edd20f7601b2d7f2fc2f69b2509e2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adad7d184969362cd4bc6c094ff2703aa"><td class="memItemLeft" align="right" valign="top"><a id="adad7d184969362cd4bc6c094ff2703aa" name="adad7d184969362cd4bc6c094ff2703aa"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>remove_row</b> (size_t index)</td></tr>
+<tr class="separator:adad7d184969362cd4bc6c094ff2703aa"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a449d79a8ff96b9ab93c631df8790cedf"><td class="memItemLeft" align="right" valign="top"><a id="a449d79a8ff96b9ab93c631df8790cedf" name="a449d79a8ff96b9ab93c631df8790cedf"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>remove_coefficient</b> (size_t i, size_t j)</td></tr>
+<tr class="separator:a449d79a8ff96b9ab93c631df8790cedf"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ab2da453bd15455fd534f3b883fa9baf2"><td class="memItemLeft" align="right" valign="top"><a id="ab2da453bd15455fd534f3b883fa9baf2" name="ab2da453bd15455fd534f3b883fa9baf2"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; CoefficientRing, StorageFormat &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_chains</b></td></tr>
+<tr class="separator:ab2da453bd15455fd534f3b883fa9baf2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0012ecf80cdd6c475b44530130e642b4"><td class="memItemLeft" align="right" valign="top"><a id="a0012ecf80cdd6c475b44530130e642b4" name="a0012ecf80cdd6c475b44530130e642b4"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html">Bitboard</a> </td><td class="memItemRight" valign="bottom"><b>_chainsStates</b></td></tr>
+<tr class="separator:a0012ecf80cdd6c475b44530130e642b4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2ae29a6542d2f8a49fc794ac84033a68"><td class="memItemLeft" align="right" valign="top"><a id="a2ae29a6542d2f8a49fc794ac84033a68" name="a2ae29a6542d2f8a49fc794ac84033a68"></a>
+std::pair&lt; size_t, size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_size</b></td></tr>
+<tr class="separator:a2ae29a6542d2f8a49fc794ac84033a68"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a8d99d9cc4fea6dfaa6ab6e337261a042"><td class="memTemplParams" colspan="2"><a id="a8d99d9cc4fea6dfaa6ab6e337261a042" name="a8d99d9cc4fea6dfaa6ab6e337261a042"></a>
+template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a8d99d9cc4fea6dfaa6ab6e337261a042"><td class="memTemplItemLeft" align="right" valign="top">class </td><td class="memTemplItemRight" valign="bottom"><b>Sparse_matrix</b></td></tr>
+<tr class="separator:a8d99d9cc4fea6dfaa6ab6e337261a042"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="related" name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:gad863f964ed2d4a4ce3917976653a7f40"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gad863f964ed2d4a4ce3917976653a7f40"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:gad863f964ed2d4a4ce3917976653a7f40"><td class="mdescLeft"> </td><td class="mdescRight">Comparison of two COLUMN matrices. <br></td></tr>
+<tr class="separator:gad863f964ed2d4a4ce3917976653a7f40"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga108d044980a32b94ebefe4a3e8daa44a"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga108d044980a32b94ebefe4a3e8daa44a"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga108d044980a32b94ebefe4a3e8daa44a"><td class="mdescLeft"> </td><td class="mdescRight">Comparison of a COLUMN and a ROW matrix. <br></td></tr>
+<tr class="separator:ga108d044980a32b94ebefe4a3e8daa44a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga357a7c6797393b759cd36ccc844ab510"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga357a7c6797393b759cd36ccc844ab510"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga357a7c6797393b759cd36ccc844ab510"><td class="mdescLeft"> </td><td class="mdescRight">Comparison of a ROW and a COLUMN matrix. <br></td></tr>
+<tr class="separator:ga357a7c6797393b759cd36ccc844ab510"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2a3df6cb016d3a80b384699ce29bd747"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga2a3df6cb016d3a80b384699ce29bd747"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga2a3df6cb016d3a80b384699ce29bd747"><td class="mdescLeft"> </td><td class="mdescRight">Comparison of two ROW matrices. <br></td></tr>
+<tr class="separator:ga2a3df6cb016d3a80b384699ce29bd747"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a54e9609b01eafeb6ee1a216cf85f15ee"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a54e9609b01eafeb6ee1a216cf85f15ee">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp;matrix)</td></tr>
+<tr class="memdesc:a54e9609b01eafeb6ee1a216cf85f15ee"><td class="mdescLeft"> </td><td class="mdescRight">Writes a sparse matrix in the output stream.  <br></td></tr>
+<tr class="separator:a54e9609b01eafeb6ee1a216cf85f15ee"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga742054a6b4a33290b4f36e2894f931c2"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga742054a6b4a33290b4f36e2894f931c2"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memTemplItemRight" valign="bottom"><b>write_matrix</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;M, std::ostream &amp;out)</td></tr>
+<tr class="memdesc:ga742054a6b4a33290b4f36e2894f931c2"><td class="mdescLeft"> </td><td class="mdescRight">Writes a sparse COLUMN matrix to a stream. <br></td></tr>
+<tr class="separator:ga742054a6b4a33290b4f36e2894f931c2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga216cbdf5bc1ce5f326fca23ad9fec077"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga216cbdf5bc1ce5f326fca23ad9fec077"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memTemplItemRight" valign="bottom"><b>write_matrix</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;M, std::ostream &amp;out)</td></tr>
+<tr class="memdesc:ga216cbdf5bc1ce5f326fca23ad9fec077"><td class="mdescLeft"> </td><td class="mdescRight">Writes a sparse ROW matrix to a stream. <br></td></tr>
+<tr class="separator:ga216cbdf5bc1ce5f326fca23ad9fec077"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7dc530038cbf2527b2af2f3f67059f27"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga7dc530038cbf2527b2af2f3f67059f27"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>write_matrix</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;M, std::string filename)</td></tr>
+<tr class="memdesc:ga7dc530038cbf2527b2af2f3f67059f27"><td class="mdescLeft"> </td><td class="mdescRight">Writes a sparse COLUMN matrix to a file. <br></td></tr>
+<tr class="separator:ga7dc530038cbf2527b2af2f3f67059f27"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gacef71f83e85fb7e8b333a67ae427fb1d"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gacef71f83e85fb7e8b333a67ae427fb1d"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>write_matrix</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;M, std::string filename)</td></tr>
+<tr class="memdesc:gacef71f83e85fb7e8b333a67ae427fb1d"><td class="mdescLeft"> </td><td class="mdescRight">Writes a sparse ROW matrix to a file. <br></td></tr>
+<tr class="separator:gacef71f83e85fb7e8b333a67ae427fb1d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gac0902dc2a1cfa4fd721954359f7fb65c"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gac0902dc2a1cfa4fd721954359f7fb65c"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp; </td><td class="memTemplItemRight" valign="bottom"><b>read_matrix</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;M, std::istream &amp;in)</td></tr>
+<tr class="memdesc:gac0902dc2a1cfa4fd721954359f7fb65c"><td class="mdescLeft"> </td><td class="mdescRight">Reads a sparse COLUMN matrix from a stream. <br></td></tr>
+<tr class="separator:gac0902dc2a1cfa4fd721954359f7fb65c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaaec42e54b43bad9a6fb66b4a13155b34"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gaaec42e54b43bad9a6fb66b4a13155b34"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp; </td><td class="memTemplItemRight" valign="bottom"><b>read_matrix</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;M, std::istream &amp;in)</td></tr>
+<tr class="memdesc:gaaec42e54b43bad9a6fb66b4a13155b34"><td class="mdescLeft"> </td><td class="mdescRight">Reads a sparse ROW matrix from a stream. <br></td></tr>
+<tr class="separator:gaaec42e54b43bad9a6fb66b4a13155b34"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7ecb7c172faa9249dca30fa3629337c4"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga7ecb7c172faa9249dca30fa3629337c4"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>read_matrix</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;M, std::string filename)</td></tr>
+<tr class="memdesc:ga7ecb7c172faa9249dca30fa3629337c4"><td class="mdescLeft"> </td><td class="mdescRight">Reads a sparse COLUMN matrix from a file. <br></td></tr>
+<tr class="separator:ga7ecb7c172faa9249dca30fa3629337c4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8ec0911f9241ad5d0aaa5ee16bce9d91"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga8ec0911f9241ad5d0aaa5ee16bce9d91"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>read_matrix</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">OSM::ROW</a> &gt; &amp;M, std::string filename)</td></tr>
+<tr class="memdesc:ga8ec0911f9241ad5d0aaa5ee16bce9d91"><td class="mdescLeft"> </td><td class="mdescRight">Reads a sparse ROW matrix from a file. <br></td></tr>
+<tr class="separator:ga8ec0911f9241ad5d0aaa5ee16bce9d91"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a559cd1a69d26c524d5b795c4211f5398"><td class="memTemplParams" colspan="2">template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a559cd1a69d26c524d5b795c4211f5398"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a559cd1a69d26c524d5b795c4211f5398">operator*</a> (const _CT &amp;lambda, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp;matrix)</td></tr>
+<tr class="memdesc:a559cd1a69d26c524d5b795c4211f5398"><td class="mdescLeft"> </td><td class="mdescRight">Applies factor on each coefficients into a new matrix.  <br></td></tr>
+<tr class="separator:a559cd1a69d26c524d5b795c4211f5398"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga361caa4206709fceeeb89e1f5bfc9d0c"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga361caa4206709fceeeb89e1f5bfc9d0c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;second)</td></tr>
+<tr class="memdesc:ga361caa4206709fceeeb89e1f5bfc9d0c"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication: COLUMN x COLUMN -&gt; COLUMN. <br></td></tr>
+<tr class="separator:ga361caa4206709fceeeb89e1f5bfc9d0c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7c740938212abbd51d3ece2c43dbfc77"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga7c740938212abbd51d3ece2c43dbfc77"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;second)</td></tr>
+<tr class="memdesc:ga7c740938212abbd51d3ece2c43dbfc77"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication: ROW x COLUMN -&gt; COLUMN. <br></td></tr>
+<tr class="separator:ga7c740938212abbd51d3ece2c43dbfc77"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaec6290e4c4935065448ba92c773b07d8"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gaec6290e4c4935065448ba92c773b07d8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;second)</td></tr>
+<tr class="memdesc:gaec6290e4c4935065448ba92c773b07d8"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication: COLUMN x ROW -&gt; COLUMN. <br></td></tr>
+<tr class="separator:gaec6290e4c4935065448ba92c773b07d8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad67bce1a5bd94d4b64af5f75570dbbe2"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gad67bce1a5bd94d4b64af5f75570dbbe2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;second)</td></tr>
+<tr class="memdesc:gad67bce1a5bd94d4b64af5f75570dbbe2"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication: ROW x ROW -&gt; COLUMN. <br></td></tr>
+<tr class="separator:gad67bce1a5bd94d4b64af5f75570dbbe2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf6a42fd56b1973a4eb82930706d2e961"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gaf6a42fd56b1973a4eb82930706d2e961"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_column)</td></tr>
+<tr class="memdesc:gaf6a42fd56b1973a4eb82930706d2e961"><td class="mdescLeft"> </td><td class="mdescRight">Matrix/column chain multiplication: COLUMN matrix x COLUMN chain -&gt; COLUMN chain. <br></td></tr>
+<tr class="separator:gaf6a42fd56b1973a4eb82930706d2e961"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga668633c697cb25b13d04075be7779ecf"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga668633c697cb25b13d04075be7779ecf"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_column)</td></tr>
+<tr class="memdesc:ga668633c697cb25b13d04075be7779ecf"><td class="mdescLeft"> </td><td class="mdescRight">Matrix/column chain multiplication: ROW matrix x COLUMN chain -&gt; COLUMN chain. <br></td></tr>
+<tr class="separator:ga668633c697cb25b13d04075be7779ecf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8c9f7aff1475e6d057da99c654648b36"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga8c9f7aff1475e6d057da99c654648b36"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_row, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_matrix)</td></tr>
+<tr class="memdesc:ga8c9f7aff1475e6d057da99c654648b36"><td class="mdescLeft"> </td><td class="mdescRight">Row chain/matrix multiplication: ROW chain x COLUMN matrix -&gt; ROW chain. <br></td></tr>
+<tr class="separator:ga8c9f7aff1475e6d057da99c654648b36"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad1a5ab225b7623d277226b864ab51a54"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gad1a5ab225b7623d277226b864ab51a54"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_row, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_matrix)</td></tr>
+<tr class="memdesc:gad1a5ab225b7623d277226b864ab51a54"><td class="mdescLeft"> </td><td class="mdescRight">Row chain/matrix multiplication: ROW chain x ROW matrix -&gt; ROW chain. <br></td></tr>
+<tr class="separator:gad1a5ab225b7623d277226b864ab51a54"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7cfb1453846e542667f22b17218545d3"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga7cfb1453846e542667f22b17218545d3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_second)</td></tr>
+<tr class="memdesc:ga7cfb1453846e542667f22b17218545d3"><td class="mdescLeft"> </td><td class="mdescRight">matrix multiplication: COLUMN x COLUMN -&gt; ROW <br></td></tr>
+<tr class="separator:ga7cfb1453846e542667f22b17218545d3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gabbadcfba809176635466213de178b5d9"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gabbadcfba809176635466213de178b5d9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_second)</td></tr>
+<tr class="memdesc:gabbadcfba809176635466213de178b5d9"><td class="mdescLeft"> </td><td class="mdescRight">matrix multiplication: ROW x COLUMN -&gt; ROW <br></td></tr>
+<tr class="separator:gabbadcfba809176635466213de178b5d9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2726ca3ca9ee758cfd71f04b6d4a7018"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga2726ca3ca9ee758cfd71f04b6d4a7018"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;_first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_second)</td></tr>
+<tr class="memdesc:ga2726ca3ca9ee758cfd71f04b6d4a7018"><td class="mdescLeft"> </td><td class="mdescRight">matrix multiplication: COLUMN x ROW -&gt; ROW <br></td></tr>
+<tr class="separator:ga2726ca3ca9ee758cfd71f04b6d4a7018"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga73e655dfd3c89b6985eafe4dac02e8e3"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga73e655dfd3c89b6985eafe4dac02e8e3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_first, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;_second)</td></tr>
+<tr class="memdesc:ga73e655dfd3c89b6985eafe4dac02e8e3"><td class="mdescLeft"> </td><td class="mdescRight">matrix multiplication: ROW x ROW -&gt; ROW <br></td></tr>
+<tr class="separator:ga73e655dfd3c89b6985eafe4dac02e8e3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf2d244a2b2c8f7702055129a673da818"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp;other)</td></tr>
+<tr class="memdesc:gaf2d244a2b2c8f7702055129a673da818"><td class="mdescLeft"> </td><td class="mdescRight">Matrices sum and assign: COLUMN += COLUMN or ROW += ROW. <br></td></tr>
+<tr class="separator:gaf2d244a2b2c8f7702055129a673da818"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga46e3481a318d9488ba1f065f9d757b06"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga46e3481a318d9488ba1f065f9d757b06"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator+=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga46e3481a318d9488ba1f065f9d757b06"><td class="mdescLeft"> </td><td class="mdescRight">Matrices sum and assign: COLUMN += ROW. <br></td></tr>
+<tr class="separator:ga46e3481a318d9488ba1f065f9d757b06"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gacf9287193ca1bc2b4678f4e45970a0d7"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gacf9287193ca1bc2b4678f4e45970a0d7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator+=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:gacf9287193ca1bc2b4678f4e45970a0d7"><td class="mdescLeft"> </td><td class="mdescRight">Matrices sum and assign: ROW += COLUMN. <br></td></tr>
+<tr class="separator:gacf9287193ca1bc2b4678f4e45970a0d7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gabae4d5bd57f65363e34c215b0ba3ce71"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp;other)</td></tr>
+<tr class="memdesc:gabae4d5bd57f65363e34c215b0ba3ce71"><td class="mdescLeft"> </td><td class="mdescRight">Matrices subtraction and assign: COLUMN -= COLUMN or ROW -= ROW. <br></td></tr>
+<tr class="separator:gabae4d5bd57f65363e34c215b0ba3ce71"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga3248bd53ad6be59594391682ce0e57cc"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga3248bd53ad6be59594391682ce0e57cc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator-=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga3248bd53ad6be59594391682ce0e57cc"><td class="mdescLeft"> </td><td class="mdescRight">Matrices subtraction and assign: COLUMN -= ROW. <br></td></tr>
+<tr class="separator:ga3248bd53ad6be59594391682ce0e57cc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga815a8cf8bba096a8954a4a1375cfb143"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga815a8cf8bba096a8954a4a1375cfb143"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator-=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga815a8cf8bba096a8954a4a1375cfb143"><td class="mdescLeft"> </td><td class="mdescRight">Matrices subtraction and assign: ROW -= COLUMN. <br></td></tr>
+<tr class="separator:ga815a8cf8bba096a8954a4a1375cfb143"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga3729a190a71e323b1c72ef7ecd15ec53"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga3729a190a71e323b1c72ef7ecd15ec53"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga3729a190a71e323b1c72ef7ecd15ec53"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication and assign: COLUMN *= COLUMN. <br></td></tr>
+<tr class="separator:ga3729a190a71e323b1c72ef7ecd15ec53"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8c75dfb50a3cb18891891396ef4cebc4"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga8c75dfb50a3cb18891891396ef4cebc4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga8c75dfb50a3cb18891891396ef4cebc4"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication and assign: ROW *= ROW. <br></td></tr>
+<tr class="separator:ga8c75dfb50a3cb18891891396ef4cebc4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8049b5d0a377471abdbf9435e9f21cc5"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga8049b5d0a377471abdbf9435e9f21cc5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:ga8049b5d0a377471abdbf9435e9f21cc5"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication and assign: COLUMN *= ROW. <br></td></tr>
+<tr class="separator:ga8049b5d0a377471abdbf9435e9f21cc5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae164a086a17f84a108cea8dd72b5d8e6"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gae164a086a17f84a108cea8dd72b5d8e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;other)</td></tr>
+<tr class="memdesc:gae164a086a17f84a108cea8dd72b5d8e6"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> multiplication and assign: ROW *= COLUMN. <br></td></tr>
+<tr class="separator:gae164a086a17f84a108cea8dd72b5d8e6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a71612c5f5b15e4dad4d2007f95a1a3b6"><td class="memTemplParams" colspan="2">template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a71612c5f5b15e4dad4d2007f95a1a3b6"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a71612c5f5b15e4dad4d2007f95a1a3b6">set_coefficient</a> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp;matrix, size_t i, size_t j, const _CT <a class="el" href="group__PkgHDVFConcepts.html#gadf5d4a420e488675a634571bc1829880">d</a>)</td></tr>
+<tr class="memdesc:a71612c5f5b15e4dad4d2007f95a1a3b6"><td class="mdescLeft"> </td><td class="mdescRight">Sets a given coefficient in <code>matrix</code>.  <br></td></tr>
+<tr class="separator:a71612c5f5b15e4dad4d2007f95a1a3b6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a242c354c1b66f910ca86d3f7ff89ae42"><td class="memTemplParams" colspan="2">template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a242c354c1b66f910ca86d3f7ff89ae42"><td class="memTemplItemLeft" align="right" valign="top">_CT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a242c354c1b66f910ca86d3f7ff89ae42">get_coefficient</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp;matrix, size_t i, size_t j)</td></tr>
+<tr class="memdesc:a242c354c1b66f910ca86d3f7ff89ae42"><td class="mdescLeft"> </td><td class="mdescRight">Gets a given coefficient.  <br></td></tr>
+<tr class="separator:a242c354c1b66f910ca86d3f7ff89ae42"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad5f1134349b0c643d4caf6a000a1195f"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gad5f1134349b0c643d4caf6a000a1195f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>get_column</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:gad5f1134349b0c643d4caf6a000a1195f"><td class="mdescLeft"> </td><td class="mdescRight">Gets a column from a COLUMN matrix. <br></td></tr>
+<tr class="separator:gad5f1134349b0c643d4caf6a000a1195f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga19783c8d1d124d2fb8d36e5a8d2f1bfc"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga19783c8d1d124d2fb8d36e5a8d2f1bfc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>get_column</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:ga19783c8d1d124d2fb8d36e5a8d2f1bfc"><td class="mdescLeft"> </td><td class="mdescRight">Gets a column from a ROW matrix. <br></td></tr>
+<tr class="separator:ga19783c8d1d124d2fb8d36e5a8d2f1bfc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga299f3516df5eef231fa9e9b91e5400c6"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga299f3516df5eef231fa9e9b91e5400c6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>get_row</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:ga299f3516df5eef231fa9e9b91e5400c6"><td class="mdescLeft"> </td><td class="mdescRight">Gets a row from a COLUMN matrix. <br></td></tr>
+<tr class="separator:ga299f3516df5eef231fa9e9b91e5400c6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae641a08ed408aa1580eb632fc9c6c774"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gae641a08ed408aa1580eb632fc9c6c774"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><b>get_row</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:gae641a08ed408aa1580eb632fc9c6c774"><td class="mdescLeft"> </td><td class="mdescRight">Gets a row from a ROW matrix. <br></td></tr>
+<tr class="separator:gae641a08ed408aa1580eb632fc9c6c774"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a64d89da57965f099fc12d288485130f8"><td class="memTemplParams" colspan="2">template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:a64d89da57965f099fc12d288485130f8"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a64d89da57965f099fc12d288485130f8">cget_column</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:a64d89da57965f099fc12d288485130f8"><td class="mdescLeft"> </td><td class="mdescRight">Gets a const reference over a column from a column matrix.  <br></td></tr>
+<tr class="separator:a64d89da57965f099fc12d288485130f8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a099b063c18363f6b00b2d3dad4a177b8"><td class="memTemplParams" colspan="2">template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:a099b063c18363f6b00b2d3dad4a177b8"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a099b063c18363f6b00b2d3dad4a177b8">cget_row</a> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, const size_t index)</td></tr>
+<tr class="memdesc:a099b063c18363f6b00b2d3dad4a177b8"><td class="mdescLeft"> </td><td class="mdescRight">Gets a constant reference over a row from a row matrix.  <br></td></tr>
+<tr class="separator:a099b063c18363f6b00b2d3dad4a177b8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga1c7743ecbfd912ee4630a4999ef6184e"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga1c7743ecbfd912ee4630a4999ef6184e"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>set_column</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, size_t index, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;column)</td></tr>
+<tr class="memdesc:ga1c7743ecbfd912ee4630a4999ef6184e"><td class="mdescLeft"> </td><td class="mdescRight">Sets a column in a COLUMN matrix. <br></td></tr>
+<tr class="separator:ga1c7743ecbfd912ee4630a4999ef6184e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga306cb231771b251d4867cb07b52c9f7c"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga306cb231771b251d4867cb07b52c9f7c"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>set_column</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, size_t index, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;column)</td></tr>
+<tr class="memdesc:ga306cb231771b251d4867cb07b52c9f7c"><td class="mdescLeft"> </td><td class="mdescRight">Sets a column in a ROW matrix. <br></td></tr>
+<tr class="separator:ga306cb231771b251d4867cb07b52c9f7c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad7634f1f022c297446ae50e4dac282cf"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:gad7634f1f022c297446ae50e4dac282cf"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>set_row</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp;matrix, size_t index, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;row)</td></tr>
+<tr class="memdesc:gad7634f1f022c297446ae50e4dac282cf"><td class="mdescLeft"> </td><td class="mdescRight">Sets a row in a COLUMN matrix. <br></td></tr>
+<tr class="separator:gad7634f1f022c297446ae50e4dac282cf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga3674a03afda9e03b00ca46c6f15c0550"><td class="memTemplParams" colspan="2">
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:ga3674a03afda9e03b00ca46c6f15c0550"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>set_row</b> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;matrix, size_t index, const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp;row)</td></tr>
+<tr class="memdesc:ga3674a03afda9e03b00ca46c6f15c0550"><td class="mdescLeft"> </td><td class="mdescRight">Sets a row in a ROW matrix. <br></td></tr>
+<tr class="separator:ga3674a03afda9e03b00ca46c6f15c0550"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a48452d37fc6785b785b9a611f7bf70ea"><td class="memTemplParams" colspan="2">template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a48452d37fc6785b785b9a611f7bf70ea"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a48452d37fc6785b785b9a611f7bf70ea">remove_column</a> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:a48452d37fc6785b785b9a611f7bf70ea"><td class="mdescLeft"> </td><td class="mdescRight">Removes a column from the matrix.  <br></td></tr>
+<tr class="separator:a48452d37fc6785b785b9a611f7bf70ea"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a62707a9e57fc41de8085cb168f318687"><td class="memTemplParams" colspan="2">template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a62707a9e57fc41de8085cb168f318687"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a62707a9e57fc41de8085cb168f318687">remove_row</a> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:a62707a9e57fc41de8085cb168f318687"><td class="mdescLeft"> </td><td class="mdescRight">Removes a row from the matrix.  <br></td></tr>
+<tr class="separator:a62707a9e57fc41de8085cb168f318687"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5ab1976a51772474cf7eca42ec8f2778"><td class="memTemplParams" colspan="2">template&lt;typename _CT , int _CTF&gt; </td></tr>
+<tr class="memitem:a5ab1976a51772474cf7eca42ec8f2778"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a5ab1976a51772474cf7eca42ec8f2778">remove_coefficient</a> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp;matrix, size_t i, size_t j)</td></tr>
+<tr class="memdesc:a5ab1976a51772474cf7eca42ec8f2778"><td class="mdescLeft"> </td><td class="mdescRight">Removes a coefficient from the matrix.  <br></td></tr>
+<tr class="separator:a5ab1976a51772474cf7eca42ec8f2778"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a83927d45519b641499555a0c77277a8b" name="a83927d45519b641499555a0c77277a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83927d45519b641499555a0c77277a8b">◆ </a></span>Sparse_matrix() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::Sparse_matrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Create an empty matrix of type <code>StorageFormat</code> with coefficients of type <code>CoefficientRing</code>. The default matrix size is 0x0. </p>
+
+</div>
+</div>
+<a id="a8e6eac4b450115a883b423e9d222aaa6" name="a8e6eac4b450115a883b423e9d222aaa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e6eac4b450115a883b423e9d222aaa6">◆ </a></span>Sparse_matrix() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::Sparse_matrix </td>
+          <td>(</td>
+          <td class="paramtype">const size_t </td>
+          <td class="paramname"><em>rowCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t </td>
+          <td class="paramname"><em>columnCount</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor with given rows/columns sizes. </p>
+<p>Create a new empty <code><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html" title="The class Sparse_matrix implements the concept SparseMatrix, that is, sparse matrices optimized for t...">Sparse_matrix</a></code> object of type <code>StorageFormat</code> with coefficients of type <code>CoefficientRing</code> and a given size along rows/columns.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rowCount</td><td>The number of rows to preallocate. </td></tr>
+    <tr><td class="paramname">columnCount</td><td>The number of columns to preallocate. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afb09309b7b10f48d76009722c316b1fb" name="afb09309b7b10f48d76009722c316b1fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb09309b7b10f48d76009722c316b1fb">◆ </a></span>Sparse_matrix() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;int CTF&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::Sparse_matrix </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, CTF &gt; &amp; </td>
+          <td class="paramname"><em>otherToCopy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<p>Create a new <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> from another <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> object (with possibly a different <code>StorageFormat</code>). Initialize a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> of same sizes, containing the same coefficients (but not necessarly of the same <code>StorageFormat</code>). If types are different, the constructor performs conversion.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">otherToCopy</td><td>The matrix copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a39b0eca6280f631061ccc51a12b717ca" name="a39b0eca6280f631061ccc51a12b717ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b0eca6280f631061ccc51a12b717ca">◆ </a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1iterator.html">Bitboard::iterator</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the index of the first non null chain. </p>
+<p>Return an iterator to the index of the first non null chain (the iterator visits indices of non null chains along the major dimension of the matrix).</p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the index of the first non null chain. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="HDVF_2matrix_chain_8cpp-example.html#a5">HDVF/matrix_chain.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a1ac5f9dab4a3708ee45194773b87b63e" name="a1ac5f9dab4a3708ee45194773b87b63e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac5f9dab4a3708ee45194773b87b63e">◆ </a></span>dimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; size_t, size_t &gt; <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::dimensions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the matrix sizes. </p>
+<dl class="section return"><dt>Returns</dt><dd>The matrix size as a row/column pair. </dd></dl>
+
+</div>
+</div>
+<a id="a86f3c4a5634e6389dec6a7200d6b7101" name="a86f3c4a5634e6389dec6a7200d6b7101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f3c4a5634e6389dec6a7200d6b7101">◆ </a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1iterator.html">Bitboard::iterator</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> past-the-end of chain indices. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator past-the-end of chain indices. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="HDVF_2matrix_chain_8cpp-example.html#a6">HDVF/matrix_chain.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a69bd4ca60ed550d46966e7834ee1c91f" name="a69bd4ca60ed550d46966e7834ee1c91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69bd4ca60ed550d46966e7834ee1c91f">◆ </a></span>is_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::is_empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tests if a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> is empty. </p>
+<p>The function return <code>true</code> is the <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> is empty (that is, if the number of columns or rows is null) and <code>false</code> otherwise. </p>
+
+</div>
+</div>
+<a id="a26c37aaf03e6aa010f06571de860786c" name="a26c37aaf03e6aa010f06571de860786c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26c37aaf03e6aa010f06571de860786c">◆ </a></span>is_null()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::is_null </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tests if a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> is null. </p>
+<p>The function return <code>true</code> is the <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> is null (that is, empty) and <code>false</code> otherwise. </p>
+
+</div>
+</div>
+<a id="ad4a2f3af2bda3f9f4662ade4d3173346" name="ad4a2f3af2bda3f9f4662ade4d3173346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4a2f3af2bda3f9f4662ade4d3173346">◆ </a></span>nullify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::nullify </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cleans a <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> (set all coefficients to zero). </p>
+<p>Empty all structures of the sparse matrix. </p>
+
+</div>
+</div>
+<a id="a0ce126fd4ca045b9e9980defee94361b" name="a0ce126fd4ca045b9e9980defee94361b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ce126fd4ca045b9e9980defee94361b">◆ </a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramtype">const CoefficientRing &amp; </td>
+          <td class="paramname"><em>lambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applies factor on each coefficients into a new matrix. </p>
+<p>This method creates a new matrix obtained by multiplying the matrix by a scalar factor <code>lambda</code>.</p>
+<p>If <code>lambda</code> is zero, the function comes to nullify the matrix (when possible, prefer <code>*=</code> for efficiency).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The factor to apply.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a1cb7ee8af48cbe7895be7ce1d8708d32" name="a1cb7ee8af48cbe7895be7ce1d8708d32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb7ee8af48cbe7895be7ce1d8708d32">◆ </a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">const CoefficientRing &amp; </td>
+          <td class="paramname"><em>lambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applies factor on each coefficients and assign. </p>
+<p>If <code>lambda</code> is 0, this comes to nullify the matrix.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The factor to apply.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="aa41d8c7cc47b691195c2ec2eeef98d20" name="aa41d8c7cc47b691195c2ec2eeef98d20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41d8c7cc47b691195c2ec2eeef98d20">◆ </a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;int _CTF&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds two matrices into a new matrix. </p>
+<p>Adds each coefficient of the matrices and returns a new matrix (of the same type as <code>this</code>) representing the result (when possible, prefer <code>+=</code> for efficiency).</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Matrices must have the same <code>CoefficientRing</code> but can have different <code>StorageFormat</code>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the other matrix is not the same <code>CoefficientRing</code>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The second matrix.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a54c43e0a7707c04f2543bff1841ed984" name="a54c43e0a7707c04f2543bff1841ed984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54c43e0a7707c04f2543bff1841ed984">◆ </a></span>operator-() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the negative of a matrix (unary operator). </p>
+<dl class="section return"><dt>Returns</dt><dd>The resulting matrix. </dd></dl>
+
+</div>
+</div>
+<a id="a4e06422e0faed94bc732d66fed3bb506" name="a4e06422e0faed94bc732d66fed3bb506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e06422e0faed94bc732d66fed3bb506">◆ </a></span>operator-() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;int _CTF&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subtracts two matrices into a new matrix. </p>
+<p>Subtracts each coefficient of the matrix <code>other</code> and returns a new matrix (of the same type as <code>this</code>) representing the result (when possible, prefer <code>-=</code> for efficiency).</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Matrices must have the same <code>CoefficientRing</code> but can have different <code>StorageFormat</code>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the other matrix is not the same <code>CoefficientRing</code>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The second matrix.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="aba6be4dde2fea0cb7b3e459cf78bfe99" name="aba6be4dde2fea0cb7b3e459cf78bfe99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba6be4dde2fea0cb7b3e459cf78bfe99">◆ </a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> &amp; <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt; &amp; </td>
+          <td class="paramname"><em>otherToCopy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignment. </p>
+<p>Assign to other matrix coefficient-wise, equivalent to copying it.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>The matrices must have the same type. </dd></dl>
+
+</div>
+</div>
+<a id="a40e03dedd38eb603952ac0b34c77df60" name="a40e03dedd38eb603952ac0b34c77df60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40e03dedd38eb603952ac0b34c77df60">◆ </a></span>operator[]()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html#a8c0fc5581671dd6a25626e78d40f4b27">Matrix_chain</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the value of a chain from a const matrix. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The matrix will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The chain index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The chain stored at given index. </dd></dl>
+
+</div>
+</div>
+<a id="ab22a904bad756bb51a4ced2640ca521d" name="ab22a904bad756bb51a4ced2640ca521d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab22a904bad756bb51a4ced2640ca521d">◆ </a></span>reverse_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1reverse__iterator.html">Bitboard::reverse_iterator</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::reverse_begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reverse iterator to the index of the last non null chain. </p>
+<p>Return a reverse iiterator to the index of the last non null chain (the iterator visits indices of non null chains, in decreading order, along the major dimension of the matrix).</p>
+<dl class="section return"><dt>Returns</dt><dd>The reverse iterator to the index of the last non null chain. </dd></dl>
+
+</div>
+</div>
+<a id="a6006878bb9e1f0e567dcbda640bb3ecd" name="a6006878bb9e1f0e567dcbda640bb3ecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6006878bb9e1f0e567dcbda640bb3ecd">◆ </a></span>reverse_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1OSM_1_1Bitboard_1_1reverse__iterator.html">Bitboard::reverse_iterator</a> <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::reverse_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reverse iterator past-the-end of chain indices. </p>
+<dl class="section return"><dt>Returns</dt><dd>The reverse iterator past-the-end of chain indices. </dd></dl>
+
+</div>
+</div>
+<a id="a9c8a15392c6dc3916cd44fac1b8a83b2" name="a9c8a15392c6dc3916cd44fac1b8a83b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c8a15392c6dc3916cd44fac1b8a83b2">◆ </a></span>transpose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a>+<a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> - StorageFormat &gt; <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt;::transpose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transposes a matrix. </p>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix where the <code>StorageFormat</code> has been swapped between COLUMN and ROW and data chains have been transposed. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a64d89da57965f099fc12d288485130f8" name="a64d89da57965f099fc12d288485130f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d89da57965f099fc12d288485130f8">◆ </a></span>cget_column</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; cget_column </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">COLUMN</a> &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a const reference over a column from a column matrix. </p>
+<p>Constant time get.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The matrix will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>The matrix considered. </td></tr>
+    <tr><td class="paramname">index</td><td>The column index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference over the column stored at given index. </dd></dl>
+
+</div>
+</div>
+<a id="a099b063c18363f6b00b2d3dad4a177b8" name="a099b063c18363f6b00b2d3dad4a177b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a099b063c18363f6b00b2d3dad4a177b8">◆ </a></span>cget_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Sparse_chain</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; cget_row </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">ROW</a> &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a constant reference over a row from a row matrix. </p>
+<p>Constant time get.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The matrix will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>The matrix considered. </td></tr>
+    <tr><td class="paramname">index</td><td>The row index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A const reference over the row stored at given index. </dd></dl>
+
+</div>
+</div>
+<a id="a242c354c1b66f910ca86d3f7ff89ae42" name="a242c354c1b66f910ca86d3f7ff89ae42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a242c354c1b66f910ca86d3f7ff89ae42">◆ </a></span>get_coefficient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , int _CTF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">_CT get_coefficient </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>j</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a given coefficient. </p>
+<p>Returns the coefficient on row <code>i</code> and column <code>j</code> of the matrix.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The matrix will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>Constant reference on the matrix. </td></tr>
+    <tr><td class="paramname">i</td><td>The row index. </td></tr>
+    <tr><td class="paramname">j</td><td>The column index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the given coefficient. </dd></dl>
+
+</div>
+</div>
+<a id="a559cd1a69d26c524d5b795c4211f5398" name="a559cd1a69d26c524d5b795c4211f5398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a559cd1a69d26c524d5b795c4211f5398">◆ </a></span>operator*</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , int _CTF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const _CT &amp; </td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Applies factor on each coefficients into a new matrix. </p>
+<p>This method creates a new matrix obtained by multiplying the matrix by a scalar factor <code>lambda</code>.</p>
+<p>If <code>lambda</code> is zero, the function comes to nullify the matrix (when possible, prefer <code>*=</code> for efficiency).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The factor to apply. </td></tr>
+    <tr><td class="paramname">matrix</td><td>The matrix.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a54e9609b01eafeb6ee1a216cf85f15ee" name="a54e9609b01eafeb6ee1a216cf85f15ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e9609b01eafeb6ee1a216cf85f15ee">◆ </a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; CoefficientRing, StorageFormat &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a sparse matrix in the output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>The output stream. </td></tr>
+    <tr><td class="paramname">matrix</td><td>The matrix to display.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the modified stream. </dd></dl>
+
+</div>
+</div>
+<a id="a5ab1976a51772474cf7eca42ec8f2778" name="a5ab1976a51772474cf7eca42ec8f2778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab1976a51772474cf7eca42ec8f2778">◆ </a></span>remove_coefficient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , int _CTF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; remove_coefficient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>j</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes a coefficient from the matrix. </p>
+<p>Removes coefficient at row <code>i</code> and column <code>j</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>Reference on the matrix to modify. </td></tr>
+    <tr><td class="paramname">i</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of the row </td></tr>
+    <tr><td class="paramname">j</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of the column</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a48452d37fc6785b785b9a611f7bf70ea" name="a48452d37fc6785b785b9a611f7bf70ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48452d37fc6785b785b9a611f7bf70ea">◆ </a></span>remove_column</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , int _CTF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; remove_column </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes a column from the matrix. </p>
+<p>Removes column of index <code>index</code> whatever the <code>StorageFormat</code> of the matrix. For column matrices, it just comes to the <code>\=</code> operator and for row matrices, it entails a traversal of the matrix.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>Reference on the matrix to modify. </td></tr>
+    <tr><td class="paramname">index</td><td>The index to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a62707a9e57fc41de8085cb168f318687" name="a62707a9e57fc41de8085cb168f318687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62707a9e57fc41de8085cb168f318687">◆ </a></span>remove_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , int _CTF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; remove_row </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes a row from the matrix. </p>
+<p>Removes row of index <code>index</code> whatever the <code>StorageFormat</code> of the matrix. For row matrices, it just comes to the <code>\=</code> operator and for column matrices, it entails a traversal of the matrix.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>Reference on the matrix to modify. </td></tr>
+    <tr><td class="paramname">index</td><td>The index to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified matrix representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a71612c5f5b15e4dad4d2007f95a1a3b6" name="a71612c5f5b15e4dad4d2007f95a1a3b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71612c5f5b15e4dad4d2007f95a1a3b6">◆ </a></span>set_coefficient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , int StorageFormat&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , int _CTF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_coefficient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a>&lt; _CT, _CTF &gt; &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const _CT </td>
+          <td class="paramname"><em>d</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets a given coefficient in <code>matrix</code>. </p>
+<p>Assign the scalar <code>d</code> to the coefficient on row <code>i</code> and column <code>j</code>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The matrix will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>Reference on the matrix to modify. </td></tr>
+    <tr><td class="paramname">i</td><td>The row index. </td></tr>
+    <tr><td class="paramname">j</td><td>The column index. </td></tr>
+    <tr><td class="paramname">d</td><td>The value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1OSM.html">OSM</a></li><li class="navelem"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Sparse_matrix</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
