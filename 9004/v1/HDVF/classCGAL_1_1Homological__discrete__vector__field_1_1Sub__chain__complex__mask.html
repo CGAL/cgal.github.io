@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask&lt; ChainComplex &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pro-attribs">Protected Attributes</a> |
+<a href="#friends">Friends</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask&lt; ChainComplex &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/HDVF/Sub_chain_complex_mask.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename ChainComplex&gt;<br>
+class CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask&lt; ChainComplex &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> is a technical class implementing a sub chain complex. </p>
+<p>A sub chain complex \(A\) of a chain complex \(K\) is a subset \(A\subseteq K\) such that the restricted boundary operator \(\partial_A = \partial_K|_A\) still satisfies \(\partial_A^2 = 0\).</p>
+<p>The <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> class is used to compute reduced homology. This class is based on a set of bitboard masks (one in each dimension) used to define sub chain complexes and their associated reduction encoded in sub-sparse matrices (<code><a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html" title="The class Sub_sparse_matrix is a technical class implementing the concept SparseMatrix together with ...">OSM::Sub_sparse_matrix</a></code> class). Technically, <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> are used to partially screen chain complexes and chains in associated boundary matrices, and hence compute homology "locally".</p>
+<dl class="section warning"><dt>Warning</dt><dd>For efficiency reasons, when a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> is used to screen sparse matrices (with the <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a495e82cd8198be26674ca19caf137a10" title="Screens a sequence of OSM::Sub_sparse_matrix (in each dimension).">screen_matrices()</a></code> method), screening is <b>only</b> performed on the major direction of matrices (thus column-major matrices are restricted over columns and row-major matrices are restricted over rows). Iterators are restricted accordingly. But chains themselves are not restricted.<br>
+ However, if <code>A</code> is a proper sub-complex of <code>K</code> (that is, closed with respect to faces), chains automatically comply with the screening. Indeed, for any \(q\)-cell \(\sigma\in A\) (thus the corresponding bit is on in the mask), all the faces of \(\sigma\) also belong to \(A\). Thus for any \(q-1\)-cell \(\tau\) in the boundary of \(\sigma\) (that is, such that \(\langle\partial_k(\sigma),\tau\rangle\neq 0\)), \(\tau\) belongs to \(A\) (and thus the corresponding bit in the mask is also on).</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">ChainComplex</td><td>a model of the <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code> concept (type of the chain complex screened by <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad5b0a02827512be1e6e9bf48248744d3"><td class="memItemLeft" align="right" valign="top"><a id="ad5b0a02827512be1e6e9bf48248744d3" name="ad5b0a02827512be1e6e9bf48248744d3"></a>
+typedef ChainComplex </td><td class="memItemRight" valign="bottom"><b>Chain_complex</b></td></tr>
+<tr class="memdesc:ad5b0a02827512be1e6e9bf48248744d3"><td class="mdescLeft"> </td><td class="mdescRight">Chain complex type. <br></td></tr>
+<tr class="separator:ad5b0a02827512be1e6e9bf48248744d3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a629e0994c584675c7b8a3e1bcc62d8aa"><td class="memItemLeft" align="right" valign="top"><a id="a629e0994c584675c7b8a3e1bcc62d8aa" name="a629e0994c584675c7b8a3e1bcc62d8aa"></a>
+typedef Chain_complex::Coefficient_ring </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a629e0994c584675c7b8a3e1bcc62d8aa"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients used to compute homology. <br></td></tr>
+<tr class="separator:a629e0994c584675c7b8a3e1bcc62d8aa"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a52956e92d293310a7bb0cb6c2725b544"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a52956e92d293310a7bb0cb6c2725b544">Sub_chain_complex_mask</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#ad5b0a02827512be1e6e9bf48248744d3">Chain_complex</a> &amp;K, bool full=true)</td></tr>
+<tr class="memdesc:a52956e92d293310a7bb0cb6c2725b544"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from a complex.  <br></td></tr>
+<tr class="separator:a52956e92d293310a7bb0cb6c2725b544"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7f644a4c9a26c6216c4ce84aa33af4d7"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a7f644a4c9a26c6216c4ce84aa33af4d7">Sub_chain_complex_mask</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#ad5b0a02827512be1e6e9bf48248744d3">Chain_complex</a> &amp;K, const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;cells, bool close=true)</td></tr>
+<tr class="memdesc:a7f644a4c9a26c6216c4ce84aa33af4d7"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from an enumeration of cells.  <br></td></tr>
+<tr class="separator:a7f644a4c9a26c6216c4ce84aa33af4d7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6fcd3c46b0987265e21add5c31f7ef88"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a6fcd3c46b0987265e21add5c31f7ef88">Sub_chain_complex_mask</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> &amp;otherToCopy)</td></tr>
+<tr class="memdesc:a6fcd3c46b0987265e21add5c31f7ef88"><td class="mdescLeft"> </td><td class="mdescRight">Constructor by copy.  <br></td></tr>
+<tr class="separator:a6fcd3c46b0987265e21add5c31f7ef88"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a85421e0fe0995a455f574f970f5b7e8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a85421e0fe0995a455f574f970f5b7e8c">operator=</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> &amp;otherToCopy)</td></tr>
+<tr class="memdesc:a85421e0fe0995a455f574f970f5b7e8c"><td class="mdescLeft"> </td><td class="mdescRight">Assignment operator.  <br></td></tr>
+<tr class="separator:a85421e0fe0995a455f574f970f5b7e8c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaeb592eef67ca40f033c96727c1905f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#aaeb592eef67ca40f033c96727c1905f1">complement</a> ()</td></tr>
+<tr class="memdesc:aaeb592eef67ca40f033c96727c1905f1"><td class="mdescLeft"> </td><td class="mdescRight">Returns the complement of the mask.  <br></td></tr>
+<tr class="separator:aaeb592eef67ca40f033c96727c1905f1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a99e583114037c5bc1684feb99a55ab65"><td class="memItemLeft" align="right" valign="top"><a id="a99e583114037c5bc1684feb99a55ab65" name="a99e583114037c5bc1684feb99a55ab65"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>get_bit</b> (int q, int i) const</td></tr>
+<tr class="memdesc:a99e583114037c5bc1684feb99a55ab65"><td class="mdescLeft"> </td><td class="mdescRight">Gets a bit of the mask (bit i in dimension q). <br></td></tr>
+<tr class="separator:a99e583114037c5bc1684feb99a55ab65"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3e66a9ecfdb403c3fd63eeab53bbaea9"><td class="memItemLeft" align="right" valign="top"><a id="a3e66a9ecfdb403c3fd63eeab53bbaea9" name="a3e66a9ecfdb403c3fd63eeab53bbaea9"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_bit_on</b> (int q, int i)</td></tr>
+<tr class="memdesc:a3e66a9ecfdb403c3fd63eeab53bbaea9"><td class="mdescLeft"> </td><td class="mdescRight">Sets a bit to 1 (bit i in dimension q). <br></td></tr>
+<tr class="separator:a3e66a9ecfdb403c3fd63eeab53bbaea9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afb04865a07375bfd7c8a09a07fddb896"><td class="memItemLeft" align="right" valign="top"><a id="afb04865a07375bfd7c8a09a07fddb896" name="afb04865a07375bfd7c8a09a07fddb896"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_bit_off</b> (int q, int i)</td></tr>
+<tr class="memdesc:afb04865a07375bfd7c8a09a07fddb896"><td class="mdescLeft"> </td><td class="mdescRight">Sets a bit to 0 (bit i in dimension q). <br></td></tr>
+<tr class="separator:afb04865a07375bfd7c8a09a07fddb896"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aac1d43d80c89d646846dc6e6642d470c"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html">OSM::Bitboard</a> &gt; &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#aac1d43d80c89d646846dc6e6642d470c">get_bitboard</a> () const</td></tr>
+<tr class="memdesc:aac1d43d80c89d646846dc6e6642d470c"><td class="mdescLeft"> </td><td class="mdescRight">Gets the bitboards of the sub chain complex.  <br></td></tr>
+<tr class="separator:aac1d43d80c89d646846dc6e6642d470c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad0c7412b04fb999361e2fb769f575545"><td class="memItemLeft" align="right" valign="top"><a id="ad0c7412b04fb999361e2fb769f575545" name="ad0c7412b04fb999361e2fb769f575545"></a>
+const <a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html">OSM::Bitboard</a> &amp; </td><td class="memItemRight" valign="bottom"><b>get_bitboard</b> (int q) const</td></tr>
+<tr class="memdesc:ad0c7412b04fb999361e2fb769f575545"><td class="mdescLeft"> </td><td class="mdescRight">Gets the bitboard of the sub chain complex in dimension q. <br></td></tr>
+<tr class="separator:ad0c7412b04fb999361e2fb769f575545"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a495e82cd8198be26674ca19caf137a10"><td class="memTemplParams" colspan="2">template&lt;typename CT , int CTF&gt; </td></tr>
+<tr class="memitem:a495e82cd8198be26674ca19caf137a10"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a495e82cd8198be26674ca19caf137a10">screen_matrices</a> (std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">OSM::Sub_sparse_matrix</a>&lt; CT, CTF &gt; &gt; &amp;matrices)</td></tr>
+<tr class="memdesc:a495e82cd8198be26674ca19caf137a10"><td class="mdescLeft"> </td><td class="mdescRight">Screens a sequence of <code><a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html" title="The class Sub_sparse_matrix is a technical class implementing the concept SparseMatrix together with ...">OSM::Sub_sparse_matrix</a></code> (in each dimension).  <br></td></tr>
+<tr class="separator:a495e82cd8198be26674ca19caf137a10"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a46ec1a85c5677270d7b0fcd137660172"><td class="memTemplParams" colspan="2">template&lt;typename CT , int CTF&gt; </td></tr>
+<tr class="memitem:a46ec1a85c5677270d7b0fcd137660172"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#a46ec1a85c5677270d7b0fcd137660172">screen_chain</a> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CT, CTF &gt; &amp;chain, int q)</td></tr>
+<tr class="memdesc:a46ec1a85c5677270d7b0fcd137660172"><td class="mdescLeft"> </td><td class="mdescRight">Restricts a chain in a given dimension to the sub chain complex mask.  <br></td></tr>
+<tr class="separator:a46ec1a85c5677270d7b0fcd137660172"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a504c1b916bbe76a922e9731cc5e85b95"><td class="memItemLeft" align="right" valign="top"><a id="a504c1b916bbe76a922e9731cc5e85b95" name="a504c1b916bbe76a922e9731cc5e85b95"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_dim</b></td></tr>
+<tr class="memdesc:a504c1b916bbe76a922e9731cc5e85b95"><td class="mdescLeft"> </td><td class="mdescRight">Dimension of the underlying complex. <br></td></tr>
+<tr class="separator:a504c1b916bbe76a922e9731cc5e85b95"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aef1dcd3a2d9db507fc78735b864140db"><td class="memItemLeft" align="right" valign="top"><a id="aef1dcd3a2d9db507fc78735b864140db" name="aef1dcd3a2d9db507fc78735b864140db"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html">OSM::Bitboard</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_sub</b></td></tr>
+<tr class="memdesc:aef1dcd3a2d9db507fc78735b864140db"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classVector.html">Vector</a> of bitboards coding masks in each dimension. <br></td></tr>
+<tr class="separator:aef1dcd3a2d9db507fc78735b864140db"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac66fe85d626700abff8f4bcd847a21b5"><td class="memItemLeft" align="right" valign="top"><a id="ac66fe85d626700abff8f4bcd847a21b5" name="ac66fe85d626700abff8f4bcd847a21b5"></a>
+std::vector&lt; int &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_cells</b></td></tr>
+<tr class="memdesc:ac66fe85d626700abff8f4bcd847a21b5"><td class="mdescLeft"> </td><td class="mdescRight">Number of cells in the mask in each dimension. <br></td></tr>
+<tr class="separator:ac66fe85d626700abff8f4bcd847a21b5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a07f26fb92ae9a913cf9a293901da3ffb"><td class="memItemLeft" align="right" valign="top"><a id="a07f26fb92ae9a913cf9a293901da3ffb" name="a07f26fb92ae9a913cf9a293901da3ffb"></a>
+const ChainComplex &amp; </td><td class="memItemRight" valign="bottom"><b>_K</b></td></tr>
+<tr class="memdesc:a07f26fb92ae9a913cf9a293901da3ffb"><td class="mdescLeft"> </td><td class="mdescRight">Constant reference to the underlying complex. <br></td></tr>
+<tr class="separator:a07f26fb92ae9a913cf9a293901da3ffb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abf5a0ee64b739233988c4103fd14922a"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#abf5a0ee64b739233988c4103fd14922a">_full</a></td></tr>
+<tr class="memdesc:abf5a0ee64b739233988c4103fd14922a"><td class="mdescLeft"> </td><td class="mdescRight">Is full sub_complex.  <br></td></tr>
+<tr class="separator:abf5a0ee64b739233988c4103fd14922a"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a63abfb65b10425679ef1bd382e0233a2"><td class="memItemLeft" align="right" valign="top"><a id="a63abfb65b10425679ef1bd382e0233a2" name="a63abfb65b10425679ef1bd382e0233a2"></a>
+std::ostream &amp; </td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> &amp;sub)</td></tr>
+<tr class="memdesc:a63abfb65b10425679ef1bd382e0233a2"><td class="mdescLeft"> </td><td class="mdescRight">Overload of the <code>&lt;&lt;</code>operator for <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code>. <br></td></tr>
+<tr class="separator:a63abfb65b10425679ef1bd382e0233a2"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a52956e92d293310a7bb0cb6c2725b544" name="a52956e92d293310a7bb0cb6c2725b544"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52956e92d293310a7bb0cb6c2725b544">◆ </a></span>Sub_chain_complex_mask() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::Sub_chain_complex_mask </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#ad5b0a02827512be1e6e9bf48248744d3">Chain_complex</a> &amp; </td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>full</em> = <code>true</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor from a complex. </p>
+<p>Build a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> associated to <code>K</code> with all bits set to 1 in the masks if <code>full</code> is true, and all bits set to 0 otherwise.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">K</td><td>A constant reference to the underlying complex. </td></tr>
+    <tr><td class="paramname">full</td><td>Build full / empty masks (default: full). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7f644a4c9a26c6216c4ce84aa33af4d7" name="a7f644a4c9a26c6216c4ce84aa33af4d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f644a4c9a26c6216c4ce84aa33af4d7">◆ </a></span>Sub_chain_complex_mask() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::Sub_chain_complex_mask </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html#ad5b0a02827512be1e6e9bf48248744d3">Chain_complex</a> &amp; </td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp; </td>
+          <td class="paramname"><em>cells</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>close</em> = <code>true</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor from an enumeration of cells. </p>
+<p>Build masks associated to the underlying complex <code>K</code> with all bits corresponding to <code>cells</code> (and their faces if <code>close</code> is true) set to 1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">K</td><td>A constant reference to the underlying complex. </td></tr>
+    <tr><td class="paramname">cells</td><td>A vector containing, in each dimension, a vector of cell indices. </td></tr>
+    <tr><td class="paramname">close</td><td>If this boolean is true, the faces of <code>cells</code> are also set to 1. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fcd3c46b0987265e21add5c31f7ef88" name="a6fcd3c46b0987265e21add5c31f7ef88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fcd3c46b0987265e21add5c31f7ef88">◆ </a></span>Sub_chain_complex_mask() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::Sub_chain_complex_mask </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a>&lt; ChainComplex &gt; &amp; </td>
+          <td class="paramname"><em>otherToCopy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor by copy. </p>
+<p>Builds a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> by copy from another.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">otherToCopy</td><td>An initial <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaeb592eef67ca40f033c96727c1905f1" name="aaeb592eef67ca40f033c96727c1905f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeb592eef67ca40f033c96727c1905f1">◆ </a></span>complement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::complement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the complement of the mask. </p>
+<p>The method return a new <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> containing the complement of the current mask (0 and 1 bits in the mask are exchanged). </p>
+
+</div>
+</div>
+<a id="aac1d43d80c89d646846dc6e6642d470c" name="aac1d43d80c89d646846dc6e6642d470c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac1d43d80c89d646846dc6e6642d470c">◆ </a></span>get_bitboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html">OSM::Bitboard</a> &gt; &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::get_bitboard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the bitboards of the sub chain complex. </p>
+<p>Returns a constant reference to the vector of bitboards in each dimension. </p>
+
+</div>
+</div>
+<a id="a85421e0fe0995a455f574f970f5b7e8c" name="a85421e0fe0995a455f574f970f5b7e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85421e0fe0995a455f574f970f5b7e8c">◆ </a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a> &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a>&lt; ChainComplex &gt; &amp; </td>
+          <td class="paramname"><em>otherToCopy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignment operator. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The operator argument must provide a sub chain complex mask over the <em>same underlying chain complex</em>. It not so, the assignment will throw an exception.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">otherToCopy</td><td>A <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> copied into <code>this</code> (<code>otherToCopy</code> and <code>this</code> must have the same underlying chain complex). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a46ec1a85c5677270d7b0fcd137660172" name="a46ec1a85c5677270d7b0fcd137660172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46ec1a85c5677270d7b0fcd137660172">◆ </a></span>screen_chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<div class="memtemplate">
+template&lt;typename CT , int CTF&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::screen_chain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CT, CTF &gt; &amp; </td>
+          <td class="paramname"><em>chain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restricts a chain in a given dimension to the sub chain complex mask. </p>
+<p>Nullify all coefficients out of the mask.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chain</td><td>The chain restricted. </td></tr>
+    <tr><td class="paramname">q</td><td>Dimension of the chain. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a495e82cd8198be26674ca19caf137a10" name="a495e82cd8198be26674ca19caf137a10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a495e82cd8198be26674ca19caf137a10">◆ </a></span>screen_matrices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<div class="memtemplate">
+template&lt;typename CT , int CTF&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::screen_matrices </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">OSM::Sub_sparse_matrix</a>&lt; CT, CTF &gt; &gt; &amp; </td>
+          <td class="paramname"><em>matrices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Screens a sequence of <code><a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html" title="The class Sub_sparse_matrix is a technical class implementing the concept SparseMatrix together with ...">OSM::Sub_sparse_matrix</a></code> (in each dimension). </p>
+<p>Given a sequence of matrices (vector of <code>OSM::Sub_sparse_matrices</code>) sets the masks of <code>Sub_sparse_matrices</code> in each dimension to the current <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>For efficiency, screening is performed on the major direction of matrices (so along columns for column-major matrices and along row for row-major matrices).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrices</td><td>A vector of <code><a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html" title="The class Sub_sparse_matrix is a technical class implementing the concept SparseMatrix together with ...">OSM::Sub_sparse_matrix</a></code> (in each dimension). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="abf5a0ee64b739233988c4103fd14922a" name="abf5a0ee64b739233988c4103fd14922a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5a0ee64b739233988c4103fd14922a">◆ </a></span>_full</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">CGAL::Homological_discrete_vector_field::Sub_chain_complex_mask</a>&lt; ChainComplex &gt;::_full</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is full sub_complex. </p>
+<p>This boolean flag is true is all bits in the bitboards are on. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">Homological_discrete_vector_field</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

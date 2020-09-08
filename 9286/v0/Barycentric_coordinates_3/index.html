@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Barycentric_coordinates_3/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 3D Generalized Barycentric Coordinates: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 3D Generalized Barycentric Coordinates
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_3D_Generalized_Barycentric_Coordinates"></a></p> <div id="autotoc" class="toc"></div> <dl class="section author"><dt>Authors</dt><dd>Antonio Gomes, Dmitry Anisimov</dd></dl>
+<h1><a class="anchor" id="gbc_3_introduction"></a>
+Introduction</h1>
+<p>Barycentric coordinates are an important tool in computer graphics and geometric modeling. Originally, these coordinates were used to represent a given point with respect to a simplex but have been later generalized to more complex shapes.</p>
+<p>The package 3D Generalized Barycentric Coordinates offers an efficient and robust implementation of three-dimensional closed-form, generalized barycentric coordinates defined for convex simplicial polytopes.</p>
+<p>In particular, this package includes an implementation of Wachspress, discrete harmonic, mean value, and one extra function to calculate barycentric coordinates with respect to tetrahedra. In this implementation, we restrict our polyhedra to convex ones with triangular faces, although some of the coordinates may accept non-convex polyhedra. The calculated coordinates are not normalized.</p>
+<h1><a class="anchor" id="gbc_3_interface"></a>
+Software Design</h1>
+<p>Wachspress, discrete harmonic, and mean value coordinates are all generalized barycentric coordinates that can be computed analytically. Each of the three analytic coordinates can be computed either by a free function or a function object (Functor). Tetrahedron coordinates can be computed only through the free function.</p>
+<p>Similarly to <code><a class="elRef" href="../Barycentric_coordinates_2/namespaceCGAL_1_1Barycentric__coordinates.html#a478bbcec416216b2274ee4b4e97b0e6c">Barycentric_coordinates::Computation_policy_2</a></code> in the 2D package, we can specify a computation policy <a class="el" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381" title="Computation_policy_3 provides a way to choose an asymptotic time complexity of the algorithm and its ...">Barycentric_coordinates::Computation_policy_3</a>, which can be FAST or FAST_WITH_EDGE_CASES for each of the three analytical coordinates. The difference between them is that FAST_WITH_EDGE_CASES treats points near the boundaries by projecting them onto the face of the polyhedron and then calculating triangle coordinates. Note that, unlike the 2D package, no implementation of a PRECISE algorithm is yet available.</p>
+<p>The output of each method are the coordinates for a point with respect to each vertex of the mesh. The number of coordinates being the same as the number of vertices, and the ordering is also the same.</p>
+<p>All class and function templates are parameterized by a traits class, which is a model of the concept <a class="el" href="classCGAL_1_1Barycentric__coordinates_1_1BarycentricTraits__3.html" title="A concept that describes the set of requirements of the template parameter GeomTraits used to paramet...">BarycentricTraits_3</a>. It provides all necessary geometric primitives, predicates, and constructions, which are required for the computation. All models of <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> can be used. A polyhedron is provided as a model of the concept <a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a> with a property map that maps a vertex from the polyhedron to <a class="el" href="classCGAL_1_1Barycentric__coordinates_1_1BarycentricTraits__3.html#a5ea4b9075f236033b886ef9a048b5320" title="A model of Kernel::Point_3.">BarycentricTraits_3::Point_3</a>.</p>
+<h1><a class="anchor" id="gbc_3_examples"></a>
+Examples</h1>
+<p>To facilitate the process of learning this package, we provide various examples with basic usage of different barycentric components.</p>
+<h2><a class="anchor" id="tetra_example"></a>
+Tetrahedron Coordinates</h2>
+<p>In this example, we use the global function <code><a class="el" href="group__PkgBarycentricCoordinates3RefFunctions.html#ga7247915ad9b9c26e0d7d5394e6949f77" title="computes barycentric coordinates with respect to a tetrahedron.">tetrahedron_coordinates()</a></code>. We compute coordinates for the tetrahedron defined by the points (0,0,0), (1,0,0), (0,1,0), and (0,0,1). We use points inside, outside and at the boundary of the tetrahedron.</p>
+<p><b>Example: </b> <a class="el" href="Barycentric_coordinates_3_2tetrahedron_coordinates_8cpp-example.html">Barycentric_coordinates_3/tetrahedron_coordinates.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Barycentric_coordinates_3/tetrahedron_coordinates.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> = <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">  <span class="comment">// Construct tetrahedron</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p0(0.0, 0.0, 0.0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p1(1.0, 0.0, 0.0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p2(0.0, 1.0, 0.0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p3(0.0, 0.0, 1.0);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Instantiate some interior, boundary, and exterior query points for which we compute coordinates.</span></div>
+<div class="line">  <span class="keyword">const</span> std::vector&lt;Point_3&gt; queries = {</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.25 , 0.25, 0.25), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.3, 0.2, 0.3),         <span class="comment">// interior query points</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.1, 0.1, 0.1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.2, 0.5, 0.3),             <span class="comment">// interior query points</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.0 , 0.0, 0.5), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.4, 0.4, 0.0),            <span class="comment">// boundary query points</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.0, 0.4, 0.4), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.4, 0.0, 0.4),             <span class="comment">// boundary query points</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.5, 0.5, 0.5), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(2.0, 0.0, 0.0),             <span class="comment">// exterior query points</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(-1.0, -1.0, 1.0), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.5, 0.5, -2.0)};         <span class="comment">// exterior query point</span></div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">"tetrahedron coordinates (all queries): "</span> &lt;&lt; std::endl</div>
+<div class="line">    &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Get an array of triangle coordinates for all query points</span></div>
+<div class="line">  <span class="keywordflow">for</span>(std::size_t i = 0; i &lt; queries.size(); i++) {</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> coords_array =</div>
+<div class="line">    <a class="code hl_function" href="group__PkgBarycentricCoordinates3RefFunctions.html#ga7247915ad9b9c26e0d7d5394e6949f77">CGAL::Barycentric_coordinates::tetrahedron_coordinates</a>(p0, p1, p2, p3, queries[i]);</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"tetrahedron coordinates (query "</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">"): "</span> &lt;&lt;</div>
+<div class="line">      coords_array[0] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; coords_array[1] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt;</div>
+<div class="line">      coords_array[2] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; coords_array[3] &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
+<div class="ttc" id="agroup__PkgBarycentricCoordinates3RefFunctions_html_ga7247915ad9b9c26e0d7d5394e6949f77"><div class="ttname"><a href="group__PkgBarycentricCoordinates3RefFunctions.html#ga7247915ad9b9c26e0d7d5394e6949f77">CGAL::Barycentric_coordinates::tetrahedron_coordinates</a></div><div class="ttdeci">OutputIterator tetrahedron_coordinates(const typename GeomTraits::Point_3 &amp;p0, const typename GeomTraits::Point_3 &amp;p1, const typename GeomTraits::Point_3 &amp;p2, const typename GeomTraits::Point_3 &amp;p3, const typename GeomTraits::Point_3 &amp;query, OutputIterator oi, const GeomTraits &amp;traits)</div><div class="ttdoc">computes barycentric coordinates with respect to a tetrahedron.</div><div class="ttdef"><b>Definition:</b> tetrahedron_coordinates.h:73</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Simple__cartesian_html"><div class="ttname"><a href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian</a></div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="wp_3_example"></a>
+Wachspress Coordinates</h2>
+<p>In this example, we generate 250 random points inside a unit sphere, centered at the origin. Then we take the convex hull of this set of points and use this as our polyhedron. Finally, we calculate Wachspress coordinates for each of these 250 points.</p>
+<p><b>Example: </b> <a class="el" href="Barycentric_coordinates_3_2wachspress_coordinates_3_8cpp-example.html">Barycentric_coordinates_3/wachspress_coordinates_3.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/point_generators_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/convex_hull_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Barycentric_coordinates_3/Wachspress_coordinates_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> =  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> =  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Surface_mesh = CGAL::Surface_mesh&lt;Point_3&gt;;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_enumeration" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">Computation_policy_3</a> = <a class="code hl_enumeration" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">CGAL::Barycentric_coordinates::Computation_policy_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Wachspress = <a class="code hl_class" href="classCGAL_1_1Barycentric__coordinates_1_1Wachspress__coordinates__3.html">CGAL::Barycentric_coordinates::Wachspress_coordinates_3&lt;Surface_mesh&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">  <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__sphere__3.html">CGAL::Random_points_in_sphere_3&lt;Point_3&gt;</a> gen(1.0);</div>
+<div class="line">  std::vector&lt;Point_3&gt; points;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> std::size_t number_of_points = 250;</div>
+<div class="line">  std::copy_n(gen, number_of_points, std::back_inserter(points));</div>
+<div class="line"> </div>
+<div class="line">  Surface_mesh sm;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Convex_hull_3/group__PkgConvexHull3Functions.html#gadc8318947c2133e56b2e56171b2ecd7d">CGAL::convex_hull_3</a>(points.begin(), points.end(), sm);</div>
+<div class="line">  <span class="keyword">const</span> std::size_t number_of_vertices = num_vertices(sm);</div>
+<div class="line"> </div>
+<div class="line">  Wachspress wp(sm, <a class="code hl_enumvalue" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381ac2ce1f5e0688bb715ade15feb7cbe0dd">Computation_policy_3::FAST_WITH_EDGE_CASES</a>);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Computed Wachspress coordinates: "</span> &lt;&lt; std::endl &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keywordflow">for</span>(std::size_t i = 0; i &lt; number_of_points; i++) {</div>
+<div class="line">      std::vector&lt;double&gt; coordinates;</div>
+<div class="line">      coordinates.reserve(number_of_vertices);</div>
+<div class="line">      wp(points[i], std::back_inserter(coordinates));</div>
+<div class="line"> </div>
+<div class="line">      std::cout &lt;&lt; <span class="stringliteral">"Point "</span> &lt;&lt; i + 1 &lt;&lt; <span class="stringliteral">": "</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">      <span class="keywordflow">for</span>(std::size_t j = 0; j &lt; number_of_vertices; j++)</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"Coordinate "</span> &lt;&lt; j + 1 &lt;&lt; <span class="stringliteral">" = "</span> &lt;&lt; coordinates[j] &lt;&lt; <span class="stringliteral">"; "</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">      std::cout &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Barycentric__coordinates_1_1Wachspress__coordinates__3_html"><div class="ttname"><a href="classCGAL_1_1Barycentric__coordinates_1_1Wachspress__coordinates__3.html">CGAL::Barycentric_coordinates::Wachspress_coordinates_3</a></div><div class="ttdoc">computes 3D Wachspress coordinates with respect to a closed convex triangle mesh.</div><div class="ttdef"><b>Definition:</b> Wachspress_coordinates_3.h:56</div></div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__sphere__3_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__sphere__3.html">CGAL::Random_points_in_sphere_3</a></div></div>
+<div class="ttc" id="agroup__PkgConvexHull3Functions_html_gadc8318947c2133e56b2e56171b2ecd7d"><div class="ttname"><a href="../Convex_hull_3/group__PkgConvexHull3Functions.html#gadc8318947c2133e56b2e56171b2ecd7d">CGAL::convex_hull_3</a></div><div class="ttdeci">void convex_hull_3(InputIterator first, InputIterator last, PolygonMesh &amp;pm, const Traits &amp;ch_traits=Default_traits)</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1Barycentric__coordinates_html_a3b1fcc9819b571ab581d36c8a2def381"><div class="ttname"><a href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">CGAL::Barycentric_coordinates::Computation_policy_3</a></div><div class="ttdeci">Computation_policy_3</div><div class="ttdoc">Computation_policy_3 provides a way to choose an asymptotic time complexity of the algorithm and its ...</div><div class="ttdef"><b>Definition:</b> barycentric_enum_3.h:36</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1Barycentric__coordinates_html_a3b1fcc9819b571ab581d36c8a2def381ac2ce1f5e0688bb715ade15feb7cbe0dd"><div class="ttname"><a href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381ac2ce1f5e0688bb715ade15feb7cbe0dd">CGAL::Barycentric_coordinates::Computation_policy_3::FAST_WITH_EDGE_CASES</a></div><div class="ttdeci">@ FAST_WITH_EDGE_CASES</div><div class="ttdoc">Computation has a linear time complexity with respect to the number of face vertices,...</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="dh_3_example"></a>
+Discrete Harmonic Coordinates</h2>
+<p>This example is very similar to the one used with tetrahedron coordinates. We start with a regular icosahedron and for points inside, outside and on the boundary, we calculate discrete harmonic coordinates. In this example, we use the fast with edge cases algorithm because it properly handles points very close to the boundaries.</p>
+<p><b>Example: </b> <a class="el" href="Barycentric_coordinates_3_2discrete_harmonic_coordinates_3_8cpp-example.html">Barycentric_coordinates_3/discrete_harmonic_coordinates_3.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/generators.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/triangulate_faces.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Barycentric_coordinates_3/Discrete_harmonic_coordinates_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define PHI 1.6180339887498948482</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> =  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> =  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Surface_mesh = CGAL::Surface_mesh&lt;Point_3&gt;;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_enumeration" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">Computation_policy_3</a> = <a class="code hl_enumeration" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">CGAL::Barycentric_coordinates::Computation_policy_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">  Surface_mesh icosahedron;</div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLGeneratorFct.html#ga03d4d6b1b7cb4ef6c460487240e6bb10">CGAL::make_icosahedron</a>(icosahedron, <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.0, 0.0, 0.0), 2.0);</div>
+<div class="line">  CGAL::Polygon_mesh_processing::triangulate_faces(faces(icosahedron), icosahedron);</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;double&gt; coords;</div>
+<div class="line">  std::vector&lt;Point_3&gt; queries{</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(-1, 1 + PHI, PHI), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.5, (1+3*PHI)/2, PHI/2), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(1, 1+PHI, -PHI), <span class="comment">//Boundary</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(-1, 1, 1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0, 0, 1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0, 2, 1),                                <span class="comment">//Interior</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0, 2*PHI, 4), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0, 3, 2*PHI), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(4, 0, 0)};                        <span class="comment">//Exterior</span></div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">"Discrete harmonic coordinates : "</span> &lt;&lt; std::endl &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; query : queries) {</div>
+<div class="line">    coords.clear();</div>
+<div class="line">    <a class="code hl_function" href="group__PkgBarycentricCoordinates3RefFunctions.html#ga68c0c0458cf0522be8caefb202432879">CGAL::Barycentric_coordinates::discrete_harmonic_coordinates_3</a>(</div>
+<div class="line">      icosahedron, query, std::back_inserter(coords));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Output discrete harmonics coordinates.</span></div>
+<div class="line">    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; coords.size() -1; ++i)</div>
+<div class="line">      std::cout &lt;&lt; coords[i] &lt;&lt; <span class="stringliteral">", "</span>;</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; coords[coords.size() -1] &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">  std::cout &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PkgBGLGeneratorFct_html_ga03d4d6b1b7cb4ef6c460487240e6bb10"><div class="ttname"><a href="../BGL/group__PkgBGLGeneratorFct.html#ga03d4d6b1b7cb4ef6c460487240e6bb10">CGAL::make_icosahedron</a></div><div class="ttdeci">boost::graph_traits&lt; Graph &gt;::halfedge_descriptor make_icosahedron(Graph &amp;g, const P &amp;center=P(0, 0, 0), typename CGAL::Kernel_traits&lt; P &gt;::Kernel::FT radius=1)</div></div>
+<div class="ttc" id="agroup__PkgBarycentricCoordinates3RefFunctions_html_ga68c0c0458cf0522be8caefb202432879"><div class="ttname"><a href="group__PkgBarycentricCoordinates3RefFunctions.html#ga68c0c0458cf0522be8caefb202432879">CGAL::Barycentric_coordinates::discrete_harmonic_coordinates_3</a></div><div class="ttdeci">OutputIterator discrete_harmonic_coordinates_3(const TriangleMesh &amp;tmesh, const Point &amp;query, OutputIterator oi, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes 3D discrete harmonic coordinates with respect to a closed convex triangle mesh.</div><div class="ttdef"><b>Definition:</b> Discrete_harmonic_coordinates_3.h:438</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="mv_3_example"></a>
+Mean Value Coordinates</h2>
+<p>This example shows how to compute mean value coordinates for a set of points in a star-shaped polyhedron. We note that this type of coordinate is well-defined for a concave polyhedron but it may yield negative coordinate values for points outside the polyhedron's kernel (shown in blue).</p>
+<p><a class="anchor" id="fig__mv_3_example"></a> </p><div class="image">
+<img src="mv_coords_example_3.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__mv_3_example">Figure 112.1</a> The star-shaped polyhedron used in mean_value_coordinates_3.cpp and the six query points, for which the mean value barycentric coordinates are computed. </p> </div> <p> <br>
+</p>
+<p><b>Example: </b> <a class="el" href="Barycentric_coordinates_3_2mean_value_coordinates_3_8cpp-example.html">Barycentric_coordinates_3/mean_value_coordinates_3.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/generators.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Barycentric_coordinates_3/Mean_value_coordinates_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> =  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> =  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Surface_mesh = CGAL::Surface_mesh&lt;Point_3&gt;;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_enumeration" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">Computation_policy_3</a> = <a class="code hl_enumeration" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381">CGAL::Barycentric_coordinates::Computation_policy_3</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">  Surface_mesh concave;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p0(0, 3, 0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p1(1, 1, 0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p2(3, 0, 0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p3(0, 0, 0);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p4(0, 0, 3);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p5(0, 3, 3);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p6(1, 1, 3);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p7(3, 0, 3);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLGeneratorFct.html#ga12fa3e202c24740dade5764e3ea80c41">CGAL::make_hexahedron</a>(p0, p1, p2, p3, p4, p5, p6, p7, concave,</div>
+<div class="line">                        CGAL::parameters::do_not_triangulate_faces(<span class="keyword">false</span>));</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;double&gt; coords;</div>
+<div class="line">  std::vector&lt;Point_3&gt; queries {</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.5, 0.5, 1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.33, 0.33, 2), <span class="comment">// Only points in the kernel</span></div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(1.33, 0.33, 1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(1.33, 0.33, 2),</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.33, 1.33, 1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0.33, 1.33, 2)};</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">"Mean value coordinates : "</span> &lt;&lt; std::endl &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; query : queries) {</div>
+<div class="line">    coords.clear();</div>
+<div class="line">    <a class="code hl_function" href="group__PkgBarycentricCoordinates3RefFunctions.html#gad151ce5ad8cae14e454f9e41bff4d16a">CGAL::Barycentric_coordinates::mean_value_coordinates_3</a>(</div>
+<div class="line">      concave, query, std::back_inserter(coords), CGAL::parameters::computation_policy(<a class="code hl_enumvalue" href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381adca6e617f6fb54033deb311e7e7c93cc">Computation_policy_3::FAST</a>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Output mean value coordinates.</span></div>
+<div class="line">    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; coords.size() -1; ++i)</div>
+<div class="line">      std::cout &lt;&lt; coords[i] &lt;&lt; <span class="stringliteral">", "</span>;</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; coords[coords.size() -1] &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PkgBGLGeneratorFct_html_ga12fa3e202c24740dade5764e3ea80c41"><div class="ttname"><a href="../BGL/group__PkgBGLGeneratorFct.html#ga12fa3e202c24740dade5764e3ea80c41">CGAL::make_hexahedron</a></div><div class="ttdeci">boost::graph_traits&lt; Graph &gt;::halfedge_descriptor make_hexahedron(const P &amp;p0, const P &amp;p1, const P &amp;p2, const P &amp;p3, const P &amp;p4, const P &amp;p5, const P &amp;p6, const P &amp;p7, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgBarycentricCoordinates3RefFunctions_html_gad151ce5ad8cae14e454f9e41bff4d16a"><div class="ttname"><a href="group__PkgBarycentricCoordinates3RefFunctions.html#gad151ce5ad8cae14e454f9e41bff4d16a">CGAL::Barycentric_coordinates::mean_value_coordinates_3</a></div><div class="ttdeci">OutputIterator mean_value_coordinates_3(const TriangleMesh &amp;tmesh, const Point &amp;query, OutputIterator oi, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes 3D mean value barycentric coordinates with respect to a closed triangle mesh.</div><div class="ttdef"><b>Definition:</b> Mean_value_coordinates_3.h:446</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1Barycentric__coordinates_html_a3b1fcc9819b571ab581d36c8a2def381adca6e617f6fb54033deb311e7e7c93cc"><div class="ttname"><a href="namespaceCGAL_1_1Barycentric__coordinates.html#a3b1fcc9819b571ab581d36c8a2def381adca6e617f6fb54033deb311e7e7c93cc">CGAL::Barycentric_coordinates::Computation_policy_3::FAST</a></div><div class="ttdeci">@ FAST</div><div class="ttdoc">Computation has a linear time complexity with respect to the number of face vertices,...</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="shape_deform_example_3"></a>
+Shape Deformation</h2>
+<p>This example shows how to deform a simple smooth sphere into another topologically equivalent shape. To achieve this, we create a box that encloses the sphere; then we calculate the barycentric coordinates of each vertex with respect to the box. After deforming the box, we use the barycentric coordinates to relocate the vertices of the sphere.</p>
+<p><a class="anchor" id="fig__shape_deform_example_3"></a> </p><div class="image">
+<img src="shape_deform_example_3.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__shape_deform_example_3">Figure 112.2</a> The shape on the left is deformed into the shape on the right. </p> </div> <p> <br>
+</p>
+<p><b>Example: </b> <a class="el" href="Barycentric_coordinates_3_2shape_deformation_3_8cpp-example.html">Barycentric_coordinates_3/shape_deformation_3.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/generators.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Barycentric__coordinates__3_8h.html">CGAL/Barycentric_coordinates_3.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> =  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Surface_mesh =  CGAL::Surface_mesh&lt;Point_3&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/armadillo.off"</span>);</div>
+<div class="line">  Surface_mesh sm;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, sm)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input: "</span> &lt;&lt; filename  &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Surface_mesh deformed;</div>
+<div class="line">  deformed = sm;</div>
+<div class="line"> </div>
+<div class="line">  Surface_mesh quad_cage;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p0( 200, -200, -200), p0_new( 500, -500, -500);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p1( 200,  200, -200), p1_new( 300,  300, -300);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p2(-200,  200, -200), p2_new(-200,  200, -200);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p3(-200, -200, -200), p3_new(-300, -300, -300);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p4(-200, -200, 200), p4_new(-300, -300, 300);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p5( 200, -200, 200), p5_new( 400, -400, 400);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p6( 200,  200, 200), p6_new( 200,  200, 300);</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p7(-200,  200, 200), p7_new(-300,  300, 300);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLGeneratorFct.html#ga12fa3e202c24740dade5764e3ea80c41">CGAL::make_hexahedron</a>(p0, p1, p2, p3, p4, p5, p6, p7, quad_cage,</div>
+<div class="line">                        CGAL::parameters::do_not_triangulate_faces(<span class="keyword">false</span>));</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classCGAL_1_1Barycentric__coordinates_1_1Mean__value__coordinates__3.html">CGAL::Barycentric_coordinates::Mean_value_coordinates_3&lt;Surface_mesh&gt;</a> mv(quad_cage);</div>
+<div class="line">  <span class="keyword">auto</span> vertex_point_map = get_property_map(CGAL::vertex_point, deformed);</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;double&gt; coords;</div>
+<div class="line">  std::vector&lt;Point_3&gt; target_cube{p0_new, p1_new, p2_new, p3_new,</div>
+<div class="line">                                   p4_new, p5_new, p6_new, p7_new};</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(Surface_mesh::Vertex_index v : vertices(deformed)) {</div>
+<div class="line">    <span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> vertex_val = get(vertex_point_map, v);</div>
+<div class="line">    coords.clear();</div>
+<div class="line">    mv(vertex_val, std::back_inserter(coords));</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a> p = <a class="code hl_function" href="group__PkgBarycentricCoordinates3RefFunctions.html#gab55f1d2fb986224dda36784aba29c2f4">CGAL::Barycentric_coordinates::apply_barycentric_coordinates</a>(target_cube, coords);</div>
+<div class="line"> </div>
+<div class="line">    put(vertex_point_map, v, p);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out_original(<span class="stringliteral">"armadillo.off"</span>);</div>
+<div class="line">  out_original &lt;&lt; sm &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out_deformed(<span class="stringliteral">"deformed_armadillo_mv.off"</span>);</div>
+<div class="line">  out_deformed &lt;&lt; deformed &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aBarycentric__coordinates__3_8h_html"><div class="ttname"><a href="Barycentric__coordinates__3_8h.html">Barycentric_coordinates_3.h</a></div><div class="ttdoc">A convenience header that includes all free functions and classes for 3D barycentric coordinates in c...</div></div>
+<div class="ttc" id="aclassCGAL_1_1Barycentric__coordinates_1_1Mean__value__coordinates__3_html"><div class="ttname"><a href="classCGAL_1_1Barycentric__coordinates_1_1Mean__value__coordinates__3.html">CGAL::Barycentric_coordinates::Mean_value_coordinates_3</a></div><div class="ttdoc">computes 3D mean value barycentric coordinates with respect to a closed triangle mesh.</div><div class="ttdef"><b>Definition:</b> Mean_value_coordinates_3.h:56</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgBarycentricCoordinates3RefFunctions_html_gab55f1d2fb986224dda36784aba29c2f4"><div class="ttname"><a href="group__PkgBarycentricCoordinates3RefFunctions.html#gab55f1d2fb986224dda36784aba29c2f4">CGAL::Barycentric_coordinates::apply_barycentric_coordinates</a></div><div class="ttdeci">boost::property_traits&lt; VertexPointMap &gt;::value_type apply_barycentric_coordinates(const TriangleMesh &amp;tmesh, const CoordinateRange &amp;coordinates, VertexPointMap vpm, GeomTraits geom_traits=GeomTraits())</div><div class="ttdoc">computes a point location from barycentric coordinates with respect to a triangle mesh.</div><div class="ttdef"><b>Definition:</b> Barycentric_coordinates_3.h:76</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+</div><!-- fragment --> </details>
+<h1><a class="anchor" id="gbc_3_degeneracies"></a>
+Edge Cases</h1>
+<p>The precision of each coordinate depends on the used <code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code>. If an inexact kernel is used and the user is not sure whether the points are located near the boundaries, <code>FAST_WITH_EDGE_CASES</code> algorithm should be used. Implementation details are described in <a class="el" href="citelist.html#CITEREF_cgal:bc:f-wmvc-14">[1]</a> for Wachspress and mean value coordinates, and in <a class="el" href="citelist.html#CITEREF_cgal:bc:jlw-ggcccsp-07">[2]</a> for discrete harmonic coordinates.</p>
+<p>For each coordinate, it is necessary to make divisions by the signed distance between the query point and each face. So, if one of these distances is zero or close to zero (query point on the boundary), it will cause a division by zero error or numerical instability, respectively. To this end we introduce the FAST_WITH_EDGE_CASES algorithm. Its main purpose is to extend the region where the analytical coordinates are well-defined. It adds the guarantee to calculate points near the boundaries. The way it works is simple: before calculating any coordinate, the algorithm checks, for each face, if the distance between the query point and the supporting plane of the face is less than a predetermined tolerance. If so, instead of calculating the analytical form of the coordinates, it decomposes the query point with respect to this particular face and then calculates triangle coordinates. However, for Wachspress coordinates, the 2D version is used because the faces are not necessarily triangular. Note that for every vertex that does not belong to this face, the coordinate value will be zero.</p>
+<h2><a class="anchor" id="gbc_3_degeneracies_tetrahedron"></a>
+Tetrahedron Coordinates</h2>
+<p>We adopt the simple formula below to compute tetrahedron coordinates of the query point <code>q</code>: </p><center> \(w_i = \frac{V_i}{V}\) </center><p>where \(V_i\) is the signed volume of the sub-tetrahedron opposite to the vertex \(i\), i.e., the tetrahedron where the vertex \(i\) is replaced by the query point <code>q</code>. \(V\) is the total volume of the tetrahedron, that is \(V = V_0 + V_1 + V_2 + V_3\).</p>
+<p>These coordinates can be computed exactly if an exact number type is chosen, for any query point and with respect to any non-degenerate tetrahedron. No special cases are handled. The computation always yields the correct result. The notion of correctness depends on the precision of the used number type. Note that for exterior points some coordinate values will be negative.</p>
+<h2><a class="anchor" id="gbc_3_degeneracies_wachspress"></a>
+Wachspress Coordinates</h2>
+<p>For each vertex \(v\), let \(f_0, f_1, ..., f_{k-1}\) be the \(k\) faces incident to \(v\). We are assuming that the faces are taken in counterclockwise order.</p>
+<p>We can define \({p_f}({q}) = \frac{{n_f}}{h_f({q})}\), and \(h_f({q}) = ({v} - {q})\cdot {n_f}\) as the perpendicular distance of \(q\) to \(f\). For the face \(f\), let \({n_f}\) denote its unit outward normal.</p>
+<p>The following formula is adopted to compute Wachspress coordinates of the query point <code>q</code>: </p><center> \(w_v({q}) = \sum_{i=1}^{k-2}det({p_{f_0}}({q}), {p_{f_i}}({q}), {p_{f_{i+1}}}({q}))\) </center><p>In this implementation, Wachspress coordinates are well defined in the closure of any convex polyhedra. If an exact number type is chosen, they are computed in an exact manner.</p>
+<h2><a class="anchor" id="gbc_3_degeneracies_discrete_harmonic"></a>
+Discrete Harmonic Coordinates</h2>
+<p>We adopt the formula below to compute discrete harmonic coordinates of the query point <code>q</code>: </p><center> \(w_i = \sum_{T : v_i \in T} \frac{cot[\theta_i^T]h_i^T}{2}\) </center><p>where, within a triangle face \(T = \{v0, v1, v2\}\), \(\theta_i^T\) is the dihedral angle between \(T\) and triangle \(\{x,v_{i+1}\), \(v_{i−1}\}\), and \(h_i^T\) is the edge length \(|v_{i+1} − v_{i−1}|\).</p>
+<p>Discrete harmonic coordinates cannot be computed exactly due to a square root operation. Although, if an exact number type is used, the default precision of the computation depends only on two CGAL functions: <a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double()</a> and <a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#gab922269072ee9ee99ba8c541418b2e11">CGAL::sqrt()</a>. In this implementation, discrete harmonic coordinates are well defined in the closure of any convex polyhedra with triangular faces. Unlike Wachspress coordinates, they are not necessarily positive.</p>
+<h2><a class="anchor" id="gbc_3_degeneracies_mean_value"></a>
+Mean Value Coordinates</h2>
+<p>The following formula is adopted to compute mean value coordinates of the query point <code>q</code>: </p><center> \(w_i = \frac{1}{2}\sum_{j=0}^2 \beta_j\frac{{m_j}\cdot {m_{i+1}}}{{e_i}\cdot {m_{i+1}}}\) </center><p>where a vertex v is projected onto the point (unit vector) \(e_v = \frac{({v} - {q})}{|{v - q}|}\), and \({m_i} = \frac{{e_i} \times {e_{i+1}}}{|{e_i} \times {e_{i+1}}|}\). \(\beta_j \in (0, \pi)\) is the angle between \(e_i\) and \(e_{i+1}\).</p>
+<p>Like discrete harmonic, mean value coordinates cannot be exactly computed due to a square root operation. In this implementation, mean value coordinates are well defined everywhere in the space, but just for polyhedra with triangular faces. Also, they are non-negative in the kernel of a star-shaped polyhedron.</p>
+<h1><a class="anchor" id="gbc_3_performance"></a>
+Performance</h1>
+<p>Efficiency is crucial in this implementation. These coordinates are used in applications that require calculations for millions of points; thus, developing metrics to evaluate performance is necessary. In this section, we present benchmark results for each algorithm.</p>
+<p>The benchmark and runtimes are evaluated by regularly sampling \(n^3\) ( \(n\) varying from 1 to 100) points from the interior of the unit cube, and calculating their coordinate values (see figure below).</p>
+<p>The results are averaged over 10 executions and represented in a log-log scale plot.</p>
+<p><a class="anchor" id="fig__bc_coords_bench_structure_3"></a> </p><div class="image">
+<img src="bc_coords_bench_structure_3.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__bc_coords_bench_structure_3">Figure 112.3</a> The points shown in red are the sample points used to make the benchmark. </p> </div> <p> <br>
+</p>
+<p>The performance strongly depends on the chosen kernel, for this test, we choose to use <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">Simple_cartesian</a>&lt;double&gt;</code> because is much faster than others. Also, we can see that time (WP) &lt;&lt; time (DH) &lt; time (MV). This happens because the Wachspress implementation has fewer instructions per loop than the other two. For 100k points those generalized barycentric coordinates are calculated within a convex hull with 500 vertices the timings are 17.5s (WP), 25.4s (DH) and 33.3s (MV).</p>
+<p><a class="anchor" id="fig__bc_coords_bench_3"></a> </p><div class="image">
+<img src="bc_coords_bench_3.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__bc_coords_bench_3">Figure 112.4</a> Time in seconds to compute \(n^3\) coordinate values for a cube. Wachspress (blue), discrete harmonic (orange), and mean value (green). </p> </div> <p> <br>
+</p>
+<p>Tetrahedron coordinates are not shown in the same plot because the test is slightly different. For this one, we simply show in the table below the results for some pre-defined quantity of points. The test is done by regularly sampling strictly interior points with respect to a tetrahedron with unit sides that lie on the coordinate axis.</p>
+<table class="markdownTable" align="center">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Number of points  </th><th class="markdownTableHeadCenter">Total time (in seconds)  </th></tr>
+<tr class="markdownTableBody">
+<td class="markdownTableBodyCenter">50000 </td><td class="markdownTableBodyCenter">0.09  </td></tr>
+<tr class="markdownTableBody">
+<td class="markdownTableBodyCenter">100000 </td><td class="markdownTableBodyCenter">0.19  </td></tr>
+<tr class="markdownTableBody">
+<td class="markdownTableBodyCenter">500000 </td><td class="markdownTableBodyCenter">0.82  </td></tr>
+<tr class="markdownTableBody">
+<td class="markdownTableBodyCenter">1000000 </td><td class="markdownTableBodyCenter">1.67  </td></tr>
+<tr class="markdownTableBody">
+<td class="markdownTableBodyCenter">5000000 </td><td class="markdownTableBodyCenter">8.36  </td></tr>
+</table>
+<p>To benchmark each coordinate, we used a 2.5 GHz Intel Core i7 processor (8 cores) and 32 GB DDR4 2933MHz memory. The installed operating system was Windows 11.</p>
+<h1><a class="anchor" id="gbc_3_history"></a>
+History</h1>
+<p>This package was introduced during GSoC 2021 and implemented by Antonio Gomes under the supervision of Dmitry Anisimov. Sven Oesau finished the final work on API and documentation. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

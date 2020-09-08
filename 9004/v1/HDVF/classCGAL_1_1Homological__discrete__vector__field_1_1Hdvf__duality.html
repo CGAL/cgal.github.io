@@ -1,0 +1,1205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: CGAL::Homological_discrete_vector_field::Hdvf_duality&lt; ChainComplex &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Homological_discrete_vector_field::Hdvf_duality&lt; ChainComplex &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/HDVF/Hdvf_duality.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename ChainComplex&gt;<br>
+class CGAL::Homological_discrete_vector_field::Hdvf_duality&lt; ChainComplex &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html" title="The class Hdvf_duality is the implementation of homological discrete vector fields (HDVF for short) f...">Hdvf_duality</a></code> is the implementation of homological discrete vector fields (<a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> for short) for Alexander duality computation. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The ring of coefficients provided should be a <b>field</b>.</dd></dl>
+<p>In dimension \(n\), given a complex \(L\) homeomorphic to \(\mathcal S^n\) and a sub-complex \(K\subseteq L\), Alexander duality states that for all \(q\leqslant n\): </p><p class="formulaDsp">
+\[\tilde H_q(K) \simeq \tilde H^{n-q-1}(L-K)\]
+</p>
+<p> where \(\tilde H_q\) and \(\tilde H^q\) denote reduced homology and cohomology groups.</p>
+<p>In [Gonzalez and al. 2025], the authors prove that, even if \(L-K\) is not a sub-complex, it produces a valid chain complex (we call "co-complex" such a complementary of sub-complex). Hence, its homology/cohomology can be computed and for all \(q\leqslant n\): </p><p class="formulaDsp">
+\[\tilde H_q(K) \simeq \tilde H^{q+1}(L-K)\]
+</p>
+<p>HDVFs provide a fast and convenient mean to compute this isomorphism. In order to work with convenient finite complexes, the complex \(L\) must be homeomorphic to a ball of dimension \(n\) (thus \(\mathcal S^n\) is actually homeomorphic to \(L\) plus an infinite \(n\)-cell closing its boundary).</p>
+<p>Perfect HDVFs are first computed over \(K\) and \(L-K\) (providing corresponding relative homology) respectively and Alexander isomorphism gives rise to a pairing between critical cells in \(K\) and \(L-K\), that is a pairing between homology/cohomology generators in \(K\) and \(L-K\).</p>
+<p>The class provides <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> constuction operations: <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2" title="Computes a perfect HDVF over the current sub chain complex.">compute_perfect_hdvf()</a></code> and <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a7d8ad08a963be3ff145752ca62083519" title="Computes a random perfect HDVF over the current sub chain complex.">compute_rand_perfect_hdvf()</a></code>, which build perfect HDVFs over \(K\) and \(L-K\) respectively. Then, <code>compute_alexander_pairing()</code> computes Alexander isomorphism (and provides a pairing between homology/cohomology generators in \(K\) and \(L-K\)).</p>
+<p><img src="HDVF_twirl_view1.png" alt="" align="center" width="35%/" class="inline"> <img src="HDVF_twirl_view2.png" alt="" align="center" width="30%/" class="inline"></p>
+<p>Example of Alexander duality isomorphism. The twirl mesh is a subcomplex <code>K</code> of a larger complex <code>L</code> depicted in yellow, homeomorphic to the ball of dimension 3 (right - sectional view).</p>
+<p><a class="anchor" id="fig__Duality_quartet"></a> </p><div class="image">
+<img src="HDVF_twirl_quartet.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#fig__Duality_quartet">Figure 94.1</a> Example of "homological quartet for the twirl model". <b>1:</b> Homology generators of the twirl \(H_1(K)\), <b>2:</b> Cohomology generators of the twirl \(H^1(K)\), <b>3:</b> Homology generators of the complementary of the twirl \(H_1(L-K)\), <b>4:</b> Cohomology generators of the complementary of the twirl \(H^1(L-K)\). Alexander isomorphism is represented through colours (paired generators have similar colours). </p> </div> <p> <br>
+</p>
+<p>Hence, each hole in \(K\) gives rise to four generators (called its "homological quarted": its homology and cohomology generators in \(K_q\) and the homology and cohomology generators paired with them in \((L-K)_{q+1}\)).</p>
+<p>In order to compute relative homology, a sub chain complex mask is used to partially screen the complex <code>L</code> and thus restrict <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> computation. This mask is called "current mask" (and can be set over <code>K</code> or <code>L-K</code>).</p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a></code> </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">ChainComplex</td><td>a model of the <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code> concept, providing the type of abstract chain complex used.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>[Gonzalez and al. 2025] Gonzalez-Lorenzo, A., Bac, A. &amp; Gazull, YS. A constructive approach of Alexander duality. J Appl. and Comput. Topology 9, 2 (2025). </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a0d4f00fa8ec9c6aee392b6c2dbb45757"><td class="memItemLeft" align="right" valign="top">typedef ChainComplex </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a0d4f00fa8ec9c6aee392b6c2dbb45757">Chain_complex</a></td></tr>
+<tr class="memdesc:a0d4f00fa8ec9c6aee392b6c2dbb45757"><td class="mdescLeft"> </td><td class="mdescRight">Chain complex type.  <br></td></tr>
+<tr class="separator:a0d4f00fa8ec9c6aee392b6c2dbb45757"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a13edcaacfd32669f0dbf5174fbc00acd"><td class="memItemLeft" align="right" valign="top"><a id="a13edcaacfd32669f0dbf5174fbc00acd" name="a13edcaacfd32669f0dbf5174fbc00acd"></a>
+typedef Chain_complex::Coefficient_ring </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a13edcaacfd32669f0dbf5174fbc00acd"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients used to compute homology. <br></td></tr>
+<tr class="separator:a13edcaacfd32669f0dbf5174fbc00acd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:affb8c9eff4869722c5e9d54a05acd785"><td class="memItemLeft" align="right" valign="top"><a id="affb8c9eff4869722c5e9d54a05acd785" name="affb8c9eff4869722c5e9d54a05acd785"></a>
+typedef <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">Hdvf_core</a>&lt; ChainComplex, <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a>, <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">CGAL::OSM::Sub_sparse_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Base</b></td></tr>
+<tr class="memdesc:affb8c9eff4869722c5e9d54a05acd785"><td class="mdescLeft"> </td><td class="mdescRight">Type of parent <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html" title="The class Hdvf_core is the core implementation of homological discrete vector fields (HDVF for short)...">Hdvf_core</a> class. <br></td></tr>
+<tr class="separator:affb8c9eff4869722c5e9d54a05acd785"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad4ff20dd6d402e9cdaa26c6176119570"><td class="memItemLeft" align="right" valign="top"><a id="ad4ff20dd6d402e9cdaa26c6176119570" name="ad4ff20dd6d402e9cdaa26c6176119570"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Column_chain</b> = <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a35ad4f1bcb91f16fd6b77122029c2fae">Base::Column_chain</a></td></tr>
+<tr class="separator:ad4ff20dd6d402e9cdaa26c6176119570"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abd9e0893e977d63e84ab33d941b51310"><td class="memItemLeft" align="right" valign="top"><a id="abd9e0893e977d63e84ab33d941b51310" name="abd9e0893e977d63e84ab33d941b51310"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Row_chain</b> = <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#aea1392f99bf5251ef3ef7c3e5ae843c7">Base::Row_chain</a></td></tr>
+<tr class="separator:abd9e0893e977d63e84ab33d941b51310"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core')"><img src="closed.png" alt="-"> Public Types inherited from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:a2ef61980a1cd01f5c0c725d1a1880d72 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a2ef61980a1cd01f5c0c725d1a1880d72" name="a2ef61980a1cd01f5c0c725d1a1880d72"></a>
+typedef ChainComplex::Coefficient_ring </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a2ef61980a1cd01f5c0c725d1a1880d72 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients used to compute homology. <br></td></tr>
+<tr class="separator:a2ef61980a1cd01f5c0c725d1a1880d72 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a35ad4f1bcb91f16fd6b77122029c2fae inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a35ad4f1bcb91f16fd6b77122029c2fae" name="a35ad4f1bcb91f16fd6b77122029c2fae"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2ef61980a1cd01f5c0c725d1a1880d72">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_chain</b></td></tr>
+<tr class="memdesc:a35ad4f1bcb91f16fd6b77122029c2fae inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major chains. <br></td></tr>
+<tr class="separator:a35ad4f1bcb91f16fd6b77122029c2fae inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aea1392f99bf5251ef3ef7c3e5ae843c7 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="aea1392f99bf5251ef3ef7c3e5ae843c7" name="aea1392f99bf5251ef3ef7c3e5ae843c7"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2ef61980a1cd01f5c0c725d1a1880d72">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_chain</b></td></tr>
+<tr class="memdesc:aea1392f99bf5251ef3ef7c3e5ae843c7 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major chains. <br></td></tr>
+<tr class="separator:aea1392f99bf5251ef3ef7c3e5ae843c7 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a112433f2ebb9583b4374dfed30615109 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a112433f2ebb9583b4374dfed30615109" name="a112433f2ebb9583b4374dfed30615109"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">OSM::Sub_sparse_matrix</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2ef61980a1cd01f5c0c725d1a1880d72">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_matrix</b></td></tr>
+<tr class="memdesc:a112433f2ebb9583b4374dfed30615109 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major sparse matrices. <br></td></tr>
+<tr class="separator:a112433f2ebb9583b4374dfed30615109 inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1870a8393f7a17820d97d96bb7527e7b inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a1870a8393f7a17820d97d96bb7527e7b" name="a1870a8393f7a17820d97d96bb7527e7b"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">OSM::Sub_sparse_matrix</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2ef61980a1cd01f5c0c725d1a1880d72">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_matrix</b></td></tr>
+<tr class="memdesc:a1870a8393f7a17820d97d96bb7527e7b inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major sparse matrices. <br></td></tr>
+<tr class="separator:a1870a8393f7a17820d97d96bb7527e7b inherit pub_types_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae2cbdc176778ed97941e750822486a32"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ae2cbdc176778ed97941e750822486a32">Hdvf_duality</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a0d4f00fa8ec9c6aee392b6c2dbb45757">Chain_complex</a> &amp;L, <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a0d4f00fa8ec9c6aee392b6c2dbb45757">Chain_complex</a> &gt; &amp;K, int hdvf_opt=<a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a1039cceaf10746a31c1820d34ee3e90d">OPT_FULL</a>)</td></tr>
+<tr class="memdesc:ae2cbdc176778ed97941e750822486a32"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html" title="The class Hdvf_duality is the implementation of homological discrete vector fields (HDVF for short) f...">Hdvf_duality</a> constructor ( from a complex <code>L</code> and a sub-complex <code>K</code>)  <br></td></tr>
+<tr class="separator:ae2cbdc176778ed97941e750822486a32"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a73ccba80f2827e0e24e8861c6b972166"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a73ccba80f2827e0e24e8861c6b972166">find_pair_A</a> (int q, bool &amp;found) const</td></tr>
+<tr class="memdesc:a73ccba80f2827e0e24e8861c6b972166"><td class="mdescLeft"> </td><td class="mdescRight">Finds a valid cell pair of dimension q / q+1 for A <em>in the current sub chain complex</em>.  <br></td></tr>
+<tr class="separator:a73ccba80f2827e0e24e8861c6b972166"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4219ee3b323f6c72a6223bfd9740c6d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a4219ee3b323f6c72a6223bfd9740c6d5">find_pair_A</a> (int q, bool &amp;found, size_t gamma) const</td></tr>
+<tr class="memdesc:a4219ee3b323f6c72a6223bfd9740c6d5"><td class="mdescLeft"> </td><td class="mdescRight">Finds a valid cell pair for A containing <code>gamma</code> <em>in the current sub chain complex</em> (a cell of dimension <code>q</code>)  <br></td></tr>
+<tr class="separator:a4219ee3b323f6c72a6223bfd9740c6d5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4b0db81c27f4365c4af0e42d9a52ac42"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a4b0db81c27f4365c4af0e42d9a52ac42">find_pairs_A</a> (int q, bool &amp;found) const</td></tr>
+<tr class="memdesc:a4b0db81c27f4365c4af0e42d9a52ac42"><td class="mdescLeft"> </td><td class="mdescRight">Finds <em>all</em> valid cell pairs of dimension q / q+1 <em>in the current sub chain complex</em> for A.  <br></td></tr>
+<tr class="separator:a4b0db81c27f4365c4af0e42d9a52ac42"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad6fc30162008e4ab8585d87dd72d2de0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad6fc30162008e4ab8585d87dd72d2de0">find_pairs_A</a> (int q, bool &amp;found, size_t gamma) const</td></tr>
+<tr class="memdesc:ad6fc30162008e4ab8585d87dd72d2de0"><td class="mdescLeft"> </td><td class="mdescRight">Finds <em>all</em> valid cell pairs for <code>A</code>containing <code>gamma</code> <em>in the current sub chain complex</em> (a cell of dimension <code>q</code>)  <br></td></tr>
+<tr class="separator:ad6fc30162008e4ab8585d87dd72d2de0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8bcf667eafbbeffa4aeb92c47b76aa5e"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a8bcf667eafbbeffa4aeb92c47b76aa5e">set_mask_K</a> ()</td></tr>
+<tr class="memdesc:a8bcf667eafbbeffa4aeb92c47b76aa5e"><td class="mdescLeft"> </td><td class="mdescRight">Sets the current sub chain complex masks over <code>K</code>.  <br></td></tr>
+<tr class="separator:a8bcf667eafbbeffa4aeb92c47b76aa5e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad39bb1beff18c421d58f845f49678b88"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad39bb1beff18c421d58f845f49678b88">set_mask_L_K</a> ()</td></tr>
+<tr class="memdesc:ad39bb1beff18c421d58f845f49678b88"><td class="mdescLeft"> </td><td class="mdescRight">Sets the current sub chain complex masks over <code>L-K</code>.  <br></td></tr>
+<tr class="separator:ad39bb1beff18c421d58f845f49678b88"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae9351c681265cf335e2ddaefd0c516b2"><td class="memItemLeft" align="right" valign="top"><a id="ae9351c681265cf335e2ddaefd0c516b2" name="ae9351c681265cf335e2ddaefd0c516b2"></a>
+<a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a>&lt; ChainComplex &gt; </td><td class="memItemRight" valign="bottom"><b>get_current_mask</b> ()</td></tr>
+<tr class="memdesc:ae9351c681265cf335e2ddaefd0c516b2"><td class="mdescLeft"> </td><td class="mdescRight">Returns the value of the current sub chain complex mask. <br></td></tr>
+<tr class="separator:ae9351c681265cf335e2ddaefd0c516b2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a324e0d2b71c4bf0492e81b174b5504d2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2">compute_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:a324e0d2b71c4bf0492e81b174b5504d2"><td class="mdescLeft"> </td><td class="mdescRight">Computes a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over the current sub chain complex.  <br></td></tr>
+<tr class="separator:a324e0d2b71c4bf0492e81b174b5504d2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7d8ad08a963be3ff145752ca62083519"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a7d8ad08a963be3ff145752ca62083519">compute_rand_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:a7d8ad08a963be3ff145752ca62083519"><td class="mdescLeft"> </td><td class="mdescRight">Computes a random perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over the current sub chain complex.  <br></td></tr>
+<tr class="separator:a7d8ad08a963be3ff145752ca62083519"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8cb240396654c2f4d09d98dd46a0ff9c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a8cb240396654c2f4d09d98dd46a0ff9c">compute_pairing_hdvf</a> ()</td></tr>
+<tr class="memdesc:a8cb240396654c2f4d09d98dd46a0ff9c"><td class="mdescLeft"> </td><td class="mdescRight">Computes a "pairing" <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> between K and L-K.  <br></td></tr>
+<tr class="separator:a8cb240396654c2f4d09d98dd46a0ff9c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abd4de2a7630cafd04a04a25ef3a8cad0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#abd4de2a7630cafd04a04a25ef3a8cad0">compute_rand_pairing_hdvf</a> ()</td></tr>
+<tr class="memdesc:abd4de2a7630cafd04a04a25ef3a8cad0"><td class="mdescLeft"> </td><td class="mdescRight">Computes a random "pairing" <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> between K and L-K.  <br></td></tr>
+<tr class="separator:abd4de2a7630cafd04a04a25ef3a8cad0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8ff34dd68efa2e402270537e30b1a449"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a8ff34dd68efa2e402270537e30b1a449">psc_flags</a> (<a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> flag) const</td></tr>
+<tr class="memdesc:a8ff34dd68efa2e402270537e30b1a449"><td class="mdescLeft"> </td><td class="mdescRight">Gets cells with a given <code>PSC_flag</code> in any dimension <em>in the current sub chain complex</em>.  <br></td></tr>
+<tr class="separator:a8ff34dd68efa2e402270537e30b1a449"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acb98029b303651a4cb465eb91f2a9793"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#acb98029b303651a4cb465eb91f2a9793">psc_flags</a> (<a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> flag, int q) const</td></tr>
+<tr class="memdesc:acb98029b303651a4cb465eb91f2a9793"><td class="mdescLeft"> </td><td class="mdescRight">Gets cells with a given <code>PSC_flag</code> in dimension <code>q</code> <em>in the current sub chain complex</em>.  <br></td></tr>
+<tr class="separator:acb98029b303651a4cb465eb91f2a9793"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a77188717a7efcd08e430a3a302b3d9cd"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a77188717a7efcd08e430a3a302b3d9cd">insert_reduction</a> (std::ostream &amp;out=std::cout)</td></tr>
+<tr class="memdesc:a77188717a7efcd08e430a3a302b3d9cd"><td class="mdescLeft"> </td><td class="mdescRight">Prints the homology and cohomology reduction information for <code>K</code> and <code>L-K</code>.  <br></td></tr>
+<tr class="separator:a77188717a7efcd08e430a3a302b3d9cd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8f44ab462c16c297d04677f87ad5db3f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a8f44ab462c16c297d04677f87ad5db3f">print_reduction_sub</a> (std::ostream &amp;out=std::cout)</td></tr>
+<tr class="memdesc:a8f44ab462c16c297d04677f87ad5db3f"><td class="mdescLeft"> </td><td class="mdescRight">Prints the homology and cohomology reduction information for the current such chain complex.  <br></td></tr>
+<tr class="separator:a8f44ab462c16c297d04677f87ad5db3f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a97801b56bcc94ce90660ca5165b5f8d9"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a97801b56bcc94ce90660ca5165b5f8d9">print_bnd_pairing</a> (std::ostream &amp;out=std::cout)</td></tr>
+<tr class="memdesc:a97801b56bcc94ce90660ca5165b5f8d9"><td class="mdescLeft"> </td><td class="mdescRight">Prints the reduced boundary over critical cells of <code>K</code> and <code>L-K</code>.  <br></td></tr>
+<tr class="separator:a97801b56bcc94ce90660ca5165b5f8d9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a246cc977ba7ebe880174a5efe5e6be8c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a246cc977ba7ebe880174a5efe5e6be8c">psc_labels</a> () const</td></tr>
+<tr class="memdesc:a246cc977ba7ebe880174a5efe5e6be8c"><td class="mdescLeft"> </td><td class="mdescRight">Exports primary/secondary/critical labels <em>of the current sub chain complex</em> for vtk export.  <br></td></tr>
+<tr class="separator:a246cc977ba7ebe880174a5efe5e6be8c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a74f6ac2495f84ea49e839fb1bcb717c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad4ff20dd6d402e9cdaa26c6176119570">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a74f6ac2495f84ea49e839fb1bcb717c6">homology_chain</a> (size_t cell_index, int dim) const</td></tr>
+<tr class="memdesc:a74f6ac2495f84ea49e839fb1bcb717c6"><td class="mdescLeft"> </td><td class="mdescRight">Exports homology generators <em>of the current sub chain complex</em> associated to <code>cell_index</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:a74f6ac2495f84ea49e839fb1bcb717c6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a442a6e4deef6d4c61fd4993d4bf62bf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad4ff20dd6d402e9cdaa26c6176119570">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a442a6e4deef6d4c61fd4993d4bf62bf7">cohomology_chain</a> (size_t cell_index, int dim) const</td></tr>
+<tr class="memdesc:a442a6e4deef6d4c61fd4993d4bf62bf7"><td class="mdescLeft"> </td><td class="mdescRight">Exports cohomology generators <em>of the current sub chain complex</em> associated to <code>cell_index</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:a442a6e4deef6d4c61fd4993d4bf62bf7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core')"><img src="closed.png" alt="-"> Public Member Functions inherited from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:aa878ff126f95445506701311a9bde858 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#aa878ff126f95445506701311a9bde858">dimension_restriction</a> () const</td></tr>
+<tr class="memdesc:aa878ff126f95445506701311a9bde858 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Returns the dimension of <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html" title="The class Hdvf implements homology and cohomology computation via homological discrete vector fields ...">Hdvf</a> computation.  <br></td></tr>
+<tr class="separator:aa878ff126f95445506701311a9bde858 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a518097a849f9dc77bc513ebc28947966 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a518097a849f9dc77bc513ebc28947966">dimension_restriction</a> (int dimension)</td></tr>
+<tr class="memdesc:a518097a849f9dc77bc513ebc28947966 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Changes the dimension of <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html" title="The class Hdvf implements homology and cohomology computation via homological discrete vector fields ...">Hdvf</a> computation.  <br></td></tr>
+<tr class="separator:a518097a849f9dc77bc513ebc28947966 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adf81fe9b47a4666ba2a24fd75a666577 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#adf81fe9b47a4666ba2a24fd75a666577">Hdvf_core</a> (const ChainComplex &amp;K, int hdvf_opt=OPT_FULL, int dimension_restriction=-1)</td></tr>
+<tr class="memdesc:adf81fe9b47a4666ba2a24fd75a666577 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from a chain complex.  <br></td></tr>
+<tr class="separator:adf81fe9b47a4666ba2a24fd75a666577 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9759689cdca3bdf945ca6b7ff720c972 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a9759689cdca3bdf945ca6b7ff720c972" name="a9759689cdca3bdf945ca6b7ff720c972"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Hdvf_core</b> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">Hdvf_core</a> &amp;hdvf)</td></tr>
+<tr class="separator:a9759689cdca3bdf945ca6b7ff720c972 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a35faa3b674fab46a5f837718ac96f305 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a35faa3b674fab46a5f837718ac96f305" name="a35faa3b674fab46a5f837718ac96f305"></a>
+ </td><td class="memItemRight" valign="bottom"><b>~Hdvf_core</b> ()</td></tr>
+<tr class="separator:a35faa3b674fab46a5f837718ac96f305 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1acf6a426fcf4876a6a2b051cb20fc75 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a1acf6a426fcf4876a6a2b051cb20fc75">find_pair_A</a> (int q, bool &amp;found) const</td></tr>
+<tr class="memdesc:a1acf6a426fcf4876a6a2b051cb20fc75 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds a valid <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html" title="Structure to represent data for HDVF operations (pairs of cells).">Cell_pair</a> of dimension q / q+1 for A.  <br></td></tr>
+<tr class="separator:a1acf6a426fcf4876a6a2b051cb20fc75 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a281b70f4c09c036dace46bac2b71e500 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a281b70f4c09c036dace46bac2b71e500">find_pair_A</a> (int q, bool &amp;found, size_t gamma) const</td></tr>
+<tr class="memdesc:a281b70f4c09c036dace46bac2b71e500 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds a valid <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html" title="Structure to represent data for HDVF operations (pairs of cells).">Cell_pair</a> for A containing <code>gamma</code> (a cell of dimension <code>q</code>)  <br></td></tr>
+<tr class="separator:a281b70f4c09c036dace46bac2b71e500 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3adac583e1d9dfa8bd6faa5addb0e43e inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a3adac583e1d9dfa8bd6faa5addb0e43e">find_pairs_A</a> (int q, bool &amp;found) const</td></tr>
+<tr class="memdesc:a3adac583e1d9dfa8bd6faa5addb0e43e inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds <em>all</em> valid <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html" title="Structure to represent data for HDVF operations (pairs of cells).">Cell_pair</a> of dimension q / q+1 for A.  <br></td></tr>
+<tr class="separator:a3adac583e1d9dfa8bd6faa5addb0e43e inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af707b1138514058ada2b952d7688c063 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#af707b1138514058ada2b952d7688c063">find_pairs_A</a> (int q, bool &amp;found, size_t gamma) const</td></tr>
+<tr class="memdesc:af707b1138514058ada2b952d7688c063 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds <em>all</em> valid <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html" title="Structure to represent data for HDVF operations (pairs of cells).">Cell_pair</a> for A containing <code>gamma</code> (a cell of dimension <code>q</code>)  <br></td></tr>
+<tr class="separator:af707b1138514058ada2b952d7688c063 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2e7e5d1a65bc15e72f6853482e786e01 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2e7e5d1a65bc15e72f6853482e786e01">A</a> (size_t gamma1, size_t gamma2, int q)</td></tr>
+<tr class="memdesc:a2e7e5d1a65bc15e72f6853482e786e01 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">A operation: pairs critical cells.  <br></td></tr>
+<tr class="separator:a2e7e5d1a65bc15e72f6853482e786e01 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0e195cfc9a9025772c569a2a4ae2fdbb inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a0e195cfc9a9025772c569a2a4ae2fdbb">compute_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:a0e195cfc9a9025772c569a2a4ae2fdbb inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Computes a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>.  <br></td></tr>
+<tr class="separator:a0e195cfc9a9025772c569a2a4ae2fdbb inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a05b57ea9816d4ccddda48315e740602b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a05b57ea9816d4ccddda48315e740602b">compute_rand_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:a05b57ea9816d4ccddda48315e740602b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Computes a random perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>.  <br></td></tr>
+<tr class="separator:a05b57ea9816d4ccddda48315e740602b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2518e28396c7bc3c7ce2882e18a63779 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2518e28396c7bc3c7ce2882e18a63779">is_perfect_hdvf</a> (int dimension_restriction=-2)</td></tr>
+<tr class="memdesc:a2518e28396c7bc3c7ce2882e18a63779 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Tests if a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is perfect.  <br></td></tr>
+<tr class="separator:a2518e28396c7bc3c7ce2882e18a63779 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af587fe4c0d33297c453f3db6d77322ca inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#af587fe4c0d33297c453f3db6d77322ca">psc_flags</a> (<a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> flag) const</td></tr>
+<tr class="memdesc:af587fe4c0d33297c453f3db6d77322ca inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets cells with a given <code>PSC_flag</code> in any dimension.  <br></td></tr>
+<tr class="separator:af587fe4c0d33297c453f3db6d77322ca inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af03ff1ec630c465691253e9b5ce23bf8 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#af03ff1ec630c465691253e9b5ce23bf8">psc_flags</a> (<a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> flag, int q) const</td></tr>
+<tr class="memdesc:af03ff1ec630c465691253e9b5ce23bf8 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets cells with a given <code>PSC_flag</code> in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:af03ff1ec630c465691253e9b5ce23bf8 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a68809f15391e67416b5cc578d96adf08 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a68809f15391e67416b5cc578d96adf08">psc_flag</a> (int q, size_t tau) const</td></tr>
+<tr class="memdesc:a68809f15391e67416b5cc578d96adf08 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the PSC_flag of the cell <code>tau</code> in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:a68809f15391e67416b5cc578d96adf08 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab283c6254dc3774e52a9e517d7f850eb inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="ab283c6254dc3774e52a9e517d7f850eb" name="ab283c6254dc3774e52a9e517d7f850eb"></a>
+int </td><td class="memItemRight" valign="bottom"><b>hdvf_opts</b> () const</td></tr>
+<tr class="memdesc:ab283c6254dc3774e52a9e517d7f850eb inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> computation option. <br></td></tr>
+<tr class="separator:ab283c6254dc3774e52a9e517d7f850eb inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad0a94792c748b1875bfd2d1f6fadd93e inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="ad0a94792c748b1875bfd2d1f6fadd93e" name="ad0a94792c748b1875bfd2d1f6fadd93e"></a>
+const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a1870a8393f7a17820d97d96bb7527e7b">Row_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_f</b> (int q) const</td></tr>
+<tr class="memdesc:ad0a94792c748b1875bfd2d1f6fadd93e inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the row-major matrix of \(f\) (from the reduction associated to the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>). <br></td></tr>
+<tr class="separator:ad0a94792c748b1875bfd2d1f6fadd93e inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a79cfd71acfdbcabeed61d2be4dc27d5c inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a79cfd71acfdbcabeed61d2be4dc27d5c" name="a79cfd71acfdbcabeed61d2be4dc27d5c"></a>
+const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a112433f2ebb9583b4374dfed30615109">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_g</b> (int q) const</td></tr>
+<tr class="memdesc:a79cfd71acfdbcabeed61d2be4dc27d5c inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the column-major matrix of \(g\) (from the reduction associated to the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>). <br></td></tr>
+<tr class="separator:a79cfd71acfdbcabeed61d2be4dc27d5c inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6cb1bb9ebeb625a0b0210e9def38d19a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a6cb1bb9ebeb625a0b0210e9def38d19a" name="a6cb1bb9ebeb625a0b0210e9def38d19a"></a>
+const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a112433f2ebb9583b4374dfed30615109">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_h</b> (int q) const</td></tr>
+<tr class="memdesc:a6cb1bb9ebeb625a0b0210e9def38d19a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the column-major matrix of \(h\) (from the reduction associated to the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>). <br></td></tr>
+<tr class="separator:a6cb1bb9ebeb625a0b0210e9def38d19a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3c72f4e0878839319658ca71970499d0 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a3c72f4e0878839319658ca71970499d0" name="a3c72f4e0878839319658ca71970499d0"></a>
+const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a112433f2ebb9583b4374dfed30615109">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_dd</b> (int q) const</td></tr>
+<tr class="memdesc:a3c72f4e0878839319658ca71970499d0 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the column-major matrix of \(\partial'\), reduced boundary operator (from the reduction associated to the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>). <br></td></tr>
+<tr class="separator:a3c72f4e0878839319658ca71970499d0 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ace9f6b40010fac783535e01d550f2af5 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#ace9f6b40010fac783535e01d550f2af5">write_matrices</a> (std::ostream &amp;out=std::cout, int dimension_restriction=-2) const</td></tr>
+<tr class="memdesc:ace9f6b40010fac783535e01d550f2af5 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Writes the matrices of the reduction.  <br></td></tr>
+<tr class="separator:ace9f6b40010fac783535e01d550f2af5 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8c4068bea4a7682d551f1ee7d56dbdfa inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a8c4068bea4a7682d551f1ee7d56dbdfa">write_reduction</a> (std::ostream &amp;out=std::cout, int dimension_restriction=-2) const</td></tr>
+<tr class="memdesc:a8c4068bea4a7682d551f1ee7d56dbdfa inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Writes the homology and cohomology reduction information.  <br></td></tr>
+<tr class="separator:a8c4068bea4a7682d551f1ee7d56dbdfa inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a416c6ee6fbbcf525fcf1713c4d5f562b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::vector&lt; int &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a416c6ee6fbbcf525fcf1713c4d5f562b">psc_labels</a> (int dimension_restriction=-2) const</td></tr>
+<tr class="memdesc:a416c6ee6fbbcf525fcf1713c4d5f562b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Exports primary/secondary/critical integers encoding labels (in particular for vtk export)  <br></td></tr>
+<tr class="separator:a416c6ee6fbbcf525fcf1713c4d5f562b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a91123b9bc9209c330b40085d53e4f70b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a35ad4f1bcb91f16fd6b77122029c2fae">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a91123b9bc9209c330b40085d53e4f70b">homology_chain</a> (size_t cell_index, int q) const</td></tr>
+<tr class="memdesc:a91123b9bc9209c330b40085d53e4f70b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets homology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:a91123b9bc9209c330b40085d53e4f70b inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7f96280e6f55a194f95dd22dfaa186bc inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a35ad4f1bcb91f16fd6b77122029c2fae">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a7f96280e6f55a194f95dd22dfaa186bc">cohomology_chain</a> (size_t cell_index, int dim) const</td></tr>
+<tr class="memdesc:a7f96280e6f55a194f95dd22dfaa186bc inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets cohomology generators associated to <code>cell_index</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:a7f96280e6f55a194f95dd22dfaa186bc inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a681798d33e38b2a56e4cd2f2922d6501 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a681798d33e38b2a56e4cd2f2922d6501">write_hdvf_reduction</a> (std::ostream &amp;out)</td></tr>
+<tr class="memdesc:a681798d33e38b2a56e4cd2f2922d6501 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Writes a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> together with the associated reduction (f, g, h, d matrices)  <br></td></tr>
+<tr class="separator:a681798d33e38b2a56e4cd2f2922d6501 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a693955d6db5d0b7513aff3fc8d9c90ba inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a693955d6db5d0b7513aff3fc8d9c90ba">write_hdvf_reduction</a> (std::string filename)</td></tr>
+<tr class="memdesc:a693955d6db5d0b7513aff3fc8d9c90ba inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Writes a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> together with the associated reduction to a file (f, g, h, d matrices).  <br></td></tr>
+<tr class="separator:a693955d6db5d0b7513aff3fc8d9c90ba inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad0114ed29cb2c1edb675d6554ef43fda inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::istream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#ad0114ed29cb2c1edb675d6554ef43fda">read_hdvf_reduction</a> (std::istream &amp;in_stream)</td></tr>
+<tr class="memdesc:ad0114ed29cb2c1edb675d6554ef43fda inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Loads a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> together with the associated reduction (f, g, h, d matrices)  <br></td></tr>
+<tr class="separator:ad0114ed29cb2c1edb675d6554ef43fda inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9bbc20508155d25534645ca9073cfa37 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a9bbc20508155d25534645ca9073cfa37">read_hdvf_reduction</a> (std::string filename)</td></tr>
+<tr class="memdesc:a9bbc20508155d25534645ca9073cfa37 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Loads a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> together with the associated reduction from a file (f, g, h, d matrices)  <br></td></tr>
+<tr class="separator:a9bbc20508155d25534645ca9073cfa37 inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac2a2da6bddb6cfbf8b20915b0a541e0a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#ac2a2da6bddb6cfbf8b20915b0a541e0a">compare</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">Hdvf_core</a> &amp;other, bool full_compare=false)</td></tr>
+<tr class="memdesc:ac2a2da6bddb6cfbf8b20915b0a541e0a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Compares the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> with another <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over the same underlying complex.  <br></td></tr>
+<tr class="separator:ac2a2da6bddb6cfbf8b20915b0a541e0a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2f2596846461e33bc634cc17d030c04a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2f2596846461e33bc634cc17d030c04a">operator==</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">Hdvf_core</a> &amp;other)</td></tr>
+<tr class="memdesc:a2f2596846461e33bc634cc17d030c04a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Comparison operator.  <br></td></tr>
+<tr class="separator:a2f2596846461e33bc634cc17d030c04a inherit pub_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core')"><img src="closed.png" alt="-"> Protected Member Functions inherited from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:a4842d97288130e3507cff5e94d4535d9 inherit pro_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a4842d97288130e3507cff5e94d4535d9" name="a4842d97288130e3507cff5e94d4535d9"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2ef61980a1cd01f5c0c725d1a1880d72">Coefficient_ring</a>, StorageFormat &gt; </td><td class="memItemRight" valign="bottom"><b>projection</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2ef61980a1cd01f5c0c725d1a1880d72">Coefficient_ring</a>, StorageFormat &gt; &amp;chain, <a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> flag, int q) const</td></tr>
+<tr class="separator:a4842d97288130e3507cff5e94d4535d9 inherit pro_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a17b281a3131923cee61e30634a6e5125 inherit pro_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a17b281a3131923cee61e30634a6e5125" name="a17b281a3131923cee61e30634a6e5125"></a>
+void </td><td class="memItemRight" valign="bottom"><b>progress_bar</b> (size_t i, size_t n)</td></tr>
+<tr class="separator:a17b281a3131923cee61e30634a6e5125 inherit pro_methods_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core')"><img src="closed.png" alt="-"> Protected Attributes inherited from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:a7b349f2789aa6c5de47d312162a028a6 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a7b349f2789aa6c5de47d312162a028a6" name="a7b349f2789aa6c5de47d312162a028a6"></a>
+std::vector&lt; std::vector&lt; <a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_flag</b></td></tr>
+<tr class="separator:a7b349f2789aa6c5de47d312162a028a6 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a805f03069afaf763200beb1d938f5c43 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a805f03069afaf763200beb1d938f5c43" name="a805f03069afaf763200beb1d938f5c43"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_P</b></td></tr>
+<tr class="separator:a805f03069afaf763200beb1d938f5c43 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7dfa83b88f363672cec07f1f48af68ba inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a7dfa83b88f363672cec07f1f48af68ba" name="a7dfa83b88f363672cec07f1f48af68ba"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_S</b></td></tr>
+<tr class="separator:a7dfa83b88f363672cec07f1f48af68ba inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a881cd2c2afb48c98b5a2ac91b8cc09b3 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a881cd2c2afb48c98b5a2ac91b8cc09b3" name="a881cd2c2afb48c98b5a2ac91b8cc09b3"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_C</b></td></tr>
+<tr class="separator:a881cd2c2afb48c98b5a2ac91b8cc09b3 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a202d5526d5e1f05c05f9047297c3dff0 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a202d5526d5e1f05c05f9047297c3dff0" name="a202d5526d5e1f05c05f9047297c3dff0"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a1870a8393f7a17820d97d96bb7527e7b">Row_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_F_row</b></td></tr>
+<tr class="separator:a202d5526d5e1f05c05f9047297c3dff0 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af5d246491631216e76232ff11ecf09c8 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="af5d246491631216e76232ff11ecf09c8" name="af5d246491631216e76232ff11ecf09c8"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a112433f2ebb9583b4374dfed30615109">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_G_col</b></td></tr>
+<tr class="separator:af5d246491631216e76232ff11ecf09c8 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab34dd2f05532b1f37940dbd81561d72f inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="ab34dd2f05532b1f37940dbd81561d72f" name="ab34dd2f05532b1f37940dbd81561d72f"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a112433f2ebb9583b4374dfed30615109">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_H_col</b></td></tr>
+<tr class="separator:ab34dd2f05532b1f37940dbd81561d72f inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7f69dc12644e46f15603deb1c88a69a3 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a7f69dc12644e46f15603deb1c88a69a3" name="a7f69dc12644e46f15603deb1c88a69a3"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a112433f2ebb9583b4374dfed30615109">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_DD_col</b></td></tr>
+<tr class="separator:a7f69dc12644e46f15603deb1c88a69a3 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae0b2a32d189893c2eaafaabc0c533dd1 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="ae0b2a32d189893c2eaafaabc0c533dd1" name="ae0b2a32d189893c2eaafaabc0c533dd1"></a>
+const ChainComplex &amp; </td><td class="memItemRight" valign="bottom"><b>_K</b></td></tr>
+<tr class="separator:ae0b2a32d189893c2eaafaabc0c533dd1 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4f6f4c661441820945822350f7931d16 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a4f6f4c661441820945822350f7931d16" name="a4f6f4c661441820945822350f7931d16"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_hdvf_opt</b></td></tr>
+<tr class="separator:a4f6f4c661441820945822350f7931d16 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af52a3c26bdd4a10a5662c7f3b2492c8b inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="af52a3c26bdd4a10a5662c7f3b2492c8b" name="af52a3c26bdd4a10a5662c7f3b2492c8b"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_dimension_restriction</b></td></tr>
+<tr class="separator:af52a3c26bdd4a10a5662c7f3b2492c8b inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a77e5721029942dbe0fc6bf50dba4ec15 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a77e5721029942dbe0fc6bf50dba4ec15" name="a77e5721029942dbe0fc6bf50dba4ec15"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_min_dimension</b></td></tr>
+<tr class="separator:a77e5721029942dbe0fc6bf50dba4ec15 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a094ee2ee62414c4f6c361f7b91bc59c4 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a094ee2ee62414c4f6c361f7b91bc59c4" name="a094ee2ee62414c4f6c361f7b91bc59c4"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_max_dimension</b></td></tr>
+<tr class="separator:a094ee2ee62414c4f6c361f7b91bc59c4 inherit pro_attribs_classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a0d4f00fa8ec9c6aee392b6c2dbb45757" name="a0d4f00fa8ec9c6aee392b6c2dbb45757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d4f00fa8ec9c6aee392b6c2dbb45757">◆ </a></span>Chain_complex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ChainComplex <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::Chain_complex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Chain complex type. </p>
+<p><br>
+ </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae2cbdc176778ed97941e750822486a32" name="ae2cbdc176778ed97941e750822486a32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2cbdc176778ed97941e750822486a32">◆ </a></span>Hdvf_duality()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::Hdvf_duality </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a0d4f00fa8ec9c6aee392b6c2dbb45757">Chain_complex</a> &amp; </td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a0d4f00fa8ec9c6aee392b6c2dbb45757">Chain_complex</a> &gt; &amp; </td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>hdvf_opt</em> = <code><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a1039cceaf10746a31c1820d34ee3e90d">OPT_FULL</a></code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html" title="The class Hdvf_duality is the implementation of homological discrete vector fields (HDVF for short) f...">Hdvf_duality</a> constructor ( from a complex <code>L</code> and a sub-complex <code>K</code>) </p>
+<p><code>L</code> is a complex of a given dimension \(n\) homeomorphic to \(\mathcal B^n\) and <code>K</code> is a sub-complex of <code>L</code> described by a bitboard (cells of <code>K</code> have a bit set to 1, cells of <code>K</code> have a bit set to 0).</p>
+<p>Initially, the sub chain complex mask is set to <code>K</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>A complex of a given dimension \(n\) homeomorphic to \(\mathcal B^n\). </td></tr>
+    <tr><td class="paramname">K</td><td>A sub complex of <code>L</code> encoded through a bitboard. </td></tr>
+    <tr><td class="paramname">hdvf_opt</td><td>Option for <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> computation (<code>OPT_BND</code>, <code>OPT_F</code>, <code>OPT_G</code> or <code>OPT_FULL</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a442a6e4deef6d4c61fd4993d4bf62bf7" name="a442a6e4deef6d4c61fd4993d4bf62bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a442a6e4deef6d4c61fd4993d4bf62bf7">◆ </a></span>cohomology_chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad4ff20dd6d402e9cdaa26c6176119570">Column_chain</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::cohomology_chain </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>cell_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>dim</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exports cohomology generators <em>of the current sub chain complex</em> associated to <code>cell_index</code> (critical cell) of dimension <code>q</code> (used by vtk export). </p>
+<p>The method exports the chain \(f^\star(\sigma)\) for \(\sigma\) the cell of index <code>cell_index</code> and dimension <code>q</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>A column-major chain. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a7f96280e6f55a194f95dd22dfaa186bc">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a8cb240396654c2f4d09d98dd46a0ff9c" name="a8cb240396654c2f4d09d98dd46a0ff9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cb240396654c2f4d09d98dd46a0ff9c">◆ </a></span>compute_pairing_hdvf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::compute_pairing_hdvf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a "pairing" <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> between K and L-K. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Run <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2" title="Computes a perfect HDVF over the current sub chain complex.">compute_perfect_hdvf()</a></code> first (to build perfect HDVFs over <code>K</code> and <code>L-K</code> respectively).</dd></dl>
+<p>The function computes a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over remaining critical cells. Each pair of cells inserted with the <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2e7e5d1a65bc15e72f6853482e786e01" title="A operation: pairs critical cells.">A()</a></code> operation maps corresponding homology/cohomology generators in the Alexander isomorphism.</p>
+<dl class="section return"><dt>Returns</dt><dd>The vector of paired critical cells (encoding Alexander isomorphism). </dd></dl>
+
+</div>
+</div>
+<a id="a324e0d2b71c4bf0492e81b174b5504d2" name="a324e0d2b71c4bf0492e81b174b5504d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324e0d2b71c4bf0492e81b174b5504d2">◆ </a></span>compute_perfect_hdvf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::compute_perfect_hdvf </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>verbose</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over the current sub chain complex. </p>
+<p>As long as valid pairs for <code>A</code> exist in the current sub chain complex, the function selects the first available pair (returned by <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a73ccba80f2827e0e24e8861c6b972166" title="Finds a valid cell pair of dimension q / q+1 for A in the current sub chain complex.">find_pair_A()</a></code>) and applies the corresponding <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2e7e5d1a65bc15e72f6853482e786e01" title="A operation: pairs critical cells.">A()</a></code> operation. If the coefficient ring of coefficients is a field, this operation always produces a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> (ie. the reduced boundary is null and the reduction provides homology and cohomology information). Otherwise the operation produces a maximal <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> with a residual boundary matrix over critical cells.</p>
+<p>If the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is initially not trivial (some cells have already been paired), the function completes it into a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verbose</td><td>If this parameter is <code>true</code>, all intermediate reductions are printed out.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The vector of all <code><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html" title="Structure to represent data for HDVF operations (pairs of cells).">Cell_pair</a></code> paired with A. </dd></dl>
+
+</div>
+</div>
+<a id="abd4de2a7630cafd04a04a25ef3a8cad0" name="abd4de2a7630cafd04a04a25ef3a8cad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd4de2a7630cafd04a04a25ef3a8cad0">◆ </a></span>compute_rand_pairing_hdvf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::compute_rand_pairing_hdvf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a random "pairing" <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> between K and L-K. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Run <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2" title="Computes a perfect HDVF over the current sub chain complex.">compute_perfect_hdvf()</a></code> first (to build perfect HDVFs over <code>K</code> and <code>L-K</code> respectively).</dd></dl>
+<p>The function computes a random perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over remaining critical cells. Each pair of cells inserted with the <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2e7e5d1a65bc15e72f6853482e786e01" title="A operation: pairs critical cells.">A()</a></code> operation maps corresponding homology/cohomology generators in the Alexander isomorphism.</p>
+<dl class="section return"><dt>Returns</dt><dd>The vector of paired critical cells (encoding Alexander isomorphism). </dd></dl>
+
+</div>
+</div>
+<a id="a7d8ad08a963be3ff145752ca62083519" name="a7d8ad08a963be3ff145752ca62083519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d8ad08a963be3ff145752ca62083519">◆ </a></span>compute_rand_perfect_hdvf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::compute_rand_perfect_hdvf </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>verbose</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a random perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over the current sub chain complex. </p>
+<p>As long as valid pairs for A exist in the current sub chain complex, the function selects a random pair (among pairs returned by <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a4b0db81c27f4365c4af0e42d9a52ac42" title="Finds all valid cell pairs of dimension q / q+1 in the current sub chain complex for A.">find_pairs_A()</a></code>) and applies the corresponding <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a2e7e5d1a65bc15e72f6853482e786e01" title="A operation: pairs critical cells.">A()</a></code> operation. If the coefficient ring is a field, this operation always produces a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> (that is the reduced boundary is null and the reduction provides homology and cohomology information).</p>
+<p>If the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is initially not trivial (some cells have already been paired), the function randomly completes it into a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>This method is slower that <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2" title="Computes a perfect HDVF over the current sub chain complex.">compute_perfect_hdvf()</a></code> (finding out all possible valid pairs requires additional time).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verbose</td><td>If this parameter is <code>true</code>, all intermediate reductions are printed out.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The vector of all pairs of cells used for apply A. </dd></dl>
+
+</div>
+</div>
+<a id="a73ccba80f2827e0e24e8861c6b972166" name="a73ccba80f2827e0e24e8861c6b972166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73ccba80f2827e0e24e8861c6b972166">◆ </a></span>find_pair_A() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::find_pair_A </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp; </td>
+          <td class="paramname"><em>found</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds a valid cell pair of dimension q / q+1 for A <em>in the current sub chain complex</em>. </p>
+<p>The function searches a pair of critical cells, <em>in the current sub chain complex</em>, \((\gamma_1, \gamma2)\) of dimension q / q+1, valid for A (ie. such that \(\langle \partial_{q+1}(\gamma_2), \gamma_1 \rangle\) invertible). It returns the first valid pair found by iterators.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Lower dimension of the pair. </td></tr>
+    <tr><td class="paramname">found</td><td>Reference to a Boolean variable. The method sets <code>found</code> to <code>true</code> if a valid pair is found, <code>false</code> otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a1acf6a426fcf4876a6a2b051cb20fc75">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a4219ee3b323f6c72a6223bfd9740c6d5" name="a4219ee3b323f6c72a6223bfd9740c6d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4219ee3b323f6c72a6223bfd9740c6d5">◆ </a></span>find_pair_A() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::find_pair_A </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp; </td>
+          <td class="paramname"><em>found</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>gamma</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds a valid cell pair for A containing <code>gamma</code> <em>in the current sub chain complex</em> (a cell of dimension <code>q</code>) </p>
+<p>The function searches a cell \(\gamma'\) <em>in the current sub chain complex</em> such that one of the following conditions holds:</p><ul>
+<li>\(\gamma'\) has dimension q+1 and \((\gamma, \gamma')\) is valid for A (ie. such that \(\langle \partial_{q+1}(\gamma'), \gamma \rangle\) invertible),</li>
+<li>\(\gamma'\) has dimension q-1 and \((\gamma', \gamma)\) is valid for A (ie. such that \(\langle \partial_{q}(\gamma), \gamma' \rangle\) invertible).</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Dimension of the cell <code>gamma</code>. </td></tr>
+    <tr><td class="paramname">found</td><td>Reference to a Boolean variable. The method sets <code>found</code> to <code>true</code> if a valid pair is found, <code>false</code> otherwise. </td></tr>
+    <tr><td class="paramname">gamma</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of a cell to pair. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a281b70f4c09c036dace46bac2b71e500">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a4b0db81c27f4365c4af0e42d9a52ac42" name="a4b0db81c27f4365c4af0e42d9a52ac42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b0db81c27f4365c4af0e42d9a52ac42">◆ </a></span>find_pairs_A() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::find_pairs_A </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp; </td>
+          <td class="paramname"><em>found</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds <em>all</em> valid cell pairs of dimension q / q+1 <em>in the current sub chain complex</em> for A. </p>
+<p>The function searches all pairs of critical cells \((\gamma_1, \gamma2)\) <em>in the current sub chain complex</em> of dimension q / q+1, valid for A (ie. such that \(\langle \partial_{q+1}(\gamma_2), \gamma_1 \rangle\) invertible). It returns a vector of such pairs.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Lower dimension of the pairs. </td></tr>
+    <tr><td class="paramname">found</td><td>Reference to a Boolean variable. The method sets <code>found</code> to <code>true</code> if a valid pair is found, <code>false</code> otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a3adac583e1d9dfa8bd6faa5addb0e43e">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ad6fc30162008e4ab8585d87dd72d2de0" name="ad6fc30162008e4ab8585d87dd72d2de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6fc30162008e4ab8585d87dd72d2de0">◆ </a></span>find_pairs_A() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Cell__pair.html">Cell_pair</a> &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::find_pairs_A </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp; </td>
+          <td class="paramname"><em>found</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>gamma</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds <em>all</em> valid cell pairs for <code>A</code>containing <code>gamma</code> <em>in the current sub chain complex</em> (a cell of dimension <code>q</code>) </p>
+<p>The function searches all <code>CRITICAL</code> cells \(\gamma'\) <em>in the current sub chain complex</em> such that one of the following conditions holds:</p><ul>
+<li>\(\gamma'\) has dimension q+1 and \((\gamma, \gamma')\) is valid for A (ie. such that \(\langle \partial_{q+1}(\gamma'), \gamma \rangle\) invertible),</li>
+<li>\(\gamma'\) has dimension q-1 and \((\gamma', \gamma)\) is valid for A (ie. such that \(\langle \partial_{q}(\gamma), \gamma' \rangle\) invertible). It returns a vector of such pairs.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Dimension of the cell <code>gamma</code>. </td></tr>
+    <tr><td class="paramname">found</td><td>Reference to a Boolean variable. The method sets <code>found</code> to <code>true</code> if a valid pair is found, <code>false</code> otherwise. </td></tr>
+    <tr><td class="paramname">gamma</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of a cell to pair. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#af707b1138514058ada2b952d7688c063">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a74f6ac2495f84ea49e839fb1bcb717c6" name="a74f6ac2495f84ea49e839fb1bcb717c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74f6ac2495f84ea49e839fb1bcb717c6">◆ </a></span>homology_chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad4ff20dd6d402e9cdaa26c6176119570">Column_chain</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::homology_chain </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>cell_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>dim</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exports homology generators <em>of the current sub chain complex</em> associated to <code>cell_index</code> (critical cell) of dimension <code>q</code> (used by vtk export). </p>
+<p>The method exports the chain \(g(\sigma)\) for \(\sigma\) the cell of index <code>cell_index</code> and dimension <code>q</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>A column-major chain. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#a91123b9bc9209c330b40085d53e4f70b">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a77188717a7efcd08e430a3a302b3d9cd" name="a77188717a7efcd08e430a3a302b3d9cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77188717a7efcd08e430a3a302b3d9cd">◆ </a></span>insert_reduction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::insert_reduction </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em> = <code>std::cout</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the homology and cohomology reduction information for <code>K</code> and <code>L-K</code>. </p>
+<p>Prints \(f^*\), \(g\) \(\partial'\) the reduced boundary over each critical cell.</p>
+<p>By default, outputs the complex to <code>std::cout</code>. </p>
+
+</div>
+</div>
+<a id="a97801b56bcc94ce90660ca5165b5f8d9" name="a97801b56bcc94ce90660ca5165b5f8d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97801b56bcc94ce90660ca5165b5f8d9">◆ </a></span>print_bnd_pairing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::print_bnd_pairing </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em> = <code>std::cout</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the reduced boundary over critical cells of <code>K</code> and <code>L-K</code>. </p>
+<p>The method prints out the reduced boundary matrix in each dimension, restricted to critical cells of <code>K</code> and <code>L-K</code> (ie. the matrix used to compute Alexander pairing).</p>
+<dl class="section warning"><dt>Warning</dt><dd>Call this method after <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2" title="Computes a perfect HDVF over the current sub chain complex.">compute_perfect_hdvf()</a></code>.</dd></dl>
+<p>By default, outputs the complex to <code>std::cout</code>. </p>
+
+</div>
+</div>
+<a id="a8f44ab462c16c297d04677f87ad5db3f" name="a8f44ab462c16c297d04677f87ad5db3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f44ab462c16c297d04677f87ad5db3f">◆ </a></span>print_reduction_sub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::print_reduction_sub </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em> = <code>std::cout</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the homology and cohomology reduction information for the current such chain complex. </p>
+<p>Prints \(f^*\), \(g\) \(\partial'\) the reduced boundary over each critical cell.</p>
+<p>By default, outputs the complex to <code>std::cout</code>. </p>
+
+</div>
+</div>
+<a id="a8ff34dd68efa2e402270537e30b1a449" name="a8ff34dd68efa2e402270537e30b1a449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff34dd68efa2e402270537e30b1a449">◆ </a></span>psc_flags() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; size_t &gt; &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::psc_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> </td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets cells with a given <code>PSC_flag</code> in any dimension <em>in the current sub chain complex</em>. </p>
+<p>The function returns a vector containing, for each dimension, the vector of cells with a given <code>PSC_flag</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>PSC_flag to select. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#af587fe4c0d33297c453f3db6d77322ca">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="acb98029b303651a4cb465eb91f2a9793" name="acb98029b303651a4cb465eb91f2a9793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb98029b303651a4cb465eb91f2a9793">◆ </a></span>psc_flags() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::psc_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996">PSC_flag</a> </td>
+          <td class="paramname"><em>flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets cells with a given <code>PSC_flag</code> in dimension <code>q</code> <em>in the current sub chain complex</em>. </p>
+<p>The function returns the vector of cells of dimension <code>q</code> with a given <code>PSC_flag</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>PSC_flag to select. </td></tr>
+    <tr><td class="paramname">q</td><td>Dimension visited. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__core.html#af03ff1ec630c465691253e9b5ce23bf8">CGAL::Homological_discrete_vector_field::Hdvf_core&lt; ChainComplex, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a246cc977ba7ebe880174a5efe5e6be8c" name="a246cc977ba7ebe880174a5efe5e6be8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a246cc977ba7ebe880174a5efe5e6be8c">◆ </a></span>psc_labels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; int &gt; &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::psc_labels </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exports primary/secondary/critical labels <em>of the current sub chain complex</em> for vtk export. </p>
+<p>The method exports the labels of every cells in each dimension.</p>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing, for each dimension, the vector of labels by cell index. </dd></dl>
+
+</div>
+</div>
+<a id="a8bcf667eafbbeffa4aeb92c47b76aa5e" name="a8bcf667eafbbeffa4aeb92c47b76aa5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bcf667eafbbeffa4aeb92c47b76aa5e">◆ </a></span>set_mask_K()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::set_mask_K </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the current sub chain complex masks over <code>K</code>. </p>
+<p>Further <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> computations will be restricted to <code>K</code> (ie. computation of reduced homology). </p>
+
+</div>
+</div>
+<a id="ad39bb1beff18c421d58f845f49678b88" name="ad39bb1beff18c421d58f845f49678b88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad39bb1beff18c421d58f845f49678b88">◆ </a></span>set_mask_L_K()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">CGAL::Homological_discrete_vector_field::Hdvf_duality</a>&lt; ChainComplex &gt;::set_mask_L_K </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the current sub chain complex masks over <code>L-K</code>. </p>
+<p>Further <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> computations will be restricted to <code>L-K</code> (ie. computation of reduced homology). </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">Homological_discrete_vector_field</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html">Hdvf_duality</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+
+</html>

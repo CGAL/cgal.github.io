@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Surface_mesh_simplification/classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Triangulated Surface Mesh Simplification: CGAL::Surface_mesh_simplification::GarlandHeckbert_plane_and_line_policies&lt; TriangleMesh, GeomTraits &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Triangulated Surface Mesh Simplification
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Surface_mesh_simplification::GarlandHeckbert_plane_and_line_policies&lt; TriangleMesh, GeomTraits &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgSurfaceMeshSimplificationRef.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Surface_mesh_simplification/Policies/Edge_collapse/GarlandHeckbert_plane_and_line_policies.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename TriangleMesh, typename GeomTraits&gt;<br>
+class CGAL::Surface_mesh_simplification::GarlandHeckbert_plane_and_line_policies&lt; TriangleMesh, GeomTraits &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html" title="The class GarlandHeckbert_plane_and_line_policies regroups the cost and placement policies based on t...">GarlandHeckbert_plane_and_line_policies</a></code> regroups the cost and placement policies based on the Garland-Heckbert "Plane and line" strategy of Liu and colleagues <a class="el" href="citelist.html#CITEREF_liu2025linequadrics">[6]</a>. </p>
+<p>This policy enhances the original Garland-Heckbert quadric error metrics by adding to the cost the distance to the line passing through the input vertices and aligned with their normals. Compared to the "classic" plane strategy, this strategy improves the speed and the quality of the result (see Section <a class="el" href="index.html#SurfaceMeshSimplificationGarlandHeckbertStrategy">Garland-Heckbert Cost and Placement Strategy</a>).</p>
+<dl class="section note"><dt>Note</dt><dd>Both the cost and the placement policies must be used together as they internally use and share information associating quadrics to vertices. Note however, that they may still be wrapped with behavior-modifying classes such as <code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1Constrained__placement.html" title="The class Constrained_placement is a model for the concept GetPlacement.">Constrained_placement</a></code> or <code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1Bounded__normal__change__placement.html">Bounded_normal_change_placement</a></code>.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>is the type of surface mesh being simplified, and must be a model of the <code><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></code> and <code><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></code> concepts. </td></tr>
+    <tr><td class="paramname">GeomTraits</td><td>must be a model of <code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code>. If you have passed a traits class in the optional named parameters in the call to <code><a class="el" href="group__PkgSurfaceMeshSimplificationRef.html#ga9efb9a78f5138d74ed6e456e6190a99a" title="Simplifies tmesh in-place by collapsing edges, and returns the number of edges effectively removed.">edge_collapse()</a></code>, the types must be identical.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>These policies depend on the third party <a class="elRef" href="../Manual/thirdparty.html#thirdpartyEigen">Eigen</a> library.</p>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgSurfaceMeshSimplificationRef.html#ga3f012cf5dc52d6e5ac2aea1106e4cad7" title="This class is an alias for the current state-of-the-art Garland-Heckbert policies (see Section Garlan...">GarlandHeckbert_policies</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__policies.html" title="The class GarlandHeckbert_plane_policies regroups the cost and placement policies based on the Garlan...">GarlandHeckbert_plane_policies</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__probabilistic__plane__policies.html" title="The class GarlandHeckbert_probabilistic_plane_policies regroups the cost and placement policies based...">GarlandHeckbert_probabilistic_plane_policies</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__triangle__policies.html" title="The class GarlandHeckbert_triangle_policies regroups the cost and placement policies using the triang...">GarlandHeckbert_triangle_policies</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__probabilistic__triangle__policies.html" title="The class GarlandHeckbert_probabilistic_triangle_policies regroups the cost and placement policies ba...">GarlandHeckbert_probabilistic_triangle_policies</a></code> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a348af4bc5d13f48785cbfb5fa459c329"><td class="memItemLeft" align="right" valign="top"><a id="a348af4bc5d13f48785cbfb5fa459c329" name="a348af4bc5d13f48785cbfb5fa459c329"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Get_cost</b></td></tr>
+<tr class="memdesc:a348af4bc5d13f48785cbfb5fa459c329"><td class="mdescLeft"> </td><td class="mdescRight">The type of the Garland-Heckbert cost functor, a model of the concept <code><a class="el" href="classGetCost.html" title="The concept GetCost describes the requirements for the policy function object which gets the collapse...">GetCost</a></code> <br></td></tr>
+<tr class="separator:a348af4bc5d13f48785cbfb5fa459c329"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3c9ccef1f9e8ebba27fd20119b20a268"><td class="memItemLeft" align="right" valign="top"><a id="a3c9ccef1f9e8ebba27fd20119b20a268" name="a3c9ccef1f9e8ebba27fd20119b20a268"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Get_placement</b></td></tr>
+<tr class="memdesc:a3c9ccef1f9e8ebba27fd20119b20a268"><td class="mdescLeft"> </td><td class="mdescRight">The type of the Garland-Heckbert placement functor, a model of the concept <code><a class="el" href="classGetPlacement.html" title="The concept GetPlacement describes the requirements for the policy function object which gets the col...">GetPlacement</a></code> <br></td></tr>
+<tr class="separator:a3c9ccef1f9e8ebba27fd20119b20a268"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Creation</h2></td></tr>
+<tr class="memitem:ad872ff8a39b60231a81ad29a60cf62a5"><td class="memTemplParams" colspan="2">template&lt;typename NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ad872ff8a39b60231a81ad29a60cf62a5"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html#ad872ff8a39b60231a81ad29a60cf62a5">GarlandHeckbert_plane_and_line_policies</a> (TriangleMesh &amp;tmesh, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ad872ff8a39b60231a81ad29a60cf62a5"><td class="mdescLeft"> </td><td class="mdescRight">initializes the Garland-Heckbert plane and line policies.  <br></td></tr>
+<tr class="separator:ad872ff8a39b60231a81ad29a60cf62a5"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Accessors</h2></td></tr>
+<tr class="memitem:a4793c757b5a2eb220b3c736bf17d35d2"><td class="memItemLeft" align="right" valign="top"><a id="a4793c757b5a2eb220b3c736bf17d35d2" name="a4793c757b5a2eb220b3c736bf17d35d2"></a>
+const <a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html#a348af4bc5d13f48785cbfb5fa459c329">Get_cost</a> &amp; </td><td class="memItemRight" valign="bottom"><b>get_cost</b> () const</td></tr>
+<tr class="separator:a4793c757b5a2eb220b3c736bf17d35d2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aabd1a4a1e68e1e21df6a9037661f5f9f"><td class="memItemLeft" align="right" valign="top"><a id="aabd1a4a1e68e1e21df6a9037661f5f9f" name="aabd1a4a1e68e1e21df6a9037661f5f9f"></a>
+const <a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html#a3c9ccef1f9e8ebba27fd20119b20a268">Get_placement</a> &amp; </td><td class="memItemRight" valign="bottom"><b>get_placement</b> () const</td></tr>
+<tr class="separator:aabd1a4a1e68e1e21df6a9037661f5f9f"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad872ff8a39b60231a81ad29a60cf62a5" name="ad872ff8a39b60231a81ad29a60cf62a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad872ff8a39b60231a81ad29a60cf62a5">◆ </a></span>GarlandHeckbert_plane_and_line_policies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh , typename GeomTraits &gt; </div>
+<div class="memtemplate">
+template&lt;typename NamedParameters  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html">CGAL::Surface_mesh_simplification::GarlandHeckbert_plane_and_line_policies</a>&lt; TriangleMesh, GeomTraits &gt;::GarlandHeckbert_plane_and_line_policies </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp; </td>
+          <td class="paramname"><em>tmesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initializes the Garland-Heckbert plane and line policies. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tmesh</td><td>the triangle mesh </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_normal_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating to each vertex of <code>tmesh</code> a normal direction for that vertex </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Vector__3.html">Vector_3</a></code> as value type </li>
+<li>
+<b>Default: </b>an internal map filled using <code><a class="elRef" href="../Polygon_mesh_processing/group__PMP__normal__grp.html#ga74e6b247d7e28beb677076aad5614d8c">CGAL::Polygon_mesh_processing::compute_vertex_normals</a></code> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>discontinuity_multiplier</b> </button> <div class="content"><ul>
+<li>
+a multiplier of the error value for boundary edges to preserve the boundaries </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b>100 </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>line_policies_weight</b> </button> <div class="content"><ul>
+<li>
+a value that defines the weight of the line policies compared to the plane policies </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b>0.01 </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Surface__mesh__simplification.html">Surface_mesh_simplification</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Surface__mesh__simplification_1_1GarlandHeckbert__plane__and__line__policies.html">GarlandHeckbert_plane_and_line_policies</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

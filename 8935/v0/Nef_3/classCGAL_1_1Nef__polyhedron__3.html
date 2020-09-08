@@ -1,0 +1,1018 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Nef_3/classCGAL_1_1Nef__polyhedron__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 3D Boolean Operations on Nef Polyhedra: CGAL::Nef_polyhedron_3&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 3D Boolean Operations on Nef Polyhedra
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Nef__polyhedron__3.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Nef__polyhedron__3-members.html">List of all members</a> |
+<a href="#nested-classes">Classes</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Nef_polyhedron_3&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgNef3Ref.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Nef_polyhedron_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class NefPolyhedronTraits_3, class NefPolyhedronItems_3 = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt;<br>
+class CGAL::Nef_polyhedron_3&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;</div><p>A 3D Nef polyhedron is a subset of the 3-dimensional space that is the result of forming complements and intersections starting from a finite set <code>H</code> of 3-dimensional halfspaces. </p>
+<p>Nef polyhedra are closed under all binary set operations, i.e., intersection, union, difference, complement, and under the topological operations boundary, closure, and interior.</p>
+<p>A 3D Nef polyhedron can be represented by the local pyramids of the minimal elements of its incidence structure. Without going into to much detail, a local pyramid essentially reflects the topologic and geometric situation at a certain location in a point set. For finite polyhedra the minimal elements of the incidence structure are vertices only. This means, that it suffices to model the topological and geometric situation of the vertices. For 3D Nef polyhedra, the local pyramid of a vertex is represented by a planar Nef polyhedra embedded on a sphere.</p>
+<p>A <code><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html" title="A 3D Nef polyhedron is a subset of the 3-dimensional space that is the result of forming complements ...">Nef_polyhedron_3</a></code> consists of vertices <em>V</em>, a sphere map for each vertex in <em>V</em>, edges <em>E</em>, facets <em>F</em>, volumes <em>C</em>, a mark for every item, and an incidence relation on them. Each edge and each facet is represented by two halfedges or two halffacets, respectively.</p>
+<p><b>Template Parameters</b><br>
+</p>
+<p>The first parameter requires one of the following exact kernels: <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Homogeneous.html">Homogeneous</a></code>, <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Simple__homogeneous.html">Simple_homogeneous</a></code>, <code><a class="elRef" href="../Nef_2/classCGAL_1_1Extended__homogeneous.html">Extended_homogeneous</a></code> parametrized with <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpz.html">Gmpz</a></code>, <code><a class="elRef" href="../Number_types/classleda__integer.html">leda_integer</a></code> or any other number type modeling \(\mathbb{Z}\), or <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Cartesian.html">Cartesian</a></code>, <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">Simple_cartesian</a></code>, <code><a class="elRef" href="../Nef_2/classCGAL_1_1Extended__cartesian.html">Extended_cartesian</a></code> parametrized with <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">Gmpq</a></code>, <code><a class="elRef" href="../Number_types/classleda__rational.html">leda_rational</a></code>, <code><a class="elRef" href="../Number_types/classCGAL_1_1Quotient.html">Quotient</a>&lt;<a class="elRef" href="../Number_types/classCGAL_1_1Gmpz.html">Gmpz</a>&gt;</code> or any other number type modeling \(\mathbb{Q}\).</p>
+<p>The second parameter and the third parameter are for future considerations. Neither <code>NefPolyhedronItems_3</code> nor <code>Nef_polyhedronMarks</code> is specified, yet. Do not use any other than the default types for these two template parameters.</p>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Vertex.html" title="A vertex is a point in the 3-dimensional space.">CGAL::Nef_polyhedron_3::Vertex</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halfedge.html" title="A Halfedge has a double meaning.">CGAL::Nef_polyhedron_3::Halfedge</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halffacet.html" title="A halffacet is an oriented, rectilinear bounded part of a plane.">CGAL::Nef_polyhedron_3::Halffacet</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Volume.html" title="A volume is a full-dimensional connected point set in .">CGAL::Nef_polyhedron_3::Volume</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SHalfedge.html" title="A shalfedge is a great arc on a sphere map.">CGAL::Nef_polyhedron_3::SHalfedge</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SHalfloop.html" title="A shalfloop is a great circle on a sphere map.">CGAL::Nef_polyhedron_3::SHalfloop</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SFace.html" title="An sface is described by its boundaries.">CGAL::Nef_polyhedron_3::SFace</a></code> </dd>
+<dd>
+<code><a class="elRef" href="../Nef_S2/classCGAL_1_1Nef__polyhedron__S2.html">CGAL::Nef_polyhedron_S2</a>&lt;Traits&gt;</code> </dd>
+<dd>
+<code><a class="elRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a>&lt;Traits&gt;</code> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Nef_3_2comparison_8cpp-example.html#_a2">Nef_3/comparison.cpp</a>, <a class="el" href="Nef_3_2complex_construction_8cpp-example.html#_a1">Nef_3/complex_construction.cpp</a>, <a class="el" href="Nef_3_2draw_nef_3_8cpp-example.html#_a2">Nef_3/draw_nef_3.cpp</a>, <a class="el" href="Nef_3_2exploration_SM_8cpp-example.html#_a1">Nef_3/exploration_SM.cpp</a>, <a class="el" href="Nef_3_2extended_kernel_8cpp-example.html#_a2">Nef_3/extended_kernel.cpp</a>, <a class="el" href="Nef_3_2handling_double_coordinates_8cpp-example.html#_a2">Nef_3/handling_double_coordinates.cpp</a>, <a class="el" href="Nef_3_2interface_polyhedron_8cpp-example.html#_a2">Nef_3/interface_polyhedron.cpp</a>, <a class="el" href="Nef_3_2nefIO_8cpp-example.html#_a3">Nef_3/nefIO.cpp</a>, <a class="el" href="Nef_3_2nef_3_construction_8cpp-example.html#_a1">Nef_3/nef_3_construction.cpp</a>, <a class="el" href="Nef_3_2nef_3_point_location_8cpp-example.html#_a1">Nef_3/nef_3_point_location.cpp</a>, <a class="el" href="Nef_3_2nef_3_simple_8cpp-example.html#_a1">Nef_3/nef_3_simple.cpp</a>, <a class="el" href="Nef_3_2nef_3_to_surface_mesh_8cpp-example.html#_a3">Nef_3/nef_3_to_surface_mesh.cpp</a>, <a class="el" href="Nef_3_2offIO_8cpp-example.html#_a3">Nef_3/offIO.cpp</a>, <a class="el" href="Nef_3_2point_set_operations_8cpp-example.html#_a1">Nef_3/point_set_operations.cpp</a>, <a class="el" href="Nef_3_2polyline_construction_8cpp-example.html#_a3">Nef_3/polyline_construction.cpp</a>, <a class="el" href="Nef_3_2set_operations_8cpp-example.html#_a2">Nef_3/set_operations.cpp</a>, <a class="el" href="Nef_3_2shell_exploration_8cpp-example.html#_a1">Nef_3/shell_exploration.cpp</a>, <a class="el" href="Nef_3_2topological_operations_8cpp-example.html#_a2">Nef_3/topological_operations.cpp</a>, and <a class="el" href="Nef_3_2transformation_8cpp-example.html#_a1">Nef_3/transformation.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halfedge.html">Halfedge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">A <a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halfedge.html" title="A Halfedge has a double meaning.">Halfedge</a> has a double meaning.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1Halfedge.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halffacet.html">Halffacet</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">A halffacet is an oriented, rectilinear bounded part of a plane.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1Halffacet.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halffacet__cycle__iterator.html">Halffacet_cycle_iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The type <code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Halffacet__cycle__iterator.html" title="The type Halffacet_cycle_iterator iterates over a list of Object_handles.">Halffacet_cycle_iterator</a></code> iterates over a list of <code>Object_handles</code>.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1Halffacet__cycle__iterator.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SFace.html">SFace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">An sface is described by its boundaries.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1SFace.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SFace__cycle__iterator.html">SFace_cycle_iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The type <code><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SFace__cycle__iterator.html" title="The type SFace_cycle_iterator iterates over a list of Object_handles.">SFace_cycle_iterator</a></code> iterates over a list of <code>Object_handles</code>.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1SFace__cycle__iterator.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SHalfedge.html">SHalfedge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">A shalfedge is a great arc on a sphere map.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1SHalfedge.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1SHalfloop.html">SHalfloop</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">A shalfloop is a great circle on a sphere map.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1SHalfloop.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Vertex.html">Vertex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">A vertex is a point in the 3-dimensional space.  <a href="classCGAL_1_1Nef__polyhedron__3_1_1Vertex.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3_1_1Volume.html">Volume</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">A volume is a full-dimensional connected point set in \( \mathbb{R}^3\).  <a href="classCGAL_1_1Nef__polyhedron__3_1_1Volume.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr class="memitem:a633628c79ae6839428de5704e69b1cf3"><td class="memItemLeft" align="right" valign="top">enum  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3">Boundary</a> { <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3a88a3c9093ce810d29a43edea617afd6e">EXCLUDED</a>
+, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3a933fde8ba3b0d793b3da01d4d538eb3f">INCLUDED</a>
+ }</td></tr>
+<tr class="memdesc:a633628c79ae6839428de5704e69b1cf3"><td class="mdescLeft"> </td><td class="mdescRight">construction selection.  <a href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3">More...</a><br></td></tr>
+<tr class="separator:a633628c79ae6839428de5704e69b1cf3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a29ea7a3eb633b6b5a8b46b3a76c4126f"><td class="memItemLeft" align="right" valign="top">enum  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126f">Content</a> { <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126fa71630cf8d513010994bf1053babefd8f">EMPTY</a>
+, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126facf5a8280c9b4f417e6194a6e27f3a39d">COMPLETE</a>
+ }</td></tr>
+<tr class="memdesc:a29ea7a3eb633b6b5a8b46b3a76c4126f"><td class="mdescLeft"> </td><td class="mdescRight">construction selection.  <a href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126f">More...</a><br></td></tr>
+<tr class="separator:a29ea7a3eb633b6b5a8b46b3a76c4126f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a096557e7a2baaece098dc0ce836b2143"><td class="memItemLeft" align="right" valign="top">enum  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143">Intersection_mode</a> { <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143aa7a1e78ba9fc0b0b7d6c958a0c145224">CLOSED_HALFSPACE</a>
+, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143af2479cddaec2711cb4dc996e205b17f3">OPEN_HALFSPACE</a>
+, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143a7232f3e350a77b6c1f3d514a885995cc">PLANE_ONLY</a>
+ }</td></tr>
+<tr class="memdesc:a096557e7a2baaece098dc0ce836b2143"><td class="mdescLeft"> </td><td class="mdescRight">intersection selection.  <a href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143">More...</a><br></td></tr>
+<tr class="separator:a096557e7a2baaece098dc0ce836b2143"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae119a424f2b9b50e1487bd9e3982f14a"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ae119a424f2b9b50e1487bd9e3982f14a">Mark</a></td></tr>
+<tr class="memdesc:ae119a424f2b9b50e1487bd9e3982f14a"><td class="mdescLeft"> </td><td class="mdescRight">All object (vertices, edges, etc.) are attributed by a Mark.  <br></td></tr>
+<tr class="separator:ae119a424f2b9b50e1487bd9e3982f14a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a479a2a94ad62a3c0143c2bcaf819cbc8"><td class="memItemLeft" align="right" valign="top"><a id="a479a2a94ad62a3c0143c2bcaf819cbc8" name="a479a2a94ad62a3c0143c2bcaf819cbc8"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
+<tr class="memdesc:a479a2a94ad62a3c0143c2bcaf819cbc8"><td class="mdescLeft"> </td><td class="mdescRight">size type of <code><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html" title="A 3D Nef polyhedron is a subset of the 3-dimensional space that is the result of forming complements ...">Nef_polyhedron_3</a></code>. <br></td></tr>
+<tr class="separator:a479a2a94ad62a3c0143c2bcaf819cbc8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5fb6464780e6b05d1484919bbe3c6099"><td class="memItemLeft" align="right" valign="top"><a id="a5fb6464780e6b05d1484919bbe3c6099" name="a5fb6464780e6b05d1484919bbe3c6099"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Vertex_const_handle</b></td></tr>
+<tr class="memdesc:a5fb6464780e6b05d1484919bbe3c6099"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a vertex. <br></td></tr>
+<tr class="separator:a5fb6464780e6b05d1484919bbe3c6099"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5038dc62dff53640e37a85f4cf4b3f22"><td class="memItemLeft" align="right" valign="top"><a id="a5038dc62dff53640e37a85f4cf4b3f22" name="a5038dc62dff53640e37a85f4cf4b3f22"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Halfedge_const_handle</b></td></tr>
+<tr class="memdesc:a5038dc62dff53640e37a85f4cf4b3f22"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a halfedge. <br></td></tr>
+<tr class="separator:a5038dc62dff53640e37a85f4cf4b3f22"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2f797a6102039fe8485a7de970cb0361"><td class="memItemLeft" align="right" valign="top"><a id="a2f797a6102039fe8485a7de970cb0361" name="a2f797a6102039fe8485a7de970cb0361"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Halffacet_const_handle</b></td></tr>
+<tr class="memdesc:a2f797a6102039fe8485a7de970cb0361"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a halffacet. <br></td></tr>
+<tr class="separator:a2f797a6102039fe8485a7de970cb0361"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2fb14a0d2decd9c47f8db356554b04c3"><td class="memItemLeft" align="right" valign="top"><a id="a2fb14a0d2decd9c47f8db356554b04c3" name="a2fb14a0d2decd9c47f8db356554b04c3"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Volume_const_handle</b></td></tr>
+<tr class="memdesc:a2fb14a0d2decd9c47f8db356554b04c3"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a volume. <br></td></tr>
+<tr class="separator:a2fb14a0d2decd9c47f8db356554b04c3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4ef1f3f623c03bf11b62598591ca8f1f"><td class="memItemLeft" align="right" valign="top"><a id="a4ef1f3f623c03bf11b62598591ca8f1f" name="a4ef1f3f623c03bf11b62598591ca8f1f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SVertex_const_handle</b></td></tr>
+<tr class="memdesc:a4ef1f3f623c03bf11b62598591ca8f1f"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a svertex. <br></td></tr>
+<tr class="separator:a4ef1f3f623c03bf11b62598591ca8f1f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3bdbc71e07b43aa5b94439153899f986"><td class="memItemLeft" align="right" valign="top"><a id="a3bdbc71e07b43aa5b94439153899f986" name="a3bdbc71e07b43aa5b94439153899f986"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfedge_const_handle</b></td></tr>
+<tr class="memdesc:a3bdbc71e07b43aa5b94439153899f986"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a shalfedge. <br></td></tr>
+<tr class="separator:a3bdbc71e07b43aa5b94439153899f986"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9d17bd4761365e47b72a8cdcea8a792e"><td class="memItemLeft" align="right" valign="top"><a id="a9d17bd4761365e47b72a8cdcea8a792e" name="a9d17bd4761365e47b72a8cdcea8a792e"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfloop_const_handle</b></td></tr>
+<tr class="memdesc:a9d17bd4761365e47b72a8cdcea8a792e"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a shalfloop. <br></td></tr>
+<tr class="separator:a9d17bd4761365e47b72a8cdcea8a792e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abb6647d621b9d2ba4996f44abef38d63"><td class="memItemLeft" align="right" valign="top"><a id="abb6647d621b9d2ba4996f44abef38d63" name="abb6647d621b9d2ba4996f44abef38d63"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SFace_const_handle</b></td></tr>
+<tr class="memdesc:abb6647d621b9d2ba4996f44abef38d63"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable handle to a sface. <br></td></tr>
+<tr class="separator:abb6647d621b9d2ba4996f44abef38d63"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab494c467313f96a3d4e20fabc36bed56"><td class="memItemLeft" align="right" valign="top"><a id="ab494c467313f96a3d4e20fabc36bed56" name="ab494c467313f96a3d4e20fabc36bed56"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Vertex_const_iterator</b></td></tr>
+<tr class="memdesc:ab494c467313f96a3d4e20fabc36bed56"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all vertices. <br></td></tr>
+<tr class="separator:ab494c467313f96a3d4e20fabc36bed56"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a690f6552e8f570708dc56d50e70c9230"><td class="memItemLeft" align="right" valign="top"><a id="a690f6552e8f570708dc56d50e70c9230" name="a690f6552e8f570708dc56d50e70c9230"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Halfedge_const_iterator</b></td></tr>
+<tr class="memdesc:a690f6552e8f570708dc56d50e70c9230"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all halfeges. <br></td></tr>
+<tr class="separator:a690f6552e8f570708dc56d50e70c9230"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae9a4add4e5173fee74e3c081508fe461"><td class="memItemLeft" align="right" valign="top"><a id="ae9a4add4e5173fee74e3c081508fe461" name="ae9a4add4e5173fee74e3c081508fe461"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Halffacet_const_iterator</b></td></tr>
+<tr class="memdesc:ae9a4add4e5173fee74e3c081508fe461"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all halffacets. <br></td></tr>
+<tr class="separator:ae9a4add4e5173fee74e3c081508fe461"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9f68342cc6c8a70f99a9e985f60b01c5"><td class="memItemLeft" align="right" valign="top"><a id="a9f68342cc6c8a70f99a9e985f60b01c5" name="a9f68342cc6c8a70f99a9e985f60b01c5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Volume_const_iterator</b></td></tr>
+<tr class="memdesc:a9f68342cc6c8a70f99a9e985f60b01c5"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all volumes. <br></td></tr>
+<tr class="separator:a9f68342cc6c8a70f99a9e985f60b01c5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aacf3af7c16e802421f1b05e84ee7fcb7"><td class="memItemLeft" align="right" valign="top"><a id="aacf3af7c16e802421f1b05e84ee7fcb7" name="aacf3af7c16e802421f1b05e84ee7fcb7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SVertex_const_iterator</b></td></tr>
+<tr class="memdesc:aacf3af7c16e802421f1b05e84ee7fcb7"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all svertices. <br></td></tr>
+<tr class="separator:aacf3af7c16e802421f1b05e84ee7fcb7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4886bf715c230bb4bb18dc5ad05ccd3d"><td class="memItemLeft" align="right" valign="top"><a id="a4886bf715c230bb4bb18dc5ad05ccd3d" name="a4886bf715c230bb4bb18dc5ad05ccd3d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfedge_const_iterator</b></td></tr>
+<tr class="memdesc:a4886bf715c230bb4bb18dc5ad05ccd3d"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all shalfedges. <br></td></tr>
+<tr class="separator:a4886bf715c230bb4bb18dc5ad05ccd3d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8d38170c698e9118b8400a95e1d8b16d"><td class="memItemLeft" align="right" valign="top"><a id="a8d38170c698e9118b8400a95e1d8b16d" name="a8d38170c698e9118b8400a95e1d8b16d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfloop_const_iterator</b></td></tr>
+<tr class="memdesc:a8d38170c698e9118b8400a95e1d8b16d"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all shalfloops. <br></td></tr>
+<tr class="separator:a8d38170c698e9118b8400a95e1d8b16d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac7c36ad9f74b6c1c7ba7c8bda297dd18"><td class="memItemLeft" align="right" valign="top"><a id="ac7c36ad9f74b6c1c7ba7c8bda297dd18" name="ac7c36ad9f74b6c1c7ba7c8bda297dd18"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SFace_const_iterator</b></td></tr>
+<tr class="memdesc:ac7c36ad9f74b6c1c7ba7c8bda297dd18"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over all sfaces. <br></td></tr>
+<tr class="separator:ac7c36ad9f74b6c1c7ba7c8bda297dd18"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a02e85fa99e1f20e82186693241435421"><td class="memItemLeft" align="right" valign="top"><a id="a02e85fa99e1f20e82186693241435421" name="a02e85fa99e1f20e82186693241435421"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfedge_around_svertex_const_circulator</b></td></tr>
+<tr class="memdesc:a02e85fa99e1f20e82186693241435421"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable circulator of shalfedges around a svertex (cw). <br></td></tr>
+<tr class="separator:a02e85fa99e1f20e82186693241435421"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa9d9008e7c1aec48a70f4d79514d7bdf"><td class="memItemLeft" align="right" valign="top"><a id="aa9d9008e7c1aec48a70f4d79514d7bdf" name="aa9d9008e7c1aec48a70f4d79514d7bdf"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfedge_around_sface_const_circulator</b></td></tr>
+<tr class="memdesc:aa9d9008e7c1aec48a70f4d79514d7bdf"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable circulator of shalfedges around a sface (ccw). <br></td></tr>
+<tr class="separator:aa9d9008e7c1aec48a70f4d79514d7bdf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a085a46ac68fd05a0988c6141eb25486c"><td class="memItemLeft" align="right" valign="top"><a id="a085a46ac68fd05a0988c6141eb25486c" name="a085a46ac68fd05a0988c6141eb25486c"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SHalfedge_around_facet_const_circulator</b></td></tr>
+<tr class="memdesc:a085a46ac68fd05a0988c6141eb25486c"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable circulator of shalfedges around a halffacet (ccw). <br></td></tr>
+<tr class="separator:a085a46ac68fd05a0988c6141eb25486c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a09ab89a5f78e6aefc6a83ed808fbc7be"><td class="memItemLeft" align="right" valign="top"><a id="a09ab89a5f78e6aefc6a83ed808fbc7be" name="a09ab89a5f78e6aefc6a83ed808fbc7be"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>SFace_cycle_const_iterator</b></td></tr>
+<tr class="memdesc:a09ab89a5f78e6aefc6a83ed808fbc7be"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over the cycles of a sface. <br></td></tr>
+<tr class="separator:a09ab89a5f78e6aefc6a83ed808fbc7be"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6635aedf89c77bc71a3fca10ac78a19d"><td class="memItemLeft" align="right" valign="top"><a id="a6635aedf89c77bc71a3fca10ac78a19d" name="a6635aedf89c77bc71a3fca10ac78a19d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Halffacet_cycle_const_iterator</b></td></tr>
+<tr class="memdesc:a6635aedf89c77bc71a3fca10ac78a19d"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator over the cycles of a halffacet. <br></td></tr>
+<tr class="separator:a6635aedf89c77bc71a3fca10ac78a19d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9bfc6de3174565c3ef2d7d727035904b"><td class="memItemLeft" align="right" valign="top"><a id="a9bfc6de3174565c3ef2d7d727035904b" name="a9bfc6de3174565c3ef2d7d727035904b"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Shell_entry_const_iterator</b></td></tr>
+<tr class="memdesc:a9bfc6de3174565c3ef2d7d727035904b"><td class="mdescLeft"> </td><td class="mdescRight">non-mutable iterator providing an entry to each shell. <br></td></tr>
+<tr class="separator:a9bfc6de3174565c3ef2d7d727035904b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab540beccfc025bc86af032d69e43ba49"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ab540beccfc025bc86af032d69e43ba49">Object_handle</a></td></tr>
+<tr class="memdesc:ab540beccfc025bc86af032d69e43ba49"><td class="mdescLeft"> </td><td class="mdescRight">a generic handle to an object.  <br></td></tr>
+<tr class="separator:ab540beccfc025bc86af032d69e43ba49"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2f93728fc4335954f6f0c4d7fb1ec23a"><td class="memItemLeft" align="right" valign="top"><a id="a2f93728fc4335954f6f0c4d7fb1ec23a" name="a2f93728fc4335954f6f0c4d7fb1ec23a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Point_3</b></td></tr>
+<tr class="memdesc:a2f93728fc4335954f6f0c4d7fb1ec23a"><td class="mdescLeft"> </td><td class="mdescRight">location of vertices. <br></td></tr>
+<tr class="separator:a2f93728fc4335954f6f0c4d7fb1ec23a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1478b7258a82fd2c7dbecfe94c7fbb53"><td class="memItemLeft" align="right" valign="top"><a id="a1478b7258a82fd2c7dbecfe94c7fbb53" name="a1478b7258a82fd2c7dbecfe94c7fbb53"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Segment_3</b></td></tr>
+<tr class="memdesc:a1478b7258a82fd2c7dbecfe94c7fbb53"><td class="mdescLeft"> </td><td class="mdescRight">segment represented by a halfedge. <br></td></tr>
+<tr class="separator:a1478b7258a82fd2c7dbecfe94c7fbb53"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afcebf12d9d76f8c118a4bf8ad40ffe81"><td class="memItemLeft" align="right" valign="top"><a id="afcebf12d9d76f8c118a4bf8ad40ffe81" name="afcebf12d9d76f8c118a4bf8ad40ffe81"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Vector_3</b></td></tr>
+<tr class="memdesc:afcebf12d9d76f8c118a4bf8ad40ffe81"><td class="mdescLeft"> </td><td class="mdescRight">direction of a halfedge. <br></td></tr>
+<tr class="separator:afcebf12d9d76f8c118a4bf8ad40ffe81"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a65702bfea9e5ac373ee86853dc8cd90a"><td class="memItemLeft" align="right" valign="top"><a id="a65702bfea9e5ac373ee86853dc8cd90a" name="a65702bfea9e5ac373ee86853dc8cd90a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Plane_3</b></td></tr>
+<tr class="memdesc:a65702bfea9e5ac373ee86853dc8cd90a"><td class="mdescLeft"> </td><td class="mdescRight">plane of a halffacet lies in. <br></td></tr>
+<tr class="separator:a65702bfea9e5ac373ee86853dc8cd90a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a48e79610dcaeff066768f75055a66ccc"><td class="memItemLeft" align="right" valign="top"><a id="a48e79610dcaeff066768f75055a66ccc" name="a48e79610dcaeff066768f75055a66ccc"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Aff_transformation_3</b></td></tr>
+<tr class="memdesc:a48e79610dcaeff066768f75055a66ccc"><td class="mdescLeft"> </td><td class="mdescRight">affine transformation. <br></td></tr>
+<tr class="separator:a48e79610dcaeff066768f75055a66ccc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a573651c5ef33635f824c03d12bfeb9c8"><td class="memItemLeft" align="right" valign="top"><a id="a573651c5ef33635f824c03d12bfeb9c8" name="a573651c5ef33635f824c03d12bfeb9c8"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Polylines_tag</b></td></tr>
+<tr class="memdesc:a573651c5ef33635f824c03d12bfeb9c8"><td class="mdescLeft"> </td><td class="mdescRight">tag for calling polyline constructor. <br></td></tr>
+<tr class="separator:a573651c5ef33635f824c03d12bfeb9c8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a062f56b8bc37ae364aad302561d1622a"><td class="memItemLeft" align="right" valign="top"><a id="a062f56b8bc37ae364aad302561d1622a" name="a062f56b8bc37ae364aad302561d1622a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Points_tag</b></td></tr>
+<tr class="memdesc:a062f56b8bc37ae364aad302561d1622a"><td class="mdescLeft"> </td><td class="mdescRight">tag for calling point constructor. <br></td></tr>
+<tr class="separator:a062f56b8bc37ae364aad302561d1622a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4fe726ea591c64dd4569ba33afac09fd"><td class="memItemLeft" align="right" valign="top"><a id="a4fe726ea591c64dd4569ba33afac09fd" name="a4fe726ea591c64dd4569ba33afac09fd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Nef_polyhedron_S2</b></td></tr>
+<tr class="memdesc:a4fe726ea591c64dd4569ba33afac09fd"><td class="mdescLeft"> </td><td class="mdescRight">a sphere map. <br></td></tr>
+<tr class="separator:a4fe726ea591c64dd4569ba33afac09fd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae97a9578f8ea45a85f02ec8d8a9f36c4"><td class="memItemLeft" align="right" valign="top"><a id="ae97a9578f8ea45a85f02ec8d8a9f36c4" name="ae97a9578f8ea45a85f02ec8d8a9f36c4"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Polyhedron</b></td></tr>
+<tr class="memdesc:ae97a9578f8ea45a85f02ec8d8a9f36c4"><td class="mdescLeft"> </td><td class="mdescRight">a polyhedral surface. <br></td></tr>
+<tr class="separator:ae97a9578f8ea45a85f02ec8d8a9f36c4"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Creation</h2></td></tr>
+<tr class="memitem:ae32036f1c66bdd56862bead1079b587b"><td class="memItemLeft" align="right" valign="top"><a id="ae32036f1c66bdd56862bead1079b587b" name="ae32036f1c66bdd56862bead1079b587b"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Nef_polyhedron_3</b> (<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126f">Content</a> space=<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126fa71630cf8d513010994bf1053babefd8f">EMPTY</a>)</td></tr>
+<tr class="memdesc:ae32036f1c66bdd56862bead1079b587b"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron and initializes it to the empty set if <code>plane == EMPTY</code> and to the whole space if <code>space == COMPLETE</code>. <br></td></tr>
+<tr class="separator:ae32036f1c66bdd56862bead1079b587b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a99795c8e8e5a6971aeb2d719671485cb"><td class="memItemLeft" align="right" valign="top"><a id="a99795c8e8e5a6971aeb2d719671485cb" name="a99795c8e8e5a6971aeb2d719671485cb"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Nef_polyhedron_3</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a65702bfea9e5ac373ee86853dc8cd90a">Plane_3</a> &amp;p, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3">Boundary</a> b=<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3a933fde8ba3b0d793b3da01d4d538eb3f">INCLUDED</a>)</td></tr>
+<tr class="memdesc:a99795c8e8e5a6971aeb2d719671485cb"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron containing the halfspace on the negative side of <code>p</code> including <code>p</code> if <code>b==INCLUDED</code>, excluding <code>p</code> if <code>b==EXCLUDED</code>. <br></td></tr>
+<tr class="separator:a99795c8e8e5a6971aeb2d719671485cb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4651bb34bb877ecfcf4b5301b39bed14"><td class="memItemLeft" align="right" valign="top"><a id="a4651bb34bb877ecfcf4b5301b39bed14" name="a4651bb34bb877ecfcf4b5301b39bed14"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Nef_polyhedron_3</b> (<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ae97a9578f8ea45a85f02ec8d8a9f36c4">Polyhedron</a> &amp;P)</td></tr>
+<tr class="memdesc:a4651bb34bb877ecfcf4b5301b39bed14"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron, which represents the same point set as the polyhedral surface <code>P</code> does. <br></td></tr>
+<tr class="separator:a4651bb34bb877ecfcf4b5301b39bed14"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a64204f74cb11510157026dfdcc79af28"><td class="memTemplParams" colspan="2">template&lt;class PolygonMesh , class HalfedgeIndexMap , class FaceIndexMap &gt; </td></tr>
+<tr class="memitem:a64204f74cb11510157026dfdcc79af28"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a64204f74cb11510157026dfdcc79af28">Nef_polyhedron_3</a> (const PolygonMesh &amp;pm, const HalfedgeIndexMap &amp;him, const FaceIndexMap &amp;fim)</td></tr>
+<tr class="memdesc:a64204f74cb11510157026dfdcc79af28"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron, which represents the same point set as the polyhedral surface <code>pm</code> does.  <br></td></tr>
+<tr class="separator:a64204f74cb11510157026dfdcc79af28"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a413ef7ecafb28afc4c7fcb4de6a25439"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a413ef7ecafb28afc4c7fcb4de6a25439">Nef_polyhedron_3</a> (Input_iterator begin, Input_iterator end)</td></tr>
+<tr class="memdesc:a413ef7ecafb28afc4c7fcb4de6a25439"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron consisting of a single polygon spanned by the list of points in the iterator range <code>[begin,end)</code>.  <br></td></tr>
+<tr class="separator:a413ef7ecafb28afc4c7fcb4de6a25439"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a49b6f6400d573699304dbc39e75e7fd2"><td class="memTemplParams" colspan="2">template&lt;class Forward_iterator &gt; </td></tr>
+<tr class="memitem:a49b6f6400d573699304dbc39e75e7fd2"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a49b6f6400d573699304dbc39e75e7fd2">Nef_polyhedron_3</a> (Forward_iterator it, Forward_iterator end, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a573651c5ef33635f824c03d12bfeb9c8">Polylines_tag</a>)</td></tr>
+<tr class="memdesc:a49b6f6400d573699304dbc39e75e7fd2"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron consisting of polylines.  <br></td></tr>
+<tr class="separator:a49b6f6400d573699304dbc39e75e7fd2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a423dafdaf277f29d3e70f7596f139e84"><td class="memTemplParams" colspan="2">template&lt;class Forward_iterator &gt; </td></tr>
+<tr class="memitem:a423dafdaf277f29d3e70f7596f139e84"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a423dafdaf277f29d3e70f7596f139e84">Nef_polyhedron_3</a> (Forward_iterator it, Forward_iterator end, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a062f56b8bc37ae364aad302561d1622a">Points_tag</a>)</td></tr>
+<tr class="memdesc:a423dafdaf277f29d3e70f7596f139e84"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron that consists only of points.  <br></td></tr>
+<tr class="separator:a423dafdaf277f29d3e70f7596f139e84"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a76df8463a88c1e482da32f6ea998ecf1"><td class="memItemLeft" align="right" valign="top"><a id="a76df8463a88c1e482da32f6ea998ecf1" name="a76df8463a88c1e482da32f6ea998ecf1"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Nef_polyhedron_3</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a2f93728fc4335954f6f0c4d7fb1ec23a">Point_3</a> &amp;p)</td></tr>
+<tr class="memdesc:a76df8463a88c1e482da32f6ea998ecf1"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron that consists of point p. <br></td></tr>
+<tr class="separator:a76df8463a88c1e482da32f6ea998ecf1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adde0b45f3c2819c1b3e65e590d133a1c"><td class="memItemLeft" align="right" valign="top"><a id="adde0b45f3c2819c1b3e65e590d133a1c" name="adde0b45f3c2819c1b3e65e590d133a1c"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Nef_polyhedron_3</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a1478b7258a82fd2c7dbecfe94c7fbb53">Segment_3</a> &amp;s)</td></tr>
+<tr class="memdesc:adde0b45f3c2819c1b3e65e590d133a1c"><td class="mdescLeft"> </td><td class="mdescRight">creates a Nef polyhedron that consists of segment s. <br></td></tr>
+<tr class="separator:adde0b45f3c2819c1b3e65e590d133a1c"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Access Member Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following macros are provided: <code>CGAL_forall_vertices(v,N)</code>, <code>CGAL_forall_halfedges(e,N)</code>, <code>CGAL_forall_edges(e,N)</code>, <code>CGAL_forall_halffacets(f,N)</code>, <code>CGAL_forall_facets(f,N)</code>, <code>CGAL_forall_volumes(c,N)</code> where <code>N</code> is a <code><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html" title="A 3D Nef polyhedron is a subset of the 3-dimensional space that is the result of forming complements ...">Nef_polyhedron_3</a></code>. </p>
+</td></tr>
+<tr class="memitem:ad6c9c3c5bd06c8e8d19ff0646fc1a2c6"><td class="memItemLeft" align="right" valign="top"><a id="ad6c9c3c5bd06c8e8d19ff0646fc1a2c6" name="ad6c9c3c5bd06c8e8d19ff0646fc1a2c6"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_simple</b> () const</td></tr>
+<tr class="memdesc:ad6c9c3c5bd06c8e8d19ff0646fc1a2c6"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is a 2-manifold. <br></td></tr>
+<tr class="separator:ad6c9c3c5bd06c8e8d19ff0646fc1a2c6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9a9d88cab87b4a1fb8a56c9627d252d1"><td class="memItemLeft" align="right" valign="top"><a id="a9a9d88cab87b4a1fb8a56c9627d252d1" name="a9a9d88cab87b4a1fb8a56c9627d252d1"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_valid</b> () const</td></tr>
+<tr class="memdesc:a9a9d88cab87b4a1fb8a56c9627d252d1"><td class="mdescLeft"> </td><td class="mdescRight">checks the integrity of <code>N</code> . <br></td></tr>
+<tr class="separator:a9a9d88cab87b4a1fb8a56c9627d252d1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad02797cc6d89b50582843bb6f1e86bdf"><td class="memItemLeft" align="right" valign="top"><a id="ad02797cc6d89b50582843bb6f1e86bdf" name="ad02797cc6d89b50582843bb6f1e86bdf"></a>
+Size_type </td><td class="memItemRight" valign="bottom"><b>number_of_vertices</b> () const</td></tr>
+<tr class="memdesc:ad02797cc6d89b50582843bb6f1e86bdf"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of vertices. <br></td></tr>
+<tr class="separator:ad02797cc6d89b50582843bb6f1e86bdf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a86f640fb60fe7a73fc03bec020be82b8"><td class="memItemLeft" align="right" valign="top"><a id="a86f640fb60fe7a73fc03bec020be82b8" name="a86f640fb60fe7a73fc03bec020be82b8"></a>
+Size_type </td><td class="memItemRight" valign="bottom"><b>number_of_halfedges</b> () const</td></tr>
+<tr class="memdesc:a86f640fb60fe7a73fc03bec020be82b8"><td class="mdescLeft"> </td><td class="mdescRight">return the number of halfedges. <br></td></tr>
+<tr class="separator:a86f640fb60fe7a73fc03bec020be82b8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4979187f5b67e9a473be8e7232a5898b"><td class="memItemLeft" align="right" valign="top"><a id="a4979187f5b67e9a473be8e7232a5898b" name="a4979187f5b67e9a473be8e7232a5898b"></a>
+Size_type </td><td class="memItemRight" valign="bottom"><b>number_of_edges</b> () const</td></tr>
+<tr class="memdesc:a4979187f5b67e9a473be8e7232a5898b"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of halfedge pairs. <br></td></tr>
+<tr class="separator:a4979187f5b67e9a473be8e7232a5898b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad09be7ebffa94f2856bf672321f14f75"><td class="memItemLeft" align="right" valign="top"><a id="ad09be7ebffa94f2856bf672321f14f75" name="ad09be7ebffa94f2856bf672321f14f75"></a>
+Size_type </td><td class="memItemRight" valign="bottom"><b>number_of_halffacets</b> () const</td></tr>
+<tr class="memdesc:ad09be7ebffa94f2856bf672321f14f75"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of halffacets. <br></td></tr>
+<tr class="separator:ad09be7ebffa94f2856bf672321f14f75"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaa5df0aaa8b4e744f968f133d8b7bc19"><td class="memItemLeft" align="right" valign="top"><a id="aaa5df0aaa8b4e744f968f133d8b7bc19" name="aaa5df0aaa8b4e744f968f133d8b7bc19"></a>
+Size_type </td><td class="memItemRight" valign="bottom"><b>number_of_facets</b> () const</td></tr>
+<tr class="memdesc:aaa5df0aaa8b4e744f968f133d8b7bc19"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of halffacet pairs. <br></td></tr>
+<tr class="separator:aaa5df0aaa8b4e744f968f133d8b7bc19"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0139e35442c43c8249575a9b3aaf07f8"><td class="memItemLeft" align="right" valign="top"><a id="a0139e35442c43c8249575a9b3aaf07f8" name="a0139e35442c43c8249575a9b3aaf07f8"></a>
+Size_type </td><td class="memItemRight" valign="bottom"><b>number_of_volumes</b> () const</td></tr>
+<tr class="memdesc:a0139e35442c43c8249575a9b3aaf07f8"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of volumes. <br></td></tr>
+<tr class="separator:a0139e35442c43c8249575a9b3aaf07f8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acab9296b327ae6250602fb65143e474e"><td class="memItemLeft" align="right" valign="top"><a id="acab9296b327ae6250602fb65143e474e" name="acab9296b327ae6250602fb65143e474e"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ab494c467313f96a3d4e20fabc36bed56">Vertex_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>vertices_begin</b> () const</td></tr>
+<tr class="memdesc:acab9296b327ae6250602fb65143e474e"><td class="mdescLeft"> </td><td class="mdescRight">iterator over all vertices. <br></td></tr>
+<tr class="separator:acab9296b327ae6250602fb65143e474e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0a63ac91f86db5b6cc8ae5b51d23a529"><td class="memItemLeft" align="right" valign="top"><a id="a0a63ac91f86db5b6cc8ae5b51d23a529" name="a0a63ac91f86db5b6cc8ae5b51d23a529"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ab494c467313f96a3d4e20fabc36bed56">Vertex_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>vertices_end</b> () const</td></tr>
+<tr class="memdesc:a0a63ac91f86db5b6cc8ae5b51d23a529"><td class="mdescLeft"> </td><td class="mdescRight">past-the-end iterator. <br></td></tr>
+<tr class="separator:a0a63ac91f86db5b6cc8ae5b51d23a529"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a67b949a8eb4d6a8d237dbf4389b1f617"><td class="memItemLeft" align="right" valign="top"><a id="a67b949a8eb4d6a8d237dbf4389b1f617" name="a67b949a8eb4d6a8d237dbf4389b1f617"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a690f6552e8f570708dc56d50e70c9230">Halfedge_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>halfedges_begin</b> () const</td></tr>
+<tr class="memdesc:a67b949a8eb4d6a8d237dbf4389b1f617"><td class="mdescLeft"> </td><td class="mdescRight">iterator over all halfedges. <br></td></tr>
+<tr class="separator:a67b949a8eb4d6a8d237dbf4389b1f617"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa44e4759e9ef56a36007e7dd7d968a9b"><td class="memItemLeft" align="right" valign="top"><a id="aa44e4759e9ef56a36007e7dd7d968a9b" name="aa44e4759e9ef56a36007e7dd7d968a9b"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a690f6552e8f570708dc56d50e70c9230">Halfedge_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>halfedges_end</b> () const</td></tr>
+<tr class="memdesc:aa44e4759e9ef56a36007e7dd7d968a9b"><td class="mdescLeft"> </td><td class="mdescRight">past-the-end iterator. <br></td></tr>
+<tr class="separator:aa44e4759e9ef56a36007e7dd7d968a9b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6ba661a653f0dff57ec18e13b302954d"><td class="memItemLeft" align="right" valign="top"><a id="a6ba661a653f0dff57ec18e13b302954d" name="a6ba661a653f0dff57ec18e13b302954d"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ae9a4add4e5173fee74e3c081508fe461">Halffacet_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>halffacets_begin</b> () const</td></tr>
+<tr class="memdesc:a6ba661a653f0dff57ec18e13b302954d"><td class="mdescLeft"> </td><td class="mdescRight">iterator over all halffacets. <br></td></tr>
+<tr class="separator:a6ba661a653f0dff57ec18e13b302954d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ada913103ed7d83d797a6396cd3ba35e8"><td class="memItemLeft" align="right" valign="top"><a id="ada913103ed7d83d797a6396cd3ba35e8" name="ada913103ed7d83d797a6396cd3ba35e8"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ae9a4add4e5173fee74e3c081508fe461">Halffacet_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>halffacets_end</b> () const</td></tr>
+<tr class="memdesc:ada913103ed7d83d797a6396cd3ba35e8"><td class="mdescLeft"> </td><td class="mdescRight">past-the-end iterator. <br></td></tr>
+<tr class="separator:ada913103ed7d83d797a6396cd3ba35e8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ace48124363348299ce9f9d8c8165cd54"><td class="memItemLeft" align="right" valign="top"><a id="ace48124363348299ce9f9d8c8165cd54" name="ace48124363348299ce9f9d8c8165cd54"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a9f68342cc6c8a70f99a9e985f60b01c5">Volume_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>volumes_begin</b> () const</td></tr>
+<tr class="memdesc:ace48124363348299ce9f9d8c8165cd54"><td class="mdescLeft"> </td><td class="mdescRight">iterator over all volumes. <br></td></tr>
+<tr class="separator:ace48124363348299ce9f9d8c8165cd54"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7851821190cec6445e17d2492ac02238"><td class="memItemLeft" align="right" valign="top"><a id="a7851821190cec6445e17d2492ac02238" name="a7851821190cec6445e17d2492ac02238"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a9f68342cc6c8a70f99a9e985f60b01c5">Volume_const_iterator</a> </td><td class="memItemRight" valign="bottom"><b>volumes_end</b> () const</td></tr>
+<tr class="memdesc:a7851821190cec6445e17d2492ac02238"><td class="mdescLeft"> </td><td class="mdescRight">past-the-end iterator. <br></td></tr>
+<tr class="separator:a7851821190cec6445e17d2492ac02238"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a82033f75993fa02c3c9e5140ac5519e9"><td class="memItemLeft" align="right" valign="top"><a id="a82033f75993fa02c3c9e5140ac5519e9" name="a82033f75993fa02c3c9e5140ac5519e9"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ab540beccfc025bc86af032d69e43ba49">Object_handle</a> </td><td class="memItemRight" valign="bottom"><b>locate</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a2f93728fc4335954f6f0c4d7fb1ec23a">Point_3</a> &amp;p) const</td></tr>
+<tr class="memdesc:a82033f75993fa02c3c9e5140ac5519e9"><td class="mdescLeft"> </td><td class="mdescRight">returns a generic handle to the object (vertex, edge, facet or volume) which contains the point p in its relative interior. <br></td></tr>
+<tr class="separator:a82033f75993fa02c3c9e5140ac5519e9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a19205c689098bf0e77922058d9f4df24"><td class="memItemLeft" align="right" valign="top"><a id="a19205c689098bf0e77922058d9f4df24" name="a19205c689098bf0e77922058d9f4df24"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a4fe726ea591c64dd4569ba33afac09fd">Nef_polyhedron_S2</a> </td><td class="memItemRight" valign="bottom"><b>get_sphere_map</b> (<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ab494c467313f96a3d4e20fabc36bed56">Vertex_const_iterator</a> v) const</td></tr>
+<tr class="memdesc:a19205c689098bf0e77922058d9f4df24"><td class="mdescLeft"> </td><td class="mdescRight">returns the neighborhood of a vertex modeled by a <code><a class="elRef" href="../Nef_S2/classCGAL_1_1Nef__polyhedron__S2.html">Nef_polyhedron_S2</a></code>. <br></td></tr>
+<tr class="separator:a19205c689098bf0e77922058d9f4df24"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Point Set Predicates</h2></td></tr>
+<tr class="memitem:a84bb947ac6ba88494bdc645fe0912172"><td class="memItemLeft" align="right" valign="top"><a id="a84bb947ac6ba88494bdc645fe0912172" name="a84bb947ac6ba88494bdc645fe0912172"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_empty</b> () const</td></tr>
+<tr class="memdesc:a84bb947ac6ba88494bdc645fe0912172"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is the empty point set. <br></td></tr>
+<tr class="separator:a84bb947ac6ba88494bdc645fe0912172"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aac104277f7a28f051a75103d39e6a851"><td class="memItemLeft" align="right" valign="top"><a id="aac104277f7a28f051a75103d39e6a851" name="aac104277f7a28f051a75103d39e6a851"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_space</b> () const</td></tr>
+<tr class="memdesc:aac104277f7a28f051a75103d39e6a851"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is the complete 3D space. <br></td></tr>
+<tr class="separator:aac104277f7a28f051a75103d39e6a851"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abff4221fb9e245b9fa7c585554d79abb"><td class="memItemLeft" align="right" valign="top"><a id="abff4221fb9e245b9fa7c585554d79abb" name="abff4221fb9e245b9fa7c585554d79abb"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:abff4221fb9e245b9fa7c585554d79abb"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> and N1 comprise the same point sets. <br></td></tr>
+<tr class="separator:abff4221fb9e245b9fa7c585554d79abb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a27892b169df7cb199c7c78886b6d010c"><td class="memItemLeft" align="right" valign="top"><a id="a27892b169df7cb199c7c78886b6d010c" name="a27892b169df7cb199c7c78886b6d010c"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a27892b169df7cb199c7c78886b6d010c"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> and N1 comprise different point sets. <br></td></tr>
+<tr class="separator:a27892b169df7cb199c7c78886b6d010c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a98e659c9e5344f327812284d8506732a"><td class="memItemLeft" align="right" valign="top"><a id="a98e659c9e5344f327812284d8506732a" name="a98e659c9e5344f327812284d8506732a"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a98e659c9e5344f327812284d8506732a"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is a proper subset of N1. <br></td></tr>
+<tr class="separator:a98e659c9e5344f327812284d8506732a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa5bc58ff13cbb89d571ee2172269e374"><td class="memItemLeft" align="right" valign="top"><a id="aa5bc58ff13cbb89d571ee2172269e374" name="aa5bc58ff13cbb89d571ee2172269e374"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:aa5bc58ff13cbb89d571ee2172269e374"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is a proper superset of N1. <br></td></tr>
+<tr class="separator:aa5bc58ff13cbb89d571ee2172269e374"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aae083d08eba071136014b67eeb0743ca"><td class="memItemLeft" align="right" valign="top"><a id="aae083d08eba071136014b67eeb0743ca" name="aae083d08eba071136014b67eeb0743ca"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:aae083d08eba071136014b67eeb0743ca"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is a subset of N1. <br></td></tr>
+<tr class="separator:aae083d08eba071136014b67eeb0743ca"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaca284bcb9fa0dab880a63881fa2297e"><td class="memItemLeft" align="right" valign="top"><a id="aaca284bcb9fa0dab880a63881fa2297e" name="aaca284bcb9fa0dab880a63881fa2297e"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:aaca284bcb9fa0dab880a63881fa2297e"><td class="mdescLeft"> </td><td class="mdescRight">returns true, if <code>N</code> is a superset of N1. <br></td></tr>
+<tr class="separator:aaca284bcb9fa0dab880a63881fa2297e"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Unary Set Operations</h2></td></tr>
+<tr class="memitem:a2844ccbcb3679e5f5a353b3cce07ceb3"><td class="memItemLeft" align="right" valign="top"><a id="a2844ccbcb3679e5f5a353b3cce07ceb3" name="a2844ccbcb3679e5f5a353b3cce07ceb3"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>complement</b> () const</td></tr>
+<tr class="memdesc:a2844ccbcb3679e5f5a353b3cce07ceb3"><td class="mdescLeft"> </td><td class="mdescRight">returns the complement of <code>N</code> . <br></td></tr>
+<tr class="separator:a2844ccbcb3679e5f5a353b3cce07ceb3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3b0b1d33f7c98c2f9455062090347634"><td class="memItemLeft" align="right" valign="top"><a id="a3b0b1d33f7c98c2f9455062090347634" name="a3b0b1d33f7c98c2f9455062090347634"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>interior</b> () const</td></tr>
+<tr class="memdesc:a3b0b1d33f7c98c2f9455062090347634"><td class="mdescLeft"> </td><td class="mdescRight">returns the interior of <code>N</code> . <br></td></tr>
+<tr class="separator:a3b0b1d33f7c98c2f9455062090347634"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a67e26aa39073ab31b69ba0f0871a30e6"><td class="memItemLeft" align="right" valign="top"><a id="a67e26aa39073ab31b69ba0f0871a30e6" name="a67e26aa39073ab31b69ba0f0871a30e6"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>boundary</b> () const</td></tr>
+<tr class="memdesc:a67e26aa39073ab31b69ba0f0871a30e6"><td class="mdescLeft"> </td><td class="mdescRight">returns the boundary of <code>N</code> . <br></td></tr>
+<tr class="separator:a67e26aa39073ab31b69ba0f0871a30e6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac78fe6884e1d826c727cfff2645e96f5"><td class="memItemLeft" align="right" valign="top"><a id="ac78fe6884e1d826c727cfff2645e96f5" name="ac78fe6884e1d826c727cfff2645e96f5"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>closure</b> () const</td></tr>
+<tr class="memdesc:ac78fe6884e1d826c727cfff2645e96f5"><td class="mdescLeft"> </td><td class="mdescRight">returns the closure of <code>N</code> . <br></td></tr>
+<tr class="separator:ac78fe6884e1d826c727cfff2645e96f5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa7b7ec04344c7d60f28088b3350a492e"><td class="memItemLeft" align="right" valign="top"><a id="aa7b7ec04344c7d60f28088b3350a492e" name="aa7b7ec04344c7d60f28088b3350a492e"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>regularization</b> () const</td></tr>
+<tr class="memdesc:aa7b7ec04344c7d60f28088b3350a492e"><td class="mdescLeft"> </td><td class="mdescRight">returns the regularization, i.e. the closure of the interior, of <code>N</code> . <br></td></tr>
+<tr class="separator:aa7b7ec04344c7d60f28088b3350a492e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1efbbc61aa3becaf817c69f1c2dedfdb"><td class="memItemLeft" align="right" valign="top"><a id="a1efbbc61aa3becaf817c69f1c2dedfdb" name="a1efbbc61aa3becaf817c69f1c2dedfdb"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>operator!</b> () const</td></tr>
+<tr class="memdesc:a1efbbc61aa3becaf817c69f1c2dedfdb"><td class="mdescLeft"> </td><td class="mdescRight">returns the complement of <code>N</code> . <br></td></tr>
+<tr class="separator:a1efbbc61aa3becaf817c69f1c2dedfdb"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Binary Set Operations</h2></td></tr>
+<tr class="memitem:a5c0810cea2323eb15c898fe950ce19c5"><td class="memItemLeft" align="right" valign="top"><a id="a5c0810cea2323eb15c898fe950ce19c5" name="a5c0810cea2323eb15c898fe950ce19c5"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>intersection</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a5c0810cea2323eb15c898fe950ce19c5"><td class="mdescLeft"> </td><td class="mdescRight">return the intersection of <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a5c0810cea2323eb15c898fe950ce19c5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aabcc94d376a4cdeb8e2950f3d6fd70bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#aabcc94d376a4cdeb8e2950f3d6fd70bd">join</a> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:aabcc94d376a4cdeb8e2950f3d6fd70bd"><td class="mdescLeft"> </td><td class="mdescRight">return the union of <code>N</code> and N1.  <br></td></tr>
+<tr class="separator:aabcc94d376a4cdeb8e2950f3d6fd70bd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a83f054ead7e9e37f407bfe7aac3d0832"><td class="memItemLeft" align="right" valign="top"><a id="a83f054ead7e9e37f407bfe7aac3d0832" name="a83f054ead7e9e37f407bfe7aac3d0832"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>difference</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a83f054ead7e9e37f407bfe7aac3d0832"><td class="mdescLeft"> </td><td class="mdescRight">return the difference between <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a83f054ead7e9e37f407bfe7aac3d0832"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a44c0e27a03337520f45de480ae3ebd54"><td class="memItemLeft" align="right" valign="top"><a id="a44c0e27a03337520f45de480ae3ebd54" name="a44c0e27a03337520f45de480ae3ebd54"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>symmetric_difference</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a44c0e27a03337520f45de480ae3ebd54"><td class="mdescLeft"> </td><td class="mdescRight">return the symmetric difference of <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a44c0e27a03337520f45de480ae3ebd54"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac9607f171996406068b51e48624598e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ac9607f171996406068b51e48624598e0">intersection</a> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a65702bfea9e5ac373ee86853dc8cd90a">Plane_3</a> &amp;p, <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143">Intersection_mode</a> im) const</td></tr>
+<tr class="memdesc:ac9607f171996406068b51e48624598e0"><td class="mdescLeft"> </td><td class="mdescRight">returns intersection of <code>N</code> with plane (<code>im=PLANE_ONLY</code>), open halfspace (<code>im=OPEN_HALFSPACE</code>), or closed halfspace (<code>im=CLOSED_HALFSPACE</code>).  <br></td></tr>
+<tr class="separator:ac9607f171996406068b51e48624598e0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a66fce59cb8ad831f9491ff64046535f4"><td class="memItemLeft" align="right" valign="top"><a id="a66fce59cb8ad831f9491ff64046535f4" name="a66fce59cb8ad831f9491ff64046535f4"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a66fce59cb8ad831f9491ff64046535f4"><td class="mdescLeft"> </td><td class="mdescRight">return the intersection of <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a66fce59cb8ad831f9491ff64046535f4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a34444f12b93af36525b2f43c0727641e"><td class="memItemLeft" align="right" valign="top"><a id="a34444f12b93af36525b2f43c0727641e" name="a34444f12b93af36525b2f43c0727641e"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a34444f12b93af36525b2f43c0727641e"><td class="mdescLeft"> </td><td class="mdescRight">return the union of <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a34444f12b93af36525b2f43c0727641e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae8af589f70204693e7e0c5f4c82944a0"><td class="memItemLeft" align="right" valign="top"><a id="ae8af589f70204693e7e0c5f4c82944a0" name="ae8af589f70204693e7e0c5f4c82944a0"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:ae8af589f70204693e7e0c5f4c82944a0"><td class="mdescLeft"> </td><td class="mdescRight">return the difference between <code>N</code> and N1. <br></td></tr>
+<tr class="separator:ae8af589f70204693e7e0c5f4c82944a0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0ad7d711c620e202f3962082e9eb0b92"><td class="memItemLeft" align="right" valign="top"><a id="a0ad7d711c620e202f3962082e9eb0b92" name="a0ad7d711c620e202f3962082e9eb0b92"></a>
+<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; </td><td class="memItemRight" valign="bottom"><b>operator^</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1) const</td></tr>
+<tr class="memdesc:a0ad7d711c620e202f3962082e9eb0b92"><td class="mdescLeft"> </td><td class="mdescRight">return the symmetric difference of <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a0ad7d711c620e202f3962082e9eb0b92"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a00721f2722d139af2e6bfb56f45fa5bf"><td class="memItemLeft" align="right" valign="top"><a id="a00721f2722d139af2e6bfb56f45fa5bf" name="a00721f2722d139af2e6bfb56f45fa5bf"></a>
+void </td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1)</td></tr>
+<tr class="memdesc:a00721f2722d139af2e6bfb56f45fa5bf"><td class="mdescLeft"> </td><td class="mdescRight">intersects <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a00721f2722d139af2e6bfb56f45fa5bf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2af3ecd8cc156f3e5b2de81aa8d63e0e"><td class="memItemLeft" align="right" valign="top"><a id="a2af3ecd8cc156f3e5b2de81aa8d63e0e" name="a2af3ecd8cc156f3e5b2de81aa8d63e0e"></a>
+void </td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1)</td></tr>
+<tr class="memdesc:a2af3ecd8cc156f3e5b2de81aa8d63e0e"><td class="mdescLeft"> </td><td class="mdescRight">unites <code>N</code> with N1. <br></td></tr>
+<tr class="separator:a2af3ecd8cc156f3e5b2de81aa8d63e0e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a92285bdc3e81e0a1f38aeec12f03451a"><td class="memItemLeft" align="right" valign="top"><a id="a92285bdc3e81e0a1f38aeec12f03451a" name="a92285bdc3e81e0a1f38aeec12f03451a"></a>
+void </td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1)</td></tr>
+<tr class="memdesc:a92285bdc3e81e0a1f38aeec12f03451a"><td class="mdescLeft"> </td><td class="mdescRight">subtracts N1 from <code>N</code> . <br></td></tr>
+<tr class="separator:a92285bdc3e81e0a1f38aeec12f03451a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2341627b0a23fa2f8bae54ac084ca456"><td class="memItemLeft" align="right" valign="top"><a id="a2341627b0a23fa2f8bae54ac084ca456" name="a2341627b0a23fa2f8bae54ac084ca456"></a>
+void </td><td class="memItemRight" valign="bottom"><b>operator^=</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp;N1)</td></tr>
+<tr class="memdesc:a2341627b0a23fa2f8bae54ac084ca456"><td class="mdescLeft"> </td><td class="mdescRight">performs a symmetric intersection of <code>N</code> and N1. <br></td></tr>
+<tr class="separator:a2341627b0a23fa2f8bae54ac084ca456"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Operations</h2></td></tr>
+<tr class="memitem:addba7510d841b68a2e1d1762cc13b075"><td class="memItemLeft" align="right" valign="top"><a id="addba7510d841b68a2e1d1762cc13b075" name="addba7510d841b68a2e1d1762cc13b075"></a>
+void </td><td class="memItemRight" valign="bottom"><b>clear</b> (<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126f">Content</a> space=<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126fa71630cf8d513010994bf1053babefd8f">EMPTY</a>)</td></tr>
+<tr class="memdesc:addba7510d841b68a2e1d1762cc13b075"><td class="mdescLeft"> </td><td class="mdescRight">make <code>N</code> the empty set if <code>space == EMPTY</code> and the complete 3D space if <code>space == COMPLETE</code>. <br></td></tr>
+<tr class="separator:addba7510d841b68a2e1d1762cc13b075"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4529adc0f795e884751b53ed3bcbec5e"><td class="memItemLeft" align="right" valign="top"><a id="a4529adc0f795e884751b53ed3bcbec5e" name="a4529adc0f795e884751b53ed3bcbec5e"></a>
+void </td><td class="memItemRight" valign="bottom"><b>transform</b> (const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a48e79610dcaeff066768f75055a66ccc">Aff_transformation_3</a> &amp;aff)</td></tr>
+<tr class="memdesc:a4529adc0f795e884751b53ed3bcbec5e"><td class="mdescLeft"> </td><td class="mdescRight">applies an affine transformation to <code>N</code> . <br></td></tr>
+<tr class="separator:a4529adc0f795e884751b53ed3bcbec5e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a53d174f2e16bb4f3e4e02a7e139fc5b6"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a53d174f2e16bb4f3e4e02a7e139fc5b6">convert_to_polyhedron</a> (<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ae97a9578f8ea45a85f02ec8d8a9f36c4">Polyhedron</a> &amp;P) const</td></tr>
+<tr class="memdesc:a53d174f2e16bb4f3e4e02a7e139fc5b6"><td class="mdescLeft"> </td><td class="mdescRight">converts <code>N</code> into a triangulated Polyhedron.  <br></td></tr>
+<tr class="separator:a53d174f2e16bb4f3e4e02a7e139fc5b6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7fc84f5273cda4afd659171282ae0670"><td class="memItemLeft" align="right" valign="top"><a id="a7fc84f5273cda4afd659171282ae0670" name="a7fc84f5273cda4afd659171282ae0670"></a>
+void </td><td class="memItemRight" valign="bottom"><b>visit_shell_objects</b> (<a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#abb6647d621b9d2ba4996f44abef38d63">SFace_const_handle</a> f, Visitor &amp;V) const</td></tr>
+<tr class="memdesc:a7fc84f5273cda4afd659171282ae0670"><td class="mdescLeft"> </td><td class="mdescRight">calls the visit function of <code>V</code> for every item which belongs to the same shell as <code>sf</code>. <br></td></tr>
+<tr class="separator:a7fc84f5273cda4afd659171282ae0670"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ae119a424f2b9b50e1487bd9e3982f14a" name="ae119a424f2b9b50e1487bd9e3982f14a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae119a424f2b9b50e1487bd9e3982f14a">◆ </a></span>Mark</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::Mark</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>All object (vertices, edges, etc.) are attributed by a Mark. </p>
+<p>Mark equals bool. </p>
+
+</div>
+</div>
+<a id="ab540beccfc025bc86af032d69e43ba49" name="ab540beccfc025bc86af032d69e43ba49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab540beccfc025bc86af032d69e43ba49">◆ </a></span>Object_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::Object_handle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>a generic handle to an object. </p>
+<p>The kind of object <code>(vertex, halfedge, halffacet, volume, svertex, shalfedge, shalfloop, sface)</code> can be determined and the object can be assigned to a corresponding constant handle by one of the following functions:</p>
+<p><code>bool assign(Vertex_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(Halfedge_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(Halffacet_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(Volume_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(SVertex_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(SHalfedge_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(SHalfloop_const_handle&amp; h, Object_handle)</code></p>
+<p><code>bool assign(SFace_const_handle&amp; h, Object_handle)</code></p>
+<p>where each function returns <code>true</code> iff the assignment to <code>h</code> could be accomplished. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a633628c79ae6839428de5704e69b1cf3" name="a633628c79ae6839428de5704e69b1cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633628c79ae6839428de5704e69b1cf3">◆ </a></span>Boundary</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a633628c79ae6839428de5704e69b1cf3">CGAL::Nef_polyhedron_3::Boundary</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>construction selection. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a633628c79ae6839428de5704e69b1cf3a88a3c9093ce810d29a43edea617afd6e" name="a633628c79ae6839428de5704e69b1cf3a88a3c9093ce810d29a43edea617afd6e"></a>EXCLUDED </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a633628c79ae6839428de5704e69b1cf3a933fde8ba3b0d793b3da01d4d538eb3f" name="a633628c79ae6839428de5704e69b1cf3a933fde8ba3b0d793b3da01d4d538eb3f"></a>INCLUDED </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a29ea7a3eb633b6b5a8b46b3a76c4126f" name="a29ea7a3eb633b6b5a8b46b3a76c4126f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29ea7a3eb633b6b5a8b46b3a76c4126f">◆ </a></span>Content</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a29ea7a3eb633b6b5a8b46b3a76c4126f">CGAL::Nef_polyhedron_3::Content</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>construction selection. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a29ea7a3eb633b6b5a8b46b3a76c4126fa71630cf8d513010994bf1053babefd8f" name="a29ea7a3eb633b6b5a8b46b3a76c4126fa71630cf8d513010994bf1053babefd8f"></a>EMPTY </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29ea7a3eb633b6b5a8b46b3a76c4126facf5a8280c9b4f417e6194a6e27f3a39d" name="a29ea7a3eb633b6b5a8b46b3a76c4126facf5a8280c9b4f417e6194a6e27f3a39d"></a>COMPLETE </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a096557e7a2baaece098dc0ce836b2143" name="a096557e7a2baaece098dc0ce836b2143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a096557e7a2baaece098dc0ce836b2143">◆ </a></span>Intersection_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143">CGAL::Nef_polyhedron_3::Intersection_mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>intersection selection. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a096557e7a2baaece098dc0ce836b2143aa7a1e78ba9fc0b0b7d6c958a0c145224" name="a096557e7a2baaece098dc0ce836b2143aa7a1e78ba9fc0b0b7d6c958a0c145224"></a>CLOSED_HALFSPACE </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a096557e7a2baaece098dc0ce836b2143af2479cddaec2711cb4dc996e205b17f3" name="a096557e7a2baaece098dc0ce836b2143af2479cddaec2711cb4dc996e205b17f3"></a>OPEN_HALFSPACE </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a096557e7a2baaece098dc0ce836b2143a7232f3e350a77b6c1f3d514a885995cc" name="a096557e7a2baaece098dc0ce836b2143a7232f3e350a77b6c1f3d514a885995cc"></a>PLANE_ONLY </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a64204f74cb11510157026dfdcc79af28" name="a64204f74cb11510157026dfdcc79af28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64204f74cb11510157026dfdcc79af28">◆ </a></span>Nef_polyhedron_3() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+<div class="memtemplate">
+template&lt;class PolygonMesh , class HalfedgeIndexMap , class FaceIndexMap &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::Nef_polyhedron_3 </td>
+          <td>(</td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const HalfedgeIndexMap &amp; </td>
+          <td class="paramname"><em>him</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FaceIndexMap &amp; </td>
+          <td class="paramname"><em>fim</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates a Nef polyhedron, which represents the same point set as the polyhedral surface <code>pm</code> does. </p>
+<p><code>him</code> and <code>fim</code> must be both initialized so that halfedges and faces are indexed in <code>[0, num_halfedges(pm)[</code> and <code>[0, num_faces(pm)[</code> respectively. If <code>PolygonMesh</code> has an internal halfedge index map and an internal face index map, the last two parameters can be omitted. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PolygonMesh</td><td>a model of <code><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></code> and <code><a class="elRef" href="../BGL/classVertexListGraph.html">VertexListGraph</a></code>. </td></tr>
+    <tr><td class="paramname">HalfedgeIndexMap</td><td>a class model of <code><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::halfedge_descriptor</code> as key type a value type convertible to <code>std::size_t</code> </td></tr>
+    <tr><td class="paramname">FaceIndexMap</td><td>a class model of <code><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::face_descriptor</code> as key type a value type convertible to <code>std::size_t</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a413ef7ecafb28afc4c7fcb4de6a25439" name="a413ef7ecafb28afc4c7fcb4de6a25439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413ef7ecafb28afc4c7fcb4de6a25439">◆ </a></span>Nef_polyhedron_3() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::Nef_polyhedron_3 </td>
+          <td>(</td>
+          <td class="paramtype">Input_iterator </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Input_iterator </td>
+          <td class="paramname"><em>end</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Nef polyhedron consisting of a single polygon spanned by the list of points in the iterator range <code>[begin,end)</code>. </p>
+<p>If the points do not lie on a common supporting plane, the constructor tries to triangulate the polygon into multiple facets.If the construction does not succeed, the empty set is created. </p>
+
+</div>
+</div>
+<a id="a49b6f6400d573699304dbc39e75e7fd2" name="a49b6f6400d573699304dbc39e75e7fd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49b6f6400d573699304dbc39e75e7fd2">◆ </a></span>Nef_polyhedron_3() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+<div class="memtemplate">
+template&lt;class Forward_iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::Nef_polyhedron_3 </td>
+          <td>(</td>
+          <td class="paramtype">Forward_iterator </td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Forward_iterator </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a573651c5ef33635f824c03d12bfeb9c8">Polylines_tag</a> </td>
+          <td class="paramname"> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Nef polyhedron consisting of polylines. </p>
+<p>The iterator range [it, end) defines a range of polylines. Each polyline is defined as a range of points, first and past-the-end iterators being provided as a <code>std::pair</code> of iterators. </p>
+
+</div>
+</div>
+<a id="a423dafdaf277f29d3e70f7596f139e84" name="a423dafdaf277f29d3e70f7596f139e84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a423dafdaf277f29d3e70f7596f139e84">◆ </a></span>Nef_polyhedron_3() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+<div class="memtemplate">
+template&lt;class Forward_iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::Nef_polyhedron_3 </td>
+          <td>(</td>
+          <td class="paramtype">Forward_iterator </td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Forward_iterator </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a062f56b8bc37ae364aad302561d1622a">Points_tag</a> </td>
+          <td class="paramname"> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Nef polyhedron that consists only of points. </p>
+<p>The iterator range [it, end) defines a range of points. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a53d174f2e16bb4f3e4e02a7e139fc5b6" name="a53d174f2e16bb4f3e4e02a7e139fc5b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53d174f2e16bb4f3e4e02a7e139fc5b6">◆ </a></span>convert_to_polyhedron()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::convert_to_polyhedron </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#ae97a9578f8ea45a85f02ec8d8a9f36c4">Polyhedron</a> &amp; </td>
+          <td class="paramname"><em>P</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>converts <code>N</code> into a triangulated Polyhedron. </p>
+<p>For conversion to other types, see <code><a class="el" href="group__PkgNef3IOFunctions.html#gad69ecc1e5e6585c03837c4856f5b1ae4" title="Converts an object of type NefPolyhedron_3 into a polygon mesh model of MutableFaceGraph.">convert_nef_polyhedron_to_polygon_mesh()</a></code>. </p><dl class="section pre"><dt>Precondition</dt><dd><code>N</code> is simple. </dd></dl>
+
+</div>
+</div>
+<a id="ac9607f171996406068b51e48624598e0" name="ac9607f171996406068b51e48624598e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9607f171996406068b51e48624598e0">◆ </a></span>intersection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a65702bfea9e5ac373ee86853dc8cd90a">Plane_3</a> &amp; </td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html#a096557e7a2baaece098dc0ce836b2143">Intersection_mode</a> </td>
+          <td class="paramname"><em>im</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns intersection of <code>N</code> with plane (<code>im=PLANE_ONLY</code>), open halfspace (<code>im=OPEN_HALFSPACE</code>), or closed halfspace (<code>im=CLOSED_HALFSPACE</code>). </p>
+<p>In the latter two cases, the halfspaces are on the negative side of the plane <code>p</code>. The function is written for the use with standard kernels, where halfspaces are not part of the domain. The function does not work in combination with an extended kernels or with an unbounded polyhedron. </p>
+
+</div>
+</div>
+<a id="aabcc94d376a4cdeb8e2950f3d6fd70bd" name="aabcc94d376a4cdeb8e2950f3d6fd70bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabcc94d376a4cdeb8e2950f3d6fd70bd">◆ </a></span>join()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class NefPolyhedronTraits_3 , class NefPolyhedronItems_3  = CGAL::Default_items&lt;NefPolyhedronTraits_3&gt; class Nef_polyhedronMarks = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a>&lt; NefPolyhedronTraits_3, NefPolyhedronItems_3 &gt;::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&lt; <a class="elRef" href="../Manual/classunspecified__type.html">Traits</a> &gt; &amp; </td>
+          <td class="paramname"><em>N1</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return the union of <code>N</code> and N1. </p>
+<p>(Note that ''union'' is a C++ keyword and cannot be used for this operation.) </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

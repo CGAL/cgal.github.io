@@ -1,0 +1,943 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Stream_support/group__PkgStreamSupportRef.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - IO Streams: Reference Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - IO Streams
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('group__PkgStreamSupportRef.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#groups">Modules</a> |
+<a href="#nested-classes">Classes</a> |
+<a href="#typedef-members">Typedefs</a> |
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Reference Manual</div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<div class="PkgImage">  <div class="image">
+<img src="io.png" alt="">
+</div>
+ </div> <div class="PkgSummary"> <div class="PkgAuthors">Andreas Fabri, Geert-Jan Giezeman, and Lutz Kettner</div> <div class="PkgDescription">All classes in the CGAL kernel provide input and output operators for I/O streams. The basic task of such an operator is to produce a representation of an object that can be written as a sequence of characters on devices as a console, a file, or a pipe. In CGAL we distinguish between a raw ASCII, a raw binary and a pretty printing format.</div> <div class="PkgManuals"></div> </div> <div class="PkgShortInfo"> <b>Introduced in:</b> CGAL 1.0<br>
+ <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:fgk-ios-12-26a">cgal:fgk-ios-12-26a</a><br>
+ <b>License:</b> <a class="elRef" href="../Manual/license.html#licensesLGPL">LGPL</a> <br>
+ </div><p>All classes in the CGAL kernel provide input and output operators for I/O streams. CGAL provides three different printing mode, defined in the enum <a class="el" href="group__PkgStreamSupportEnumRef.html"><code>IO::Mode</code> </a>, as well as different functions to set and get the printing mode.</p>
+ <h2 class="groupheader">Classified Reference Pages</h2> <h2>Enum</h2>
+<ul>
+<li><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code> </a></li>
+<li><code><a class="el" href="group__PkgStreamSupportEnumRef.html#ga61f6c9db14447b50c534f7ddccfcdec1" title="ANSI color codes for terminal output.">CGAL::IO::Ansi_color</a></code></li>
+</ul>
+<h2>Classes</h2>
+<ul>
+<li><code><a class="el" href="classCGAL_1_1IO_1_1Color.html" title="An object of the class Color is a color available for drawing operations in many CGAL output streams.">CGAL::IO::Color</a></code></li>
+<li><code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html" title="The class template Basic_color_streambuf wraps another basic_streambuf and automatically adds ANSI co...">CGAL::IO::Basic_color_streambuf</a>&lt;CharT,Traits&gt;</code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga2bd7a63e504b603b3d8ef8de84d8a584" title="Type alias for Basic_color_streambuf&lt;char&gt;">CGAL::IO::Color_streambuf</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga51803f303c0b4291ae5c86039684555a" title="Type alias for Basic_color_streambuf&lt;wchar_t&gt;">CGAL::IO::Color_wstreambuf</a></code></li>
+<li><code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html" title="RAII helper class for temporarily installing a color streambuf on a stream.">CGAL::IO::Basic_color_stream_guard</a>&lt;StreamT&gt;</code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga71cc8f29215bc31232ba0710c97460f1" title="Type alias for Basic_color_stream_guard&lt;std::ostream&gt;">CGAL::IO::Color_stream_guard</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gaa70610a8e3bfe2bf3da60b9c045c3d3f" title="Type alias for Basic_color_stream_guard&lt;std::wostream&gt;">CGAL::IO::Color_wstream_guard</a></code></li>
+<li><code><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html" title="The class template Basic_indenting_streambuf wraps another basic_streambuf and automatically adds ind...">CGAL::IO::Basic_indenting_streambuf</a>&lt;CharT,Traits&gt;</code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga8dd2119c06749c6569cdd1d2df8e13ed" title="Type alias for Basic_indenting_streambuf&lt;char&gt;">CGAL::IO::Indenting_streambuf</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga8fce20375dbfea8085831201d9540150" title="Type alias for Basic_indenting_streambuf&lt;wchar_t&gt;">CGAL::IO::Indenting_wstreambuf</a></code></li>
+<li><code><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html" title="RAII helper class for temporarily installing an indenting streambuf on a stream.">CGAL::IO::Basic_indenting_stream_guard</a>&lt;StreamT&gt;</code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gafbf9d0991c1f5e044d53baaaea3290e7" title="Type alias for basic_indenting_stream_guard&lt;std::ostream&gt;">CGAL::IO::Indenting_stream_guard</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gacc7ce90bb3c4403e784d4ba69a9f8dff" title="Type alias for basic_indenting_stream_guard&lt;std::wostream&gt;">CGAL::IO::Indenting_wstream_guard</a></code></li>
+<li><code><a class="el" href="classCGAL_1_1Istream__iterator.html" title="The class Istream_iterator is an input iterator adaptor for the input stream class Stream and value t...">CGAL::Istream_iterator</a>&lt;T,Stream&gt;</code></li>
+<li><code><a class="el" href="classCGAL_1_1Ostream__iterator.html" title="The class Ostream_iterator is an output iterator adaptor for the output stream class Stream and value...">CGAL::Ostream_iterator</a>&lt;T,Stream&gt;</code></li>
+<li><code><a class="el" href="classCGAL_1_1Verbose__ostream.html" title="The class Verbose_ostream can be used as an output stream.">CGAL::Verbose_ostream</a></code></li>
+<li><code><a class="el" href="classCGAL_1_1Input__rep.html" title="The definition of Input_rep is completely symmetric to Output_rep.">CGAL::Input_rep</a>&lt;T,F&gt;</code></li>
+<li><code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">CGAL::Output_rep</a>&lt;T,F&gt;</code></li>
+</ul>
+<h2>Functions</h2>
+<ul>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gaaeb8dfaf0dceffb470b7188c5734a0dd" title="creates color guards for multiple streams simultaneously.">CGAL::IO::make_color_guards()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gac75c13bbd04cef30421ecec4d82a119e" title="checks if a stream is attached to a terminal that supports colors.">CGAL::IO::stream_supports_color()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gabad67a5083918f359749b6cbf821d0c9" title="creates indenting guards for multiple streams simultaneously.">CGAL::IO::make_indenting_guards()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code></li>
+<li><a class="el" href="group__IOstreamOperators.html"><code>CGAL::operator&gt;&gt;()</code> </a></li>
+<li><a class="el" href="group__IOstreamOperators.html"><code>CGAL::operator&lt;&lt;()</code> </a></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#ga8c599d03756553b8a17389aee4c433c9" title="The definition of this function is completely symmetric to oformat().">CGAL::IO::iformat()</a></code></li>
+<li><code><a class="el" href="group__PkgStreamSupportRef.html#gaef04729ed020e200594efd0f0f26004f" title="Convenience function to construct an output representation (Output_rep) for type T.">CGAL::IO::oformat()</a></code></li>
+</ul>
+<h2>I/O Functions</h2>
+<ul>
+<li><code><a class="el" href="group__IOstreamFunctions.html#gaafb0e02f4669802c727709743065804c" title="reads a polygon soup from a file.">CGAL::IO::read_polygon_soup()</a></code></li>
+<li><code><a class="el" href="group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0" title="writes the content of points and polygons in a file.">CGAL::IO::write_polygon_soup()</a></code></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsSTL.html">I/O for STL files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsPLY.html">I/O for PLY files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsOBJ.html">I/O for OBJ files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsOFF.html">I/O for OFF files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsGOCAD.html">I/O for GOCAD files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsVTK.html">I/O for VTK files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncs3MF.html">I/O for 3MF files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsWKT.html">I/O for WKT files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsLAS.html">I/O for LAS files </a></li>
+<li><a class="el" href="group__PkgStreamSupportIoFuncsXYZ.html">I/O for XYZ files </a> </li>
+</ul>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__IOstreamOperators"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__IOstreamOperators.html">Stream Operators</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:group__IOstreamFunctions"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__IOstreamFunctions.html">I/O Functions</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:group__PkgStreamSupportEnumRef"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportEnumRef.html">I/O Enums</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">An object of the class <code><a class="el" href="classCGAL_1_1IO_1_1Color.html" title="An object of the class Color is a color available for drawing operations in many CGAL output streams.">Color</a></code> is a color available for drawing operations in many CGAL output streams.  <a href="classCGAL_1_1IO_1_1Color.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html">CGAL::IO::Basic_color_streambuf&lt; CharT, Traits &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The class template <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html" title="The class template Basic_color_streambuf wraps another basic_streambuf and automatically adds ANSI co...">Basic_color_streambuf</a></code> wraps another <code>basic_streambuf</code> and automatically adds ANSI color codes to the output.  <a href="classCGAL_1_1IO_1_1Basic__color__streambuf.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html">CGAL::IO::Basic_color_stream_guard&lt; StreamT &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">RAII helper class for temporarily installing a color streambuf on a stream.  <a href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html">CGAL::IO::Basic_indenting_streambuf&lt; CharT, Traits &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The class template <code><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html" title="The class template Basic_indenting_streambuf wraps another basic_streambuf and automatically adds ind...">Basic_indenting_streambuf</a></code> wraps another <code>basic_streambuf</code> and automatically adds indentation at the beginning of each line.  <a href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html">CGAL::IO::Basic_indenting_stream_guard&lt; StreamT &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">RAII helper class for temporarily installing an indenting streambuf on a stream.  <a href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Output__rep.html">CGAL::Output_rep&lt; T, F &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The purpose of <code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">Output_rep</a></code> is to provide a way to control output formatting that works independently of the object's stream output operator.  <a href="classCGAL_1_1Output__rep.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Input__rep.html">CGAL::Input_rep&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The definition of <code><a class="el" href="classCGAL_1_1Input__rep.html" title="The definition of Input_rep is completely symmetric to Output_rep.">Input_rep</a></code> is completely symmetric to <code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">Output_rep</a></code>.  <a href="classCGAL_1_1Input__rep.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Istream__iterator.html">CGAL::Istream_iterator&lt; T, Stream &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The class <code><a class="el" href="classCGAL_1_1Istream__iterator.html" title="The class Istream_iterator is an input iterator adaptor for the input stream class Stream and value t...">Istream_iterator</a></code> is an input iterator adaptor for the input stream class <code>Stream</code> and value type <code>T</code>.  <a href="classCGAL_1_1Istream__iterator.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Ostream__iterator.html">CGAL::Ostream_iterator&lt; T, Stream &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The class <code><a class="el" href="classCGAL_1_1Ostream__iterator.html" title="The class Ostream_iterator is an output iterator adaptor for the output stream class Stream and value...">Ostream_iterator</a></code> is an output iterator adaptor for the output stream class <code>Stream</code> and value type <code>T</code>.  <a href="classCGAL_1_1Ostream__iterator.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Verbose__ostream.html">CGAL::Verbose_ostream</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">The class <code><a class="el" href="classCGAL_1_1Verbose__ostream.html" title="The class Verbose_ostream can be used as an output stream.">Verbose_ostream</a></code> can be used as an output stream.  <a href="classCGAL_1_1Verbose__ostream.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga2bd7a63e504b603b3d8ef8de84d8a584"><td class="memItemLeft" align="right" valign="top"><a id="ga2bd7a63e504b603b3d8ef8de84d8a584" name="ga2bd7a63e504b603b3d8ef8de84d8a584"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Color_streambuf</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html">Basic_color_streambuf</a>&lt; char &gt;</td></tr>
+<tr class="memdesc:ga2bd7a63e504b603b3d8ef8de84d8a584"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html" title="The class template Basic_color_streambuf wraps another basic_streambuf and automatically adds ANSI co...">Basic_color_streambuf</a>&lt;char&gt;</code> <br></td></tr>
+<tr class="separator:ga2bd7a63e504b603b3d8ef8de84d8a584"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga51803f303c0b4291ae5c86039684555a"><td class="memItemLeft" align="right" valign="top"><a id="ga51803f303c0b4291ae5c86039684555a" name="ga51803f303c0b4291ae5c86039684555a"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Color_wstreambuf</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html">Basic_color_streambuf</a>&lt; wchar_t &gt;</td></tr>
+<tr class="memdesc:ga51803f303c0b4291ae5c86039684555a"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html" title="The class template Basic_color_streambuf wraps another basic_streambuf and automatically adds ANSI co...">Basic_color_streambuf</a>&lt;wchar_t&gt;</code> <br></td></tr>
+<tr class="separator:ga51803f303c0b4291ae5c86039684555a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga71cc8f29215bc31232ba0710c97460f1"><td class="memItemLeft" align="right" valign="top"><a id="ga71cc8f29215bc31232ba0710c97460f1" name="ga71cc8f29215bc31232ba0710c97460f1"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Color_stream_guard</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html">Basic_color_stream_guard</a>&lt; std::ostream &gt;</td></tr>
+<tr class="memdesc:ga71cc8f29215bc31232ba0710c97460f1"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html" title="RAII helper class for temporarily installing a color streambuf on a stream.">Basic_color_stream_guard</a>&lt;std::ostream&gt;</code> <br></td></tr>
+<tr class="separator:ga71cc8f29215bc31232ba0710c97460f1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaa70610a8e3bfe2bf3da60b9c045c3d3f"><td class="memItemLeft" align="right" valign="top"><a id="gaa70610a8e3bfe2bf3da60b9c045c3d3f" name="gaa70610a8e3bfe2bf3da60b9c045c3d3f"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Color_wstream_guard</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html">Basic_color_stream_guard</a>&lt; std::wostream &gt;</td></tr>
+<tr class="memdesc:gaa70610a8e3bfe2bf3da60b9c045c3d3f"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html" title="RAII helper class for temporarily installing a color streambuf on a stream.">Basic_color_stream_guard</a>&lt;std::wostream&gt;</code> <br></td></tr>
+<tr class="separator:gaa70610a8e3bfe2bf3da60b9c045c3d3f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8dd2119c06749c6569cdd1d2df8e13ed"><td class="memItemLeft" align="right" valign="top"><a id="ga8dd2119c06749c6569cdd1d2df8e13ed" name="ga8dd2119c06749c6569cdd1d2df8e13ed"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Indenting_streambuf</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html">Basic_indenting_streambuf</a>&lt; char &gt;</td></tr>
+<tr class="memdesc:ga8dd2119c06749c6569cdd1d2df8e13ed"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html" title="The class template Basic_indenting_streambuf wraps another basic_streambuf and automatically adds ind...">Basic_indenting_streambuf</a>&lt;char&gt;</code> <br></td></tr>
+<tr class="separator:ga8dd2119c06749c6569cdd1d2df8e13ed"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8fce20375dbfea8085831201d9540150"><td class="memItemLeft" align="right" valign="top"><a id="ga8fce20375dbfea8085831201d9540150" name="ga8fce20375dbfea8085831201d9540150"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Indenting_wstreambuf</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html">Basic_indenting_streambuf</a>&lt; wchar_t &gt;</td></tr>
+<tr class="memdesc:ga8fce20375dbfea8085831201d9540150"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__streambuf.html" title="The class template Basic_indenting_streambuf wraps another basic_streambuf and automatically adds ind...">Basic_indenting_streambuf</a>&lt;wchar_t&gt;</code> <br></td></tr>
+<tr class="separator:ga8fce20375dbfea8085831201d9540150"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gafbf9d0991c1f5e044d53baaaea3290e7"><td class="memItemLeft" align="right" valign="top"><a id="gafbf9d0991c1f5e044d53baaaea3290e7" name="gafbf9d0991c1f5e044d53baaaea3290e7"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Indenting_stream_guard</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html">Basic_indenting_stream_guard</a>&lt; std::ostream &gt;</td></tr>
+<tr class="memdesc:gafbf9d0991c1f5e044d53baaaea3290e7"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code>basic_indenting_stream_guard&lt;std::ostream&gt;</code> <br></td></tr>
+<tr class="separator:gafbf9d0991c1f5e044d53baaaea3290e7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gacc7ce90bb3c4403e784d4ba69a9f8dff"><td class="memItemLeft" align="right" valign="top"><a id="gacc7ce90bb3c4403e784d4ba69a9f8dff" name="gacc7ce90bb3c4403e784d4ba69a9f8dff"></a>
+using </td><td class="memItemRight" valign="bottom"><b>CGAL::IO::Indenting_wstream_guard</b> = <a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html">Basic_indenting_stream_guard</a>&lt; std::wostream &gt;</td></tr>
+<tr class="memdesc:gacc7ce90bb3c4403e784d4ba69a9f8dff"><td class="mdescLeft"> </td><td class="mdescRight">Type alias for <code>basic_indenting_stream_guard&lt;std::wostream&gt;</code> <br></td></tr>
+<tr class="separator:gacc7ce90bb3c4403e784d4ba69a9f8dff"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gaaeb8dfaf0dceffb470b7188c5734a0dd"><td class="memTemplParams" colspan="2">template&lt;Ansi_color... colors, typename... Streams&gt; </td></tr>
+<tr class="memitem:gaaeb8dfaf0dceffb470b7188c5734a0dd"><td class="memTemplItemLeft" align="right" valign="top">auto </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#gaaeb8dfaf0dceffb470b7188c5734a0dd">CGAL::IO::make_color_guards</a> (Streams &amp;... streams)</td></tr>
+<tr class="memdesc:gaaeb8dfaf0dceffb470b7188c5734a0dd"><td class="mdescLeft"> </td><td class="mdescRight">creates color guards for multiple streams simultaneously.  <br></td></tr>
+<tr class="separator:gaaeb8dfaf0dceffb470b7188c5734a0dd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gac75c13bbd04cef30421ecec4d82a119e"><td class="memTemplParams" colspan="2">template&lt;typename CharT , typename Traits &gt; </td></tr>
+<tr class="memitem:gac75c13bbd04cef30421ecec4d82a119e"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#gac75c13bbd04cef30421ecec4d82a119e">CGAL::IO::stream_supports_color</a> (const std::basic_ostream&lt; CharT, Traits &gt; &amp;stream)</td></tr>
+<tr class="memdesc:gac75c13bbd04cef30421ecec4d82a119e"><td class="mdescLeft"> </td><td class="mdescRight">checks if a stream is attached to a terminal that supports colors.  <br></td></tr>
+<tr class="separator:gac75c13bbd04cef30421ecec4d82a119e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gabad67a5083918f359749b6cbf821d0c9"><td class="memTemplParams" colspan="2">template&lt;typename... Streams&gt; </td></tr>
+<tr class="memitem:gabad67a5083918f359749b6cbf821d0c9"><td class="memTemplItemLeft" align="right" valign="top">auto </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#gabad67a5083918f359749b6cbf821d0c9">CGAL::IO::make_indenting_guards</a> (int spaces_per_level, Streams &amp;... streams)</td></tr>
+<tr class="memdesc:gabad67a5083918f359749b6cbf821d0c9"><td class="mdescLeft"> </td><td class="mdescRight">creates indenting guards for multiple streams simultaneously.  <br></td></tr>
+<tr class="separator:gabad67a5083918f359749b6cbf821d0c9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga34aae5d58fcac93ff03962c8899fcf39"><td class="memTemplParams" colspan="2">template&lt;typename... Streams&gt; </td></tr>
+<tr class="memitem:ga34aae5d58fcac93ff03962c8899fcf39"><td class="memTemplItemLeft" align="right" valign="top">auto </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga34aae5d58fcac93ff03962c8899fcf39">CGAL::IO::make_indenting_guards</a> (const std::string &amp;indent_string, Streams &amp;... streams)</td></tr>
+<tr class="memdesc:ga34aae5d58fcac93ff03962c8899fcf39"><td class="mdescLeft"> </td><td class="mdescRight">creates indenting guards for multiple streams with a custom indent string.  <br></td></tr>
+<tr class="separator:ga34aae5d58fcac93ff03962c8899fcf39"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaef04729ed020e200594efd0f0f26004f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:gaef04729ed020e200594efd0f0f26004f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Output__rep.html">Output_rep</a>&lt; T &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#gaef04729ed020e200594efd0f0f26004f">CGAL::IO::oformat</a> (const T &amp;t)</td></tr>
+<tr class="memdesc:gaef04729ed020e200594efd0f0f26004f"><td class="mdescLeft"> </td><td class="mdescRight">Convenience function to construct an output representation (<code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">Output_rep</a></code>) for type <code>T</code>.  <br></td></tr>
+<tr class="separator:gaef04729ed020e200594efd0f0f26004f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga6b9c3742007c1eadb4767d1704938eb8"><td class="memTemplParams" colspan="2">template&lt;class T , class F &gt; </td></tr>
+<tr class="memitem:ga6b9c3742007c1eadb4767d1704938eb8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Output__rep.html">Output_rep</a>&lt; T, F &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga6b9c3742007c1eadb4767d1704938eb8">CGAL::IO::oformat</a> (const T &amp;t, F format)</td></tr>
+<tr class="memdesc:ga6b9c3742007c1eadb4767d1704938eb8"><td class="mdescLeft"> </td><td class="mdescRight">Convenience function to construct an output representation (<code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">Output_rep</a></code>) for type <code>T</code>.  <br></td></tr>
+<tr class="separator:ga6b9c3742007c1eadb4767d1704938eb8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8c599d03756553b8a17389aee4c433c9"><td class="memTemplParams" colspan="2"><a id="ga8c599d03756553b8a17389aee4c433c9" name="ga8c599d03756553b8a17389aee4c433c9"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:ga8c599d03756553b8a17389aee4c433c9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Input__rep.html">Input_rep</a>&lt; T &gt; </td><td class="memTemplItemRight" valign="bottom"><b>CGAL::IO::iformat</b> (T &amp;t)</td></tr>
+<tr class="memdesc:ga8c599d03756553b8a17389aee4c433c9"><td class="mdescLeft"> </td><td class="mdescRight">The definition of this function is completely symmetric to <code>oformat()</code>. <br></td></tr>
+<tr class="separator:ga8c599d03756553b8a17389aee4c433c9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga3bf176fc0f57ebc0d35e30489967f9dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd">CGAL::IO::get_mode</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:ga3bf176fc0f57ebc0d35e30489967f9dd"><td class="mdescLeft"> </td><td class="mdescRight">returns the printing mode of the IO stream <code>s</code>.  <br></td></tr>
+<tr class="separator:ga3bf176fc0f57ebc0d35e30489967f9dd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7d51c854b865a7eb367e21fc43bd37b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8">CGAL::IO::set_ascii_mode</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:ga7d51c854b865a7eb367e21fc43bd37b8"><td class="mdescLeft"> </td><td class="mdescRight">sets the mode of the IO stream <code>s</code> to be the <code>ASCII</code> mode.  <br></td></tr>
+<tr class="separator:ga7d51c854b865a7eb367e21fc43bd37b8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7eb5683e79d8aa69059a453dc44cbaa7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7">CGAL::IO::set_binary_mode</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:ga7eb5683e79d8aa69059a453dc44cbaa7"><td class="mdescLeft"> </td><td class="mdescRight">sets the mode of the IO stream <code>s</code> to be the <code>BINARY</code> mode.  <br></td></tr>
+<tr class="separator:ga7eb5683e79d8aa69059a453dc44cbaa7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2cbb865dd83eedd780f4a452635b1d28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28">CGAL::IO::set_pretty_mode</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:ga2cbb865dd83eedd780f4a452635b1d28"><td class="mdescLeft"> </td><td class="mdescRight">sets the mode of the IO stream <code>s</code> to be the <code>PRETTY</code> mode.  <br></td></tr>
+<tr class="separator:ga2cbb865dd83eedd780f4a452635b1d28"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga137e30a6116e8be505077d3a22b373d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9">CGAL::IO::set_mode</a> (std::ios &amp;s, <a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> m)</td></tr>
+<tr class="memdesc:ga137e30a6116e8be505077d3a22b373d9"><td class="mdescLeft"> </td><td class="mdescRight">sets the printing mode of the IO stream <code>s</code>.  <br></td></tr>
+<tr class="separator:ga137e30a6116e8be505077d3a22b373d9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga6713a01742201ddbddc3410a4e1f3467"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467">CGAL::IO::is_pretty</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:ga6713a01742201ddbddc3410a4e1f3467"><td class="mdescLeft"> </td><td class="mdescRight">checks if the IO stream <code>s</code> is in <code>PRETTY</code> mode.  <br></td></tr>
+<tr class="separator:ga6713a01742201ddbddc3410a4e1f3467"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf145cf5cbf5e27ebb907a8260002a5f3"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3">CGAL::IO::is_ascii</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:gaf145cf5cbf5e27ebb907a8260002a5f3"><td class="mdescLeft"> </td><td class="mdescRight">checks if the IO stream <code>s</code> is in <code>ASCII</code> mode.  <br></td></tr>
+<tr class="separator:gaf145cf5cbf5e27ebb907a8260002a5f3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga423ff820f482065303852111a2e9f14d"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d">CGAL::IO::is_binary</a> (std::ios &amp;s)</td></tr>
+<tr class="memdesc:ga423ff820f482065303852111a2e9f14d"><td class="mdescLeft"> </td><td class="mdescRight">checks if the IO stream <code>s</code> is in <code>BINARY</code> mode.  <br></td></tr>
+<tr class="separator:ga423ff820f482065303852111a2e9f14d"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga3bf176fc0f57ebc0d35e30489967f9dd" name="ga3bf176fc0f57ebc0d35e30489967f9dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3bf176fc0f57ebc0d35e30489967f9dd">◆ </a></span>get_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> CGAL::IO::get_mode </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>returns the printing mode of the IO stream <code>s</code>. </p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="gaf145cf5cbf5e27ebb907a8260002a5f3" name="gaf145cf5cbf5e27ebb907a8260002a5f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf145cf5cbf5e27ebb907a8260002a5f3">◆ </a></span>is_ascii()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::IO::is_ascii </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>checks if the IO stream <code>s</code> is in <code>ASCII</code> mode. </p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga423ff820f482065303852111a2e9f14d" name="ga423ff820f482065303852111a2e9f14d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga423ff820f482065303852111a2e9f14d">◆ </a></span>is_binary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::IO::is_binary </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>checks if the IO stream <code>s</code> is in <code>BINARY</code> mode. </p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga6713a01742201ddbddc3410a4e1f3467" name="ga6713a01742201ddbddc3410a4e1f3467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6713a01742201ddbddc3410a4e1f3467">◆ </a></span>is_pretty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::IO::is_pretty </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>checks if the IO stream <code>s</code> is in <code>PRETTY</code> mode. </p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="gaaeb8dfaf0dceffb470b7188c5734a0dd" name="gaaeb8dfaf0dceffb470b7188c5734a0dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaeb8dfaf0dceffb470b7188c5734a0dd">◆ </a></span>make_color_guards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Ansi_color... colors, typename... Streams&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto CGAL::IO::make_color_guards </td>
+          <td>(</td>
+          <td class="paramtype">Streams &amp;... </td>
+          <td class="paramname"><em>streams</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/Color_ostream.h&gt;</code></p>
+
+<p>creates color guards for multiple streams simultaneously. </p>
+<p>This helper function creates <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html" title="RAII helper class for temporarily installing a color streambuf on a stream.">Basic_color_stream_guard</a></code> objects for multiple streams at once. All streams will use the same color settings, and their original streambufs will be automatically restored when the guards go out of scope. The guards are returned in a tuple.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">colors</td><td>Non-type template parameters specifying the colors to combine </td></tr>
+    <tr><td class="paramname">Streams</td><td>The stream types (deduced from arguments) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">streams</td><td>The streams to apply colors to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A tuple of <code><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html" title="RAII helper class for temporarily installing a color streambuf on a stream.">Basic_color_stream_guard</a></code> objects</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCGAL_1_1IO_1_1Basic__color__stream__guard.html" title="RAII helper class for temporarily installing a color streambuf on a stream.">Basic_color_stream_guard</a></dd></dl>
+<p>Example usage: </p><div class="fragment"><div class="line">    <span class="keyword">auto</span> guards =</div>
+<div class="line">        CGAL::IO::make_color_guards&lt;CGAL::IO::Ansi_color::Bold, CGAL::IO::Ansi_color::Green&gt;(std::cout, std::clog);</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a id="ga34aae5d58fcac93ff03962c8899fcf39" name="ga34aae5d58fcac93ff03962c8899fcf39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga34aae5d58fcac93ff03962c8899fcf39">◆ </a></span>make_indenting_guards() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Streams&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto CGAL::IO::make_indenting_guards </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp; </td>
+          <td class="paramname"><em>indent_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Streams &amp;... </td>
+          <td class="paramname"><em>streams</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/Indenting_ostream.h&gt;</code></p>
+
+<p>creates indenting guards for multiple streams with a custom indent string. </p>
+<p>This overload allows specifying a custom indentation string instead of a number of spaces.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Streams</td><td>The stream types (deduced from arguments) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indent_string</td><td>The indentation string to use </td></tr>
+    <tr><td class="paramname">streams</td><td>The streams to apply indentation to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A tuple of <a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html" title="RAII helper class for temporarily installing an indenting streambuf on a stream.">Basic_indenting_stream_guard</a> objects</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html" title="RAII helper class for temporarily installing an indenting streambuf on a stream.">Basic_indenting_stream_guard</a> </dd></dl>
+
+</div>
+</div>
+<a id="gabad67a5083918f359749b6cbf821d0c9" name="gabad67a5083918f359749b6cbf821d0c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabad67a5083918f359749b6cbf821d0c9">◆ </a></span>make_indenting_guards() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Streams&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto CGAL::IO::make_indenting_guards </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>spaces_per_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Streams &amp;... </td>
+          <td class="paramname"><em>streams</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/Indenting_ostream.h&gt;</code></p>
+
+<p>creates indenting guards for multiple streams simultaneously. </p>
+<p>This helper function creates <code><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html" title="RAII helper class for temporarily installing an indenting streambuf on a stream.">Basic_indenting_stream_guard</a></code> objects for multiple streams at once. All streams will use the same indentation settings, and their original streambufs will be automatically restored when the guards go out of scope. The guards are returned in a tuple.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Streams</td><td>The stream types (deduced from arguments) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spaces_per_level</td><td>Number of spaces per indentation level </td></tr>
+    <tr><td class="paramname">streams</td><td>The streams to apply indentation to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A tuple of <a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html" title="RAII helper class for temporarily installing an indenting streambuf on a stream.">Basic_indenting_stream_guard</a> objects</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCGAL_1_1IO_1_1Basic__indenting__stream__guard.html" title="RAII helper class for temporarily installing an indenting streambuf on a stream.">Basic_indenting_stream_guard</a></dd></dl>
+<p>Example usage: </p><div class="fragment"><div class="line">auto guards = CGAL::IO::make_indenting_guards(2, std::cout, std::cerr);</div>
+<div class="line">std::cout &lt;&lt; "Indented output\n";</div>
+<div class="line">std::cerr &lt;&lt; "Indented error\n";</div>
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Stream_support_2indenting_ostream_8cpp-example.html#a2">Stream_support/indenting_ostream.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="gaef04729ed020e200594efd0f0f26004f" name="gaef04729ed020e200594efd0f0f26004f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaef04729ed020e200594efd0f0f26004f">◆ </a></span>oformat() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Output__rep.html">Output_rep</a>&lt; T &gt; CGAL::IO::oformat </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp; </td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>Convenience function to construct an output representation (<code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">Output_rep</a></code>) for type <code>T</code>. </p>
+<p>Generic <a class="elRef" href="../Arrangement_on_surface_2/namespaceCGAL_1_1IO.html">IO</a> for type <code>T</code>. </p>
+
+</div>
+</div>
+<a id="ga6b9c3742007c1eadb4767d1704938eb8" name="ga6b9c3742007c1eadb4767d1704938eb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6b9c3742007c1eadb4767d1704938eb8">◆ </a></span>oformat() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class F &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Output__rep.html">Output_rep</a>&lt; T, F &gt; CGAL::IO::oformat </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp; </td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F </td>
+          <td class="paramname"><em>format</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>Convenience function to construct an output representation (<code><a class="el" href="classCGAL_1_1Output__rep.html" title="The purpose of Output_rep is to provide a way to control output formatting that works independently o...">Output_rep</a></code>) for type <code>T</code>. </p>
+<p>Generic <a class="elRef" href="../Arrangement_on_surface_2/namespaceCGAL_1_1IO.html">IO</a> for type <code>T</code> with formatting tag. </p>
+
+</div>
+</div>
+<a id="ga7d51c854b865a7eb367e21fc43bd37b8" name="ga7d51c854b865a7eb367e21fc43bd37b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7d51c854b865a7eb367e21fc43bd37b8">◆ </a></span>set_ascii_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> CGAL::IO::set_ascii_mode </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>sets the mode of the IO stream <code>s</code> to be the <code>ASCII</code> mode. </p>
+<p>Returns the previous mode of <code>s</code>.</p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga7eb5683e79d8aa69059a453dc44cbaa7" name="ga7eb5683e79d8aa69059a453dc44cbaa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7eb5683e79d8aa69059a453dc44cbaa7">◆ </a></span>set_binary_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> CGAL::IO::set_binary_mode </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>sets the mode of the IO stream <code>s</code> to be the <code>BINARY</code> mode. </p>
+<p>Returns the previous mode of <code>s</code>.</p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga137e30a6116e8be505077d3a22b373d9" name="ga137e30a6116e8be505077d3a22b373d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga137e30a6116e8be505077d3a22b373d9">◆ </a></span>set_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> CGAL::IO::set_mode </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> </td>
+          <td class="paramname"><em>m</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>sets the printing mode of the IO stream <code>s</code>. </p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga2cbb865dd83eedd780f4a452635b1d28" title="sets the mode of the IO stream s to be the PRETTY mode.">CGAL::IO::set_pretty_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga2cbb865dd83eedd780f4a452635b1d28" name="ga2cbb865dd83eedd780f4a452635b1d28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2cbb865dd83eedd780f4a452635b1d28">◆ </a></span>set_pretty_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgStreamSupportEnumRef.html#gac0c882c273b950eb9efca32420e2bef0">Mode</a> CGAL::IO::set_pretty_mode </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp; </td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/io.h&gt;</code></p>
+
+<p>sets the mode of the IO stream <code>s</code> to be the <code>PRETTY</code> mode. </p>
+<p>Returns the previous mode of <code>s</code>.</p>
+<p><a class="el" href="group__PkgStreamSupportEnumRef.html"><code>CGAL::IO::Mode</code></a> </p><dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgStreamSupportRef.html#ga137e30a6116e8be505077d3a22b373d9" title="sets the printing mode of the IO stream s.">CGAL::IO::set_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7d51c854b865a7eb367e21fc43bd37b8" title="sets the mode of the IO stream s to be the ASCII mode.">CGAL::IO::set_ascii_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga7eb5683e79d8aa69059a453dc44cbaa7" title="sets the mode of the IO stream s to be the BINARY mode.">CGAL::IO::set_binary_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga3bf176fc0f57ebc0d35e30489967f9dd" title="returns the printing mode of the IO stream s.">CGAL::IO::get_mode()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#gaf145cf5cbf5e27ebb907a8260002a5f3" title="checks if the IO stream s is in ASCII mode.">CGAL::IO::is_ascii()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga423ff820f482065303852111a2e9f14d" title="checks if the IO stream s is in BINARY mode.">CGAL::IO::is_binary()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PkgStreamSupportRef.html#ga6713a01742201ddbddc3410a4e1f3467" title="checks if the IO stream s is in PRETTY mode.">CGAL::IO::is_pretty()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="gac75c13bbd04cef30421ecec4d82a119e" name="gac75c13bbd04cef30421ecec4d82a119e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac75c13bbd04cef30421ecec4d82a119e">◆ </a></span>stream_supports_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CharT , typename Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::IO::stream_supports_color </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_ostream&lt; CharT, Traits &gt; &amp; </td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/IO/Color_ostream.h&gt;</code></p>
+
+<p>checks if a stream is attached to a terminal that supports colors. </p>
+<p>This function checks if the given output stream is connected to a terminal (TTY) that can display ANSI color codes. It performs the following checks:</p>
+<ol type="1">
+<li>Verifies the stream is attached to a TTY device using <code>isatty()</code></li>
+<li>Checks if the <code>TERM</code> environment variable indicates color support</li>
+<li>Respects the <code>NO_COLOR</code> environment variable (if set, colors are disabled)</li>
+<li>Respects the <code>CLICOLOR_FORCE</code> environment variable (if set, colors are enabled)</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>The output stream to check (e.g., <code>std::cout</code>, <code>std::cerr</code>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the stream supports color output, <code>false</code> otherwise</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function may return false negatives on some systems, but should never return false positives (it won't report color support where it doesn't exist).</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCGAL_1_1IO_1_1Basic__color__streambuf.html" title="The class template Basic_color_streambuf wraps another basic_streambuf and automatically adds ANSI co...">Basic_color_streambuf</a></dd></dl>
+<p>Example usage: </p><div class="fragment"><div class="line">if(CGAL::IO::stream_supports_color(std::cout)) {</div>
+<div class="line">  CGAL::IO::Color_stream_guard guard(std::cout, CGAL::IO::Ansi_color::Red);</div>
+<div class="line">  std::cout &lt;&lt; "This text is red!\n";</div>
+<div class="line">} else {</div>
+<div class="line">  std::cout &lt;&lt; "Plain text output\n";</div>
+<div class="line">}</div>
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Stream_support_2color_ostream_8cpp-example.html#a16">Stream_support/color_ostream.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,1550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Polygon_mesh_processing/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Polygon Mesh Processing: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Polygon Mesh Processing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_PolygonMeshProcessing"></a> </p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Authors</dt><dd>David Coeurjolly, Jacques-Olivier Lachaud, Sébastien Loriot, Ivan Pađen, Mael Rouxel-Labbé, Hossam Saeed, Jane Tournois, Sébastien Valette, and Ilker O. Yaz</dd></dl>
+<p><a class="anchor" id="fig__PMPBanner"></a></p><center> <img src="pmp-banner.png" alt="" style="max-width:70%;" class="inline"> </center><dl class="section note"><dt>Note</dt><dd>Starting with <a class="elRef" href="../Manual/namespaceCGAL.html">CGAL</a> 6.2, the documentation for the "Polygon Mesh Processing" package has been reorganized into several specialized packages. This package retains the core functionalities, while advanced and specialized features have been moved to dedicated packages:<br>
+<br>
+<ul>
+<li><a class="elRef" href="../Manual/packages.html#PkgPMPBooleanOperations">Boolean Operations On Meshes</a>: algorithms for Boolean operations on polygon meshes, including clipping, splitting, and slicing with planes, boxes, or other meshes.</li>
+<li><a class="elRef" href="../Manual/packages.html#PkgPMPRemeshing">Meshing and Remeshing of Polygon Meshes</a>: algorithms for meshing and remeshing, such as triangulation, refinement, simplification, optimization, and smoothing.</li>
+<li><a class="elRef" href="../Manual/packages.html#PkgPMPMeshRepair">Polygon Mesh Repair</a>: tools for detecting and correcting combinatorial and geometric defects in polygon meshes and polygon soups, including face orientation, hole filling, removal of degeneracies, and boundary stitching.</li>
+</ul>
+</dd></dl>
+<h1><a class="anchor" id="PMPIntroduction"></a>
+Introduction</h1>
+<p>This package provides a comprehensive set of methods and classes for polygon mesh processing, ranging from basic operations on mesh elements to advanced geometry processing algorithms. The implementation is primarily based on the algorithms and references presented in Botsch et al.'s book on polygon mesh processing <a class="el" href="citelist.html#CITEREF_botsch2010PMP">[2]</a>.</p>
+<h2><a class="anchor" id="PMPDef"></a>
+Polygon Mesh</h2>
+<p>A <em>polygon</em> <em>mesh</em> is a consistent and orientable surface mesh, that can have one or more boundaries. The <em>faces</em> are simple polygons. The <em>edges</em> are segments. Each edge connects two <em>vertices</em>, and is shared by two faces (including the <em>null</em> <em>face</em> for boundary edges). A polygon mesh can have any number of connected components. In this package, a polygon mesh is considered to have the topology of a 2-manifold. Note that all these requirements are mostly combinatorial, and do not impose any geometric constraints on the shape of the polygons. As such, this definition does not prevent the presence of defects such as self-intersections, degenerate faces or edges, etc.</p>
+<h2><a class="anchor" id="PMPAPI"></a>
+API</h2>
+<p>This package follows the BGL API described in <a class="elRef" href="../Manual/packages.html#PkgBGL">CGAL and the Boost Graph Library</a>. It can thus be used either with <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code>, <code><a class="elRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a></code>, or any class model of the concept <code><a class="elRef" href="../BGL/classFaceGraph.html">FaceGraph</a></code>. Each function or class of this package details the requirements on the input polygon mesh.</p>
+<p><a class="elRef" href="../BGL/index.html#BGLNamedParameters">Named Parameters</a> are used to deal with optional parameters. The page <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> describes their usage.</p>
+<h2><a class="anchor" id="PMPOutline"></a>
+Outline</h2>
+<p>The algorithms described in this manual are organized in sections:</p><ul>
+<li><a class="el" href="index.html#PMPPredicates">Predicates</a> : predicates that can be evaluated on the polygon mesh, which includes point location and self-intersection tests.</li>
+<li><a class="el" href="index.html#PMPConnectedComponents">Connected Components</a> : methods to deal with connected components of a polygon mesh (extraction, marks, removal, ...).</li>
+<li><a class="el" href="index.html#PMPNormalComp">Computing Normals</a> : normal computation at the vertices and on the faces of a polygon mesh.</li>
+<li><a class="el" href="index.html#PMPDetectFeatures">Feature Detection</a> : methods to detect sharp geometric features on a polygon mesh.</li>
+<li><a class="el" href="index.html#PMPICC">Computing Curvatures</a> : computation of curvatures (mean, gaussian, principal) on a polygon mesh.</li>
+<li><a class="el" href="index.html#PMPDistance">Hausdorff Distance</a> : methods to compute distances between polygon meshes.</li>
+</ul>
+<h2><a class="anchor" id="PMPIO"></a>
+Reading and Writing Polygon Meshes</h2>
+<p>In all functions of this package, the polygon meshes are required to be models of the graph concepts defined in the package <a class="elRef" href="../Manual/packages.html#PkgBGL">CGAL and the Boost Graph Library</a>. Using common graph concepts enables having common input/output functions for all the models of these concepts. The page <a class="elRef" href="../BGL/group__PkgBGLIOFct.html">I/O Functions</a> provides an exhaustive description of the available I/O functions.</p>
+<p>In addition, this package offers the function <code><a class="elRef" href="../PMP_Mesh_repair/group__PMP__IO__grp.html#gac5b3295bd1b6375628a46d1fbaf7e881">CGAL::Polygon_mesh_processing::IO::read_polygon_mesh()</a></code>, which can perform some repairing if the input data do not represent a manifold surface.</p>
+<h1><a class="anchor" id="PMPPredicates"></a>
+Predicates</h1>
+<p>This package provides several predicates to determine the characteristics of a triangle mesh or a subset of its faces.</p>
+<h2><a class="anchor" id="PMPDoIntersect"></a>
+Intersections Detection</h2>
+<p>Intersection tests between triangle meshes and/or polylines can be performed using the function <a class="el" href="group__PMP__predicates__grp.html"><code>CGAL::Polygon_mesh_processing::do_intersect()</code> </a>. Additionally, the function <code><a class="el" href="group__PMP__intersection__grp.html#gaf0a7348487c7bf93dced127d82afc918" title="detects and reports all the pairs of meshes intersecting in a range of triangulated surface meshes.">CGAL::Polygon_mesh_processing::intersecting_meshes()</a></code> can be used to collect all pairs of intersecting meshes within a range.</p>
+<h3><a class="anchor" id="PMPSelIntersections"></a>
+Self-intersections</h3>
+<p>Self-intersections within a triangle mesh can be detected by calling the function <code><a class="el" href="group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42" title="tests if a set of faces of a triangulated surface mesh self-intersects.">CGAL::Polygon_mesh_processing::does_self_intersect()</a></code>. Additionally, the function <code><a class="el" href="group__PMP__intersection__grp.html#ga5c8f1c1aba66b32be12d88f852f87fb0" title="collects intersections between a subset of faces of a triangulated surface mesh.">CGAL::Polygon_mesh_processing::self_intersections()</a></code> reports all pairs of intersecting triangles.</p>
+<h3><a class="anchor" id="PMPSelfIntersectionsExample"></a>
+Self-intersections Example</h3>
+<p>The following example demonstrates self-intersection detection in the <code>pig.off</code> mesh. Detected self-intersections are illustrated in <a class="el" href="index.html#fig__SelfIntersections">Figure 75.2</a>.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2self_intersections_example_8cpp-example.html">Polygon_mesh_processing/self_intersections_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/self_intersections.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/tags.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> K;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;K::Point_3&gt;</a>                      Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor          face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/pig.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh) || !<a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#ga11883d231eec1b58f37efe4acedd9588">CGAL::is_triangle_mesh</a>(mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Using parallel mode? "</span> &lt;&lt; std::is_same&lt;CGAL::Parallel_if_available_tag, CGAL::Parallel_tag&gt;::value &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  CGAL::Real_timer timer;</div>
+<div class="line">  timer.start();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">bool</span> intersecting = PMP::does_self_intersect&lt;CGAL::Parallel_if_available_tag&gt;(mesh, CGAL::parameters::vertex_point_map(get(CGAL::vertex_point, mesh)));</div>
+<div class="line">  std::cout &lt;&lt; (intersecting ? <span class="stringliteral">"There are self-intersections."</span> : <span class="stringliteral">"There is no self-intersection."</span>) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Elapsed time (does self intersect): "</span> &lt;&lt; timer.time() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  timer.reset();</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;std::pair&lt;face_descriptor, face_descriptor&gt; &gt; intersected_tris;</div>
+<div class="line">  PMP::self_intersections&lt;CGAL::Parallel_if_available_tag&gt;(faces(mesh), mesh, std::back_inserter(intersected_tris));</div>
+<div class="line">  std::cout &lt;&lt; intersected_tris.size() &lt;&lt; <span class="stringliteral">" pairs of triangles intersect."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Elapsed time (self intersections): "</span> &lt;&lt; timer.time() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_ga11883d231eec1b58f37efe4acedd9588"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#ga11883d231eec1b58f37efe4acedd9588">CGAL::is_triangle_mesh</a></div><div class="ttdeci">bool is_triangle_mesh(const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+</div><!-- fragment --> </details>
+<p><a class="anchor" id="fig__SelfIntersections"></a></p><center> <img src="selfintersections.jpg" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__SelfIntersections">Figure 75.2</a> Detection of self-intersections in a triangle mesh. Intersecting triangles are displayed in dark grey and red in the right image. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="PMPInsideTest"></a>
+Side of Triangle Mesh</h2>
+<p>The class <code><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">CGAL::Side_of_triangle_mesh</a></code> provides a functor that can answer whether a query point is inside, outside, or on the boundary of the domain bounded by a given closed triangle mesh.</p>
+<p>A point is considered to be on the bounded side of the mesh if an odd number of surfaces are crossed when moving from the point to infinity.</p>
+<p>The algorithm can handle the case of a triangle mesh with several connected components, but is expected to contain no self-intersections. In case of self-inclusions, the ray intersections parity test is performed, and the execution will not fail. However, users should be aware that the predicate alternately considers sub-volumes to be on the bounded and unbounded sides of the input triangle mesh.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2point_inside_example_8cpp-example.html">Polygon_mesh_processing/point_inside_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/point_generators_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Side_of_triangle_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>    K;</div>
+<div class="line"><span class="keyword">typedef</span> K::Point_3                                             Point;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3&lt;K&gt;</a>                                  Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">double</span> max_coordinate(<span class="keyword">const</span> Mesh&amp; poly)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">double</span> max_coord = -std::numeric_limits&lt;double&gt;::infinity();</div>
+<div class="line">  <span class="keywordflow">for</span>(Mesh::Vertex_handle v : vertices(poly))</div>
+<div class="line">  {</div>
+<div class="line">    Point p = v-&gt;point();</div>
+<div class="line">    max_coord = (std::max)(max_coord, <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a>(p.x()));</div>
+<div class="line">    max_coord = (std::max)(max_coord, <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a>(p.y()));</div>
+<div class="line">    max_coord = (std::max)(max_coord, <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a>(p.z()));</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> max_coord;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/eight.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh poly;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, poly) || <a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#gab6e6f18e6de73b9f85e38d0b56145172">CGAL::is_empty</a>(poly) || !<a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#ga11883d231eec1b58f37efe4acedd9588">CGAL::is_triangle_mesh</a>(poly))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classCGAL_1_1Side__of__triangle__mesh.html">CGAL::Side_of_triangle_mesh&lt;Mesh, K&gt;</a> inside(poly);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">double</span> size = max_coordinate(poly);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nb_points = 100;</div>
+<div class="line">  std::vector&lt;Point&gt; points;</div>
+<div class="line">  points.reserve(nb_points);</div>
+<div class="line">  <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3&lt;Point&gt;</a> gen(size);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; nb_points; ++i)</div>
+<div class="line">    points.push_back(*gen++);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Test "</span> &lt;&lt; nb_points &lt;&lt; <span class="stringliteral">" random points in cube "</span></div>
+<div class="line">    &lt;&lt; <span class="stringliteral">"[-"</span> &lt;&lt; size &lt;&lt; <span class="stringliteral">"; "</span> &lt;&lt; size &lt;&lt;<span class="stringliteral">"]"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> nb_inside = 0;</div>
+<div class="line">  <span class="keywordtype">int</span> nb_boundary = 0;</div>
+<div class="line">  <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; nb_points; ++i)</div>
+<div class="line">  {</div>
+<div class="line">    <a class="code hl_enumerationRef" href="../Kernel_23/group__kernel__enums.html#gaf6030e89dadcc1f45369b0cdc5d9e111">CGAL::Bounded_side</a> res = inside(points[i]);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (res == <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe">CGAL::ON_BOUNDED_SIDE</a>) { ++nb_inside; }</div>
+<div class="line">    <span class="keywordflow">if</span> (res == <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111a060193157c0875fb2e6445a648f3ac1f">CGAL::ON_BOUNDARY</a>) { ++nb_boundary; }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"Total query size: "</span> &lt;&lt; points.size() &lt;&lt; std::endl;</div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"  "</span> &lt;&lt; nb_inside &lt;&lt; <span class="stringliteral">" points inside "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"  "</span> &lt;&lt; nb_boundary &lt;&lt; <span class="stringliteral">" points on boundary "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"  "</span> &lt;&lt; points.size() - nb_inside - nb_boundary &lt;&lt; <span class="stringliteral">" points outside "</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Polyhedron__3_html"><div class="ttname"><a href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__cube__3_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Side__of__triangle__mesh_html"><div class="ttname"><a href="classCGAL_1_1Side__of__triangle__mesh.html">CGAL::Side_of_triangle_mesh</a></div><div class="ttdoc">This class provides an efficient point location functionality with respect to a domain bounded by one...</div><div class="ttdef"><b>Definition:</b> Side_of_triangle_mesh.h:77</div></div>
+<div class="ttc" id="agroup__PkgAlgebraicFoundationsRef_html_ga1f1bcd74fce34fd532445590bbda5cd5"><div class="ttname"><a href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a></div><div class="ttdeci">double to_double(const NT &amp;x)</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_gab6e6f18e6de73b9f85e38d0b56145172"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#gab6e6f18e6de73b9f85e38d0b56145172">CGAL::is_empty</a></div><div class="ttdeci">bool is_empty(const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_gaf6030e89dadcc1f45369b0cdc5d9e111"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#gaf6030e89dadcc1f45369b0cdc5d9e111">CGAL::Bounded_side</a></div><div class="ttdeci">Bounded_side</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ggaf6030e89dadcc1f45369b0cdc5d9e111a060193157c0875fb2e6445a648f3ac1f"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111a060193157c0875fb2e6445a648f3ac1f">CGAL::ON_BOUNDARY</a></div><div class="ttdeci">ON_BOUNDARY</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe">CGAL::ON_BOUNDED_SIDE</a></div><div class="ttdeci">ON_BOUNDED_SIDE</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="PMPEnvelope"></a>
+Polyhedral Envelope Containment Check</h2>
+<p>The class <code><a class="el" href="structCGAL_1_1Polyhedral__envelope.html" title="This class can be used to check if a query point, segment, or triangle is inside or outside a polyhed...">CGAL::Polyhedral_envelope</a></code> provides functors to check whether a query point, segment, or triangle is fully contained within a <em>polyhedral envelope</em> of a triangle mesh or triangle soup.</p>
+<p>A polyhedral envelope is a conservative approximation of the Minkowski sum envelope of a set of triangles with a sphere of radius \( \epsilon \). The Minkowski sum envelope features cylindrical and spherical patches at convex edges and vertices.</p>
+<p>Given a distance \( \delta =  \epsilon / \sqrt(3)\), a <em>prism</em> is associated with each triangle by intersecting halfspaces parallel and orthogonal to the triangle and its edges, and additional halfspaces for obtuse angles, with face normals corresponding to angle bisectors. These halfspaces are at distance \( \delta \) and contain the triangle.</p>
+<p>The <em>polyhedral envelope</em> of a set of triangles with a tolerance \( \epsilon \) then is the union of the prisms of all faces with \( \delta = \epsilon / \sqrt(3) \).</p>
+<p><a class="anchor" id="fig__envelopeFig"></a> </p><div class="image">
+<img src="envelope.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__envelopeFig">Figure 75.3</a> The prism for a single triangle (left), the polyhedral envelope (middle), and the Minkowski sum envelope (right) for a triangle mesh. </p> </div> <p> <br>
+</p>
+<p>The polyhedral envelope is guaranteed to be contained within the Minkowski sum envelope. The containment test is exact for the polyhedral envelope and conservative for the Minkowski sum envelope: if a query is inside the polyhedral envelope, it is also inside the Minkowski sum envelope; if outside, its relation to the Minkowski sum envelope is undetermined.</p>
+<p>The algorithm of Wang et al. <a class="el" href="citelist.html#CITEREF_cgal:Wwshap-eepec-20">[8]</a> for polyhedral envelope containment proceeds as follows:</p>
+<p>The prisms of the faces of the input triangles are stored in an AABB tree, which is used to quickly identify the prisms whose bounding box overlaps with the query.</p>
+<p>For a query point, the algorithm checks if it is inside one of these prisms. For a query segment or triangle, the algorithm checks if the query is completely covered. The details of how to check this covering can be found in the paper.</p>
+<p>Polyhedral envelope containment is used by <code><a class="elRef" href="../Surface_mesh_simplification/classCGAL_1_1Surface__mesh__simplification_1_1Polyhedral__envelope__filter.html">Surface_mesh_simplification::Polyhedral_envelope_filter</a></code> in the <a class="elRef" href="../Manual/packages.html#PkgSurfaceMeshSimplification">Triangulated Surface Mesh Simplification</a> package to simplify triangle meshes within a given tolerance.</p>
+<h3><a class="anchor" id="PolyhedralEnvelopeExample"></a>
+Polyhedral Envelope Examples</h3>
+<p>The following example demonstrates construction of a polyhedral envelope for a <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code> and performing queries.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2polyhedral_envelope_8cpp-example.html">Polygon_mesh_processing/polyhedral_envelope.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedral_envelope.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a> Point_3;</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a> Mesh;</div>
+<div class="line">  <span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor vertex_descriptor;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_struct" href="structCGAL_1_1Polyhedral__envelope.html">CGAL::Polyhedral_envelope&lt;Kernel&gt;</a> Envelope;</div>
+<div class="line"> </div>
+<div class="line">  std::ifstream in((argc&gt;1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby.off"</span>));</div>
+<div class="line">  Mesh tmesh;</div>
+<div class="line"> </div>
+<div class="line">  in &gt;&gt; tmesh;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">double</span> eps = (argc&gt;2) ? std::stod(std::string(argv[2])) : 0.2;</div>
+<div class="line"> </div>
+<div class="line">  Envelope envelope(tmesh, eps);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> i = (argc&gt;3) ? std::stoi(std::string(argv[3])) : 0;</div>
+<div class="line">  <span class="keywordtype">int</span> j = (argc&gt;4) ? std::stoi(std::string(argv[4])) : 100;</div>
+<div class="line">  <span class="keywordtype">int</span> k = (argc&gt;5) ? std::stoi(std::string(argv[5])) : 200;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(envelope(tmesh.point(vertex_descriptor(i)),</div>
+<div class="line">              tmesh.point(vertex_descriptor(j)),</div>
+<div class="line">              tmesh.point(vertex_descriptor(k)))){</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"inside polyhedral envelope"</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Polyhedral__envelope_html"><div class="ttname"><a href="structCGAL_1_1Polyhedral__envelope.html">CGAL::Polyhedral_envelope</a></div><div class="ttdoc">This class can be used to check if a query point, segment, or triangle is inside or outside a polyhed...</div><div class="ttdef"><b>Definition:</b> Polyhedral_envelope.h:105</div></div>
+</div><!-- fragment --> </details>
+<p>As connectivity information is not required, the same check can be performed on a triangle soup.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2polyhedral_envelope_of_triangle_soup_8cpp-example.html">Polygon_mesh_processing/polyhedral_envelope_of_triangle_soup.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedral_envelope.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/OFF.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a> Point_3;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_struct" href="structCGAL_1_1Polyhedral__envelope.html">CGAL::Polyhedral_envelope&lt;Kernel&gt;</a> Envelope;</div>
+<div class="line"> </div>
+<div class="line">  std::ifstream in((argc&gt;1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby.off"</span>));</div>
+<div class="line">  <span class="keywordtype">double</span> eps = (argc&gt;2) ? std::stod(std::string(argv[2])) : 0.2;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;Point_3&gt; points;</div>
+<div class="line">  std::vector&lt;std::vector&lt;std::size_t&gt; &gt; polygons;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a>(in, points, polygons);</div>
+<div class="line"> </div>
+<div class="line">  Envelope envelope(points, polygons, eps);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> i = (argc&gt;3) ? std::stoi(std::string(argv[3])) : 0;</div>
+<div class="line">  <span class="keywordtype">int</span> j = (argc&gt;4) ? std::stoi(std::string(argv[4])) : 100;</div>
+<div class="line">  <span class="keywordtype">int</span> k = (argc&gt;5) ? std::stoi(std::string(argv[5])) : 200;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (envelope(points[i], points[j],points[k]))</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"inside polyhedral envelope"</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PkgBGLIoFuncsOFF_html_gadd0f59b6789ef565bb7e95f3d0d89e91"><div class="ttname"><a href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a></div><div class="ttdeci">bool read_OFF(std::istream &amp;is, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+</div><!-- fragment --> </details>
+<p>A triangle mesh can also be used as a query to verify if a remeshed version is contained within the polyhedral envelope of an input mesh.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2polyhedral_envelope_mesh_containment_8cpp-example.html">Polygon_mesh_processing/polyhedral_envelope_mesh_containment.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedral_envelope.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/remesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a> Point_3;</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a> Mesh;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_struct" href="structCGAL_1_1Polyhedral__envelope.html">CGAL::Polyhedral_envelope&lt;Kernel&gt;</a> Envelope;</div>
+<div class="line"> </div>
+<div class="line">  std::ifstream in((argc&gt;1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby.off"</span>));</div>
+<div class="line">  Mesh tmesh;</div>
+<div class="line">  in &gt;&gt; tmesh;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// remesh the input using the longest edge size as target edge length</span></div>
+<div class="line">  Mesh query = tmesh;</div>
+<div class="line">  Mesh::Edge_iterator longest_edge_it =</div>
+<div class="line">    std::max_element(edges(query).begin(), edges(query).end(),</div>
+<div class="line">                     [&amp;query](Mesh::Edge_index e1, Mesh::Edge_index e2)</div>
+<div class="line">                     {</div>
+<div class="line">                        <span class="keywordflow">return</span> <a class="code hl_function" href="group__PMP__measure__grp.html#gaaffc67e631d83a7da4b1096b782ead94">PMP::edge_length</a>(halfedge(e1, query), query) &lt;</div>
+<div class="line">                               <a class="code hl_function" href="group__PMP__measure__grp.html#gaaffc67e631d83a7da4b1096b782ead94">PMP::edge_length</a>(halfedge(e2, query), query);</div>
+<div class="line">                     });</div>
+<div class="line">  <a class="code hl_functionRef" href="../PMP_Remeshing/group__PMP__local__remeshing__grp.html#ga412f696ec3009074bf957f1bba638248">PMP::isotropic_remeshing</a>(faces(tmesh), <a class="code hl_function" href="group__PMP__measure__grp.html#gaaffc67e631d83a7da4b1096b782ead94">PMP::edge_length</a>(halfedge(*longest_edge_it, query), query), query);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// construct the polyhedral envelope</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> eps = (argc&gt;2) ? std::stod(std::string(argv[2])) : 0.01;</div>
+<div class="line">  Envelope envelope(tmesh, eps);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// check is the remeshed version is inside the polyhedral envelope of the input mesh</span></div>
+<div class="line">  <span class="keywordflow">if</span> ( envelope(query) )</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Remeshing is inside the polyhedral envelope\n"</span>;</div>
+<div class="line">  <span class="keywordflow">else</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Remeshing is not inside the polyhedral envelope\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream(<span class="stringliteral">"remeshed.off"</span>) &lt;&lt; query;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__local__remeshing__grp_html_ga412f696ec3009074bf957f1bba638248"><div class="ttname"><a href="../PMP_Remeshing/group__PMP__local__remeshing__grp.html#ga412f696ec3009074bf957f1bba638248">CGAL::Polygon_mesh_processing::isotropic_remeshing</a></div><div class="ttdeci">void isotropic_remeshing(const FaceRange &amp;faces, SizingFunction &amp;sizing, PolygonMesh &amp;pmesh, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PMP__measure__grp_html_gaaffc67e631d83a7da4b1096b782ead94"><div class="ttname"><a href="group__PMP__measure__grp.html#gaaffc67e631d83a7da4b1096b782ead94">CGAL::Polygon_mesh_processing::edge_length</a></div><div class="ttdeci">FT edge_length(typename boost::graph_traits&lt; PolygonMesh &gt;::halfedge_descriptor h, const PolygonMesh &amp;pmesh, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes the length of an edge of a given polygon mesh.</div><div class="ttdef"><b>Definition:</b> measure.h:109</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="PMPShapePredicates"></a>
+Shape Predicates</h2>
+<p>Badly shaped or, even worse, completely degenerate elements of a polygon mesh are problematic in many algorithms which one might want to use on the mesh. This package offers a toolkit of functions to detect such undesirable elements.</p><ul>
+<li><code><a class="el" href="group__PMP__predicates__grp.html#ga3f58569399266bf51bc3156f310e6bd0" title="checks whether an edge is degenerate.">CGAL::Polygon_mesh_processing::is_degenerate_edge()</a></code>, to detect if an edge is degenerate (that is, if its two vertices share the same geometric location).</li>
+<li><code><a class="el" href="group__PMP__predicates__grp.html#ga482e70b514067bb25403009e0a861262" title="checks whether a triangle face is degenerate.">CGAL::Polygon_mesh_processing::is_degenerate_triangle_face()</a></code>, to detect if a face is degenerate (that is, if its three vertices are collinear).</li>
+<li><code><a class="el" href="group__PMP__predicates__grp.html#ga8792f19475d1b066ed9b9bf35d69c695" title="collects the degenerate edges within a given range of edges.">CGAL::Polygon_mesh_processing::degenerate_edges()</a></code>, to collect degenerate edges within a range of edges.</li>
+<li><code><a class="el" href="group__PMP__predicates__grp.html#ga349da012e9a09a6085e2607c3e9ea9fb" title="collects the degenerate faces within a given range of faces.">CGAL::Polygon_mesh_processing::degenerate_faces()</a></code>, to collect degenerate faces within a range of faces.</li>
+<li><code><a class="el" href="group__PMP__predicates__grp.html#gad901eb3ea93d84417ffcd0da602be78f" title="checks whether a triangle face is a cap.">CGAL::Polygon_mesh_processing::is_cap_triangle_face()</a></code>, to detect if a face has one very large angle.</li>
+<li><code><a class="el" href="group__PMP__predicates__grp.html#ga4e1b0b968527ce2d0c2f903022b41db4" title="checks whether a triangle face is needle.">CGAL::Polygon_mesh_processing::is_needle_triangle_face()</a></code>, to detect if a face has a very short edge.</li>
+</ul>
+<h1><a class="anchor" id="PMPConnectedComponents"></a>
+Connected Components</h1>
+<h2><a class="anchor" id="PMPConnectedComponentsCollection"></a>
+Collecting Connected Components</h2>
+<p>Functions are provided to enumerate and store the connected components of a polygon mesh. Connected components may be closed and geometrically separated, or separated by border or user-specified <em>constraint</em> edges.</p>
+<p>The main entry point is the function <code><a class="el" href="group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9" title="computes for each face the index of the corresponding connected component.">CGAL::Polygon_mesh_processing::connected_components()</a></code>, which collects all the connected components and fills a property map with the indices of the different connected components.</p>
+<p>If a single connected component is to be extracted, the function <code><a class="el" href="group__PMP__keep__connected__components__grp.html#gad417b04f530806789515a25530547a36" title="discovers all the faces in the same connected component as seed_face and records them in out.">CGAL::Polygon_mesh_processing::connected_component()</a></code> collects all the faces that belong to the same connected component as the face that is provided as a parameter.</p>
+<p>When a mesh has no boundary, it partitions the 3D space in different volumes. The function <code><a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#gab43990ca5541b788c6db2ba509a73ee3">CGAL::Polygon_mesh_processing::volume_connected_components()</a></code> can be used to assign to each face an id per volume defined by the surface connected components.</p>
+<h2><a class="anchor" id="PMPConnectedComponentsMutable"></a>
+Modifying Connected Components</h2>
+<p>It is often useful to retain or remove specific connected components, for example, to discard small noisy components in favor of larger ones.</p>
+<p>The functions <code><a class="el" href="group__PMP__keep__connected__components__grp.html#ga7dd1414e9366fed26c1f12c12c376b39" title="keeps the connected components designated by theirs ids in components_to_keep, and removes the other ...">CGAL::Polygon_mesh_processing::keep_connected_components()</a></code> and <code><a class="el" href="group__PMP__keep__connected__components__grp.html#gaa30dc31656db0f4d1cab5b2c977bf855" title="removes in pmesh the connected components designated by theirs ids in components_to_remove,...">CGAL::Polygon_mesh_processing::remove_connected_components()</a></code> enable the user to keep or remove only a selection of connected components, provided either as a range of faces that belong to the desired connected components or as a range of connected component ids (one or more per connected component).</p>
+<p>Finally, it can be useful to quickly remove some connected components based on characteristics of the surface mesh. The function <code><a class="el" href="group__PMP__keep__connected__components__grp.html#gae3812da28af74bdf9602a70ae1f9c817" title="removes all but a user-defined number of connected components.">CGAL::Polygon_mesh_processing::keep_largest_connected_components()</a></code> enables the user to keep only a given number from the largest connected components. The size of a connected component is given by the sum of the sizes of the faces it contains; by default, the size of a face is <code>1</code>, and thus the size of a connected component is equal to the number of faces it contains. However, it is also possible to pass a face size map, such that the size of the face is its area, for example. Similarly to the previous function, the function <code><a class="el" href="group__PMP__keep__connected__components__grp.html#gad08d3489808a6ec8382a9fba3d288f39" title="removes connected components whose size is (strictly) smaller than a given threshold value,...">CGAL::Polygon_mesh_processing::keep_large_connected_components()</a></code> can be used to discard all connected components whose size is below a user-defined threshold.</p>
+<p>Finally, <code><a class="el" href="group__PMP__keep__connected__components__grp.html#ga510bdc621fa423d202b22ba82c20ca7b" title="identifies the connected components of pmesh and pushes back a new PolygonMesh for each connected com...">CGAL::Polygon_mesh_processing::split_connected_components()</a></code> splits the mesh into separate meshes for each connected component.</p>
+<h2><a class="anchor" id="CCExample"></a>
+Connected Components Examples</h2>
+<p>The first example shows how to record the connected components of a polygon mesh. In particular, we provide an example for the optional parameter <code>EdgeConstraintMap</code>, a property map that returns information about an edge being a <em>constraint</em> or not. A <em>constraint</em> provides a means to demarcate the border of a connected component, and prevents the propagation of a connected component index to cross it.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2connected_components_example_8cpp-example.html">Polygon_mesh_processing/connected_components_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/connected_components.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/iterator/function_output_iterator.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;boost/property_map/property_map.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                     Point;</div>
+<div class="line"><span class="keyword">typedef</span> Kernel::Compare_dihedral_angle_3                    Compare_dihedral_angle_3;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point&gt;</a>                           Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> G&gt;</div>
+<div class="line"><span class="keyword">struct </span>Constraint</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">typedef</span> <span class="keyword">typename</span> boost::graph_traits&lt;G&gt;::edge_descriptor edge_descriptor;</div>
+<div class="line">  <span class="keyword">typedef</span> boost::readable_property_map_tag      category;</div>
+<div class="line">  <span class="keyword">typedef</span> <span class="keywordtype">bool</span>                                  value_type;</div>
+<div class="line">  <span class="keyword">typedef</span> <span class="keywordtype">bool</span>                                  reference;</div>
+<div class="line">  <span class="keyword">typedef</span> edge_descriptor                       key_type;</div>
+<div class="line"> </div>
+<div class="line">  Constraint()</div>
+<div class="line">    :g_(NULL)</div>
+<div class="line">  {}</div>
+<div class="line"> </div>
+<div class="line">  Constraint(G&amp; g, <span class="keywordtype">double</span> bound)</div>
+<div class="line">    : g_(&amp;g), bound_(bound)</div>
+<div class="line">  {}</div>
+<div class="line"> </div>
+<div class="line">  value_type operator[](edge_descriptor e)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    <span class="keyword">const</span> G&amp; g = *g_;</div>
+<div class="line">    <span class="keywordflow">return</span> compare_(g.point(source(e, g)),</div>
+<div class="line">                    g.point(target(e, g)),</div>
+<div class="line">                    g.point(target(next(halfedge(e, g), g), g)),</div>
+<div class="line">                    g.point(target(next(<a class="code hl_functionRef" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(halfedge(e, g), g), g), g)),</div>
+<div class="line">                   bound_) == <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#gga84351c7e66be00efccd4ab1a61070469ab925c6b1ff8cd0bdea7f31fe18d3c38b">CGAL::SMALLER</a>;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">friend</span> <span class="keyword">inline</span></div>
+<div class="line">  value_type get(<span class="keyword">const</span> Constraint&amp; m, <span class="keyword">const</span> key_type k)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">return</span> m[k];</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> G* g_;</div>
+<div class="line">  Compare_dihedral_angle_3 compare_;</div>
+<div class="line">  <span class="keywordtype">double</span> bound_;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> PM&gt;</div>
+<div class="line"><span class="keyword">struct </span>Put_true</div>
+<div class="line">{</div>
+<div class="line">  Put_true(<span class="keyword">const</span> PM pm)</div>
+<div class="line">    :pm(pm)</div>
+<div class="line">  {}</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line">  <span class="keywordtype">void</span> operator()(<span class="keyword">const</span> T&amp; t)</div>
+<div class="line">  {</div>
+<div class="line">    put(pm, t, <span class="keyword">true</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  PM pm;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby_3cc.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor face_descriptor;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> bound = std::cos(0.75 * CGAL_PI);</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;face_descriptor&gt; cc;</div>
+<div class="line">  face_descriptor fd = *faces(mesh).first;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__keep__connected__components__grp.html#gad417b04f530806789515a25530547a36">PMP::connected_component</a>(fd,</div>
+<div class="line">      mesh,</div>
+<div class="line">      std::back_inserter(cc));</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"Connected components without edge constraints"</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cerr &lt;&lt; cc.size() &lt;&lt; <span class="stringliteral">" faces in the CC of "</span> &lt;&lt; fd &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Instead of writing the faces into a container, you can set a face property to true</span></div>
+<div class="line">  <span class="keyword">typedef</span> Mesh::Property_map&lt;face_descriptor, bool&gt; F_select_map;</div>
+<div class="line">  F_select_map fselect_map =</div>
+<div class="line">    mesh.add_property_map&lt;face_descriptor, <span class="keywordtype">bool</span>&gt;(<span class="stringliteral">"f:select"</span>, <span class="keyword">false</span>).first;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__keep__connected__components__grp.html#gad417b04f530806789515a25530547a36">PMP::connected_component</a>(fd,</div>
+<div class="line">      mesh,</div>
+<div class="line">      boost::make_function_output_iterator(Put_true&lt;F_select_map&gt;(fselect_map)));</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"\nConnected components with edge constraints (dihedral angle &lt; 3/4 pi)"</span> &lt;&lt; std::endl;</div>
+<div class="line">  Mesh::Property_map&lt;face_descriptor, std::size_t&gt; fccmap =</div>
+<div class="line">    mesh.add_property_map&lt;face_descriptor, std::size_t&gt;(<span class="stringliteral">"f:CC"</span>).first;</div>
+<div class="line">  std::size_t num = <a class="code hl_function" href="group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9">PMP::connected_components</a>(mesh,</div>
+<div class="line">      fccmap,</div>
+<div class="line">      CGAL::parameters::edge_is_constrained_map(Constraint&lt;Mesh&gt;(mesh, bound)));</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"- The graph has "</span> &lt;&lt; num &lt;&lt; <span class="stringliteral">" connected components (face connectivity)"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">typedef</span> std::map&lt;std::size_t<span class="comment">/*index of CC*/</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span><span class="comment">/*nb*/</span>&gt; Components_size;</div>
+<div class="line">  Components_size nb_per_cc;</div>
+<div class="line">  <span class="keywordflow">for</span>(face_descriptor f : faces(mesh)){</div>
+<div class="line">    nb_per_cc[ fccmap[f] ]++;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keyword">const</span> Components_size::value_type&amp; cc : nb_per_cc){</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"\t CC #"</span> &lt;&lt; cc.first</div>
+<div class="line">              &lt;&lt; <span class="stringliteral">" is made of "</span> &lt;&lt; cc.second &lt;&lt; <span class="stringliteral">" faces"</span> &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"- We keep only components which have at least 4 faces"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__keep__connected__components__grp.html#gad08d3489808a6ec8382a9fba3d288f39">PMP::keep_large_connected_components</a>(mesh,</div>
+<div class="line">      4,</div>
+<div class="line">      CGAL::parameters::edge_is_constrained_map(Constraint&lt;Mesh&gt;(mesh, bound)));</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"- We keep the two largest components"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__keep__connected__components__grp.html#gae3812da28af74bdf9602a70ae1f9c817">PMP::keep_largest_connected_components</a>(mesh,</div>
+<div class="line">      2,</div>
+<div class="line">      CGAL::parameters::edge_is_constrained_map(Constraint&lt;Mesh&gt;(mesh, bound)));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__keep__connected__components__grp_html_ga239704e9a2752ed67d361be55acf3bf9"><div class="ttname"><a href="group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9">CGAL::Polygon_mesh_processing::connected_components</a></div><div class="ttdeci">boost::property_traits&lt; FaceComponentMap &gt;::value_type connected_components(const PolygonMesh &amp;pmesh, FaceComponentMap fcm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes for each face the index of the corresponding connected component.</div><div class="ttdef"><b>Definition:</b> connected_components.h:199</div></div>
+<div class="ttc" id="agroup__PMP__keep__connected__components__grp_html_gad08d3489808a6ec8382a9fba3d288f39"><div class="ttname"><a href="group__PMP__keep__connected__components__grp.html#gad08d3489808a6ec8382a9fba3d288f39">CGAL::Polygon_mesh_processing::keep_large_connected_components</a></div><div class="ttdeci">std::size_t keep_large_connected_components(PolygonMesh &amp;pmesh, const ThresholdValueType threshold_value, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">removes connected components whose size is (strictly) smaller than a given threshold value,...</div><div class="ttdef"><b>Definition:</b> connected_components.h:537</div></div>
+<div class="ttc" id="agroup__PMP__keep__connected__components__grp_html_gad417b04f530806789515a25530547a36"><div class="ttname"><a href="group__PMP__keep__connected__components__grp.html#gad417b04f530806789515a25530547a36">CGAL::Polygon_mesh_processing::connected_component</a></div><div class="ttdeci">FaceOutputIterator connected_component(typename boost::graph_traits&lt; PolygonMesh &gt;::face_descriptor seed_face, const PolygonMesh &amp;pmesh, FaceOutputIterator out, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">discovers all the faces in the same connected component as seed_face and records them in out.</div><div class="ttdef"><b>Definition:</b> connected_components.h:119</div></div>
+<div class="ttc" id="agroup__PMP__keep__connected__components__grp_html_gae3812da28af74bdf9602a70ae1f9c817"><div class="ttname"><a href="group__PMP__keep__connected__components__grp.html#gae3812da28af74bdf9602a70ae1f9c817">CGAL::Polygon_mesh_processing::keep_largest_connected_components</a></div><div class="ttdeci">std::size_t keep_largest_connected_components(PolygonMesh &amp;pmesh, std::size_t nb_components_to_keep, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">removes all but a user-defined number of connected components.</div><div class="ttdef"><b>Definition:</b> connected_components.h:386</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_gad0a8110cb95f76bac65649bfe58c650b"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">CGAL::opposite</a></div><div class="ttdeci">Oriented_side opposite(const Oriented_side &amp;o)</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_gga84351c7e66be00efccd4ab1a61070469ab925c6b1ff8cd0bdea7f31fe18d3c38b"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#gga84351c7e66be00efccd4ab1a61070469ab925c6b1ff8cd0bdea7f31fe18d3c38b">CGAL::SMALLER</a></div><div class="ttdeci">SMALLER</div></div>
+</div><!-- fragment --> </details>
+<p>The second example shows how to use the class template <code><a class="elRef" href="../BGL/structCGAL_1_1Face__filtered__graph.html">Face_filtered_graph</a></code>, which enables treating one or several connected components as a separate face graph.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2face_filtered_graph_example_8cpp-example.html">Polygon_mesh_processing/face_filtered_graph_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/connected_components.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/Face_filtered_graph.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/property_map/property_map.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>  <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                      Point;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point&gt;</a>                            Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor           face_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::faces_size_type           faces_size_type;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> Mesh::Property_map&lt;face_descriptor, faces_size_type&gt; FCCmap;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../BGL/structCGAL_1_1Face__filtered__graph.html">CGAL::Face_filtered_graph&lt;Mesh&gt;</a>                      Filtered_graph;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby_3cc.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  FCCmap fccmap = mesh.add_property_map&lt;face_descriptor, faces_size_type&gt;(<span class="stringliteral">"f:CC"</span>).first;</div>
+<div class="line">  faces_size_type num = <a class="code hl_function" href="group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9">PMP::connected_components</a>(mesh,fccmap);</div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"- The graph has "</span> &lt;&lt; num &lt;&lt; <span class="stringliteral">" connected components (face connectivity)"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"The faces in component 0 are:"</span> &lt;&lt; std::endl;</div>
+<div class="line">  Filtered_graph ffg(mesh, 0, fccmap);</div>
+<div class="line">  <span class="keywordflow">for</span>(boost::graph_traits&lt;Filtered_graph&gt;::face_descriptor f : faces(ffg))</div>
+<div class="line">    std::cout &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(num &gt; 1)</div>
+<div class="line">  {</div>
+<div class="line">    std::vector&lt;faces_size_type&gt; components;</div>
+<div class="line">    components.push_back(0);</div>
+<div class="line">    components.push_back(1);</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"The faces in components 0 and 1 are:"</span> &lt;&lt; std::endl;</div>
+<div class="line">    ffg.set_selected_faces(components, fccmap);</div>
+<div class="line">    <span class="keywordflow">for</span>(Filtered_graph::face_descriptor f : faces(ffg))</div>
+<div class="line">      std::cout  &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="ttc" id="astructCGAL_1_1Face__filtered__graph_html"><div class="ttname"><a href="../BGL/structCGAL_1_1Face__filtered__graph.html">CGAL::Face_filtered_graph</a></div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="PMPLocationFunctions"></a>
+Surface Location Functions</h2>
+<p>To ease the manipulation of points on a surface, CGAL offers a multitude of functions based upon a different representation of a point on a polygon mesh: the point is represented as a pair of a face of the polygon mesh and a triplet of barycentric coordinates. This definition enables a robust handling of polylines between points living in the same face: for example, two 3D segments created by four points within the same face that should intersect might not actually intersect due to inexact computations. However, manipulating these same points through their barycentric coordinates can instead be done, and intersections computed in the barycentric space will not suffer from the same issues. Furthermore, this definition is only dependent on the intrinsic dimension of the surface (i.e. 2) and not on the ambient dimension within which the surface is embedded.</p>
+<p>The functions of the group <a class="el" href="group__PMP__locate__grp.html">Location Functions</a> offer the following functionalities:</p><ul>
+<li>location computations: <code><a class="el" href="group__PMP__locate__grp.html#ga817d3417a9711b3efbfde45e46e0aa00" title="returns the nearest face location to the given point.">CGAL::Polygon_mesh_processing::locate()</a></code> and similar,</li>
+<li>finding the nearest point on a mesh given a point or a ray: <code><a class="el" href="group__PMP__locate__grp.html#ga609d1fd3a16ecc381a1b131386fc708c" title="returns the face location nearest to the given point, as a location.">CGAL::Polygon_mesh_processing::locate_with_AABB_tree()</a></code> and similar,</li>
+<li>location-based predicates: <code><a class="el" href="group__PMP__locate__grp.html#ga455a6b4f1edfd88358a1150c870691e9" title="Given a location, returns whether the location is on the boundary of the face or not.">CGAL::Polygon_mesh_processing::is_on_face_border()</a></code> and similar.</li>
+</ul>
+<h2><a class="anchor" id="PMPLocationExample"></a>
+Surface Location Example</h2>
+<p>The following example demonstrates usage of these functions.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2locate_example_8cpp-example.html">Polygon_mesh_processing/locate_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/locate.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/triangulate_faces.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/AABB_face_graph_triangle_primitive.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/AABB_tree.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/AABB_traits_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/helpers.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Dynamic_property_map.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>             K;</div>
+<div class="line"><span class="keyword">typedef</span> K::FT                                                           FT;</div>
+<div class="line"><span class="keyword">typedef</span> K::Point_2                                                      Point_2;</div>
+<div class="line"><span class="keyword">typedef</span> K::Ray_2                                                        Ray_2;</div>
+<div class="line"><span class="keyword">typedef</span> K::Point_3                                                      Point_3;</div>
+<div class="line"><span class="keyword">typedef</span> K::Ray_3                                                        Ray_3;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a>                                     Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">typename</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor           vertex_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">typename</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor             face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>CP = <a class="code hl_namespaceRef" href="../STL_Extension/namespaceCGAL_1_1parameters.html">CGAL::parameters</a>;</div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_typedef" href="group__PMP__locate__grp.html#ga6581d3f34a14d533fdab2e6beef2873f">PMP::Barycentric_coordinates&lt;FT&gt;</a>                                Barycentric_coordinates;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_typedef" href="group__PMP__locate__grp.html#ga35604eae6b378b8254a3f41f1a274b9e">PMP::Face_location&lt;Mesh, FT&gt;</a>                                    Face_location;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> <span class="comment">/*argc*/</span>, <span class="keywordtype">char</span>** <span class="comment">/*argv*/</span>)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Generate a simple 3D triangle mesh that with vertices on the plane xOy</span></div>
+<div class="line">  Mesh tm;</div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLGeneratorFct.html#ga021bca7693efee1d05492ee52583793a">CGAL::make_grid</a>(10, 10, tm);</div>
+<div class="line">  <a class="code hl_functionRef" href="../PMP_Remeshing/group__PMP__combi__remeshing__grp.html#ga5e4f69483f6506429c4743de745e7b09">PMP::triangulate_faces</a>(tm);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Basic usage</span></div>
+<div class="line">  Face_location random_location = PMP::random_location_on_mesh&lt;FT&gt;(tm);</div>
+<div class="line">  <span class="keyword">const</span> face_descriptor f = random_location.first;</div>
+<div class="line">  <span class="keyword">const</span> Barycentric_coordinates&amp; coordinates = random_location.second;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Random location on the mesh: face "</span> &lt;&lt; f</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">" and with coordinates ["</span> &lt;&lt; coordinates[0] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                         &lt;&lt; coordinates[1] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                         &lt;&lt; coordinates[2] &lt;&lt; <span class="stringliteral">"]\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"It corresponds to point ("</span> &lt;&lt; <a class="code hl_function" href="group__PMP__locate__grp.html#ga7632ebc56378e6ded961eab21540cecb">PMP::construct_point</a>(random_location, tm) &lt;&lt; <span class="stringliteral">")\n\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Locate a known 3D point in the mesh</span></div>
+<div class="line">  <span class="keyword">const</span> Point_3 query(1.2, 7.4, 0);</div>
+<div class="line">  Face_location query_location = <a class="code hl_function" href="group__PMP__locate__grp.html#ga817d3417a9711b3efbfde45e46e0aa00">PMP::locate</a>(query, tm);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Point ("</span> &lt;&lt; query &lt;&lt; <span class="stringliteral">") is located in face "</span> &lt;&lt; query_location.first</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">" with barycentric coordinates ["</span> &lt;&lt; query_location.second[0] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                                 &lt;&lt; query_location.second[1] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                                 &lt;&lt; query_location.second[2] &lt;&lt; <span class="stringliteral">"]\n\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Locate a 3D point in the mesh as the intersection of the mesh and a 3D ray.</span></div>
+<div class="line">  <span class="comment">// The AABB tree can be cached in case many queries are performed (otherwise, it is rebuilt</span></div>
+<div class="line">  <span class="comment">// on each call, which is expensive).</span></div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../AABB_tree/classCGAL_1_1AABB__face__graph__triangle__primitive.html">CGAL::AABB_face_graph_triangle_primitive&lt;Mesh&gt;</a>                AABB_face_graph_primitive;</div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_classRef" href="../AABB_tree/classCGAL_1_1AABB__traits__3.html">CGAL::AABB_traits_3&lt;K, AABB_face_graph_primitive&gt;</a>               AABB_face_graph_traits;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_classRef" href="../AABB_tree/classCGAL_1_1AABB__tree.html">CGAL::AABB_tree&lt;AABB_face_graph_traits&gt;</a> tree;</div>
+<div class="line">  <a class="code hl_function" href="group__PMP__locate__grp.html#gafa64630e9a7b1cbc28875d63ac8a3eaa">PMP::build_AABB_tree</a>(tm, tree);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> Ray_3 ray_3(Point_3(4.2, 6.8, 2.4), Point_3(7.2, 2.3, -5.8));</div>
+<div class="line">  Face_location ray_location = <a class="code hl_function" href="group__PMP__locate__grp.html#ga609d1fd3a16ecc381a1b131386fc708c">PMP::locate_with_AABB_tree</a>(ray_3, tree, tm);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Intersection of the 3D ray and the mesh is in face "</span> &lt;&lt; ray_location.first</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">" with barycentric coordinates ["</span> &lt;&lt; ray_location.second[0] &lt;&lt; <span class="stringliteral">" "</span></div>
+<div class="line">                                                 &lt;&lt; ray_location.second[1] &lt;&lt; <span class="stringliteral">" "</span></div>
+<div class="line">                                                 &lt;&lt; ray_location.second[2] &lt;&lt; <span class="stringliteral">"]\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"It corresponds to point ("</span> &lt;&lt; <a class="code hl_function" href="group__PMP__locate__grp.html#ga7632ebc56378e6ded961eab21540cecb">PMP::construct_point</a>(ray_location, tm) &lt;&lt; <span class="stringliteral">")\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Is it on the face's border? "</span> &lt;&lt; (<a class="code hl_function" href="group__PMP__locate__grp.html#ga455a6b4f1edfd88358a1150c870691e9">PMP::is_on_face_border</a>(ray_location, tm) ? <span class="stringliteral">"Yes"</span> : <span class="stringliteral">"No"</span>) &lt;&lt; <span class="stringliteral">"\n\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// -----------------------------------------------------------------------------------------------</span></div>
+<div class="line">  <span class="comment">// Now, we artificially project the mesh to the natural 2D dimensional plane, with a little translation</span></div>
+<div class="line">  <span class="comment">// via a custom vertex point property map</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> <a class="code hl_structRef" href="../BGL/structCGAL_1_1dynamic__vertex__property__t.html">CGAL::dynamic_vertex_property_t&lt;Point_2&gt;</a>                      Point_2_property;</div>
+<div class="line">  <span class="keyword">typedef</span> <span class="keyword">typename</span> boost::property_map&lt;Mesh, Point_2_property&gt;::type    Projection_pmap;</div>
+<div class="line">  Projection_pmap projection_pmap = get(Point_2_property(), tm);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span>(vertex_descriptor v : vertices(tm))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> Point_3&amp; p = tm.point(v);</div>
+<div class="line">    put(projection_pmap, v, Point_2(p.x() + 1, p.y())); <span class="comment">// simply ignoring the z==0 coordinate and translating along Ox</span></div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Locate the same 3D point but in a 2D context</span></div>
+<div class="line">  <span class="keyword">const</span> Point_2 query_2(query.x() + 1, query.y());</div>
+<div class="line">  Face_location query_location_2 = <a class="code hl_function" href="group__PMP__locate__grp.html#ga817d3417a9711b3efbfde45e46e0aa00">PMP::locate</a>(query_2, tm, CP::vertex_point_map(projection_pmap));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Point ("</span> &lt;&lt; query_2 &lt;&lt; <span class="stringliteral">") is located in face "</span> &lt;&lt; query_location_2.first</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">" with barycentric coordinates ["</span> &lt;&lt; query_location_2.second[0] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                                 &lt;&lt; query_location_2.second[1] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                                 &lt;&lt; query_location_2.second[2] &lt;&lt; <span class="stringliteral">"]\n\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Shoot a 2D ray and locate the intersection with the mesh in 2D</span></div>
+<div class="line">  <span class="keyword">const</span> Ray_2 ray_2(Point_2(-10, -10), Point_2(10, 10));</div>
+<div class="line">  Face_location ray_location_2 = <a class="code hl_function" href="group__PMP__locate__grp.html#ga817d3417a9711b3efbfde45e46e0aa00">PMP::locate</a>(ray_2, tm, CP::vertex_point_map(projection_pmap)); <span class="comment">// This rebuilds an AABB tree on each call</span></div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Intersection of the 2D ray and the mesh is in face "</span> &lt;&lt; ray_location_2.first</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">" with barycentric coordinates ["</span> &lt;&lt; ray_location_2.second[0] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                                 &lt;&lt; ray_location_2.second[1] &lt;&lt; <span class="stringliteral">"; "</span></div>
+<div class="line">                                                 &lt;&lt; ray_location_2.second[2] &lt;&lt; <span class="stringliteral">"]\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"It corresponds to point ("</span> &lt;&lt; <a class="code hl_function" href="group__PMP__locate__grp.html#ga7632ebc56378e6ded961eab21540cecb">PMP::construct_point</a>(ray_location_2, tm, CP::vertex_point_map(projection_pmap)) &lt;&lt; <span class="stringliteral">")\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code hl_function" href="group__PMP__locate__grp.html#ga905f903215a1123afef50b74d5424bda">PMP::is_on_mesh_border</a>(ray_location_2, tm))</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"It is on the border of the mesh!\n"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1AABB__face__graph__triangle__primitive_html"><div class="ttname"><a href="../AABB_tree/classCGAL_1_1AABB__face__graph__triangle__primitive.html">CGAL::AABB_face_graph_triangle_primitive</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1AABB__traits__3_html"><div class="ttname"><a href="../AABB_tree/classCGAL_1_1AABB__traits__3.html">CGAL::AABB_traits_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1AABB__tree_html"><div class="ttname"><a href="../AABB_tree/classCGAL_1_1AABB__tree.html">CGAL::AABB_tree</a></div></div>
+<div class="ttc" id="agroup__PMP__combi__remeshing__grp_html_ga5e4f69483f6506429c4743de745e7b09"><div class="ttname"><a href="../PMP_Remeshing/group__PMP__combi__remeshing__grp.html#ga5e4f69483f6506429c4743de745e7b09">CGAL::Polygon_mesh_processing::triangulate_faces</a></div><div class="ttdeci">bool triangulate_faces(const FaceRange &amp;face_range, PolygonMesh &amp;pmesh, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga35604eae6b378b8254a3f41f1a274b9e"><div class="ttname"><a href="group__PMP__locate__grp.html#ga35604eae6b378b8254a3f41f1a274b9e">CGAL::Polygon_mesh_processing::Face_location</a></div><div class="ttdeci">std::pair&lt; typename boost::graph_traits&lt; TriangleMesh &gt;::face_descriptor, Barycentric_coordinates&lt; FT &gt; &gt; Face_location</div><div class="ttdoc">If tm is the input triangulated surface mesh and given the pair (f, bc) such that bc is the triplet o...</div><div class="ttdef"><b>Definition:</b> locate.h:83</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga455a6b4f1edfd88358a1150c870691e9"><div class="ttname"><a href="group__PMP__locate__grp.html#ga455a6b4f1edfd88358a1150c870691e9">CGAL::Polygon_mesh_processing::is_on_face_border</a></div><div class="ttdeci">bool is_on_face_border(const Face_location&lt; TriangleMesh, FT &gt; &amp;loc, const TriangleMesh &amp;tm)</div><div class="ttdoc">Given a location, returns whether the location is on the boundary of the face or not.</div><div class="ttdef"><b>Definition:</b> locate.h:790</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga609d1fd3a16ecc381a1b131386fc708c"><div class="ttname"><a href="group__PMP__locate__grp.html#ga609d1fd3a16ecc381a1b131386fc708c">CGAL::Polygon_mesh_processing::locate_with_AABB_tree</a></div><div class="ttdeci">Face_location&lt; TriangleMesh, FT &gt; locate_with_AABB_tree(const Point &amp;p, const AABB_tree&lt; AABB_traits_3&lt; Geom_traits, AABB_face_graph_triangle_primitive&lt; TriangleMesh, Point3VPM &gt; &gt; &gt; &amp;tree, const TriangleMesh &amp;tm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">returns the face location nearest to the given point, as a location.</div><div class="ttdef"><b>Definition:</b> locate.h:1599</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga6581d3f34a14d533fdab2e6beef2873f"><div class="ttname"><a href="group__PMP__locate__grp.html#ga6581d3f34a14d533fdab2e6beef2873f">CGAL::Polygon_mesh_processing::Barycentric_coordinates</a></div><div class="ttdeci">std::array&lt; FT, 3 &gt; Barycentric_coordinates</div><div class="ttdoc">A triplet of coordinates describing the barycentric coordinates of a point with respect to the vertic...</div><div class="ttdef"><b>Definition:</b> locate.h:71</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga7632ebc56378e6ded961eab21540cecb"><div class="ttname"><a href="group__PMP__locate__grp.html#ga7632ebc56378e6ded961eab21540cecb">CGAL::Polygon_mesh_processing::construct_point</a></div><div class="ttdeci">Point construct_point(const Face_location&lt; TriangleMesh, FT &gt; &amp;loc, const TriangleMesh &amp;tm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">Given a location in a face, returns the geometric position described by these coordinates,...</div><div class="ttdef"><b>Definition:</b> locate.h:591</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga817d3417a9711b3efbfde45e46e0aa00"><div class="ttname"><a href="group__PMP__locate__grp.html#ga817d3417a9711b3efbfde45e46e0aa00">CGAL::Polygon_mesh_processing::locate</a></div><div class="ttdeci">Face_location&lt; TriangleMesh, FT &gt; locate(const Point &amp;p, const TriangleMesh &amp;tm, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">returns the nearest face location to the given point.</div><div class="ttdef"><b>Definition:</b> locate.h:1688</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_ga905f903215a1123afef50b74d5424bda"><div class="ttname"><a href="group__PMP__locate__grp.html#ga905f903215a1123afef50b74d5424bda">CGAL::Polygon_mesh_processing::is_on_mesh_border</a></div><div class="ttdeci">bool is_on_mesh_border(const Face_location&lt; TriangleMesh, FT &gt; &amp;loc, const TriangleMesh &amp;tm)</div><div class="ttdoc">Given a location, returns whether the location is on the border of the mesh or not.</div><div class="ttdef"><b>Definition:</b> locate.h:826</div></div>
+<div class="ttc" id="agroup__PMP__locate__grp_html_gafa64630e9a7b1cbc28875d63ac8a3eaa"><div class="ttname"><a href="group__PMP__locate__grp.html#gafa64630e9a7b1cbc28875d63ac8a3eaa">CGAL::Polygon_mesh_processing::build_AABB_tree</a></div><div class="ttdeci">void build_AABB_tree(const TriangleMesh &amp;tm, AABB_tree&lt; AABB_traits_3&lt; Geom_traits, CGAL::AABB_face_graph_triangle_primitive&lt; TriangleMesh, Point3VPM &gt; &gt; &gt; &amp;outTree, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">creates an AABB tree suitable for use with locate_with_AABB_tree().</div><div class="ttdef"><b>Definition:</b> locate.h:1524</div></div>
+<div class="ttc" id="agroup__PkgBGLGeneratorFct_html_ga021bca7693efee1d05492ee52583793a"><div class="ttname"><a href="../BGL/group__PkgBGLGeneratorFct.html#ga021bca7693efee1d05492ee52583793a">CGAL::make_grid</a></div><div class="ttdeci">boost::graph_traits&lt; Graph &gt;::halfedge_descriptor make_grid(typename boost::graph_traits&lt; Graph &gt;::vertices_size_type i, typename boost::graph_traits&lt; Graph &gt;::vertices_size_type j, Graph &amp;g, const CoordinateFunctor &amp;calculator, bool triangulated=false)</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1parameters_html"><div class="ttname"><a href="../STL_Extension/namespaceCGAL_1_1parameters.html">CGAL::parameters</a></div></div>
+<div class="ttc" id="astructCGAL_1_1dynamic__vertex__property__t_html"><div class="ttname"><a href="../BGL/structCGAL_1_1dynamic__vertex__property__t.html">CGAL::dynamic_vertex_property_t</a></div></div>
+</div><!-- fragment --> </details>
+<h1><a class="anchor" id="PMPNormalComp"></a>
+Computing Normals</h1>
+<p>Methods are provided to compute normals on polygon meshes, either per face or per vertex:</p><ul>
+<li><code><a class="el" href="group__PMP__normal__grp.html#ga8d98ee0b7fdfe2e3a0fad7ec18e2cb71" title="computes the outward unit vector normal to face f.">CGAL::Polygon_mesh_processing::compute_face_normal()</a></code></li>
+<li><code><a class="el" href="group__PMP__normal__grp.html#ga8346b5625ca097a9938616d10079cec5" title="computes the unit normal at vertex v as a function of the normals of incident faces.">CGAL::Polygon_mesh_processing::compute_vertex_normal()</a></code></li>
+</ul>
+<p>When computing all the normals of faces and vertices, the following functions should be preferred as they factorize some computations:</p><ul>
+<li><code><a class="el" href="group__PMP__normal__grp.html#ga72da76b1213305313c3f4eb61a110b23" title="computes the outward unit vector normal for all faces of the polygon mesh.">CGAL::Polygon_mesh_processing::compute_face_normals()</a></code></li>
+<li><code><a class="el" href="group__PMP__normal__grp.html#ga74e6b247d7e28beb677076aad5614d8c" title="computes the outward unit vector normal for all vertices of the polygon mesh.">CGAL::Polygon_mesh_processing::compute_vertex_normals()</a></code></li>
+<li><code><a class="el" href="group__PMP__normal__grp.html#ga4224769cbbedf39c9e73cb4997744ebf" title="computes the outward unit vector normal for all vertices and faces of the polygon mesh.">CGAL::Polygon_mesh_processing::compute_normals()</a></code></li>
+</ul>
+<h2><a class="anchor" id="PMPComputeNormalsExample"></a>
+Computing Normals Example</h2>
+<p>In the following examples we associate a normal vector to each vertex and to each face of a mesh of type <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code>.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2compute_normals_example_8cpp-example.html">Polygon_mesh_processing/compute_normals_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/compute_normal.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> K;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> K::Point_3                                          Point;</div>
+<div class="line"><span class="keyword">typedef</span> K::Vector_3                                         Vector;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point&gt;</a>                           Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor        vertex_descriptor;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor          face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/eight.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> vnormals = mesh.add_property_map&lt;vertex_descriptor, Vector&gt;(<span class="stringliteral">"v:normal"</span>, <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga4a98ec6bd9dfd8fe8c46fea553b5d238">CGAL::NULL_VECTOR</a>).first;</div>
+<div class="line">  <span class="keyword">auto</span> fnormals = mesh.add_property_map&lt;face_descriptor, Vector&gt;(<span class="stringliteral">"f:normal"</span>, <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga4a98ec6bd9dfd8fe8c46fea553b5d238">CGAL::NULL_VECTOR</a>).first;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__normal__grp.html#ga4224769cbbedf39c9e73cb4997744ebf">PMP::compute_normals</a>(mesh, vnormals, fnormals);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Vertex normals :"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keywordflow">for</span>(vertex_descriptor vd: vertices(mesh))</div>
+<div class="line">    std::cout &lt;&lt; vnormals[vd] &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Face normals :"</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keywordflow">for</span>(face_descriptor fd: faces(mesh))</div>
+<div class="line">    std::cout &lt;&lt; fnormals[fd] &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__normal__grp_html_ga4224769cbbedf39c9e73cb4997744ebf"><div class="ttname"><a href="group__PMP__normal__grp.html#ga4224769cbbedf39c9e73cb4997744ebf">CGAL::Polygon_mesh_processing::compute_normals</a></div><div class="ttdeci">void compute_normals(const PolygonMesh &amp;pmesh, VertexNormalMap vertex_normals, FaceNormalMap face_normals, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes the outward unit vector normal for all vertices and faces of the polygon mesh.</div><div class="ttdef"><b>Definition:</b> compute_normal.h:901</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ga4a98ec6bd9dfd8fe8c46fea553b5d238"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ga4a98ec6bd9dfd8fe8c46fea553b5d238">CGAL::NULL_VECTOR</a></div><div class="ttdeci">const CGAL::Null_vector NULL_VECTOR</div></div>
+</div><!-- fragment --> </details>
+<h1><a class="anchor" id="PMPICC"></a>
+Computing Curvatures</h1>
+<p>This package provides methods to compute curvatures on polygon meshes based on "Interpolated
+Corrected Curvatures on Polyhedral Surfaces" <a class="el" href="citelist.html#CITEREF_cgal:lrtc-iccmps-20">[4]</a>. This includes mean curvature, Gaussian curvature, principal curvatures and directions. These can be computed on triangle meshes, quad meshes, and meshes with n-gon faces (for n-gons, the centroid must be inside the n-gon face). The algorithms used prove to work well in general. Furthermore, they give accurate results on meshes with noise on vertex positions, under the condition that the correct vertex normals are provided.</p>
+<p>It is worth noting that the Principal Curvatures and Directions can also be estimated using the <a class="elRef" href="../Manual/packages.html#PkgJetFitting3">Estimation of Local Differential Properties of Point-Sampled Surfaces</a> package, which estimates the local differential quantities of a surface at a point using a local polynomial fitting (fitting a d-jet). Unlike the Interpolated Corrected Curvatures, the Jet Fitting method discards topological information, and thus can be used on point clouds as well.</p>
+<h2><a class="anchor" id="ICCBackground"></a>
+Brief Background</h2>
+<p>Surface curvatures are quantities that describe the local geometry of a surface. They are important in many geometry processing applications. As surfaces are 2-dimensional objects (embedded in 3D), they can bend in 2 independent directions. These directions are called principal directions, and the amount of bending in each direction is called the principal curvature: \( k_1 \) and \( k_2 \) (denoting max and min curvatures). Curvature is usually expressed as scalar quantities like the mean curvature \( H \) and the Gaussian curvature \( K \) which are defined in terms of the principal curvatures.</p>
+<p>The algorithms are based on the two papers <a class="el" href="citelist.html#CITEREF_cgal:lrt-ccm-22">[5]</a> and <a class="el" href="citelist.html#CITEREF_cgal:lrtc-iccmps-20">[4]</a>. They introduce a new way to compute curvatures on polygon meshes. The main idea in <a class="el" href="citelist.html#CITEREF_cgal:lrt-ccm-22">[5]</a> is based on decoupling the normal information from the position information, which is useful for dealing with digital surfaces, or meshes with noise on vertex positions. <a class="el" href="citelist.html#CITEREF_cgal:lrtc-iccmps-20">[4]</a> introduces some extensions to this framework, as it uses linear interpolation on the corrected normal vector field to derive new closed-form equations for the corrected curvature measures. These <b>interpolated</b> curvature measures are the first step for computing the curvatures. For a triangle \( \tau_{ijk} \), with vertices <em>i</em>, <em>j</em>, <em>k:</em> </p>
+<p class="formulaDsp">
+\begin{align*}
+  \mu^{(0)}(\tau_{ijk}) = &amp;\frac{1}{2} \langle \bar{\mathbf{u}} \mid (\mathbf{x}_j - \mathbf{x}_i) \times (\mathbf{x}_k - \mathbf{x}_i) \rangle, \\
+  \mu^{(1)}(\tau_{ijk}) = &amp;\frac{1}{2} \langle \bar{\mathbf{u}} \mid (\mathbf{u}_k - \mathbf{u}_j) \times \mathbf{x}_i + (\mathbf{u}_i - \mathbf{u}_k) \times \mathbf{x}_j + (\mathbf{u}_j - \mathbf{u}_i) \times \mathbf{x}_k \rangle, \\
+  \mu^{(2)}(\tau_{ijk}) = &amp;\frac{1}{2} \langle \mathbf{u}_i \mid \mathbf{u}_j \times \mathbf{u}_k \rangle, \\
+  \mu^{\mathbf{X},\mathbf{Y}}(\tau_{ijk}) = &amp; \frac{1}{2} \big\langle \bar{\mathbf{u}} \big| \langle \mathbf{Y} | \mathbf{u}_k -\mathbf{u}_i \rangle \mathbf{X} \times (\mathbf{x}_j - \mathbf{x}_i) \big\rangle
+    -\frac{1}{2} \big\langle \bar{\mathbf{u}} \big| \langle \mathbf{Y} | \mathbf{u}_j -\mathbf{u}_i \rangle \mathbf{X} \times (\mathbf{x}_k - \mathbf{x}_i) \big\rangle,
+\end{align*}
+</p>
+<p> where \( \langle \cdot \mid \cdot \rangle \) denotes the scalar product, and \( \bar{\mathbf{u}}=\frac{1}{3}( \mathbf{u}_i + \mathbf{u}_j + \mathbf{u}_k )\).</p>
+<p>The first measure \( \mu^{(0)} \) is the area measure of the triangle, and the measures \( \mu^{(1)} \) and \( \mu^{(2)} \) are the mean and Gaussian corrected curvature measures of the triangle. The last measure \( \mu^{\mathbf{X},\mathbf{Y}} \) is the anisotropic corrected curvature measure of the triangle. The anisotropic measure is later used to compute the principal curvatures and directions through an eigenvalue solver.</p>
+<p>The interpolated curvature measures are then computed for each vertex \( v \) as the sum of the curvature measures of the faces in a ball around \( v \) weighted by the inclusion ratio of the triangle in the ball. This ball radius is an optional (named) parameter of the function. There are 3 cases for the ball radius passed value:</p><ul>
+<li>A positive value is passed: it is naturally used as the radius of the ball.</li>
+<li>0 is passed, a small epsilon (<code>average_edge_length * 1e-6</code>) is used (to account for the convergence of curvatures at infinitely small balls).</li>
+<li>It is not specified (or negative), the sum is instead computed over the incident faces of the vertex \( v \).</li>
+</ul>
+<p>To get the final curvature value for a vertex \( v \), the respective interpolated curvature measure is divided by the interpolated area measure.</p>
+<p class="formulaDsp">
+\[
+\mu^{(k)}( B ) = \sum_{\tau : \text{triangle} } \mu^{(k)}( \tau ) \frac{\mathrm{Area}( \tau \cap B )}{\mathrm{Area}(\tau)}.
+\]
+</p>
+<h2><a class="anchor" id="ICCAPI"></a>
+API</h2>
+<p>The implementation is generic with respect to mesh data structure and can be used with <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code>, <code><a class="elRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a></code>, or any polygon mesh structure meeting the <code><a class="elRef" href="../BGL/classFaceGraph.html">FaceGraph</a></code> concept requirements.</p>
+<p>Curvatures are computed for all vertices using <code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga22665c9ce92aaedab07df1b05f20bdb2" title="computes the interpolated corrected curvatures across the mesh pmesh.">CGAL::Polygon_mesh_processing::interpolated_corrected_curvatures()</a></code>, with named parameters to select which curvatures (and directions) to compute. An overload is available for computing curvatures at a single vertex.</p>
+<h2><a class="anchor" id="ICCResults"></a>
+Results</h2>
+<p><a class="el" href="index.html#fig__icc_measures">Figure 75.4</a> illustrates various curvature measures on a triangular mesh.</p>
+<p><a class="anchor" id="fig__icc_measures"></a></p><center> <table border="0">
+<tr>
+<td><img src="bimba-mean0.040000-0.000000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-gaussian0.040000-0.000000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-dmin0.040000-0.000000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-dmax0.040000-0.000000.jpg" alt="" style="width:100%;" class="inline">  </td></tr>
+<tr align="center">
+<td>(a)</td><td>(b) </td></tr>
+</table>
+</center> <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__icc_measures">Figure 75.4</a> Mean curvature, Gaussian curvature, minimal principal curvature direction, and maximal principal curvature direction on a mesh (ball radius set to <code>0.04</code>). </p> </div> <p> <br>
+</p>
+<p><a class="anchor" id="fig__icc_various_ball_radii"></a></p><center> <table border="0">
+<tr>
+<td><img src="bimba-mean0.020000-0.000000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-mean0.030000-0.000000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-mean0.040000-0.000000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-mean0.050000-0.000000.jpg" alt="" style="width:100%;" class="inline">  </td></tr>
+<tr>
+<td><img src="bimba-mean0.020000-0.002000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-mean0.030000-0.002000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-mean0.040000-0.002000.jpg" alt="" style="width:100%;" class="inline"> </td><td><img src="bimba-mean0.050000-0.002000.jpg" alt="" style="width:100%;" class="inline">  </td></tr>
+<tr align="center">
+<td>(a)</td><td>(b) </td></tr>
+</table>
+</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__icc_various_ball_radii">Figure 75.5</a> Varying the integration ball radius yields a scale space of curvature measures, useful for handling noise in the input mesh. The second row illustrates mean curvature with fixed colormap ranges and ball radii in <code>{0.02,0.03,0.04,0.05}</code>. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="ICCPerformance"></a>
+Performance</h2>
+<p>The implemented algorithms exhibit a linear complexity in the number of faces of the mesh. It is worth noting that we pre-computed the vertex normals and passed them as a named parameter to the function to better estimate the performance of the curvature computation. For the data reported in the following table, we used a machine with an Intel Core i7-8750H CPU @ 2.20GHz, 16GB of RAM, on Windows 11, 64 bits and compiled with Visual Studio 2019.</p>
+<p><a class="anchor" id="fig__icc_performance_table"></a></p><center> <table class="doxtable">
+<tr>
+<th>Ball <br>
+Radius </th><th>Computation </th><th>Spot<br>
+(<span>6k </span>faces) </th><th>Bunny<br>
+(<span>144K </span>faces) </th><th>Stanford Dragon<br>
+(<span>871K </span>faces) </th><th>Old Age or Winter<br>
+(<span>6M </span>faces)  </th></tr>
+<tr>
+<td rowspan="4">vertex<br>
+1-ring faces <br>
+(default) </td><td>Mean Curvature </td><td>&lt; 0.001 s </td><td>0.019 s </td><td>0.11 s </td><td>2.68 s  </td></tr>
+<tr>
+<td>Gaussian Curvature </td><td>&lt; 0.001 s </td><td>0.017 s </td><td>0.10 s </td><td>2.77 s  </td></tr>
+<tr>
+<td>Principal Curvatures &amp; Directions </td><td>0.002 s </td><td>0.044 s </td><td>0.25 s </td><td>3.98 s  </td></tr>
+<tr>
+<td>All (optimized for shared computations) </td><td>0.003 s </td><td>0.049 s </td><td>0.28 s </td><td>4.52 s  </td></tr>
+<tr>
+<td rowspan="4">r = 0.1<br>
+* avg_edge_length </td><td>Mean Curvature </td><td>0.017 s </td><td>0.401 s </td><td>2.66 s </td><td>22.29 s  </td></tr>
+<tr>
+<td>Gaussian Curvature </td><td>0.018 s </td><td>0.406 s </td><td>2.63 s </td><td>21.61 s  </td></tr>
+<tr>
+<td>Principal Curvatures &amp; Directions </td><td>0.019 s </td><td>0.430 s </td><td>2.85 s </td><td>23.55 s  </td></tr>
+<tr>
+<td>All (optimized for shared computations) </td><td>0.017 s </td><td>0.428 s </td><td>2.89 s </td><td>24.16 s  </td></tr>
+<tr>
+<td rowspan="4">r = 0.5<br>
+* avg_edge_length </td><td>Mean Curvature </td><td>0.024 s </td><td>0.388 s </td><td>3.18 s </td><td>22.79 s  </td></tr>
+<tr>
+<td>Gaussian Curvature </td><td>0.024 s </td><td>0.392 s </td><td>3.21 s </td><td>23.58 s  </td></tr>
+<tr>
+<td>Principal Curvatures &amp; Directions </td><td>0.027 s </td><td>0.428 s </td><td>3.41 s </td><td>24.44 s  </td></tr>
+<tr>
+<td>All (optimized for shared computations) </td><td>0.025 s </td><td>0.417 s </td><td>3.44 s </td><td>23.93 s  </td></tr>
+</table>
+</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__icc_performance_table">Figure 75.6</a> Performance of the curvature computation on various meshes (in seconds). The first 4 rows show the performance of the default value for the ball radius, which is using the 1-ring of neighboring faces around each vertex, instead of actually approximating the inclusion ratio of the faces in a ball of certain radius. The other rows show a ball radius of <code>0.1</code> (and <code>0.5</code>) scaled by the average edge length of the mesh. It is clear that using the 1-ring of faces is much faster, but it might not be as effective when used on a noisy input mesh. </p> </div> <p> <br>
+</p>
+<p><a class="elRef" href="../BGL/index.html#BGLPropertyMaps">Property Maps</a> are used to record computed curvatures, as shown in the examples. For each property map, a curvature value is associated with each vertex.</p>
+<h2><a class="anchor" id="ICCExampleSM"></a>
+Interpolated Corrected Curvatures on a Surface Mesh Example</h2>
+<p>The following example demonstrates computation of curvatures at vertices and storage in property maps provided by <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code>.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2interpolated_corrected_curvatures_SM_8cpp-example.html">Polygon_mesh_processing/interpolated_corrected_curvatures_SM.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/interpolated_corrected_curvatures.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/property_map.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/graph/graph_traits.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> Epic_kernel;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Epic_kernel::Point_3&gt;</a> Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor vertex_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  Mesh smesh;</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ?</div>
+<div class="line">    argv[1] :</div>
+<div class="line">    <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/sphere.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, smesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input file."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// creating and tying surface mesh property maps for curvatures (with defaults = 0)</span></div>
+<div class="line">  <span class="keywordtype">bool</span> created = <span class="keyword">false</span>;</div>
+<div class="line">  Mesh::Property_map&lt;vertex_descriptor, Epic_kernel::FT&gt;</div>
+<div class="line">    mean_curvature_map, Gaussian_curvature_map;</div>
+<div class="line"> </div>
+<div class="line">  std::tie(mean_curvature_map, created) =</div>
+<div class="line">    smesh.add_property_map&lt;vertex_descriptor, Epic_kernel::FT&gt;(<span class="stringliteral">"v:mean_curvature_map"</span>, 0);</div>
+<div class="line">  assert(created);</div>
+<div class="line"> </div>
+<div class="line">  std::tie(Gaussian_curvature_map, created) =</div>
+<div class="line">    smesh.add_property_map&lt;vertex_descriptor, Epic_kernel::FT&gt;(<span class="stringliteral">"v:Gaussian_curvature_map"</span>, 0);</div>
+<div class="line">  assert(created);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// we use a tuple of 2 scalar values and 2 vectors for principal curvatures and directions</span></div>
+<div class="line">  Mesh::Property_map&lt;vertex_descriptor, PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;&gt;</div>
+<div class="line">    principal_curvatures_and_directions_map;</div>
+<div class="line"> </div>
+<div class="line">  std::tie(principal_curvatures_and_directions_map, created) =</div>
+<div class="line">    smesh.add_property_map&lt;vertex_descriptor, <a class="code hl_struct" href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html">PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;</a>&gt;</div>
+<div class="line">    (<span class="stringliteral">"v:principal_curvatures_and_directions_map"</span>, { 0, 0,</div>
+<div class="line">        Epic_kernel::Vector_3(0,0,0),</div>
+<div class="line">        Epic_kernel::Vector_3(0,0,0) });</div>
+<div class="line">  assert(created);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__corrected__curvatures__grp.html#ga22665c9ce92aaedab07df1b05f20bdb2">PMP::interpolated_corrected_curvatures</a>(smesh,</div>
+<div class="line">    CGAL::parameters::vertex_mean_curvature_map(mean_curvature_map)</div>
+<div class="line">                     .vertex_Gaussian_curvature_map(Gaussian_curvature_map)</div>
+<div class="line">                     .vertex_principal_curvatures_and_directions_map(principal_curvatures_and_directions_map)</div>
+<div class="line">  <span class="comment">// uncomment to use an expansion ball radius of 0.5 to estimate the curvatures</span></div>
+<div class="line">  <span class="comment">//                 .ball_radius(0.5)</span></div>
+<div class="line">  );</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (vertex_descriptor v : vertices(smesh))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> PC = principal_curvatures_and_directions_map[v];</div>
+<div class="line">    std::cout &lt;&lt; v.idx() &lt;&lt; <span class="stringliteral">": HC = "</span> &lt;&lt; mean_curvature_map[v]</div>
+<div class="line">      &lt;&lt; <span class="stringliteral">", GC = "</span> &lt;&lt; Gaussian_curvature_map[v] &lt;&lt; <span class="stringliteral">"\n"</span></div>
+<div class="line">      &lt;&lt; <span class="stringliteral">", PC = [ "</span> &lt;&lt; PC.min_curvature &lt;&lt; <span class="stringliteral">" , "</span> &lt;&lt; PC.max_curvature &lt;&lt; <span class="stringliteral">" ]\n"</span>;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__corrected__curvatures__grp_html_ga22665c9ce92aaedab07df1b05f20bdb2"><div class="ttname"><a href="group__PMP__corrected__curvatures__grp.html#ga22665c9ce92aaedab07df1b05f20bdb2">CGAL::Polygon_mesh_processing::interpolated_corrected_curvatures</a></div><div class="ttdeci">void interpolated_corrected_curvatures(const PolygonMesh &amp;pmesh, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes the interpolated corrected curvatures across the mesh pmesh.</div><div class="ttdef"><b>Definition:</b> interpolated_corrected_curvatures.h:1083</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="astructCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions_html"><div class="ttname"><a href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html">CGAL::Polygon_mesh_processing::Principal_curvatures_and_directions</a></div><div class="ttdoc">a struct for storing principal curvatures and directions.</div><div class="ttdef"><b>Definition:</b> interpolated_corrected_curvatures.h:43</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="ICCExamplePH"></a>
+Interpolated Corrected Curvatures on a Polyhedron Example</h2>
+<p>The following example illustrates how to compute the curvatures on vertices and store them in dynamic property maps as the class <code><a class="elRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3</a></code> does not provide storage for the curvatures.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2interpolated_corrected_curvatures_PH_8cpp-example.html">Polygon_mesh_processing/interpolated_corrected_curvatures_PH.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/interpolated_corrected_curvatures.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/property_map.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/graph/graph_traits.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> Epic_kernel;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3&lt;Epic_kernel&gt;</a>                     Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor        vertex_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  Mesh polyhedron;</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ?</div>
+<div class="line">    argv[1] :</div>
+<div class="line">    <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/sphere.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, polyhedron))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input file."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// define property map to store curvature value and directions</span></div>
+<div class="line">  boost::property_map&lt;Mesh, CGAL::dynamic_vertex_property_t&lt;Epic_kernel::FT&gt;&gt;::type</div>
+<div class="line">    mean_curvature_map = get(<a class="code hl_structRef" href="../BGL/structCGAL_1_1dynamic__vertex__property__t.html">CGAL::dynamic_vertex_property_t&lt;Epic_kernel::FT&gt;</a>(), polyhedron),</div>
+<div class="line">    Gaussian_curvature_map = get(<a class="code hl_structRef" href="../BGL/structCGAL_1_1dynamic__vertex__property__t.html">CGAL::dynamic_vertex_property_t&lt;Epic_kernel::FT&gt;</a>(), polyhedron);</div>
+<div class="line"> </div>
+<div class="line">  boost::property_map&lt;Mesh, CGAL::dynamic_vertex_property_t&lt;PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;&gt;&gt;::type</div>
+<div class="line">    principal_curvatures_and_directions_map =</div>
+<div class="line">    get(<a class="code hl_structRef" href="../BGL/structCGAL_1_1dynamic__vertex__property__t.html">CGAL::dynamic_vertex_property_t</a>&lt;<a class="code hl_struct" href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html">PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;</a>&gt;(), polyhedron);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__corrected__curvatures__grp.html#ga22665c9ce92aaedab07df1b05f20bdb2">PMP::interpolated_corrected_curvatures</a>(polyhedron,</div>
+<div class="line">    CGAL::parameters::vertex_mean_curvature_map(mean_curvature_map)</div>
+<div class="line">                     .vertex_Gaussian_curvature_map(Gaussian_curvature_map)</div>
+<div class="line">                     .vertex_principal_curvatures_and_directions_map(principal_curvatures_and_directions_map)</div>
+<div class="line">  <span class="comment">// uncomment to use an expansion ball radius of 0.5 to estimate the curvatures</span></div>
+<div class="line">  <span class="comment">//                 .ball_radius(0.5)</span></div>
+<div class="line">  );</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> i = 0;</div>
+<div class="line">  <span class="keywordflow">for</span> (vertex_descriptor v : vertices(polyhedron))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">auto</span> PC = get(principal_curvatures_and_directions_map, v);</div>
+<div class="line">    std::cout &lt;&lt; i &lt;&lt; <span class="stringliteral">": HC = "</span> &lt;&lt; get(mean_curvature_map, v)</div>
+<div class="line">      &lt;&lt; <span class="stringliteral">", GC = "</span> &lt;&lt; get(Gaussian_curvature_map, v) &lt;&lt; <span class="stringliteral">"\n"</span></div>
+<div class="line">      &lt;&lt; <span class="stringliteral">", PC = [ "</span> &lt;&lt; PC.min_curvature &lt;&lt; <span class="stringliteral">" , "</span> &lt;&lt; PC.max_curvature &lt;&lt; <span class="stringliteral">" ]\n"</span>;</div>
+<div class="line">    i++;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="ICCExampleSV"></a>
+Interpolated Corrected Curvatures on a Vertex Example</h2>
+<p>The following example demonstrates computation of curvatures at a specific vertex.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2interpolated_corrected_curvatures_vertex_8cpp-example.html">Polygon_mesh_processing/interpolated_corrected_curvatures_vertex.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/interpolated_corrected_curvatures.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;boost/graph/graph_traits.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> Epic_kernel;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Epic_kernel::Point_3&gt;</a>            Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor        vertex_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// instantiating and reading mesh</span></div>
+<div class="line">  Mesh smesh;</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ?</div>
+<div class="line">    argv[1] :</div>
+<div class="line">    <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/sphere.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, smesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input file."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// loop over vertices and use vertex_descriptor to compute a curvature on one vertex</span></div>
+<div class="line">  <span class="keywordflow">for</span> (vertex_descriptor v : vertices(smesh))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordtype">double</span> h, g;</div>
+<div class="line">    <a class="code hl_struct" href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html">PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;</a> p;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group__PMP__corrected__curvatures__grp.html#ga22665c9ce92aaedab07df1b05f20bdb2">PMP::interpolated_corrected_curvatures</a>(v,</div>
+<div class="line">      smesh,</div>
+<div class="line">      CGAL::parameters::vertex_mean_curvature(std::ref(h))</div>
+<div class="line">                       .vertex_Gaussian_curvature(std::ref(g))</div>
+<div class="line">                       .vertex_principal_curvatures_and_directions(std::ref(p)));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// we can also specify a ball radius for expansion and a user defined vertex normals map using</span></div>
+<div class="line">    <span class="comment">// named parameters. Refer to interpolated_corrected_curvatures_SM.cpp to see example usage.</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; v.idx() &lt;&lt; <span class="stringliteral">": HC = "</span> &lt;&lt; h</div>
+<div class="line">      &lt;&lt; <span class="stringliteral">", GC = "</span> &lt;&lt; g &lt;&lt; <span class="stringliteral">"\n"</span></div>
+<div class="line">      &lt;&lt; <span class="stringliteral">", PC = [ "</span> &lt;&lt; p.<a class="code hl_variable" href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html#a2aef5a24f431e5e33b3356a8bf2aa40f">min_curvature</a> &lt;&lt; <span class="stringliteral">" , "</span> &lt;&lt; p.<a class="code hl_variable" href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html#a92c77d4d5b17d2816bb3b714a4c1d0f5">max_curvature</a> &lt;&lt; <span class="stringliteral">" ]\n"</span>;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions_html_a2aef5a24f431e5e33b3356a8bf2aa40f"><div class="ttname"><a href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html#a2aef5a24f431e5e33b3356a8bf2aa40f">CGAL::Polygon_mesh_processing::Principal_curvatures_and_directions::min_curvature</a></div><div class="ttdeci">GT::FT min_curvature</div><div class="ttdoc">min curvature magnitude</div><div class="ttdef"><b>Definition:</b> interpolated_corrected_curvatures.h:46</div></div>
+<div class="ttc" id="astructCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions_html_a92c77d4d5b17d2816bb3b714a4c1d0f5"><div class="ttname"><a href="structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html#a92c77d4d5b17d2816bb3b714a4c1d0f5">CGAL::Polygon_mesh_processing::Principal_curvatures_and_directions::max_curvature</a></div><div class="ttdeci">GT::FT max_curvature</div><div class="ttdoc">max curvature magnitude</div><div class="ttdef"><b>Definition:</b> interpolated_corrected_curvatures.h:49</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="DCurvartures"></a>
+Discrete Curvatures</h2>
+<p>The package also provides methods to compute the standard, non-interpolated discrete mean and Gaussian curvatures on triangle meshes, based on the work of Meyer et al. <a class="el" href="citelist.html#CITEREF_cgal:mdsb-ddgot-02">[6]</a>. These curvatures are computed at each vertex of the mesh, and are based on the angles of the incident triangles. The functions are:</p><ul>
+<li><code><a class="el" href="group__PMP__measure__grp.html#ga1a31fa9412b4643dc7202a54246db78b" title="computes the discrete mean curvature at a vertex.">CGAL::Polygon_mesh_processing::discrete_mean_curvature()</a></code></li>
+<li><code><a class="el" href="group__PMP__measure__grp.html#ga18fe36d21838ea95b42abb0f5cb6d026" title="computes the discrete mean curvatures at the vertices of a mesh.">CGAL::Polygon_mesh_processing::discrete_mean_curvatures()</a></code></li>
+<li><code><a class="el" href="group__PMP__measure__grp.html#ga11a2d646d4636605d185653bff5bbbbb" title="computes the discrete Gaussian curvature at a vertex.">CGAL::Polygon_mesh_processing::discrete_Gaussian_curvature()</a></code></li>
+<li><code><a class="el" href="group__PMP__measure__grp.html#ga902f60c6d4bcb13c0583be6ed40e71e6" title="computes the discrete Gaussian curvatures at the vertices of a mesh.">CGAL::Polygon_mesh_processing::discrete_Gaussian_curvatures()</a></code></li>
+</ul>
+<h1><a class="anchor" id="PMPDetectFeatures"></a>
+Feature Detection</h1>
+<p>This package provides methods to detect some features of a polygon mesh.</p>
+<p>The function <code><a class="el" href="group__PMP__detect__features__grp.html#gad9cf9f1c459540156fb235a487bebd01" title="This function calls successively CGAL::Polygon_mesh_processing::detect_sharp_edges(),...">CGAL::Polygon_mesh_processing::sharp_edges_segmentation()</a></code> detects sharp edges and deduces surface patches and vertex incidences. It is composed of three functions:</p><ul>
+<li><code><a class="el" href="group__PMP__detect__features__grp.html#gadd3d18c0a9773463cd57902f85d0b23d" title="detects and marks the edges that are considered to be sharp with respect to the given angle bound.">CGAL::Polygon_mesh_processing::detect_sharp_edges()</a></code></li>
+<li><code><a class="el" href="group__PMP__keep__connected__components__grp.html#ga239704e9a2752ed67d361be55acf3bf9" title="computes for each face the index of the corresponding connected component.">CGAL::Polygon_mesh_processing::connected_components()</a></code></li>
+<li><code><a class="el" href="group__PMP__detect__features__grp.html#ga68042f21c5cafe94d316c4b1fe7c9aed" title="collects the surface patches of the faces incident to each vertex of the input polygon mesh.">CGAL::Polygon_mesh_processing::detect_vertex_incident_patches()</a></code></li>
+</ul>
+<p>These functions respectively detect sharp edges, compute patch indices, and assign patch indices to each vertex based on incident faces.</p>
+<p>The following example counts the number of edges incident to two faces whose normals form an angle less than 90 degrees, and the number of surface patches separated by these edges.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2detect_features_example_8cpp-example.html">Polygon_mesh_processing/detect_features_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/detect_features.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> K;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;K::Point_3&gt;</a>                      Mesh;</div>
+<div class="line"><span class="keyword">typedef</span> boost::graph_traits&lt;Mesh&gt;::face_descriptor          face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/P.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">typedef</span> boost::property_map&lt;Mesh, CGAL::edge_is_feature_t&gt;::type EIFMap;</div>
+<div class="line">  <span class="keyword">typedef</span> boost::property_map&lt;Mesh, CGAL::face_patch_id_t&lt;int&gt; &gt;::type PIMap;</div>
+<div class="line">  <span class="keyword">typedef</span> boost::property_map&lt;Mesh, CGAL::vertex_incident_patches_t&lt;int&gt; &gt;::type VIMap;</div>
+<div class="line"> </div>
+<div class="line">  EIFMap eif = get(CGAL::edge_is_feature, mesh);</div>
+<div class="line">  PIMap pid = get(CGAL::face_patch_id_t&lt;int&gt;(), mesh);</div>
+<div class="line">  VIMap vip = get(CGAL::vertex_incident_patches_t&lt;int&gt;(), mesh);</div>
+<div class="line"> </div>
+<div class="line">  std::size_t number_of_patches</div>
+<div class="line">    = <a class="code hl_function" href="group__PMP__detect__features__grp.html#gad9cf9f1c459540156fb235a487bebd01">PMP::sharp_edges_segmentation</a>(mesh, 90, eif, pid,</div>
+<div class="line">                                    CGAL::parameters::vertex_incident_patches_map(vip));</div>
+<div class="line"> </div>
+<div class="line">  std::size_t nb_sharp_edges = 0;</div>
+<div class="line">  <span class="keywordflow">for</span>(boost::graph_traits&lt;Mesh&gt;::edge_descriptor e : edges(mesh))</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span>(get(eif, e))</div>
+<div class="line">      ++nb_sharp_edges;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"This mesh contains "</span> &lt;&lt; nb_sharp_edges &lt;&lt; <span class="stringliteral">" sharp edges"</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">" and "</span> &lt;&lt; number_of_patches &lt;&lt; <span class="stringliteral">" surface patches."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__detect__features__grp_html_gad9cf9f1c459540156fb235a487bebd01"><div class="ttname"><a href="group__PMP__detect__features__grp.html#gad9cf9f1c459540156fb235a487bebd01">CGAL::Polygon_mesh_processing::sharp_edges_segmentation</a></div><div class="ttdeci">boost::graph_traits&lt; PolygonMesh &gt;::faces_size_type sharp_edges_segmentation(const PolygonMesh &amp;pmesh, FT angle_in_deg, EdgeIsFeatureMap edge_is_feature_map, PatchIdMap patch_id_map, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">This function calls successively CGAL::Polygon_mesh_processing::detect_sharp_edges(),...</div><div class="ttdef"><b>Definition:</b> detect_features.h:460</div></div>
+</div><!-- fragment --> </details>
+<h1><a class="anchor" id="PMPDistance"></a>
+Hausdorff Distance</h1>
+<p>This package provides methods to compute (approximate) distances between meshes and point sets.</p>
+<h2><a class="anchor" id="ApproxHD"></a>
+Approximate Hausdorff Distance</h2>
+<p>The function <a class="el" href="group__PMP__distance__grp.html#ga74376aa81d44d745426acfad5a0ac8de"><code>approximate_Hausdorff_distance()</code></a> computes an approximation of the Hausdorff distance from a mesh <code>tm1</code> to a mesh <code>tm2</code>. Given a a sampling of <code>tm1</code>, it computes the distance to <code>tm2</code> of the farthest sample point to <code>tm2</code> <a class="el" href="citelist.html#CITEREF_cignoni1998metro">[3]</a>. The symmetric version (<a class="el" href="group__PMP__distance__grp.html#ga035fdbf660615b036cb3f47f7997b739"><code>approximate_symmetric_Hausdorff_distance()</code></a>) is the maximum of the two non-symmetric distances. Internally, points are sampled using <a class="el" href="group__PMP__distance__grp.html#ga6307a4504382c46dc3b0e578ca1f7a3b"><code>sample_triangle_mesh()</code></a> and the distance to each sample point is computed using <a class="el" href="group__PMP__distance__grp.html#gaed9454c6ed046cd4fb7928cf2b5f7c2c"><code>max_distance_to_triangle_mesh()</code></a>. The quality of the approximation depends on the quality of the sampling and the runtime depends on the number of sample points. Three sampling methods with different parameters are provided (see <a class="el" href="index.html#fig__sampling_bunny">Figure 75.7</a>).</p>
+<p><a class="anchor" id="fig__sampling_bunny"></a> </p><div class="image">
+<img src="pmp_sampling_bunny.jpg" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__sampling_bunny">Figure 75.7</a> Sampling of a triangle mesh using different sampling methods. From left to right: (a) Grid sampling, (b) Monte-Carlo sampling with fixed number of points per face and per edge, (c) Monte-Carlo sampling with a number of points proportional to the area/length, and (d) Uniform random sampling. The four pictures represent the sampling on the same portion of a mesh, parameters were adjusted so that the total number of points sampled in faces (blue points) and on edges (red points) are roughly the same. Note that when using the random uniform sampling some faces/edges may not contain any point, but this method is the only one that allows to exactly match a given number of points. </p> </div> <p> <br>
+</p>
+<p>The function <a class="el" href="group__PMP__distance__grp.html#ga3451246234c24dd4f03d17fc17d50336"><code>approximate_max_distance_to_point_set()</code></a> computes an approximation of the Hausdorff distance from a mesh to a point set. For each triangle, lower and upper bounds of the Hausdorff distance to the point set are computed. Triangles are refined until the difference between bounds is below a user-defined precision threshold.</p>
+<h3><a class="anchor" id="AHDExample"></a>
+Approximate Hausdorff Distance Example</h3>
+<p>In the following example, a mesh is isotropically remeshed and the approximate distance between the input and the output is computed.</p>
+<p><b>Example: </b> <a class="el" href="PMP_Remeshing_2hausdorff_distance_remeshing_example_8cpp-example.html">PMP_Remeshing/hausdorff_distance_remeshing_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/remesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define TAG CGAL::Parallel_if_available_tag</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>   K;</div>
+<div class="line"><span class="keyword">typedef</span> K::Point_3                                            Point;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;K::Point_3&gt;</a>                        Mesh;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span>, <span class="keywordtype">char</span>**)</div>
+<div class="line">{</div>
+<div class="line">  Mesh tm1, tm2;</div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLGeneratorFct.html#ga92116dc89384a0b8d565e2411f1c173a">CGAL::make_tetrahedron</a>(Point(.0,.0,.0),</div>
+<div class="line">                         Point(2,.0,.0),</div>
+<div class="line">                         Point(1,1,1),</div>
+<div class="line">                         Point(1,.0,2),</div>
+<div class="line">                         tm1);</div>
+<div class="line">  tm2 = tm1;</div>
+<div class="line">  <a class="code hl_functionRef" href="../PMP_Remeshing/group__PMP__local__remeshing__grp.html#ga412f696ec3009074bf957f1bba638248">CGAL::Polygon_mesh_processing::isotropic_remeshing</a>(tm2.faces(), .05, tm2);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Approximated Hausdorff distance: "</span></div>
+<div class="line">            &lt;&lt; <a class="code hl_function" href="group__PMP__distance__grp.html#ga74376aa81d44d745426acfad5a0ac8de">CGAL::Polygon_mesh_processing::approximate_Hausdorff_distance</a></div>
+<div class="line">                  &lt;TAG&gt;(tm1, tm2, CGAL::parameters::number_of_points_per_area_unit(4000))</div>
+<div class="line">            &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PMP__distance__grp_html_ga74376aa81d44d745426acfad5a0ac8de"><div class="ttname"><a href="group__PMP__distance__grp.html#ga74376aa81d44d745426acfad5a0ac8de">CGAL::Polygon_mesh_processing::approximate_Hausdorff_distance</a></div><div class="ttdeci">double approximate_Hausdorff_distance(const TriangleMesh &amp;tm1, const TriangleMesh &amp;tm2, const NamedParameters1 &amp;np1=parameters::default_values(), const NamedParameters2 &amp;np2=parameters::default_values())</div><div class="ttdoc">computes the approximate Hausdorff distance from tm1 to tm2 by returning the distance of the farthest...</div><div class="ttdef"><b>Definition:</b> distance.h:1176</div></div>
+<div class="ttc" id="agroup__PkgBGLGeneratorFct_html_ga92116dc89384a0b8d565e2411f1c173a"><div class="ttname"><a href="../BGL/group__PkgBGLGeneratorFct.html#ga92116dc89384a0b8d565e2411f1c173a">CGAL::make_tetrahedron</a></div><div class="ttdeci">boost::graph_traits&lt; Graph &gt;::halfedge_descriptor make_tetrahedron(const P &amp;p0, const P &amp;p1, const P &amp;p2, const P &amp;p3, Graph &amp;g)</div></div>
+</div><!-- fragment --> </details>
+<h3><a class="anchor" id="PoissonDistanceExample"></a>
+Max Distance Between Point Set and Surface Example</h3>
+<p>In <a class="el" href="Poisson_surface_reconstruction_3_2poisson_reconstruction_example_8cpp-example.html">Poisson_surface_reconstruction_3/poisson_reconstruction_example.cpp</a>, a triangulated surface mesh is constructed from a point set using the <a class="elRef" href="../Manual/packages.html#PkgPoissonSurfaceReconstruction3">Poisson reconstruction algorithm </a>, and the distance between the point set and the reconstructed surface is computed as follows:</p>
+<div class="fragment"><div class="line">    <span class="comment">// computes the approximation error of the reconstruction</span></div>
+<div class="line">    <span class="keywordtype">double</span> max_dist =</div>
+<div class="line">      <a class="code hl_function" href="group__PMP__distance__grp.html#ga3451246234c24dd4f03d17fc17d50336">CGAL::Polygon_mesh_processing::approximate_max_distance_to_point_set</a></div>
+<div class="line">      (output_mesh,</div>
+<div class="line">       <a class="code hl_functionRef" href="../STL_Extension/namespaceCGAL.html#ac87cfb03dd80e388d2fe53af9e53e9ed">CGAL::make_range</a> (boost::make_transform_iterator</div>
+<div class="line">                         (points.begin(), <a class="code hl_structRef" href="../Property_map/structCGAL_1_1Property__map__to__unary__function.html">CGAL::Property_map_to_unary_function&lt;Point_map&gt;</a>()),</div>
+<div class="line">                         boost::make_transform_iterator</div>
+<div class="line">                         (points.end(), <a class="code hl_structRef" href="../Property_map/structCGAL_1_1Property__map__to__unary__function.html">CGAL::Property_map_to_unary_function&lt;Point_map&gt;</a>())),</div>
+<div class="line">       4000);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Max distance to point_set: "</span> &lt;&lt; max_dist &lt;&lt; std::endl;</div>
+<div class="ttc" id="agroup__PMP__distance__grp_html_ga3451246234c24dd4f03d17fc17d50336"><div class="ttname"><a href="group__PMP__distance__grp.html#ga3451246234c24dd4f03d17fc17d50336">CGAL::Polygon_mesh_processing::approximate_max_distance_to_point_set</a></div><div class="ttdeci">double approximate_max_distance_to_point_set(const TriangleMesh &amp;tm, const PointRange &amp;points, const double precision, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">returns an approximation of the distance between points and the point lying on tm that is the farthes...</div><div class="ttdef"><b>Definition:</b> distance.h:1255</div></div>
+<div class="ttc" id="anamespaceCGAL_html_ac87cfb03dd80e388d2fe53af9e53e9ed"><div class="ttname"><a href="../STL_Extension/namespaceCGAL.html#ac87cfb03dd80e388d2fe53af9e53e9ed">CGAL::make_range</a></div><div class="ttdeci">Iterator_range&lt; T &gt; make_range(const T &amp;b, const T &amp;e)</div></div>
+<div class="ttc" id="astructCGAL_1_1Property__map__to__unary__function_html"><div class="ttname"><a href="../Property_map/structCGAL_1_1Property__map__to__unary__function.html">CGAL::Property_map_to_unary_function</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="BoundedHD"></a>
+Bounded Hausdorff Distance</h2>
+<p>The function <code><a class="el" href="group__PMP__distance__grp.html#gac251a5e983df7ee6aa61623cdb9ec454" title="returns an estimate on the Hausdorff distance from tm1 to tm2 that is at most error_bound away from t...">CGAL::Polygon_mesh_processing::bounded_error_Hausdorff_distance()</a></code> computes an estimate of the Hausdorff distance of two triangle meshes which is bounded by a user-given error bound. Given two meshes <code>tm1</code> and <code>tm2</code>, it follows the procedure given by <a class="el" href="citelist.html#CITEREF_tang2009interactive">[7]</a>. Namely, a bounded volume hierarchy (BVH) is built on <code>tm1</code> and <code>tm2</code> respectively. The BVH on <code>tm1</code> is used to iterate over all triangles in <code>tm1</code>. Throughout the traversal, the procedure keeps track of a global lower and upper bound on the Hausdorff distance respectively. For each triangle <code>t</code> in <code>tm1</code>, by traversing the BVH on <code>tm2</code>, it is estimated via the global bounds whether <code>t</code> can still contribute to the actual Hausdorff distance. From this process, a set of candidate triangles is selected.</p>
+<p>The candidate triangles are subsequently subdivided and for each smaller triangle, the BVH on <code>tm2</code> is traversed again. This is repeated until the triangle is smaller than the user-given error bound, all vertices of the triangle are projected onto the same triangle in <code>tm2</code>, or the triangle's upper bound is lower than the global lower bound. After creation, the subdivided triangles are added to the list of candidate triangles. Thereby, all candidate triangles are processed until a triangle is found in which the Hausdorff distance is realized or in which it is guaranteed to be realized within the user-given error bound.</p>
+<p>In the current implementation, the BVH used is an AABB-tree and not the swept sphere volumes as used in the original implementation. This should explain the runtime difference observed with the original implementation.</p>
+<p>The function <code><a class="el" href="group__PMP__distance__grp.html#gac251a5e983df7ee6aa61623cdb9ec454" title="returns an estimate on the Hausdorff distance from tm1 to tm2 that is at most error_bound away from t...">CGAL::Polygon_mesh_processing::bounded_error_Hausdorff_distance()</a></code> computes the one-sided Hausdorff distance from <code>tm1</code> to <code>tm2</code>. This component also provides the symmetric distance <code><a class="el" href="group__PMP__distance__grp.html#gaff7bb1f6909363380f3947f1fabf06a0" title="returns the symmetric Hausdorff distance, that is the maximum of bounded_error_Hausdorff_distance(tm1...">CGAL::Polygon_mesh_processing::bounded_error_symmetric_Hausdorff_distance()</a></code> and a utility function called <code><a class="el" href="group__PMP__distance__grp.html#gacd7487071c9d409e91c37a731999a239" title="returns true if the Hausdorff distance between two meshes is larger than the user-defined max distanc...">CGAL::Polygon_mesh_processing::is_Hausdorff_distance_larger()</a></code> that returns <code>true</code> if the Hausdorff distance between two meshes is larger than the user-defined max distance.</p>
+<h3><a class="anchor" id="BHDExample"></a>
+Bounded Hausdorff Distance Example</h3>
+<p>In the following examples: (a) the distance of a tetrahedron to a remeshed version of itself is computed, (b) the distance of two geometries is computed which is realized strictly in the interior of a triangle of the first geometry, (c) a perturbation of a user-given mesh is compared to the original user-given mesh, (d) two user-given meshes are compared, where the second mesh is gradually moved away from the first one.</p>
+<p><b>Example: </b> <a class="el" href="Polygon_mesh_processing_2hausdorff_bounded_error_distance_example_8cpp-example.html">Polygon_mesh_processing/hausdorff_bounded_error_distance_example.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/OFF.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/remesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/transform.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>                  = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>FT                      = <span class="keyword">typename</span> Kernel::FT;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>                 = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Vector_3</a>                = <span class="keyword">typename</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Affine_transformation_3 = <span class="keyword">typename</span> Kernel::Aff_transformation_3;</div>
+<div class="line"><span class="keyword">using </span>TAG                     = <a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1Sequential__tag.html">CGAL::Sequential_tag</a>;</div>
+<div class="line"><span class="keyword">using </span>Surface_mesh            = <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Polyhedron              = <a class="code hl_classRef" href="../Polyhedron/classCGAL_1_1Polyhedron__3.html">CGAL::Polyhedron_3&lt;Kernel&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = CGAL::Polygon_mesh_processing;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> error_bound = 1e-4;</div>
+<div class="line">  <span class="keyword">const</span> std::string filepath = (argc &gt; 1 ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/blobby.off"</span>));</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// We create a tetrahedron, remesh it, and compute the distance.</span></div>
+<div class="line">  <span class="comment">// The expected distance is error_bound.</span></div>
+<div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">"* remeshing tetrahedron example:"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  Surface_mesh mesh1, mesh2;</div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLGeneratorFct.html#ga92116dc89384a0b8d565e2411f1c173a">CGAL::make_tetrahedron</a>(</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(0, 0, 0), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(2, 0, 0),</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(1, 1, 1), <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Point_3</a>(1, 0, 2), mesh1);</div>
+<div class="line">  mesh2 = mesh1;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>edge_descriptor = <span class="keyword">typename</span> boost::graph_traits&lt;Surface_mesh&gt;::edge_descriptor;</div>
+<div class="line">  Surface_mesh::Property_map&lt;edge_descriptor, bool&gt; is_constrained_map =</div>
+<div class="line">    mesh2.add_property_map&lt;edge_descriptor, <span class="keywordtype">bool</span>&gt;(<span class="stringliteral">"e:is_constrained"</span>, <span class="keyword">true</span>).first;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> target_edge_length = 0.05;</div>
+<div class="line">  <a class="code hl_functionRef" href="../PMP_Remeshing/group__PMP__local__remeshing__grp.html#ga412f696ec3009074bf957f1bba638248">PMP::isotropic_remeshing</a>(</div>
+<div class="line">    mesh2.faces(), target_edge_length, mesh2,</div>
+<div class="line">    CGAL::parameters::edge_is_constrained_map(is_constrained_map));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"* one-sided bounded-error Hausdorff distance: "</span> &lt;&lt;</div>
+<div class="line">    PMP::bounded_error_Hausdorff_distance&lt;TAG&gt;(mesh1, mesh2, error_bound) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// We load a mesh, save it in two different containers, and</span></div>
+<div class="line">  <span class="comment">// translate the second mesh by 1 unit. The expected distance is 1.</span></div>
+<div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">"* moving mesh example:"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  Surface_mesh surface_mesh;</div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a>(filepath, surface_mesh);</div>
+<div class="line"> </div>
+<div class="line">  Polyhedron polyhedron;</div>
+<div class="line">  <a class="code hl_functionRef" href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a>(filepath, polyhedron);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PMP__misc__grp.html#gaf2cbaecebb112bc4857782728481ccec">PMP::transform</a>(Affine_transformation_3(<a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Translation.html">CGAL::Translation</a>(),</div>
+<div class="line">    <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Vector_3</a>(FT(0), FT(0), FT(1))), polyhedron);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"* symmetric bounded-error Hausdorff distance: "</span> &lt;&lt;</div>
+<div class="line">    PMP::bounded_error_symmetric_Hausdorff_distance&lt;TAG&gt;(surface_mesh, polyhedron, error_bound)</div>
+<div class="line">  &lt;&lt; std::endl &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Translation_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Translation.html">CGAL::Translation</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Vector__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a></div></div>
+<div class="ttc" id="agroup__PMP__misc__grp_html_gaf2cbaecebb112bc4857782728481ccec"><div class="ttname"><a href="group__PMP__misc__grp.html#gaf2cbaecebb112bc4857782728481ccec">CGAL::Polygon_mesh_processing::transform</a></div><div class="ttdeci">void transform(const Transformation &amp;transformation, PolygonMesh &amp;mesh, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">applies a transformation to every vertex of a PolygonMesh.</div><div class="ttdef"><b>Definition:</b> transform.h:50</div></div>
+<div class="ttc" id="astructCGAL_1_1Sequential__tag_html"><div class="ttname"><a href="../STL_Extension/structCGAL_1_1Sequential__tag.html">CGAL::Sequential_tag</a></div></div>
+</div><!-- fragment --> </details>
+<h1><a class="anchor" id="PMPHistory"></a>
+Implementation History</h1>
+<p>A first version of this package was started by Ilker O. Yaz and Sébastien Loriot. Jane Tournois worked on the finalization of the API, code, and documentation.</p>
+<p>The polyhedral envelope containment check was integrated in CGAL 5.3. The implementation makes use of the version of <a href="https://github.com/wangbolun300/fast-envelope">https://github.com/wangbolun300/fast-envelope</a> available on 7th of October 2020. It only uses the high level algorithm of checking that a query is covered by a set of prisms, where each prism is an offset for an input triangle. That is, the implementation in CGAL does not use indirect predicates.</p>
+<p>Interpolated corrected curvatures were implemented during GSoC 2022 by Hossam Saeed, supervised by David Coeurjolly, Jacques-Olivier Lachaud, and Sébastien Loriot. The implementation is based on <a class="el" href="citelist.html#CITEREF_cgal:lrtc-iccmps-20">[4]</a>. <a href="https://dgtal-team.github.io/doc-nightly/moduleCurvatureMeasures.html">DGtal's implementation</a> was also referenced during development. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

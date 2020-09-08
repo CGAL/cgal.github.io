@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Isosurfacing_3/classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 3D Isosurfacing: CGAL::Isosurfacing::Cartesian_grid_3&lt; GeomTraits, MemoryPolicy &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 3D Isosurfacing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Isosurfacing::Cartesian_grid_3&lt; GeomTraits, MemoryPolicy &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgIsosurfacing3Ref.html">Reference Manual</a> » <a class="el" href="group__IS__Partitions__grp.html">Space Partitioning Data Structures</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Isosurfacing_3/Cartesian_grid_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename GeomTraits, typename MemoryPolicy = Do_not_cache_vertex_locations&gt;<br>
+class CGAL::Isosurfacing::Cartesian_grid_3&lt; GeomTraits, MemoryPolicy &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html" title="The class Cartesian_grid_3 represents a 3D Cartesian grid, that is the partition of an iso-cuboid int...">Cartesian_grid_3</a></code> represents a 3D Cartesian grid, that is the partition of an iso-cuboid into identical iso-cuboidal cells. </p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="classIsosurfacingPartition__3.html" title="The concept IsosurfacingPartition_3 describes the set of requirements to be fulfilled by the partitio...">IsosurfacingPartition_3</a></code> </dd>
+</dl>
+<p>The class <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html" title="The class Cartesian_grid_3 represents a 3D Cartesian grid, that is the partition of an iso-cuboid int...">Cartesian_grid_3</a></code> is one of the possible space partitioning data structures that can be used along with value and gradient fields to make up a domain.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GeomTraits</td><td>must be a model of <code><a class="el" href="classIsosurfacingTraits__3.html">IsosurfacingTraits_3</a></code>. </td></tr>
+    <tr><td class="paramname">MemoryPolicy</td><td>whether the geometric locations of the grid vertices are stored or not. Possible values are <code><a class="el" href="group__IS__Partitions__helpers__grp.html#ga84bb6f86eb2eb8b809da37376e8b634e" title="A convenience alias for the policy that caches grid vertex locations.">CGAL::Isosurfacing::Cache_vertex_locations</a></code> and <code><a class="el" href="group__IS__Partitions__helpers__grp.html#gad9a48539af233163e81fae46f3e6ec23" title="A convenience alias for the policy that does not cache grid vertex locations.">CGAL::Isosurfacing::Do_not_cache_vertex_locations</a></code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Marching__cubes__domain__3.html" title="A domain that can be used with the Marching Cubes algorithm.">CGAL::Isosurfacing::Marching_cubes_domain_3()</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Dual__contouring__domain__3.html" title="A domain that can be used as input in the Dual Contouring algorithm.">CGAL::Isosurfacing::Dual_contouring_domain_3()</a></code> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Isosurfacing_3_2contouring_discrete_data_8cpp-example.html#_a3">Isosurfacing_3/contouring_discrete_data.cpp</a>, <a class="el" href="Isosurfacing_3_2contouring_implicit_data_8cpp-example.html#_a3">Isosurfacing_3/contouring_implicit_data.cpp</a>, <a class="el" href="Isosurfacing_3_2contouring_inrimage_8cpp-example.html#_a2">Isosurfacing_3/contouring_inrimage.cpp</a>, <a class="el" href="Isosurfacing_3_2contouring_mesh_offset_8cpp-example.html#_a3">Isosurfacing_3/contouring_mesh_offset.cpp</a>, <a class="el" href="Isosurfacing_3_2contouring_vtk_image_8cpp-example.html#_a2">Isosurfacing_3/contouring_vtk_image.cpp</a>, <a class="el" href="Isosurfacing_3_2dual_contouring_8cpp-example.html#_a3">Isosurfacing_3/dual_contouring.cpp</a>, and <a class="el" href="Isosurfacing_3_2marching_cubes_8cpp-example.html#_a3">Isosurfacing_3/marching_cubes.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a6a92234823710e9310550bf5455a8d7f"><td class="memItemLeft" align="right" valign="top"><a id="a6a92234823710e9310550bf5455a8d7f" name="a6a92234823710e9310550bf5455a8d7f"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Geom_traits</b> = GeomTraits</td></tr>
+<tr class="separator:a6a92234823710e9310550bf5455a8d7f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af209503890c6620dcb6cdfbd430ad91d"><td class="memItemLeft" align="right" valign="top"><a id="af209503890c6620dcb6cdfbd430ad91d" name="af209503890c6620dcb6cdfbd430ad91d"></a>
+using </td><td class="memItemRight" valign="bottom"><b>FT</b> = typename Geom_traits::FT</td></tr>
+<tr class="separator:af209503890c6620dcb6cdfbd430ad91d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a64049ea2474bc890958e99983f2fa5ec"><td class="memItemLeft" align="right" valign="top"><a id="a64049ea2474bc890958e99983f2fa5ec" name="a64049ea2474bc890958e99983f2fa5ec"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Point_3</b> = typename Geom_traits::Point_3</td></tr>
+<tr class="separator:a64049ea2474bc890958e99983f2fa5ec"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acbc050087af15423d2a02d85e1bc3aad"><td class="memItemLeft" align="right" valign="top"><a id="acbc050087af15423d2a02d85e1bc3aad" name="acbc050087af15423d2a02d85e1bc3aad"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Vector_3</b> = typename Geom_traits::Vector_3</td></tr>
+<tr class="separator:acbc050087af15423d2a02d85e1bc3aad"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa72f01c04db644dc3fc391a183b04d7a"><td class="memItemLeft" align="right" valign="top"><a id="aa72f01c04db644dc3fc391a183b04d7a" name="aa72f01c04db644dc3fc391a183b04d7a"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Iso_cuboid_3</b> = typename Geom_traits::Iso_cuboid_3</td></tr>
+<tr class="separator:aa72f01c04db644dc3fc391a183b04d7a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab01d76e3acd93aef465370305d0eb3bd"><td class="memItemLeft" align="right" valign="top"><a id="ab01d76e3acd93aef465370305d0eb3bd" name="ab01d76e3acd93aef465370305d0eb3bd"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Positioner</b> = internal::Cartesian_grid_location&lt; GeomTraits, MemoryPolicy &gt;</td></tr>
+<tr class="separator:ab01d76e3acd93aef465370305d0eb3bd"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab96f8cd6a1cf8c9df04f01e231e62e6c"><td class="memItemLeft" align="right" valign="top"><a id="ab96f8cd6a1cf8c9df04f01e231e62e6c" name="ab96f8cd6a1cf8c9df04f01e231e62e6c"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Cartesian_grid_3</b> ()</td></tr>
+<tr class="memdesc:ab96f8cd6a1cf8c9df04f01e231e62e6c"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a> constructor. <br></td></tr>
+<tr class="separator:ab96f8cd6a1cf8c9df04f01e231e62e6c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0ad7e14b13b94fa534f679476f8d3910"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a0ad7e14b13b94fa534f679476f8d3910">Cartesian_grid_3</a> (const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aa72f01c04db644dc3fc391a183b04d7a">Iso_cuboid_3</a> &amp;<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aee0b5d6288b2b20564b72a7a3755d21c">span</a>, const std::array&lt; std::size_t, 3 &gt; &amp;dimensions, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp;gt=<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>())</td></tr>
+<tr class="memdesc:a0ad7e14b13b94fa534f679476f8d3910"><td class="mdescLeft"> </td><td class="mdescRight">creates a Cartesian grid with <code>dimensions[0]*dimensions[1]*dimensions[2]</code> grid vertices.  <br></td></tr>
+<tr class="separator:a0ad7e14b13b94fa534f679476f8d3910"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a54e89d129d444259a84be0db5359f4ee"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a54e89d129d444259a84be0db5359f4ee">Cartesian_grid_3</a> (const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp;p, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp;q, const std::array&lt; std::size_t, 3 &gt; &amp;dimensions, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp;gt=<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>())</td></tr>
+<tr class="memdesc:a54e89d129d444259a84be0db5359f4ee"><td class="mdescLeft"> </td><td class="mdescRight">creates a Cartesian grid with <code>dimensions[0]*dimensions[1]*dimensions[2]</code> grid vertices.  <br></td></tr>
+<tr class="separator:a54e89d129d444259a84be0db5359f4ee"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa896060cde2636f609cf4521d0a9afac"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aa896060cde2636f609cf4521d0a9afac">Cartesian_grid_3</a> (const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aa72f01c04db644dc3fc391a183b04d7a">Iso_cuboid_3</a> &amp;<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aee0b5d6288b2b20564b72a7a3755d21c">span</a>, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#acbc050087af15423d2a02d85e1bc3aad">Vector_3</a> &amp;<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aba59d717596df9b5e9513ab49e755de7">spacing</a>, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp;gt=<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>())</td></tr>
+<tr class="memdesc:aa896060cde2636f609cf4521d0a9afac"><td class="mdescLeft"> </td><td class="mdescRight">creates a Cartesian grid using a prescribed grid step <code>spacing</code>.  <br></td></tr>
+<tr class="separator:aa896060cde2636f609cf4521d0a9afac"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af83a4bdf28a6a9cb522ee9954fe4ef6a"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#af83a4bdf28a6a9cb522ee9954fe4ef6a">Cartesian_grid_3</a> (const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp;p, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp;q, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#acbc050087af15423d2a02d85e1bc3aad">Vector_3</a> &amp;<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aba59d717596df9b5e9513ab49e755de7">spacing</a>, const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp;gt=<a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>())</td></tr>
+<tr class="memdesc:af83a4bdf28a6a9cb522ee9954fe4ef6a"><td class="mdescLeft"> </td><td class="mdescRight">creates a Cartesian grid using a prescribed grid step.  <br></td></tr>
+<tr class="separator:af83a4bdf28a6a9cb522ee9954fe4ef6a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab72987db9cb92a87b7b4a3398ece7844"><td class="memItemLeft" align="right" valign="top"><a id="ab72987db9cb92a87b7b4a3398ece7844" name="ab72987db9cb92a87b7b4a3398ece7844"></a>
+const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp; </td><td class="memItemRight" valign="bottom"><b>geom_traits</b> () const</td></tr>
+<tr class="memdesc:ab72987db9cb92a87b7b4a3398ece7844"><td class="mdescLeft"> </td><td class="mdescRight">returns the geometric traits class. <br></td></tr>
+<tr class="separator:ab72987db9cb92a87b7b4a3398ece7844"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aee0b5d6288b2b20564b72a7a3755d21c"><td class="memItemLeft" align="right" valign="top"><a id="aee0b5d6288b2b20564b72a7a3755d21c" name="aee0b5d6288b2b20564b72a7a3755d21c"></a>
+const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aa72f01c04db644dc3fc391a183b04d7a">Iso_cuboid_3</a> &amp; </td><td class="memItemRight" valign="bottom"><b>span</b> () const</td></tr>
+<tr class="memdesc:aee0b5d6288b2b20564b72a7a3755d21c"><td class="mdescLeft"> </td><td class="mdescRight">returns an iso-cuboid representing the geometric span of the Cartesian grid. <br></td></tr>
+<tr class="separator:aee0b5d6288b2b20564b72a7a3755d21c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a444229240665d079bd24ddb83fd2b5a8"><td class="memItemLeft" align="right" valign="top"><a id="a444229240665d079bd24ddb83fd2b5a8" name="a444229240665d079bd24ddb83fd2b5a8"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><b>xdim</b> () const</td></tr>
+<tr class="memdesc:a444229240665d079bd24ddb83fd2b5a8"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of grid vertices in the <code>x</code> direction. <br></td></tr>
+<tr class="separator:a444229240665d079bd24ddb83fd2b5a8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a694946df02843e0efb2365980cbf47b1"><td class="memItemLeft" align="right" valign="top"><a id="a694946df02843e0efb2365980cbf47b1" name="a694946df02843e0efb2365980cbf47b1"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><b>ydim</b> () const</td></tr>
+<tr class="memdesc:a694946df02843e0efb2365980cbf47b1"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of grid vertices in the <code>y</code> direction. <br></td></tr>
+<tr class="separator:a694946df02843e0efb2365980cbf47b1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afcffd9fb748ef101c213641f377f4fca"><td class="memItemLeft" align="right" valign="top"><a id="afcffd9fb748ef101c213641f377f4fca" name="afcffd9fb748ef101c213641f377f4fca"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><b>zdim</b> () const</td></tr>
+<tr class="memdesc:afcffd9fb748ef101c213641f377f4fca"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of grid vertices in the <code>z</code> direction. <br></td></tr>
+<tr class="separator:afcffd9fb748ef101c213641f377f4fca"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aba59d717596df9b5e9513ab49e755de7"><td class="memItemLeft" align="right" valign="top"><a id="aba59d717596df9b5e9513ab49e755de7" name="aba59d717596df9b5e9513ab49e755de7"></a>
+const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#acbc050087af15423d2a02d85e1bc3aad">Vector_3</a> &amp; </td><td class="memItemRight" valign="bottom"><b>spacing</b> () const</td></tr>
+<tr class="memdesc:aba59d717596df9b5e9513ab49e755de7"><td class="mdescLeft"> </td><td class="mdescRight">returns the spacing of the Cartesian grid, that is a vector whose coordinates are the grid steps in the <code>x</code>, <code>y</code>, and <code>z</code> directions, respectively. <br></td></tr>
+<tr class="separator:aba59d717596df9b5e9513ab49e755de7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a629359f657f689498b34354024a25938"><td class="memItemLeft" align="right" valign="top"><a id="a629359f657f689498b34354024a25938" name="a629359f657f689498b34354024a25938"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><b>linear_index</b> (const std::size_t i, const std::size_t j, const std::size_t k) const</td></tr>
+<tr class="memdesc:a629359f657f689498b34354024a25938"><td class="mdescLeft"> </td><td class="mdescRight">returns the index of a grid cell given its indices (i.e., <code>(k * y_dim + j) * x_dim + i</code>). <br></td></tr>
+<tr class="separator:a629359f657f689498b34354024a25938"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adf0f9e7b6bbde99c8f36562e2f133d5e"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::size_t, 3 &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#adf0f9e7b6bbde99c8f36562e2f133d5e">index</a> (const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp;p) const</td></tr>
+<tr class="memdesc:adf0f9e7b6bbde99c8f36562e2f133d5e"><td class="mdescLeft"> </td><td class="mdescRight">returns the coordinates of the grid cell that contains a given point.  <br></td></tr>
+<tr class="separator:adf0f9e7b6bbde99c8f36562e2f133d5e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a49d4c7f41ee622adc8339087ace331ee"><td class="memItemLeft" align="right" valign="top">decltype(auto) </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a49d4c7f41ee622adc8339087ace331ee">point</a> (const std::size_t i, const std::size_t j, const std::size_t k) const</td></tr>
+<tr class="memdesc:a49d4c7f41ee622adc8339087ace331ee"><td class="mdescLeft"> </td><td class="mdescRight">returns the geometric location of the grid vertex described by its three indices.  <br></td></tr>
+<tr class="separator:a49d4c7f41ee622adc8339087ace331ee"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0ad7e14b13b94fa534f679476f8d3910" name="a0ad7e14b13b94fa534f679476f8d3910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad7e14b13b94fa534f679476f8d3910">◆ </a></span>Cartesian_grid_3() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GeomTraits , typename MemoryPolicy  = Do_not_cache_vertex_locations&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a>&lt; GeomTraits, MemoryPolicy &gt;::Cartesian_grid_3 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aa72f01c04db644dc3fc391a183b04d7a">Iso_cuboid_3</a> &amp; </td>
+          <td class="paramname"><em>span</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; std::size_t, 3 &gt; &amp; </td>
+          <td class="paramname"><em>dimensions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp; </td>
+          <td class="paramname"><em>gt</em> = <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Cartesian grid with <code>dimensions[0]*dimensions[1]*dimensions[2]</code> grid vertices. </p>
+<p>The grid covers the space described by the iso-cuboid <code>span</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">span</td><td>the geometric span of the grid </td></tr>
+    <tr><td class="paramname">dimensions</td><td>the number of grid vertices in the <code>x</code>, <code>y</code>, and <code>z</code> directions </td></tr>
+    <tr><td class="paramname">gt</td><td>the geometric traits</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>all dimensions are strictly positive. </dd></dl>
+
+</div>
+</div>
+<a id="a54e89d129d444259a84be0db5359f4ee" name="a54e89d129d444259a84be0db5359f4ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e89d129d444259a84be0db5359f4ee">◆ </a></span>Cartesian_grid_3() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GeomTraits , typename MemoryPolicy  = Do_not_cache_vertex_locations&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a>&lt; GeomTraits, MemoryPolicy &gt;::Cartesian_grid_3 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp; </td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp; </td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; std::size_t, 3 &gt; &amp; </td>
+          <td class="paramname"><em>dimensions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp; </td>
+          <td class="paramname"><em>gt</em> = <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Cartesian grid with <code>dimensions[0]*dimensions[1]*dimensions[2]</code> grid vertices. </p>
+<p>The grid covers the space described by the iso-cuboid span, itself described through two diagonal corners <code>p</code> and <code>q</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>the lexicographically smallest corner of the iso-cuboid </td></tr>
+    <tr><td class="paramname">q</td><td>the lexicographically largest corner of the iso-cuboid </td></tr>
+    <tr><td class="paramname">dimensions</td><td>the number of grid vertices in the <code>x</code>, <code>y</code>, and <code>z</code> directions </td></tr>
+    <tr><td class="paramname">gt</td><td>the geometric traits</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>p</code> is lexicographically strictly smaller than <code>q</code> </dd>
+<dd>
+all dimensions are strictly positive. </dd></dl>
+
+</div>
+</div>
+<a id="aa896060cde2636f609cf4521d0a9afac" name="aa896060cde2636f609cf4521d0a9afac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa896060cde2636f609cf4521d0a9afac">◆ </a></span>Cartesian_grid_3() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GeomTraits , typename MemoryPolicy  = Do_not_cache_vertex_locations&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a>&lt; GeomTraits, MemoryPolicy &gt;::Cartesian_grid_3 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#aa72f01c04db644dc3fc391a183b04d7a">Iso_cuboid_3</a> &amp; </td>
+          <td class="paramname"><em>span</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#acbc050087af15423d2a02d85e1bc3aad">Vector_3</a> &amp; </td>
+          <td class="paramname"><em>spacing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp; </td>
+          <td class="paramname"><em>gt</em> = <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Cartesian grid using a prescribed grid step <code>spacing</code>. </p>
+<p>The grid covers the space described by the iso-cuboid <code>span</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">span</td><td>the geometric span of the grid </td></tr>
+    <tr><td class="paramname">spacing</td><td>the dimension of the paving cell, in the <code>x</code>, <code>y</code>, and <code>z</code> directions </td></tr>
+    <tr><td class="paramname">gt</td><td>the geometric traits</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>the diagonal of <code>span</code> has length a multiple of <code>spacing</code> </dd></dl>
+
+</div>
+</div>
+<a id="af83a4bdf28a6a9cb522ee9954fe4ef6a" name="af83a4bdf28a6a9cb522ee9954fe4ef6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83a4bdf28a6a9cb522ee9954fe4ef6a">◆ </a></span>Cartesian_grid_3() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GeomTraits , typename MemoryPolicy  = Do_not_cache_vertex_locations&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a>&lt; GeomTraits, MemoryPolicy &gt;::Cartesian_grid_3 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp; </td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp; </td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#acbc050087af15423d2a02d85e1bc3aad">Vector_3</a> &amp; </td>
+          <td class="paramname"><em>spacing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a> &amp; </td>
+          <td class="paramname"><em>gt</em> = <code><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a6a92234823710e9310550bf5455a8d7f">Geom_traits</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a Cartesian grid using a prescribed grid step. </p>
+<p>The grid covers the space described by an iso-cuboid, itself described through two diagonal corners.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>the lexicographically smallest corner of the iso-cuboid </td></tr>
+    <tr><td class="paramname">q</td><td>the lexicographically largest corner of the iso-cuboid </td></tr>
+    <tr><td class="paramname">spacing</td><td>the dimension of the paving cell, in the <code>x</code>, <code>y</code>, and <code>z</code> directions, respectively. </td></tr>
+    <tr><td class="paramname">gt</td><td>the geometric traits</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>p</code> is lexicographically strictly smaller than <code>q</code> </dd>
+<dd>
+the diagonal of the iso-cuboid has length a multiple of <code>spacing</code> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adf0f9e7b6bbde99c8f36562e2f133d5e" name="adf0f9e7b6bbde99c8f36562e2f133d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf0f9e7b6bbde99c8f36562e2f133d5e">◆ </a></span>index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GeomTraits , typename MemoryPolicy  = Do_not_cache_vertex_locations&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; std::size_t, 3 &gt; <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a>&lt; GeomTraits, MemoryPolicy &gt;::index </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a64049ea2474bc890958e99983f2fa5ec">Point_3</a> &amp; </td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the coordinates of the grid cell that contains a given point. </p>
+<p>For points on the boundary between two cells, the smaller index is returned.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>the point to be located</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>p</code> is inside the grid. </dd></dl>
+
+</div>
+</div>
+<a id="a49d4c7f41ee622adc8339087ace331ee" name="a49d4c7f41ee622adc8339087ace331ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d4c7f41ee622adc8339087ace331ee">◆ </a></span>point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GeomTraits , typename MemoryPolicy  = Do_not_cache_vertex_locations&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">decltype(auto) <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">CGAL::Isosurfacing::Cartesian_grid_3</a>&lt; GeomTraits, MemoryPolicy &gt;::point </td>
+          <td>(</td>
+          <td class="paramtype">const std::size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t </td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t </td>
+          <td class="paramname"><em>k</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the geometric location of the grid vertex described by its three indices. </p>
+<p>Depending on the value of the template parameter <code>MemoryPolicy</code>, locations might not be stored but calculated on-the-fly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>the index in the <code>x</code> direction </td></tr>
+    <tr><td class="paramname">j</td><td>the index in the <code>y</code> direction </td></tr>
+    <tr><td class="paramname">k</td><td>the index in the <code>z</code> direction</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>i &lt; <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a444229240665d079bd24ddb83fd2b5a8" title="returns the number of grid vertices in the x direction.">xdim()</a></code> and <code>j &lt; <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#a694946df02843e0efb2365980cbf47b1" title="returns the number of grid vertices in the y direction.">ydim()</a></code> and <code>k &lt; <a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html#afcffd9fb748ef101c213641f377f4fca" title="returns the number of grid vertices in the z direction.">zdim()</a></code></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a const reference or a newly constructed point, depending on the caching policy. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Isosurfacing.html">Isosurfacing</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Isosurfacing_1_1Cartesian__grid__3.html">Cartesian_grid_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
