@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Triangulation_on_hyperbolic_surface_2/classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 2D Triangulations on Hyperbolic Surfaces: CGAL::Triangulation_on_hyperbolic_surface_2&lt; Traits, Attributes &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 2D Triangulations on Hyperbolic Surfaces
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2-members.html">List of all members</a> |
+<a href="#nested-classes">Classes</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Triangulation_on_hyperbolic_surface_2&lt; Traits, Attributes &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHyperbolicSurfaceTriangulation2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgHyperbolicSurfaceTriangulation2MainClasses.html">Main Classes</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Triangulation_on_hyperbolic_surface_2.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class Traits, class Attributes = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt;<br>
+class CGAL::Triangulation_on_hyperbolic_surface_2&lt; Traits, Attributes &gt;</div><p>represents a triangulation of a closed orientable hyperbolic surface. </p>
+<p>The class provides functions such as the generation of the triangulation from a convex fundamental domain, the Delaunay flip algorithm, and the construction of a portion of the lift of the triangulation in the hyperbolic plane.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>must be a model of <code><a class="el" href="classHyperbolicSurfaceTraits__2.html" title="This traits class must have a type for complex numbers.">HyperbolicSurfaceTraits_2</a></code>. </td></tr>
+    <tr><td class="paramname">Attributes</td><td>must be a model of <code><a class="elRef" href="../Combinatorial_map/classGenericMapItems.html">GenericMapItems</a></code> whose edges are decorated with complex numbers to represent cross ratios. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Triangulation_on_hyperbolic_surface_2_2Triangulation_on_hyperbolic_surface_2_8cpp-example.html#_a5">Triangulation_on_hyperbolic_surface_2/Triangulation_on_hyperbolic_surface_2.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">stores a dart \( d \) of the combinatorial map, belonging to a triangle \( t \), and stores the three vertices of a lift of \( t \) in the hyperbolic plane.  <a href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr class="memitem:a23044393456c311b9bf8a6b516ff508f"><td class="memItemLeft" align="right" valign="top"><a id="a23044393456c311b9bf8a6b516ff508f" name="a23044393456c311b9bf8a6b516ff508f"></a>
+typedef <a class="elRef" href="../Combinatorial_map/classCGAL_1_1Combinatorial__map.html">Combinatorial_map</a>&lt; 2, Attributes &gt; </td><td class="memItemRight" valign="bottom"><b>Combinatorial_map_with_cross_ratios</b></td></tr>
+<tr class="memdesc:a23044393456c311b9bf8a6b516ff508f"><td class="mdescLeft"> </td><td class="mdescRight">Type of combinatorial map whose edges are decorated with complex numbers. <br></td></tr>
+<tr class="separator:a23044393456c311b9bf8a6b516ff508f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afb48fa8ca409959acc6eaa8566205a47"><td class="memItemLeft" align="right" valign="top"><a id="afb48fa8ca409959acc6eaa8566205a47" name="afb48fa8ca409959acc6eaa8566205a47"></a>
+typedef Combinatorial_map_with_cross_ratios::Dart_descriptor </td><td class="memItemRight" valign="bottom"><b>Dart_descriptor</b></td></tr>
+<tr class="memdesc:afb48fa8ca409959acc6eaa8566205a47"><td class="mdescLeft"> </td><td class="mdescRight">Combinatorial map dart descriptor type. <br></td></tr>
+<tr class="separator:afb48fa8ca409959acc6eaa8566205a47"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4438ba4b90e1f177957bac7bd02c39ba"><td class="memItemLeft" align="right" valign="top"><a id="a4438ba4b90e1f177957bac7bd02c39ba" name="a4438ba4b90e1f177957bac7bd02c39ba"></a>
+typedef Combinatorial_map_with_cross_ratios::Dart_const_descriptor </td><td class="memItemRight" valign="bottom"><b>Dart_const_descriptor</b></td></tr>
+<tr class="memdesc:a4438ba4b90e1f177957bac7bd02c39ba"><td class="mdescLeft"> </td><td class="mdescRight">Combinatorial map dart const descriptor type. <br></td></tr>
+<tr class="separator:a4438ba4b90e1f177957bac7bd02c39ba"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad89005e4ce78f739874f3f7e7bb69316"><td class="memItemLeft" align="right" valign="top"><a id="ad89005e4ce78f739874f3f7e7bb69316" name="ad89005e4ce78f739874f3f7e7bb69316"></a>
+typedef Combinatorial_map_with_cross_ratios::template One_dart_per_cell_range&lt; 0 &gt; </td><td class="memItemRight" valign="bottom"><b>Vertex_range</b></td></tr>
+<tr class="memdesc:ad89005e4ce78f739874f3f7e7bb69316"><td class="mdescLeft"> </td><td class="mdescRight">Range of one dart for each vertex (that is 0-cell) of the combinatorial map. <br></td></tr>
+<tr class="separator:ad89005e4ce78f739874f3f7e7bb69316"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a682622a26b2f9108d8741e7a3a729824"><td class="memItemLeft" align="right" valign="top"><a id="a682622a26b2f9108d8741e7a3a729824" name="a682622a26b2f9108d8741e7a3a729824"></a>
+typedef Combinatorial_map_with_cross_ratios::template One_dart_per_cell_range&lt; 1 &gt; </td><td class="memItemRight" valign="bottom"><b>Edge_range</b></td></tr>
+<tr class="memdesc:a682622a26b2f9108d8741e7a3a729824"><td class="mdescLeft"> </td><td class="mdescRight">Range of one dart for each edge (that is 1-cell) of the combinatorial map. <br></td></tr>
+<tr class="separator:a682622a26b2f9108d8741e7a3a729824"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac1d3ab054122d2e354d44920621d13e6"><td class="memItemLeft" align="right" valign="top"><a id="ac1d3ab054122d2e354d44920621d13e6" name="ac1d3ab054122d2e354d44920621d13e6"></a>
+typedef Combinatorial_map_with_cross_ratios::template One_dart_per_cell_range&lt; 2 &gt; </td><td class="memItemRight" valign="bottom"><b>Face_range</b></td></tr>
+<tr class="memdesc:ac1d3ab054122d2e354d44920621d13e6"><td class="mdescLeft"> </td><td class="mdescRight">Range of one dart for each face (that is 2-cell) of the combinatorial map. <br></td></tr>
+<tr class="separator:ac1d3ab054122d2e354d44920621d13e6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaba93b5203f7cda6fa1829e3824adf10"><td class="memItemLeft" align="right" valign="top"><a id="aaba93b5203f7cda6fa1829e3824adf10" name="aaba93b5203f7cda6fa1829e3824adf10"></a>
+typedef Combinatorial_map_with_cross_ratios::template One_dart_per_cell_const_range&lt; 0 &gt; </td><td class="memItemRight" valign="bottom"><b>Vertex_const_range</b></td></tr>
+<tr class="memdesc:aaba93b5203f7cda6fa1829e3824adf10"><td class="mdescLeft"> </td><td class="mdescRight">Range of one dart for each vertex (that is 0-cell) of the combinatorial map. <br></td></tr>
+<tr class="separator:aaba93b5203f7cda6fa1829e3824adf10"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab132b78a3882df1c114f4972dfac1fb1"><td class="memItemLeft" align="right" valign="top"><a id="ab132b78a3882df1c114f4972dfac1fb1" name="ab132b78a3882df1c114f4972dfac1fb1"></a>
+typedef Combinatorial_map_with_cross_ratios::template One_dart_per_cell_const_range&lt; 1 &gt; </td><td class="memItemRight" valign="bottom"><b>Edge_const_range</b></td></tr>
+<tr class="memdesc:ab132b78a3882df1c114f4972dfac1fb1"><td class="mdescLeft"> </td><td class="mdescRight">Range of one dart for each edge (that is 1-cell) of the combinatorial map. <br></td></tr>
+<tr class="separator:ab132b78a3882df1c114f4972dfac1fb1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a63b0d09aacff97821ef6455ccc5b7d0d"><td class="memItemLeft" align="right" valign="top"><a id="a63b0d09aacff97821ef6455ccc5b7d0d" name="a63b0d09aacff97821ef6455ccc5b7d0d"></a>
+typedef Combinatorial_map_with_cross_ratios::template One_dart_per_cell_const_range&lt; 2 &gt; </td><td class="memItemRight" valign="bottom"><b>Face_const_range</b></td></tr>
+<tr class="memdesc:a63b0d09aacff97821ef6455ccc5b7d0d"><td class="mdescLeft"> </td><td class="mdescRight">Range of one dart for each face (that is 2-cell) of the combinatorial map. <br></td></tr>
+<tr class="separator:a63b0d09aacff97821ef6455ccc5b7d0d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a08313bdcc4fb662a5223f698b9071d2d"><td class="memItemLeft" align="right" valign="top"><a id="a08313bdcc4fb662a5223f698b9071d2d" name="a08313bdcc4fb662a5223f698b9071d2d"></a>
+typedef Traits::Hyperbolic_point_2 </td><td class="memItemRight" valign="bottom"><b>Point</b></td></tr>
+<tr class="memdesc:a08313bdcc4fb662a5223f698b9071d2d"><td class="mdescLeft"> </td><td class="mdescRight">Point type. <br></td></tr>
+<tr class="separator:a08313bdcc4fb662a5223f698b9071d2d"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Creation</h2></td></tr>
+<tr class="memitem:a8e2604ddfbb60373c2de979b14553c71"><td class="memItemLeft" align="right" valign="top"><a id="a8e2604ddfbb60373c2de979b14553c71" name="a8e2604ddfbb60373c2de979b14553c71"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Triangulation_on_hyperbolic_surface_2</b> ()</td></tr>
+<tr class="memdesc:a8e2604ddfbb60373c2de979b14553c71"><td class="mdescLeft"> </td><td class="mdescRight">Default constructor. <br></td></tr>
+<tr class="separator:a8e2604ddfbb60373c2de979b14553c71"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a841bce2150807fd173bacf129781407a"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a841bce2150807fd173bacf129781407a">Triangulation_on_hyperbolic_surface_2</a> (const <a class="el" href="classCGAL_1_1Hyperbolic__fundamental__domain__2.html">Hyperbolic_fundamental_domain_2</a>&lt; Traits &gt; &amp;domain)</td></tr>
+<tr class="memdesc:a841bce2150807fd173bacf129781407a"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from a convex fundamental domain: triangulates the polygon of the domain.  <br></td></tr>
+<tr class="separator:a841bce2150807fd173bacf129781407a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6b5d91739f1a8c625a6d20f056ca0b2f"><td class="memItemLeft" align="right" valign="top"><a id="a6b5d91739f1a8c625a6d20f056ca0b2f" name="a6b5d91739f1a8c625a6d20f056ca0b2f"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Triangulation_on_hyperbolic_surface_2</b> (<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a23044393456c311b9bf8a6b516ff508f">Combinatorial_map_with_cross_ratios</a> &amp;cmap, <a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> &amp;an_anchor)</td></tr>
+<tr class="memdesc:a6b5d91739f1a8c625a6d20f056ca0b2f"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from a decorated combinatorial map and an anchor. <br></td></tr>
+<tr class="separator:a6b5d91739f1a8c625a6d20f056ca0b2f"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Access Functions</h2></td></tr>
+<tr class="memitem:a0d6c5d746c0b0770fb06cc35954519eb"><td class="memItemLeft" align="right" valign="top"><a id="a0d6c5d746c0b0770fb06cc35954519eb" name="a0d6c5d746c0b0770fb06cc35954519eb"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a23044393456c311b9bf8a6b516ff508f">Combinatorial_map_with_cross_ratios</a> &amp; </td><td class="memItemRight" valign="bottom"><b>combinatorial_map</b> ()</td></tr>
+<tr class="memdesc:a0d6c5d746c0b0770fb06cc35954519eb"><td class="mdescLeft"> </td><td class="mdescRight">returns the decorated combinatorial map. <br></td></tr>
+<tr class="separator:a0d6c5d746c0b0770fb06cc35954519eb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2e01de238370a3d9085420c3a727986b"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a2e01de238370a3d9085420c3a727986b">has_anchor</a> () const</td></tr>
+<tr class="memdesc:a2e01de238370a3d9085420c3a727986b"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the triangulation has an anchor or not.  <br></td></tr>
+<tr class="separator:a2e01de238370a3d9085420c3a727986b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa82f8989b334eb08459698ba6e20d2e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#aa82f8989b334eb08459698ba6e20d2e7">anchor</a> ()</td></tr>
+<tr class="memdesc:aa82f8989b334eb08459698ba6e20d2e7"><td class="mdescLeft"> </td><td class="mdescRight">returns the anchor.  <br></td></tr>
+<tr class="separator:aa82f8989b334eb08459698ba6e20d2e7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af5606c0a42bd3a32acb9ad09c5994ec5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#af5606c0a42bd3a32acb9ad09c5994ec5">anchor</a> () const</td></tr>
+<tr class="memdesc:af5606c0a42bd3a32acb9ad09c5994ec5"><td class="mdescLeft"> </td><td class="mdescRight">returns the anchor.  <br></td></tr>
+<tr class="separator:af5606c0a42bd3a32acb9ad09c5994ec5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a96a6842a57e14e99ca47396a29b8be23"><td class="memItemLeft" align="right" valign="top"><a id="a96a6842a57e14e99ca47396a29b8be23" name="a96a6842a57e14e99ca47396a29b8be23"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#ad89005e4ce78f739874f3f7e7bb69316">Vertex_range</a> </td><td class="memItemRight" valign="bottom"><b>vertices_range</b> ()</td></tr>
+<tr class="memdesc:a96a6842a57e14e99ca47396a29b8be23"><td class="mdescLeft"> </td><td class="mdescRight">returns the range of vertices. <br></td></tr>
+<tr class="separator:a96a6842a57e14e99ca47396a29b8be23"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af4d0b966386e6d7f25c210fd26dcef7e"><td class="memItemLeft" align="right" valign="top"><a id="af4d0b966386e6d7f25c210fd26dcef7e" name="af4d0b966386e6d7f25c210fd26dcef7e"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a682622a26b2f9108d8741e7a3a729824">Edge_range</a> </td><td class="memItemRight" valign="bottom"><b>edges_range</b> ()</td></tr>
+<tr class="memdesc:af4d0b966386e6d7f25c210fd26dcef7e"><td class="mdescLeft"> </td><td class="mdescRight">returns the range of edges. <br></td></tr>
+<tr class="separator:af4d0b966386e6d7f25c210fd26dcef7e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a61b926898fa77276fd4c04387c7eaf7a"><td class="memItemLeft" align="right" valign="top"><a id="a61b926898fa77276fd4c04387c7eaf7a" name="a61b926898fa77276fd4c04387c7eaf7a"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#ac1d3ab054122d2e354d44920621d13e6">Face_range</a> </td><td class="memItemRight" valign="bottom"><b>faces_range</b> ()</td></tr>
+<tr class="memdesc:a61b926898fa77276fd4c04387c7eaf7a"><td class="mdescLeft"> </td><td class="mdescRight">returns the range of faces. <br></td></tr>
+<tr class="separator:a61b926898fa77276fd4c04387c7eaf7a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8400884edda090bbea634ccedf9add44"><td class="memItemLeft" align="right" valign="top"><a id="a8400884edda090bbea634ccedf9add44" name="a8400884edda090bbea634ccedf9add44"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#aaba93b5203f7cda6fa1829e3824adf10">Vertex_const_range</a> </td><td class="memItemRight" valign="bottom"><b>vertices_const_range</b> () const</td></tr>
+<tr class="memdesc:a8400884edda090bbea634ccedf9add44"><td class="mdescLeft"> </td><td class="mdescRight">returns the range of vertices. <br></td></tr>
+<tr class="separator:a8400884edda090bbea634ccedf9add44"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa8c3c9df482da669987b686ac6ef2e08"><td class="memItemLeft" align="right" valign="top"><a id="aa8c3c9df482da669987b686ac6ef2e08" name="aa8c3c9df482da669987b686ac6ef2e08"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#ab132b78a3882df1c114f4972dfac1fb1">Edge_const_range</a> </td><td class="memItemRight" valign="bottom"><b>edges_const_range</b> () const</td></tr>
+<tr class="memdesc:aa8c3c9df482da669987b686ac6ef2e08"><td class="mdescLeft"> </td><td class="mdescRight">returns the range of edges. <br></td></tr>
+<tr class="separator:aa8c3c9df482da669987b686ac6ef2e08"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3fac6fd1e978728b341985efa307a5eb"><td class="memItemLeft" align="right" valign="top"><a id="a3fac6fd1e978728b341985efa307a5eb" name="a3fac6fd1e978728b341985efa307a5eb"></a>
+<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a63b0d09aacff97821ef6455ccc5b7d0d">Face_const_range</a> </td><td class="memItemRight" valign="bottom"><b>faces_const_range</b> () const</td></tr>
+<tr class="memdesc:a3fac6fd1e978728b341985efa307a5eb"><td class="mdescLeft"> </td><td class="mdescRight">returns the range of faces. <br></td></tr>
+<tr class="separator:a3fac6fd1e978728b341985efa307a5eb"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Delaunay Flip Algorithm</h2></td></tr>
+<tr class="memitem:a15e9b55118c0a4699e21c92420e1ba72"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a15e9b55118c0a4699e21c92420e1ba72">is_Delaunay_flippable</a> (<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#afb48fa8ca409959acc6eaa8566205a47">Dart_descriptor</a> dart) const</td></tr>
+<tr class="memdesc:a15e9b55118c0a4699e21c92420e1ba72"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the edge supported by the dart is Delaunay flippable or not.  <br></td></tr>
+<tr class="separator:a15e9b55118c0a4699e21c92420e1ba72"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad88804ee4251da68afde2006d9eb12b7"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#ad88804ee4251da68afde2006d9eb12b7">flip</a> (<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#afb48fa8ca409959acc6eaa8566205a47">Dart_descriptor</a> dart)</td></tr>
+<tr class="memdesc:ad88804ee4251da68afde2006d9eb12b7"><td class="mdescLeft"> </td><td class="mdescRight">flips the edge supported by the dart.  <br></td></tr>
+<tr class="separator:ad88804ee4251da68afde2006d9eb12b7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6cf57edb02bd64e31fc295a258b986a4"><td class="memItemLeft" align="right" valign="top"><a id="a6cf57edb02bd64e31fc295a258b986a4" name="a6cf57edb02bd64e31fc295a258b986a4"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_Delaunay</b> () const</td></tr>
+<tr class="memdesc:a6cf57edb02bd64e31fc295a258b986a4"><td class="mdescLeft"> </td><td class="mdescRight">determines if the triangulation is a valid Delaunay triangulation. <br></td></tr>
+<tr class="separator:a6cf57edb02bd64e31fc295a258b986a4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0a5e72b2cf6827abb33bedc7f3a7156e"><td class="memItemLeft" align="right" valign="top">int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a0a5e72b2cf6827abb33bedc7f3a7156e">make_Delaunay</a> ()</td></tr>
+<tr class="memdesc:a0a5e72b2cf6827abb33bedc7f3a7156e"><td class="mdescLeft"> </td><td class="mdescRight">applies the Delaunay flip algorithm: flips Delaunay-flippable edges until there is no such edge anymore.  <br></td></tr>
+<tr class="separator:a0a5e72b2cf6827abb33bedc7f3a7156e"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Lifting</h2></td></tr>
+<tr class="memitem:a132743e563b709b2f6fb91bd911d0551"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a4438ba4b90e1f177957bac7bd02c39ba">Dart_const_descriptor</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a> &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a132743e563b709b2f6fb91bd911d0551">lift</a> (<a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> const &amp;<a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#aa82f8989b334eb08459698ba6e20d2e7">anchor</a>, bool center=true) const</td></tr>
+<tr class="memdesc:a132743e563b709b2f6fb91bd911d0551"><td class="mdescLeft"> </td><td class="mdescRight">lifts the triangulation in the hyperbolic plane.  <br></td></tr>
+<tr class="separator:a132743e563b709b2f6fb91bd911d0551"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a66a9b1bac3e445f3c75002998790e4b4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a4438ba4b90e1f177957bac7bd02c39ba">Dart_const_descriptor</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a> &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a66a9b1bac3e445f3c75002998790e4b4">lift</a> (bool center=true) const</td></tr>
+<tr class="memdesc:a66a9b1bac3e445f3c75002998790e4b4"><td class="mdescLeft"> </td><td class="mdescRight">lifts the triangulation in the hyperbolic plane.  <br></td></tr>
+<tr class="separator:a66a9b1bac3e445f3c75002998790e4b4"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Validity</h2></td></tr>
+<tr class="memitem:a06c01bf3a11aa8cf57709de5b67f7a9e"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e">is_valid</a> () const</td></tr>
+<tr class="memdesc:a06c01bf3a11aa8cf57709de5b67f7a9e"><td class="mdescLeft"> </td><td class="mdescRight">checks that the underlying combinatorial map \( M \) has no boundary and calls the is_valid method of \( M \).  <br></td></tr>
+<tr class="separator:a06c01bf3a11aa8cf57709de5b67f7a9e"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a841bce2150807fd173bacf129781407a" name="a841bce2150807fd173bacf129781407a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a841bce2150807fd173bacf129781407a">◆ </a></span>Triangulation_on_hyperbolic_surface_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::Triangulation_on_hyperbolic_surface_2 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Hyperbolic__fundamental__domain__2.html">Hyperbolic_fundamental_domain_2</a>&lt; Traits &gt; &amp; </td>
+          <td class="paramname"><em>domain</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor from a convex fundamental domain: triangulates the polygon of the domain. </p>
+<p>(The triangulation is defined by adding an internal edge between domain.vertex(size-1) and the other vertices. The anchor has the three vertices of indices size-1, 0 and 1 and the dart is the one between the vertices of indices size-1 and 0.) </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa82f8989b334eb08459698ba6e20d2e7" name="aa82f8989b334eb08459698ba6e20d2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa82f8989b334eb08459698ba6e20d2e7">◆ </a></span>anchor() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> &amp; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::anchor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the anchor. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> &amp;&amp; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a2e01de238370a3d9085420c3a727986b" title="returns whether the triangulation has an anchor or not.">has_anchor()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="af5606c0a42bd3a32acb9ad09c5994ec5" name="af5606c0a42bd3a32acb9ad09c5994ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5606c0a42bd3a32acb9ad09c5994ec5">◆ </a></span>anchor() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> &amp; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::anchor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the anchor. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> &amp;&amp; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a2e01de238370a3d9085420c3a727986b" title="returns whether the triangulation has an anchor or not.">has_anchor()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="ad88804ee4251da68afde2006d9eb12b7" name="ad88804ee4251da68afde2006d9eb12b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88804ee4251da68afde2006d9eb12b7">◆ </a></span>flip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::flip </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#afb48fa8ca409959acc6eaa8566205a47">Dart_descriptor</a> </td>
+          <td class="paramname"><em>dart</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>flips the edge supported by the dart. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="a2e01de238370a3d9085420c3a727986b" name="a2e01de238370a3d9085420c3a727986b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e01de238370a3d9085420c3a727986b">◆ </a></span>has_anchor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::has_anchor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns whether the triangulation has an anchor or not. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="a15e9b55118c0a4699e21c92420e1ba72" name="a15e9b55118c0a4699e21c92420e1ba72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15e9b55118c0a4699e21c92420e1ba72">◆ </a></span>is_Delaunay_flippable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::is_Delaunay_flippable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#afb48fa8ca409959acc6eaa8566205a47">Dart_descriptor</a> </td>
+          <td class="paramname"><em>dart</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns whether the edge supported by the dart is Delaunay flippable or not. </p>
+<p>An edge \( e \) is Delaunay flippable if the imaginary part of its cross ratio is positive.</p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="a06c01bf3a11aa8cf57709de5b67f7a9e" name="a06c01bf3a11aa8cf57709de5b67f7a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06c01bf3a11aa8cf57709de5b67f7a9e">◆ </a></span>is_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::is_valid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>checks that the underlying combinatorial map \( M \) has no boundary and calls the is_valid method of \( M \). </p>
+<p>If there is an anchor, then checks that the dart descriptor of the anchor does indeed point to a dart of \( M \), and checks that the three vertices of the anchor lie within the open unit disk. </p>
+
+</div>
+</div>
+<a id="a132743e563b709b2f6fb91bd911d0551" name="a132743e563b709b2f6fb91bd911d0551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a132743e563b709b2f6fb91bd911d0551">◆ </a></span>lift() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::tuple&lt; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a4438ba4b90e1f177957bac7bd02c39ba">Dart_const_descriptor</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a> &gt; &gt; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::lift </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCGAL_1_1Triangulation__on__hyperbolic__surface__2_1_1Anchor.html">Anchor</a> const &amp; </td>
+          <td class="paramname"><em>anchor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>center</em> = <code>true</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lifts the triangulation in the hyperbolic plane. </p>
+<p>Returns, for every triangle \( t \) of the triangulation, one of the darts of \( t \) in the combinatorial map of the triangulation, together with a triple \( p,q,r \) of points in the hyperbolic plane. The points \( p,q,r \) are the vertices of a lift of \( t \) in the hyperbolic plane. If the center parameter is set to true, then the first vertex of the given anchor is translated to the origin \( 0 \).</p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="a66a9b1bac3e445f3c75002998790e4b4" name="a66a9b1bac3e445f3c75002998790e4b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66a9b1bac3e445f3c75002998790e4b4">◆ </a></span>lift() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::tuple&lt; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a4438ba4b90e1f177957bac7bd02c39ba">Dart_const_descriptor</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a>, <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a08313bdcc4fb662a5223f698b9071d2d">Point</a> &gt; &gt; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::lift </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>center</em> = <code>true</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lifts the triangulation in the hyperbolic plane. </p>
+<p>Returns, for every triangle \( t \) of the triangulation, one of the darts of \( t \) in the combinatorial map of the triangulation, together with a triple \( p,q,r \) of points in the hyperbolic plane. The points \( p,q,r \) are the vertices of a lift of \( t \) in the hyperbolic plane. If the center parameter is set to true, then the first vertex of the anchor is translated to the origin \( 0 \).</p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> &amp;&amp; <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a2e01de238370a3d9085420c3a727986b" title="returns whether the triangulation has an anchor or not.">has_anchor()</a> </code> </dd></dl>
+
+</div>
+</div>
+<a id="a0a5e72b2cf6827abb33bedc7f3a7156e" name="a0a5e72b2cf6827abb33bedc7f3a7156e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a5e72b2cf6827abb33bedc7f3a7156e">◆ </a></span>make_Delaunay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits , class Attributes  = Combinatorial_map_with_cross_ratios_item&lt;Traits&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, Attributes &gt;::make_Delaunay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>applies the Delaunay flip algorithm: flips Delaunay-flippable edges until there is no such edge anymore. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code> <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a06c01bf3a11aa8cf57709de5b67f7a9e" title="checks that the underlying combinatorial map  has no boundary and calls the is_valid method of .">is_valid()</a> </code> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">Triangulation_on_hyperbolic_surface_2</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

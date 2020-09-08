@@ -1,0 +1,596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/PMP_Boolean_operations/group__PMP__kernel__grp.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Boolean Operations on Meshes: Mesh Kernel</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Boolean Operations on Meshes
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('group__PMP__kernel__grp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Mesh Kernel<div class="ingroups"><a class="el" href="group__PkgPMPBooleanOperationsRef.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p>Functions to compute kernel of polyhedra. </p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga778059f8efd21fb9a9ffc7ede16c5abc"><td class="memTemplParams" colspan="2">template&lt;typename FaceRange , typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters, typename NamedParametersOut  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga778059f8efd21fb9a9ffc7ede16c5abc"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__kernel__grp.html#ga778059f8efd21fb9a9ffc7ede16c5abc">CGAL::Polygon_mesh_processing::kernel</a> (const FaceRange &amp;face_range, const PolygonMesh &amp;pm, PolygonMesh &amp;out, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParametersOut &amp;np_out=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga778059f8efd21fb9a9ffc7ede16c5abc"><td class="mdescLeft"> </td><td class="mdescRight">computes the kernel of the given faces of a polygon mesh.  <br></td></tr>
+<tr class="separator:ga778059f8efd21fb9a9ffc7ede16c5abc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga780ef22bffc913c4d3dc82dc7acb7910"><td class="memTemplParams" colspan="2">template&lt;typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters, typename NamedParametersOut  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga780ef22bffc913c4d3dc82dc7acb7910"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__kernel__grp.html#ga780ef22bffc913c4d3dc82dc7acb7910">CGAL::Polygon_mesh_processing::kernel</a> (const PolygonMesh &amp;pm, PolygonMesh &amp;out, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParametersOut &amp;np_out=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga780ef22bffc913c4d3dc82dc7acb7910"><td class="mdescLeft"> </td><td class="mdescRight">computes the kernel of the given polygon mesh.  <br></td></tr>
+<tr class="separator:ga780ef22bffc913c4d3dc82dc7acb7910"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf5b25f2dc1e3d96e9f81ed182f9600de"><td class="memTemplParams" colspan="2">template&lt;typename FaceRange , typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gaf5b25f2dc1e3d96e9f81ed182f9600de"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__kernel__grp.html#gaf5b25f2dc1e3d96e9f81ed182f9600de">CGAL::Polygon_mesh_processing::has_empty_kernel</a> (const FaceRange &amp;face_range, const PolygonMesh &amp;pm, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gaf5b25f2dc1e3d96e9f81ed182f9600de"><td class="mdescLeft"> </td><td class="mdescRight">indicates whether the kernel of the given faces of a polygon mesh is empty.  <br></td></tr>
+<tr class="separator:gaf5b25f2dc1e3d96e9f81ed182f9600de"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae7cf5a26f8f48797cd297b869a517d40"><td class="memTemplParams" colspan="2">template&lt;typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gae7cf5a26f8f48797cd297b869a517d40"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__kernel__grp.html#gae7cf5a26f8f48797cd297b869a517d40">CGAL::Polygon_mesh_processing::has_empty_kernel</a> (const PolygonMesh &amp;pm, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gae7cf5a26f8f48797cd297b869a517d40"><td class="mdescLeft"> </td><td class="mdescRight">indicates whether the kernel of the given polygon mesh is empty.  <br></td></tr>
+<tr class="separator:gae7cf5a26f8f48797cd297b869a517d40"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaea657a1fbac5d35c3d51735c3ec2fede"><td class="memTemplParams" colspan="2">template&lt;typename FaceRange , typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gaea657a1fbac5d35c3d51735c3ec2fede"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; <a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__kernel__grp.html#gaea657a1fbac5d35c3d51735c3ec2fede">CGAL::Polygon_mesh_processing::kernel_point</a> (const FaceRange &amp;face_range, const PolygonMesh &amp;pm, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gaea657a1fbac5d35c3d51735c3ec2fede"><td class="mdescLeft"> </td><td class="mdescRight">returns a point inside the kernel of the given faces of a polygon mesh.  <br></td></tr>
+<tr class="separator:gaea657a1fbac5d35c3d51735c3ec2fede"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gadbe54ce0c2c72abdd0749cde3ba64e52"><td class="memTemplParams" colspan="2">template&lt;typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gadbe54ce0c2c72abdd0749cde3ba64e52"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; <a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a> &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__kernel__grp.html#gadbe54ce0c2c72abdd0749cde3ba64e52">CGAL::Polygon_mesh_processing::kernel_point</a> (const PolygonMesh &amp;pm, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gadbe54ce0c2c72abdd0749cde3ba64e52"><td class="mdescLeft"> </td><td class="mdescRight">returns a point inside the kernel of the given polygon mesh.  <br></td></tr>
+<tr class="separator:gadbe54ce0c2c72abdd0749cde3ba64e52"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gaf5b25f2dc1e3d96e9f81ed182f9600de" name="gaf5b25f2dc1e3d96e9f81ed182f9600de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf5b25f2dc1e3d96e9f81ed182f9600de">◆ </a></span>has_empty_kernel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FaceRange , typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Polygon_mesh_processing::has_empty_kernel </td>
+          <td>(</td>
+          <td class="paramtype">const FaceRange &amp; </td>
+          <td class="paramname"><em>face_range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/kernel.h&gt;</code></p>
+
+<p>indicates whether the kernel of the given faces of a polygon mesh is empty. </p>
+<p>The kernel is defined as the convex polyhedron that is the intersection of all the halfspaces on the negative side of the oriented planes defined by a range of faces of the input mesh.</p>
+<p>See <code><a class="el" href="group__PMP__kernel__grp.html#ga778059f8efd21fb9a9ffc7ede16c5abc" title="computes the kernel of the given faces of a polygon mesh.">CGAL::Polygon_mesh_processing::kernel()</a></code> for a comprehensive description of the parameters. </p>
+
+</div>
+</div>
+<a id="gae7cf5a26f8f48797cd297b869a517d40" name="gae7cf5a26f8f48797cd297b869a517d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae7cf5a26f8f48797cd297b869a517d40">◆ </a></span>has_empty_kernel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Polygon_mesh_processing::has_empty_kernel </td>
+          <td>(</td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/kernel.h&gt;</code></p>
+
+<p>indicates whether the kernel of the given polygon mesh is empty. </p>
+<p>The kernel is defined as the convex polyhedron that is the intersection of all the halfspaces on the negative side of the oriented planes defined by a range of faces of the input mesh.</p>
+<p>See <code><a class="el" href="group__PMP__kernel__grp.html#ga778059f8efd21fb9a9ffc7ede16c5abc" title="computes the kernel of the given faces of a polygon mesh.">CGAL::Polygon_mesh_processing::kernel()</a></code> for a comprehensive description of the parameters. </p>
+
+</div>
+</div>
+<a id="ga778059f8efd21fb9a9ffc7ede16c5abc" name="ga778059f8efd21fb9a9ffc7ede16c5abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga778059f8efd21fb9a9ffc7ede16c5abc">◆ </a></span>kernel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FaceRange , typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters, typename NamedParametersOut  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void CGAL::Polygon_mesh_processing::kernel </td>
+          <td>(</td>
+          <td class="paramtype">const FaceRange &amp; </td>
+          <td class="paramname"><em>face_range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PolygonMesh &amp; </td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParametersOut &amp; </td>
+          <td class="paramname"><em>np_out</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/kernel.h&gt;</code></p>
+
+<p>computes the kernel of the given faces of a polygon mesh. </p>
+<p>The kernel is defined as the convex polyhedron that is the intersection of all the halfspaces on the negative side of the oriented planes defined by a range of faces of the input mesh. The kernel may be empty or degenerate to a lower-dimensional convex shape.</p>
+<p>In the implementation, a starting shape is iteratively clipped by the faces. By default, the bounding box of the input mesh is used as starting shape. However, the parameter <code>out</code> may be non-empty: In this case, it must be a convex polyhedron and will be used as starting shape.</p>
+<p>The algorithm assumes that the faces of the input range form a closed surface as to perform a quick exit if the genus is non-zero. This precondition can be relaxed using the named parameter <code>allow_open_input</code>. In that case, the resulting kernel may contain faces of the starting shape.</p>
+<p>In case of a degenerate kernel: </p><ul>
+<li>
+If the dimension of the kernel is <code>2</code> (i.e., the kernel is a convex polygon in 3D), the output mesh consists of a single face. </li>
+<li>
+If the dimension of the kernel is <code>1</code> (i.e., the kernel is a line segment), the output mesh consists two isolated vertices. </li>
+<li>
+If the dimension of the kernel is <code>0</code> (i.e., the kernel is a single point), the output mesh contains one isolated vertex. </li>
+</ul>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">FaceRange</td><td>a model of <code><a class="elRef" href="../Circulator/classConstRange.html">ConstRange</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::face_descriptor</code> as value type </td></tr>
+    <tr><td class="paramname">PolygonMesh</td><td>a model of <code><a class="elRef" href="../BGL/classVertexListGraph.html">VertexListGraph</a></code>, <code><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></code> and <code><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></code> </td></tr>
+    <tr><td class="paramname">PolygonMeshOut</td><td>a model of <code><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></code>, <code><a class="elRef" href="../BGL/classVertexListGraph.html">VertexListGraph</a></code> and <code><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></code></td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParametersOut</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_range</td><td>the range of faces used </td></tr>
+    <tr><td class="paramname">pm</td><td>input surface mesh </td></tr>
+    <tr><td class="paramname">out</td><td>output surface mesh </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>allow_open_input</b> </button> <div class="content"><ul>
+<li>
+If set to <code>true</code>, the input mesh is allowed to have boundaries. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><code>false</code> </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <code>pm</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Point_3</code> as value type </li>
+<li>
+<b>Default: </b><code>boost::get(CGAL::vertex_point, pm)</code> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <code><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></code> must be available in PolygonMesh.  </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code> </li>
+<li>
+<b>Default: </b>a CGAL <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> deduced from the point type, using <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a></code> </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td> <button class="collapsible"> <b>random_seed</b> </button> <div class="content"><ul>
+<li>
+is used to initialize the random number generator of the algorithm. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>use <code>std::default_random_engine()</code> </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">np_out</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <code>out</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Point_3</code> as value type </li>
+<li>
+<b>Default: </b><code>boost::get(CGAL::vertex_point, out)</code> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <code><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></code> must be available in PolygonMesh.  </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>face_to_face_map</b> </button> <div class="content"><ul>
+<li>
+a property map storing, for each face of the output mesh, a face of the input mesh that defined the clipping plane that created it (or <code>boost::graph_traits&lt;PolygonMeshOut&gt;::null_face</code> if the face belongs to the starting shape) </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMeshOut&gt;::face_descriptor</code> as key type and <code>boost::graph_traits&lt;PolygonMesh&gt;::face_descriptor</code> as value type </li>
+<li>
+<b>Default: </b>unused </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga780ef22bffc913c4d3dc82dc7acb7910" name="ga780ef22bffc913c4d3dc82dc7acb7910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga780ef22bffc913c4d3dc82dc7acb7910">◆ </a></span>kernel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters, typename NamedParametersOut  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void CGAL::Polygon_mesh_processing::kernel </td>
+          <td>(</td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PolygonMesh &amp; </td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParametersOut &amp; </td>
+          <td class="paramname"><em>np_out</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/kernel.h&gt;</code></p>
+
+<p>computes the kernel of the given polygon mesh. </p>
+<p>This is a convenience overload that calls the overload above on all faces of the mesh. </p>
+
+</div>
+</div>
+<a id="gaea657a1fbac5d35c3d51735c3ec2fede" name="gaea657a1fbac5d35c3d51735c3ec2fede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaea657a1fbac5d35c3d51735c3ec2fede">◆ </a></span>kernel_point() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FaceRange , typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a> &gt; CGAL::Polygon_mesh_processing::kernel_point </td>
+          <td>(</td>
+          <td class="paramtype">const FaceRange &amp; </td>
+          <td class="paramname"><em>face_range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/kernel.h&gt;</code></p>
+
+<p>returns a point inside the kernel of the given faces of a polygon mesh. </p>
+<p>The kernel is defined as the convex polyhedron that is the intersection of all the halfspaces on the negative side of the oriented planes defined by a range of faces of the input mesh.</p>
+<p>See <code><a class="el" href="group__PMP__kernel__grp.html#ga778059f8efd21fb9a9ffc7ede16c5abc" title="computes the kernel of the given faces of a polygon mesh.">CGAL::Polygon_mesh_processing::kernel()</a></code> for a comprehensive description of the parameters.</p>
+<dl class="section return"><dt>Returns</dt><dd><code>std::nullopt</code> if and only if the kernel is empty. </dd></dl>
+
+</div>
+</div>
+<a id="gadbe54ce0c2c72abdd0749cde3ba64e52" name="gadbe54ce0c2c72abdd0749cde3ba64e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadbe54ce0c2c72abdd0749cde3ba64e52">◆ </a></span>kernel_point() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a> &gt; CGAL::Polygon_mesh_processing::kernel_point </td>
+          <td>(</td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/kernel.h&gt;</code></p>
+
+<p>returns a point inside the kernel of the given polygon mesh. </p>
+<p>The kernel is defined as the convex polyhedron that is the intersection of all the halfspaces on the negative side of the oriented planes defined by a range of faces of the input mesh.</p>
+<p>See <code><a class="el" href="group__PMP__kernel__grp.html#ga778059f8efd21fb9a9ffc7ede16c5abc" title="computes the kernel of the given faces of a polygon mesh.">CGAL::Polygon_mesh_processing::kernel()</a></code> for a comprehensive description of the parameters.</p>
+<dl class="section return"><dt>Returns</dt><dd><code>std::nullopt</code> if and only if the kernel is empty. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

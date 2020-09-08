@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/PMP_Boolean_operations/structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Boolean Operations on Meshes: CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor&lt; TriangleMesh, VPM1, VPM2 &gt; Struct Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Boolean Operations on Meshes
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pub-attribs">Public Attributes</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor&lt; TriangleMesh, VPM1, VPM2 &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__PkgPMPBooleanOperationsRef.html">Reference Manual</a> » <a class="el" href="group__PMP__corefinement__grp.html">Corefinement and Autorefinement</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/corefinement.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Default_visitor&lt; TriangleMesh &gt;</a>.</p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class TriangleMesh, class VPM1 = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type, class VPM2 = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type&gt;<br>
+struct CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor&lt; TriangleMesh, VPM1, VPM2 &gt;</div><dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></code> </dd>
+</dl>
+<p>A model of <code><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></code> that enables extracting non-manifold outputs from a corefinement-based Boolean Operations (<a class="el" href="group__PMP__boolop__grp.html">Boolean Operations</a>).</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of <code><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></code>, <code><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></code>, and <code><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></code> </td></tr>
+    <tr><td class="paramname">VPM1</td><td>a class model of <code><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</code> as key type and an unspecified type <code>Point_3</code> as value type </td></tr>
+    <tr><td class="paramname">VPM2</td><td>a class model of <code><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</code> as key type and the same value type as <code>VPM1</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:abd4caf34e8e803a40f41280348014942"><td class="memItemLeft" align="right" valign="top"><a id="abd4caf34e8e803a40f41280348014942" name="abd4caf34e8e803a40f41280348014942"></a>
+typedef boost::graph_traits&lt; TriangleMesh &gt; </td><td class="memItemRight" valign="bottom"><b>GT</b></td></tr>
+<tr class="separator:abd4caf34e8e803a40f41280348014942"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa5d6563f018af75625e9456133e486c5"><td class="memItemLeft" align="right" valign="top"><a id="aa5d6563f018af75625e9456133e486c5" name="aa5d6563f018af75625e9456133e486c5"></a>
+typedef GT::face_descriptor </td><td class="memItemRight" valign="bottom"><b>face_descriptor</b></td></tr>
+<tr class="separator:aa5d6563f018af75625e9456133e486c5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af048dabf6726da65462c1be6f234c219"><td class="memItemLeft" align="right" valign="top"><a id="af048dabf6726da65462c1be6f234c219" name="af048dabf6726da65462c1be6f234c219"></a>
+typedef GT::vertex_descriptor </td><td class="memItemRight" valign="bottom"><b>vertex_descriptor</b></td></tr>
+<tr class="separator:af048dabf6726da65462c1be6f234c219"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8efe87a2d79a271185c1235a6249492a"><td class="memItemLeft" align="right" valign="top"><a id="a8efe87a2d79a271185c1235a6249492a" name="a8efe87a2d79a271185c1235a6249492a"></a>
+typedef GT::halfedge_descriptor </td><td class="memItemRight" valign="bottom"><b>halfedge_descriptor</b></td></tr>
+<tr class="separator:a8efe87a2d79a271185c1235a6249492a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afa3fe16921aa27c4b0c3d1dc43268cfc"><td class="memItemLeft" align="right" valign="top"><a id="afa3fe16921aa27c4b0c3d1dc43268cfc" name="afa3fe16921aa27c4b0c3d1dc43268cfc"></a>
+typedef boost::property_map&lt; TriangleMesh, <a class="elRef" href="../BGL/structCGAL_1_1dynamic__face__property__t.html">CGAL::dynamic_face_property_t</a>&lt; bool &gt; &gt;::type </td><td class="memItemRight" valign="bottom"><b>Classification_map</b></td></tr>
+<tr class="separator:afa3fe16921aa27c4b0c3d1dc43268cfc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2d3b0cd97b3454fe48763c4af3c0b964"><td class="memItemLeft" align="right" valign="top"><a id="a2d3b0cd97b3454fe48763c4af3c0b964" name="a2d3b0cd97b3454fe48763c4af3c0b964"></a>
+typedef std::unordered_map&lt; vertex_descriptor, std::size_t &gt; </td><td class="memItemRight" valign="bottom"><b>Vertex_id_map</b></td></tr>
+<tr class="separator:a2d3b0cd97b3454fe48763c4af3c0b964"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac9ce4a310a1038603687f266ae729aea"><td class="memItemLeft" align="right" valign="top"><a id="ac9ce4a310a1038603687f266ae729aea" name="ac9ce4a310a1038603687f266ae729aea"></a>
+typedef boost::container::flat_map&lt; const TriangleMesh *, Vertex_id_map &gt; </td><td class="memItemRight" valign="bottom"><b>Vertex_id_maps</b></td></tr>
+<tr class="separator:ac9ce4a310a1038603687f266ae729aea"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td colspan="2" onclick="javascript:toggleInherit('pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor')"><img src="closed.png" alt="-"> Public Types inherited from <a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Default_visitor&lt; TriangleMesh &gt;</a></td></tr>
+<tr class="memitem:a9480f50d28e06a3c05d7f3a2a5224456 inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a9480f50d28e06a3c05d7f3a2a5224456" name="a9480f50d28e06a3c05d7f3a2a5224456"></a>
+typedef boost::graph_traits&lt; TriangleMesh &gt; </td><td class="memItemRight" valign="bottom"><b>GT</b></td></tr>
+<tr class="separator:a9480f50d28e06a3c05d7f3a2a5224456 inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1fca86c5221e087af273ffdd01091e24 inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a1fca86c5221e087af273ffdd01091e24" name="a1fca86c5221e087af273ffdd01091e24"></a>
+typedef GT::face_descriptor </td><td class="memItemRight" valign="bottom"><b>face_descriptor</b></td></tr>
+<tr class="separator:a1fca86c5221e087af273ffdd01091e24 inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af301769ed055473827d67f9b53a32477 inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="af301769ed055473827d67f9b53a32477" name="af301769ed055473827d67f9b53a32477"></a>
+typedef GT::halfedge_descriptor </td><td class="memItemRight" valign="bottom"><b>halfedge_descriptor</b></td></tr>
+<tr class="separator:af301769ed055473827d67f9b53a32477 inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4717e04ee025a7498c66adf47344d53f inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a4717e04ee025a7498c66adf47344d53f" name="a4717e04ee025a7498c66adf47344d53f"></a>
+typedef GT::vertex_descriptor </td><td class="memItemRight" valign="bottom"><b>vertex_descriptor</b></td></tr>
+<tr class="separator:a4717e04ee025a7498c66adf47344d53f inherit pub_types_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae536f0592f4521fda89e568d9b05ecaa"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html#ae536f0592f4521fda89e568d9b05ecaa">Non_manifold_output_visitor</a> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, VPM1 vpm1=get(CGAL::vertex_point, tm1), VPM1 vpm2=get(CGAL::vertex_point, tm2))</td></tr>
+<tr class="memdesc:ae536f0592f4521fda89e568d9b05ecaa"><td class="mdescLeft"> </td><td class="mdescRight">constructor where meshes are exactly the same as the one passed a function in <a class="el" href="group__PMP__corefinement__grp.html">Corefinement and Autorefinement</a>.  <br></td></tr>
+<tr class="separator:ae536f0592f4521fda89e568d9b05ecaa"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aabfab73a7dd683cc714d7926d0515edc"><td class="memTemplParams" colspan="2">template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:aabfab73a7dd683cc714d7926d0515edc"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html#aabfab73a7dd683cc714d7926d0515edc">extract_intersection</a> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="memdesc:aabfab73a7dd683cc714d7926d0515edc"><td class="mdescLeft"> </td><td class="mdescRight">fills a polygon soup with the intersection between input meshes provided in the constructor, after a call to either <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code> or <code><a class="el" href="group__PMP__boolop__grp.html#ga3ff96d36cad8f37efcdada916c46fbbe" title="corefines  tm1 and tm2 and puts in tm_out a triangulated surface mesh bounding  the intersection of t...">corefine_and_compute_intersection()</a></code>.  <br></td></tr>
+<tr class="separator:aabfab73a7dd683cc714d7926d0515edc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac707152f7e66c013b76d2bcd4c76a722"><td class="memTemplParams" colspan="2">template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:ac707152f7e66c013b76d2bcd4c76a722"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html#ac707152f7e66c013b76d2bcd4c76a722">extract_union</a> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="memdesc:ac707152f7e66c013b76d2bcd4c76a722"><td class="mdescLeft"> </td><td class="mdescRight">fills a polygon soup with the union between input meshes provided in the constructor, after a call to either <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code> or <code><a class="el" href="group__PMP__boolop__grp.html#ga95f618914f8d54d840065204b029492f" title="corefines  tm1 and tm2 and puts in tm_out a triangulated surface mesh bounding  the union of the volu...">corefine_and_compute_union()</a></code>.  <br></td></tr>
+<tr class="separator:ac707152f7e66c013b76d2bcd4c76a722"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="memTemplParams" colspan="2">template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html#aae8d5a9622b2fe1c26e9b1842553bf49">extract_tm1_minus_tm2</a> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="memdesc:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="mdescLeft"> </td><td class="mdescRight">fills a polygon soup with the difference between input meshes provided in the constructor, after a call to either <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code> or <code><a class="el" href="group__PMP__boolop__grp.html#ga02fa6ed9116a759ecfb87063392f5455" title="corefines  tm1 and tm2 and puts in tm_out a triangulated surface mesh bounding  the volume bounded by...">corefine_and_compute_difference()</a></code>.  <br></td></tr>
+<tr class="separator:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a076e89303bcd655c2f06eb32c0e04f90"><td class="memTemplParams" colspan="2">template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:a076e89303bcd655c2f06eb32c0e04f90"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html#a076e89303bcd655c2f06eb32c0e04f90">extract_tm2_minus_tm1</a> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="memdesc:a076e89303bcd655c2f06eb32c0e04f90"><td class="mdescLeft"> </td><td class="mdescRight">fills a polygon soup with the opposite difference between input meshes provided in the constructor, after a call to <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code>.  <br></td></tr>
+<tr class="separator:a076e89303bcd655c2f06eb32c0e04f90"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8b876670fb279a6e1b3315deb0b5692a"><td class="memItemLeft" align="right" valign="top"><a id="a8b876670fb279a6e1b3315deb0b5692a" name="a8b876670fb279a6e1b3315deb0b5692a"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Non_manifold_output_visitor</b> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, VPM1 vpm1, VPM2 vpm2)</td></tr>
+<tr class="separator:a8b876670fb279a6e1b3315deb0b5692a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a19f2b1f49ffd07b1f341df28ac98d443"><td class="memItemLeft" align="right" valign="top"><a id="a19f2b1f49ffd07b1f341df28ac98d443" name="a19f2b1f49ffd07b1f341df28ac98d443"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Non_manifold_output_visitor</b> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, VPM1 vpm1)</td></tr>
+<tr class="separator:a19f2b1f49ffd07b1f341df28ac98d443"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a06d6274e8207cd99cc2abd452b53c817"><td class="memItemLeft" align="right" valign="top"><a id="a06d6274e8207cd99cc2abd452b53c817" name="a06d6274e8207cd99cc2abd452b53c817"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Non_manifold_output_visitor</b> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2)</td></tr>
+<tr class="separator:a06d6274e8207cd99cc2abd452b53c817"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8f8bb5010449cea5f307aef35528b677"><td class="memItemLeft" align="right" valign="top"><a id="a8f8bb5010449cea5f307aef35528b677" name="a8f8bb5010449cea5f307aef35528b677"></a>
+void </td><td class="memItemRight" valign="bottom"><b>intersection_point_detected</b> (std::size_t node_id, int sdim, halfedge_descriptor h_e, halfedge_descriptor h_f, const TriangleMesh &amp;tm_e, const TriangleMesh &amp;tm_f, bool is_target_coplanar, bool is_source_coplanar)</td></tr>
+<tr class="separator:a8f8bb5010449cea5f307aef35528b677"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3cefa101ae07a04a3abd355d1e72a144"><td class="memItemLeft" align="right" valign="top"><a id="a3cefa101ae07a04a3abd355d1e72a144" name="a3cefa101ae07a04a3abd355d1e72a144"></a>
+void </td><td class="memItemRight" valign="bottom"><b>new_vertex_added</b> (std::size_t node_id, vertex_descriptor vh, TriangleMesh &amp;tm)</td></tr>
+<tr class="separator:a3cefa101ae07a04a3abd355d1e72a144"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a860d9ce4fae0d2918d6c3bfa236117c5"><td class="memTemplParams" colspan="2"><a id="a860d9ce4fae0d2918d6c3bfa236117c5" name="a860d9ce4fae0d2918d6c3bfa236117c5"></a>
+template&lt;class FaceIndexMap &gt; </td></tr>
+<tr class="memitem:a860d9ce4fae0d2918d6c3bfa236117c5"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>export_flags</b> (FaceIndexMap fim, const std::vector&lt; std::size_t &gt; &amp;tm_patch_ids, const boost::dynamic_bitset&lt;&gt; &amp;is_patch_inside_other_tm, const boost::dynamic_bitset&lt;&gt; &amp;coplanar_patches, const boost::dynamic_bitset&lt;&gt; &amp;coplanar_patches_of_tm_for_union_and_intersection, const boost::dynamic_bitset&lt;&gt; &amp;, TriangleMesh &amp;tm)</td></tr>
+<tr class="separator:a860d9ce4fae0d2918d6c3bfa236117c5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acd8c00ce1f14db68de7e508e039cf041"><td class="memTemplParams" colspan="2"><a id="acd8c00ce1f14db68de7e508e039cf041" name="acd8c00ce1f14db68de7e508e039cf041"></a>
+template&lt;bool inverse_tm1_faces, bool inverse_tm2_faces, class PointRange , class PolygonRange , class FCM &gt; </td></tr>
+<tr class="memitem:acd8c00ce1f14db68de7e508e039cf041"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>extract_soup</b> (PointRange &amp;points, PolygonRange &amp;triangles, FCM tm1_face_classification, FCM tm2_face_classification)</td></tr>
+<tr class="separator:acd8c00ce1f14db68de7e508e039cf041"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aabfab73a7dd683cc714d7926d0515edc"><td class="memTemplParams" colspan="2"><a id="aabfab73a7dd683cc714d7926d0515edc" name="aabfab73a7dd683cc714d7926d0515edc"></a>
+template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:aabfab73a7dd683cc714d7926d0515edc"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>extract_intersection</b> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="separator:aabfab73a7dd683cc714d7926d0515edc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac707152f7e66c013b76d2bcd4c76a722"><td class="memTemplParams" colspan="2"><a id="ac707152f7e66c013b76d2bcd4c76a722" name="ac707152f7e66c013b76d2bcd4c76a722"></a>
+template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:ac707152f7e66c013b76d2bcd4c76a722"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>extract_union</b> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="separator:ac707152f7e66c013b76d2bcd4c76a722"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="memTemplParams" colspan="2"><a id="aae8d5a9622b2fe1c26e9b1842553bf49" name="aae8d5a9622b2fe1c26e9b1842553bf49"></a>
+template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>extract_tm1_minus_tm2</b> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="separator:aae8d5a9622b2fe1c26e9b1842553bf49"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a076e89303bcd655c2f06eb32c0e04f90"><td class="memTemplParams" colspan="2"><a id="a076e89303bcd655c2f06eb32c0e04f90" name="a076e89303bcd655c2f06eb32c0e04f90"></a>
+template&lt;typename PointRange , typename PolygonRange &gt; </td></tr>
+<tr class="memitem:a076e89303bcd655c2f06eb32c0e04f90"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>extract_tm2_minus_tm1</b> (PointRange &amp;points, PolygonRange &amp;triangles)</td></tr>
+<tr class="separator:a076e89303bcd655c2f06eb32c0e04f90"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor')"><img src="closed.png" alt="-"> Public Member Functions inherited from <a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Default_visitor&lt; TriangleMesh &gt;</a></td></tr>
+<tr class="memitem:a19ed1a8d195f4ff7171e88eaf64d81cd inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a19ed1a8d195f4ff7171e88eaf64d81cd" name="a19ed1a8d195f4ff7171e88eaf64d81cd"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_subface_creations</b> (face_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a19ed1a8d195f4ff7171e88eaf64d81cd inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1bd2af55911775c5e52d11c0f49672ac inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a1bd2af55911775c5e52d11c0f49672ac" name="a1bd2af55911775c5e52d11c0f49672ac"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_subface_creations</b> (const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a1bd2af55911775c5e52d11c0f49672ac inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aead490b35bda8e987345392c33c2e0dc inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="aead490b35bda8e987345392c33c2e0dc" name="aead490b35bda8e987345392c33c2e0dc"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_subface_created</b> (const TriangleMesh &amp;)</td></tr>
+<tr class="separator:aead490b35bda8e987345392c33c2e0dc inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae62a4c82672946c7b6dfa20108ef8e04 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="ae62a4c82672946c7b6dfa20108ef8e04" name="ae62a4c82672946c7b6dfa20108ef8e04"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_subface_created</b> (face_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:ae62a4c82672946c7b6dfa20108ef8e04 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a43c31135740ecc78d88853641a5f1052 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a43c31135740ecc78d88853641a5f1052" name="a43c31135740ecc78d88853641a5f1052"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_face_copy</b> (face_descriptor, const TriangleMesh &amp;, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a43c31135740ecc78d88853641a5f1052 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaf2b5ca7c139291a13877dd22e8a1db6 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="aaf2b5ca7c139291a13877dd22e8a1db6" name="aaf2b5ca7c139291a13877dd22e8a1db6"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_face_copy</b> (face_descriptor, const TriangleMesh &amp;, face_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:aaf2b5ca7c139291a13877dd22e8a1db6 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a90fe6c13e5ce1c1457243a18ff1199f4 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a90fe6c13e5ce1c1457243a18ff1199f4" name="a90fe6c13e5ce1c1457243a18ff1199f4"></a>
+void </td><td class="memItemRight" valign="bottom"><b>subface_of_coplanar_faces_intersection</b> (face_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a90fe6c13e5ce1c1457243a18ff1199f4 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3bc3b14adc618ca1161a5ba82b117777 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a3bc3b14adc618ca1161a5ba82b117777" name="a3bc3b14adc618ca1161a5ba82b117777"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_edge_split</b> (halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a3bc3b14adc618ca1161a5ba82b117777 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a94ff854893bf3397a0d81eba42fba4a6 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a94ff854893bf3397a0d81eba42fba4a6" name="a94ff854893bf3397a0d81eba42fba4a6"></a>
+void </td><td class="memItemRight" valign="bottom"><b>edge_split</b> (halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a94ff854893bf3397a0d81eba42fba4a6 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a169af9fe124802788252e076e3238b10 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a169af9fe124802788252e076e3238b10" name="a169af9fe124802788252e076e3238b10"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_edge_split</b> ()</td></tr>
+<tr class="separator:a169af9fe124802788252e076e3238b10 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a735543d53ad9c0338c3947b5abc7e960 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a735543d53ad9c0338c3947b5abc7e960" name="a735543d53ad9c0338c3947b5abc7e960"></a>
+void </td><td class="memItemRight" valign="bottom"><b>add_retriangulation_edge</b> (halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a735543d53ad9c0338c3947b5abc7e960 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af5dee80c331a3414b66557aaaabe55bb inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="af5dee80c331a3414b66557aaaabe55bb" name="af5dee80c331a3414b66557aaaabe55bb"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_edge_copy</b> (halfedge_descriptor, const TriangleMesh &amp;, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:af5dee80c331a3414b66557aaaabe55bb inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a58101c2c1b993ea483a63442b1302bc1 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a58101c2c1b993ea483a63442b1302bc1" name="a58101c2c1b993ea483a63442b1302bc1"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_edge_copy</b> (halfedge_descriptor, const TriangleMesh &amp;, halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a58101c2c1b993ea483a63442b1302bc1 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5ba14a5e1ae1426f588862eba65e138e inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a5ba14a5e1ae1426f588862eba65e138e" name="a5ba14a5e1ae1426f588862eba65e138e"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_edge_duplicated</b> (halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a5ba14a5e1ae1426f588862eba65e138e inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afd5697225597c300b3aabf8bd298a98d inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="afd5697225597c300b3aabf8bd298a98d" name="afd5697225597c300b3aabf8bd298a98d"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_edge_duplicated</b> (halfedge_descriptor, halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:afd5697225597c300b3aabf8bd298a98d inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acbaef9c5d1584161ac5a3275638e0a6e inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="acbaef9c5d1584161ac5a3275638e0a6e" name="acbaef9c5d1584161ac5a3275638e0a6e"></a>
+void </td><td class="memItemRight" valign="bottom"><b>intersection_edge_copy</b> (halfedge_descriptor, const TriangleMesh &amp;, halfedge_descriptor, const TriangleMesh &amp;, halfedge_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:acbaef9c5d1584161ac5a3275638e0a6e inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a07235fb7704ecc8319e25fe4a5de1e95 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a07235fb7704ecc8319e25fe4a5de1e95" name="a07235fb7704ecc8319e25fe4a5de1e95"></a>
+void </td><td class="memItemRight" valign="bottom"><b>new_vertex_added</b> (std::size_t, vertex_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a07235fb7704ecc8319e25fe4a5de1e95 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa8b940ef970ae5af0431928e2d7cbee2 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="aa8b940ef970ae5af0431928e2d7cbee2" name="aa8b940ef970ae5af0431928e2d7cbee2"></a>
+void </td><td class="memItemRight" valign="bottom"><b>intersection_point_detected</b> (std::size_t, int, halfedge_descriptor, halfedge_descriptor, const TriangleMesh &amp;, const TriangleMesh &amp;, bool, bool)</td></tr>
+<tr class="separator:aa8b940ef970ae5af0431928e2d7cbee2 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a967b2985640a4e239aee1f12860f75ff inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a967b2985640a4e239aee1f12860f75ff" name="a967b2985640a4e239aee1f12860f75ff"></a>
+void </td><td class="memItemRight" valign="bottom"><b>before_vertex_copy</b> (vertex_descriptor, const TriangleMesh &amp;, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:a967b2985640a4e239aee1f12860f75ff inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab0a46ce25277d3894e98c893b3ff892a inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="ab0a46ce25277d3894e98c893b3ff892a" name="ab0a46ce25277d3894e98c893b3ff892a"></a>
+void </td><td class="memItemRight" valign="bottom"><b>after_vertex_copy</b> (vertex_descriptor, const TriangleMesh &amp;, vertex_descriptor, const TriangleMesh &amp;)</td></tr>
+<tr class="separator:ab0a46ce25277d3894e98c893b3ff892a inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac62aaa074d69ef48701e957d9f1f9c7c inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="ac62aaa074d69ef48701e957d9f1f9c7c" name="ac62aaa074d69ef48701e957d9f1f9c7c"></a>
+void </td><td class="memItemRight" valign="bottom"><b>start_filtering_intersections</b> () const</td></tr>
+<tr class="separator:ac62aaa074d69ef48701e957d9f1f9c7c inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3575499d5898b323903a66baa100724f inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a3575499d5898b323903a66baa100724f" name="a3575499d5898b323903a66baa100724f"></a>
+void </td><td class="memItemRight" valign="bottom"><b>progress_filtering_intersections</b> (double) const</td></tr>
+<tr class="separator:a3575499d5898b323903a66baa100724f inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a929f09aaddebb6f04612865afaf98319 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a929f09aaddebb6f04612865afaf98319" name="a929f09aaddebb6f04612865afaf98319"></a>
+void </td><td class="memItemRight" valign="bottom"><b>end_filtering_intersections</b> () const</td></tr>
+<tr class="separator:a929f09aaddebb6f04612865afaf98319 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a678b598c0c3f98d9e18463f0ca163a52 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a678b598c0c3f98d9e18463f0ca163a52" name="a678b598c0c3f98d9e18463f0ca163a52"></a>
+void </td><td class="memItemRight" valign="bottom"><b>start_triangulating_faces</b> (std::size_t) const</td></tr>
+<tr class="separator:a678b598c0c3f98d9e18463f0ca163a52 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4d1813549ba21a4d30bab4eb3e157a36 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a4d1813549ba21a4d30bab4eb3e157a36" name="a4d1813549ba21a4d30bab4eb3e157a36"></a>
+void </td><td class="memItemRight" valign="bottom"><b>triangulating_faces_step</b> () const</td></tr>
+<tr class="separator:a4d1813549ba21a4d30bab4eb3e157a36 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a39f08074b5551bfdd164bbb562b38659 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a39f08074b5551bfdd164bbb562b38659" name="a39f08074b5551bfdd164bbb562b38659"></a>
+void </td><td class="memItemRight" valign="bottom"><b>end_triangulating_faces</b> () const</td></tr>
+<tr class="separator:a39f08074b5551bfdd164bbb562b38659 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7318c649f1bf71a8ee07f8fb4b9ca294 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a7318c649f1bf71a8ee07f8fb4b9ca294" name="a7318c649f1bf71a8ee07f8fb4b9ca294"></a>
+void </td><td class="memItemRight" valign="bottom"><b>start_handling_intersection_of_coplanar_faces</b> (std::size_t) const</td></tr>
+<tr class="separator:a7318c649f1bf71a8ee07f8fb4b9ca294 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aea94fd18fbca79359352e49d4d5fd59d inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="aea94fd18fbca79359352e49d4d5fd59d" name="aea94fd18fbca79359352e49d4d5fd59d"></a>
+void </td><td class="memItemRight" valign="bottom"><b>intersection_of_coplanar_faces_step</b> () const</td></tr>
+<tr class="separator:aea94fd18fbca79359352e49d4d5fd59d inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af026bb458c6e35f8286e08b3d9ec2e4e inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="af026bb458c6e35f8286e08b3d9ec2e4e" name="af026bb458c6e35f8286e08b3d9ec2e4e"></a>
+void </td><td class="memItemRight" valign="bottom"><b>end_handling_intersection_of_coplanar_faces</b> () const</td></tr>
+<tr class="separator:af026bb458c6e35f8286e08b3d9ec2e4e inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a38cade7e5517b921304626ecbe41ff6b inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a38cade7e5517b921304626ecbe41ff6b" name="a38cade7e5517b921304626ecbe41ff6b"></a>
+void </td><td class="memItemRight" valign="bottom"><b>start_handling_edge_face_intersections</b> (std::size_t) const</td></tr>
+<tr class="separator:a38cade7e5517b921304626ecbe41ff6b inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af41c1bfa1ca1e482100d7879c1ee1c5b inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="af41c1bfa1ca1e482100d7879c1ee1c5b" name="af41c1bfa1ca1e482100d7879c1ee1c5b"></a>
+void </td><td class="memItemRight" valign="bottom"><b>edge_face_intersections_step</b> () const</td></tr>
+<tr class="separator:af41c1bfa1ca1e482100d7879c1ee1c5b inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af1959810f9de511c43096f41ce599741 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="af1959810f9de511c43096f41ce599741" name="af1959810f9de511c43096f41ce599741"></a>
+void </td><td class="memItemRight" valign="bottom"><b>end_handling_edge_face_intersections</b> () const</td></tr>
+<tr class="separator:af1959810f9de511c43096f41ce599741 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a094a6f28ba72e979c42c66519afee47b inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a094a6f28ba72e979c42c66519afee47b" name="a094a6f28ba72e979c42c66519afee47b"></a>
+void </td><td class="memItemRight" valign="bottom"><b>start_building_output</b> () const</td></tr>
+<tr class="separator:a094a6f28ba72e979c42c66519afee47b inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad4f450660c86487043f6c589e2cc8175 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="ad4f450660c86487043f6c589e2cc8175" name="ad4f450660c86487043f6c589e2cc8175"></a>
+void </td><td class="memItemRight" valign="bottom"><b>end_building_output</b> () const</td></tr>
+<tr class="separator:ad4f450660c86487043f6c589e2cc8175 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8f2d49676e07aace9081e5e6a71181ad inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a8f2d49676e07aace9081e5e6a71181ad" name="a8f2d49676e07aace9081e5e6a71181ad"></a>
+void </td><td class="memItemRight" valign="bottom"><b>filter_coplanar_edges</b> () const</td></tr>
+<tr class="separator:a8f2d49676e07aace9081e5e6a71181ad inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4ed0eb20aa85c5d44f270b6e13d820d4 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a4ed0eb20aa85c5d44f270b6e13d820d4" name="a4ed0eb20aa85c5d44f270b6e13d820d4"></a>
+void </td><td class="memItemRight" valign="bottom"><b>detect_patches</b> () const</td></tr>
+<tr class="separator:a4ed0eb20aa85c5d44f270b6e13d820d4 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac832057bb9ccb5a07ea77f765e7f5cc5 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="ac832057bb9ccb5a07ea77f765e7f5cc5" name="ac832057bb9ccb5a07ea77f765e7f5cc5"></a>
+void </td><td class="memItemRight" valign="bottom"><b>classify_patches</b> () const</td></tr>
+<tr class="separator:ac832057bb9ccb5a07ea77f765e7f5cc5 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abfa74a2667913c3c464ca290efbdbf88 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="abfa74a2667913c3c464ca290efbdbf88" name="abfa74a2667913c3c464ca290efbdbf88"></a>
+void </td><td class="memItemRight" valign="bottom"><b>classify_intersection_free_patches</b> (const TriangleMesh &amp;) const</td></tr>
+<tr class="separator:abfa74a2667913c3c464ca290efbdbf88 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5d27129821ebe2cffe91ae97c08930a2 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a5d27129821ebe2cffe91ae97c08930a2" name="a5d27129821ebe2cffe91ae97c08930a2"></a>
+void </td><td class="memItemRight" valign="bottom"><b>out_of_place_operation</b> (<a class="el" href="group__PMP__boolop__grp.html#ga3be2ae4b7de3a1d9288f7febfc27eb9a">Boolean_operation_type</a>) const</td></tr>
+<tr class="separator:a5d27129821ebe2cffe91ae97c08930a2 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a399b54b53e1e31e87a8d1061ac13bf77 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a399b54b53e1e31e87a8d1061ac13bf77" name="a399b54b53e1e31e87a8d1061ac13bf77"></a>
+void </td><td class="memItemRight" valign="bottom"><b>in_place_operation</b> (<a class="el" href="group__PMP__boolop__grp.html#ga3be2ae4b7de3a1d9288f7febfc27eb9a">Boolean_operation_type</a>) const</td></tr>
+<tr class="separator:a399b54b53e1e31e87a8d1061ac13bf77 inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a18e6879ab014fc11ed8c6dd20733947a inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memItemLeft" align="right" valign="top"><a id="a18e6879ab014fc11ed8c6dd20733947a" name="a18e6879ab014fc11ed8c6dd20733947a"></a>
+void </td><td class="memItemRight" valign="bottom"><b>in_place_operations</b> (<a class="el" href="group__PMP__boolop__grp.html#ga3be2ae4b7de3a1d9288f7febfc27eb9a">Boolean_operation_type</a>, <a class="el" href="group__PMP__boolop__grp.html#ga3be2ae4b7de3a1d9288f7febfc27eb9a">Boolean_operation_type</a>) const</td></tr>
+<tr class="separator:a18e6879ab014fc11ed8c6dd20733947a inherit pub_methods_structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a54d3ecd59591632e0c562abe775cca7d"><td class="memItemLeft" align="right" valign="top"><a id="a54d3ecd59591632e0c562abe775cca7d" name="a54d3ecd59591632e0c562abe775cca7d"></a>
+std::shared_ptr&lt; Vertex_id_maps &gt; </td><td class="memItemRight" valign="bottom"><b>vertex_id_maps</b></td></tr>
+<tr class="separator:a54d3ecd59591632e0c562abe775cca7d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a57f5ba43f10273dac83f1887ee20bb90"><td class="memItemLeft" align="right" valign="top"><a id="a57f5ba43f10273dac83f1887ee20bb90" name="a57f5ba43f10273dac83f1887ee20bb90"></a>
+TriangleMesh &amp; </td><td class="memItemRight" valign="bottom"><b>m_tm1</b></td></tr>
+<tr class="separator:a57f5ba43f10273dac83f1887ee20bb90"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a230a1f452f290e935b2a8ba777e4c635"><td class="memItemLeft" align="right" valign="top"><a id="a230a1f452f290e935b2a8ba777e4c635" name="a230a1f452f290e935b2a8ba777e4c635"></a>
+TriangleMesh &amp; </td><td class="memItemRight" valign="bottom"><b>m_tm2</b></td></tr>
+<tr class="separator:a230a1f452f290e935b2a8ba777e4c635"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a31a049f747923d91b44aec56f2ea9ce9"><td class="memItemLeft" align="right" valign="top"><a id="a31a049f747923d91b44aec56f2ea9ce9" name="a31a049f747923d91b44aec56f2ea9ce9"></a>
+VPM1 </td><td class="memItemRight" valign="bottom"><b>m_vpm1</b></td></tr>
+<tr class="separator:a31a049f747923d91b44aec56f2ea9ce9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2a6e43bda8b91c5cf1db7fae8b109956"><td class="memItemLeft" align="right" valign="top"><a id="a2a6e43bda8b91c5cf1db7fae8b109956" name="a2a6e43bda8b91c5cf1db7fae8b109956"></a>
+VPM1 </td><td class="memItemRight" valign="bottom"><b>m_vpm2</b></td></tr>
+<tr class="separator:a2a6e43bda8b91c5cf1db7fae8b109956"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9e51f942d13bdaf91a2deb7aa7308119"><td class="memItemLeft" align="right" valign="top"><a id="a9e51f942d13bdaf91a2deb7aa7308119" name="a9e51f942d13bdaf91a2deb7aa7308119"></a>
+std::shared_ptr&lt; std::array&lt; Classification_map, 4 &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>m_face_classifications_tm1_ptr</b></td></tr>
+<tr class="separator:a9e51f942d13bdaf91a2deb7aa7308119"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae66e84f5627741e0faa8edcaec5ecbbe"><td class="memItemLeft" align="right" valign="top"><a id="ae66e84f5627741e0faa8edcaec5ecbbe" name="ae66e84f5627741e0faa8edcaec5ecbbe"></a>
+std::shared_ptr&lt; std::array&lt; Classification_map, 4 &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>m_face_classifications_tm2_ptr</b></td></tr>
+<tr class="separator:ae66e84f5627741e0faa8edcaec5ecbbe"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae536f0592f4521fda89e568d9b05ecaa" name="ae536f0592f4521fda89e568d9b05ecaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae536f0592f4521fda89e568d9b05ecaa">◆ </a></span>Non_manifold_output_visitor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh , class VPM1  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type, class VPM2  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor</a>&lt; TriangleMesh, VPM1, VPM2 &gt;::Non_manifold_output_visitor </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp; </td>
+          <td class="paramname"><em>tm1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp; </td>
+          <td class="paramname"><em>tm2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VPM1 </td>
+          <td class="paramname"><em>vpm1</em> = <code>get(CGAL::vertex_point, tm1)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VPM1 </td>
+          <td class="paramname"><em>vpm2</em> = <code>get(CGAL::vertex_point, tm2)</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constructor where meshes are exactly the same as the one passed a function in <a class="el" href="group__PMP__corefinement__grp.html">Corefinement and Autorefinement</a>. </p>
+<p>The visitor cannot be reused for several calls to the aforementioned function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>first triangle mesh in the same order as in the function in <a class="el" href="group__PMP__corefinement__grp.html">Corefinement and Autorefinement</a> </td></tr>
+    <tr><td class="paramname">tm2</td><td>second triangle mesh in the same order as in the function in <a class="el" href="group__PMP__corefinement__grp.html">Corefinement and Autorefinement</a> </td></tr>
+    <tr><td class="paramname">vpm1</td><td>vertex point map for <code>tm1</code> </td></tr>
+    <tr><td class="paramname">vpm2</td><td>vertex point map for <code>tm2</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aabfab73a7dd683cc714d7926d0515edc" name="aabfab73a7dd683cc714d7926d0515edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabfab73a7dd683cc714d7926d0515edc">◆ </a></span>extract_intersection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh , class VPM1  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type, class VPM2  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type&gt; </div>
+<div class="memtemplate">
+template&lt;typename PointRange , typename PolygonRange &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor</a>&lt; TriangleMesh, VPM1, VPM2 &gt;::extract_intersection </td>
+          <td>(</td>
+          <td class="paramtype">PointRange &amp; </td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PolygonRange &amp; </td>
+          <td class="paramname"><em>triangles</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills a polygon soup with the intersection between input meshes provided in the constructor, after a call to either <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code> or <code><a class="el" href="group__PMP__boolop__grp.html#ga3ff96d36cad8f37efcdada916c46fbbe" title="corefines  tm1 and tm2 and puts in tm_out a triangulated surface mesh bounding  the intersection of t...">corefine_and_compute_intersection()</a></code>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> whose value type is the value type of <code>VPM1</code> and <code>VPM2</code>. </td></tr>
+    <tr><td class="paramname">PolygonRange</td><td>a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is itself a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is an unsigned integer type convertible to <code>std::size_t</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aae8d5a9622b2fe1c26e9b1842553bf49" name="aae8d5a9622b2fe1c26e9b1842553bf49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae8d5a9622b2fe1c26e9b1842553bf49">◆ </a></span>extract_tm1_minus_tm2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh , class VPM1  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type, class VPM2  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type&gt; </div>
+<div class="memtemplate">
+template&lt;typename PointRange , typename PolygonRange &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor</a>&lt; TriangleMesh, VPM1, VPM2 &gt;::extract_tm1_minus_tm2 </td>
+          <td>(</td>
+          <td class="paramtype">PointRange &amp; </td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PolygonRange &amp; </td>
+          <td class="paramname"><em>triangles</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills a polygon soup with the difference between input meshes provided in the constructor, after a call to either <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code> or <code><a class="el" href="group__PMP__boolop__grp.html#ga02fa6ed9116a759ecfb87063392f5455" title="corefines  tm1 and tm2 and puts in tm_out a triangulated surface mesh bounding  the volume bounded by...">corefine_and_compute_difference()</a></code>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> whose value type is the value type of <code>VPM1</code> and <code>VPM2</code>. </td></tr>
+    <tr><td class="paramname">PolygonRange</td><td>a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is itself a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is an unsigned integer type convertible to <code>std::size_t</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a076e89303bcd655c2f06eb32c0e04f90" name="a076e89303bcd655c2f06eb32c0e04f90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a076e89303bcd655c2f06eb32c0e04f90">◆ </a></span>extract_tm2_minus_tm1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh , class VPM1  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type, class VPM2  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type&gt; </div>
+<div class="memtemplate">
+template&lt;typename PointRange , typename PolygonRange &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor</a>&lt; TriangleMesh, VPM1, VPM2 &gt;::extract_tm2_minus_tm1 </td>
+          <td>(</td>
+          <td class="paramtype">PointRange &amp; </td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PolygonRange &amp; </td>
+          <td class="paramname"><em>triangles</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills a polygon soup with the opposite difference between input meshes provided in the constructor, after a call to <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> whose value type is the value type of <code>VPM1</code> and <code>VPM2</code>. </td></tr>
+    <tr><td class="paramname">PolygonRange</td><td>a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is itself a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is an unsigned integer type convertible to <code>std::size_t</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac707152f7e66c013b76d2bcd4c76a722" name="ac707152f7e66c013b76d2bcd4c76a722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac707152f7e66c013b76d2bcd4c76a722">◆ </a></span>extract_union()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh , class VPM1  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type, class VPM2  = typename boost::property_map&lt;TriangleMesh, vertex_point_t&gt;::type&gt; </div>
+<div class="memtemplate">
+template&lt;typename PointRange , typename PolygonRange &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html">CGAL::Polygon_mesh_processing::Corefinement::Non_manifold_output_visitor</a>&lt; TriangleMesh, VPM1, VPM2 &gt;::extract_union </td>
+          <td>(</td>
+          <td class="paramtype">PointRange &amp; </td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PolygonRange &amp; </td>
+          <td class="paramname"><em>triangles</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills a polygon soup with the union between input meshes provided in the constructor, after a call to either <code><a class="el" href="group__PMP__boolop__grp.html#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></code> or <code><a class="el" href="group__PMP__boolop__grp.html#ga95f618914f8d54d840065204b029492f" title="corefines  tm1 and tm2 and puts in tm_out a triangulated surface mesh bounding  the union of the volu...">corefine_and_compute_union()</a></code>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> whose value type is the value type of <code>VPM1</code> and <code>VPM2</code>. </td></tr>
+    <tr><td class="paramname">PolygonRange</td><td>a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is itself a model of the concepts <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> and <code><a class="elRef" href="../Manual/classBackInsertionSequence.html">BackInsertionSequence</a></code> whose <code>value_type</code> is an unsigned integer type convertible to <code>std::size_t</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><b>Polygon_mesh_processing</b></li><li class="navelem"><b>Corefinement</b></li><li class="navelem"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Non__manifold__output__visitor.html">Non_manifold_output_visitor</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

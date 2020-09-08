@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Convex_decomposition_3/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Convex Decomposition of Polyhedra: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Convex Decomposition of Polyhedra
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_Convex_Decomposition_of_Polyhedra"></a><a class="anchor" id="chapterConvexDecomposition3"></a></p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Author</dt><dd>Peter Hachenberger, Sven Oesau</dd></dl>
+<h1><a class="anchor" id="Convex_decomposition_3Introduction"></a>
+Introduction</h1>
+<p>For many applications on non-convex polyhedra, there are efficient solutions that first decompose the polyhedron into convex pieces. As an example, the Minkowski sum of two polyhedra can be computed by decomposing both polyhedra into convex pieces, compute pairwise Minkowski sums of the convex pieces, and unite the pairwise sums.</p>
+<p>While it is desirable to have a decomposition into a minimum number of pieces, this problem is known to be NP-hard <a class="el" href="citelist.html#CITEREF_c-cpplb-84">[1]</a>. This package offers two methods for decomposing polyhedra. The <a class="el" href="index.html#Convex_decomposition_3Nef">Convex Decomposition of Nef Polyhedra</a> splits polyhedra into convex pieces with an upper bound on their number. The <a class="el" href="index.html#Convex_decomposition_3ACD_Intro">Approximate Convex Decomposition</a> method offers a fast approximate decomposition of the convex hull into convex volumes. While any number of convex volumes can be generated, these convex volumes are more compact than the convex hull, but still include additional empty space than just the input polyhedron.</p>
+<h1><a class="anchor" id="Convex_decomposition_3Nef"></a>
+Convex Decomposition of Nef Polyhedra</h1>
+<p>The method decomposes a Nef polyhedron \( N\) into \(O(r^2)\) convex pieces, where \( r\) is the number of edges that have two adjacent facets that span an angle of more than 180 degrees with respect to the interior of the polyhedron. Those edges are also called reflex edges. The bound of \(O(r^2)\) convex pieces is worst-case optimal <a class="el" href="citelist.html#CITEREF_c-cpplb-84">[1]</a>.</p>
+<p><a class="anchor" id="fig__figverticalDecomposition"></a> </p><div class="image">
+<img src="two_cubes_all_in_one.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__figverticalDecomposition">Figure 34.1</a> Vertical decomposition based on the insertion of vertical facets (viewed from the top). Left: Non-convex polyhedron. Middle: Non-vertical reflex edges have been resolved. Right: Vertical reflex edges have been resolved. The sub-volumes are convex. </p> </div> <p> <br>
+</p>
+<p>The decomposition runs in two steps. In the first step, each non-vertical reflex edge \( e\) is resolved by insertion of vertical facets through \( e\). In the second step, the vertical reflex edges are handled in the same way. <a class="el" href="index.html#fig__figverticalDecomposition">Figure 34.1</a> illustrates the two steps.</p>
+<p>At the moment the implementation is restricted to the decomposition of bounded polyhedra.</p>
+<h2><a class="anchor" id="Convex_decomposition_3InterfaceandUsage"></a>
+Interface and Usage</h2>
+<p>An instance of <code><a class="elRef" href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a></code> represents a subdivision of the three-dimensional space into vertices, edges, facets, and volumes. Some of these items form the polyhedron (selected), while others represent the outer volume or holes within the polyhedron (unselected). As an example, the unit cube is the point set \( [0,1]^3\). The smallest subdivision that represents the unit cube has 8 vertices, 12 edges, 6 facets, and 2 volumes. The volumes enclosed by the vertices, edges, and facets is the interior of the cube and therefore selected. The volume outside the cube does not belong to it and is therefore unselected. The vertices, edges, and facets - also denoted as boundary items - are needed to separate the two volumes, but are also useful for representing topological properties. In case of the (closed) unit cube the boundary items are part of the polyhedron and therefore selected, but in case of the open unit cube \( [0,1)^3\) they are unselected. Each item has its own selection mark, which allows the correct representation of Nef polyhedra, which are closed under Boolean and topological operations. Details can be found in Chapter <a class="elRef" href="../Nef_3/index.html#chapterNef3">3D Boolean Operations on Nef Polyhedra</a>.</p>
+<p>Usually, an instance of <code><a class="elRef" href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a></code> does not contain any redundant items. However, the function <code><a class="el" href="group__PkgConvexDecomposition3Ref.html#ga447cd9d77212a1306c1d91fc88edc6de" title="The function convex_decomposition_3() inserts additional facets into the given Nef polyhedronN`,...">convex_decomposition_3()</a></code> subdivides selected volumes of a given <code><a class="elRef" href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a></code> by selected facets. These additional facets are therefore redundant, i.e., their insertion alters the representation of the polyhedron, but not the polyhedron itself.</p>
+<p>When <code><a class="el" href="group__PkgConvexDecomposition3Ref.html#ga447cd9d77212a1306c1d91fc88edc6de" title="The function convex_decomposition_3() inserts additional facets into the given Nef polyhedronN`,...">convex_decomposition_3()</a></code> resolved all reflex edges, the selected sub-volumes have become convex. Each of them is represented by a separate volume item and can therefore be traversed separately as described in Section <a class="elRef" href="../Nef_3/index.html#subsectionNef_3ShellExploration">Exploring Shells</a>. Another possibility of accessing the convex pieces is to convert them into separate Nef polyhedra, as illustrated by the example code given below.</p>
+<p>Note that due to the restriction to bounded polyhedra, the use of extended kernels is unnecessary and expensive. Therefore the use of extended kernels in the convex decomposition is not supported.</p>
+<h2><a class="anchor" id="Convex_decomposition_3Example"></a>
+Example</h2>
+<p>This example shows the usage of <code><a class="el" href="group__PkgConvexDecomposition3Ref.html#ga447cd9d77212a1306c1d91fc88edc6de" title="The function convex_decomposition_3() inserts additional facets into the given Nef polyhedronN`,...">CGAL::convex_decomposition_3</a>(<a class="elRef" href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html">Nef_polyhedron_3</a>&amp;)</code> to decompose a Nef polyhedron into convex parts.</p>
+<p><br>
+<b>File</b> <a class="el" href="Convex_decomposition_3_2list_of_convex_parts_8cpp-example.html">Convex_decomposition_3/list_of_convex_parts.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_exact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Nef_polyhedron_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/Nef_polyhedron_iostream_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Nef_3/SNC_indexed_items.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/convex_decomposition_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">CGAL::Exact_predicates_exact_constructions_kernel</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> CGAL::Polyhedron_3&lt;Kernel&gt; Polyhedron_3;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3&lt;Kernel, CGAL::SNC_indexed_items&gt;</a> Nef_polyhedron_3;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_typedefRef" href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html#a9f68342cc6c8a70f99a9e985f60b01c5">Nef_polyhedron_3::Volume_const_iterator</a> Volume_const_iterator;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line"> </div>
+<div class="line">  Nef_polyhedron_3 N;</div>
+<div class="line">  std::cin &gt;&gt; N;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PkgConvexDecomposition3Ref.html#ga447cd9d77212a1306c1d91fc88edc6de">CGAL::convex_decomposition_3</a>(N);</div>
+<div class="line">  std::list&lt;Polyhedron_3&gt; convex_parts;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// the first volume is the outer volume, which is</span></div>
+<div class="line">  <span class="comment">// ignored in the decomposition</span></div>
+<div class="line">  Volume_const_iterator ci = ++N.volumes_begin();</div>
+<div class="line">  <span class="keywordflow">for</span>( ; ci != N.volumes_end(); ++ci) {</div>
+<div class="line">    <span class="keywordflow">if</span>(ci-&gt;mark()) {</div>
+<div class="line">      Polyhedron_3 P;</div>
+<div class="line">      N.convert_inner_shell_to_polyhedron(ci-&gt;shells_begin(), P);</div>
+<div class="line">      convex_parts.push_back(P);</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"decomposition into "</span> &lt;&lt; convex_parts.size() &lt;&lt; <span class="stringliteral">" convex parts "</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__exact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">CGAL::Exact_predicates_exact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Nef__polyhedron__3_html"><div class="ttname"><a href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html">CGAL::Nef_polyhedron_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Nef__polyhedron__3_html_a9f68342cc6c8a70f99a9e985f60b01c5"><div class="ttname"><a href="../Nef_3/classCGAL_1_1Nef__polyhedron__3.html#a9f68342cc6c8a70f99a9e985f60b01c5">CGAL::Nef_polyhedron_3::Volume_const_iterator</a></div><div class="ttdeci">unspecified_type Volume_const_iterator</div></div>
+<div class="ttc" id="agroup__PkgConvexDecomposition3Ref_html_ga447cd9d77212a1306c1d91fc88edc6de"><div class="ttname"><a href="group__PkgConvexDecomposition3Ref.html#ga447cd9d77212a1306c1d91fc88edc6de">CGAL::convex_decomposition_3</a></div><div class="ttdeci">void convex_decomposition_3(NefPolyhedron_3 &amp;N)</div><div class="ttdoc">The function convex_decomposition_3() inserts additional facets into the given Nef polyhedronN`,...</div><div class="ttdef"><b>Definition:</b> convex_decomposition_3.h:65</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="Convex_decomposition_3ACD_Intro"></a>
+Approximate Convex Decomposition</h1>
+<p><a class="anchor" id="fig__Acd_topfig"></a></p><center> <img src="acd_top.jpg" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Acd_topfig">Figure 34.2</a> Approximate convex decomposition of the elephant.off model.<br>
+ From left to right: input mesh, 6, 9, and 12 convex volumes </p> </div> <p> <br>
+</p>
+<p>The H-VACD method <a class="el" href="citelist.html#CITEREF_cgal:mamou2016volumetric">[2]</a>, "Hierarchical volumetric approximate convex decomposition", computes a set of convex volumes that fit the polyhedron. Contrary to the decomposition of the polyhedron into convex parts, the convex volumes cover the polyhedron, but also include additional volume outside of it. A sufficiently tight enclosure of the polyhedron by several convex volumes allows fast intersection calculation and collision detection among polyhedra while offering a non-hierarchical approach and may thus be easier to use in a parallel setting. The resulting set of convex volumes minimizes the volume between their union and the polyhedron while fully including the input polyhedron. While the optimal solution with <code>n</code> convex hulls that cover the polyhedron with the smallest additional volume remains NP-hard, this method provides a fast error-driven approximation.</p>
+<h2><a class="anchor" id="Convex_decomposition_3ACD_Algorithm"></a>
+Algorithm</h2>
+<p>The algorithm computes a set of convex volumes \( C=\{C_i\) with \( i \in[0..n-1]\} \) that cover the input polyhedron while minimizing the additional covered volume:</p>
+<p class="formulaDsp">
+\begin{equation}
+\arg \min_C d(\bigcup_{C_i \in C} C_i, P) \\
+\end{equation}
+</p>
+ <center>with</center>  <p class="formulaDsp">
+\begin{equation}
+d(A, B) = |A| - |B|
+\end{equation}
+</p>
+<p>Where \(|A|\) is the volume of A, P is the input polyhedron and \(C_i\) are convex volumes. The convex volumes \(C_i\) are may slightly overlap and their union contain the input polyhedron \( P \subset \bigcup_{C_i \in C} \).</p>
+<p><a class="anchor" id="fig__Acd_pipelinefig"></a></p><center> <img src="acd_pipeline.jpg" alt="" style="max-width:90%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Acd_pipelinefig">Figure 34.3</a> Approximate convex decomposition pipeline.<br>
+ From left to right: 1. input mesh 2. voxel grid 3. convex volumes after error-driven splitting 4. final convex volumes after merging </p> </div> <p> <br>
+</p>
+<p>The method employs a top-down splitting phase followed by a bottom-up merging to achieve the target number of convex volumes. The splitting phase aims at decomposing the input mesh into smaller mostly convex parts. Each part of the input mesh is approximated with its convex hull. In a hierarchical manner, each part of the mesh is split into two parts when its convexity is low. The convexity is measured by the volume difference of the part and its convex hull. Splitting a part into two can be done by simply cutting the longest side of the bounding box in half. A better choice is often found by searching the longest side of the bounding box for a concave spot. However, it comes with a higher computational cost. The hierarchical splitting stops when either the convexity is sufficiently high or the maximum depth is reached. The volume calculation, convex hull computation and the concavity search is accelerated by a voxel grid. The grid is prepared before the splitting phase and voxel cells overlapping with triangles are labeled as surface. The remaining voxels are labeled as outside or inside by flood fill, in case the input mesh is closed, or by axis-aligned ray shooting, i.e., along x, y and z-axes in positive and negative directions. A voxel is only labeled as inside if at least 3 faces facing away from the voxel have been hit and no face facing towards the voxel. The convex hulls are calculated from voxel corners. Thus, a mesh with a high resolution is less penalized by its number of vertices. The splitting phase typically results in a number of convex volumes larger than targeted.</p>
+<p>To optionally improve the fit of the convex volumes, they can be refitted to the mesh before starting the second phase. The second phase employs a bottom-up merging that reduces the number of convex volumes to the targeted number while aiming at maintaining a low volume difference between convex volumes and the input mesh. The greedy merging maintains a priority queue to incrementally merge the pair of convex volumes with the smallest increase of volume difference.</p>
+<p>The splitting phase is not limited by the chosen <code>maximum_number_of_convex_volumes</code>, because a splitting into a larger number of more convex parts with a subsequent merging leads to better results.</p>
+<p>Due to the hierarchical splitting using planes, it is possible that a convex volume is degenerated. In the merging phase, these degenerated convex volumes are merged with a high priority. However, it is possible that the output of the method still contains degenerated convex volumes. This is especially the case, when a large <code>maximum_number_of_convex_volumes</code> is chosen while using a limited <code>maximum_depth</code>.</p>
+<h2><a class="anchor" id="Convex_decomposition_3ACD_Parameters"></a>
+Parameters</h2>
+<p>Several parameters of the algorithm impact the quality of the result as well as the running time.</p><ul>
+<li><code>maximum_number_of_convex_volumes</code>: The maximum number of convex volumes output by the method. The actual number may be lower for mostly convex input meshes, e.g., a sphere. The impact on the running time is rather low. The default is 16.</li>
+<li><code>maximum_depth</code>: The maximum depth for the hierarchical splitting phase. For complex meshes, a higher maximum depth is required to split small concavities into convex parts. The choice of <code>maximum_depth</code> has a larger impact on the running time. The default is 10.</li>
+<li><code>refitting</code>: The convex hulls can be refitted after the splitting phase to more tightly enclose the input mesh. It increases the running time, but significantly reduces the overhead volume included by the computed convex volumes. It is enabled by default.</li>
+<li><code>maximum_number_of_voxels</code>: This parameter controls the resolution of the voxel grid used for speed-up. Larger numbers result in a higher memory footprint and a higher running time. A small number also limits the <code>maximum_depth</code>. The voxel grid is isotropic and the longest axis of the bounding box will be split into a number of voxels equal to the cubic root of <code>maximum_number_of_voxels</code>. The default value is 1.000.000.</li>
+<li><code>volume_error</code>: The splitting of a convex volume into smaller parts is controlled by the <code>volume_error</code> which provides the tolerance for difference in volume. The difference is calculated by \( (|C_i| - |P_i|) / |P_i|\). The default value is 0.01. Thus, if a convex volume has 1 percent more volume that the part of the input mesh it approximates, it will be further divided.</li>
+<li><code>split_at_concavity</code>: The splitting can be either performed after searching a concavity on the longest side of the bounding box or simply by splitting the longest side of the bounding box in half. The default value is true, i.e., splitting at the concavity.</li>
+</ul>
+<h2><a class="anchor" id="Convex_decomposition_3ACD_Performance"></a>
+Performance</h2>
+<p>The method is demonstrated on a few models:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Data set   </th><th class="markdownTableHeadRight">Faces   </th><th class="markdownTableHeadRight">Volume   </th><th class="markdownTableHeadRight">Convex hull volume   </th><th class="markdownTableHeadRight">Overhead    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Camel   </td><td class="markdownTableBodyRight">19.536   </td><td class="markdownTableBodyRight">0.0468   </td><td class="markdownTableBodyRight">0.15541   </td><td class="markdownTableBodyRight">2.32388    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Elephant   </td><td class="markdownTableBodyRight">5.558   </td><td class="markdownTableBodyRight">0.0462   </td><td class="markdownTableBodyRight">0.12987   </td><td class="markdownTableBodyRight">1.81087    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Triceratops   </td><td class="markdownTableBodyRight">5.660   </td><td class="markdownTableBodyRight">136.732   </td><td class="markdownTableBodyRight">336.925   </td><td class="markdownTableBodyRight">1.46412    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Knot2   </td><td class="markdownTableBodyRight">11.520   </td><td class="markdownTableBodyRight">0.0488   </td><td class="markdownTableBodyRight">0.19141   </td><td class="markdownTableBodyRight">2.92334   </td></tr>
+</table>
+<p>The overhead is the convex hull volume divided by the volume of the mesh. If not mentioned otherwise, all tests used a volume error of 0.01, a maximum depth of 10, 1 million voxels and split at the concavity.</p>
+<p>Impact of varying the number of generated convex volumes with splitting at the concavity and refitting to the convex hull of the input mesh on volume overhead:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Data set   </th><th class="markdownTableHeadRight">Split location   </th><th class="markdownTableHeadRight">Refitting   </th><th class="markdownTableHeadRight">4 volumes   </th><th class="markdownTableHeadRight">6 volumes   </th><th class="markdownTableHeadRight">8 volumes   </th><th class="markdownTableHeadRight">10 volumes   </th><th class="markdownTableHeadRight">12 volumes   </th><th class="markdownTableHeadRight">Running time    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Camel   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">0.6951   </td><td class="markdownTableBodyRight">0.4316   </td><td class="markdownTableBodyRight">0.3016   </td><td class="markdownTableBodyRight">0.2514   </td><td class="markdownTableBodyRight">0.1955   </td><td class="markdownTableBodyRight">2.22s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Camel   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">0.9932   </td><td class="markdownTableBodyRight">0.7482   </td><td class="markdownTableBodyRight">0.6174   </td><td class="markdownTableBodyRight">0.5507   </td><td class="markdownTableBodyRight">0.5261   </td><td class="markdownTableBodyRight">1.20s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Camel   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">0.7994   </td><td class="markdownTableBodyRight">0.5589   </td><td class="markdownTableBodyRight">0.3928   </td><td class="markdownTableBodyRight">0.3211   </td><td class="markdownTableBodyRight">0.2266   </td><td class="markdownTableBodyRight">2.58s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Camel   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.0875   </td><td class="markdownTableBodyRight">0.9280   </td><td class="markdownTableBodyRight">0.8394   </td><td class="markdownTableBodyRight">0.6801   </td><td class="markdownTableBodyRight">0.5529   </td><td class="markdownTableBodyRight">1.29s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Elephant   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">0.7897   </td><td class="markdownTableBodyRight">0.6505   </td><td class="markdownTableBodyRight">0.4973   </td><td class="markdownTableBodyRight">0.3986   </td><td class="markdownTableBodyRight">0.3299   </td><td class="markdownTableBodyRight">1.16s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Elephant   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.2140   </td><td class="markdownTableBodyRight">1.0028   </td><td class="markdownTableBodyRight">0.8071   </td><td class="markdownTableBodyRight">0.7290   </td><td class="markdownTableBodyRight">0.6870   </td><td class="markdownTableBodyRight">0.98s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Elephant   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">0.7448   </td><td class="markdownTableBodyRight">0.5692   </td><td class="markdownTableBodyRight">0.4453   </td><td class="markdownTableBodyRight">0.3844   </td><td class="markdownTableBodyRight">0.2912   </td><td class="markdownTableBodyRight">1.99s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Elephant   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.2075   </td><td class="markdownTableBodyRight">1.0410   </td><td class="markdownTableBodyRight">0.8247   </td><td class="markdownTableBodyRight">0.6779   </td><td class="markdownTableBodyRight">0.6263   </td><td class="markdownTableBodyRight">1.45s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Triceratops   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">0.5952   </td><td class="markdownTableBodyRight">0.3978   </td><td class="markdownTableBodyRight">0.3548   </td><td class="markdownTableBodyRight">0.2385   </td><td class="markdownTableBodyRight">0.2057   </td><td class="markdownTableBodyRight">1.03s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Triceratops   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.0073   </td><td class="markdownTableBodyRight">0.7490   </td><td class="markdownTableBodyRight">0.7035   </td><td class="markdownTableBodyRight">0.5966   </td><td class="markdownTableBodyRight">0.5429   </td><td class="markdownTableBodyRight">0.59s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Triceratops   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">0.7149   </td><td class="markdownTableBodyRight">0.4380   </td><td class="markdownTableBodyRight">0.3984   </td><td class="markdownTableBodyRight">0.2801   </td><td class="markdownTableBodyRight">0.2303   </td><td class="markdownTableBodyRight">1.53s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Triceratops   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.0470   </td><td class="markdownTableBodyRight">0.8990   </td><td class="markdownTableBodyRight">0.6749   </td><td class="markdownTableBodyRight">0.5803   </td><td class="markdownTableBodyRight">0.5237   </td><td class="markdownTableBodyRight">0.91s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Knot2   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">1.2721   </td><td class="markdownTableBodyRight">0.9538   </td><td class="markdownTableBodyRight">0.6395   </td><td class="markdownTableBodyRight">0.4748   </td><td class="markdownTableBodyRight">0.4040   </td><td class="markdownTableBodyRight">1.95s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Knot2   </td><td class="markdownTableBodyRight">Concavity   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.7901   </td><td class="markdownTableBodyRight">1.4242   </td><td class="markdownTableBodyRight">1.1538   </td><td class="markdownTableBodyRight">0.9394   </td><td class="markdownTableBodyRight">0.8496   </td><td class="markdownTableBodyRight">1.49s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Knot2   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">+   </td><td class="markdownTableBodyRight">1.2451   </td><td class="markdownTableBodyRight">0.9286   </td><td class="markdownTableBodyRight">0.6178   </td><td class="markdownTableBodyRight">0.4373   </td><td class="markdownTableBodyRight">0.3558   </td><td class="markdownTableBodyRight">2.08s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Knot2   </td><td class="markdownTableBodyRight">Mid   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">1.7143   </td><td class="markdownTableBodyRight">1.3477   </td><td class="markdownTableBodyRight">1.0436   </td><td class="markdownTableBodyRight">0.9030   </td><td class="markdownTableBodyRight">0.7910   </td><td class="markdownTableBodyRight">1.78s   </td></tr>
+</table>
+<p>The columns for the different number of volumes indicate the overhead of the union of the convex volumes compared to the volume of the mesh. Note that the convex volumes may overlap, thus the volume of their union may be lower than the sum of volumes. Although searching the voxel grid for the concavity takes additional computational time, it is compensated by fewer splits.</p>
+<p><a class="anchor" id="fig__Acd_resultsfig"></a></p><center> <img src="acd_results.jpg" alt="" style="max-width:90%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Acd_resultsfig">Figure 34.4</a> Approximate convex decomposition results.<br>
+ From left to right: input mesh, 4, 8, and 12 convex volumes </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="Convex_decomposition_3ACD_Example"></a>
+Example</h2>
+<p>The example shows the approximate convex decomposition of the knot2.off mesh into 9 convex volumes that are saved as off files.</p>
+<p><br>
+<b>File</b> <a class="el" href="Convex_decomposition_3_2approximate_convex_decomposition_8cpp-example.html">Convex_decomposition_3/approximate_convex_decomposition.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/approximate_convex_decomposition.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point = K::Point_3;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Convex_hull = std::pair&lt;std::vector&lt;Point&gt;, std::vector&lt;std::array&lt;unsigned int, 3&gt; &gt; &gt;;</div>
+<div class="line"><span class="keyword">using </span>Mesh = CGAL::Surface_mesh&lt;Point&gt;;</div>
+<div class="line"><span class="keyword">namespace </span>PMP = <a class="code hl_namespaceRef" href="../Polygon_mesh_processing/classCGAL_1_1Polygon__mesh__processing_1_1Adaptive__sizing__field.html">CGAL::Polygon_mesh_processing</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/knot2.off"</span>);</div>
+<div class="line">  std::cout &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;Convex_hull&gt; convex_volumes;</div>
+<div class="line">  convex_volumes.reserve(9);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="group__PkgConvexDecomposition3Ref.html#ga98ed6393d56fc2eac2ad82a55af84b2f">CGAL::approximate_convex_decomposition</a>(mesh, std::back_inserter(convex_volumes),</div>
+<div class="line">    CGAL::parameters::maximum_depth(10)</div>
+<div class="line">    .volume_error(0.1)</div>
+<div class="line">    .maximum_number_of_convex_volumes(9)</div>
+<div class="line">    .split_at_concavity(<span class="keyword">true</span>)</div>
+<div class="line">    .refitting(<span class="keyword">true</span>)</div>
+<div class="line">    .maximum_number_of_voxels(1000000)</div>
+<div class="line">    .concurrency_tag(<a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1Parallel__if__available__tag.html">CGAL::Parallel_if_available_tag</a>()));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (std::size_t i = 0;i&lt;convex_volumes.size();i++) {</div>
+<div class="line">    <span class="keyword">const</span> Convex_hull&amp; ch = convex_volumes[i];</div>
+<div class="line">    <a class="code hl_functionRef" href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a>(std::to_string(i) + <span class="stringliteral">".off"</span>, ch.first, ch.second);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Polygon__mesh__processing_1_1Adaptive__sizing__field_html"><div class="ttname"><a href="../Polygon_mesh_processing/classCGAL_1_1Polygon__mesh__processing_1_1Adaptive__sizing__field.html">CGAL::Polygon_mesh_processing</a></div></div>
+<div class="ttc" id="agroup__IOstreamFunctions_html_ga030115449f48c379b0c080328fd730b0"><div class="ttname"><a href="../Stream_support/group__IOstreamFunctions.html#ga030115449f48c379b0c080328fd730b0">CGAL::IO::write_polygon_soup</a></div><div class="ttdeci">bool write_polygon_soup(const std::string &amp;fname, const PointRange &amp;points, const PolygonRange &amp;polygons, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgConvexDecomposition3Ref_html_ga98ed6393d56fc2eac2ad82a55af84b2f"><div class="ttname"><a href="group__PkgConvexDecomposition3Ref.html#ga98ed6393d56fc2eac2ad82a55af84b2f">CGAL::approximate_convex_decomposition</a></div><div class="ttdeci">std::size_t approximate_convex_decomposition(const FaceGraph &amp;tmesh, OutputIterator out_volumes, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">approximates the closed input mesh by a number of convex volumes.</div><div class="ttdef"><b>Definition:</b> approximate_convex_decomposition.h:1941</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+<div class="ttc" id="astructCGAL_1_1Parallel__if__available__tag_html"><div class="ttname"><a href="../STL_Extension/structCGAL_1_1Parallel__if__available__tag.html">CGAL::Parallel_if_available_tag</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="Convex_decomposition_3_history"></a>
+Design and Implementation History</h1>
+<p>This package was created by Peter Hachenberger with the <code><a class="el" href="group__PkgConvexDecomposition3Ref.html#ga447cd9d77212a1306c1d91fc88edc6de" title="The function convex_decomposition_3() inserts additional facets into the given Nef polyhedronN`,...">CGAL::convex_decomposition_3()</a></code> method. In 2025, it has been extended by Sven Oesau with the <code><a class="el" href="group__PkgConvexDecomposition3Ref.html#ga98ed6393d56fc2eac2ad82a55af84b2f" title="approximates the closed input mesh by a number of convex volumes.">CGAL::approximate_convex_decomposition()</a></code> method. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,45 @@
+var group__Snap__rounding__hot__pixel__grp =
+[
+    [ "CGAL::Hot_pixel_snap_rounding_traits_2< BaseKernel >", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html", [
+      [ "Integer_grid_point_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Integer__grid__point__2.html", [
+        [ "operator()", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Integer__grid__point__2.html#a9a4a42ac9347ababedf890634ca83959", null ]
+      ] ],
+      [ "Minkowski_sum_with_pixel_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Minkowski__sum__with__pixel__2.html", [
+        [ "operator()", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Minkowski__sum__with__pixel__2.html#a70150577d8bfcc5dde31b5422515abaf", null ],
+        [ "Hot_pixel_snap_rounding_traits_2< BaseKernel >", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Minkowski__sum__with__pixel__2.html#acc0b9aa5fc9eaf9eb3faf9df6fc75ec2", null ]
+      ] ],
+      [ "Snap_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Snap__2.html", [
+        [ "operator()", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2_1_1Snap__2.html#a085a61c74ec7ed41bf3c3d2a9a4f3bd2", null ]
+      ] ],
+      [ "Aff_transformation_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a6118be67a8aaa6cb944dc7f8bff16dfc", null ],
+      [ "Base_traits", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a6e4c0cf5ac2cae42710ff2505e771128", null ],
+      [ "Cartesian_const_iterator_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a2028df46d7000e2d4cb3b14c6510a836", null ],
+      [ "Compare_x_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a8f0829229a0ca6d905d5389c4791d9ef", null ],
+      [ "Compare_y_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a46b309e462aa5dd3a5f3398e88bb451d", null ],
+      [ "Construct_cartesian_const_iterator_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a0d07cf4a40208db5b19e3239d3c7ab9c", null ],
+      [ "Construct_iso_rectangle_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#af8d760e9590c7db03bcfc705070b725b", null ],
+      [ "Construct_max_vertex_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a11dfa74f2d190bd7515ccccb3b91ee44", null ],
+      [ "Construct_min_vertex_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a6acb3e93a5b49f20cf5d7a1bc3160671", null ],
+      [ "Construct_segment_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#ab6b7e5e5c104212d1b7eae418c29a5e0", null ],
+      [ "Construct_vertex_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a01144a6d80f9fefefec119de45fc1b70", null ],
+      [ "Direction_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#adea3abb4cf30b7a0ca595ba47c6eeee9", null ],
+      [ "FT", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a4255b18ff03b2a6b98e197ab0c759de5", null ],
+      [ "Iso_rectangle_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a9295f0726dab956fdf3ee160860dae7d", null ],
+      [ "Line_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a55eb6264e71fdee0b9823e7a7e9f8d5e", null ],
+      [ "NT", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#aaddaf071f3daf094936b04cfb1635b2f", null ],
+      [ "Point_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a5fc6da9353046e1275367ab2915c12ad", null ],
+      [ "Segment_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a338ed7c0150fed3cb8407efc24d454d7", null ],
+      [ "To_double", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a594326a55c03d4035bb73a4b89c874f0", null ],
+      [ "Vector_2", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a20d9d8433e524d763af5c97e2a6f8aff", null ],
+      [ "compare_y_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a19d2e251f99dc9f8a98e65b16ffbdb3d", null ],
+      [ "construct_iso_rectangle_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#aaa3eeeea8000d459bd3a99d9fc40ba1a", null ],
+      [ "construct_segment_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a7d0722b884a0617b8c9ff8fcf22f8164", null ],
+      [ "construct_vertex_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#acd7dc179174f490bbf993ec54fac4d8c", null ],
+      [ "integer_grid_point_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a37fbd1175cfba059274e79ce5fa6da72", null ],
+      [ "minkowski_sum_with_pixel_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a13799b9e3ade1530e1547845e609dbc7", null ],
+      [ "snap_2_object", "classCGAL_1_1Hot__pixel__snap__rounding__traits__2.html#a21afadddaa57f2ae59f3472d4cdc544f", null ]
+    ] ],
+    [ "CGAL::hot_pixel_snap_rounding_2", "group__Snap__rounding__hot__pixel__grp.html#ga400f2f1f85f0d88b412cfd3f500d409d", null ],
+    [ "CGAL::hot_pixel_snap_rounding_2", "group__Snap__rounding__hot__pixel__grp.html#ga5fd52281829efc9c64d04d819354944e", null ],
+    [ "CGAL::hot_pixel_snap_rounding_2", "group__Snap__rounding__hot__pixel__grp.html#ga80b5454d43442f7f1471af0b6bfbdc70", null ]
+];
