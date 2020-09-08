@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Snap_rounding_2/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 2D Snap Rounding: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 2D Snap Rounding
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Average running times of snap rounding methods<a class="anchor" id="Chapter_2D_Snap_Rounding"></a><a class="anchor" id="chapterSnapRounding"></a></p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Author</dt><dd>Eli Packer, Leo Valque</dd></dl>
+<h1><a class="anchor" id="Snap_rounding_2Introduction"></a>
+Introduction</h1>
+<p>Snap Rounding (SR, for short) is a well-known method for converting arbitrary-precision arrangements of segments into a fixed-precision representation <a class="el" href="citelist.html#CITEREF_gght-srlse-97">[1]</a>, <a class="el" href="citelist.html#CITEREF_gm-rad-98">[2]</a>, <a class="el" href="citelist.html#CITEREF_h-psifp-99">[4]</a>. In the study of robust geometric computing, it can be classified as a finite precision approximation technique. Iterated Snap Rounding (ISR, for short) is a modification of SR in which each vertex is at least half-the-width-of-a-pixel away from any non-incident edge <a class="el" href="citelist.html#CITEREF_cgal:hp-isr-02">[3]</a>. This package supports both methods. Algorithmic details and experimental results are given in <a class="el" href="citelist.html#CITEREF_cgal:hp-isr-02">[3]</a>.</p>
+<p><a class="anchor" id="fig__figsr1"></a> </p><div class="image">
+<img src="sr1.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__figsr1">Figure 38.1</a> An arrangement of segments before (a) and after (b) SR (hot pixels are shaded) </p> </div> <p> <br>
+</p>
+<p>Float Snap Rounding is a variant of Snap Rounding for converting arbitrary-precision arrangements of segments into another representation, typically using floating-point coordinates. Float Snap Rounding provides the same guarantees as standard Snap Rounding. By default, Float Snap Rounding rounds to <code>double</code> preserving all input coordinates. Other representations can be used by supplying a model of <code><a class="el" href="classFloatSnapRoundingTraits__2.html" title="The concept FloatSnapRoundingTraits_2 lists the set of requirements that must be fulfilled by an inst...">FloatSnapRoundingTraits_2</a></code>.</p>
+<h1><a class="anchor" id="Snap_rouding"></a>
+Snap Rounding and Iterated Snap Rounding</h1>
+<h2><a class="anchor" id="Snap_rounding_2What"></a>
+What is Snap Rounding/Iterated Snap Rounding</h2>
+<p>Given a finite collection \( \Sc\) of segments in the plane, the arrangement of \( \Sc\) denoted \( \Ac(\Sc)\) is the subdivision of the plane into vertices, edges, and faces induced by \( \Sc\). A <em>vertex</em> of the arrangement is either a segment endpoint or the intersection of two segments. Given an arrangement of segments whose vertices are represented with arbitrary-precision coordinates, the function <code><a class="el" href="group__PkgSnapRounding2Ref.html#gabf9cbdb9bfcfd83513d30908e9679bbe">snap_rounding_2()</a></code> proceeds as follows. We tile the plane with a grid of unit squares, <em>pixels</em>, each centered at a point with integer coordinates. A pixel is <em>hot</em> if it contains a vertex of the arrangement. Each vertex of the arrangement is replaced by the center of the hot pixel containing it and each edge \( e\) is replaced by the polygonal chain through the centers of the hot pixels met by \( e\), in the same order as they are met by \( e\). <a class="el" href="index.html#fig__figsr1">Figure 38.1</a> demonstrates the results of SR.</p>
+<p>In a snap-rounded arrangement, the distance between a vertex and a non-incident edge can be extremely small compared with the width of a pixel in the grid used for rounding. ISR is a modification of SR which makes a vertex and a non-incident edge well separated (the distance between each is at least half-the-width-of-a-pixel). However, the guaranteed quality of the approximation in ISR degrades. <a class="el" href="index.html#fig__figisr_vs_sr">Figure 38.2</a> depicts the results of SR and ISR on the same input. Conceptually, the ISR procedure is equivalent to repeated application of SR, namely we apply SR to the original set of segments, then we use the output of SR as input to another round of SR and so on until all the vertices are well separated from non-incident edges. Algorithmically we operate differently, as this repeated application of SR would have resulted in an efficient overall process. The algorithmic details are given in <a class="el" href="citelist.html#CITEREF_cgal:hp-isr-02">[3]</a>.</p>
+<h2><a class="anchor" id="Snap_rounding_2Terms"></a>
+Terms and Software Design</h2>
+<p>Our package supports both schemes, implementing the algorithm described in <a class="el" href="citelist.html#CITEREF_cgal:hp-isr-02">[3]</a>. Although the paper only describes an algorithm for ISR, it is easy to derive an algorithm for SR, by performing only the first rounding level for each segment.</p>
+<p>The input to the program is a set \( S\) of \( n\) segments, \( S=\{s_1,\ldots,s_n\}\) and the output is a set \( G\) of \( n\) polylines, with a polyline \( g_i\) for each input segments \( s_i\). An input segment is given by the coordinates of its endpoints. An output polyline is given by the ordered set of vertices \( v_0,\ldots,v_k\) along the polyline. The polyline consists of the segments \( (v_0v_1),\ldots,(v_{k-1}v_k)\).</p>
+<p>There are three template parameters: <code>Traits</code> is the underlying geometry, i.e., the number type used and the coordinate representation. <code><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></code> is the type of the iterators that point to the first and after-the-last elements of the input. Finally, <code>OutputContainer</code> is the type of the output container.</p>
+<p>Since the algorithm requires kernel functionalities such as the rounding to the center of a pixel, a special traits class must be provided. The precise description of the requirements is given by the concept <code><a class="el" href="classSnapRoundingTraits__2.html" title="The concept SnapRoundingTraits_2 lists the set of requirements that must be fulfilled by an instance ...">SnapRoundingTraits_2</a></code>. The class <code><a class="el" href="classCGAL_1_1Snap__rounding__traits__2.html" title="The class Snap_rounding_traits_2&lt;Kernel&gt; is a model of the SnapRoundingTraits_2 concept,...">Snap_rounding_traits_2</a></code> is a model of this concept.</p>
+<p><a class="anchor" id="fig__figisr_vs_sr"></a> </p><div class="image">
+<img src="isr_vs_sr.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__figisr_vs_sr">Figure 38.2</a> An arrangement of segments before (a), after SR (b) and ISR (c) (hot pixels are shaded). </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="Snap_rounding_2Four"></a>
+Four Line Segment Example</h2>
+<p>The following example generates an ISR representation of an arrangement of four line segments. In particular it produces a list of points that are the vertices of the resulting polylines in a plane tiled with one-unit square pixels.</p>
+<p><b>Example: </b> <a class="el" href="Snap_rounding_2_2snap_rounding_8cpp-example.html">Snap_rounding_2/snap_rounding.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Quotient.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/MP_Float.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Snap_rounding_traits_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Snap_rounding_2.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> CGAL::Quotient&lt;CGAL::MP_Float&gt;           Number_type;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Cartesian.html">CGAL::Cartesian&lt;Number_type&gt;</a>             <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Snap__rounding__traits__2.html">CGAL::Snap_rounding_traits_2&lt;Kernel&gt;</a>     Traits;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Segment__2.html">Kernel::Segment_2</a>                        Segment_2;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Kernel::Point_2</a>                          Point_2;</div>
+<div class="line"><span class="keyword">typedef</span> std::list&lt;Segment_2&gt;                     Segment_list_2;</div>
+<div class="line"><span class="keyword">typedef</span> std::list&lt;Point_2&gt;                       Polyline_2;</div>
+<div class="line"><span class="keyword">typedef</span> std::list&lt;Polyline_2&gt;                    Polyline_list_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  Segment_list_2 seg_list;</div>
+<div class="line">  Polyline_list_2 output_list;</div>
+<div class="line"> </div>
+<div class="line">  seg_list.push_back(Segment_2(Point_2(0, 0), Point_2(10, 10)));</div>
+<div class="line">  seg_list.push_back(Segment_2(Point_2(0, 10), Point_2(10, 0)));</div>
+<div class="line">  seg_list.push_back(Segment_2(Point_2(3, 0), Point_2(3, 10)));</div>
+<div class="line">  seg_list.push_back(Segment_2(Point_2(7, 0), Point_2(7, 10)));</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Generate an iterated snap-rounding representation, where the centers of</span></div>
+<div class="line">  <span class="comment">// the hot pixels bear their original coordinates, using 5 kd trees:</span></div>
+<div class="line">  CGAL::snap_rounding_2&lt;Traits,Segment_list_2::const_iterator,Polyline_list_2&gt;</div>
+<div class="line">    (seg_list.begin(), seg_list.end(), output_list, 1.0, <span class="keyword">true</span>, <span class="keyword">false</span>, 5);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> counter = 0;</div>
+<div class="line">  Polyline_list_2::const_iterator iter1;</div>
+<div class="line">  <span class="keywordflow">for</span> (iter1 = output_list.begin(); iter1 != output_list.end(); ++iter1) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Polyline number "</span> &lt;&lt; ++counter &lt;&lt; <span class="stringliteral">":\n"</span>;</div>
+<div class="line">    Polyline_2::const_iterator iter2;</div>
+<div class="line">    <span class="keywordflow">for</span> (iter2 = iter1-&gt;begin(); iter2 != iter1-&gt;end(); ++iter2)</div>
+<div class="line">      std::cout &lt;&lt; <span class="stringliteral">"    ("</span> &lt;&lt; iter2-&gt;x() &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; iter2-&gt;y() &lt;&lt; <span class="stringliteral">")\n"</span>;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span>(0);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Snap__rounding__traits__2_html"><div class="ttname"><a href="classCGAL_1_1Snap__rounding__traits__2.html">CGAL::Snap_rounding_traits_2</a></div><div class="ttdoc">The class Snap_rounding_traits_2&lt;Kernel&gt; is a model of the SnapRoundingTraits_2 concept,...</div><div class="ttdef"><b>Definition:</b> Snap_rounding_traits_2.h:34</div></div>
+<div class="ttc" id="aclassKernel_1_1Point__2_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__2.html">Kernel::Point_2</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Segment__2_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Segment__2.html">Kernel::Segment_2</a></div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Cartesian_html"><div class="ttname"><a href="../Kernel_23/structCGAL_1_1Cartesian.html">CGAL::Cartesian</a></div></div>
+</div><!-- fragment --> </details>
+<p>The package is supplied with a graphical demo program that opens a window, allows the user to edit segments dynamically, applies a selected snap-rounding procedures, and displays the result onto the same window (see <code>&lt;CGAL_ROOT&gt;/demo/Snap_rounding_2/Snap_rounding_2.cpp</code>).</p>
+<h1><a class="anchor" id="Float_snap_rounding"></a>
+Float Snap Rounding 2</h1>
+<h2><a class="anchor" id="FSR_algorithm"></a>
+Float Snap Rounding Algorithm</h2>
+<p>Given an arrangement of segments whose vertices are represented with arbitrary-precision coordinates, the <code><a class="el" href="group__PkgFloatSnapRounding2Ref.html#ga42d8996eac11f6663e850f7b0b495e8b" title="subdivides and rounds a set of segments so that they are pairwise disjoint in their interiors.">float_snap_rounding_2()</a></code> function outputs one polyline for each input segment with rounded coordinates. The function ensures that the resulting polylines do not intersect and provide the same topological guarantee as the Snap Rounding algorithm <a class="el" href="citelist.html#CITEREF_valque2024snaprounding">[5]</a>.</p>
+<p>The algorithm is illustrated in Figure <a class="el" href="index.html#fig__fig_float_snap">Figure 38.3</a> and proceeds as follows. First, the segments are subdivided exactly at their (potential) intersection points. Then the vertices are processed from left to right. Whenever a vertex lies too close to a segment, that segment is subdivided at the \(x\)-coordinate of the vertex. Finally, the vertices are rounded.</p>
+<p><a class="anchor" id="fig__fig_float_snap"></a> </p><div class="image">
+<object type="image/svg+xml" data="float_snap_fig.svg" style="pointer-events: none;"></object>
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__fig_float_snap">Figure 38.3</a> An arrangement of segments before subdividing the segments (a), after subdividing the segments (b) and after rounding (c). </p> </div> <p> <br>
+</p>
+<p>The function <code><a class="el" href="group__PkgFloatSnapRounding2Ref.html#ga42d8996eac11f6663e850f7b0b495e8b" title="subdivides and rounds a set of segments so that they are pairwise disjoint in their interiors.">float_snap_rounding_2()</a></code> outputs the result as a range of polylines, one for each input segment. The functions <code><a class="el" href="group__PkgFloatSnapRounding2Ref.html#gaaecaa9d94fc89865a58918e380b21210" title="Given a range of segments, computes rounded subsegments that are pairwise disjoint in their interior,...">compute_snapped_subcurves_2()</a></code> and <code><a class="el" href="group__PkgFloatSnapRounding2Ref.html#ga1481b05dbdd1b38b61c946370e1cb9b9" title="Given a range of Polygon_2, computes rounded polygons such that their segments are either equal or di...">compute_snapped_polygons_2()</a></code> perform the same algorithm but provide different input and/or output formats. The function <code><a class="el" href="group__PkgFloatSnapRounding2Ref.html#gaaecaa9d94fc89865a58918e380b21210" title="Given a range of segments, computes rounded subsegments that are pairwise disjoint in their interior,...">compute_snapped_subcurves_2()</a></code> outputs the result as a range of segments, whereas <code><a class="el" href="group__PkgFloatSnapRounding2Ref.html#ga1481b05dbdd1b38b61c946370e1cb9b9" title="Given a range of Polygon_2, computes rounded polygons such that their segments are either equal or di...">compute_snapped_polygons_2()</a></code> takes a range of polygons as input and outputs a range of polygons.</p>
+<h2><a class="anchor" id="FSR_example"></a>
+Float Snap Rounding Example</h2>
+<p>The following example snaps a non-trivial instance of five segments.</p>
+<p><b>Example: </b> <a class="el" href="Snap_rounding_2_2float_snap_rounding_8cpp-example.html">Snap_rounding_2/float_snap_rounding.cpp</a> <br>
+</p><details>
+<summary>
+Show / Hide</summary>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_exact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Float_snap_rounding_2.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">CGAL::Exact_predicates_exact_constructions_kernel</a>       <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Segment__2.html">Kernel::Segment_2</a>                                       Segment_2;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Kernel::Point_2</a>                                         Point_2;</div>
+<div class="line"><span class="keyword">typedef</span> Kernel::FT                                              FT;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> std::vector&lt;Point_2&gt;                                    Polyline_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Example with a non-trivial rounding</span></div>
+<div class="line">  std::vector&lt; Segment_2 &gt; segs;</div>
+<div class="line">  FT e(std::pow(2, -60));</div>
+<div class="line"> </div>
+<div class="line">  segs.emplace_back(Point_2(1-e, 1), Point_2(-1-e, -1+2*e));</div>
+<div class="line">  segs.emplace_back(Point_2(e/2, e/2), Point_2(1, -1));</div>
+<div class="line">  segs.emplace_back(Point_2(0, 2-e/2), Point_2(2, 0));</div>
+<div class="line">  segs.emplace_back(Point_2(0, 2-e/2), Point_2(-2+e, -4));</div>
+<div class="line">  segs.emplace_back(Point_2(-2, 2), Point_2(2, 2));</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Compute the snapped subcurves and check if they do intersect</span></div>
+<div class="line">  std::vector&lt; Segment_2 &gt; out;</div>
+<div class="line">  <a class="code hl_function" href="group__PkgFloatSnapRounding2Ref.html#gaaecaa9d94fc89865a58918e380b21210">CGAL::compute_snapped_subcurves_2</a>(segs.begin(), segs.end(), std::back_inserter(out));</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Does the output intersect: "</span> &lt;&lt; <a class="code hl_functionRef" href="../Surface_sweep_2/group__PkgSurfaceSweep2Ref.html#gadb96b95f091371e834e3f7b4d24f7bb4">CGAL::do_curves_intersect</a>(out.begin(), out.end()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Size of the output: "</span> &lt;&lt; out.size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Compute the polylines corresponding to the output rounded on single precision floats</span></div>
+<div class="line">  std::vector&lt; Polyline_2 &gt; polylines;</div>
+<div class="line">  <a class="code hl_function" href="group__PkgFloatSnapRounding2Ref.html#ga42d8996eac11f6663e850f7b0b495e8b">CGAL::float_snap_rounding_2</a>(segs.begin(), segs.end(), std::back_inserter(polylines), CGAL::parameters::geom_traits(<a class="code hl_struct" href="structCGAL_1_1Float__snap__rounding__traits__2.html">CGAL::Float_snap_rounding_traits_2&lt;Kernel&gt;</a>()));</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__exact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">CGAL::Exact_predicates_exact_constructions_kernel</a></div></div>
+<div class="ttc" id="agroup__PkgFloatSnapRounding2Ref_html_ga42d8996eac11f6663e850f7b0b495e8b"><div class="ttname"><a href="group__PkgFloatSnapRounding2Ref.html#ga42d8996eac11f6663e850f7b0b495e8b">CGAL::float_snap_rounding_2</a></div><div class="ttdeci">OutputIterator float_snap_rounding_2(InputIterator begin, InputIterator end, OutputIterator out, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">subdivides and rounds a set of segments so that they are pairwise disjoint in their interiors.</div><div class="ttdef"><b>Definition:</b> Float_snap_rounding_2.h:444</div></div>
+<div class="ttc" id="agroup__PkgFloatSnapRounding2Ref_html_gaaecaa9d94fc89865a58918e380b21210"><div class="ttname"><a href="group__PkgFloatSnapRounding2Ref.html#gaaecaa9d94fc89865a58918e380b21210">CGAL::compute_snapped_subcurves_2</a></div><div class="ttdeci">OutputIterator compute_snapped_subcurves_2(InputIterator begin, InputIterator end, OutputIterator out, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">Given a range of segments, computes rounded subsegments that are pairwise disjoint in their interior,...</div><div class="ttdef"><b>Definition:</b> Float_snap_rounding_2.h:509</div></div>
+<div class="ttc" id="agroup__PkgSurfaceSweep2Ref_html_gadb96b95f091371e834e3f7b4d24f7bb4"><div class="ttname"><a href="../Surface_sweep_2/group__PkgSurfaceSweep2Ref.html#gadb96b95f091371e834e3f7b4d24f7bb4">CGAL::do_curves_intersect</a></div><div class="ttdeci">bool do_curves_intersect(InputIterator curves_begin, InputIterator curves_end)</div></div>
+<div class="ttc" id="astructCGAL_1_1Float__snap__rounding__traits__2_html"><div class="ttname"><a href="structCGAL_1_1Float__snap__rounding__traits__2.html">CGAL::Float_snap_rounding_traits_2</a></div><div class="ttdoc">The class Float_snap_rounding_traits_2&lt;InputKernel, ExactKernel, BaseTraits&gt; is a model of the FloatS...</div><div class="ttdef"><b>Definition:</b> Float_snap_rounding_traits_2.h:173</div></div>
+</div><!-- fragment --> </details>
+<h2><a class="anchor" id="FSR_Perf"></a>
+Snap Rounding Performance</h2>
+<p>We evaluate the different methods on two tests: In the first test, the segment endpoints are chosen uniformly and independantly in the unit box. In the second test, we generate perturbed copies of a given segment. This experiment is repeated several times using different input segments.</p>
+<p>First with segments whose endpoints are randomly and independently chosen in the unit box. Second with perturbated copy of a given segment, we perform this test several times with different input segments. The two pixel sizes for snap rounding are chosen so that the rounding shift is of the same order of magnitude as the rounding induced by using <code>double</code> or <code>float</code> coordinates. The first test is standard but typically exhibits few, if any, rounding issues. The second test is deliberately designed to be difficult, as it produces a large number of rounding issues when rounding is performed naively. In these settings, float snap rounding significantly outperforms standard snap rounding and remains in the same order of magnitude than computing the intersections without snap. The result of our test is summarized in the next table:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Test Case   </th><th class="markdownTableHeadNone">Computing intersection<br>
+ (Unsafe rounding)   </th><th class="markdownTableHeadNone">Float snap rounding<br>
+ (double precision)   </th><th class="markdownTableHeadNone">Float snap rounding<br>
+ (simple precision)   </th><th class="markdownTableHeadNone">Snap rounding <br>
+(pixel size \(10^{-15}\) )   </th><th class="markdownTableHeadNone">Snap rounding <br>
+(pixel size \(10^{-7}\))    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">500 Random Segments   </td><td class="markdownTableBodyNone">0.103s   </td><td class="markdownTableBodyNone">0.233s   </td><td class="markdownTableBodyNone">0.208s   </td><td class="markdownTableBodyNone">6.91s   </td><td class="markdownTableBodyNone">4.25s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1000 Random Segments   </td><td class="markdownTableBodyNone">0.379s   </td><td class="markdownTableBodyNone">1.36s   </td><td class="markdownTableBodyNone">1.23s   </td><td class="markdownTableBodyNone">1m 0s   </td><td class="markdownTableBodyNone">53.3s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2000 Random Segments   </td><td class="markdownTableBodyNone">1.45s   </td><td class="markdownTableBodyNone">4.95s   </td><td class="markdownTableBodyNone">5.22s   </td><td class="markdownTableBodyNone">–   </td><td class="markdownTableBodyNone">–    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4000 Random Segments   </td><td class="markdownTableBodyNone">6.15s   </td><td class="markdownTableBodyNone">29.2s   </td><td class="markdownTableBodyNone">31.5s   </td><td class="markdownTableBodyNone">–   </td><td class="markdownTableBodyNone">–    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 Almost identical Segments   </td><td class="markdownTableBodyNone">0.016s   </td><td class="markdownTableBodyNone">0.025s   </td><td class="markdownTableBodyNone">1.37s   </td><td class="markdownTableBodyNone">0.452s   </td><td class="markdownTableBodyNone">2.00s    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">150 Almost identical Segments   </td><td class="markdownTableBodyNone">0.032s   </td><td class="markdownTableBodyNone">0.064   </td><td class="markdownTableBodyNone">5.11s   </td><td class="markdownTableBodyNone">1.48s   </td><td class="markdownTableBodyNone">7.41s    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">200 Almost identical Segments   </td><td class="markdownTableBodyNone">0.057s   </td><td class="markdownTableBodyNone">0.125s   </td><td class="markdownTableBodyNone">–   </td><td class="markdownTableBodyNone">3.48s   </td><td class="markdownTableBodyNone">–    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">400 Almost identical Segments   </td><td class="markdownTableBodyNone">0.216s   </td><td class="markdownTableBodyNone">0.641s   </td><td class="markdownTableBodyNone">–   </td><td class="markdownTableBodyNone">38.5s   </td><td class="markdownTableBodyNone">–   </td></tr>
+</table>
+<h2><a class="anchor" id="FSR_comp"></a>
+Snap Rounding Complexity</h2>
+<p>The algorithm runs in approximately \(O(n \log n + k)\), where \(n\) is the number of input segments and \(k\) is the number of vertices created during the process. In the worst case, the number of created vertices is \(O(n^3)\), or \(O(n^2)\) if the input segments are free of intersections.</p>
+<h2><a class="anchor" id="Float_snap_rounding_Traits"></a>
+Float Snap Rounding Traits</h2>
+<p>The algorithm uses a traits class that models the concept <code><a class="el" href="classFloatSnapRoundingTraits__2.html" title="The concept FloatSnapRoundingTraits_2 lists the set of requirements that must be fulfilled by an inst...">FloatSnapRoundingTraits_2</a></code>. By default, the traits class <code><a class="el" href="structCGAL_1_1Double__snap__rounding__traits__2.html" title="The class Double_snap_rounding_traits_2&lt;InputKernel, ExactKernel, BaseTraits&gt; is a model of the Float...">Double_snap_rounding_traits_2</a></code>, which rounds coordinates to double precision floating point, is used. The package also provides <code><a class="el" href="structCGAL_1_1Float__snap__rounding__traits__2.html" title="The class Float_snap_rounding_traits_2&lt;InputKernel, ExactKernel, BaseTraits&gt; is a model of the FloatS...">Float_snap_rounding_traits_2</a></code> and <code>Integers_snap_rounding_traits_2</code>, which rounds coordinates to single precision floating point and integers, respectively. Other traits classes can be used to round to different representations as long as the rounding operation preserves the order of vertices along the \(x\) and \(y\) directions. See <code><a class="el" href="classFloatSnapRoundingTraits__2.html" title="The concept FloatSnapRoundingTraits_2 lists the set of requirements that must be fulfilled by an inst...">FloatSnapRoundingTraits_2</a></code> for more details.</p>
+<h1><a class="anchor" id="Snap_rounding_history"></a>
+Implementation History</h1>
+<p>Snap Rounding and Iterative Snap Rounding was introduced by Eli Packer in 2001.</p>
+<p>Float Snap Rounding was introduced by Léo Valque in 2026. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

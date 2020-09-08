@@ -1,0 +1,1100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_HDVF"></a> </p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Author</dt><dd>Alexandra Bac</dd></dl>
+<p>Algebraic topology, introduced more than a century ago, studies topological spaces using algebraic tools derived from them (e.g. groups). Since the 70's and 80's, pioneering works (MacLane, Hilton, Munkres...) paved the way to computational homology, which studies the "holes" of an object. In particular, Munkres introduced an algorithm computing Betti numbers based on the pseudo-diagonalization of boundary matrices (Smith Normal Form).</p>
+<p>In the 90's, persistent homology emerged independently through the work of H. Edelsbrunner et al. (North Carolina), P. Frosini et al. (Bologna), and V. Robins (Colorado), extending the study of homology to sequences of complexes (filtrations). This later theory proved to have a wide range of applications in topological data analysis and hence quickly developed and spread in the scientific community. In parallel, in the late 80's, R. Forman defined a discrete version of Morse theory for CW-complexes, while F. Sergeraert introduced effective homology theory.</p>
+<p>In [AGL, 2017], A. Gonzalez-Lorenzo et al. defined the <b>homological discrete vector field</b> (which we refer to as <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> in the present package), a combinatorial object that generalizes previous approaches. Precisely, HDVFs combine discrete Morse and effective homology theory and fully encode homology information (homology groups decomposition, Betti numbers, homology generators) for cellular complexes. HDVFs encompass discrete Morse theory, effective homology and Smith Normal form, and: persistent homology can be computed with HDVFs (see [AGL, 2016]), relative homology and Alexander duality (see [AGL, 2025]).</p>
+<p><a class="anchor" id="fig__HDVFtwirl"></a> </p><div class="image">
+<img src="HDVF_twirl.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFtwirl">Figure 94.1</a> <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> on a twirl model. <b>Left:</b> a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over the model; <b>Middle:</b> Homology generators associated to this <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>; <b>Right:</b> Corresponding cohomology generators. </p> </div> <p> <br>
+</p>
+<p>Unlike other main stream state of art approaches and librairies (largely based on persistent homology), HDVFs provide a framework for "geometric" homology and cohomology computation, where holes are not only enumerated, but also "localized" (through homology, cohomology generators, annotations...).</p>
+<h1><a class="anchor" id="secHDVFdefinitions"></a>
+Overview</h1>
+<p>The <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package is dedicated to homology and cohomology computation for discrete objects and provides tools to compute:</p><ul>
+<li>basic homological information (such as Betti numbers, ie. number of holes per dimension),</li>
+<li>but also geometric, higher level information (homology and cohomology generators, homology/cohomology annotation, cycles and co-cycles comparison...),</li>
+<li>moreover HDVFs compute persistent homology (and provide "persistent generators" information) as well as Alexander duality and relative homology.</li>
+</ul>
+<h1><a class="anchor" id="secHDVFHomology"></a>
+Homology/cohomology and related reminders</h1>
+<p>Homology and cohomology are well know topological invariants which accounts for the holes of an object using commutative groups built from the object. In Mathematics, homology and cohomology can be defined for general Hausdorff topological spaces; we speak then about "singular homology and cohomology". However, such a general definition is not computable and thus, homology/cohomology computation requires a discretization of spaces into cells of various dimensions. Such a discretization is called a <b>complex</b>:</p><ul>
+<li><b>simplicial complexes</b> are intuitively meshes built from vertices, edges, triangles, tetrahedra...</li>
+<li><b>cubical complexes</b> are built from vertices, edges, squares, cubes...</li>
+<li><b>cellular complexes</b> are built from vertices, edges, polygons (without holes), polyhedra (without holes)...</li>
+</ul>
+<p>Actually, a set of cells is called a complex \(K\) when:</p><ul>
+<li>it is closed under the "face" operation (ie. all the faces of a cell of the complex also belong to the complex)</li>
+<li>intersections of cells are either empty of they are a proper cell of the complex The dimension of \(K\) is the largest dimension of its cells.</li>
+</ul>
+<p><a class="anchor" id="fig__HDVFcomplexes"></a> </p><div class="image">
+<img src="HDVF_cub_simpl_complex.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFcomplexes">Figure 94.2</a> Illustration of complexes. <b>Left:</b> a simplicial complex of dimension 3; <b>Right:</b> A cubical complex of dimension 3. </p> </div> <p> <br>
+</p>
+<p>In order to compute homology and cohomology, algebraic objects are built from such "geometric" complexes, namely chain complexes.</p>
+<h2><a class="anchor" id="secHDVFChainComplexes"></a>
+Chain complexes</h2>
+<p>In order to define this algebraic structure, one first need to chose a <b>ring of coefficients</b> \(A\) ( \(A\) is often taken to be \(Z\) or a \(\mathbb Z/p\mathbb Z\) field).</p>
+<p>Given a complex \(K\) of dimension \(d\), a <b>chain complex</b> \(C\) is:</p>
+<p class="formulaDsp">
+\[C = \cdots C_{q+1} \xrightarrow{\partial_{q+1}} C_q \xrightarrow{\partial_{q}} C_{q-1} \xrightarrow{\partial_{q-1}} \cdots \to C_1 \xrightarrow{\partial_1} C_0 \xrightarrow{\partial_0 = 0} 0\]
+</p>
+<ul>
+<li>a sequence of commutative groups, called <b>chain groups</b> \(C_q\) for any \(0\leqslant q \leqslant d\) defined as the formal linear combinations of cells with coefficients in \(A\) (or \(A\)-module).<br>
+ Intuitively, elements of \(C_q\), called <b>chains</b> are sums \(\gamma = \sum_{i=1}^k\lambda_i\cdot \sigma_i\) with \(\lambda_i\in A\) and \(\sigma_i\) cells of dimension \(q\), which can be imagined as a set of paths of oriented cells with multiplicity (see <a class="el" href="index.html#fig__HDVFchain_complexes">Figure 94.3</a> where two 1-chains are represented).</li>
+<li><p class="startli">a sequence of morphisms between chain groups, called <b>boundary morphisms</b> \(\partial_q\,:\, C_q\to C_{q-1}\) for any \(0\leqslant q \leqslant d\), "mimicking" algebraically the geometric boundary and satisfying</p>
+<p class="formulaDsp">
+\[\partial_q\partial_{q+1} = 0\]
+</p>
+</li>
+</ul>
+<p>Coming back to the example of <a class="el" href="index.html#fig__HDVFchain_complexes">Figure 94.3</a>, as we will see in section <a class="el" href="index.html#secHDVFsimplicial_chain_complex">Simplicial chain complexes</a>, the boundary of the edge \(e_{45}\) is the 0-chain \(v_5-v_4\) (ordering is given by vertices indices). Hence, on easily gets that \(\partial_1(\gamma_1)=0\) and \(\partial_1(\gamma_2)=v_8-v_4\), which is a very intuitive result.</p>
+<p><a class="anchor" id="fig__HDVFchain_complexes"></a> </p><div class="image">
+<img src="simplicial_complex_chains.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFchain_complexes">Figure 94.3</a> Examples of chains representation in a simplicial complex (with \(A = \mathbb Z\)). <b>Pink:</b> representation the 1-chain (of edges) \(\gamma_1 = e_{24}+e_{46}-e_{26}\); <b>Blue:</b> representation of the 1-chain \(\gamma_2 = e_{45}+e_{56}+e_{67}+e_{78}\). </p> </div> <p> <br>
+</p>
+<p>The definition of the boundary operator depends on the underlying complex, it is detailed in next sections for simplicial and cubical complexes respectively.</p>
+<p><b>Notation</b></p>
+<p>Given a chain \(\gamma\in C_q\) and \(\sigma\) a \(q\)-cell, we denote by \(\langle\gamma,\sigma\rangle\) the coefficient of \(\sigma\) in \(\gamma\in C_q\).</p>
+<h3><a class="anchor" id="secHDVFsimplicial_chain_complex"></a>
+Simplicial chain complexes</h3>
+<p>An <b>abstract simplicial complex</b> of dimension \(d\) is built from:</p><ul>
+<li>a set of vertices identified by an index of type <code>std::size_t</code> (cells of dimension 0 or <b>0-simplices</b>)</li>
+<li>for any \(q\) with \(0&lt; q\leqslant d\), cells of dimension \(q\) (or <b>q-simplices</b>) are defined by \(q+1\) vertices (denoted \(\langle v_0,\ldots,v_{q}\rangle\) with vertices sorted by <em>increasing indices</em>).</li>
+</ul>
+<p>A <b>geometric simplicial complex</b> equips vertices with coordinates in \(\mathbb R^q\) so that \(q\)-simplices are convex hulls of \(q+1\) points.</p>
+<p>Given a simplicial complex (abstract or geometric) \(K\), the associated chain complex \((C,\partial)\), called a <b>simplicial chain complex</b> is defined as follows:</p>
+<ul>
+<li>The \(q\)-th chain group \(C_q\) is the free \(A\)-module generated by \(q\)-cells described in the section <a class="el" href="index.html#secHDVFChainComplexes">Chain complexes</a>.</li>
+<li>The \(q\)-th boundary morphism is defined over the \(q\)-simplices (ie. the basis) by:</li>
+</ul>
+<p class="formulaDsp">
+\[\partial_q : \begin{array}{rcl}
+C_q &amp; \to &amp; C_{q-1} \\
+\langle v_0,\ldots,v_{q}\rangle &amp; \mapsto &amp; \sum_{i=0}^q (-1)^i\cdot \langle v_0,\ldots,\hat{v_i}, \ldots, v_{q}\rangle \\
+\end{array}
+\]
+</p>
+<p> where \(\hat{v_i}\) means that the \(i\)-th vertex has been discarded.</p>
+<p>For instance, in our previous example:</p><ul>
+<li>For the edge \(\langle 4,5\rangle\), we get \(\partial_1(\langle 4,5\rangle) = \langle 5\rangle - \langle 4\rangle\)</li>
+<li>For the triangle \(\langle 2,4,6\rangle\), we get \(\partial_2(\langle 2,4,6\rangle) = \langle 4,6\rangle - \langle 2,6\rangle + \langle 2,4\rangle\)</li>
+</ul>
+<h3><a class="anchor" id="secHDVFcubical_chain_complex"></a>
+Cubical chain complexes</h3>
+<p>A <b>cubical complex</b> of dimension \(d\) is a set of cells defined as cartesian products: </p><p class="formulaDsp">
+\[\sigma = [n_1,n_1+\delta_1]\times\cdots \times [n_d,n_d+\delta_d]\]
+</p>
+<p> with \(n_i\in \mathbb N\) and \(\delta_i\in\{0,1\}\) for \(i=1\ldots d\). The dimension of such a cell is \(\sum_{i=1}^d \delta_i\). As stated in previous section, a complex is closed under the "face" operation (if a cell belongs to the complex, so do its faces).</p>
+<p>Khalimsky coordinates** associate to each cell, whatever its dimension, a unique coordinate in \(\mathbb N^d\) defined as: </p><p class="formulaDsp">
+\[\mathrm{khal}(\sigma) = (2 n_1+\delta_1,\ldots, 2 n_d+\delta_d)\]
+</p>
+<p> The dimension of a cell in this coordinate system is thus the number of odd coordinates.</p>
+<p><a class="anchor" id="fig__HDVFcubical_complex_fig"></a> </p><div class="image">
+<img src="cubical_complex.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFcubical_complex_fig">Figure 94.4</a> A cubical complex of dimension 3. </p> </div> <p> <br>
+</p>
+<p>For instance, in the example above:</p><ul>
+<li>\(v = [2,2] \times [1,1] \times [0,0]\) and \(\mathrm{khal}(\sigma) = (4,2,0)\) (cell of dimension 0)</li>
+<li>\(e = [0,1] \times [1,1] \times [0,0]\) and \(\mathrm{khal}(\sigma) = (1,2,0)\) (cell of dimension 1)</li>
+<li>\(f = [2,3] \times [0,1] \times [1,1]\) and \(\mathrm{khal}(\sigma) = (5,1,2)\) (cell of dimension 2)</li>
+</ul>
+<p>Given a cubical complex \(K\), the associated chain complex \((C,\partial)\), called a <b>cubical chain complex</b> is defined as follows:</p><ul>
+<li>The \(q\)-th chain group \(C_q\) is the free \(A\)-module generated by \(q\)-cells described in the section <a class="el" href="index.html#secHDVFChainComplexes">Chain complexes</a>.</li>
+<li>The \(q\)-th boundary morphism is defined over Khalimsky coordinates of cells (ie. the basis) as follows: <p class="formulaDsp">
+\[\partial_q(x_1,\ldots,x_d) = \sum_{\substack{i=1\\i\text{ odd}}}^d (-1)^{i+1}\Big((x_1,\ldots, x_i+1,\ldots, x_d) - (x_1,\ldots, x_i-1,\ldots, x_d)\Big)\]
+</p>
+</li>
+</ul>
+<p>For instance, in the example above:</p><ul>
+<li>\(\partial(e) = (2,2,0)-(0,2,0)\)</li>
+<li>\(\partial(f) = \big((6,1,2)-(4,1,2)\big) - \big((5,2,2)-(5,0,2)\big)\)</li>
+</ul>
+<h3><a class="anchor" id="secHDVFcochain"></a>
+Co-chain complex (for cohomology)</h3>
+<p>In the "mathematical world", singular cohomology is defined on dual groups \(C^q = C_q^* = \mathrm{Hom}(C_q,A)\) with coboundary morphisms: \(\partial^q\,:\, C^q \to C^{q+1} = \partial_q^*\).</p>
+<p>However in our discrete setting of finite complexes, a space and its dual can be identified. Hence cohomology can be defined in a more intuitive way:</p>
+<p class="formulaDsp">
+\[C^* = \cdots C^{q+1} \xleftarrow{\partial^{q}} C^q \xleftarrow{\partial^{q-1}} C^{q-1}  \leftarrow \cdots \leftarrow C^2 \xleftarrow{\partial^1} C^1 \xleftarrow{\partial^0} C^0\]
+</p>
+<ul>
+<li><b>cochain groups</b> \(C^q\) for any \(0\leqslant q \leqslant d\) are identified with \(C_q\). Hence chains and cochains are similar.</li>
+<li>a sequence of morphisms between chain groups, called <b>coboundary morphisms</b> \(\partial^q\,:\,C^q\to C^{q+1}\) for any \(0\leqslant q \leqslant d\) with \(\partial^q = \partial_q^t\) (thus, the matrix of the coboundary operator is the transpose of the boundary operator matrix). The coboundary operator "mimicks" algebraically the geometric coboundary (ie. cofaces) and satisfies: <p class="formulaDsp">
+\[\partial^q\partial^{q-1} = 0\]
+</p>
+</li>
+</ul>
+<p>The following figure illustrates the coboundary morphism</p>
+<p><a class="anchor" id="fig__HDVFcoboundary"></a> </p><div class="image">
+<img src="simplicial_complex_coboundary.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFcoboundary">Figure 94.5</a> Illustration of the coboundary morphism (with \(A = \mathbb Z\)) <b>Pink:</b> coboundary of vertex \(v_6\) ( \(\partial^0(v_6) = e_{26} + e_{46}+e_{56} - e_{67} - e_{68}\)); <b>Blue:</b> coboundary of edge \(e_{24}\) ( \(\partial^1(e_{24} ) = f_{246} - f_{234}\)). </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="secHDVFhomology"></a>
+Homology of discrete chain complexes</h2>
+<p>Homology is a topological invariant characterizing the holes of an object of various dimension. What is a hole?</p><ul>
+<li>holes of dimension 0 are connected components</li>
+<li>holes of dimension 1 are tunnels or handles of the object</li>
+<li>holes of dimension 2 are cavities</li>
+</ul>
+<p><a class="anchor" id="fig__HDVFholes_example"></a> </p><div class="image">
+<img src="holes_example.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFholes_example">Figure 94.6</a> Illustration of the holes of a double torus. <b>Black:</b> 1 connected component (dimension 0); <b>Red:</b> 4 holes of dimension 1; <b>Blue</b> 1 cavity of dimension 2. </p> </div> <p> <br>
+</p>
+<p>Let us now come back to our simplicial complex example: <a class="anchor" id="fig__HDVFsimplicial_cycles_example"></a> </p><div class="image">
+<img src="simplicial_complex_homology.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFsimplicial_cycles_example">Figure 94.7</a> Cycles on a simplicial complex. <b>Blue:</b> this cycle is the boundary of \(f_{234}+f_{246}\); <b>Pink:</b> this cycle is not a boundary. </p> </div> <p> <br>
+</p>
+<p>This example suggests that holes are delineated by <em>cycles which are not a boundaries</em>:</p><ul>
+<li><b>Cycles</b> of dimension \(q\) are chains in the kernel of \(\partial_q\): <p class="formulaDsp">
+\[Z_q(C) = \ker(\partial_q) \]
+</p>
+</li>
+<li><b>Boundaries</b> of dimension \(q\) are chains in the image of \(\partial_{q+1}\) <p class="formulaDsp">
+\[B_q(C) = \mathrm{Im}(\partial_{q+1}) \]
+</p>
+</li>
+<li>As \(\partial_{q}\partial_{q+1} = 0\), \(B_q(C)\subseteq Z_q(C)\).</li>
+<li>Hence we can define the quotient \(Z_q(C)/B_q(C)\) which contains exactly "cycles which are not boundaries", ie. the \(q\)th homology group: <p class="formulaDsp">
+\[H_q(C) = Z_q(C)/B_q(C) \]
+</p>
+</li>
+</ul>
+<p>For finite complexes, these groups are finitely generated and we have the following decomposition (theorem of decomposition of finitely generated groups): </p><p class="formulaDsp">
+\[H_q(C) = A^{\beta_q}\oplus A/\lambda_1A\oplus \cdots \oplus A/\lambda_k A \]
+</p>
+<p> where:</p><ul>
+<li>\(\beta_q\in\mathbb N\) is called the ** \(q\)th Betti number** (giving the number of holes of dimension \(q\));</li>
+<li>coefficients \(\lambda_i\) are called the **torsion coefficients in dimension \(q\)** and satisfy \(\lambda_i | \lambda_{i+1}\).</li>
+</ul>
+<p>Let us assume homology groups have no torsion; homology can be computed "at different levels":</p><ul>
+<li><b>level 1:</b> Computing Betti numbers.</li>
+<li><b>level 2:</b> Computing \(\beta_q\) cycles generating \(H_q(C)\) called <b>generators</b> (hence cycles "delineating" the holes).</li>
+</ul>
+<p>Most libraries focus on persistent homology computation for topological data analysis (see section <a class="el" href="index.html#secHDVFpersistent_homology">Persistent homology</a>), which is a "level 1" homology computation. The <b><a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package is dedicated to a "level 2" homology computation</b>, which is computationally more complex but provides "geometric" informations about holes (generators, annotations...).</p>
+<h2><a class="anchor" id="secHDVFcohomology"></a>
+Cohomology of discrete chain complexes</h2>
+<p>Starting from a cochain complex:</p>
+<p class="formulaDsp">
+\[C^* = \cdots C^{q+1} \xleftarrow{\partial^{q}} C^q \xleftarrow{\partial^{q-1}} C^{q-1}  \leftarrow \cdots \leftarrow C^2 \xleftarrow{\partial^1} C^1 \xleftarrow{\partial^0} C^0\]
+</p>
+<p>one can define:</p><ul>
+<li><b>Cocycles</b> of dimension \(q\) are (co)chains in the kernel of \(\partial^q\): <p class="formulaDsp">
+\[Z^q(C^*) = \ker(\partial^q) \]
+</p>
+</li>
+<li><b>Coboundaries</b> of dimension \(q\) are chains in the image of \(\partial^{q-1}\) <p class="formulaDsp">
+\[B^q(C^*) = \mathrm{Im}(\partial^{q-1}) \]
+</p>
+</li>
+<li>As \(\partial^{q}\partial^{q-1} = 0\), \(B^q(C^*)\subseteq Z^q(C^*)\).</li>
+<li>Hence we can define the quotient \(Z^q(C^*)/B^q(C^*)\), ie. the \(q\)th cohomology group: <p class="formulaDsp">
+\[H^q(C^*) = Z^q(C^*)/B^q(C^*) \]
+</p>
+</li>
+</ul>
+<p><a class="anchor" id="fig__HDVFex_hom_cohom"></a> </p><div class="image">
+<img src="HDVF_ex_hom_cohom.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFex_hom_cohom">Figure 94.8</a> Illustration of homology and cohomology generators for a simple 2D cubical complex \(C\) (computed with HDVFs). <b>Left:</b> both generators of \(H_1(C)\); <b>Middle, right:</b> both cohomology generators \(H^1(C)\) (for convenience, the dual of cohomology generators has been displayed with bulleted pink lines). </p> </div> <p> <br>
+</p>
+<p><a class="anchor" id="fig__HDVFex_hom_cohom_cofaces"></a> </p><div class="image">
+<img src="HDVF_ex_hom_cohom_cofaces.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFex_hom_cohom_cofaces">Figure 94.9</a> Cofaces representation of cohomology generators. </p> </div> <p> <br>
+</p>
+<p>Figure <a class="el" href="index.html#fig__HDVFex_hom_cohom">Figure 94.8</a> and <a class="el" href="index.html#fig__HDVFex_hom_cohom_cofaces">Figure 94.9</a> illustrate homology and cohomology generators in a simple cubical complex. Actually:</p><ul>
+<li>homology generators, intuitively delineate holes;</li>
+<li>cohomology generators provide cocycles to open or break the holes (therefore, it is sometimes more convenient to display the cofaces of cohomology generators as in figure <a class="el" href="index.html#fig__HDVFex_hom_cohom_cofaces">Figure 94.9</a>).</li>
+</ul>
+<p>Therefore homology and cohomology provide isomorphic (and dual) results. Actually, the following proposition holds in finite dimension: </p><p class="formulaDsp">
+\[H^q(C^*) \sim H_q(C)\]
+</p>
+<h2><a class="anchor" id="secHDVFcompHomology"></a>
+Computing homology and cohomology</h2>
+<p>First results on the computation of discrete homology and cohomology date back to the 80's (see for instance [Munkres]). They are based on a diagonalisation of boundary matrices (called Smith Normal form). Nowadays, computational (co)homology approaches can be classified into three branches illustrated in figure <a class="el" href="index.html#fig__HDVFoverview_comput_hom">Figure 94.10</a>.</p>
+<p><a class="anchor" id="fig__HDVFoverview_comput_hom"></a> </p><div class="image">
+<img src="HDVFoverview_comput_hom.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFoverview_comput_hom">Figure 94.10</a> Overview of approaches in computational homology. HDVFs are in-between discrete Morse theory and effective homology (and they encompass persistent homology, relative homology and tri-partitions). </p> </div> <p> <br>
+</p>
+<h3><a class="anchor" id="secHDVFreduction"></a>
+Effective homology and reductions</h3>
+<p>Effective homology considers homology computations from a categorical perspective ; its main results are theorems building functors providing a computation of homology for infinite spaces (locally effective spaces) starting from finite ones (effective spaces).</p>
+<p>Among the tools of effective homology, <b>reductions</b> characterise how to map a (large) chain complex onto a (small) one with isomorphic homology groups. Formally, a reduction from a chain complex \(C\) to a chain complex \(C'\) is a triple of graded maps \((f,g,h)\):  </p><p class="formulaDsp">
+\[\begin{array}{cccccc}
+\cdots &amp; C_{q+1} &amp; \substack{\xrightarrow{\partial_{q+1}}\\ \xleftarrow[h_{q}]{}} &amp; C_{q} &amp; \substack{\xrightarrow{\partial_{q}}\\ \xleftarrow[h_{q-1}]{}} &amp; \cdots \\
+&amp; f_{q+1}\Big\downarrow \Big\uparrow g_{q+1} &amp; &amp; f_{q}\Big\downarrow \Big\uparrow g_{q} &amp; &amp; \\
+\cdots &amp; C'_{q+1} &amp; \xrightarrow{\partial'_{q+1}} &amp; C'_{q} &amp; \xrightarrow{\partial'_{q}} &amp; \cdots \\
+\end{array}
+\]
+</p>
+<p> such that:</p>
+<ul>
+<li>\(f\) and \(g\) are chain maps (ie. commute with \(\partial\) and \(\partial'\))</li>
+<li>\(f_q g_q = \mathrm{Id}_{C'_q}\) for any \(q\)</li>
+<li>\(g_q f_q = \mathrm{Id}_{C_q} - \partial_{q+1} h_q - h_q \partial_{q-1}\) for any \(q\)</li>
+<li><p class="startli">\(h_{q+1} h_q = 0\), \(f_{q+1} h_{q} = 0\) and \(h_{q} g_q = 0\) for any \(q\)</p>
+<p class="startli">\(C'\) is called the <b>reduced complex</b> and \(\partial'\) the <b>reduced boundary</b>.</p>
+</li>
+</ul>
+<p>Under these assumptions, the homology and cohomology groups of \(C\) and \(C'\) are isomorphic.</p>
+<p>A reduction is <b>perfect</b> when the reduced boundary is null; then for any \(q\): </p><p class="formulaDsp">
+\[H_q(C) \sim g(C'_q)\]
+</p>
+<p> in other words, homology groups are isomorphic to the image of the reduced complex by \(g\), </p><p class="formulaDsp">
+\[H^q(C) \sim f^*(C'_q)\]
+</p>
+<p> and cohomology groups are isomorphic to the image of the reduced complex by \(f^*\).</p>
+<h3><a class="anchor" id="secHDVFdiscrete_Morse"></a>
+A few words about discrete Morse theory</h3>
+<p>Discrete Morse theory was introduced by Forman in the 90's as a combinatorial approach for homology computation directly inspired by Morse theory (on compact manifolds). He showed that in the discrete context, Morse functions are better defined through their gradient: a vector field defined over the complex connecting cells and one of their co-faces. In this context, gradients of Morse functions can be easily characterized by acyclicity conditions.</p>
+<p>More precisely, given a complex \(K\), a <b>discrete gradient vector field</b> (called DGVF here after) can be built as follows:</p><ul>
+<li>consider the Hasse diagram of the complex (connecting cells to their boundary - figure (left))</li>
+</ul>
+<h2><a class="anchor" id="secHDVFpersist_hom"></a>
+Persistent homology</h2>
+<h2><a class="anchor" id="secHDVFrelative_hom"></a>
+Relative homology</h2>
+<h2><a class="anchor" id="secHDVFAlexander"></a>
+Alexander duality</h2>
+<h1><a class="anchor" id="secHDVF"></a>
+The HDVF framework</h1>
+<p>This section presents a brief introduction to HDVFs, see [AGL, 2016] for more details.</p>
+<h2><a class="anchor" id="secHDVFHDVF_definitions"></a>
+Definition of HDVFs</h2>
+<p>HDVFs are an "in-between" theory:</p><ul>
+<li>in-between Discrete Morse theory (combinatorial approach) and effective homology (categorical approach)</li>
+<li>in-between combinatorics and algebra but they cannot be reduced to any of these frameworks. As we will see, they provide a bridge in-between them.</li>
+</ul>
+<p>Let \(K\) be a complex (simplicial, cubical...) and let \((\mathscr C, \partial)\) be its associated chain complex.</p>
+<p>Notation** Starting from now on, we will use \(\mathscr C\) for chain complexes and \(C\) for critical cells.</p>
+<p>Formally a <b><a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a></b> \(X=(P,S,C)\) is a partition of the cells of \(K\): </p><p class="formulaDsp">
+\[K = P\cup S\cup C\]
+</p>
+<p> with \(P\) primary cells, \(S\) secondary cells and \(C\) critical cells, such that the sub-matrix:  </p><p class="formulaDsp">
+\[\partial (S)|_P\text{ is invertible.}
+ \]
+</p>
+<p> where \(\partial (S)|_P\) means that the matrix of \(\partial\) is restricted to columns of secondary cells and rows of primary cells.</p>
+<p>As stated earlier, this definition is both combinatorial (partition of cells) and algebraic (invertibility of a sub-matrix) but it cannot be simplified or reduced to either of these approaches.</p>
+<p>Given such an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> \(X=(P,S,C)\), we can define the following associated reduction \((f,g,h)\):</p>
+<p class="formulaDsp">
+\[\begin{array}{cccccc}
+\cdots &amp; \mathscr C_{q+1} &amp; \substack{\xrightarrow{\partial_{q+1}}\\ \xleftarrow[h_{q}]{}} &amp; \mathscr C_{q} &amp; \substack{\xrightarrow{\partial_{q}}\\ \xleftarrow[h_{q-1}]{}} &amp; \cdots \\
+&amp; f_{q+1}\Big\downarrow \Big\uparrow g_{q+1} &amp; &amp; f_{q}\Big\downarrow \Big\uparrow g_{q} &amp; &amp; \\
+\cdots &amp; C_{q+1} &amp; \xrightarrow{\mathrm d_{q+1}} &amp; C_{q} &amp; \xrightarrow{\mathrm d_{q}} &amp; \cdots \\
+\end{array}
+\]
+</p>
+<p> \(\mathrm d\) is the <b>reduced boundary</b> (over critical cells) and the reduction is defined as follows:</p>
+<ul>
+<li>the matrix of \(h_q\) is:  <p class="formulaDsp">
+\[\begin{array}{c}
+\ \ \ \ \ \ \ \ \ \ P_q \ \ \ \ S_q \ \ \ \  C_q \\
+\begin{array}{c}
+P_{q+1} \\
+S_{q+1} \\
+C_{q+1} \\
+\end{array}
+\begin{array}{|c|c|c|}
+\hline
+0 &amp; 0 &amp; 0 \\
+\hline
+H_q &amp; 0 &amp; 0 \\
+\hline
+0 &amp; 0 &amp; 0 \\
+\hline
+\end{array}
+\end{array}
+\]
+</p>
+ with <p class="formulaDsp">
+\[H_q = (\partial (S_{q+1})|_{P_q})^{-1}\]
+</p>
+.</li>
+<li>the matrix of \(f_q\) is:  <p class="formulaDsp">
+\[\begin{array}{c}
+\ \ \ \ \ \ P_q \ \ \ \ S_q \ \ \ \  C_q \\
+\begin{array}{c}
+C_q \\
+\end{array}
+\begin{array}{|c|c|c|}
+\hline
+F_q &amp; 0 &amp; \mathrm{Id} \\
+\hline
+\end{array}
+\end{array}
+\]
+</p>
+ with <p class="formulaDsp">
+\[ F_q = - \partial(S_{q+1})|_{C_q}\cdot H_q\]
+</p>
+</li>
+<li>the matrix of \(g_q\) is:  <p class="formulaDsp">
+\[\begin{array}{c}
+\ \ \ \ \ \ C_q \\
+\begin{array}{c}
+P_q \\
+S_q \\
+C_q \\
+\end{array}
+\begin{array}{|c|}
+\hline
+0 \\
+\hline
+G_q \\
+\hline
+\mathrm{Id} \\
+\hline
+\end{array}
+\end{array}
+\]
+</p>
+ with <p class="formulaDsp">
+\[ G_q = - H_{q-1} \cdot \partial(C_{q})|_{P_{q-1}}\]
+</p>
+</li>
+<li>last, the matrix of the reduced boundary \(\mathrm d_q\) is:  <p class="formulaDsp">
+\[\begin{array}{c}
+\ \ \ \ \ \ C_q \\
+\begin{array}{c}
+C_{q-1} \\
+\end{array}
+\begin{array}{|c|}
+\hline
+DD_q \\
+\hline
+\end{array}
+\end{array}
+\]
+</p>
+ with <p class="formulaDsp">
+\[ D_q = \partial(C_{q})|_{C_{q-1}} + F_{q} \cdot \partial(C_{q})|_{P_{q-1}} = \partial(C_{q})|_{C_{q-1}} + \partial(S_{q})|_{C_{q-1}} \cdot G_q \]
+</p>
+</li>
+</ul>
+<p>Therefore the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> "reduces" the complex to a smaller complex over critical cells.</p>
+<p>A <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is called <b>perfect</b> when the reduced boundary is null, then for any \(q \in \{0\ldots d\}\):</p><ul>
+<li>\(\beta_q = | C_q |\)</li>
+<li>Homology generators of dimension \(q\) are \(\{g(\sigma) \,;\, \sigma\in C_q \}\)</li>
+<li>Cohomology generators of dimension \(q\) are \(\{f^*(\sigma) \,;\, \sigma\in C_q \}\)</li>
+</ul>
+<p>Hence a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> computes homology and provides a rich homological information.</p><ul>
+<li>when \(A\) is a field, perfect HDVFs always exist and any <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> can be completed into a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> (see <a class="el" href="index.html#secHDVFcomput">Computing and deforming a HDVF</a>)</li>
+<li>when \(A\) is a ring:<ul>
+<li>if the torsion part is null, we hypothesise that a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> always exist</li>
+<li>with torsion, we hypothesise that a torsion-perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> always exist (where the reduced boundary is limited to torsion) Both questions are still an open and we have no counter-examples.</li>
+</ul>
+</li>
+</ul>
+<p>Moreover, the reduction provides various informations on cycles and co-cycles:</p><ul>
+<li>An <b>annotation</b> associates to a cycle its decomposition in the basis of homology generators, up to boundaries: <br>
+ Given \(\gamma\in Z_q(\mathscr C)\), \(f(\gamma)\) is an annotation of \(\gamma\): <p class="formulaDsp">
+\[\text{if }f(\gamma) = \sum_i \alpha_i\cdot \sigma_i,\ \ \ \sigma_i\in C_q\]
+</p>
+ <p class="formulaDsp">
+\[\text{then }\ \ \ \gamma = \sum_i \alpha_i\cdot g(\sigma_i) + \beta,\ \ \ \beta \in B_q(\mathscr C)\]
+</p>
+</li>
+<li>A <b>co-annotation</b> associates to a cycle its decomposition in the basis of cohomology generators, up to coboundaries: <br>
+ Given \(\gamma\in Z^q(\mathscr C)\), \(g^*(\gamma)\) is a co-annotation of \(\gamma\): <p class="formulaDsp">
+\[\text{if }g^*(\gamma) = \sum_i \alpha_i\cdot \sigma_i,\ \ \ \sigma_i\in C^q\]
+</p>
+ <p class="formulaDsp">
+\[\text{then }\ \ \ \gamma = \sum_i \alpha_i\cdot f^*(\sigma_i) + \beta,\ \ \ \beta \in B^q(\mathscr C)\]
+</p>
+</li>
+</ul>
+<p>Annotations and co-annotations provide convenient tests to decide if to cycles (resp. co-cycles) belong to the same homology (resp. cohomology) class:</p><ul>
+<li>Two cycles \(\gamma\) and \(\gamma'\) belong to the same homology class if they have the same annotation (ie. \(f(\gamma) = f(\gamma')\))</li>
+<li>Two co-cycles \(\gamma\) and \(\gamma'\) belong to the same cohomology class if they have the same co-annotation (ie. \(g^*(\gamma) = g^*(\gamma')\))</li>
+</ul>
+<p>Figure <a class="el" href="index.html#fig__HDVFex_hom_cohom">Figure 94.8</a> shows an example of <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> together with corresponding homology and cohomology generators. In all the package, we use the following colors convention:</p><ul>
+<li>PRIMARY cells are depicted in green</li>
+<li>SECONDARY cells are depicted in red</li>
+<li>CRITICAL cells are depicted in blue</li>
+</ul>
+<p>Let us point out that HDVFs can be represented in a "discrete Morse theory" style, with arrows (ie. a vector field) pairing a primary and a secondary cell among its co-faces (the vector field associated to a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is not unique). But DGVF are a strict subset of HDVFs:</p><ul>
+<li>each DGVF is a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> (labelling sources of arrows as PRIMARY, targets of arrows as SECONDARY, unpaired cells as CRITICAL always produces an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>)</li>
+<li>but <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> may produce vector fields with cycles</li>
+</ul>
+<p>The following figures show an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> and an associated vector field:<br>
+ <img src="HDVF_ex1_A3.png" alt="" align="center" width="30%/" class="inline"> <img src="HDVF_ex1_A3_DGVF.png" alt="" align="center" width="30%/" class="inline"></p>
+<p>And the following figure exhibits the vector field representation of a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> with a cycle (on the right, the cycle is highlighted in purple):<br>
+ <img src="HDVF_cycle.png" alt="" align="center" width="20%/" class="inline"> <img src="HDVF_cycle_highlighted.png" alt="" align="center" width="20%/" class="inline"><br>
+ Hence this vector field is a valid <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> ( \(\partial(S)|_P\) is invertible) but it is not a DGVF.</p>
+<h2><a class="anchor" id="secHDVFcomput"></a>
+Computing and deforming a HDVF</h2>
+<p>HDVFs can be computed using previous matrix expression; however, Aldo Gonzalez-Lorenzo has shown that several operations on <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> can be introduced, not only to built, but also transform HDVFs.</p>
+<ul>
+<li><p class="startli"><b>A operation</b> (pairing of two critical cells)<br>
+ Given a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> \(X=(P,S,C)\), and two CRITICAL cells \(\gamma_1\in C_q\), \(\gamma_2\in C_{q+1}\) </p><p class="formulaDsp">
+\[ A(X) = \Big(P\cup\{\gamma_1\}, S\cup\{\gamma_2\}, C\backslash \{\gamma_1, \gamma_2\}\Big)\]
+</p>
+<p> and the operation is valid (ie. produces an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>) if and only if: </p><p class="formulaDsp">
+\[ \langle \mathrm d(\gamma_2),\gamma_1\rangle \text{ is invertible}\]
+</p>
+<ul>
+<li>Any perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> can be built by iterating the A operation (with complexity at most \(\mathscr O(n^3))\))</li>
+<li>This operation can also complete a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> into a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a></li>
+</ul>
+<p class="startli">Figures below illustrate this operation on a cubical chain complex: (left) an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> such that \((\gamma_1,\gamma_2)\) meet the A condition, (right) the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> obtained after \(A(\gamma_1,\gamma_2)\).</p>
+</li>
+</ul>
+<p><img src="HDVF_ex1_A2_A.png" alt="" align="center" width="30%/" class="inline"> <img src="HDVF_ex1_A3.png" alt="" align="center" width="30%/" class="inline"></p>
+<ul>
+<li><p class="startli"><b>R operation</b> (unpairing of two critical cells)<br>
+ Given a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> \(X=(P,S,C)\), a PRIMARY cell \(\pi\in P_q\) and a SECONDARY cells \(\sigma\in S_{q+1}\) </p><p class="formulaDsp">
+\[ R(X) = \Big(P\backslash\{\pi\}, S\backslash\{\sigma\}, C\cup \{\pi, \sigma\}\Big)\]
+</p>
+<p> and the operation is valid (ie. produces an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>) if and only if: </p><p class="formulaDsp">
+\[ \langle h(\pi),\sigma\rangle \text{ is invertible}\]
+</p>
+<p class="startli">Operations A and R are inverse one another.</p>
+</li>
+<li><p class="startli"><b>M operation</b> (exchange a PRIMARY and a CRITICAL cell)<br>
+ Given a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> \(X=(P,S,C)\), a PRIMARY cell \(\pi\in P_q\) and a CRITICAL cell \(\gamma_1\in C_{q}\) </p><p class="formulaDsp">
+\[ M(X) = \Big(P\backslash \{\pi\} \cup\{\gamma\}, S, C\backslash \{\gamma\}\cup \{\pi\}\Big)\]
+</p>
+<p> and the operation is valid (ie. produces an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>) if and only if: </p><p class="formulaDsp">
+\[ \langle \mathrm f(\pi),\gamma\rangle \text{ is invertible}\]
+</p>
+<p class="startli">The M operation modifies the homology generator associated to \(\gamma\) (while preserving is associated cohomology generator). The following figure illustrates the M operation.</p>
+</li>
+</ul>
+<p><a class="anchor" id="fig__HDVF_M"></a> </p><div class="image">
+<img src="HDVF_M.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVF_M">Figure 94.11</a> M operation on a cubical complex \(K\). <b>Left:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over \(K\) with cells \((\pi, \gamma)\) meeting the M operation condition (blue: homology generator associated with \(\gamma\), pink: cohomology generator associated with \(\gamma\)); <b>Right:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> obtained with \(M(\pi,\gamma)\) and updated generators (associated to \(\pi\) which is now critical). </p> </div> <p> <br>
+</p>
+<ul>
+<li><p class="startli"><b>W operation</b> (exchange a SECONDARY and a CRITICAL cell)<br>
+ Given a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> \(X=(P,S,C)\), a SECONDARY cell \(\sigma\in S_q\) and a CRITICAL cell \(\gamma_1\in C_{q}\) </p><p class="formulaDsp">
+\[ W(X) = \Big(P, S\backslash\{\sigma\}\cup \{\gamma\}, C\backslash \{\gamma\}\cup \{\sigma\}\Big)\]
+</p>
+<p> and the operation is valid (ie. produces an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>) if and only if: </p><p class="formulaDsp">
+\[ \langle \mathrm g(\gamma),\sigma\rangle \text{ is invertible}\]
+</p>
+<p class="startli">The W operation modifies the cohomology generator associated to \(\gamma\) (while preserving is associated homology generator). The following figure illustrates the W operation.</p>
+</li>
+</ul>
+<p><a class="anchor" id="fig__HDVF_W"></a> </p><div class="image">
+<img src="HDVF_W.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVF_W">Figure 94.12</a> W operation on a cubical complex \(K\). <b>Left:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over \(K\) with cells \((\sigma, \gamma)\) meeting the W operation condition (blue: homology generator associated with \(\gamma\), pink: cohomology generator associated with \(\gamma\)); <b>Right:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> obtained with \(W(\pi,\gamma)\) and updated generators (associated to \(\sigma\) which is now critical). </p> </div> <p> <br>
+</p>
+<ul>
+<li><p class="startli"><b>MW operation</b> (exchange a PRIMARY and a SECONDARY cell)<br>
+ Given a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> \(X=(P,S,C)\), a PRIMARY cell \(\pi\in P_q\) and a SECONDARY cell \(\sigma\in S_{q}\) </p><p class="formulaDsp">
+\[ MW(X) = \Big(P\backslash\{\pi\}\cup \{\sigma\}, S\backslash\{\sigma\}\cup \{\pi\}, C\Big)\]
+</p>
+<p> and the operation is valid (ie. produces an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>) if and only if: </p><p class="formulaDsp">
+\[ \langle \partial h(\pi),\sigma\rangle \text{ and } \langle h\partial(\sigma),\pi\rangle\text{ are invertible}\]
+</p>
+<p class="startli">The MW operation modifies both homology and cohomology generators. The following figure illustrates the W operation.</p>
+</li>
+</ul>
+<p><a class="anchor" id="fig__HDVF_MW"></a> </p><div class="image">
+<img src="HDVF_MW.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVF_MW">Figure 94.13</a> MW operation on a cubical complex \(K\). <b>Top:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over \(K\) with cells \((\pi_1, \sigma_1)\) and \((\pi_2, \sigma_2)\) meeting the MW operation condition (blue: homology generators, pink: cohomology generators); <b>Down, left:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> obtained with \(MW(\pi_1,\sigma_1)\) and updated generators (a cohomology generator is modified); <b>Down, right:</b> perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> obtained with \(MW(\pi_2,\sigma_2)\) and updated generators (a homology generator is modified). </p> </div> <p> <br>
+</p>
+<p>Recent works by Yann-Situ Gazull [YSG1], [YSG2] proved that (when \(A\) is a field):</p><ul>
+<li>the space of perfect HDVFs is connected under M, W and MW operations (see [YSG2])</li>
+<li>homology bases computed by HDVFs and other computational approaches (Smith Normal Form, persistent homology, tripartitions...) can be precisely characterised as <b>explicit basis</b> (see [YSG1])</li>
+<li>any perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> can be adapted in time \(\mathscr O(kn^2)\) to compute a free set of generators of size \(k\) (e.g. a given basis)</li>
+</ul>
+<p>These results will soon be implemented in the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package.</p>
+<h2><a class="anchor" id="secHDVFpersistent_homology"></a>
+Persistent homology</h2>
+<h2><a class="anchor" id="secHDVFreduced_Alexander"></a>
+Relative homology and Alexander duality</h2>
+<h1><a class="anchor" id="secHDVFHDVFpackage"></a>
+The HDVF package</h1>
+<p>This section describes the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package implementing the theory described in previous sections.</p>
+<p>In order to compute the homology/cohomology of a discrete object with an <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>, the process is as follows:</p><ol type="1">
+<li>Define the ring of coefficients type</li>
+<li>Build a chain complex from one of the models of <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code> (<code>Geometric_simplicial_chain_complex</code>, <code>Abstract_simplicial_chain_complex</code> or <code>Cubical_chain_complex</code>)</li>
+<li>Build a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> from this chain complex</li>
+<li>Compute a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> (fast mode or random mode)</li>
+</ol>
+<p><a class="anchor" id="fig__HDVFoverview_HDVF"></a> </p><div class="image">
+<img src="HDVFoverview_HDVF.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVFoverview_HDVF">Figure 94.14</a> Overview of homology/cohomology computation with the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="secHDVFCoefficientType"></a>
+Defining the ring of coefficients</h2>
+<p>The ring of coefficients must be a model of the <code><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></code> concept:</p><ul>
+<li>the ring \(\mathbb Z\) <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keywordtype">int</span> CoefficientType ;</div>
+</div><!-- fragment --></li>
+<li>a field \(\mathbb Z/p\mathbb Z\) <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Zp.h&gt;</span></div>
+<div class="line"><span class="keyword">typedef</span> Zp&lt;p&gt; CoefficientType ;</div>
+</div><!-- fragment --> with \(p\) a given prime number.</li>
+<li>the field \(\mathbb Z/2\mathbb Z\) (the class<code><a class="elRef" href="../Number_types/classCGAL_1_1Zp.html">Zp</a></code> can also be used, but <code><a class="elRef" href="../Number_types/classCGAL_1_1Z2.html">Z2</a></code> is optimized for \(p=2\)) <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Z2.h&gt;</span></div>
+<div class="line"><span class="keyword">typedef</span> Z2 CoefficientType ;</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="secHDVFChainComplex"></a>
+Building a chain complex</h2>
+<p>The <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package provides several chain complexes: <code>Abstract_simplicial_chain_complex</code>, <code>Geometric_simplicial_chain_complex</code> and <code>Cubical_chain_complex</code>.</p>
+<p>In order to build such a chain complex, discrete objects are first imported into a temporary combinatorial structure storing input cells. The chain complex is then built from this intermediate structure by adding all the faces of cells and computing the corresponding boundary matrix.</p>
+<p>Let us point out that whatever the type of chain complex, cells are indexed along each dimension; hence a cell is identified by an index and a dimension.</p>
+<ul>
+<li><code>Abstract_simplicial_chain_complex</code> (see section <a class="el" href="index.html#secHDVFsimplicial_chain_complex">Simplicial chain complexes</a>) are built using the <code>Mesh_object_io</code> intermediate class from abstract simplices (vertices have no coordinates). Therefore, such complexes are usually computed from <code>.simp</code> files (a simple file format enumerating on each line vertices of simplices, see section secHDVFsimpFile): <div class="fragment"><div class="line"><span class="keyword">using </span>Complex = Abstract_simplicial_chain_complex&lt;CoefficientType&gt; ;</div>
+<div class="line">Mesh_object_io mesh ;</div>
+<div class="line">mesh.read_simp(filename);</div>
+<div class="line">Complex complex(mesh);</div>
+</div><!-- fragment --></li>
+<li><code>Simplicial_chain_complex</code> are also built using the <code>Mesh_object_io</code> intermediate structure to import mesh files (<code>.off</code> format): <div class="fragment"><div class="line"><span class="keyword">using </span>Complex = Simplicial_chain_complex&lt;CoefficientType&gt; ;</div>
+<div class="line">Mesh_object_io mesh ;</div>
+<div class="line">mesh.read_off(filename);</div>
+<div class="line">Complex complex(mesh);</div>
+</div><!-- fragment --></li>
+<li><code>Cubical_chain_complex</code> are built using the <code>Cub_object_io</code> intermediate structure by importing either simple <code>.cub</code> files (enumerating Khalimsky coordinates of cells, see section <a class="el" href="index.html#secHDVFcubFile">The CUB file format</a>) or <code>.pgm</code> files.<ul>
+<li>For <code>.cub</code> files enumerating Khalimsky coordinates, cells are imported and their faces are added to produce a proper complex. <div class="fragment"><div class="line"><span class="keyword">using </span>Complex = Cubical_chain_complex&lt;CoefficientType&gt; ;</div>
+<div class="line">Cub_object_io mesh ;</div>
+<div class="line">mesh.read_cub(filename, <span class="keyword">true</span>);</div>
+<div class="line">Complex complex(mesh);</div>
+</div><!-- fragment --></li>
+<li>For <code>.pgm</code> files (ie. for binary images or volumes), two constructions are available for cubical complexes:<ul>
+<li>PRIMAL, encoding \(3^d-1\)-adjacency (where cells are imported as such, see figure <a class="el" href="index.html#fig__HDVF_primal_dual">Figure 94.15</a>, middle) <div class="fragment"><div class="line"><span class="keyword">using </span>Complex = Cubical_chain_complex&lt;CoefficientType&gt; ;</div>
+<div class="line">Cub_object_io mesh ;</div>
+<div class="line"><span class="comment">// Read pgm file (store Khalimsky coordinates)</span></div>
+<div class="line">mesh.read_pgm(filename, <span class="keyword">true</span>);</div>
+<div class="line"><span class="comment">// Build the PRIMAL complex associated</span></div>
+<div class="line">Complex complex(mesh, CGAL::Homological_discrete_vector_field::Complex::PRIMAL);</div>
+</div><!-- fragment --></li>
+<li>DUAL, encoding \(2d\)-adjacency (where cubes produce vertices... see figure <a class="el" href="index.html#fig__HDVF_primal_dual">Figure 94.15</a> right) <div class="fragment"><div class="line"><span class="keyword">using </span>Complex = Cubical_chain_complex&lt;CoefficientType&gt; ;</div>
+<div class="line">Cub_object_io mesh ;</div>
+<div class="line"><span class="comment">// Read pgm file (store voxel coordinates)</span></div>
+<div class="line">mesh.read_pgm(filename, <span class="keyword">false</span>);</div>
+<div class="line"><span class="comment">// Build the DUAL complex associated</span></div>
+<div class="line">Complex complex(mesh, CGAL::Homological_discrete_vector_field::Complex::DUAL);</div>
+</div><!-- fragment --></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a class="anchor" id="fig__HDVF_primal_dual"></a> </p><div class="image">
+<img src="HDVF_primal_dual.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVF_primal_dual">Figure 94.15</a> Primal and dual constructions of cubical chain complexes from a binary volume. <b>Left:</b> a 3D binary volume; <b>Middle:</b> PRIMAL cubical (chain) complex associated to the volume; <b>Right:</b> DUAL cubical (chain) complex associated to the volume).<br>
+ Figure taken from [AGL, 2016]. </p> </div> <p> <br>
+</p>
+<h3><a class="anchor" id="secHDVFsimpFile"></a>
+The &lt;tt&gt;.simp&lt;/tt&gt; file format</h3>
+<p>The <code>simp</code> file format is a very simple text format listing, encoding simplicial complexes. It enumerates simplices line by line (described by the indices of their vertices). The file doesn't need to provide an exhaustive enumeration of simplices (with all their faces), indeed, the simplicial chain complex constructors fill them with faces. Figure <a class="el" href="index.html#fig__HDVF_simp_file">Figure 94.16</a> illustrate the format on a simple simplicial complex.</p>
+<p><a class="anchor" id="fig__HDVF_simp_file"></a> </p><div class="image">
+<img src="HDVF_simp_file.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVF_simp_file">Figure 94.16</a> Example of <code>simp</code> file. <b>Left:</b> a simplicial complex; <b>Right:</b> associated <code>simp</code> files describing maximal simplices. </p> </div> <p> <br>
+</p>
+<h3><a class="anchor" id="secHDVFcubFile"></a>
+The CUB file format</h3>
+<p>The <code>cub</code> file format is a very simple text format encoding binary volumes:</p><ul>
+<li>first line: dimension</li>
+<li>second line: size of Khalimsky coordinates of the bounding box along each axis</li>
+<li>following lines: list of cells in Khalimsky coordinates</li>
+</ul>
+<p>The file doesn't need to provide an exhaustive enumeration of cells (with all their faces), indeed, the cubical chain complex constructors fill them with faces. Figure <a class="el" href="index.html#fig__HDVF_cub_file">Figure 94.17</a> illustrate the format on a simple cubical complex.</p>
+<p><a class="anchor" id="fig__HDVF_cub_file"></a> </p><div class="image">
+<img src="HDVF_cub_file.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__HDVF_cub_file">Figure 94.17</a> Example of <code>cub</code> file. <b>Left:</b> a cubical complex; <b>Right:</b> associated <code>cub</code> files describing maximal cells. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="secHDVFbuild"></a>
+Building and computing a HDVF</h2>
+<p>An empty <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is built from a chain complex: </p><div class="fragment"><div class="line"><span class="keyword">using </span>HDVF_type = Hdvf&lt;CoefficientType, Complex&gt; ;</div>
+<div class="line">HDVF_type hdvf(complex, OPT_FULL) ;</div>
+</div><!-- fragment --><p>Several <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> options are available:</p><ul>
+<li><code>OPT_D</code>: fastest option - compute only the reduced boundary \(\mathrm d\) (under this option, HDVFs provide only low level homological information: Betti numbers and critical cells</li>
+<li><code>OPT_F</code>, <code>OPT_G</code>: compute the reduction partially (only \(f\) for cohomology generators or \(g\) for homology generators)</li>
+<li><code>OPT_FULL</code>: compute the full reduction</li>
+</ul>
+<h3><a class="anchor" id="secHDVFcomputePerfect"></a>
+Computing a perfect HDVF automatically</h3>
+<p>The <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> obtained is empty (all cells are critical). In order to compute homology/cohomology that is a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>, the package provides two methods:</p><ul>
+<li><code>compute_perfect_hdvf()</code> (fastest method: cells are paired using the A operation by decreasing dimension using the first valid pair)</li>
+<li><code>compute_rand_perfect_hdvf()</code> (slowest: compute all valid pairs for the A operation are select one randomly)</li>
+</ul>
+<div class="fragment"><div class="line">hdvf.compute_perfect_hdvf();</div>
+</div><!-- fragment --><p> or </p><div class="fragment"><div class="line">hdvf.compute_rand_perfect_hdvf();</div>
+</div><!-- fragment --><p>When the ring of coefficients is a field, these methods always produce a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>. However for \(\mathbb Z\)-(co)homology (without torsion), the existence of complexes admitting no perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is still an open question (and the answer is negative for "reasonable" objects, indeed we still have no counter example). The method <code>is_perfect_hdvf()</code> checks if a <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> is perfect.</p>
+<h3><a class="anchor" id="secHDVFcomputePerfectA"></a>
+Computing a perfect HDVF with A operations</h3>
+<p>For specific applications, HDVFs can be built by iterating the A operation: </p><div class="fragment"><div class="line">hdvf.A(id1, id2, q) ;</div>
+</div><!-- fragment --><p> performs a pairing between the cells \(\gamma_1\) (index <code>id1</code> in dimension <code>q</code>) and \(\gamma_2\) (index <code>id2</code> in dimension <code>q+1</code>).</p>
+<p>The package provide a family of methods to search for valid pairings: </p><div class="fragment"><div class="line">Cell_pair pair;</div>
+<div class="line">std::vector&lt;Cell_pair&gt; pairs;</div>
+<div class="line"><span class="keywordtype">bool</span> found;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Search for the first valid pair in dimension `q`</span></div>
+<div class="line">pair = find_pair_A(q, found);</div>
+<div class="line"><span class="comment">// Search for the first cell (of dimension `q-1` or `q+1`) forming a valid pair with tau (index `id`, dimension `q`)</span></div>
+<div class="line">pair = find_pair_A(q, found, <span class="keywordtype">id</span>);</div>
+<div class="line"><span class="comment">// Search for all valid pairs in dimension `q`</span></div>
+<div class="line">pairs = find_pairs_A(q, found);</div>
+<div class="line"><span class="comment">// Search for all cells (of dimension `q-1` or `q+1`) forming a valid pair with tau (index `id`, dimension `q`)</span></div>
+<div class="line">pairs = find_pairs_A(q, found, <span class="keywordtype">id</span>);</div>
+</div><!-- fragment --><h2><a class="anchor" id="secHDVFoutput"></a>
+Extracting and saving homological/cohomological information</h2>
+<dl class="section warning"><dt>Warning</dt><dd>All <code>vtk</code> exports are only available for geometric chain complexes (i.e. <code>Simplicial_chain_complex</code> and <code>Cubical_chain_complex</code>).</dd></dl>
+<p>How to extract (co)homological information then? Various solutions and output are available:</p><ul>
+<li><b><a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> extraction / visualization</b>: The method <code>psc_labels()</code> extracts cells flags in any dimensions. The complex annotated with labels can then be exported to <code>vtk</code> for visualization. The <code>vtk</code> output includes a <code>Label</code> property encoding the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> PSC_flag (-1 for PRIMARY, 1 for SECONDARY and 0 for CRITICAL cells), and a <code>CellId</code> property storing cells indices: <div class="fragment"><div class="line"><span class="comment">// Labels extraction</span></div>
+<div class="line">vector&lt;vector&lt;int&gt; &gt; labels = hdvf.psc_labels() ;</div>
+<div class="line"><span class="comment">// VTK export</span></div>
+<div class="line">Complex::chain_complex_to_vtk(complex, filename, &amp;labels) ;</div>
+</div><!-- fragment --></li>
+<li><b>Betti numbers</b>: For a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a>, the Betti number in dimension \(q\) equals \(|C_q|\), the number of critical cells. Critical cells can be obtained:<ul>
+<li>either in all dimensions: <div class="fragment"><div class="line">std::vector&lt;std::vector&lt;size_t&gt; &gt; criticals =  hdvf.psc_flags(<a class="code hl_enumvalue" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996a9dcec8534bafb0cfac41e52b4c93c423">CGAL::Homological_discrete_vector_field::CRITICAL</a>);</div>
+<div class="ttc" id="anamespaceCGAL_1_1Homological__discrete__vector__field_html_aa38a2d87c6b086b5187018a0b91a5996a9dcec8534bafb0cfac41e52b4c93c423"><div class="ttname"><a href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996a9dcec8534bafb0cfac41e52b4c93c423">CGAL::Homological_discrete_vector_field::CRITICAL</a></div><div class="ttdeci">@ CRITICAL</div><div class="ttdef"><b>Definition:</b> Hdvf_core.h:31</div></div>
+</div><!-- fragment --></li>
+<li>or in a given dimension <code>q</code>: <div class="fragment"><div class="line">std::vector&lt;size_t&gt; criticals_q = hdvf.psc_flags(<a class="code hl_enumvalue" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#aa38a2d87c6b086b5187018a0b91a5996a9dcec8534bafb0cfac41e52b4c93c423">CGAL::Homological_discrete_vector_field::CRITICAL</a>, q) ;</div>
+</div><!-- fragment --></li>
+</ul>
+</li>
+<li><b>Homology/cohomology generators</b> Each critical cell \(\gamma\) bears an associated homology generator: \(g(\gamma)\) and cohomology generator: \(f^*(\gamma)\).<ul>
+<li>Generators associated to \(\gamma\) (index <code>id</code>, dimension <code>q</code>) can be extracted as column chains (ie. column <code>Sparse_chain</code>): <div class="fragment"><div class="line">HDVF_type::Column_chain hom_generator(hdvf.homology_chain(<span class="keywordtype">id</span>, q)) ;</div>
+<div class="line">HDVF_type::Column_chain cohom_generator(hdvf.cohomology_chain(<span class="keywordtype">id</span>, q)) ;</div>
+</div><!-- fragment --> These chains can be visited as described in section <a class="el" href="index.html#secHDVFmatrixChain">A few words about sparse matrices and chains</a>.</li>
+<li>The <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> package also provides a vtk exporter for such chains (cells with a non zero coefficient are exported). For instance: <div class="fragment"><div class="line">Complex::chain_to_vtk(complex, filename, hom_generator, q, <span class="keywordtype">id</span>) ;</div>
+</div><!-- fragment --> If <code>id</code> is provided, a <code>Label</code> integer property is added to the vtk file (0 for the cell <code>id</code>, 2 for other cells).</li>
+</ul>
+</li>
+<li><b>Reduction maps</b> Matrices of the reduction ( \(F\), \(G\), \(H\) and \(D\)) can be also obtained using <code>matrix_f()</code>, <code>matrix_g()</code>, <code>matrix_h()</code> and <code>matrix_dd()</code>.</li>
+<li><b>Automated vtk export</b> In order to ease <code>vtk</code> export, an "automated" method <code>CGAL::IO::write_VTK()</code> is also provided, exporting in distinct files, the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> flags and all the generators computed (homology / cohomology depending of the <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> option): <div class="fragment"><div class="line">CGAL::IO::write_VTK&lt;CoefficientType, Complex&gt;(hdvf, complex, outfile_root, co_faces) ;</div>
+</div><!-- fragment --> where <code>outfile_root</code> is the root of the <code>.vtk</code> file names and <code>co_faces</code> is a Boolean (if <code>true</code>, cohomology generators are represented through their cofaces).</li>
+<li>HDVFs and reductions can also be saved / loaded to <code>.hdvf</code> files (a simple text file format described in section <a class="el" href="index.html#secHDVFHDVF_format">The <code>.hdvf</code> file format</a>) with <code>insert_hdvf_reduction()</code> and <code>extract_hdvf_reduction()</code>.</li>
+</ul>
+<h3><a class="anchor" id="secHDVFHDVF_format"></a>
+The &lt;tt&gt;.hdvf&lt;/tt&gt; file format</h3>
+<p>The <code>.hdvf</code> file format is a simple text format used to save HDVFs. It relies on the <code>.osm</code> format described in section <a class="el" href="index.html#secHDVFOSM_format">The OSM file format</a>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The file format does not store the underlying complex, therefore the dimension and the number of cells in each dimension are used to check the coherence of the <code>.hdvf</code> file with the underlying complex provided by the user.</dd></dl>
+<ul>
+<li><a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> type (0 for <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> and reduction, 1 for <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> only)</li>
+<li>Dimension of the complex</li>
+<li>List of the number of cells in each dimension (one dimension by row)</li>
+<li><a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> option (OPT_BND | OPT_F | OPT_G | OPT_FULL)</li>
+<li>List of the flags of cells in each dimension (one dimension by row: -1 for PRIMARY, 1 for SECONDARY, 0 for CRITICAL)</li>
+<li>According to <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> option: output F matrices in each dimension (<code>.osm</code> format)</li>
+<li>According to <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> option: output G matrices in each dimension (<code>.osm</code> format)</li>
+<li>Output H matrices in each dimension (<code>.osm</code> format)</li>
+<li>Output DD matrices in each dimension (<code>.osm</code> format)</li>
+</ul>
+<h2><a class="anchor" id="secHDVFexHDVF"></a>
+HDVF examples</h2>
+<p>The following examples exhibit the computation of a perfect <a class="el" href="classHDVF.html" title="The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...">HDVF</a> over a simplicial (resp. cubical) chain complex built from a <code>.off</code> file (resp. a <code>.pgm</code> file). Generators are then exported to <code>.vtk</code>. <br>
+<b>File</b> <a class="el" href="HDVF_2hdvf_simplicial_8cpp-example.html">HDVF/hdvf_simplicial.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="../Number_types/Zp_8h.html">CGAL/Zp.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="../Number_types/Z2_8h.html">CGAL/Z2.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf_traits_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Mesh_object_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Simplicial_chain_complex.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Geometric_chain_complex_tools.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/OSM/OSM.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="classHDVF.html">HDVF</a> = <a class="code hl_namespace" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">CGAL::Homological_discrete_vector_field</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//typedef int Coefficient_ring;</span></div>
+<div class="line"><span class="comment">//typedef CGAL::Z2 Coefficient_ring;</span></div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Number_types/classCGAL_1_1Zp.html">CGAL::Zp&lt;5, char, true&gt;</a> <a class="code hl_classRef" href="../Manual/classunspecified__type.html">Coefficient_ring</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> HDVF::Hdvf_traits_3&lt;Kernel&gt; Traits;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line"><span class="preprocessor">#if 1</span></div>
+<div class="line">    <span class="keyword">using </span>Complex = HDVF::Simplicial_chain_complex&lt;Coefficient_ring,Traits&gt; ;</div>
+<div class="line">    <span class="keyword">using </span>HDVF_type = HDVF::Hdvf&lt;Complex&gt; ;</div>
+<div class="line"> </div>
+<div class="line">    std::string filename ;</div>
+<div class="line">    <span class="keywordflow">if</span> (argc &gt; 2) std::cerr &lt;&lt; <span class="stringliteral">"usage: example_hdvf_simplicial off_file"</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc == 1) filename  = <span class="stringliteral">"data/mesh_data/two_rings.off"</span>;</div>
+<div class="line">    <span class="keywordflow">else</span> filename = argv[1];</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Load cub object</span></div>
+<div class="line">    HDVF::Mesh_object_io&lt;Traits&gt; mesh ;</div>
+<div class="line">    mesh.read_off(filename);</div>
+<div class="line"> </div>
+<div class="line">    mesh.print_infos();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Build simplicial chain complex</span></div>
+<div class="line">    Complex complex(mesh);</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; complex;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//    // Build empty HDVF</span></div>
+<div class="line">    <span class="comment">// Without dimension restriction</span></div>
+<div class="line">    HDVF_type hdvf(complex, HDVF::OPT_FULL) ;</div>
+<div class="line">    <span class="comment">// With computation restricted to dimension 1</span></div>
+<div class="line"><span class="comment">//    HDVF_type hdvf(complex, HDVF::OPT_FULL, 1) ;</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Compute a perfect HDVF</span></div>
+<div class="line">    hdvf.compute_perfect_hdvf();</div>
+<div class="line">    <span class="comment">//        hdvf.compute_rand_perfect_hdvf();</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Output HDVF to console</span></div>
+<div class="line">    hdvf.write_matrices();</div>
+<div class="line">    hdvf.write_reduction();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Output HDVF to vtk</span></div>
+<div class="line">    CGAL::IO::write_VTK(hdvf, complex, <span class="stringliteral">"tmp/res"</span>, <span class="keyword">true</span>) ;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Save HDVF to .hdvf file</span></div>
+<div class="line">    hdvf.write_hdvf_reduction(<span class="stringliteral">"tmp/test.hdvf"</span>) ;</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aZ2_8h_html"><div class="ttname"><a href="../Number_types/Z2_8h.html">Z2.h</a></div></div>
+<div class="ttc" id="aZp_8h_html"><div class="ttname"><a href="../Number_types/Zp_8h.html">Zp.h</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Zp_html"><div class="ttname"><a href="../Number_types/classCGAL_1_1Zp.html">CGAL::Zp</a></div></div>
+<div class="ttc" id="aclassHDVF_html"><div class="ttname"><a href="classHDVF.html">HDVF</a></div><div class="ttdoc">The concept HDVF describes the requirements for Homological Discrete Vector Fields (HDVF for short) ,...</div><div class="ttdef"><b>Definition:</b> HDVF.h:128</div></div>
+<div class="ttc" id="aclassunspecified__type_html"><div class="ttname"><a href="../Manual/classunspecified__type.html">unspecified_type</a></div></div>
+<div class="ttc" id="anamespaceCGAL_1_1Homological__discrete__vector__field_html"><div class="ttname"><a href="namespaceCGAL_1_1Homological__discrete__vector__field.html">CGAL::Homological_discrete_vector_field</a></div><div class="ttdef"><b>Definition:</b> Abstract_simplicial_chain_complex.h:25</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Simple__cartesian_html"><div class="ttname"><a href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian</a></div></div>
+</div><!-- fragment --><p> <br>
+<b>File</b> <a class="el" href="HDVF_2hdvf_cubical_8cpp-example.html">HDVF/hdvf_cubical.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="../Number_types/Z2_8h.html">CGAL/Z2.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="../Number_types/Zp_8h.html">CGAL/Zp.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf_traits_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf_traits_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Cub_object_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Cubical_chain_complex.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Geometric_chain_complex_tools.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/OSM/OSM.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="classHDVF.html">HDVF</a> = <a class="code hl_namespace" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">CGAL::Homological_discrete_vector_field</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//typedef int Coefficient_ring;</span></div>
+<div class="line"><span class="comment">//typedef CGAL::Z2 Coefficient_ring;</span></div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Number_types/classCGAL_1_1Zp.html">CGAL::Zp&lt;5, char, true&gt;</a> <a class="code hl_classRef" href="../Manual/classunspecified__type.html">Coefficient_ring</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> HDVF::Hdvf_traits_3&lt;Kernel&gt; Traits;</div>
+<div class="line"><span class="comment">//typedef HDVF::Hdvf_traits_2&lt;Kernel&gt; Traits;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">using </span>Complex = HDVF::Cubical_chain_complex&lt;Coefficient_ring, Traits&gt; ;</div>
+<div class="line">    <span class="keyword">using </span>HDVF_type = HDVF::Hdvf&lt;Complex&gt; ;</div>
+<div class="line"> </div>
+<div class="line">    std::string filename ;</div>
+<div class="line">    <span class="keywordflow">if</span> (argc &gt; 2) std::cout &lt;&lt; <span class="stringliteral">"usage: hdvf_cubical pgm_file"</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc == 1) filename  = <span class="stringliteral">"data/cub_data/Eight_3D.pgm"</span>;</div>
+<div class="line">    <span class="keywordflow">else</span> filename = argv[1];</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Loading file: "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Choose between PRIMAL and DUAL construction</span></div>
+<div class="line">    <span class="keyword">const</span> Complex::Cubical_complex_primal_dual primal_dual = Complex::PRIMAL;</div>
+<div class="line">    <span class="comment">// Adapt pgm loading into Cub_complex accordingly</span></div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">bool</span> khalimsky_coords = (primal_dual == Complex::PRIMAL) ? <span class="keyword">true</span> : <span class="keyword">false</span> ;</div>
+<div class="line"> </div>
+<div class="line">    HDVF::Cub_object_io&lt;Traits&gt; mesh ;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Load pgm into cub object</span></div>
+<div class="line">    mesh.read_pgm(filename, khalimsky_coords);</div>
+<div class="line">    mesh.print_infos();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Build simplicial chain complex</span></div>
+<div class="line">    Complex complex(mesh, primal_dual);</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; complex;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Build empty HDVF</span></div>
+<div class="line">    HDVF_type hdvf(complex, HDVF::OPT_FULL) ;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Compute a perfect HDVF</span></div>
+<div class="line">    hdvf.compute_perfect_hdvf();</div>
+<div class="line">    <span class="comment">//        hdvf.compute_rand_perfect_hdvf();</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Output HDVF to console</span></div>
+<div class="line">    hdvf.write_matrices();</div>
+<div class="line">    hdvf.write_reduction();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Output HDVF to vtk</span></div>
+<div class="line">    CGAL::IO::write_VTK(hdvf, complex, <span class="stringliteral">"tmp/res"</span>, <span class="keyword">true</span>) ;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="secHDVFmatrixChain"></a>
+A few words about sparse matrices and chains</h2>
+<p>All maps (boundary operator, \(f\), \(g\), \(h\) and \(\mathrm d\)) are stored in sparse matrices and chains are stored in sparse chains. The <code><a class="el" href="namespaceCGAL_1_1OSM.html">OSM</a></code> library provides an implementation of the <code><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></code> and <code><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></code> concepts, that is sparse structures optimized for topological operations (block operations).</p>
+<p>The structure is based on a mapped matrix implementation, hence, matrices and chains are either column or row major (<code><a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e" title="StorageFormat for column chain.">CGAL::OSM::COLUMN</a></code> or <code><a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946" title="StorageFormat flag for row chain.">CGAL::OSM::ROW</a></code> type).</p>
+<p>In order to speed up both block operations and iterators (over non empty columns or row according to the type), a <b>bitboard</b> structure is used (inherited from chess programming community). Hence, in order to iterate over the major dimension of a matrix, one should actually iterate a bitboard (providing indices of non empty columns / rows). See <code>Sparse_matrix</code> documentation for more details.</p>
+<p>Iterating over sparse chains them comes to iterate over a map.</p>
+<p>The following example builds a column major matrix, iterate over its non empty columns (ie. chains) and then iterate over each chain.</p>
+<p><br>
+<b>File</b> <a class="el" href="HDVF_2matrix_chain_8cpp-example.html">HDVF/matrix_chain.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/OSM/OSM.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain&lt;int, CGAL::OSM::COLUMN&gt;</a> <a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Column_chain</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix&lt;int, CGAL::OSM::COLUMN&gt;</a> <a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Column_matrix</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main ()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Create a column-major sparse matrix</span></div>
+<div class="line">    <a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">Column_matrix</a> M(5,4) ;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Fill coefficients</span></div>
+<div class="line">    <a class="code hl_function" href="namespaceCGAL_1_1OSM.html#a5789a15e3062804fc9b490a9ad13937b">CGAL::OSM::set_coefficient</a>(M, 0, 1, 1) ;</div>
+<div class="line">    <a class="code hl_function" href="namespaceCGAL_1_1OSM.html#a5789a15e3062804fc9b490a9ad13937b">CGAL::OSM::set_coefficient</a>(M, 0, 2, -1) ;</div>
+<div class="line">    <a class="code hl_function" href="namespaceCGAL_1_1OSM.html#a5789a15e3062804fc9b490a9ad13937b">CGAL::OSM::set_coefficient</a>(M, 2, 1, 2) ;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Iterate over non empty columns</span></div>
+<div class="line">    <span class="keywordflow">for</span>(<a class="code hl_struct" href="structCGAL_1_1OSM_1_1Bitboard_1_1iterator.html">CGAL::OSM::Bitboard::iterator</a> it_col = M.begin(); it_col != M.end(); ++it_col)</div>
+<div class="line">    {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"col: "</span> &lt;&lt; *it_col &lt;&lt; std::endl ;</div>
+<div class="line">        <span class="comment">// Get a constant reference over the column (complexity O(1))</span></div>
+<div class="line">        <span class="keyword">const</span> <a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__chain.html">Column_chain</a>&amp; col(<a class="code hl_function" href="namespaceCGAL_1_1OSM.html#af2ce435ce992524b78398ddbe8072905">CGAL::OSM::cget_column</a>(M, *it_col));</div>
+<div class="line">        <span class="comment">// Iterate over the column</span></div>
+<div class="line">        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="classCGAL_1_1OSM_1_1Sparse__chain.html#ada9cf27cbc3e0ff92d0221de996a0c24">Column_chain::const_iterator</a> it = col.begin(); it != col.end(); ++it)</div>
+<div class="line">        {</div>
+<div class="line">            std::cout &lt;&lt; <span class="stringliteral">"row: "</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">" - coef: "</span> &lt;&lt; it-&gt;second &lt;&lt; std::endl ;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// Direct output of the matrix with &lt;&lt; operator</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"M: "</span> &lt;&lt; M &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0 ;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1OSM_1_1Sparse__chain_html"><div class="ttname"><a href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a></div><div class="ttdoc">The class Sparse_chain implements the concept SparseChain, that is, sparse vectors (encoding homologi...</div><div class="ttdef"><b>Definition:</b> Sparse_chain.h:52</div></div>
+<div class="ttc" id="aclassCGAL_1_1OSM_1_1Sparse__chain_html_ada9cf27cbc3e0ff92d0221de996a0c24"><div class="ttname"><a href="classCGAL_1_1OSM_1_1Sparse__chain.html#ada9cf27cbc3e0ff92d0221de996a0c24">CGAL::OSM::Sparse_chain&lt; Coefficient_ring, CGAL::OSM::COLUMN &gt;::const_iterator</a></div><div class="ttdeci">std::unordered_map&lt; size_t, Coefficient_ring &gt;::const_iterator const_iterator</div><div class="ttdoc">Type of chains constant iterators.</div><div class="ttdef"><b>Definition:</b> Sparse_chain.h:66</div></div>
+<div class="ttc" id="aclassCGAL_1_1OSM_1_1Sparse__matrix_html"><div class="ttname"><a href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a></div><div class="ttdoc">The class Sparse_matrix implements the concept SparseMatrix, that is, sparse matrices optimized for t...</div><div class="ttdef"><b>Definition:</b> Sparse_matrix.h:68</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1OSM_html_a5789a15e3062804fc9b490a9ad13937b"><div class="ttname"><a href="namespaceCGAL_1_1OSM.html#a5789a15e3062804fc9b490a9ad13937b">CGAL::OSM::set_coefficient</a></div><div class="ttdeci">void set_coefficient(Sparse_matrix&lt; _CT, _CTF &gt; &amp;matrix, size_t i, size_t j, const _CT d)</div><div class="ttdef"><b>Definition:</b> Sparse_matrix.h:1826</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1OSM_html_af2ce435ce992524b78398ddbe8072905"><div class="ttname"><a href="namespaceCGAL_1_1OSM.html#af2ce435ce992524b78398ddbe8072905">CGAL::OSM::cget_column</a></div><div class="ttdeci">const Sparse_chain&lt; _CT, COLUMN &gt; &amp; cget_column(const Sparse_matrix&lt; _CT, COLUMN &gt; &amp;matrix, size_t index)</div><div class="ttdef"><b>Definition:</b> Sparse_matrix.h:1745</div></div>
+<div class="ttc" id="astructCGAL_1_1OSM_1_1Bitboard_1_1iterator_html"><div class="ttname"><a href="structCGAL_1_1OSM_1_1Bitboard_1_1iterator.html">CGAL::OSM::Bitboard::iterator</a></div><div class="ttdef"><b>Definition:</b> Bitboard.h:97</div></div>
+</div><!-- fragment --><p>All standard linear algebra operators are provided (and optimized according to the matrix/chain types).</p>
+<h3><a class="anchor" id="secHDVFOSM_format"></a>
+The OSM file format</h3>
+<p>The <code>.osm</code> file format is a simple text format to store <a class="el" href="namespaceCGAL_1_1OSM.html">OSM</a> sparse matrices:</p><ul>
+<li><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> type (0 for COLUMN, 1 for ROW)</li>
+<li>Number of rows and number of columns (separated by a space)</li>
+<li>Number of coefficients</li>
+<li>List of coefficients (one by row):<br>
+ <code>id_row id_col value</code></li>
+</ul>
+<h2><a class="anchor" id="secHDVFoperations"></a>
+HDVF operations</h2>
+<h2><a class="anchor" id="secHDVFannotations"></a>
+HDVFs and annotations</h2>
+<h2><a class="anchor" id="secHDVFpersistentHom_package"></a>
+HDVFs and persistent homology</h2>
+<h2><a class="anchor" id="secHDVFAlexander_package"></a>
+HDVFs, Alexander duality and relative homology</h2>
+<p>[AGL, 2017] Aldo Gonzalez-Lorenzo, Alexandra Bac, Jean-Luc Mari, Pedro Real. Allowing cycles in discrete Morse theory, Topology and its Applications, Volume 228, 2017, Pages 1-35.</p>
+<p>[AGL, 2016] Aldo Gonzalez-Lorenzo. Computational Homology Applied to Discrete Objects. Discrete Mathematics [PhD]. Aix-Marseille Université; Universidad de Sevilla, 2016.</p>
+<p>[AGL, 2025] Aldo Gonzalez-Lorenzo, Alexandra Bac and Yann-Situ Gazull. A constructive approach of Alexander duality. J Appl. and Comput. Topology 9, 2 (2025).</p>
+<p>[YSG1, 2025] Yann-Situ Gazull, Aldo Gonzalez-Lorenzo and Alexandra Bac. Characterization of the computed homology and cohomology bases. DGMM 2025 (to appear). [YSG1, 2025] Yann-Situ Gazull, Aldo Gonzalez-Lorenzo and Alexandra Bac. Characterization of the computed homology and cohomology bases. DGMM 2025 (to appear).</p>
+<p>[YSG2, 2025] Yann-Situ Gazull, Aldo-Gonzalez-Lorenzo and Alexandra Bac. Space of homological computations: connectivity and paths (submitted to Journal of Applied and Computational Topology).</p>
+<p>[Munkres] J. Munkres. Elements of Algebraic Topology, Addison Wesley Publishing Company, (1984) </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>
