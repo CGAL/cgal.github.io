@@ -1,0 +1,1378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Orthtree/classCGAL_1_1Orthtree.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.0 - Quadtrees, Octrees, and Orthtrees: CGAL::Orthtree&lt; Traits_ &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.0 - Quadtrees, Octrees, and Orthtrees
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Orthtree.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Orthtree-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Orthtree&lt; Traits_ &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgOrthtreeRef.html">Quadtree\, Octree and Orthtree Reference</a> » <a class="el" href="group__PkgOrthtreeClasses.html">Classes</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Orthtree.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Traits_&gt;<br>
+class CGAL::Orthtree&lt; Traits_ &gt;</div><p>A data structure using an axis-aligned hybercubic decomposition of dD space for efficient access and computation. </p>
+<p>It builds a hierarchy of nodes which subdivices the space. Each node represents an axis-aligned hypercubic region of space. The contents of nodes depend on the Traits class, non-leaf nodes also contain \(2^{dim}\) other nodes which further subdivide the region.</p>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="classCGAL_1_1Quadtree.html" title="Alias that specializes the Orthtree class to a 2D quadtree.">CGAL::Quadtree</a></code> </dd>
+<dd>
+<code><a class="el" href="classCGAL_1_1Octree.html" title="Alias that specializes the Orthtree class to a 3D octree.">CGAL::Octree</a></code></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits_</td><td>must be a model of <code><a class="el" href="classOrthtreeTraits.html" title="The concept OrthtreeTraits defines the requirements for the template parameter of the CGAL::Orthtree ...">OrthtreeTraits</a></code> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Orthtree_2orthtree_build_8cpp-example.html#_a3">Orthtree/orthtree_build.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Traits Types</h2></td></tr>
+<tr class="memitem:ae6eb88358133a0d123433edccd119da4"><td class="memItemLeft" align="right" valign="top"><a id="ae6eb88358133a0d123433edccd119da4" name="ae6eb88358133a0d123433edccd119da4"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Dimension</b> = typename Traits::Dimension</td></tr>
+<tr class="memdesc:ae6eb88358133a0d123433edccd119da4"><td class="mdescLeft"> </td><td class="mdescRight">Dimension of the tree. <br></td></tr>
+<tr class="separator:ae6eb88358133a0d123433edccd119da4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a875ffa3d038986984f3eb1b281a57a1b"><td class="memItemLeft" align="right" valign="top"><a id="a875ffa3d038986984f3eb1b281a57a1b" name="a875ffa3d038986984f3eb1b281a57a1b"></a>
+using </td><td class="memItemRight" valign="bottom"><b>FT</b> = typename Traits::FT</td></tr>
+<tr class="memdesc:a875ffa3d038986984f3eb1b281a57a1b"><td class="mdescLeft"> </td><td class="mdescRight">Number type. <br></td></tr>
+<tr class="separator:a875ffa3d038986984f3eb1b281a57a1b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5e13e80c655c08608103bfdf7bfb55df"><td class="memItemLeft" align="right" valign="top"><a id="a5e13e80c655c08608103bfdf7bfb55df" name="a5e13e80c655c08608103bfdf7bfb55df"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Point</b> = typename Traits::Point_d</td></tr>
+<tr class="memdesc:a5e13e80c655c08608103bfdf7bfb55df"><td class="mdescLeft"> </td><td class="mdescRight">Point type. <br></td></tr>
+<tr class="separator:a5e13e80c655c08608103bfdf7bfb55df"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a95202ada8790173649fcab5044e503ea"><td class="memItemLeft" align="right" valign="top"><a id="a95202ada8790173649fcab5044e503ea" name="a95202ada8790173649fcab5044e503ea"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Bbox</b> = typename Traits::Bbox_d</td></tr>
+<tr class="memdesc:a95202ada8790173649fcab5044e503ea"><td class="mdescLeft"> </td><td class="mdescRight">Bounding box type. <br></td></tr>
+<tr class="separator:a95202ada8790173649fcab5044e503ea"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a60af14b2f3f45f6cc850c1286b5238a8"><td class="memItemLeft" align="right" valign="top"><a id="a60af14b2f3f45f6cc850c1286b5238a8" name="a60af14b2f3f45f6cc850c1286b5238a8"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Sphere</b> = typename Traits::Sphere_d</td></tr>
+<tr class="memdesc:a60af14b2f3f45f6cc850c1286b5238a8"><td class="mdescLeft"> </td><td class="mdescRight">Sphere type. <br></td></tr>
+<tr class="separator:a60af14b2f3f45f6cc850c1286b5238a8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac4183e662711b8ad689686bcf6a83ff0"><td class="memItemLeft" align="right" valign="top"><a id="ac4183e662711b8ad689686bcf6a83ff0" name="ac4183e662711b8ad689686bcf6a83ff0"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Adjacency</b> = typename Traits::Adjacency</td></tr>
+<tr class="memdesc:ac4183e662711b8ad689686bcf6a83ff0"><td class="mdescLeft"> </td><td class="mdescRight">Adjacency type. <br></td></tr>
+<tr class="separator:ac4183e662711b8ad689686bcf6a83ff0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aed9613e3c4dd5cebc37595d44fca7dd9"><td class="memItemLeft" align="right" valign="top"><a id="aed9613e3c4dd5cebc37595d44fca7dd9" name="aed9613e3c4dd5cebc37595d44fca7dd9"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Node_data</b> = typename Traits::Node_data</td></tr>
+<tr class="separator:aed9613e3c4dd5cebc37595d44fca7dd9"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Public Types</h2></td></tr>
+<tr class="memitem:a50488539d124676ba38627a3830b2063"><td class="memItemLeft" align="right" valign="top"><a id="a50488539d124676ba38627a3830b2063" name="a50488539d124676ba38627a3830b2063"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Self</b> = <a class="el" href="classCGAL_1_1Orthtree.html">Orthtree</a>&lt; Traits &gt;</td></tr>
+<tr class="memdesc:a50488539d124676ba38627a3830b2063"><td class="mdescLeft"> </td><td class="mdescRight">Self typedef for convenience. <br></td></tr>
+<tr class="separator:a50488539d124676ba38627a3830b2063"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4b0a2a85a559858db5e4efb2632b9b75"><td class="memItemLeft" align="right" valign="top"><a id="a4b0a2a85a559858db5e4efb2632b9b75" name="a4b0a2a85a559858db5e4efb2632b9b75"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Degree</b> = <a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">Dimension_tag</a>&lt;(2&lt;&lt;(Dimension::value - 1))&gt;</td></tr>
+<tr class="memdesc:a4b0a2a85a559858db5e4efb2632b9b75"><td class="mdescLeft"> </td><td class="mdescRight">Degree of the tree (number of children of non-leaf nodes). <br></td></tr>
+<tr class="separator:a4b0a2a85a559858db5e4efb2632b9b75"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7512e625cb0ce45c3c3c1a6761499dc5"><td class="memItemLeft" align="right" valign="top"><a id="a7512e625cb0ce45c3c3c1a6761499dc5" name="a7512e625cb0ce45c3c3c1a6761499dc5"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Node_index</b> = std::size_t</td></tr>
+<tr class="memdesc:a7512e625cb0ce45c3c3c1a6761499dc5"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of a given node in the tree; the root always has index 0. <br></td></tr>
+<tr class="separator:a7512e625cb0ce45c3c3c1a6761499dc5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a16c8299bad2c162bff45ce080615e8a3"><td class="memItemLeft" align="right" valign="top"><a id="a16c8299bad2c162bff45ce080615e8a3" name="a16c8299bad2c162bff45ce080615e8a3"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Maybe_node_index</b> = std::optional&lt; <a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> &gt;</td></tr>
+<tr class="memdesc:a16c8299bad2c162bff45ce080615e8a3"><td class="mdescLeft"> </td><td class="mdescRight">Optional index of a node in the tree. <br></td></tr>
+<tr class="separator:a16c8299bad2c162bff45ce080615e8a3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a27a68b9f0954e0f94e1ecf427daf7651"><td class="memItemLeft" align="right" valign="top"><a id="a27a68b9f0954e0f94e1ecf427daf7651" name="a27a68b9f0954e0f94e1ecf427daf7651"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Node_property_container</b> = Properties::Experimental::Property_container&lt; <a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> &gt;</td></tr>
+<tr class="separator:a27a68b9f0954e0f94e1ecf427daf7651"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a641cd3a38e9b8bd5df40c5a96b3a7fc3"><td class="memItemLeft" align="right" valign="top">using </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a641cd3a38e9b8bd5df40c5a96b3a7fc3">Local_coordinates</a> = std::bitset&lt; Dimension::value &gt;</td></tr>
+<tr class="memdesc:a641cd3a38e9b8bd5df40c5a96b3a7fc3"><td class="mdescLeft"> </td><td class="mdescRight">Set of bits representing this node's relationship to its parent.  <br></td></tr>
+<tr class="separator:a641cd3a38e9b8bd5df40c5a96b3a7fc3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9f185a2120030271989c77b2e5cc7f3a"><td class="memItemLeft" align="right" valign="top">using </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a9f185a2120030271989c77b2e5cc7f3a">Global_coordinates</a> = std::array&lt; std::uint32_t, Dimension::value &gt;</td></tr>
+<tr class="memdesc:a9f185a2120030271989c77b2e5cc7f3a"><td class="mdescLeft"> </td><td class="mdescRight">Coordinates representing this node's relationship with the rest of the tree.  <br></td></tr>
+<tr class="separator:a9f185a2120030271989c77b2e5cc7f3a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1682b9feab8ebcb066a22fa8603e0ce2"><td class="memItemLeft" align="right" valign="top"><a id="a1682b9feab8ebcb066a22fa8603e0ce2" name="a1682b9feab8ebcb066a22fa8603e0ce2"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Split_predicate</b> = std::function&lt; bool(<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a>, const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;)&gt;</td></tr>
+<tr class="memdesc:a1682b9feab8ebcb066a22fa8603e0ce2"><td class="mdescLeft"> </td><td class="mdescRight">A predicate that determines whether a node must be split when refining a tree. <br></td></tr>
+<tr class="separator:a1682b9feab8ebcb066a22fa8603e0ce2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae95a4f30e1b1d88fee621c59ecffea08"><td class="memItemLeft" align="right" valign="top"><a id="ae95a4f30e1b1d88fee621c59ecffea08" name="ae95a4f30e1b1d88fee621c59ecffea08"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Node_range</b> = <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td></tr>
+<tr class="memdesc:ae95a4f30e1b1d88fee621c59ecffea08"><td class="mdescLeft"> </td><td class="mdescRight">A model of <code><a class="elRef" href="../Circulator/classConstRange.html">ConstRange</a></code> whose value type is <code>Node_index</code>. <br></td></tr>
+<tr class="separator:ae95a4f30e1b1d88fee621c59ecffea08"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5ee1a5a1c2d2ee8992daa769713bfd03"><td class="memItemLeft" align="right" valign="top"><a id="a5ee1a5a1c2d2ee8992daa769713bfd03" name="a5ee1a5a1c2d2ee8992daa769713bfd03"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Node_index_range</b> = <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td></tr>
+<tr class="separator:a5ee1a5a1c2d2ee8992daa769713bfd03"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Constructor</h2></td></tr>
+<tr class="memitem:a4199e0d8155c701d11447a7092d9153e"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a4199e0d8155c701d11447a7092d9153e">Orthtree</a> (Traits <a class="el" href="classCGAL_1_1Orthtree.html#a53b532d99a99e817099ebd652667a088">traits</a>)</td></tr>
+<tr class="memdesc:a4199e0d8155c701d11447a7092d9153e"><td class="mdescLeft"> </td><td class="mdescRight">creates an orthtree for a traits instance.  <br></td></tr>
+<tr class="separator:a4199e0d8155c701d11447a7092d9153e"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Tree Building</h2></td></tr>
+<tr class="memitem:a154e34640c0d53a5411f83bbb8fcc6c8"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a154e34640c0d53a5411f83bbb8fcc6c8">refine</a> (const <a class="el" href="classCGAL_1_1Orthtree.html#a1682b9feab8ebcb066a22fa8603e0ce2">Split_predicate</a> &amp;split_predicate)</td></tr>
+<tr class="memdesc:a154e34640c0d53a5411f83bbb8fcc6c8"><td class="mdescLeft"> </td><td class="mdescRight">recursively subdivides the orthtree until it meets the given criteria.  <br></td></tr>
+<tr class="separator:a154e34640c0d53a5411f83bbb8fcc6c8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a281e1bc825903a2a091b74856a376c40"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a281e1bc825903a2a091b74856a376c40">refine</a> (size_t max_depth=10, size_t bucket_size=20)</td></tr>
+<tr class="memdesc:a281e1bc825903a2a091b74856a376c40"><td class="mdescLeft"> </td><td class="mdescRight">Convenience overload that refines an orthtree using a maximum depth and maximum number of inliers in a node as split predicate.  <br></td></tr>
+<tr class="separator:a281e1bc825903a2a091b74856a376c40"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a344cd0d16a4cbda1068e5921f93b13d4"><td class="memItemLeft" align="right" valign="top"><a id="a344cd0d16a4cbda1068e5921f93b13d4" name="a344cd0d16a4cbda1068e5921f93b13d4"></a>
+void </td><td class="memItemRight" valign="bottom"><b>grade</b> ()</td></tr>
+<tr class="memdesc:a344cd0d16a4cbda1068e5921f93b13d4"><td class="mdescLeft"> </td><td class="mdescRight">refines the orthtree such that the difference of depth between two immediate neighbor leaves is never more than 1. <br></td></tr>
+<tr class="separator:a344cd0d16a4cbda1068e5921f93b13d4"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Accessors</h2></td></tr>
+<tr class="memitem:a53b532d99a99e817099ebd652667a088"><td class="memItemLeft" align="right" valign="top">const Traits &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a53b532d99a99e817099ebd652667a088">traits</a> () const</td></tr>
+<tr class="memdesc:a53b532d99a99e817099ebd652667a088"><td class="mdescLeft"> </td><td class="mdescRight">Provides direct read-only access to the tree Traits.  <br></td></tr>
+<tr class="separator:a53b532d99a99e817099ebd652667a088"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0c0f4678b65bc0bad987bbf9528e7c3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a0c0f4678b65bc0bad987bbf9528e7c3c">root</a> () const</td></tr>
+<tr class="memdesc:a0c0f4678b65bc0bad987bbf9528e7c3c"><td class="mdescLeft"> </td><td class="mdescRight">provides read-only access to the root node, and by extension the rest of the tree.  <br></td></tr>
+<tr class="separator:a0c0f4678b65bc0bad987bbf9528e7c3c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a448e898eba1a4237c89880a4b11147f4"><td class="memItemLeft" align="right" valign="top"><a id="a448e898eba1a4237c89880a4b11147f4" name="a448e898eba1a4237c89880a4b11147f4"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><b>depth</b> () const</td></tr>
+<tr class="memdesc:a448e898eba1a4237c89880a4b11147f4"><td class="mdescLeft"> </td><td class="mdescRight">returns the deepest level reached by a leaf node in this tree (root being level 0). <br></td></tr>
+<tr class="separator:a448e898eba1a4237c89880a4b11147f4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a634b4a524dd003741362bba6c3dec281"><td class="memTemplParams" colspan="2">template&lt;typename Traversal &gt; </td></tr>
+<tr class="memitem:a634b4a524dd003741362bba6c3dec281"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="../Manual/classunspecified__type.html">Node_index_range</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a634b4a524dd003741362bba6c3dec281">traverse</a> (Traversal traversal) const</td></tr>
+<tr class="memdesc:a634b4a524dd003741362bba6c3dec281"><td class="mdescLeft"> </td><td class="mdescRight">constructs a node index range using a tree-traversal function.  <br></td></tr>
+<tr class="separator:a634b4a524dd003741362bba6c3dec281"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad7df8e3ea6b984149b3906e624849f20"><td class="memTemplParams" colspan="2">template&lt;typename Traversal , typename ... Args&gt; </td></tr>
+<tr class="memitem:ad7df8e3ea6b984149b3906e624849f20"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="../Manual/classunspecified__type.html">Node_index_range</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#ad7df8e3ea6b984149b3906e624849f20">traverse</a> (Args &amp;&amp;...args) const</td></tr>
+<tr class="memdesc:ad7df8e3ea6b984149b3906e624849f20"><td class="mdescLeft"> </td><td class="mdescRight">Convenience method for using a traversal without constructing it yourself.  <br></td></tr>
+<tr class="separator:ad7df8e3ea6b984149b3906e624849f20"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3f6c525a509d857db90e1c925ee7acab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a95202ada8790173649fcab5044e503ea">Bbox</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a3f6c525a509d857db90e1c925ee7acab">bbox</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a3f6c525a509d857db90e1c925ee7acab"><td class="mdescLeft"> </td><td class="mdescRight">constructs the bounding box of a node.  <br></td></tr>
+<tr class="separator:a3f6c525a509d857db90e1c925ee7acab"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Custom Properties</h2></td></tr>
+<tr class="memitem:a1fcc6c2efb1a0a82f04d64218496bc3f"><td class="memTemplParams" colspan="2"><a id="a1fcc6c2efb1a0a82f04d64218496bc3f" name="a1fcc6c2efb1a0a82f04d64218496bc3f"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1fcc6c2efb1a0a82f04d64218496bc3f"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; std::reference_wrapper&lt; Node_property_container::Array&lt; T &gt; &gt;, bool &gt; </td><td class="memTemplItemRight" valign="bottom"><b>get_or_add_node_property</b> (const std::string &amp;name, const T default_value=T())</td></tr>
+<tr class="memdesc:a1fcc6c2efb1a0a82f04d64218496bc3f"><td class="mdescLeft"> </td><td class="mdescRight">pass-through to <code>get_or_add_property</code> for node properties. <br></td></tr>
+<tr class="separator:a1fcc6c2efb1a0a82f04d64218496bc3f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a22505a58295a38cc400b38b5bf3cd43a"><td class="memTemplParams" colspan="2"><a id="a22505a58295a38cc400b38b5bf3cd43a" name="a22505a58295a38cc400b38b5bf3cd43a"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a22505a58295a38cc400b38b5bf3cd43a"><td class="memTemplItemLeft" align="right" valign="top">Node_property_container::Array&lt; T &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>add_node_property</b> (const std::string &amp;name, const T default_value=T())</td></tr>
+<tr class="memdesc:a22505a58295a38cc400b38b5bf3cd43a"><td class="mdescLeft"> </td><td class="mdescRight">pass-through to <code>add_property</code> for node properties. <br></td></tr>
+<tr class="separator:a22505a58295a38cc400b38b5bf3cd43a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a979e75176628503160a72a664a426fde"><td class="memTemplParams" colspan="2"><a id="a979e75176628503160a72a664a426fde" name="a979e75176628503160a72a664a426fde"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a979e75176628503160a72a664a426fde"><td class="memTemplItemLeft" align="right" valign="top">Node_property_container::Array&lt; T &gt; &amp; </td><td class="memTemplItemRight" valign="bottom"><b>get_node_property</b> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a979e75176628503160a72a664a426fde"><td class="mdescLeft"> </td><td class="mdescRight">pass-through to <code>get_property</code> for node properties. <br></td></tr>
+<tr class="separator:a979e75176628503160a72a664a426fde"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae0738abdf081ac35dc3ec4bb481c0a40"><td class="memTemplParams" colspan="2"><a id="ae0738abdf081ac35dc3ec4bb481c0a40" name="ae0738abdf081ac35dc3ec4bb481c0a40"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae0738abdf081ac35dc3ec4bb481c0a40"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; Node_property_container::Array&lt; T &gt; &gt; &gt; </td><td class="memTemplItemRight" valign="bottom"><b>get_node_property_if_exists</b> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ae0738abdf081ac35dc3ec4bb481c0a40"><td class="mdescLeft"> </td><td class="mdescRight">pass-through to <code>get_property_if_exists</code> for node properties. <br></td></tr>
+<tr class="separator:ae0738abdf081ac35dc3ec4bb481c0a40"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Queries</h2></td></tr>
+<tr class="memitem:a80527ffaf1fbf8fb279495abc1b823ba"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a80527ffaf1fbf8fb279495abc1b823ba">locate</a> (const <a class="el" href="classCGAL_1_1Orthtree.html#a5e13e80c655c08608103bfdf7bfb55df">Point</a> &amp;point) const</td></tr>
+<tr class="memdesc:a80527ffaf1fbf8fb279495abc1b823ba"><td class="mdescLeft"> </td><td class="mdescRight">finds the leaf node which contains a particular point in space.  <br></td></tr>
+<tr class="separator:a80527ffaf1fbf8fb279495abc1b823ba"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a479b0acb23b56aa0bef3876e0eedfcd6"><td class="memTemplParams" colspan="2">template&lt;typename Query , typename <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> &gt; </td></tr>
+<tr class="memitem:a479b0acb23b56aa0bef3876e0eedfcd6"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a479b0acb23b56aa0bef3876e0eedfcd6">intersected_nodes</a> (const Query &amp;query, <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> output) const</td></tr>
+<tr class="memdesc:a479b0acb23b56aa0bef3876e0eedfcd6"><td class="mdescLeft"> </td><td class="mdescRight">finds the leaf nodes that intersect with any primitive.  <br></td></tr>
+<tr class="separator:a479b0acb23b56aa0bef3876e0eedfcd6"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Operators</h2></td></tr>
+<tr class="memitem:a2e904bf208ef6a26567e7c31161c171c"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a2e904bf208ef6a26567e7c31161c171c">operator==</a> (const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;rhs) const</td></tr>
+<tr class="memdesc:a2e904bf208ef6a26567e7c31161c171c"><td class="mdescLeft"> </td><td class="mdescRight">compares the topology of the orthtree with that of <code>rhs</code>.  <br></td></tr>
+<tr class="separator:a2e904bf208ef6a26567e7c31161c171c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:addf3fa2fde1d39bd9f6112ec44908048"><td class="memItemLeft" align="right" valign="top"><a id="addf3fa2fde1d39bd9f6112ec44908048" name="addf3fa2fde1d39bd9f6112ec44908048"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;rhs) const</td></tr>
+<tr class="memdesc:addf3fa2fde1d39bd9f6112ec44908048"><td class="mdescLeft"> </td><td class="mdescRight">compares the topology of the orthtree with that of <code>rhs</code>. <br></td></tr>
+<tr class="separator:addf3fa2fde1d39bd9f6112ec44908048"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Node Access</h2></td></tr>
+<tr class="memitem:ae253d50a135adab6dbee527745245a6f"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#ae253d50a135adab6dbee527745245a6f">is_leaf</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:ae253d50a135adab6dbee527745245a6f"><td class="mdescLeft"> </td><td class="mdescRight">Determines whether the node specified by index <code>n</code> is a leaf node.  <br></td></tr>
+<tr class="separator:ae253d50a135adab6dbee527745245a6f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aeedc1e46999b60ed9c9bce93e329391d"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#aeedc1e46999b60ed9c9bce93e329391d">is_root</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:aeedc1e46999b60ed9c9bce93e329391d"><td class="mdescLeft"> </td><td class="mdescRight">Determines whether the node specified by index <code>n</code> is a root node.  <br></td></tr>
+<tr class="separator:aeedc1e46999b60ed9c9bce93e329391d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a14f7050124776202bbe89b12b5fdfd5a"><td class="memItemLeft" align="right" valign="top">std::size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a14f7050124776202bbe89b12b5fdfd5a">depth</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a14f7050124776202bbe89b12b5fdfd5a"><td class="mdescLeft"> </td><td class="mdescRight">Determines the depth of the node specified.  <br></td></tr>
+<tr class="separator:a14f7050124776202bbe89b12b5fdfd5a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1275da60c8ece407c2d4efccd95d5068"><td class="memItemLeft" align="right" valign="top">Node_data &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a1275da60c8ece407c2d4efccd95d5068">data</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n)</td></tr>
+<tr class="memdesc:a1275da60c8ece407c2d4efccd95d5068"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves a reference to the Node_data associated with the node specified by <code>n</code>.  <br></td></tr>
+<tr class="separator:a1275da60c8ece407c2d4efccd95d5068"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a11a9778ab9e31923a11b6b29a3f759f3"><td class="memItemLeft" align="right" valign="top"><a id="a11a9778ab9e31923a11b6b29a3f759f3" name="a11a9778ab9e31923a11b6b29a3f759f3"></a>
+const Node_data &amp; </td><td class="memItemRight" valign="bottom"><b>data</b> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a11a9778ab9e31923a11b6b29a3f759f3"><td class="mdescLeft"> </td><td class="mdescRight">const version of <code><a class="el" href="classCGAL_1_1Orthtree.html#a1275da60c8ece407c2d4efccd95d5068" title="Retrieves a reference to the Node_data associated with the node specified by n.">data()</a></code> <br></td></tr>
+<tr class="separator:a11a9778ab9e31923a11b6b29a3f759f3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2c32aac934f4c4b72204cd02d40c9c3f"><td class="memItemLeft" align="right" valign="top"><a id="a2c32aac934f4c4b72204cd02d40c9c3f" name="a2c32aac934f4c4b72204cd02d40c9c3f"></a>
+<a class="el" href="classCGAL_1_1Orthtree.html#a9f185a2120030271989c77b2e5cc7f3a">Global_coordinates</a> </td><td class="memItemRight" valign="bottom"><b>global_coordinates</b> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a2c32aac934f4c4b72204cd02d40c9c3f"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves the global coordinates of the node. <br></td></tr>
+<tr class="separator:a2c32aac934f4c4b72204cd02d40c9c3f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4f27be42e83435a70274a55234a85587"><td class="memItemLeft" align="right" valign="top"><a id="a4f27be42e83435a70274a55234a85587" name="a4f27be42e83435a70274a55234a85587"></a>
+<a class="el" href="classCGAL_1_1Orthtree.html#a641cd3a38e9b8bd5df40c5a96b3a7fc3">Local_coordinates</a> </td><td class="memItemRight" valign="bottom"><b>local_coordinates</b> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a4f27be42e83435a70274a55234a85587"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves the local coordinates of the node. <br></td></tr>
+<tr class="separator:a4f27be42e83435a70274a55234a85587"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af8dfe14299fae02bd3f28e18b8710c50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#af8dfe14299fae02bd3f28e18b8710c50">parent</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html#a33bf9a6cd989866a5ab393b605e3d4f7">node</a>) const</td></tr>
+<tr class="memdesc:af8dfe14299fae02bd3f28e18b8710c50"><td class="mdescLeft"> </td><td class="mdescRight">returns this node's parent.  <br></td></tr>
+<tr class="separator:af8dfe14299fae02bd3f28e18b8710c50"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aee9e5209f573535f3e0d49fbcba71488"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#aee9e5209f573535f3e0d49fbcba71488">child</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html#a33bf9a6cd989866a5ab393b605e3d4f7">node</a>, std::size_t i) const</td></tr>
+<tr class="memdesc:aee9e5209f573535f3e0d49fbcba71488"><td class="mdescLeft"> </td><td class="mdescRight">returns this node's <code>i</code>th child.  <br></td></tr>
+<tr class="separator:aee9e5209f573535f3e0d49fbcba71488"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a451de77a3ddd39637379bafdd33ebd47"><td class="memTemplParams" colspan="2">template&lt;typename... Indices&gt; </td></tr>
+<tr class="memitem:a451de77a3ddd39637379bafdd33ebd47"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a451de77a3ddd39637379bafdd33ebd47">descendant</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html#a33bf9a6cd989866a5ab393b605e3d4f7">node</a>, Indices... indices)</td></tr>
+<tr class="memdesc:a451de77a3ddd39637379bafdd33ebd47"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves an arbitrary descendant of the node specified by <code>node</code>.  <br></td></tr>
+<tr class="separator:a451de77a3ddd39637379bafdd33ebd47"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a33bf9a6cd989866a5ab393b605e3d4f7"><td class="memTemplParams" colspan="2"><a id="a33bf9a6cd989866a5ab393b605e3d4f7" name="a33bf9a6cd989866a5ab393b605e3d4f7"></a>
+template&lt;typename... Indices&gt; </td></tr>
+<tr class="memitem:a33bf9a6cd989866a5ab393b605e3d4f7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memTemplItemRight" valign="bottom"><b>node</b> (Indices... indices)</td></tr>
+<tr class="memdesc:a33bf9a6cd989866a5ab393b605e3d4f7"><td class="mdescLeft"> </td><td class="mdescRight">Convenience function for retrieving arbitrary nodes, equivalent to <code>tree.descendant(tree.root(), indices...)</code>. <br></td></tr>
+<tr class="separator:a33bf9a6cd989866a5ab393b605e3d4f7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a269005404423a43d576b475454ac26ad"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a269005404423a43d576b475454ac26ad">next_sibling</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a269005404423a43d576b475454ac26ad"><td class="mdescLeft"> </td><td class="mdescRight">Finds the next sibling in the parent of the node specified by the index <code>n</code>.  <br></td></tr>
+<tr class="separator:a269005404423a43d576b475454ac26ad"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9f690e819d0c02f589f72c934f732b29"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a9f690e819d0c02f589f72c934f732b29">next_sibling_up</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:a9f690e819d0c02f589f72c934f732b29"><td class="mdescLeft"> </td><td class="mdescRight">Finds the next sibling of the parent of the node specified by <code>n</code> if it exists.  <br></td></tr>
+<tr class="separator:a9f690e819d0c02f589f72c934f732b29"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afd45ee33e7030e4918f01b605671b668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#afd45ee33e7030e4918f01b605671b668">deepest_first_child</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:afd45ee33e7030e4918f01b605671b668"><td class="mdescLeft"> </td><td class="mdescRight">Finds the leaf node reached when descending the tree and always choosing child 0.  <br></td></tr>
+<tr class="separator:afd45ee33e7030e4918f01b605671b668"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9ade44bc79b89c383caa810fc671995e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a9ade44bc79b89c383caa810fc671995e">first_child_at_depth</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n, std::size_t d) const</td></tr>
+<tr class="memdesc:a9ade44bc79b89c383caa810fc671995e"><td class="mdescLeft"> </td><td class="mdescRight">Finds node reached when descending the tree to a depth <code>d</code> and always choosing child 0.  <br></td></tr>
+<tr class="separator:a9ade44bc79b89c383caa810fc671995e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab0e0333e13cdb14907ad8e797403264e"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#ab0e0333e13cdb14907ad8e797403264e">split</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n)</td></tr>
+<tr class="memdesc:ab0e0333e13cdb14907ad8e797403264e"><td class="mdescLeft"> </td><td class="mdescRight">splits the node into subnodes.  <br></td></tr>
+<tr class="separator:ab0e0333e13cdb14907ad8e797403264e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adcabadc26f226f15cea096a4f4afdcee"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#adcabadc26f226f15cea096a4f4afdcee">unsplit</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n)</td></tr>
+<tr class="memdesc:adcabadc26f226f15cea096a4f4afdcee"><td class="mdescLeft"> </td><td class="mdescRight">eliminates this node's children, making it a leaf node.  <br></td></tr>
+<tr class="separator:adcabadc26f226f15cea096a4f4afdcee"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afc8f3ef6ab76f7750915ac0517a6e205"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a5e13e80c655c08608103bfdf7bfb55df">Point</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#afc8f3ef6ab76f7750915ac0517a6e205">barycenter</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n) const</td></tr>
+<tr class="memdesc:afc8f3ef6ab76f7750915ac0517a6e205"><td class="mdescLeft"> </td><td class="mdescRight">Finds the center point of the node specified by <code>n</code>.  <br></td></tr>
+<tr class="separator:afc8f3ef6ab76f7750915ac0517a6e205"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a56740add2a75b9d9ba4a7515c0eacbe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a56740add2a75b9d9ba4a7515c0eacbe7">adjacent_node</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n, <a class="el" href="classCGAL_1_1Orthtree.html#a641cd3a38e9b8bd5df40c5a96b3a7fc3">Local_coordinates</a> direction) const</td></tr>
+<tr class="memdesc:a56740add2a75b9d9ba4a7515c0eacbe7"><td class="mdescLeft"> </td><td class="mdescRight">finds the directly adjacent node in a specific direction  <br></td></tr>
+<tr class="separator:a56740add2a75b9d9ba4a7515c0eacbe7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a63e9b03af1d4f2c4099de61bdffaab9c"><td class="memItemLeft" align="right" valign="top"><a id="a63e9b03af1d4f2c4099de61bdffaab9c" name="a63e9b03af1d4f2c4099de61bdffaab9c"></a>
+<a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> </td><td class="memItemRight" valign="bottom"><b>adjacent_node</b> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> n, <a class="el" href="classCGAL_1_1Orthtree.html#ac4183e662711b8ad689686bcf6a83ff0">Adjacency</a> adjacency) const</td></tr>
+<tr class="memdesc:a63e9b03af1d4f2c4099de61bdffaab9c"><td class="mdescLeft"> </td><td class="mdescRight">equivalent to <code><a class="el" href="classCGAL_1_1Orthtree.html#a56740add2a75b9d9ba4a7515c0eacbe7" title="finds the directly adjacent node in a specific direction">adjacent_node()</a></code>, with an adjacency direction rather than a bitset. <br></td></tr>
+<tr class="separator:a63e9b03af1d4f2c4099de61bdffaab9c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a97d9c7df7fa1767257410d598904cc5a"><td class="memItemLeft" align="right" valign="top">static bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Orthtree.html#a97d9c7df7fa1767257410d598904cc5a">is_topology_equal</a> (<a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> lhsNode, const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;lhsTree, <a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> rhsNode, const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;rhsTree)</td></tr>
+<tr class="memdesc:a97d9c7df7fa1767257410d598904cc5a"><td class="mdescLeft"> </td><td class="mdescRight">Determines whether a pair of subtrees have the same topology.  <br></td></tr>
+<tr class="separator:a97d9c7df7fa1767257410d598904cc5a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a46d4fba22a57fa60d8085d7d6785b39c"><td class="memItemLeft" align="right" valign="top"><a id="a46d4fba22a57fa60d8085d7d6785b39c" name="a46d4fba22a57fa60d8085d7d6785b39c"></a>
+static bool </td><td class="memItemRight" valign="bottom"><b>is_topology_equal</b> (const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;lhs, const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a46d4fba22a57fa60d8085d7d6785b39c"><td class="mdescLeft"> </td><td class="mdescRight">Helper function for calling <code>is_topology_equal</code> on the root nodes of two trees. <br></td></tr>
+<tr class="separator:a46d4fba22a57fa60d8085d7d6785b39c"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a9f185a2120030271989c77b2e5cc7f3a" name="a9f185a2120030271989c77b2e5cc7f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f185a2120030271989c77b2e5cc7f3a">◆ </a></span>Global_coordinates</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::Global_coordinates =  std::array&lt;std::uint32_t, Dimension::value&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Coordinates representing this node's relationship with the rest of the tree. </p>
+<p>Each value <code>(x, y, z, ...)</code> of global coordinates is calculated by doubling the parent's global coordinates and adding the local coordinates. </p>
+
+</div>
+</div>
+<a id="a641cd3a38e9b8bd5df40c5a96b3a7fc3" name="a641cd3a38e9b8bd5df40c5a96b3a7fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641cd3a38e9b8bd5df40c5a96b3a7fc3">◆ </a></span>Local_coordinates</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::Local_coordinates =  std::bitset&lt;Dimension::value&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set of bits representing this node's relationship to its parent. </p>
+<p>Equivalent to an array of Booleans, where index[0] is whether <code>x</code> is greater, index[1] is whether <code>y</code> is greater, index[2] is whether <code>z</code> is greater, and so on for higher dimensions if needed. Used to represent a node's relationship to the center of its parent. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4199e0d8155c701d11447a7092d9153e" name="a4199e0d8155c701d11447a7092d9153e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4199e0d8155c701d11447a7092d9153e">◆ </a></span>Orthtree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::Orthtree </td>
+          <td>(</td>
+          <td class="paramtype">Traits </td>
+          <td class="paramname"><em>traits</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>creates an orthtree for a traits instance. </p>
+<p>The constructed orthtree has a root node with no children, containing the contents determined by <code>construct_root_node_contents_object</code> from the Traits class. That root node has a bounding box determined by <code>construct_root_node_bbox_object</code> from the Traits class, which typically encloses its contents.</p>
+<p>This single-node orthtree is valid and compatible with all <a class="el" href="classCGAL_1_1Orthtree.html" title="A data structure using an axis-aligned hybercubic decomposition of dD space for efficient access and ...">Orthtree</a> functionality, but any performance benefits are unlikely to be realized until <code><a class="el" href="classCGAL_1_1Orthtree.html#a154e34640c0d53a5411f83bbb8fcc6c8" title="recursively subdivides the orthtree until it meets the given criteria.">refine()</a></code> is called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traits</td><td>the traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a56740add2a75b9d9ba4a7515c0eacbe7" name="a56740add2a75b9d9ba4a7515c0eacbe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56740add2a75b9d9ba4a7515c0eacbe7">◆ </a></span>adjacent_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::adjacent_node </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a641cd3a38e9b8bd5df40c5a96b3a7fc3">Local_coordinates</a> </td>
+          <td class="paramname"><em>direction</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>finds the directly adjacent node in a specific direction </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>!is_null()</code> </dd>
+<dd>
+<code>direction.to_ulong &lt; 2 * Dimension::value</code></dd></dl>
+<p>Adjacent nodes are found according to several properties:</p><ul>
+<li>adjacent nodes may be larger than the seek node, but never smaller</li>
+<li>a node has at most <code>2 * Dimension::value</code> different adjacent nodes (in 3D: left, right, up, down, front, back)</li>
+<li>adjacent nodes are not required to be leaf nodes</li>
+</ul>
+<p>Here's a diagram demonstrating the concept for a <a class="el" href="classCGAL_1_1Quadtree.html" title="Alias that specializes the Orthtree class to a 2D quadtree.">Quadtree</a>:</p>
+<div class="fragment"><div class="line">+---------------+---------------+</div>
+<div class="line">|               |               |</div>
+<div class="line">|               |               |</div>
+<div class="line">|               |               |</div>
+<div class="line">|       A       |               |</div>
+<div class="line">|               |               |</div>
+<div class="line">|               |               |</div>
+<div class="line">|               |               |</div>
+<div class="line">+-------+-------+---+---+-------+</div>
+<div class="line">|       |       |   |   |       |</div>
+<div class="line">|   A   |  (S)  +---A---+       |</div>
+<div class="line">|       |       |   |   |       |</div>
+<div class="line">+---+---+-------+---+---+-------+</div>
+<div class="line">|   |   |       |       |       |</div>
+<div class="line">+---+---+   A   |       |       |</div>
+<div class="line">|   |   |       |       |       |</div>
+<div class="line">+---+---+-------+-------+-------+</div>
+</div><!-- fragment --><ul>
+<li>(S) : Seek node</li>
+<li>A : Adjacent node</li>
+</ul>
+<p>Note how the top adjacent node is larger than the seek node. The right adjacent node is the same size, even though it contains further subdivisions.</p>
+<p>This implementation returns the adjacent node if it's found. If there is no adjacent node in that direction, it returns a null node.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>query node.</td></tr>
+    <tr><td class="paramname">direction</td><td>which way to find the adjacent node relative to this one. Each successive bit selects the direction for the corresponding dimension: for an <a class="el" href="classCGAL_1_1Octree.html" title="Alias that specializes the Orthtree class to a 3D octree.">Octree</a> in 3D, 010 means: negative direction in X, position direction in Y, negative direction in Z.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the adjacent node if it exists, nothing otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="afc8f3ef6ab76f7750915ac0517a6e205" name="afc8f3ef6ab76f7750915ac0517a6e205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc8f3ef6ab76f7750915ac0517a6e205">◆ </a></span>barycenter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a5e13e80c655c08608103bfdf7bfb55df">Point</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::barycenter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the center point of the node specified by <code>n</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The node to find the center point for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the center point of node <code>n</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a3f6c525a509d857db90e1c925ee7acab" name="a3f6c525a509d857db90e1c925ee7acab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f6c525a509d857db90e1c925ee7acab">◆ </a></span>bbox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a95202ada8790173649fcab5044e503ea">Bbox</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::bbox </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constructs the bounding box of a node. </p>
+<dl class="section note"><dt>Note</dt><dd>The object constructed is not the bounding box of the node's contents, but the bounding box of the node itself. For a cubic orthtree, this will always be cubic. </dd></dl>
+
+</div>
+</div>
+<a id="aee9e5209f573535f3e0d49fbcba71488" name="aee9e5209f573535f3e0d49fbcba71488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee9e5209f573535f3e0d49fbcba71488">◆ </a></span>child()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::child </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t </td>
+          <td class="paramname"><em>i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns this node's <code>i</code>th child. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>!is_leaf()</code> </dd></dl>
+
+</div>
+</div>
+<a id="a1275da60c8ece407c2d4efccd95d5068" name="a1275da60c8ece407c2d4efccd95d5068"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1275da60c8ece407c2d4efccd95d5068">◆ </a></span>data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Node_data &amp; <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::data </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves a reference to the Node_data associated with the node specified by <code>n</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>index of the node to retrieve data for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the data associated with the node. </dd></dl>
+
+</div>
+</div>
+<a id="afd45ee33e7030e4918f01b605671b668" name="afd45ee33e7030e4918f01b605671b668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd45ee33e7030e4918f01b605671b668">◆ </a></span>deepest_first_child()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::deepest_first_child </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the leaf node reached when descending the tree and always choosing child 0. </p>
+<p>This is the starting point of a depth-first traversal.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the node to find the deepest first child of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the deepest first child. </dd></dl>
+
+</div>
+</div>
+<a id="a14f7050124776202bbe89b12b5fdfd5a" name="a14f7050124776202bbe89b12b5fdfd5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14f7050124776202bbe89b12b5fdfd5a">◆ </a></span>depth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::depth </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines the depth of the node specified. </p>
+<p>The root node has depth 0, its children have depth 1, and so on.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>index of the node to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the depth of the node within its tree. </dd></dl>
+
+</div>
+</div>
+<a id="a451de77a3ddd39637379bafdd33ebd47" name="a451de77a3ddd39637379bafdd33ebd47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451de77a3ddd39637379bafdd33ebd47">◆ </a></span>descendant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+<div class="memtemplate">
+template&lt;typename... Indices&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::descendant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Indices... </td>
+          <td class="paramname"><em>indices</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves an arbitrary descendant of the node specified by <code>node</code>. </p>
+<p>Convenience function to avoid the need to call <code>orthtree.child(orthtree.child(node, 0), 1)</code>.</p>
+<p>Each index in <code>indices</code> specifies which child to enter as descending the tree from <code>node</code> down. Indices are evaluated in the order they appear as parameters, so <code>descendant(root, 0, 1)</code> returns the second child of the first child of the root.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the node to descend </td></tr>
+    <tr><td class="paramname">indices</td><td>the descent to perform </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the specified descendant node. </dd></dl>
+
+</div>
+</div>
+<a id="a9ade44bc79b89c383caa810fc671995e" name="a9ade44bc79b89c383caa810fc671995e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ade44bc79b89c383caa810fc671995e">◆ </a></span>first_child_at_depth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::first_child_at_depth </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t </td>
+          <td class="paramname"><em>d</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds node reached when descending the tree to a depth <code>d</code> and always choosing child 0. </p>
+<p>Similar to <code>deepest_first_child</code>, but does not go to a fixed depth.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the node to find the <code>d</code>th first child of. </td></tr>
+    <tr><td class="paramname">d</td><td>the depth to descend to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the <code>d</code>th first child, nothing if the tree is not deep enough. </dd></dl>
+
+</div>
+</div>
+<a id="a479b0acb23b56aa0bef3876e0eedfcd6" name="a479b0acb23b56aa0bef3876e0eedfcd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a479b0acb23b56aa0bef3876e0eedfcd6">◆ </a></span>intersected_nodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+<div class="memtemplate">
+template&lt;typename Query , typename <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::intersected_nodes </td>
+          <td>(</td>
+          <td class="paramtype">const Query &amp; </td>
+          <td class="paramname"><em>query</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>output</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>finds the leaf nodes that intersect with any primitive. </p>
+<dl class="section note"><dt>Note</dt><dd>this function requires the function <code>bool CGAL::do_intersect(QueryType, Traits::Bbox_d)</code> to be defined.</dd></dl>
+<p>This function finds all the intersecting nodes and writes their indices to the ouput iterator.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Query</td><td>the primitive class (e.g. sphere, ray) </td></tr>
+    <tr><td class="paramname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td><td>a model of <code><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></code> that accepts <code>Node_index</code> types </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>the intersecting primitive. </td></tr>
+    <tr><td class="paramname">output</td><td>output iterator. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae253d50a135adab6dbee527745245a6f" name="ae253d50a135adab6dbee527745245a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae253d50a135adab6dbee527745245a6f">◆ </a></span>is_leaf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::is_leaf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether the node specified by index <code>n</code> is a leaf node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>index of the node to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true of the node is a leaf, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aeedc1e46999b60ed9c9bce93e329391d" name="aeedc1e46999b60ed9c9bce93e329391d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeedc1e46999b60ed9c9bce93e329391d">◆ </a></span>is_root()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::is_root </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether the node specified by index <code>n</code> is a root node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>index of the node to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true of the node is a root, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a97d9c7df7fa1767257410d598904cc5a" name="a97d9c7df7fa1767257410d598904cc5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97d9c7df7fa1767257410d598904cc5a">◆ </a></span>is_topology_equal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::is_topology_equal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>lhsNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp; </td>
+          <td class="paramname"><em>lhsTree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>rhsNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp; </td>
+          <td class="paramname"><em>rhsTree</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines whether a pair of subtrees have the same topology. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhsNode</td><td>a node in lhsTree </td></tr>
+    <tr><td class="paramname">lhsTree</td><td>an <a class="el" href="classCGAL_1_1Orthtree.html" title="A data structure using an axis-aligned hybercubic decomposition of dD space for efficient access and ...">Orthtree</a> </td></tr>
+    <tr><td class="paramname">rhsNode</td><td>a node in rhsTree </td></tr>
+    <tr><td class="paramname">rhsTree</td><td>another <a class="el" href="classCGAL_1_1Orthtree.html" title="A data structure using an axis-aligned hybercubic decomposition of dD space for efficient access and ...">Orthtree</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if lhsNode and rhsNode have the same topology, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a80527ffaf1fbf8fb279495abc1b823ba" name="a80527ffaf1fbf8fb279495abc1b823ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80527ffaf1fbf8fb279495abc1b823ba">◆ </a></span>locate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::locate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Orthtree.html#a5e13e80c655c08608103bfdf7bfb55df">Point</a> &amp; </td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>finds the leaf node which contains a particular point in space. </p>
+<p>Traverses the orthtree and finds the deepest cell that has a domain enclosing the point passed. The point passed must be within the region enclosed by the orthtree (bbox of the root node).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>query point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the node which contains the point. </dd></dl>
+
+</div>
+</div>
+<a id="a269005404423a43d576b475454ac26ad" name="a269005404423a43d576b475454ac26ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269005404423a43d576b475454ac26ad">◆ </a></span>next_sibling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::next_sibling </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the next sibling in the parent of the node specified by the index <code>n</code>. </p>
+<p>Traverses the tree in increasing order of local index (e.g. 000, 001, 010, etc.)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the node to find the sibling of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the next sibling of <code>n</code> if <code>n</code> is not the last node in its parent, otherwise nothing. </dd></dl>
+
+</div>
+</div>
+<a id="a9f690e819d0c02f589f72c934f732b29" name="a9f690e819d0c02f589f72c934f732b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f690e819d0c02f589f72c934f732b29">◆ </a></span>next_sibling_up()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1Orthtree.html#a16c8299bad2c162bff45ce080615e8a3">Maybe_node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::next_sibling_up </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the next sibling of the parent of the node specified by <code>n</code> if it exists. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the node to find the sibling up of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The next sibling of the parent of <code>n</code> if <code>n</code> is not the root and its parent has a sibling, otherwise nothing. </dd></dl>
+
+</div>
+</div>
+<a id="a2e904bf208ef6a26567e7c31161c171c" name="a2e904bf208ef6a26567e7c31161c171c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e904bf208ef6a26567e7c31161c171c">◆ </a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Orthtree.html#a50488539d124676ba38627a3830b2063">Self</a> &amp; </td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>compares the topology of the orthtree with that of <code>rhs</code>. </p>
+<p>Trees may be considered equivalent even if they have different contents. Equivalent trees must have the same root bounding box and the same node structure. </p>
+
+</div>
+</div>
+<a id="af8dfe14299fae02bd3f28e18b8710c50" name="af8dfe14299fae02bd3f28e18b8710c50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8dfe14299fae02bd3f28e18b8710c50">◆ </a></span>parent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::parent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns this node's parent. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>!is_root()</code> </dd></dl>
+
+</div>
+</div>
+<a id="a154e34640c0d53a5411f83bbb8fcc6c8" name="a154e34640c0d53a5411f83bbb8fcc6c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a154e34640c0d53a5411f83bbb8fcc6c8">◆ </a></span>refine() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::refine </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Orthtree.html#a1682b9feab8ebcb066a22fa8603e0ce2">Split_predicate</a> &amp; </td>
+          <td class="paramname"><em>split_predicate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>recursively subdivides the orthtree until it meets the given criteria. </p>
+<p>The split predicate is an <code>std::function</code> that takes a <code>Node_index</code> and an <a class="el" href="classCGAL_1_1Orthtree.html" title="A data structure using an axis-aligned hybercubic decomposition of dD space for efficient access and ...">Orthtree</a> reference, and returns a Boolean value (where <code>true</code> implies that the corresponding node needs to be split, <code>false</code> that the node should be a leaf).</p>
+<p>This function may be called several times with different predicates: in that case, nodes already split are left unaltered, while nodes that were not split and for which <code>split_predicate</code> returns <code>true</code> are split.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">split_predicate</td><td>determines whether or not a node needs to be subdivided. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a281e1bc825903a2a091b74856a376c40" name="a281e1bc825903a2a091b74856a376c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281e1bc825903a2a091b74856a376c40">◆ </a></span>refine() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::refine </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>max_depth</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>bucket_size</em> = <code>20</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience overload that refines an orthtree using a maximum depth and maximum number of inliers in a node as split predicate. </p>
+<p>This is equivalent to calling <code>refine(Orthtrees::Maximum_depth_and_maximum_number_of_inliers(max_depth,
+bucket_size))</code>.</p>
+<p>The refinement is stopped as soon as one of the conditions is violated: if a node has more inliers than <code>bucket_size</code> but is already at <code>max_depth</code>, it is not split. Similarly, a node that is at a depth smaller than <code>max_depth</code> but already has fewer inliers than <code>bucket_size</code>, it is not split.</p>
+<dl class="section warning"><dt>Warning</dt><dd>This convenience method is only appropriate for trees with traits classes where <code>Node_data</code> is a list-like type with a <code>size()</code> method.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max_depth</td><td>deepest a tree is allowed to be (nodes at this depth will not be split). </td></tr>
+    <tr><td class="paramname">bucket_size</td><td>maximum number of items a node is allowed to contain. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0c0f4678b65bc0bad987bbf9528e7c3c" name="a0c0f4678b65bc0bad987bbf9528e7c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c0f4678b65bc0bad987bbf9528e7c3c">◆ </a></span>root()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::root </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>provides read-only access to the root node, and by extension the rest of the tree. </p>
+<dl class="section return"><dt>Returns</dt><dd>a const reference to the root node of the tree. </dd></dl>
+
+</div>
+</div>
+<a id="ab0e0333e13cdb14907ad8e797403264e" name="ab0e0333e13cdb14907ad8e797403264e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0e0333e13cdb14907ad8e797403264e">◆ </a></span>split()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::split </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>splits the node into subnodes. </p>
+<p>Only leaf nodes should be split. When a node is split it is no longer a leaf node. A number of <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html#a331a1ccd2e5c6b003b2efcf753b2efe6">Degree::value</a></code> children are constructed automatically, and their values are set. Contents of this node are <em>not</em> propagated automatically, this is responsibility of the <code>distribute_node_contents_object</code> in the Traits class. </p>
+
+</div>
+</div>
+<a id="a53b532d99a99e817099ebd652667a088" name="a53b532d99a99e817099ebd652667a088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53b532d99a99e817099ebd652667a088">◆ </a></span>traits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const Traits &amp; <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::traits </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Provides direct read-only access to the tree Traits. </p>
+<dl class="section return"><dt>Returns</dt><dd>a const reference to the Traits instantiation. </dd></dl>
+
+</div>
+</div>
+<a id="ad7df8e3ea6b984149b3906e624849f20" name="ad7df8e3ea6b984149b3906e624849f20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7df8e3ea6b984149b3906e624849f20">◆ </a></span>traverse() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+<div class="memtemplate">
+template&lt;typename Traversal , typename ... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classunspecified__type.html">Node_index_range</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::traverse </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;... </td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method for using a traversal without constructing it yourself. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traversal</td><td>model of <code><a class="el" href="classOrthtreeTraversal.html" title="a traversal provides the functions needed to traverse the nodes of an orthtree.">OrthtreeTraversal</a></code> that provides functions compatible with the type of the orthtree</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Arguments to to pass to the traversal's constructor, excluding the first (always an orthtree reference)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a forward input iterator over the node indices of the tree </dd></dl>
+
+</div>
+</div>
+<a id="a634b4a524dd003741362bba6c3dec281" name="a634b4a524dd003741362bba6c3dec281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a634b4a524dd003741362bba6c3dec281">◆ </a></span>traverse() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+<div class="memtemplate">
+template&lt;typename Traversal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classunspecified__type.html">Node_index_range</a> <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::traverse </td>
+          <td>(</td>
+          <td class="paramtype">Traversal </td>
+          <td class="paramname"><em>traversal</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constructs a node index range using a tree-traversal function. </p>
+<p>This method allows iteration over the nodes of the tree with a user-selected order (preorder, postorder, leaves-only, etc.).</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traversal</td><td>model of <code><a class="el" href="classOrthtreeTraversal.html" title="a traversal provides the functions needed to traverse the nodes of an orthtree.">OrthtreeTraversal</a></code> that provides functions compatible with the type of the orthtree</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traversal</td><td>the instance of <code>Traversal</code> used</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a forward input iterator over the node indices of the tree </dd></dl>
+
+</div>
+</div>
+<a id="adcabadc26f226f15cea096a4f4afdcee" name="adcabadc26f226f15cea096a4f4afdcee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcabadc26f226f15cea096a4f4afdcee">◆ </a></span>unsplit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Orthtree.html">CGAL::Orthtree</a>&lt; Traits_ &gt;::unsplit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Orthtree.html#a7512e625cb0ce45c3c3c1a6761499dc5">Node_index</a> </td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>eliminates this node's children, making it a leaf node. </p>
+<p>When a node is un-split, its children are automatically deleted. After un-splitting a node it will be considered a leaf node. Idempotent, un-splitting a leaf node has no effect. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="classCGAL_1_1Orthtree.html">Orthtree</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
