@@ -1,0 +1,1069 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Polygon_mesh_processing/group__PMP__corrected__curvatures__grp.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.6 - Polygon Mesh Processing: Corrected Curvature Computation</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.6 - Polygon Mesh Processing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('group__PMP__corrected__curvatures__grp.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">Enumerations</a> |
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Corrected Curvature Computation<div class="ingroups"><a class="el" href="group__PkgPolygonMeshProcessingRef.html">Polygon Mesh Processing Reference</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p>Functions to compute the corrected curvatures of a polygon mesh. </p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members" id="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gaf3aa888d38fe9cb328de67c7c090bc24"><td class="memItemLeft" align="right" valign="top">enum  </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">CGAL::Polygon_mesh_processing::Measure_index</a> { <a class="el" href="group__PMP__corrected__curvatures__grp.html#ggaf3aa888d38fe9cb328de67c7c090bc24a232e8c843101c4ead8e7c25ed62a71e3">CGAL::Polygon_mesh_processing::MU0_AREA_MEASURE</a>, 
+<a class="el" href="group__PMP__corrected__curvatures__grp.html#ggaf3aa888d38fe9cb328de67c7c090bc24a887922741b002056a39af1b5e095bd51">CGAL::Polygon_mesh_processing::MU1_MEAN_CURVATURE_MEASURE</a>, 
+<a class="el" href="group__PMP__corrected__curvatures__grp.html#ggaf3aa888d38fe9cb328de67c7c090bc24a6318ef019b23daa8743b6609aedf06a1">CGAL::Polygon_mesh_processing::MU2_GAUSSIAN_CURVATURE_MEASURE</a>
+ }</td></tr><tr class="memdesc:gaf3aa888d38fe9cb328de67c7c090bc24"><td class="mdescLeft"> </td><td class="mdescRight">Enumeration type used to specify which measure is computed for the interpolated corrected curvature functions.  <a href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">More...</a><br /></td></tr>
+
+<tr class="separator:gaf3aa888d38fe9cb328de67c7c090bc24"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members" id="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga265af081430cb3443719ea8966695ead"><td class="memTemplParams" colspan="2">template&lt;typename GT &gt; </td></tr>
+<tr class="memitem:ga265af081430cb3443719ea8966695ead"><td class="memTemplItemLeft" align="right" valign="top">GT::FT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_triangle</a> (const typename GT::Vector_3 x0, const typename GT::Vector_3 x1, const typename GT::Vector_3 x2, const typename GT::Vector_3 u0, const typename GT::Vector_3 u1, const typename GT::Vector_3 u2, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i)</td></tr>
+<tr class="memdesc:ga265af081430cb3443719ea8966695ead"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected measure of a specific triangle.  <a href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead">More...</a><br /></td></tr>
+<tr class="separator:ga265af081430cb3443719ea8966695ead"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gacce6b0c7e774837889335f094f604026"><td class="memTemplParams" colspan="2">template&lt;typename GT &gt; </td></tr>
+<tr class="memitem:gacce6b0c7e774837889335f094f604026"><td class="memTemplItemLeft" align="right" valign="top">GT::FT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_quad</a> (const typename GT::Vector_3 x0, const typename GT::Vector_3 x1, const typename GT::Vector_3 x2, const typename GT::Vector_3 x3, const typename GT::Vector_3 u0, const typename GT::Vector_3 u1, const typename GT::Vector_3 u2, const typename GT::Vector_3 u3, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i)</td></tr>
+<tr class="memdesc:gacce6b0c7e774837889335f094f604026"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected measure of a specific quad.  <a href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026">More...</a><br /></td></tr>
+<tr class="separator:gacce6b0c7e774837889335f094f604026"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="memTemplParams" colspan="2">template&lt;typename GT &gt; </td></tr>
+<tr class="memitem:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="memTemplItemLeft" align="right" valign="top">GT::FT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_face</a> (const std::vector&lt; typename GT::Vector_3 &gt; &amp;x, const std::vector&lt; typename GT::Vector_3 &gt; &amp;u, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i)</td></tr>
+<tr class="memdesc:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected measure of a specific face.  <a href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816">More...</a><br /></td></tr>
+<tr class="separator:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="memTemplParams" colspan="2">template&lt;typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; FT &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga9fa635b819f038e4b1d8a8e0e7ba77c3">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_mesh</a> (const PolygonMesh &amp;pmesh, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i, NamedParameters &amp;np=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected curvature measure on each face of the mesh.  <a href="group__PMP__corrected__curvatures__grp.html#ga9fa635b819f038e4b1d8a8e0e7ba77c3">More...</a><br /></td></tr>
+<tr class="separator:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gaf3aa888d38fe9cb328de67c7c090bc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf3aa888d38fe9cb328de67c7c090bc24">◆ </a></span>Measure_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">CGAL::Polygon_mesh_processing::Measure_index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>Enumeration type used to specify which measure is computed for the interpolated corrected curvature functions. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf3aa888d38fe9cb328de67c7c090bc24a232e8c843101c4ead8e7c25ed62a71e3"></a>MU0_AREA_MEASURE </td><td class="fielddoc"><p>corrected area density of the given face </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf3aa888d38fe9cb328de67c7c090bc24a887922741b002056a39af1b5e095bd51"></a>MU1_MEAN_CURVATURE_MEASURE </td><td class="fielddoc"><p>corrected mean curvature density of the given face </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf3aa888d38fe9cb328de67c7c090bc24a6318ef019b23daa8743b6609aedf06a1"></a>MU2_GAUSSIAN_CURVATURE_MEASURE </td><td class="fielddoc"><p>corrected gaussian curvature density of the given face </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gaf5d9d8e1a66a65c0470e27cc34292816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf5d9d8e1a66a65c0470e27cc34292816">◆ </a></span>interpolated_corrected_measure_face()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GT &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::FT CGAL::Polygon_mesh_processing::interpolated_corrected_measure_face </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; typename GT::Vector_3 &gt; &amp; </td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; typename GT::Vector_3 &gt; &amp; </td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected measure of a specific face. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GT</td><td>is the geometric traits class.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>is a vector of the vertex positions of the face. </td></tr>
+    <tr><td class="paramname">u</td><td>is a vector of the vertex nomrals of the face. </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure, or the gaussian curvature measure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a scalar of type GT::FT. This is the value of the interpolated corrected measure of the given face.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead" title="computes the interpolated corrected measure of a specific triangle. ">interpolated_corrected_measure_triangle()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026" title="computes the interpolated corrected measure of a specific quad. ">interpolated_corrected_measure_quad()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga9fa635b819f038e4b1d8a8e0e7ba77c3" title="computes the interpolated corrected curvature measure on each face of the mesh. ">interpolated_corrected_measure_mesh()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga9fa635b819f038e4b1d8a8e0e7ba77c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9fa635b819f038e4b1d8a8e0e7ba77c3">◆ </a></span>interpolated_corrected_measure_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;FT&gt; CGAL::Polygon_mesh_processing::interpolated_corrected_measure_mesh </td>
+          <td>(</td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pmesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected curvature measure on each face of the mesh. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PolygonMesh</td><td>a model of <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/classFaceGraph.html">FaceGraph</a></code> </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pmesh</td><td>the polygon mesh </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure or the gaussian curvature measure </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b></button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <code>pmesh</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Point_3</code> as value type </li>
+<li>
+<b>Default: </b><code>boost::get(CGAL::vertex_point, pmesh)</code> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <code>CGAL::vertex_point_t</code> must be available in <code>PolygonMesh</code>. </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td> <button class="collapsible"> <b>vertex_normal_map</b></button> <div class="content"><ul>
+<li>
+a property map associating normal vectors to the vertices of <code>pmesh</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Vector_3</code> as value type </li>
+<li>
+<b>Default: </b><code>TODO</code> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, vertex normals should be computed inside the function body. </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector of the computed measure on all faces. The return type is a std::vector&lt;GT::FT&gt;. GT is the type of the Geometric Triats deduced from the PolygonMesh and the NamedParameters arguments This is to be changed later to a property_map&lt;face_descriptor, GT::FT&gt;.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816" title="computes the interpolated corrected measure of a specific face. ">interpolated_corrected_measure_face()</a></code> </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="Polygon_mesh_processing_2interpolated_corrected_curvatures_8cpp-example.html#a5">Polygon_mesh_processing/interpolated_corrected_curvatures.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="gacce6b0c7e774837889335f094f604026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacce6b0c7e774837889335f094f604026">◆ </a></span>interpolated_corrected_measure_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GT &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::FT CGAL::Polygon_mesh_processing::interpolated_corrected_measure_quad </td>
+          <td>(</td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected measure of a specific quad. </p>
+<p><br />
+Note that the vertices 0 to 3 are ordered like this: <br />
+v0 _ v1 <br />
+v2 |_| v3</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GT</td><td>is the geometric traits class.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x0</td><td>is the position of vertex #0. </td></tr>
+    <tr><td class="paramname">x1</td><td>is the position of vertex #1. </td></tr>
+    <tr><td class="paramname">x2</td><td>is the position of vertex #2. </td></tr>
+    <tr><td class="paramname">x3</td><td>is the position of vertex #3. </td></tr>
+    <tr><td class="paramname">u0</td><td>is the normal vector of vertex #0. </td></tr>
+    <tr><td class="paramname">u1</td><td>is the normal vector of vertex #1. </td></tr>
+    <tr><td class="paramname">u2</td><td>is the normal vector of vertex #2. </td></tr>
+    <tr><td class="paramname">u3</td><td>is the normal vector of vertex #3. </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure, or the gaussian curvature measure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a scalar of type GT::FT. This is the value of the interpolated corrected measure of the given triangle.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816" title="computes the interpolated corrected measure of a specific face. ">interpolated_corrected_measure_face()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead" title="computes the interpolated corrected measure of a specific triangle. ">interpolated_corrected_measure_triangle()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga265af081430cb3443719ea8966695ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga265af081430cb3443719ea8966695ead">◆ </a></span>interpolated_corrected_measure_triangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GT &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::FT CGAL::Polygon_mesh_processing::interpolated_corrected_measure_triangle </td>
+          <td>(</td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected measure of a specific triangle. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GT</td><td>is the geometric traits class.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x0</td><td>is the position of vertex #0. </td></tr>
+    <tr><td class="paramname">x1</td><td>is the position of vertex #1. </td></tr>
+    <tr><td class="paramname">x2</td><td>is the position of vertex #2. </td></tr>
+    <tr><td class="paramname">u0</td><td>is the normal vector of vertex #0. </td></tr>
+    <tr><td class="paramname">u1</td><td>is the normal vector of vertex #1. </td></tr>
+    <tr><td class="paramname">u2</td><td>is the normal vector of vertex #2. </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure, or the gaussian curvature measure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a scalar of type GT::FT. This is the value of the interpolated corrected measure of the given triangle.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816" title="computes the interpolated corrected measure of a specific face. ">interpolated_corrected_measure_face()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026" title="computes the interpolated corrected measure of a specific quad. ">interpolated_corrected_measure_quad()</a></code> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Jul 18 2022 07:28:00 for CGAL 5.6 - Polygon Mesh Processing by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.6 - Polygon Mesh Processing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('group__PMP__corrected__curvatures__grp.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">Enumerations</a> |
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Corrected Curvature Computation<div class="ingroups"><a class="el" href="group__PkgPolygonMeshProcessingRef.html">Polygon Mesh Processing Reference</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p>Functions to compute the corrected curvatures of a polygon mesh. </p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members" id="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gaf3aa888d38fe9cb328de67c7c090bc24"><td class="memItemLeft" align="right" valign="top">enum  </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">CGAL::Polygon_mesh_processing::Measure_index</a> { <a class="el" href="group__PMP__corrected__curvatures__grp.html#ggaf3aa888d38fe9cb328de67c7c090bc24a232e8c843101c4ead8e7c25ed62a71e3">CGAL::Polygon_mesh_processing::MU0_AREA_MEASURE</a>, 
+<a class="el" href="group__PMP__corrected__curvatures__grp.html#ggaf3aa888d38fe9cb328de67c7c090bc24a887922741b002056a39af1b5e095bd51">CGAL::Polygon_mesh_processing::MU1_MEAN_CURVATURE_MEASURE</a>, 
+<a class="el" href="group__PMP__corrected__curvatures__grp.html#ggaf3aa888d38fe9cb328de67c7c090bc24a6318ef019b23daa8743b6609aedf06a1">CGAL::Polygon_mesh_processing::MU2_GAUSSIAN_CURVATURE_MEASURE</a>
+ }</td></tr><tr class="memdesc:gaf3aa888d38fe9cb328de67c7c090bc24"><td class="mdescLeft"> </td><td class="mdescRight">Enumeration type used to specify which measure is computed for the interpolated corrected curvature functions.  <a href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">More...</a><br /></td></tr>
+
+<tr class="separator:gaf3aa888d38fe9cb328de67c7c090bc24"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members" id="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga265af081430cb3443719ea8966695ead"><td class="memTemplParams" colspan="2">template&lt;typename GT &gt; </td></tr>
+<tr class="memitem:ga265af081430cb3443719ea8966695ead"><td class="memTemplItemLeft" align="right" valign="top">GT::FT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_triangle</a> (const typename GT::Vector_3 x0, const typename GT::Vector_3 x1, const typename GT::Vector_3 x2, const typename GT::Vector_3 u0, const typename GT::Vector_3 u1, const typename GT::Vector_3 u2, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i)</td></tr>
+<tr class="memdesc:ga265af081430cb3443719ea8966695ead"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected measure of a specific triangle.  <a href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead">More...</a><br /></td></tr>
+<tr class="separator:ga265af081430cb3443719ea8966695ead"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gacce6b0c7e774837889335f094f604026"><td class="memTemplParams" colspan="2">template&lt;typename GT &gt; </td></tr>
+<tr class="memitem:gacce6b0c7e774837889335f094f604026"><td class="memTemplItemLeft" align="right" valign="top">GT::FT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_quad</a> (const typename GT::Vector_3 x0, const typename GT::Vector_3 x1, const typename GT::Vector_3 x2, const typename GT::Vector_3 x3, const typename GT::Vector_3 u0, const typename GT::Vector_3 u1, const typename GT::Vector_3 u2, const typename GT::Vector_3 u3, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i)</td></tr>
+<tr class="memdesc:gacce6b0c7e774837889335f094f604026"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected measure of a specific quad.  <a href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026">More...</a><br /></td></tr>
+<tr class="separator:gacce6b0c7e774837889335f094f604026"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="memTemplParams" colspan="2">template&lt;typename GT &gt; </td></tr>
+<tr class="memitem:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="memTemplItemLeft" align="right" valign="top">GT::FT </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_face</a> (const std::vector&lt; typename GT::Vector_3 &gt; &amp;x, const std::vector&lt; typename GT::Vector_3 &gt; &amp;u, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i)</td></tr>
+<tr class="memdesc:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected measure of a specific face.  <a href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816">More...</a><br /></td></tr>
+<tr class="separator:gaf5d9d8e1a66a65c0470e27cc34292816"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="memTemplParams" colspan="2">template&lt;typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; FT &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga9fa635b819f038e4b1d8a8e0e7ba77c3">CGAL::Polygon_mesh_processing::interpolated_corrected_measure_mesh</a> (const PolygonMesh &amp;pmesh, const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> mu_i, NamedParameters &amp;np=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="mdescLeft"> </td><td class="mdescRight">computes the interpolated corrected curvature measure on each face of the mesh.  <a href="group__PMP__corrected__curvatures__grp.html#ga9fa635b819f038e4b1d8a8e0e7ba77c3">More...</a><br /></td></tr>
+<tr class="separator:ga9fa635b819f038e4b1d8a8e0e7ba77c3"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gaf3aa888d38fe9cb328de67c7c090bc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf3aa888d38fe9cb328de67c7c090bc24">◆ </a></span>Measure_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">CGAL::Polygon_mesh_processing::Measure_index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>Enumeration type used to specify which measure is computed for the interpolated corrected curvature functions. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf3aa888d38fe9cb328de67c7c090bc24a232e8c843101c4ead8e7c25ed62a71e3"></a>MU0_AREA_MEASURE </td><td class="fielddoc"><p>corrected area density of the given face </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf3aa888d38fe9cb328de67c7c090bc24a887922741b002056a39af1b5e095bd51"></a>MU1_MEAN_CURVATURE_MEASURE </td><td class="fielddoc"><p>corrected mean curvature density of the given face </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf3aa888d38fe9cb328de67c7c090bc24a6318ef019b23daa8743b6609aedf06a1"></a>MU2_GAUSSIAN_CURVATURE_MEASURE </td><td class="fielddoc"><p>corrected gaussian curvature density of the given face </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gaf5d9d8e1a66a65c0470e27cc34292816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf5d9d8e1a66a65c0470e27cc34292816">◆ </a></span>interpolated_corrected_measure_face()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GT &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::FT CGAL::Polygon_mesh_processing::interpolated_corrected_measure_face </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; typename GT::Vector_3 &gt; &amp; </td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; typename GT::Vector_3 &gt; &amp; </td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected measure of a specific face. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GT</td><td>is the geometric traits class.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>is a vector of the vertex positions of the face. </td></tr>
+    <tr><td class="paramname">u</td><td>is a vector of the vertex nomrals of the face. </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure, or the gaussian curvature measure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a scalar of type GT::FT. This is the value of the interpolated corrected measure of the given face.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead" title="computes the interpolated corrected measure of a specific triangle. ">interpolated_corrected_measure_triangle()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026" title="computes the interpolated corrected measure of a specific quad. ">interpolated_corrected_measure_quad()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga9fa635b819f038e4b1d8a8e0e7ba77c3" title="computes the interpolated corrected curvature measure on each face of the mesh. ">interpolated_corrected_measure_mesh()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga9fa635b819f038e4b1d8a8e0e7ba77c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9fa635b819f038e4b1d8a8e0e7ba77c3">◆ </a></span>interpolated_corrected_measure_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PolygonMesh , typename NamedParameters  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;FT&gt; CGAL::Polygon_mesh_processing::interpolated_corrected_measure_mesh </td>
+          <td>(</td>
+          <td class="paramtype">const PolygonMesh &amp; </td>
+          <td class="paramname"><em>pmesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected curvature measure on each face of the mesh. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PolygonMesh</td><td>a model of <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/classFaceGraph.html">FaceGraph</a></code> </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pmesh</td><td>the polygon mesh </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure or the gaussian curvature measure </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b></button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <code>pmesh</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Point_3</code> as value type </li>
+<li>
+<b>Default: </b><code>boost::get(CGAL::vertex_point, pmesh)</code> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <code>CGAL::vertex_point_t</code> must be available in <code>PolygonMesh</code>. </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td> <button class="collapsible"> <b>vertex_normal_map</b></button> <div class="content"><ul>
+<li>
+a property map associating normal vectors to the vertices of <code>pmesh</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Vector_3</code> as value type </li>
+<li>
+<b>Default: </b><code>TODO</code> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, vertex normals should be computed inside the function body. </li>
+</ul>
+ </div>  </td><td><p class="starttd"></p>
+<p class="endtd"></p>
+</td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector of the computed measure on all faces. The return type is a std::vector&lt;GT::FT&gt;. GT is the type of the Geometric Triats deduced from the PolygonMesh and the NamedParameters arguments This is to be changed later to a property_map&lt;face_descriptor, GT::FT&gt;.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816" title="computes the interpolated corrected measure of a specific face. ">interpolated_corrected_measure_face()</a></code> </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="Polygon_mesh_processing_2interpolated_corrected_curvatures_8cpp-example.html#a5">Polygon_mesh_processing/interpolated_corrected_curvatures.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="gacce6b0c7e774837889335f094f604026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacce6b0c7e774837889335f094f604026">◆ </a></span>interpolated_corrected_measure_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GT &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::FT CGAL::Polygon_mesh_processing::interpolated_corrected_measure_quad </td>
+          <td>(</td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected measure of a specific quad. </p>
+<p><br />
+Note that the vertices 0 to 3 are ordered like this: <br />
+v0 _ v1 <br />
+v2 |_| v3</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GT</td><td>is the geometric traits class.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x0</td><td>is the position of vertex #0. </td></tr>
+    <tr><td class="paramname">x1</td><td>is the position of vertex #1. </td></tr>
+    <tr><td class="paramname">x2</td><td>is the position of vertex #2. </td></tr>
+    <tr><td class="paramname">x3</td><td>is the position of vertex #3. </td></tr>
+    <tr><td class="paramname">u0</td><td>is the normal vector of vertex #0. </td></tr>
+    <tr><td class="paramname">u1</td><td>is the normal vector of vertex #1. </td></tr>
+    <tr><td class="paramname">u2</td><td>is the normal vector of vertex #2. </td></tr>
+    <tr><td class="paramname">u3</td><td>is the normal vector of vertex #3. </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure, or the gaussian curvature measure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a scalar of type GT::FT. This is the value of the interpolated corrected measure of the given triangle.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816" title="computes the interpolated corrected measure of a specific face. ">interpolated_corrected_measure_face()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#ga265af081430cb3443719ea8966695ead" title="computes the interpolated corrected measure of a specific triangle. ">interpolated_corrected_measure_triangle()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="ga265af081430cb3443719ea8966695ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga265af081430cb3443719ea8966695ead">◆ </a></span>interpolated_corrected_measure_triangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename GT &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::FT CGAL::Polygon_mesh_processing::interpolated_corrected_measure_triangle </td>
+          <td>(</td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename GT::Vector_3 </td>
+          <td class="paramname"><em>u2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf3aa888d38fe9cb328de67c7c090bc24">Measure_index</a> </td>
+          <td class="paramname"><em>mu_i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/Curvatures/interpolated_corrected_curvature_measures.h&gt;</code></p>
+
+<p>computes the interpolated corrected measure of a specific triangle. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">GT</td><td>is the geometric traits class.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x0</td><td>is the position of vertex #0. </td></tr>
+    <tr><td class="paramname">x1</td><td>is the position of vertex #1. </td></tr>
+    <tr><td class="paramname">x2</td><td>is the position of vertex #2. </td></tr>
+    <tr><td class="paramname">u0</td><td>is the normal vector of vertex #0. </td></tr>
+    <tr><td class="paramname">u1</td><td>is the normal vector of vertex #1. </td></tr>
+    <tr><td class="paramname">u2</td><td>is the normal vector of vertex #2. </td></tr>
+    <tr><td class="paramname">mu_i</td><td>an enum for choosing between computing the area measure, the mean curvature measure, or the gaussian curvature measure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a scalar of type GT::FT. This is the value of the interpolated corrected measure of the given triangle.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gaf5d9d8e1a66a65c0470e27cc34292816" title="computes the interpolated corrected measure of a specific face. ">interpolated_corrected_measure_face()</a></code> </dd>
+<dd>
+<code><a class="el" href="group__PMP__corrected__curvatures__grp.html#gacce6b0c7e774837889335f094f604026" title="computes the interpolated corrected measure of a specific quad. ">interpolated_corrected_measure_quad()</a></code> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Jul 18 2022 07:28:00 for CGAL 5.6 - Polygon Mesh Processing by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
+
+</html>

@@ -1,0 +1,26 @@
+var classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2 =
+[
+    [ "Point_2", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a961de205105b50e70d0ea958cf6adf39", null ],
+    [ "X_monotone_curve_2", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a652ee3e252b9013f03935e430bfd5535", null ],
+    [ "X_monotone_curve_2", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#ae5e6b689342992add1b273115703efdf", null ],
+    [ "X_monotone_curve_2", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a182e564dae6dab1036bd6286d36eb034", null ],
+    [ "is_degenerate", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a12916f87ab4df4833b25b2f4ab406f55", null ],
+    [ "is_directed_right", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a7b6144db47cb3b448b0b4aed951c7151", null ],
+    [ "is_empty", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#af859a04f1bbc3b33582a402cf3e50227", null ],
+    [ "is_full", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#ae3965c90ef8e19c3a1d46aeeb7c44c3e", null ],
+    [ "is_meridian", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a9f0df8234d5758a6cf41c17bb55d57e4", null ],
+    [ "is_vertical", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a900137ad20d9ce2322f5e75de2ae86da", null ],
+    [ "left", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a0781eeca35483a8c0d70dd34d0552da8", null ],
+    [ "normal", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a3267b83bc4deb43a63118d7ca2d3141a", null ],
+    [ "right", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a1826f238ef8cc0dd74f29a3e191db16d", null ],
+    [ "set_is_degenerate", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#af37060059e3d382ea4bf44ba82daf9ff", null ],
+    [ "set_is_directed_right", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a0706d4f894350777c5ca615556bc9338", null ],
+    [ "set_is_empty", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#ade3bcbeb5c44c24eeef3d31a37bf06e2", null ],
+    [ "set_is_full", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a848b474e8f60c533219a3de9a6a3f14f", null ],
+    [ "set_is_vertical", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a6e73d0418c56c8cd43a9970340d60a88", null ],
+    [ "set_normal", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a966e1a8eee82d270be5c58638a16a87d", null ],
+    [ "set_source", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a0d78efd9649249af6598187a9ffbe48d", null ],
+    [ "set_target", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#a1a5d34ba0042dc18ffe942bf2771054c", null ],
+    [ "source", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#afd7c41738e5af084bbd7c1011671113a", null ],
+    [ "target", "classCGAL_1_1Arr__geodesic__arc__on__sphere__traits__2_1_1X__monotone__curve__2.html#ae3a127bb7600abff3aa46e55474757a3", null ]
+];

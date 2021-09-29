@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Weights/Weights_2weighted_laplacian_8cpp-example.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.6 - Weights: Weights/weighted_laplacian.cpp</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.6 - Weights
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('Weights_2weighted_laplacian_8cpp-example.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">Weights/weighted_laplacian.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;CGAL/Eigen_solver_traits.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;CGAL/Eigen_matrix.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Weights_8h.html">CGAL/Weights.h</a>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// Typedefs.</span></div><div class="line"><span class="keyword">using</span> <a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/namespaceKernel.html">Kernel</a>  = <a name="_a0" id="_a0"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div><div class="line"><span class="keyword">using</span> FT      = <span class="keyword">typename</span> <a name="a1" id="a1"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html#a55e83f5a9f8ca43588b02ae8256a8fbd">Kernel::FT</a>;</div><div class="line"><span class="keyword">using</span> Point_3 = <span class="keyword">typename</span> <a name="a2" id="a2"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html#ae82b7f4be77dd5b8819ebe419e4ae753">Kernel::Point_3</a>;</div><div class="line"></div><div class="line"><span class="keyword">using</span> Solver_traits = <a name="_a3" id="_a3"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Solver_interface.tag:../Solver_interface/" href="../Solver_interface/classCGAL_1_1Eigen__solver__traits.html">CGAL::Eigen_solver_traits</a>&lt;</div><div class="line">  Eigen::SparseLU&lt;CGAL::Eigen_sparse_matrix&lt;FT&gt;::EigenType&gt; &gt;;</div><div class="line"><span class="keyword">using</span> Matrix = Solver_traits::Matrix;</div><div class="line"></div><div class="line"><span class="keyword">using</span> Mesh = <a name="_a4" id="_a4"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Surface_mesh.tag:../Surface_mesh/" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a>;</div><div class="line"><span class="keyword">using</span> VD   = boost::graph_traits&lt;Mesh&gt;::vertex_descriptor;</div><div class="line"><span class="keyword">using</span> HD   = boost::graph_traits&lt;Mesh&gt;::halfedge_descriptor;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Po<span class="keywordtype">int</span>Map&gt;</div><div class="line">FT get_w_ij(<span class="keyword">const</span> Mesh&amp; mesh, <span class="keyword">const</span> HD he, <span class="keyword">const</span> PointMap pmap) {</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v0 = target(he, mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v1 = source(he, mesh);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; q  = <span class="keyword">get</span>(pmap, v0); <span class="comment">// query</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p1 = <span class="keyword">get</span>(pmap, v1); <span class="comment">// neighbor j</span></div><div class="line"></div><div class="line">  <span class="keywordflow">if</span> (<a name="a5" id="a5"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#ga63695419c5ce7f68949ff2fb4f42d733">is_border_edge</a>(he, mesh)) {</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> he_cw = <a name="a6" id="a6"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(next(he, mesh), mesh);</div><div class="line">    <span class="keyword">auto</span> v2 = source(he_cw, mesh);</div><div class="line"></div><div class="line">    <span class="keywordflow">if</span> (<a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#ga63695419c5ce7f68949ff2fb4f42d733">is_border_edge</a>(he_cw, mesh)) {</div><div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span> he_ccw = prev(<a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(he, mesh), mesh);</div><div class="line">      v2 = source(he_ccw, mesh);</div><div class="line"></div><div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2 = <span class="keyword">get</span>(pmap, v2); <span class="comment">// neighbor jp</span></div><div class="line">      <span class="keywordflow">return</span> CGAL::Weights::cotangent(p1, p2, q);</div><div class="line">    } <span class="keywordflow">else</span> {</div><div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p0 = <span class="keyword">get</span>(pmap, v2); <span class="comment">// neighbor jm</span></div><div class="line">      <span class="keywordflow">return</span> CGAL::Weights::cotangent(q, p0, p1);</div><div class="line">    }</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> he_cw = <a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(next(he, mesh), mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v2 = source(he_cw, mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> he_ccw = prev(<a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(he, mesh), mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v3 = source(he_ccw, mesh);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p0 = <span class="keyword">get</span>(pmap, v2); <span class="comment">// neighbor jm</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2 = <span class="keyword">get</span>(pmap, v3); <span class="comment">// neighbor jp</span></div><div class="line">  <span class="keywordflow">return</span> <a name="a7" id="a7"></a><a class="code" href="group__PkgWeightsRefCotangentWeights.html#ga3066242d371af7324f0288778bff54a9">CGAL::Weights::cotangent_weight</a>(p0, p1, p2, q) / 2.0;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Po<span class="keywordtype">int</span>Map&gt;</div><div class="line">FT get_w_i(<span class="keyword">const</span> Mesh&amp; mesh, <span class="keyword">const</span> VD v_i, <span class="keyword">const</span> PointMap pmap) {</div><div class="line"></div><div class="line">  FT A_i = 0.0;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v0 = v_i;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> init = halfedge(v_i, mesh);</div><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; he : <a name="a8" id="a8"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLIterators.html#ga2be4fd4d24b1e48e00a92f90f0f2923c">halfedges_around_target</a>(init, mesh)) {</div><div class="line">    assert(v0 == target(he, mesh));</div><div class="line">    <span class="keywordflow">if</span> (<a name="a9" id="a9"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#gad93e429ad24efeaddeb836c437e719ab">is_border</a>(he, mesh)) { <span class="keywordflow">continue</span>; }</div><div class="line"></div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> v1 = source(he, mesh);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> v2 = target(next(he, mesh), mesh);</div><div class="line"></div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p = <span class="keyword">get</span>(pmap, v0);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; q = <span class="keyword">get</span>(pmap, v1);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; r = <span class="keyword">get</span>(pmap, v2);</div><div class="line">    A_i += <a name="a10" id="a10"></a><a class="code" href="group__PkgWeightsRefMixedVoronoiRegionWeights.html#ga2c72cfdf25b34a465f816e13ba6d879c">CGAL::Weights::mixed_voronoi_area</a>(p, q, r);</div><div class="line">  }</div><div class="line">  assert(A_i != 0.0);</div><div class="line">  <span class="keywordflow">return</span> 1.0 / (2.0 * A_i);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">void</span> set_laplacian_matrix(<span class="keyword">const</span> Mesh&amp; mesh, Matrix&amp; L) {</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> pmap = <span class="keyword">get</span>(CGAL::vertex_point, mesh); <span class="comment">// vertex to point map</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> imap = <span class="keyword">get</span>(CGAL::vertex_index, mesh); <span class="comment">// vertex to index map</span></div><div class="line"></div><div class="line">  <span class="comment">// Precompute Voronoi areas.</span></div><div class="line">  std::map&lt;std::size_t, FT&gt; w_i;</div><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; v_i : vertices(mesh)) {</div><div class="line">    w_i[<span class="keyword">get</span>(imap, v_i)] = get_w_i(mesh, v_i, pmap);</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">// Fill the matrix.</span></div><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; he : halfedges(mesh)) {</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> vi = source(he, mesh);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> vj = target(he, mesh);</div><div class="line"></div><div class="line">    <span class="keyword">const</span> std::size_t i = <span class="keyword">get</span>(imap, vi);</div><div class="line">    <span class="keyword">const</span> std::size_t j = <span class="keyword">get</span>(imap, vj);</div><div class="line">    <span class="keywordflow">if</span> (i &gt; j) { <span class="keywordflow">continue</span>; }</div><div class="line"></div><div class="line">    <span class="keyword">const</span> FT w_ij = w_i[j] * get_w_ij(mesh, he, pmap);</div><div class="line">    L.set_coef(i, j,  w_ij, <span class="keyword">true</span>);</div><div class="line">    L.set_coef(j, i,  w_ij, <span class="keyword">true</span>);</div><div class="line">    L.add_coef(i, i, -w_ij);</div><div class="line">    L.add_coef(j, j, -w_ij);</div><div class="line">  }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main() {</div><div class="line"></div><div class="line">  <span class="comment">// Create mesh.</span></div><div class="line">  Mesh mesh;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v0 = mesh.add_vertex(Point_3(0, 2, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v1 = mesh.add_vertex(Point_3(2, 2, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v2 = mesh.add_vertex(Point_3(0, 0, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v3 = mesh.add_vertex(Point_3(2, 0, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v4 = mesh.add_vertex(Point_3(1, 1, 1));</div><div class="line">  mesh.add_face(v0, v2, v4);</div><div class="line">  mesh.add_face(v2, v3, v4);</div><div class="line">  mesh.add_face(v3, v1, v4);</div><div class="line">  mesh.add_face(v1, v0, v4);</div><div class="line">  mesh.add_face(v2, v3, v1);</div><div class="line">  mesh.add_face(v1, v0, v2);</div><div class="line">  assert(<a name="a11" id="a11"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#ga11883d231eec1b58f37efe4acedd9588">CGAL::is_triangle_mesh</a>(mesh));</div><div class="line"></div><div class="line">  <span class="comment">// Set discretized Laplacian.</span></div><div class="line">  <span class="keyword">const</span> std::size_t n = 5; <span class="comment">// we have 5 vertices</span></div><div class="line">  Matrix L(n, n);</div><div class="line">  set_laplacian_matrix(mesh, L);</div><div class="line">  std::cout &lt;&lt; std::fixed; std::cout &lt;&lt; std::showpos;</div><div class="line">  <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; n; ++i) {</div><div class="line">    <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; n; ++j) {</div><div class="line">      std::cout &lt;&lt; L.get_coef(i, j) &lt;&lt; <span class="stringliteral">" "</span>;</div><div class="line">    }</div><div class="line">    std::cout &lt;&lt; std::endl;</div><div class="line">  }</div><div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div><div class="line">}</div></div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Jun 27 2022 09:17:13 for CGAL 5.6 - Weights by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.6 - Weights
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('Weights_2weighted_laplacian_8cpp-example.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">Weights/weighted_laplacian.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;CGAL/Eigen_solver_traits.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;CGAL/Eigen_matrix.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Weights_8h.html">CGAL/Weights.h</a>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// Typedefs.</span></div><div class="line"><span class="keyword">using</span> <a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/namespaceKernel.html">Kernel</a>  = <a name="_a0" id="_a0"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a>;</div><div class="line"><span class="keyword">using</span> FT      = <span class="keyword">typename</span> <a name="a1" id="a1"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html#a55e83f5a9f8ca43588b02ae8256a8fbd">Kernel::FT</a>;</div><div class="line"><span class="keyword">using</span> Point_3 = <span class="keyword">typename</span> <a name="a2" id="a2"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html#ae82b7f4be77dd5b8819ebe419e4ae753">Kernel::Point_3</a>;</div><div class="line"></div><div class="line"><span class="keyword">using</span> Solver_traits = <a name="_a3" id="_a3"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Solver_interface.tag:../Solver_interface/" href="../Solver_interface/classCGAL_1_1Eigen__solver__traits.html">CGAL::Eigen_solver_traits</a>&lt;</div><div class="line">  Eigen::SparseLU&lt;CGAL::Eigen_sparse_matrix&lt;FT&gt;::EigenType&gt; &gt;;</div><div class="line"><span class="keyword">using</span> Matrix = Solver_traits::Matrix;</div><div class="line"></div><div class="line"><span class="keyword">using</span> Mesh = <a name="_a4" id="_a4"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Surface_mesh.tag:../Surface_mesh/" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a>;</div><div class="line"><span class="keyword">using</span> VD   = boost::graph_traits&lt;Mesh&gt;::vertex_descriptor;</div><div class="line"><span class="keyword">using</span> HD   = boost::graph_traits&lt;Mesh&gt;::halfedge_descriptor;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Po<span class="keywordtype">int</span>Map&gt;</div><div class="line">FT get_w_ij(<span class="keyword">const</span> Mesh&amp; mesh, <span class="keyword">const</span> HD he, <span class="keyword">const</span> PointMap pmap) {</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v0 = target(he, mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v1 = source(he, mesh);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; q  = <span class="keyword">get</span>(pmap, v0); <span class="comment">// query</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p1 = <span class="keyword">get</span>(pmap, v1); <span class="comment">// neighbor j</span></div><div class="line"></div><div class="line">  <span class="keywordflow">if</span> (<a name="a5" id="a5"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#ga63695419c5ce7f68949ff2fb4f42d733">is_border_edge</a>(he, mesh)) {</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> he_cw = <a name="a6" id="a6"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(next(he, mesh), mesh);</div><div class="line">    <span class="keyword">auto</span> v2 = source(he_cw, mesh);</div><div class="line"></div><div class="line">    <span class="keywordflow">if</span> (<a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#ga63695419c5ce7f68949ff2fb4f42d733">is_border_edge</a>(he_cw, mesh)) {</div><div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span> he_ccw = prev(<a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(he, mesh), mesh);</div><div class="line">      v2 = source(he_ccw, mesh);</div><div class="line"></div><div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2 = <span class="keyword">get</span>(pmap, v2); <span class="comment">// neighbor jp</span></div><div class="line">      <span class="keywordflow">return</span> CGAL::Weights::cotangent(p1, p2, q);</div><div class="line">    } <span class="keywordflow">else</span> {</div><div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p0 = <span class="keyword">get</span>(pmap, v2); <span class="comment">// neighbor jm</span></div><div class="line">      <span class="keywordflow">return</span> CGAL::Weights::cotangent(q, p0, p1);</div><div class="line">    }</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> he_cw = <a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(next(he, mesh), mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v2 = source(he_cw, mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> he_ccw = prev(<a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__kernel__enums.html#gad0a8110cb95f76bac65649bfe58c650b">opposite</a>(he, mesh), mesh);</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v3 = source(he_ccw, mesh);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p0 = <span class="keyword">get</span>(pmap, v2); <span class="comment">// neighbor jm</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2 = <span class="keyword">get</span>(pmap, v3); <span class="comment">// neighbor jp</span></div><div class="line">  <span class="keywordflow">return</span> <a name="a7" id="a7"></a><a class="code" href="group__PkgWeightsRefCotangentWeights.html#ga3066242d371af7324f0288778bff54a9">CGAL::Weights::cotangent_weight</a>(p0, p1, p2, q) / 2.0;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Po<span class="keywordtype">int</span>Map&gt;</div><div class="line">FT get_w_i(<span class="keyword">const</span> Mesh&amp; mesh, <span class="keyword">const</span> VD v_i, <span class="keyword">const</span> PointMap pmap) {</div><div class="line"></div><div class="line">  FT A_i = 0.0;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v0 = v_i;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> init = halfedge(v_i, mesh);</div><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; he : <a name="a8" id="a8"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLIterators.html#ga2be4fd4d24b1e48e00a92f90f0f2923c">halfedges_around_target</a>(init, mesh)) {</div><div class="line">    assert(v0 == target(he, mesh));</div><div class="line">    <span class="keywordflow">if</span> (<a name="a9" id="a9"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#gad93e429ad24efeaddeb836c437e719ab">is_border</a>(he, mesh)) { <span class="keywordflow">continue</span>; }</div><div class="line"></div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> v1 = source(he, mesh);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> v2 = target(next(he, mesh), mesh);</div><div class="line"></div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p = <span class="keyword">get</span>(pmap, v0);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; q = <span class="keyword">get</span>(pmap, v1);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; r = <span class="keyword">get</span>(pmap, v2);</div><div class="line">    A_i += <a name="a10" id="a10"></a><a class="code" href="group__PkgWeightsRefMixedVoronoiRegionWeights.html#ga2c72cfdf25b34a465f816e13ba6d879c">CGAL::Weights::mixed_voronoi_area</a>(p, q, r);</div><div class="line">  }</div><div class="line">  assert(A_i != 0.0);</div><div class="line">  <span class="keywordflow">return</span> 1.0 / (2.0 * A_i);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">void</span> set_laplacian_matrix(<span class="keyword">const</span> Mesh&amp; mesh, Matrix&amp; L) {</div><div class="line"></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> pmap = <span class="keyword">get</span>(CGAL::vertex_point, mesh); <span class="comment">// vertex to point map</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> imap = <span class="keyword">get</span>(CGAL::vertex_index, mesh); <span class="comment">// vertex to index map</span></div><div class="line"></div><div class="line">  <span class="comment">// Precompute Voronoi areas.</span></div><div class="line">  std::map&lt;std::size_t, FT&gt; w_i;</div><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; v_i : vertices(mesh)) {</div><div class="line">    w_i[<span class="keyword">get</span>(imap, v_i)] = get_w_i(mesh, v_i, pmap);</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">// Fill the matrix.</span></div><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; he : halfedges(mesh)) {</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> vi = source(he, mesh);</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> vj = target(he, mesh);</div><div class="line"></div><div class="line">    <span class="keyword">const</span> std::size_t i = <span class="keyword">get</span>(imap, vi);</div><div class="line">    <span class="keyword">const</span> std::size_t j = <span class="keyword">get</span>(imap, vj);</div><div class="line">    <span class="keywordflow">if</span> (i &gt; j) { <span class="keywordflow">continue</span>; }</div><div class="line"></div><div class="line">    <span class="keyword">const</span> FT w_ij = w_i[j] * get_w_ij(mesh, he, pmap);</div><div class="line">    L.set_coef(i, j,  w_ij, <span class="keyword">true</span>);</div><div class="line">    L.set_coef(j, i,  w_ij, <span class="keyword">true</span>);</div><div class="line">    L.add_coef(i, i, -w_ij);</div><div class="line">    L.add_coef(j, j, -w_ij);</div><div class="line">  }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main() {</div><div class="line"></div><div class="line">  <span class="comment">// Create mesh.</span></div><div class="line">  Mesh mesh;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v0 = mesh.add_vertex(Point_3(0, 2, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v1 = mesh.add_vertex(Point_3(2, 2, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v2 = mesh.add_vertex(Point_3(0, 0, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v3 = mesh.add_vertex(Point_3(2, 0, 0));</div><div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> v4 = mesh.add_vertex(Point_3(1, 1, 1));</div><div class="line">  mesh.add_face(v0, v2, v4);</div><div class="line">  mesh.add_face(v2, v3, v4);</div><div class="line">  mesh.add_face(v3, v1, v4);</div><div class="line">  mesh.add_face(v1, v0, v4);</div><div class="line">  mesh.add_face(v2, v3, v1);</div><div class="line">  mesh.add_face(v1, v0, v2);</div><div class="line">  assert(<a name="a11" id="a11"></a><a class="codeRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/BGL.tag:../BGL/" href="../BGL/group__PkgBGLHelperFct.html#ga11883d231eec1b58f37efe4acedd9588">CGAL::is_triangle_mesh</a>(mesh));</div><div class="line"></div><div class="line">  <span class="comment">// Set discretized Laplacian.</span></div><div class="line">  <span class="keyword">const</span> std::size_t n = 5; <span class="comment">// we have 5 vertices</span></div><div class="line">  Matrix L(n, n);</div><div class="line">  set_laplacian_matrix(mesh, L);</div><div class="line">  std::cout &lt;&lt; std::fixed; std::cout &lt;&lt; std::showpos;</div><div class="line">  <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; n; ++i) {</div><div class="line">    <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; n; ++j) {</div><div class="line">      std::cout &lt;&lt; L.get_coef(i, j) &lt;&lt; <span class="stringliteral">" "</span>;</div><div class="line">    }</div><div class="line">    std::cout &lt;&lt; std::endl;</div><div class="line">  }</div><div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div><div class="line">}</div></div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Jun 27 2022 09:17:13 for CGAL 5.6 - Weights by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
+
+</html>

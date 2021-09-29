@@ -1,0 +1,27 @@
+var classCGAL_1_1Mesh__vertex__3 =
+[
+    [ "Cmvb3_base", "classCGAL_1_1Mesh__vertex__3.html#afdf854dd556857bfa12dca7970121bcd", null ],
+    [ "FT", "classCGAL_1_1Mesh__vertex__3.html#a290ca61cf1798889dbdbebbd8cb7dc5a", null ],
+    [ "Has_timestamp", "classCGAL_1_1Mesh__vertex__3.html#a98bd85db797fc33db250daf2214330d3", null ],
+    [ "Index", "classCGAL_1_1Mesh__vertex__3.html#a52ae487e3816bdbaa13aaa1d9b037171", null ],
+    [ "Vertex_handle", "classCGAL_1_1Mesh__vertex__3.html#a82176d8acc3b8b3a23d305a70464c4e1", null ],
+    [ "Mesh_vertex_3", "classCGAL_1_1Mesh__vertex__3.html#acceee81b32cbdea3857d79fa0024c70d", null ],
+    [ "cached_number_of_components", "classCGAL_1_1Mesh__vertex__3.html#a36d4f909b1fdde151874ff6360fa084b", null ],
+    [ "cached_number_of_incident_facets", "classCGAL_1_1Mesh__vertex__3.html#a13506fe210b800886eb36a88826aef3a", null ],
+    [ "in_dimension", "classCGAL_1_1Mesh__vertex__3.html#a0b50d769c96e2bc792991e25cc712828", null ],
+    [ "index", "classCGAL_1_1Mesh__vertex__3.html#a0ee2b430c33859b83090689027171500", null ],
+    [ "invalidate_c2t3_cache", "classCGAL_1_1Mesh__vertex__3.html#aae46598f408f2be04fb8f9ff01a92179", null ],
+    [ "io_signature", "classCGAL_1_1Mesh__vertex__3.html#a2d7c1902f2f2edbc744351d116a33057", null ],
+    [ "is_c2t3_cache_valid", "classCGAL_1_1Mesh__vertex__3.html#abf0dbe141cc581aa550f9ca7f2b4aee7", null ],
+    [ "is_special", "classCGAL_1_1Mesh__vertex__3.html#aced854e0a1502d8b9d373dd48b95c426", null ],
+    [ "meshing_info", "classCGAL_1_1Mesh__vertex__3.html#ac54405870ad98538aaea16cf56bf2cd8", null ],
+    [ "set_c2t3_cache", "classCGAL_1_1Mesh__vertex__3.html#acc2d972ed21e0dc6f369de9ba89e5dc6", null ],
+    [ "set_dimension", "classCGAL_1_1Mesh__vertex__3.html#aaaf608cfa42fc21eb30f8925bc66967e", null ],
+    [ "set_index", "classCGAL_1_1Mesh__vertex__3.html#aad59a37f52db0ac62d21424f452af4fb", null ],
+    [ "set_meshing_info", "classCGAL_1_1Mesh__vertex__3.html#ab23c972675d184a76a6b4d430699e789", null ],
+    [ "set_special", "classCGAL_1_1Mesh__vertex__3.html#a638c9e6d29bbc6b59b5d86bd1dcbd425", null ],
+    [ "set_time_stamp", "classCGAL_1_1Mesh__vertex__3.html#ae85043caf40a1db44704b5605cca5e28", null ],
+    [ "time_stamp", "classCGAL_1_1Mesh__vertex__3.html#a9aace9bc8370077bf5d0f0e07cfd9018", null ],
+    [ "operator<<", "classCGAL_1_1Mesh__vertex__3.html#ab0707c1da2f8ca753f56380adab1240a", null ],
+    [ "operator>>", "classCGAL_1_1Mesh__vertex__3.html#adb2cc2fe6201492e7e9b648b13bf2c6f", null ]
+];
