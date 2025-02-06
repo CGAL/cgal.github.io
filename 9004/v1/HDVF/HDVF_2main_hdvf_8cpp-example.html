@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/HDVF_2main_hdvf_8cpp-example.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1 - Homological Discrete Vector Fields: HDVF/main_hdvf.cpp</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('HDVF_2main_hdvf_8cpp-example.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">HDVF/main_hdvf.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="comment">// HDVF computation (command line version)</span></div>
+<div class="line"><span class="comment">// --------</span></div>
+<div class="line"><span class="comment">// Computes a "perfect" Hdvf and provides a batch mode to specify arguments</span></div>
+<div class="line"><span class="comment">// For help: hdvf -h</span></div>
+<div class="line"><span class="comment">// --------</span></div>
+<div class="line"><span class="comment">// A. Bac</span></div>
+<div class="line"><span class="comment">// --------</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;typeinfo&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Zp.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Z2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Simplex.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Simplicial_chain_complex.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Cubical_chain_complex.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Geometric_chain_complex_tools.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/OSM/OSM.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/OSM/Sparse_chain.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Mesh_object_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Cub_object_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/HDVF/Hdvf_tools.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include "arguments.h"</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ------- A ring</span></div>
+<div class="line"><span class="comment">// For Z/nZ other than Z (ie. n=0) and Z/2Z, uncomment and set the following define properly</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//#define SCALAR 5</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Hdvf computation, output and export</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> MeshType, <span class="keyword">typename</span> ComplexType&gt;</div>
+<div class="line"><span class="keywordtype">void</span> mesh_complex_output(<span class="keyword">const</span> MeshType&amp; mesh, <span class="keyword">const</span> ComplexType&amp; complex, <span class="keyword">const</span> Options&amp; options)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (options.with_output)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Mesh</span></div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"----&gt; mesh informations"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        mesh.print_infos() ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Complex</span></div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"----&gt; complex informations"</span> &lt;&lt; std::endl;</div>
+<div class="line">        std::cout &lt;&lt; complex;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ComplexType&gt;</div>
+<div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf&lt;ComplexType&gt;</a>&amp; HDVF_comput (<span class="keyword">const</span> ComplexType&amp; complex, <span class="keyword">const</span> Options &amp;options)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> ComplexType::Coefficient_type Coefficient_type;</div>
+<div class="line">    <a class="code hl_class" href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf&lt;ComplexType&gt;</a>&amp; hdvf(*(<span class="keyword">new</span> <a class="code hl_class" href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf&lt;ComplexType&gt;</a>(complex, options.HDVF_opt)));</div>
+<div class="line">    std::vector&lt;CGAL::HDVF::Cell_pair&gt; pairs ;</div>
+<div class="line">    <span class="keywordflow">if</span> (!options.random)</div>
+<div class="line">        pairs = hdvf.compute_perfect_hdvf(options.verbose);</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">        pairs = hdvf.compute_rand_perfect_hdvf(options.verbose);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (options.with_output)</div>
+<div class="line">    {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"----&gt; pairs found by computePerfectHDVF"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        std::cout &lt;&lt; pairs ;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"----&gt; reduction"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        hdvf.insert_reduction() ;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">if</span> (options.with_export)</div>
+<div class="line">    {</div>
+<div class="line">        std::string file(options.outfile_root+<span class="stringliteral">"_reduction.txt"</span>) ;</div>
+<div class="line">        std::ofstream out ( file, std::ios::out | std::ios::trunc);</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">if</span> ( not out . good () ) {</div>
+<div class="line">            std::cerr &lt;&lt; <span class="stringliteral">"hdvf: with_export. Fatal Error:\n  "</span> &lt;&lt; file &lt;&lt; <span class="stringliteral">" not found.\n"</span>;</div>
+<div class="line">            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"File Parsing Error: File not found"</span>);</div>
+<div class="line">        }</div>
+<div class="line">        out &lt;&lt; <span class="stringliteral">"----&gt; pairs found by computePerfectHDVF"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        out &lt;&lt; pairs ;</div>
+<div class="line">        out &lt;&lt; <span class="stringliteral">"----&gt; reduction"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        hdvf.insert_reduction(out) ;</div>
+<div class="line"> </div>
+<div class="line">        out.close() ;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> hdvf ;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Coefficient_type&gt;</div>
+<div class="line"><span class="keywordtype">void</span> main_code (<span class="keyword">const</span> Options &amp;options)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (options.in_format == InputFormat::SIMP)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">using </span>ComplexType = <a id="_a1" name="_a1"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Abstract__simplicial__chain__complex.html">CGAL::HDVF::Abstract_simplicial_chain_complex&lt;Coefficient_type&gt;</a>  ;</div>
+<div class="line">        <span class="keyword">using </span>HDVFType = <a class="code hl_class" href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf&lt;ComplexType&gt;</a> ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// MeshObject</span></div>
+<div class="line">        <a id="_a2" name="_a2"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Mesh__object__io.html">CGAL::HDVF::Mesh_object_io</a> mesh ;</div>
+<div class="line">        mesh.<a id="a3" name="a3"></a><a class="code hl_function" href="classCGAL_1_1HDVF_1_1Mesh__object__io.html#a48b973a687f050234461aba8692493ab">read_simp</a>(options.in_file) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Complex</span></div>
+<div class="line">        ComplexType complex(mesh);</div>
+<div class="line"> </div>
+<div class="line">        mesh_complex_output&lt;CGAL::HDVF::Mesh_object_io, ComplexType&gt;(mesh, complex, options) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Hdvf computation, export, output</span></div>
+<div class="line">        HDVFType hdvf(HDVF_comput&lt;ComplexType&gt;(complex, options)) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Export to vtk</span></div>
+<div class="line">        <span class="comment">// None for SIMP format</span></div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.in_format == InputFormat::OFF)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">using </span>ComplexType = <a id="_a4" name="_a4"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Simplicial__chain__complex.html">CGAL::HDVF::Simplicial_chain_complex&lt;Coefficient_type&gt;</a> ;</div>
+<div class="line">        <span class="keyword">using </span>HDVFType = <a class="code hl_class" href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf&lt;ComplexType&gt;</a> ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// MeshObject</span></div>
+<div class="line">        <a class="code hl_class" href="classCGAL_1_1HDVF_1_1Mesh__object__io.html">CGAL::HDVF::Mesh_object_io</a> mesh ;</div>
+<div class="line">        mesh.<a id="a5" name="a5"></a><a class="code hl_function" href="classCGAL_1_1HDVF_1_1Mesh__object__io.html#a3446aa39e5913cafe70162c38bb2ca71">read_off</a>(options.in_file) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Complex</span></div>
+<div class="line">        ComplexType complex(mesh, mesh.<a id="a6" name="a6"></a><a class="code hl_function" href="classCGAL_1_1HDVF_1_1Mesh__object__io.html#a2afcb8840a79e3e35b7f8457ccd88ed7">get_nodes</a>());</div>
+<div class="line"> </div>
+<div class="line">        mesh_complex_output&lt;CGAL::HDVF::Mesh_object_io, ComplexType&gt;(mesh, complex, options) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Hdvf computation, export, output</span></div>
+<div class="line">        HDVFType hdvf(HDVF_comput&lt;ComplexType&gt;(complex, options)) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Loop on operations with vtk export</span></div>
+<div class="line">        <span class="keywordflow">if</span> (options.loop)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keyword">auto</span> output_vtk_simp = [options](HDVFType &amp;hdvf, ComplexType&amp; complex)</div>
+<div class="line">            {</div>
+<div class="line">                <a id="a7" name="a7"></a><a class="code hl_function" href="namespaceCGAL_1_1HDVF.html#a963545496e3b17c876056a8cb699274e">CGAL::HDVF::hdvf_geometric_chain_complex_output_vtk</a>(hdvf, complex, options.outfile_root, options.co_faces) ;</div>
+<div class="line">            } ;</div>
+<div class="line"> </div>
+<div class="line">            CGAL::HDVF::interaction_loop&lt;ComplexType&gt;(hdvf, complex, output_vtk_simp) ;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="comment">// Export to vtk</span></div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.with_vtk_export)</div>
+<div class="line">        {</div>
+<div class="line">            std::cout &lt;&lt; <span class="stringliteral">"----&gt; exporting to vtk"</span> &lt;&lt; std::endl ;</div>
+<div class="line">            <a class="code hl_function" href="namespaceCGAL_1_1HDVF.html#a963545496e3b17c876056a8cb699274e">CGAL::HDVF::hdvf_geometric_chain_complex_output_vtk</a>(hdvf, complex, options.outfile_root, options.co_faces) ;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// CubComplex</span></div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((options.in_format == InputFormat::PGM) || (options.in_format == InputFormat::CUB))</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">using </span>ComplexType = <a id="_a8" name="_a8"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Cubical__chain__complex.html">CGAL::HDVF::Cubical_chain_complex&lt;Coefficient_type&gt;</a> ;</div>
+<div class="line">        <span class="keyword">using </span>HDVFType = <a class="code hl_class" href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf&lt;ComplexType&gt;</a> ;</div>
+<div class="line"> </div>
+<div class="line">        <a id="_a9" name="_a9"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Cub__object__io.html">CGAL::HDVF::Cub_object_io</a> mesh ;</div>
+<div class="line">        <span class="keyword">typename</span> ComplexType::typeComplexCube primal_dual(ComplexType::PRIMAL) ;</div>
+<div class="line">        <span class="keywordflow">if</span> (options.primal)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">if</span> (options.in_format == InputFormat::PGM)</div>
+<div class="line">                mesh.<a id="a10" name="a10"></a><a class="code hl_function" href="classCGAL_1_1HDVF_1_1Cub__object__io.html#a8c4a650aeee9c447de285f4904b7c09a">read_pgm</a>(options.in_file, <span class="keyword">true</span>) ; <span class="comment">// Read with Khalimsky coordinates (for primal)</span></div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">                mesh.<a id="a11" name="a11"></a><a class="code hl_function" href="classCGAL_1_1HDVF_1_1Cub__object__io.html#a4ac8b67ff7d46190417cfe4f07aebd21">read_cub</a>(options.in_file, <span class="keyword">true</span>) ; <span class="comment">// Read with Khalimsky coordinates (for primal)</span></div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="comment">// dual</span></div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">if</span> (options.in_format == InputFormat::PGM)</div>
+<div class="line">                mesh.<a class="code hl_function" href="classCGAL_1_1HDVF_1_1Cub__object__io.html#a8c4a650aeee9c447de285f4904b7c09a">read_pgm</a>(options.in_file, <span class="keyword">false</span>) ; <span class="comment">// Read with pixel coordinates (for dual)</span></div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">                mesh.<a class="code hl_function" href="classCGAL_1_1HDVF_1_1Cub__object__io.html#a4ac8b67ff7d46190417cfe4f07aebd21">read_cub</a>(options.in_file, <span class="keyword">false</span>) ; <span class="comment">// Read with pixel coordinates (for dual)</span></div>
+<div class="line">            primal_dual = ComplexType::DUAL ;</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Complex</span></div>
+<div class="line">        ComplexType complex(mesh, primal_dual);</div>
+<div class="line"> </div>
+<div class="line">        mesh_complex_output&lt;CGAL::HDVF::Cub_object_io, ComplexType&gt;(mesh, complex, options) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Hdvf computation, export, output</span></div>
+<div class="line">        HDVFType hdvf(HDVF_comput&lt;ComplexType&gt;(complex, options)) ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Loop on operations with vtk export</span></div>
+<div class="line">        <span class="keywordflow">if</span> (options.loop)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keyword">auto</span> output_vtk_cub = [options](HDVFType &amp;hdvf, ComplexType&amp; complex)</div>
+<div class="line">            {</div>
+<div class="line">                <a class="code hl_function" href="namespaceCGAL_1_1HDVF.html#a963545496e3b17c876056a8cb699274e">CGAL::HDVF::hdvf_geometric_chain_complex_output_vtk</a>(hdvf, complex, options.outfile_root, options.co_faces) ;</div>
+<div class="line">            } ;</div>
+<div class="line"> </div>
+<div class="line">            CGAL::HDVF::interaction_loop&lt;ComplexType&gt;(hdvf, complex, output_vtk_cub) ;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="comment">// Export to vtk</span></div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.with_vtk_export)</div>
+<div class="line">        {</div>
+<div class="line">            std::cout &lt;&lt; <span class="stringliteral">"----&gt; exporting to vtk"</span> &lt;&lt; std::endl ;</div>
+<div class="line">            <a class="code hl_function" href="namespaceCGAL_1_1HDVF.html#a963545496e3b17c876056a8cb699274e">CGAL::HDVF::hdvf_geometric_chain_complex_output_vtk</a>(hdvf, complex, options.outfile_root, options.co_faces) ;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Main</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (argc &lt;= 2)</div>
+<div class="line">        usage() ;</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;argc; ++i)</div>
+<div class="line">            std::cout &lt;&lt; <span class="stringliteral">"arg "</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">" : "</span> &lt;&lt; argv[i] &lt;&lt; std::endl ;</div>
+<div class="line"> </div>
+<div class="line">        Options options(read_arguments_hdvf(argc, argv)) ;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"options:"</span> &lt;&lt; std::endl &lt;&lt; options ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// TEST</span></div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"TEST"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        <a id="_a12" name="_a12"></a><a class="code hl_class" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain&lt;int, CGAL::OSM::COLUMN&gt;</a> gamma(4) ;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"before: "</span> &lt;&lt; gamma.is_null() &lt;&lt; std::endl ;</div>
+<div class="line">        gamma.set_coefficient(2, 1) ;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"after: "</span> &lt;&lt; gamma.is_null() &lt;&lt; std::endl ;</div>
+<div class="line">        gamma.set_coefficient(2, 0) ;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"after2: "</span> &lt;&lt; gamma.is_null() &lt;&lt; std::endl ;</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">"END TEST"</span> &lt;&lt; std::endl ;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// ----- Definition of the Coefficient_type</span></div>
+<div class="line"><span class="preprocessor">#ifndef SCALAR</span></div>
+<div class="line">        <span class="keywordflow">if</span> (options.scalar == 0)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keyword">using </span>Coefficient_type = int ;</div>
+<div class="line">            main_code&lt;Coefficient_type&gt;(options) ;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.scalar == 2)</div>
+<div class="line">        {</div>
+<div class="line"><span class="comment">//            using Coefficient_type = CGAL::HDVF::Zp&lt;2,int8_t&gt; ;</span></div>
+<div class="line">            <span class="keyword">using </span>Coefficient_type = <a id="_a13" name="_a13"></a><a class="code hl_class" href="classCGAL_1_1HDVF_1_1Z2.html">CGAL::HDVF::Z2</a> ;</div>
+<div class="line">            main_code&lt;Coefficient_type&gt;(options) ;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            std::cerr &lt;&lt; <span class="stringliteral">"Z"</span> &lt;&lt; options.scalar &lt;&lt; <span class="stringliteral">" not instantiated, use the #define at line 27"</span> &lt;&lt; std::endl ;</div>
+<div class="line">        }</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line">        <span class="keyword">typedef</span> Zp&lt;SCALAR&gt; Coefficient_type;</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0 ;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Abstract__simplicial__chain__complex_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Abstract__simplicial__chain__complex.html">CGAL::HDVF::Abstract_simplicial_chain_complex</a></div><div class="ttdoc">The class Abstract_simplicial_chain_complex represents (topological) chain complexes associated to ab...</div><div class="ttdef"><b>Definition:</b> Abstract_simplicial_chain_complex.h:54</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Cub__object__io_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Cub__object__io.html">CGAL::HDVF::Cub_object_io</a></div><div class="ttdoc">The class Cub_object_io is an intermediate IO class, used to load binary volumes and produce cubical ...</div><div class="ttdef"><b>Definition:</b> Cub_object_io.h:42</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Cub__object__io_html_a4ac8b67ff7d46190417cfe4f07aebd21"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Cub__object__io.html#a4ac8b67ff7d46190417cfe4f07aebd21">CGAL::HDVF::Cub_object_io::read_cub</a></div><div class="ttdeci">bool read_cub(const std::string &amp;filename, bool khalimsky=false)</div><div class="ttdef"><b>Definition:</b> Cub_object_io.h:171</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Cub__object__io_html_a8c4a650aeee9c447de285f4904b7c09a"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Cub__object__io.html#a8c4a650aeee9c447de285f4904b7c09a">CGAL::HDVF::Cub_object_io::read_pgm</a></div><div class="ttdeci">bool read_pgm(const std::string &amp;filename, bool khal=false)</div><div class="ttdef"><b>Definition:</b> Cub_object_io.h:95</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Cubical__chain__complex_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Cubical__chain__complex.html">CGAL::HDVF::Cubical_chain_complex</a></div><div class="ttdoc">The class Cubical_chain_complex represents (topological) chain complexes associated to cubical comple...</div><div class="ttdef"><b>Definition:</b> Cubical_chain_complex.h:94</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Hdvf_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Hdvf.html">CGAL::HDVF::Hdvf</a></div><div class="ttdoc">The class Hdvf implements homology and cohomology computation via homological discrete vector fields ...</div><div class="ttdef"><b>Definition:</b> Hdvf.h:85</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Mesh__object__io_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Mesh__object__io.html">CGAL::HDVF::Mesh_object_io</a></div><div class="ttdoc">The class Mesh_object_io is an intermediate IO class, used to load triangular/tetraedral meshes and p...</div><div class="ttdef"><b>Definition:</b> Mesh_object_io.h:201</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Mesh__object__io_html_a2afcb8840a79e3e35b7f8457ccd88ed7"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Mesh__object__io.html#a2afcb8840a79e3e35b7f8457ccd88ed7">CGAL::HDVF::Mesh_object_io::get_nodes</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; get_nodes()</div><div class="ttdef"><b>Definition:</b> Mesh_object_io.h:324</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Mesh__object__io_html_a3446aa39e5913cafe70162c38bb2ca71"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Mesh__object__io.html#a3446aa39e5913cafe70162c38bb2ca71">CGAL::HDVF::Mesh_object_io::read_off</a></div><div class="ttdeci">bool read_off(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> Mesh_object_io.h:373</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Mesh__object__io_html_a48b973a687f050234461aba8692493ab"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Mesh__object__io.html#a48b973a687f050234461aba8692493ab">CGAL::HDVF::Mesh_object_io::read_simp</a></div><div class="ttdeci">bool read_simp(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> Mesh_object_io.h:500</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Simplicial__chain__complex_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Simplicial__chain__complex.html">CGAL::HDVF::Simplicial_chain_complex</a></div><div class="ttdoc">The class Simplicial_chain_complex refines the Abstract_simplicial_chain_complex class by assigning c...</div><div class="ttdef"><b>Definition:</b> Simplicial_chain_complex.h:40</div></div>
+<div class="ttc" id="aclassCGAL_1_1HDVF_1_1Z2_html"><div class="ttname"><a href="classCGAL_1_1HDVF_1_1Z2.html">CGAL::HDVF::Z2</a></div><div class="ttdoc">The class Z2 implements the concept Ring with the field .</div><div class="ttdef"><b>Definition:</b> Z2.h:33</div></div>
+<div class="ttc" id="aclassCGAL_1_1OSM_1_1Sparse__chain_html"><div class="ttname"><a href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a></div><div class="ttdoc">The class Sparse_chain implements the concept SparseChain, that is, sparse vectors (encoding homologi...</div><div class="ttdef"><b>Definition:</b> Sparse_chain.h:52</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1HDVF_html_a963545496e3b17c876056a8cb699274e"><div class="ttname"><a href="namespaceCGAL_1_1HDVF.html#a963545496e3b17c876056a8cb699274e">CGAL::HDVF::hdvf_geometric_chain_complex_output_vtk</a></div><div class="ttdeci">void hdvf_geometric_chain_complex_output_vtk(Hdvf_core&lt; ComplexType, _ChainType, _SparseMatrixType &gt; &amp;hdvf, ComplexType &amp;complex, std::string filename="test", bool co_faces=false)</div><div class="ttdoc">Exports all the Hdvf information of a geometric chain complex to vtk files.</div><div class="ttdef"><b>Definition:</b> Geometric_chain_complex_tools.h:73</div></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>
