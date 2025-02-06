@@ -8,7 +8,7 @@ var group__PkgSTLExtensionRef =
     [ "Iterators and Iterator/Circulator Adaptors", "group__STLIterators.html", "group__STLIterators" ],
     [ "Concepts", "group__PkgSTLExtensionConcepts.html", "group__PkgSTLExtensionConcepts" ],
     [ "Utilities", "group__PkgSTLExtensionUtilities.html", "group__PkgSTLExtensionUtilities" ],
-    [ "Assertions and Failure Behaviour", "group__PkgSTLExtensionAssertions.html", "group__PkgSTLExtensionAssertions" ],
+    [ "Assertions and Failure Behavior", "group__PkgSTLExtensionAssertions.html", "group__PkgSTLExtensionAssertions" ],
     [ "CGAL::CC_safe_handle< CC_iterator >", "classCGAL_1_1CC__safe__handle.html", [
       [ "CC_safe_handle", "classCGAL_1_1CC__safe__handle.html#a7713a519d0e44862bb938d2dcbf4b93f", null ],
       [ "cc_iterator", "classCGAL_1_1CC__safe__handle.html#a38f4c42d324f886a60528bfeb3f477da", null ],

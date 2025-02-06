@@ -919,6 +919,7 @@ var group__PkgKernel23ConceptsFunctionObjects =
       [ "operator()", "classKernel_1_1HasOnBoundedSide__2.html#aed0f3d341534cf2dbf5ed228618170ab", null ]
     ] ],
     [ "Kernel::HasOnBoundedSide_3", "classKernel_1_1HasOnBoundedSide__3.html", [
+      [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#af95a3c7c651b4fe3ecb0ec08f4d07d1c", null ],
       [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#a140f0de6d600f58133edbbd2c054aea4", null ],
       [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#a0bfac78507f1fe1c9f946408f7f1b0b9", null ],
       [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#a879efe7f55b4ae8f2bd0d1acca42b6e4", null ],
@@ -950,6 +951,7 @@ var group__PkgKernel23ConceptsFunctionObjects =
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__2.html#a8ca70b14d279c41a5c1d314b1de22b59", null ]
     ] ],
     [ "Kernel::HasOnUnboundedSide_3", "classKernel_1_1HasOnUnboundedSide__3.html", [
+      [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a9cf16ab055032c75bd715d10b76b10a8", null ],
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a4b2c27a0593727a253a416adadc37d29", null ],
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a3778b1b8f39cad82d92a5bcbd49a9086", null ],
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a690242150d4b9397e441273361574774", null ]

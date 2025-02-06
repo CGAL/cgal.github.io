@@ -52,7 +52,6 @@ var general_intro =
         [ "PointMatcher", "thirdparty.html#thirdpartylibpointmatcher", null ],
         [ "LEDA", "thirdparty.html#thirdpartyLeda", null ],
         [ "Multiple Precision Floating-point Interval (MPFI)", "thirdparty.html#thirdpartyMPFI", null ],
-        [ "RS and RS3", "thirdparty.html#thirdpartyRS3", null ],
         [ "NTL", "thirdparty.html#thirdpartyNTL", null ],
         [ "ESBTL", "thirdparty.html#thirdpartyESBTL", null ],
         [ "Intel TBB", "thirdparty.html#thirdpartyTBB", null ],

@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D and 3D Linear Geometry Kernel: CGAL::Bbox_2 Class Reference</title>
+<title>CGAL 6.1 - 2D and 3D Linear Geometry Kernel: CGAL::Bbox_2 Class Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D and 3D Linear Geometry Kernel
+   <div id="projectname">CGAL 6.1 - 2D and 3D Linear Geometry Kernel
    </div>
   </td>
  </tr>
@@ -194,11 +202,11 @@ Related Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Creation</h2></td></tr>
 <tr class="memitem:ac8df7d807d3d1f3ebcaf47ca7e319453"><td class="memItemLeft" align="right" valign="top"><a id="ac8df7d807d3d1f3ebcaf47ca7e319453" name="ac8df7d807d3d1f3ebcaf47ca7e319453"></a>
  </td><td class="memItemRight" valign="bottom"><b>Bbox_2</b> ()</td></tr>
-<tr class="memdesc:ac8df7d807d3d1f3ebcaf47ca7e319453"><td class="mdescLeft"> </td><td class="mdescRight">introduces an <em>empty</em> bounding box with lower left corner point at \( (\infty, \infty) \) and with upper right corner point at \( (-\infty, -\infty) \), \( \infty \) being <code>std::numeric_limits&lt;double&gt;::infinity()</code>. <br></td></tr>
+<tr class="memdesc:ac8df7d807d3d1f3ebcaf47ca7e319453"><td class="mdescLeft"> </td><td class="mdescRight">constructs an <em>empty</em> bounding box with lower left corner point at \( (\infty, \infty) \) and with upper right corner point at \( (-\infty, -\infty) \), \( \infty \) being <code>std::numeric_limits&lt;double&gt;::infinity()</code>. <br></td></tr>
 <tr class="separator:ac8df7d807d3d1f3ebcaf47ca7e319453"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a0885bb445ca9c3c9d9593408906c74dc"><td class="memItemLeft" align="right" valign="top"><a id="a0885bb445ca9c3c9d9593408906c74dc" name="a0885bb445ca9c3c9d9593408906c74dc"></a>
  </td><td class="memItemRight" valign="bottom"><b>Bbox_2</b> (double x_min, double y_min, double x_max, double y_max)</td></tr>
-<tr class="memdesc:a0885bb445ca9c3c9d9593408906c74dc"><td class="mdescLeft"> </td><td class="mdescRight">introduces a bounding box <code>b</code> with lower left corner at <code>(xmin, ymin)</code> and with upper right corner at <code>(xmax, ymax)</code>. <br></td></tr>
+<tr class="memdesc:a0885bb445ca9c3c9d9593408906c74dc"><td class="mdescLeft"> </td><td class="mdescRight">constructs a bounding box <code>b</code> with lower left corner at <code>(xmin, ymin)</code> and with upper right corner at <code>(xmax, ymax)</code>. <br></td></tr>
 <tr class="separator:a0885bb445ca9c3c9d9593408906c74dc"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Operations</h2></td></tr>

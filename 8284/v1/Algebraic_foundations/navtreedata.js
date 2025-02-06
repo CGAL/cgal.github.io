@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - Algebraic Foundations", "index.html", [
+  [ "CGAL 6.1 - Algebraic Foundations", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Classified Reference Pages", "AlgebraicFoundationsClassified.html", null ],

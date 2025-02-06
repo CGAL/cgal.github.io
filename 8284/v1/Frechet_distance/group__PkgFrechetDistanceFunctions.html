@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - dD Frechet Distance: Functions</title>
+<title>CGAL 6.1 - dD Frechet Distance: Functions</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - dD Frechet Distance
+   <div id="projectname">CGAL 6.1 - dD Frechet Distance
    </div>
   </td>
  </tr>
@@ -161,34 +169,33 @@ $(document).ready(function(){initNavTree('group__PkgFrechetDistanceFunctions.htm
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">Functions<div class="ingroups"><a class="el" href="group__PkgFrechetDistanceRef.html">dD Frechet Distance Reference</a></div></div></div>
+  <div class="headertitle"><div class="title">Functions<div class="ingroups"><a class="el" href="group__PkgFrechetDistanceRef.html">dD Fréchet Distance Reference</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader"> </h2>
-<p>You can add some text here if you want a description at the group level. </p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga57148844d64f9682cb1a78b5faac6789"><td class="memTemplParams" colspan="2">template&lt;class Traits , class PointRange &gt; </td></tr>
-<tr class="memitem:ga57148844d64f9682cb1a78b5faac6789"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgFrechetDistanceFunctions.html#ga57148844d64f9682cb1a78b5faac6789">CGAL::is_Frechet_distance_larger</a> (const PointRange &amp;polyline1, const PointRange &amp;polyline2, const double distance, const Traits &amp;traits=Traits())</td></tr>
-<tr class="memdesc:ga57148844d64f9682cb1a78b5faac6789"><td class="mdescLeft"> </td><td class="mdescRight">decides if the Frechet distance between two polylines is larger than a given distance.  <br></td></tr>
-<tr class="separator:ga57148844d64f9682cb1a78b5faac6789"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:ga9553f8580a37d5168b2809390a6da620"><td class="memTemplParams" colspan="2">template&lt;class Traits , class PointRange &gt; </td></tr>
-<tr class="memitem:ga9553f8580a37d5168b2809390a6da620"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; double, double &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgFrechetDistanceFunctions.html#ga9553f8580a37d5168b2809390a6da620">CGAL::approximate_Frechet_distance</a> (const PointRange &amp;polyline1, const PointRange &amp;polyline2, const double precision, const Traits &amp;traits=Traits())</td></tr>
-<tr class="memdesc:ga9553f8580a37d5168b2809390a6da620"><td class="mdescLeft"> </td><td class="mdescRight">approximates the Fréchet distance between two polylines up to an additive error of <code>precision</code>.  <br></td></tr>
-<tr class="separator:ga9553f8580a37d5168b2809390a6da620"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8086a00fa52c539f001c46d7d15aa7d4"><td class="memTemplParams" colspan="2">template&lt;class PointRange , class NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga8086a00fa52c539f001c46d7d15aa7d4"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgFrechetDistanceFunctions.html#ga8086a00fa52c539f001c46d7d15aa7d4">CGAL::is_Frechet_distance_larger</a> (const PointRange &amp;polyline1, const PointRange &amp;polyline2, const double distance_bound, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga8086a00fa52c539f001c46d7d15aa7d4"><td class="mdescLeft"> </td><td class="mdescRight">determines if the Frechet distance between two polylines is larger than a given distance bound.  <br></td></tr>
+<tr class="separator:ga8086a00fa52c539f001c46d7d15aa7d4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gab0789ef2aabf03a767ffe99b31664656"><td class="memTemplParams" colspan="2">template&lt;class PointRange , class NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gab0789ef2aabf03a767ffe99b31664656"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; double, double &gt; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgFrechetDistanceFunctions.html#gab0789ef2aabf03a767ffe99b31664656">CGAL::bounded_error_Frechet_distance</a> (const PointRange &amp;polyline1, const PointRange &amp;polyline2, const double error_bound, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gab0789ef2aabf03a767ffe99b31664656"><td class="mdescLeft"> </td><td class="mdescRight">returns an estimate of the Fréchet distance between the two polylines that is at most <code>error_bound</code> away from the actual Fréchet distance between the two polylines.  <br></td></tr>
+<tr class="separator:gab0789ef2aabf03a767ffe99b31664656"><td class="memSeparator" colspan="2"> </td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga9553f8580a37d5168b2809390a6da620" name="ga9553f8580a37d5168b2809390a6da620"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9553f8580a37d5168b2809390a6da620">◆ </a></span>approximate_Frechet_distance()</h2>
+<a id="gab0789ef2aabf03a767ffe99b31664656" name="gab0789ef2aabf03a767ffe99b31664656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab0789ef2aabf03a767ffe99b31664656">◆ </a></span>bounded_error_Frechet_distance()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Traits , class PointRange &gt; </div>
+template&lt;class PointRange , class NamedParameters  = parameters::Default_named_parameters&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt; double, double &gt; CGAL::approximate_Frechet_distance </td>
+          <td class="memname">std::pair&lt; double, double &gt; CGAL::bounded_error_Frechet_distance </td>
           <td>(</td>
           <td class="paramtype">const PointRange &amp; </td>
           <td class="paramname"><em>polyline1</em>, </td>
@@ -203,13 +210,13 @@ template&lt;class Traits , class PointRange &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const double </td>
-          <td class="paramname"><em>precision</em>, </td>
+          <td class="paramname"><em>error_bound</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Traits &amp; </td>
-          <td class="paramname"><em>traits</em> = <code>Traits()</code> </td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
         </tr>
         <tr>
           <td></td>
@@ -221,34 +228,55 @@ template&lt;class Traits , class PointRange &gt; </div>
 
 <p><code>#include &lt;CGAL/Frechet_distance.h&gt;</code></p>
 
-<p>approximates the Fréchet distance between two polylines up to an additive error of <code>precision</code>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">polyline1</td><td>the first polyline defined by the sequence of consecutive points </td></tr>
-    <tr><td class="paramname">polyline2</td><td>the second polyline defined by the sequence of consecutive points </td></tr>
-    <tr><td class="paramname">precision</td><td>the precision of the approximation </td></tr>
-    <tr><td class="paramname">traits</td><td>the geometric traits object</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>returns an estimate of the Fréchet distance between the two polylines that is at most <code>error_bound</code> away from the actual Fréchet distance between the two polylines. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Traits</td><td>a model of <code><a class="el" href="classFrechetDistanceTraits.html" title="The concept FrechetDistanceTraits defines the requirements of the first template parameter of the fun...">FrechetDistanceTraits</a></code> </td></tr>
-    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> with <code>Traits::Point</code> as value type.</td></tr>
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> whose value type is a <code><a class="elRef" href="../Kernel_d/classCGAL_1_1Point__d.html">Point_d</a></code>. </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an interval enclosing the exact result, the difference between the upper and the lower bound being less than <code>precision</code>. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polyline1</td><td>the first polyline, defined by a sequence of consecutive points </td></tr>
+    <tr><td class="paramname">polyline2</td><td>the second polyline, defined by a sequence of consecutive points </td></tr>
+    <tr><td class="paramname">error_bound</td><td>a maximum bound by which the Fréchet distance estimate is allowed to deviate from the actual Fréchet distance </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> containing the one listed below:</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a model of <code><a class="el" href="classFrechetDistanceTraits.html" title="The concept FrechetDistanceTraits defines the requirements of the first template parameter of the fun...">FrechetDistanceTraits</a></code> </li>
+<li>
+<b>Default: </b><code><a class="el" href="classCGAL_1_1Frechet__distance__traits__2.html">Frechet_distance_traits_2</a></code>, <code><a class="el" href="classCGAL_1_1Frechet__distance__traits__3.html">Frechet_distance_traits_3</a></code>, or <code><a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html">Frechet_distance_traits_d</a></code>, depending on the dimension of the point type deduced from the point type, using <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">Kernel_traits</a></code>. </li>
+<li>
+<b>Extra: </b>The input point type (the range's value type) must be equal to the traits' <code><a class="elRef" href="../Kernel_d/classCGAL_1_1Point__d.html">Point_d</a></code> type. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>the polylines must not be empty</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an interval enclosing the exact Fréchet distance, the difference between the upper and the lower bound being smaller than <code>error_bound</code>. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Frechet_distance_2Frechet_DS_3_8cpp-example.html#a4">Frechet_distance/Frechet_DS_3.cpp</a>, <a class="el" href="Frechet_distance_2Frechet_distance_3_8cpp-example.html#a4">Frechet_distance/Frechet_distance_3.cpp</a>, and <a class="el" href="Frechet_distance_2Frechet_distance_d_8cpp-example.html#a1">Frechet_distance/Frechet_distance_d.cpp</a>.</dd>
+</dl>
 
 </div>
 </div>
-<a id="ga57148844d64f9682cb1a78b5faac6789" name="ga57148844d64f9682cb1a78b5faac6789"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga57148844d64f9682cb1a78b5faac6789">◆ </a></span>is_Frechet_distance_larger()</h2>
+<a id="ga8086a00fa52c539f001c46d7d15aa7d4" name="ga8086a00fa52c539f001c46d7d15aa7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8086a00fa52c539f001c46d7d15aa7d4">◆ </a></span>is_Frechet_distance_larger()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Traits , class PointRange &gt; </div>
+template&lt;class PointRange , class NamedParameters  = parameters::Default_named_parameters&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool CGAL::is_Frechet_distance_larger </td>
@@ -266,13 +294,13 @@ template&lt;class Traits , class PointRange &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const double </td>
-          <td class="paramname"><em>distance</em>, </td>
+          <td class="paramname"><em>distance_bound</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Traits &amp; </td>
-          <td class="paramname"><em>traits</em> = <code>Traits()</code> </td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code> </td>
         </tr>
         <tr>
           <td></td>
@@ -284,22 +312,43 @@ template&lt;class Traits , class PointRange &gt; </div>
 
 <p><code>#include &lt;CGAL/Frechet_distance.h&gt;</code></p>
 
-<p>decides if the Frechet distance between two polylines is larger than a given distance. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">polyline1</td><td>the first polyline defined by the sequence of consecutive points </td></tr>
-    <tr><td class="paramname">polyline2</td><td>the second polyline defined by the sequence of consecutive points </td></tr>
-    <tr><td class="paramname">distance</td><td>the decision distance </td></tr>
-    <tr><td class="paramname">traits</td><td>the geometric traits object</td></tr>
+<p>determines if the Frechet distance between two polylines is larger than a given distance bound. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> whose value type is a <code><a class="elRef" href="../Kernel_d/classCGAL_1_1Point__d.html">Point_d</a></code> </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Traits</td><td>a model of <code><a class="el" href="classFrechetDistanceTraits.html" title="The concept FrechetDistanceTraits defines the requirements of the first template parameter of the fun...">FrechetDistanceTraits</a></code> </td></tr>
-    <tr><td class="paramname">PointRange</td><td>a model of the concept <code><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></code> with <code>Traits::Point</code> as value type. </td></tr>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polyline1</td><td>the first polyline, defined by a sequence of consecutive points </td></tr>
+    <tr><td class="paramname">polyline2</td><td>the second polyline, defined by a sequence of consecutive points </td></tr>
+    <tr><td class="paramname">distance_bound</td><td>the distance to compare against </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> containing the one listed below:</td></tr>
   </table>
   </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a model of <code><a class="el" href="classFrechetDistanceTraits.html" title="The concept FrechetDistanceTraits defines the requirements of the first template parameter of the fun...">FrechetDistanceTraits</a></code> </li>
+<li>
+<b>Default: </b><code><a class="el" href="classCGAL_1_1Frechet__distance__traits__2.html">Frechet_distance_traits_2</a></code>, <code><a class="el" href="classCGAL_1_1Frechet__distance__traits__3.html">Frechet_distance_traits_3</a></code>, or <code><a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html">Frechet_distance_traits_d</a></code>, depending on the dimension of the point type deduced from the point type, using <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">Kernel_traits</a></code>. </li>
+<li>
+<b>Extra: </b>The input point type (the range's value type) must be equal to the traits' <code><a class="elRef" href="../Kernel_d/classCGAL_1_1Point__d.html">Point_d</a></code> type. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>the polylines must not be empty </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Frechet_distance_2Frechet_distance_2_8cpp-example.html#a4">Frechet_distance/Frechet_distance_2.cpp</a>.</dd>
 </dl>
 
 </div>

@@ -1,4 +1,4 @@
 var modules =
 [
-    [ "dD Frechet Distance Reference", "group__PkgFrechetDistanceRef.html", "group__PkgFrechetDistanceRef" ]
+    [ "dD Fréchet Distance Reference", "group__PkgFrechetDistanceRef.html", "group__PkgFrechetDistanceRef" ]
 ];

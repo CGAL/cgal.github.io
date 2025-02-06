@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Summary of CGAL's Configuration Variables</title>
+<title>CGAL 6.1 - Manual: Summary of CGAL's Configuration Variables</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -536,7 +544,7 @@ GLPK library</h2>
 <h1><a class="anchor" id="installation_compiler_workarounds"></a>
 Compiler Workarounds</h1>
 <p>A number of boolean flags are used to workaround compiler bugs and limitations. They all start with the prefix <code>CGAL_CFG</code>. These flags are used to work around compiler bugs and limitations.</p>
-<p>For each installation a file <code>&lt;CGAL/compiler_config.h&gt;</code> is defined, with the correct settings of all flags. This file is generated automatically by CMake, and it is located in the <code>include</code> directory of where you run CMake. For an in-source configuration this means <code>CGAL-6.0</code><code>/include</code>.</p>
+<p>For each installation a file <code>&lt;CGAL/compiler_config.h&gt;</code> is defined, with the correct settings of all flags. This file is generated automatically by CMake, and it is located in the <code>include</code> directory of where you run CMake. For an in-source configuration this means <code>CGAL-6.1</code><code>/include</code>.</p>
 <p>The test programs used to generate the <code>compiler_config.h</code> file can be found in <code>config/testfiles</code>. Both <code>compiler_config.h</code> and the test programs contain a short description of the problem. In case of trouble with one of the <code>CGAL_CFG</code> flags, it is a good idea to take a look at it.</p>
 <p>The file <code>CGAL/compiler_config.h</code> is included from <code>&lt;CGAL/config.h&gt;</code>. which is included by all CGAL header files. </p>
 </div></div><!-- contents -->
