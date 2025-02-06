@@ -1,0 +1,6 @@
+var classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4 =
+[
+    [ "Is_square", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4_1_1Is__square.html", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4_1_1Is__square" ],
+    [ "Is_exact", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4.html#a1adfb6f7dd934789d644ca56b4acc14a", null ],
+    [ "Is_numerical_sensitive", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4.html#a00376f70ffea637f0f396ed21584352a", null ]
+];
