@@ -1,0 +1,25 @@
+var classFloatSnapRoundingTraits__2 =
+[
+    [ "Construct_rounded_point_2", "classFloatSnapRoundingTraits__2.html#a4d376c6332e2dd99c386db0d0eeee41d", null ],
+    [ "Construct_segment_2", "classFloatSnapRoundingTraits__2.html#ae8625ae90ded0736a7d023e1b1007fee", null ],
+    [ "Construct_source_2", "classFloatSnapRoundingTraits__2.html#ac46927ee49b31441319968f8bec213fc", null ],
+    [ "Construct_target_2", "classFloatSnapRoundingTraits__2.html#afcf197dfee0680031176d0fca63e8b63", null ],
+    [ "Converter_from_exact", "classFloatSnapRoundingTraits__2.html#aad0502a80076c866cdbf1af28c2c8f5d", null ],
+    [ "Converter_to_exact", "classFloatSnapRoundingTraits__2.html#a669bb992be6f7c02b745e1c70db4d90c", null ],
+    [ "Equal_2", "classFloatSnapRoundingTraits__2.html#a167dac84773f846617db5d3b8baaa1ca", null ],
+    [ "FT", "classFloatSnapRoundingTraits__2.html#af2dcf4611c707bdc4a4288b0536375a1", null ],
+    [ "Less_xy_2", "classFloatSnapRoundingTraits__2.html#ab0d68699474053fcedddd8718adbb50f", null ],
+    [ "Less_y_2", "classFloatSnapRoundingTraits__2.html#a1f4b585923ac69e7d54732c5c9348d92", null ],
+    [ "Point_2", "classFloatSnapRoundingTraits__2.html#a7cdffb24872386fb700e627ffa222993", null ],
+    [ "Segment_2", "classFloatSnapRoundingTraits__2.html#af5c53ffaef6118f22d1a57c974ad27b5", null ],
+    [ "Squared_round_bound_2", "classFloatSnapRoundingTraits__2.html#aff483fbcaed167e41b8198e56d7a01f8", null ],
+    [ "construct_rounded_point_2_object", "classFloatSnapRoundingTraits__2.html#abe6dff7994a3ee3b834d067a3f7215ff", null ],
+    [ "construct_segment_2_object", "classFloatSnapRoundingTraits__2.html#aa2e53dda2f1154155f9bc3e61add02db", null ],
+    [ "construct_source_2_object", "classFloatSnapRoundingTraits__2.html#a550b4212de8c88ca46fffca12caca2d2", null ],
+    [ "construct_target_2_object", "classFloatSnapRoundingTraits__2.html#a45e3daf4bc3a45f7c8eb8b85675ae0d8", null ],
+    [ "converter_from_exact_object", "classFloatSnapRoundingTraits__2.html#a4032bc8a65e548eca64b98dd09644451", null ],
+    [ "converter_to_exact_object", "classFloatSnapRoundingTraits__2.html#aeb87f5be930b856295c2832bf8a310e4", null ],
+    [ "less_xy_2_object", "classFloatSnapRoundingTraits__2.html#a4c631aa18052a442628a5b8978a091a1", null ],
+    [ "less_y_2_object", "classFloatSnapRoundingTraits__2.html#a32d02c98be96423bae52acf23dfe22a0", null ],
+    [ "squared_round_bound_2_object", "classFloatSnapRoundingTraits__2.html#a676e64b673e198c8e005ebc43458fefe", null ]
+];
