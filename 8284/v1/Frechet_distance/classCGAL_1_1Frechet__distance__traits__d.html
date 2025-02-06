@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - dD Frechet Distance: CGAL::Frechet_distance_traits_d&lt; GT &gt; Class Template Reference</title>
+<title>CGAL 6.1 - dD Frechet Distance: CGAL::Frechet_distance_traits_d&lt; K &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - dD Frechet Distance
+   <div id="projectname">CGAL 6.1 - dD Frechet Distance
    </div>
   </td>
  </tr>
@@ -162,123 +170,64 @@ $(document).ready(function(){initNavTree('classCGAL_1_1Frechet__distance__traits
   <div class="summary">
 <a href="classCGAL_1_1Frechet__distance__traits__d-members.html">List of all members</a> |
 <a href="#pub-types">Public Types</a> |
-<a href="#pub-static-attribs">Static Public Attributes</a>  </div>
-  <div class="headertitle"><div class="title">CGAL::Frechet_distance_traits_d&lt; GT &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgFrechetDistanceRef.html">dD Frechet Distance Reference</a></div></div></div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Frechet_distance_traits_d&lt; K &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgFrechetDistanceRef.html">dD Fréchet Distance Reference</a> » <a class="el" href="group__PkgFrechetDistanceTraits.html">Traits Classes</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;CGAL/Frechet_distance_traits_d.h&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;class GT&gt;<br>
-class CGAL::Frechet_distance_traits_d&lt; GT &gt;</div><dl>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class K&gt;<br>
+class CGAL::Frechet_distance_traits_d&lt; K &gt;</div><dl>
 <dt>Is model of</dt>
 <dd><code><a class="el" href="classFrechetDistanceTraits.html" title="The concept FrechetDistanceTraits defines the requirements of the first template parameter of the fun...">FrechetDistanceTraits</a></code> </dd>
 </dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">GT</td><td>geometric traits class </td></tr>
+    <tr><td class="paramname">K</td><td>geometric traits class. Must be either <code><a class="elRef" href="../Kernel_d/structCGAL_1_1Epick__d.html">Epick_d</a></code> or <code><a class="elRef" href="../Kernel_d/structCGAL_1_1Epeck__d.html">Epeck_d</a></code> with a fixed dimension. </td></tr>
   </table>
   </dd>
 </dl>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a679194a6368e1fd41212a360148dac1b"><td class="memItemLeft" align="right" valign="top"><a id="a679194a6368e1fd41212a360148dac1b" name="a679194a6368e1fd41212a360148dac1b"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Kernel</b> = GT</td></tr>
-<tr class="separator:a679194a6368e1fd41212a360148dac1b"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:aff207ff0cdfa8eeeccd5937366da3fd2"><td class="memItemLeft" align="right" valign="top"><a id="aff207ff0cdfa8eeeccd5937366da3fd2" name="aff207ff0cdfa8eeeccd5937366da3fd2"></a>
+<tr class="memitem:ae581f7777896d653af3f487fd88f6d45"><td class="memItemLeft" align="right" valign="top"><a id="ae581f7777896d653af3f487fd88f6d45" name="ae581f7777896d653af3f487fd88f6d45"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Dimension</b> = <a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">Dimension_tag</a>&lt; K::Dimension::value &gt;</td></tr>
+<tr class="separator:ae581f7777896d653af3f487fd88f6d45"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9c77a5fe0833ecd855d1004417d0cc39"><td class="memItemLeft" align="right" valign="top"><a id="a9c77a5fe0833ecd855d1004417d0cc39" name="a9c77a5fe0833ecd855d1004417d0cc39"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Kernel</b> = K</td></tr>
+<tr class="separator:a9c77a5fe0833ecd855d1004417d0cc39"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aad4e535716e813455dda11c13c441513"><td class="memItemLeft" align="right" valign="top"><a id="aad4e535716e813455dda11c13c441513" name="aad4e535716e813455dda11c13c441513"></a>
 using </td><td class="memItemRight" valign="bottom"><b>FT</b> = typename Kernel::FT</td></tr>
-<tr class="separator:aff207ff0cdfa8eeeccd5937366da3fd2"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:aee19f8aecdaf76083ca19ee5b45a0ecc"><td class="memItemLeft" align="right" valign="top"><a id="aee19f8aecdaf76083ca19ee5b45a0ecc" name="aee19f8aecdaf76083ca19ee5b45a0ecc"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Point</b> = typename Kernel::Point_d</td></tr>
-<tr class="separator:aee19f8aecdaf76083ca19ee5b45a0ecc"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:aea6e68752f77a15de0d756d8872dd4b9"><td class="memItemLeft" align="right" valign="top"><a id="aea6e68752f77a15de0d756d8872dd4b9" name="aea6e68752f77a15de0d756d8872dd4b9"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Bbox</b> = CGAL::Bbox&lt; <a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">Dimension_tag</a>&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a61bb5c6615bf60a54ead4bc71bb11174">dimension</a> &gt;, double &gt;</td></tr>
-<tr class="separator:aea6e68752f77a15de0d756d8872dd4b9"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a9451c04f2be4db984d3f746894c9f22c"><td class="memItemLeft" align="right" valign="top"><a id="a9451c04f2be4db984d3f746894c9f22c" name="a9451c04f2be4db984d3f746894c9f22c"></a>
-using </td><td class="memItemRight" valign="bottom"><b>distance_t</b> = Interval_nt&lt; false &gt;</td></tr>
-<tr class="separator:a9451c04f2be4db984d3f746894c9f22c"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:aeb47de562729ef8a61e33e4268de0276"><td class="memItemLeft" align="right" valign="top"><a id="aeb47de562729ef8a61e33e4268de0276" name="aeb47de562729ef8a61e33e4268de0276"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Approximate_kernel</b> = Kernel_d_interface&lt; Cartesian_base_d&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a9451c04f2be4db984d3f746894c9f22c">distance_t</a>, <a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">Dimension_tag</a>&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a61bb5c6615bf60a54ead4bc71bb11174">dimension</a> &gt; &gt; &gt;</td></tr>
-<tr class="separator:aeb47de562729ef8a61e33e4268de0276"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a4fcaeb372f7a2bd6e29f66611df8b45e"><td class="memItemLeft" align="right" valign="top"><a id="a4fcaeb372f7a2bd6e29f66611df8b45e" name="a4fcaeb372f7a2bd6e29f66611df8b45e"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Approximate_point</b> = typename Approximate_kernel::Point_d</td></tr>
-<tr class="separator:a4fcaeb372f7a2bd6e29f66611df8b45e"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:ac1f529335845528497d83b2053501e21"><td class="memItemLeft" align="right" valign="top"><a id="ac1f529335845528497d83b2053501e21" name="ac1f529335845528497d83b2053501e21"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Construct_bbox</b> = typename Approximate_kernel::Construct_bbox_d</td></tr>
-<tr class="separator:ac1f529335845528497d83b2053501e21"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a36f9d0951e0ae146c6e40f088371628a"><td class="memItemLeft" align="right" valign="top"><a id="a36f9d0951e0ae146c6e40f088371628a" name="a36f9d0951e0ae146c6e40f088371628a"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Squared_distance</b> = typename Approximate_kernel::Squared_distance_d</td></tr>
-<tr class="separator:a36f9d0951e0ae146c6e40f088371628a"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a0232de70e0edbf70756c84e00d80e4df"><td class="memItemLeft" align="right" valign="top"><a id="a0232de70e0edbf70756c84e00d80e4df" name="a0232de70e0edbf70756c84e00d80e4df"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Difference_of_points</b> = typename Approximate_kernel::Construct_vector_d</td></tr>
-<tr class="separator:a0232de70e0edbf70756c84e00d80e4df"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a99c5a328be4f11dcbffbb4d0a3bced9b"><td class="memItemLeft" align="right" valign="top"><a id="a99c5a328be4f11dcbffbb4d0a3bced9b" name="a99c5a328be4f11dcbffbb4d0a3bced9b"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Scaled_vector</b> = typename Approximate_kernel::Scaled_vector_d</td></tr>
-<tr class="separator:a99c5a328be4f11dcbffbb4d0a3bced9b"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a7474882eac265751b5be7fb91db5f483"><td class="memItemLeft" align="right" valign="top"><a id="a7474882eac265751b5be7fb91db5f483" name="a7474882eac265751b5be7fb91db5f483"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Translated_point</b> = typename Approximate_kernel::Translated_point_d</td></tr>
-<tr class="separator:a7474882eac265751b5be7fb91db5f483"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a89ec4dcef4d8e2e0d68156776c33f1ba"><td class="memItemLeft" align="right" valign="top"><a id="a89ec4dcef4d8e2e0d68156776c33f1ba" name="a89ec4dcef4d8e2e0d68156776c33f1ba"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Exact_kernel</b> = typename CGAL::Frechet_distance_::internal::Get_exact_kernel&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a679194a6368e1fd41212a360148dac1b">Kernel</a> &gt;::type</td></tr>
-<tr class="separator:a89ec4dcef4d8e2e0d68156776c33f1ba"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a0423672303024a7ff84101e4d7c7647e"><td class="memItemLeft" align="right" valign="top"><a id="a0423672303024a7ff84101e4d7c7647e" name="a0423672303024a7ff84101e4d7c7647e"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Exact_point</b> = typename Exact_kernel::Point_d</td></tr>
-<tr class="separator:a0423672303024a7ff84101e4d7c7647e"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:abc7f50971da2db8480256fbcd2fa561b"><td class="memItemLeft" align="right" valign="top"><a id="abc7f50971da2db8480256fbcd2fa561b" name="abc7f50971da2db8480256fbcd2fa561b"></a>
-using </td><td class="memItemRight" valign="bottom"><b>D2D</b> = NT_converter&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a9451c04f2be4db984d3f746894c9f22c">distance_t</a>, double &gt;</td></tr>
-<tr class="separator:abc7f50971da2db8480256fbcd2fa561b"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a2c58460228cee496db01c0aa018cf3c1"><td class="memItemLeft" align="right" valign="top"><a id="a2c58460228cee496db01c0aa018cf3c1" name="a2c58460228cee496db01c0aa018cf3c1"></a>
-using </td><td class="memItemRight" valign="bottom"><b>F2E</b> = KernelD_converter&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#aeb47de562729ef8a61e33e4268de0276">Approximate_kernel</a>, <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a89ec4dcef4d8e2e0d68156776c33f1ba">Exact_kernel</a>, <a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a>, <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#abc7f50971da2db8480256fbcd2fa561b">D2D</a> &gt;</td></tr>
-<tr class="separator:a2c58460228cee496db01c0aa018cf3c1"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a6a2cc01ccb10d5afa0fb1bc6b8d35c64"><td class="memItemLeft" align="right" valign="top"><a id="a6a2cc01ccb10d5afa0fb1bc6b8d35c64" name="a6a2cc01ccb10d5afa0fb1bc6b8d35c64"></a>
-using </td><td class="memItemRight" valign="bottom"><b>FT2I</b> = NT_converter&lt; typename Kernel::FT, <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a9451c04f2be4db984d3f746894c9f22c">distance_t</a> &gt;</td></tr>
-<tr class="separator:a6a2cc01ccb10d5afa0fb1bc6b8d35c64"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:aed04ba9535cf6ecb781db717619070a1"><td class="memItemLeft" align="right" valign="top"><a id="aed04ba9535cf6ecb781db717619070a1" name="aed04ba9535cf6ecb781db717619070a1"></a>
-using </td><td class="memItemRight" valign="bottom"><b>K2F</b> = KernelD_converter&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a679194a6368e1fd41212a360148dac1b">Kernel</a>, <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#aeb47de562729ef8a61e33e4268de0276">Approximate_kernel</a>, <a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a>, <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a6a2cc01ccb10d5afa0fb1bc6b8d35c64">FT2I</a> &gt;</td></tr>
-<tr class="separator:aed04ba9535cf6ecb781db717619070a1"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a6cb671071e993a19949a19d24433da41"><td class="memItemLeft" align="right" valign="top">using </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a6cb671071e993a19949a19d24433da41">Polyline</a> = std::vector&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#aee19f8aecdaf76083ca19ee5b45a0ecc">Point</a> &gt;</td></tr>
-<tr class="separator:a6cb671071e993a19949a19d24433da41"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a5980cc384b62987798ad68c771eb2e91"><td class="memItemLeft" align="right" valign="top"><a id="a5980cc384b62987798ad68c771eb2e91" name="a5980cc384b62987798ad68c771eb2e91"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Polylines</b> = std::vector&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a6cb671071e993a19949a19d24433da41">Polyline</a> &gt;</td></tr>
-<tr class="separator:a5980cc384b62987798ad68c771eb2e91"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a193b3a14f0d2e3062ff043f6437ceeef"><td class="memItemLeft" align="right" valign="top"><a id="a193b3a14f0d2e3062ff043f6437ceeef" name="a193b3a14f0d2e3062ff043f6437ceeef"></a>
-using </td><td class="memItemRight" valign="bottom"><b>PolylineID</b> = std::size_t</td></tr>
-<tr class="separator:a193b3a14f0d2e3062ff043f6437ceeef"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:aded3c3a4a9055fdfc090fa43de01965e"><td class="memItemLeft" align="right" valign="top"><a id="aded3c3a4a9055fdfc090fa43de01965e" name="aded3c3a4a9055fdfc090fa43de01965e"></a>
-using </td><td class="memItemRight" valign="bottom"><b>PolylineIDs</b> = std::vector&lt; <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a193b3a14f0d2e3062ff043f6437ceeef">PolylineID</a> &gt;</td></tr>
-<tr class="separator:aded3c3a4a9055fdfc090fa43de01965e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="separator:aad4e535716e813455dda11c13c441513"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ace5a2d16fa0908df0e261af75f3d60a0"><td class="memItemLeft" align="right" valign="top"><a id="ace5a2d16fa0908df0e261af75f3d60a0" name="ace5a2d16fa0908df0e261af75f3d60a0"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Point_d</b> = typename Kernel::Point_d</td></tr>
+<tr class="separator:ace5a2d16fa0908df0e261af75f3d60a0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adbff59e5b866c5125968f8271af3d0ba"><td class="memItemLeft" align="right" valign="top"><a id="adbff59e5b866c5125968f8271af3d0ba" name="adbff59e5b866c5125968f8271af3d0ba"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Construct_bbox_d</b> = typename Kernel::Construct_bbox_d</td></tr>
+<tr class="separator:adbff59e5b866c5125968f8271af3d0ba"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa10a756332f1da0df4f4b5dea3c17812"><td class="memItemLeft" align="right" valign="top"><a id="aa10a756332f1da0df4f4b5dea3c17812" name="aa10a756332f1da0df4f4b5dea3c17812"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Cartesian_const_iterator_d</b> = typename Kernel::Cartesian_const_iterator_d</td></tr>
+<tr class="separator:aa10a756332f1da0df4f4b5dea3c17812"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5c95ae2eab44a1ffddef20ed390fd356"><td class="memItemLeft" align="right" valign="top"><a id="a5c95ae2eab44a1ffddef20ed390fd356" name="a5c95ae2eab44a1ffddef20ed390fd356"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Construct_cartesian_const_iterator_d</b> = typename Kernel::Construct_cartesian_const_iterator_d</td></tr>
+<tr class="separator:a5c95ae2eab44a1ffddef20ed390fd356"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a21ce97c875b1f964996e8807d324a337"><td class="memItemLeft" align="right" valign="top"><a id="a21ce97c875b1f964996e8807d324a337" name="a21ce97c875b1f964996e8807d324a337"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Compare_squared_distance_d</b> = typename Kernel::Compare_squared_distance_d</td></tr>
+<tr class="separator:a21ce97c875b1f964996e8807d324a337"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a61bb5c6615bf60a54ead4bc71bb11174"><td class="memItemLeft" align="right" valign="top"><a id="a61bb5c6615bf60a54ead4bc71bb11174" name="a61bb5c6615bf60a54ead4bc71bb11174"></a>
-static constexpr int </td><td class="memItemRight" valign="bottom"><b>dimension</b> = GT::Dimension::value</td></tr>
-<tr class="separator:a61bb5c6615bf60a54ead4bc71bb11174"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:ae914c84e1e864d816b269422d68d0137"><td class="memItemLeft" align="right" valign="top"><a id="ae914c84e1e864d816b269422d68d0137" name="ae914c84e1e864d816b269422d68d0137"></a>
-static constexpr bool </td><td class="memItemRight" valign="bottom"><b>is_filtered</b> = CGAL::Frechet_distance_::internal::Get_exact_kernel&lt;<a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a679194a6368e1fd41212a360148dac1b">Kernel</a>&gt;::is_filtered</td></tr>
-<tr class="separator:ae914c84e1e864d816b269422d68d0137"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:ad2ffc2319d30e28f047d8378baedcec3"><td class="memItemLeft" align="right" valign="top"><a id="ad2ffc2319d30e28f047d8378baedcec3" name="ad2ffc2319d30e28f047d8378baedcec3"></a>
-static constexpr bool </td><td class="memItemRight" valign="bottom"><b>is_floating_point</b> = CGAL::Frechet_distance_::internal::Get_exact_kernel&lt;<a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a679194a6368e1fd41212a360148dac1b">Kernel</a>&gt;::is_floating_point</td></tr>
-<tr class="separator:ad2ffc2319d30e28f047d8378baedcec3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a1161b1918373a5aafb36e19ec95eaa24"><td class="memItemLeft" align="right" valign="top"><a id="a1161b1918373a5aafb36e19ec95eaa24" name="a1161b1918373a5aafb36e19ec95eaa24"></a>
+<a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#adbff59e5b866c5125968f8271af3d0ba">Construct_bbox_d</a> </td><td class="memItemRight" valign="bottom"><b>construct_bbox_d_object</b> () const</td></tr>
+<tr class="separator:a1161b1918373a5aafb36e19ec95eaa24"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5690eaf0195609b5adefa0fa43c53ccb"><td class="memItemLeft" align="right" valign="top"><a id="a5690eaf0195609b5adefa0fa43c53ccb" name="a5690eaf0195609b5adefa0fa43c53ccb"></a>
+<a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a5c95ae2eab44a1ffddef20ed390fd356">Construct_cartesian_const_iterator_d</a> </td><td class="memItemRight" valign="bottom"><b>construct_cartesian_const_iterator_d_object</b> () const</td></tr>
+<tr class="separator:a5690eaf0195609b5adefa0fa43c53ccb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4f9a5d89a3134d88ff9fb2dda386890c"><td class="memItemLeft" align="right" valign="top"><a id="a4f9a5d89a3134d88ff9fb2dda386890c" name="a4f9a5d89a3134d88ff9fb2dda386890c"></a>
+<a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#a21ce97c875b1f964996e8807d324a337">Compare_squared_distance_d</a> </td><td class="memItemRight" valign="bottom"><b>construct_compare_squared_distance_d_object</b> () const</td></tr>
+<tr class="separator:a4f9a5d89a3134d88ff9fb2dda386890c"><td class="memSeparator" colspan="2"> </td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a6cb671071e993a19949a19d24433da41" name="a6cb671071e993a19949a19d24433da41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6cb671071e993a19949a19d24433da41">◆ </a></span>Polyline</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class GT &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html">CGAL::Frechet_distance_traits_d</a>&lt; GT &gt;::Polyline =  std::vector&lt;<a class="el" href="classCGAL_1_1Frechet__distance__traits__d.html#aee19f8aecdaf76083ca19ee5b45a0ecc">Point</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>remove? </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.6-->

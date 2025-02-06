@@ -13,7 +13,7 @@ var searchData=
   ['analytic_20weights_10',['Analytic Weights',['../../Weights/group__PkgWeightsRefAnalytic.html',1,'']]],
   ['approximation_20of_20ridges_20and_20umbilics_20on_20triangulated_20surface_20meshes_20reference_11',['Approximation of Ridges and Umbilics on Triangulated Surface Meshes Reference',['../../Ridges_3/group__PkgRidges3Ref.html',1,'']]],
   ['assertions_12',['Assertions',['../../Circulator/group__PkgHandlesAndCirculatorsAssert.html',1,'']]],
-  ['assertions_20and_20failure_20behaviour_13',['Assertions and Failure Behaviour',['../../STL_Extension/group__PkgSTLExtensionAssertions.html',1,'']]],
+  ['assertions_20and_20failure_20behavior_13',['Assertions and Failure Behavior',['../../STL_Extension/group__PkgSTLExtensionAssertions.html',1,'']]],
   ['authalic_20weight_14',['Authalic Weight',['../../Weights/group__PkgWeightsRefAuthalicWeights.html',1,'']]],
   ['auxiliary_20classes_15',['Auxiliary Classes',['../../Straight_skeleton_2/group__PkgStraightSkeleton2Auxiliary.html',1,'']]]
 ];

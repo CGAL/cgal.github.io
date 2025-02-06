@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D and 3D Linear Geometry Kernel", "index.html", [
+  [ "CGAL 6.1 - 2D and 3D Linear Geometry Kernel", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -44,9 +44,9 @@ var NAVTREEINDEX =
 "classKernel_1_1Angle__3.html#a8f9c12ba6e2210f50fb6a192df9e3af4",
 "classKernel_1_1ComputeVolume__3.html#a74e33e215c888bf11f5fbe40241ac831",
 "classKernel_1_1ConstructPointOn__3.html#aa18da4ad00632312e6eb56d5d9a40830",
-"classKernel_1_1IsDegenerate__3.html#a5dc48e597385a16e47e6b49924332c5c",
-"group__compare__xy__spherical__grp.html",
-"index.html#Kernel_23CartesianKernels"
+"classKernel_1_1IsDegenerate__3.html#a3df365dab543fc779c23aa031b3aa741",
+"group__compare__xy__linear__grp.html#ga6979ac7902358ad28cb66fcd9ad96791",
+"index.html#Kernel_23Acknowledgment"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

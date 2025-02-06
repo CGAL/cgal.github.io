@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Polyhedral Surface: 3D Polyhedral Surface  Reference</title>
+<title>CGAL 6.1 - 3D Polyhedral Surface: 3D Polyhedral Surface  Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Polyhedral Surface
+   <div id="projectname">CGAL 6.1 - 3D Polyhedral Surface
    </div>
   </td>
  </tr>
@@ -172,9 +180,9 @@ $(document).ready(function(){initNavTree('group__PkgPolyhedronRef.html',''); ini
 </div>
  </div> <div class="PkgSummary"> <div class="PkgAuthors">Lutz Kettner</div> <div class="PkgDescription">Polyhedral surfaces in three dimensions are composed of vertices, edges, facets and an incidence relationship on them. The organization beneath is a halfedge data structure, which restricts the class of representable surfaces to orientable 2-manifolds - with and without boundary. If the surface is closed we call it a polyhedron.</div> <div class="PkgManuals"></div> </div> <div class="PkgShortInfo"> <b>Introduced in:</b> CGAL 1.0<br>
  <b>Depends on:</b> <a class="elRef" href="../Manual/packages.html#PkgHalfedgeDS">Halfedge Data Structures</a> <br>
- <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:k-ps-24b">cgal:k-ps-24b</a><br>
+ <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:k-ps-25a">cgal:k-ps-25a</a><br>
  <b>License:</b> <a class="elRef" href="../Manual/license.html#licensesGPL">GPL</a> <br>
- <b>Windows Demo:</b> <a href="https://www.cgal.org/demo/6.0/CGALlab.zip">CGAL Lab</a><br>
+ <b>Windows Demo:</b> <a href="https://www.cgal.org/demo/6.1/CGALlab.zip">CGAL Lab</a><br>
  </div><p>Polyhedral surfaces in three dimensions are composed of vertices, edges, facets and an incidence relationship on them. The organization beneath is a halfedge data structure, which restricts the class of representable surfaces to orientable 2-manifolds - with and without boundary. If the surface is closed we call it a <em>polyhedron</em>.</p>
 <p>The polyhedral surface is realized as a container class managing vertices, halfedges, facets with their incidences, and maintaining the combinatorial integrity of them. Its local types for the vertices, halfedges and facets are documented separately. A default traits class, a default items class and an incremental builder conclude the references. The polyhedral surface is based on the highly flexible design of the halfedge data structure, see the reference for <code><a class="elRef" href="../HalfedgeDS/classHalfedgeDS.html">HalfedgeDS</a></code> in Chapter <a class="elRef" href="../HalfedgeDS/index.html#Chapter_Halfedge_Data_Structures">Halfedge Data Structures</a> or <a class="el" href="citelist.html#CITEREF_k-ugpdd-99">[3]</a>, but the default instantiation of the polyhedral surface can be used without knowing the halfedge data structure.</p>
  <h2 class="groupheader">Classified Reference Pages</h2> <h2>Concepts</h2>

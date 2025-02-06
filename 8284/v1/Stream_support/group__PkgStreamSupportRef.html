@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - IO Streams: I/O Streams Reference</title>
+<title>CGAL 6.1 - IO Streams: I/O Streams Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - IO Streams
+   <div id="projectname">CGAL 6.1 - IO Streams
    </div>
   </td>
  </tr>
@@ -171,7 +179,7 @@ $(document).ready(function(){initNavTree('group__PkgStreamSupportRef.html',''); 
 <img src="io.png" alt="">
 </div>
  </div> <div class="PkgSummary"> <div class="PkgAuthors">Andreas Fabri, Geert-Jan Giezeman, and Lutz Kettner</div> <div class="PkgDescription">All classes in the CGAL kernel provide input and output operators for I/O streams. The basic task of such an operator is to produce a representation of an object that can be written as a sequence of characters on devices as a console, a file, or a pipe. In CGAL we distinguish between a raw ASCII, a raw binary and a pretty printing format.</div> <div class="PkgManuals"></div> </div> <div class="PkgShortInfo"> <b>Introduced in:</b> CGAL 1.0<br>
- <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:fgk-ios-12-24b">cgal:fgk-ios-12-24b</a><br>
+ <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:fgk-ios-12-25a">cgal:fgk-ios-12-25a</a><br>
  <b>License:</b> <a class="elRef" href="../Manual/license.html#licensesLGPL">LGPL</a> <br>
  </div><p>All classes in the CGAL kernel provide input and output operators for I/O streams. CGAL provides three different printing mode, defined in the enum <a class="el" href="group__PkgStreamSupportEnumRef.html"><code>IO::Mode</code> </a>, as well as different functions to set and get the printing mode.</p>
  <h2 class="groupheader">Classified Reference Pages</h2> <h2>Enum</h2>

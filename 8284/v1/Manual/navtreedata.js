@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - Manual", "index.html", [
+  [ "CGAL 6.1 - Manual", "index.html", [
     [ "Getting Started with CGAL", "general_intro.html", "general_intro" ],
     [ "Tutorials", "tutorials.html", "tutorials" ],
     [ "Package Overview", "packages.html", [
@@ -60,7 +60,7 @@ var NAVTREE =
         [ "2D Straight Skeleton and Polygon Offsetting", "packages.html#PkgStraightSkeleton2", null ],
         [ "2D Minkowski Sums", "packages.html#PkgMinkowskiSum2", null ],
         [ "2D Polyline Simplification", "packages.html#PkgPolylineSimplification2", null ],
-        [ "dD Frechet Distance", "packages.html#PkgFrechetDistance", null ],
+        [ "dD Fréchet Distance", "packages.html#PkgFrechetDistance", null ],
         [ "2D Visibility Computation", "packages.html#PkgVisibility2", null ],
         [ "2D Movable Separability of Sets", "packages.html#PkgSetMovableSeparability2", null ]
       ] ],
@@ -190,6 +190,7 @@ var NAVTREE =
       [ "License Checking", "license.html#licenseCheck", null ],
       [ "Determining the license of a CGAL file", "license.html#licensesWhere", null ]
     ] ],
+    [ "Doxygen for CGAL", "md_Doxygen_for_CGAL.html", null ],
     [ "Acknowledging CGAL", "how_to_cite_cgal.html", null ],
     [ "Bibliography", "citelist.html", null ]
   ] ]
@@ -198,7 +199,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "citelist.html",
-"packages.html#PkgOrthtree"
+"packages.html#PkgPeriodic3Triangulation3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"group__compare__xy__linear__grp.html#ga6979ac7902358ad28cb66fcd9ad96791":[1,0,5,22,0,1],
+"group__compare__xy__linear__grp.html#ga99c5707cdcbc126783a194696aad388b":[1,0,5,22,0,0],
 "group__compare__xy__spherical__grp.html":[1,0,5,22,2],
 "group__compare__xy__spherical__grp.html#ga59723f2273da0d3ae98d287ebf3c0fbc":[1,0,5,22,2,0],
 "group__compare__xy__spherical__grp.html#ga5d43db96cb7dc2c89331153d88243785":[1,0,5,22,2,1],
@@ -246,8 +248,6 @@ var NAVTREEINDEX8 =
 "group__y__equal__grp.html#gacc77baaaac56b1344fd43f6082f4a11a":[1,0,5,74,1],
 "group__z__equal__grp.html":[1,0,5,75],
 "group__z__equal__grp.html#ga70c2660284fdacf56fa7f399895ec9e9":[1,0,5,75,0],
-"index.html":[0],
 "index.html":[],
-"index.html#Kernel_23Acknowledgment":[0,6,0],
-"index.html#Kernel_23AnExtensiveExample":[0,4,1]
+"index.html":[0]
 };

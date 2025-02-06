@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - dD Spatial Searching: User Manual</title>
+<title>CGAL 6.1 - dD Spatial Searching: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - dD Spatial Searching
+   <div id="projectname">CGAL 6.1 - dD Spatial Searching
    </div>
   </td>
  </tr>
@@ -386,7 +394,7 @@ Example for General Neighbor Searching</h2>
 <div class="line"> </div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_d/structCGAL_1_1Epick__d.html">CGAL::Epick_d&lt;CGAL::Dimension_tag&lt;4&gt;</a> &gt; <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
 <div class="line"><span class="keyword">typedef</span> Kernel::Point_d Point_d;</div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_cube_d&lt;Point_d&gt; Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__d.html">CGAL::Random_points_in_cube_d&lt;Point_d&gt;</a> Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> Kernel::Iso_box_d Iso_box_d;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> TreeTraits;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Manhattan__distance__iso__box__point.html">CGAL::Manhattan_distance_iso_box_point&lt;TreeTraits&gt;</a> Distance;</div>
@@ -419,6 +427,7 @@ Example for General Neighbor Searching</h2>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1K__neighbor__search_html"><div class="ttname"><a href="classCGAL_1_1K__neighbor__search.html">CGAL::K_neighbor_search</a></div><div class="ttdoc">The class K_neighbor_search implements approximate k-nearest and k-furthest neighbor searching using ...</div><div class="ttdef"><b>Definition:</b> K_neighbor_search.h:31</div></div>
 <div class="ttc" id="aclassCGAL_1_1Manhattan__distance__iso__box__point_html"><div class="ttname"><a href="classCGAL_1_1Manhattan__distance__iso__box__point.html">CGAL::Manhattan_distance_iso_box_point</a></div><div class="ttdoc">The class Manhattan_distance_iso_box_point provides an implementation of the GeneralDistance concept ...</div><div class="ttdef"><b>Definition:</b> Manhattan_distance_iso_box_point.h:22</div></div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__cube__d_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__cube__d.html">CGAL::Random_points_in_cube_d</a></div></div>
 <div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
 <div class="ttc" id="astructCGAL_1_1Epick__d_html"><div class="ttname"><a href="../Kernel_d/structCGAL_1_1Epick__d.html">CGAL::Epick_d</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="Spatial_searchingExampleforaRangeQuery"></a>
@@ -437,7 +446,7 @@ Example for a Range Query</h2>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_d/structCGAL_1_1Epick__d.html">CGAL::Epick_d&lt;CGAL::Dimension_tag&lt;D&gt;</a> &gt; K;</div>
 <div class="line"><span class="keyword">typedef</span> K::Point_d Point_d;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__d.html">CGAL::Search_traits_d&lt;K,CGAL::Dimension_tag&lt;D&gt;</a> &gt;  Traits;</div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_cube_d&lt;Point_d&gt;       Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__d.html">CGAL::Random_points_in_cube_d&lt;Point_d&gt;</a>       Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../STL_Extension/classCGAL_1_1Counting__iterator.html">CGAL::Counting_iterator&lt;Random_points_iterator&gt;</a> N_Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Kd__tree.html">CGAL::Kd_tree&lt;Traits&gt;</a> Tree;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Fuzzy__sphere.html">CGAL::Fuzzy_sphere&lt;Traits&gt;</a> Fuzzy_sphere;</div>
@@ -628,7 +637,7 @@ Example for User Defined Point and Distance Class</h2>
 <div class="line"><span class="preprocessor">#include "Distance.h"</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../STL_Extension/classCGAL_1_1Creator__uniform__3.html">CGAL::Creator_uniform_3&lt;double,Point&gt;</a> Point_creator;</div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_cube_3&lt;Point, Point_creator&gt; Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3&lt;Point, Point_creator&gt;</a> Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../STL_Extension/classCGAL_1_1Counting__iterator.html">CGAL::Counting_iterator&lt;Random_points_iterator&gt;</a> N_Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag&lt;3&gt;</a> D;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits.html">CGAL::Search_traits&lt;double, Point, const double*, Construct_coord_iterator, D&gt;</a> Traits;</div>
@@ -671,6 +680,7 @@ Example for User Defined Point and Distance Class</h2>
 <div class="ttc" id="aclassCGAL_1_1Creator__uniform__3_html"><div class="ttname"><a href="../STL_Extension/classCGAL_1_1Creator__uniform__3.html">CGAL::Creator_uniform_3</a></div></div>
 <div class="ttc" id="aclassCGAL_1_1K__neighbor__search_html_a3b06c8cef57e8bab082134470343c7e2"><div class="ttname"><a href="classCGAL_1_1K__neighbor__search.html#a3b06c8cef57e8bab082134470343c7e2">CGAL::K_neighbor_search::Tree</a></div><div class="ttdeci">SpatialTree Tree</div><div class="ttdoc">The tree type.</div><div class="ttdef"><b>Definition:</b> K_neighbor_search.h:71</div></div>
 <div class="ttc" id="aclassCGAL_1_1K__neighbor__search_html_ad26a3d2c9da3788a3bd087b1b05ad7eb"><div class="ttname"><a href="classCGAL_1_1K__neighbor__search.html#ad26a3d2c9da3788a3bd087b1b05ad7eb">CGAL::K_neighbor_search::iterator</a></div><div class="ttdeci">unspecified_type iterator</div><div class="ttdoc">Bidirectional const iterator with value type Point_with_distance for enumerating approximate neighbor...</div><div class="ttdef"><b>Definition:</b> K_neighbor_search.h:61</div></div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__cube__3_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3</a></div></div>
 <div class="ttc" id="aclassCGAL_1_1Search__traits_html"><div class="ttname"><a href="classCGAL_1_1Search__traits.html">CGAL::Search_traits</a></div><div class="ttdoc">The class Search_traits can be used as a template parameter of the kd tree and the search classes.</div><div class="ttdef"><b>Definition:</b> Search_traits.h:17</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="Spatial_searchingExamplesforUsinganArbitrary"></a>
 Examples for Using an Arbitrary Point Type with Point Property Maps</h2>
@@ -692,7 +702,7 @@ Using a Point and an Integer as Key Type</h3>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                     Point_3;</div>
 <div class="line"><span class="keyword">typedef</span> boost::tuple&lt;Point_3,int&gt;                           Point_and_int;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_cube_3&lt;Point_3&gt;              Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3&lt;Point_3&gt;</a>              Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__3.html">CGAL::Search_traits_3&lt;Kernel&gt;</a>                       Traits_base;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__adapter.html">CGAL::Search_traits_adapter</a>&lt;Point_and_int,</div>
 <div class="line">  CGAL::Nth_of_tuple_property_map&lt;0, Point_and_int&gt;,</div>
@@ -784,7 +794,7 @@ Using an Integer as Key Type</h3>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_cube_3&lt;Point_3&gt;                               Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3&lt;Point_3&gt;</a>                               Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__3.html">CGAL::Search_traits_3&lt;Kernel&gt;</a>                                        Traits_base;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__adapter.html">CGAL::Search_traits_adapter&lt;std::size_t,My_point_property_map,Traits_base&gt;</a> Traits;</div>
 <div class="line"> </div>
@@ -847,7 +857,7 @@ Using a Model of L-value Property Map Concept</h3>
 <div class="line"> </div>
 <div class="line"><span class="keyword">typedef</span> boost::const_associative_property_map&lt;std::map&lt;std::size_t,Point_3&gt; &gt;           My_point_property_map;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_cube_3&lt;Point_3&gt;                                          Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__cube__3.html">CGAL::Random_points_in_cube_3&lt;Point_3&gt;</a>                                          Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__3.html">CGAL::Search_traits_3&lt;Kernel&gt;</a>                                                   Traits_base;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__adapter.html">CGAL::Search_traits_adapter&lt;std::size_t,My_point_property_map,Traits_base&gt;</a>      Traits;</div>
 <div class="line"> </div>
@@ -970,7 +980,7 @@ Example for Selecting a Splitting Rule and Setting the Bucket Size</h2>
 <div class="line"> </div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian&lt;double&gt;</a> R;</div>
 <div class="line"><span class="keyword">typedef</span> R::Point_2 Point_d;</div>
-<div class="line"><span class="keyword">typedef</span> CGAL::Random_points_in_square_2&lt;Point_d&gt; Random_points_iterator;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__square__2.html">CGAL::Random_points_in_square_2&lt;Point_d&gt;</a> Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../STL_Extension/classCGAL_1_1Counting__iterator.html">CGAL::Counting_iterator&lt;Random_points_iterator&gt;</a> N_Random_points_iterator;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Search__traits__2.html">CGAL::Search_traits_2&lt;R&gt;</a> Traits;</div>
 <div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Euclidean__distance.html">CGAL::Euclidean_distance&lt;Traits&gt;</a> Distance;</div>
@@ -1004,6 +1014,7 @@ Example for Selecting a Splitting Rule and Setting the Bucket Size</h2>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1Euclidean__distance_html"><div class="ttname"><a href="classCGAL_1_1Euclidean__distance.html">CGAL::Euclidean_distance</a></div><div class="ttdoc">The class Euclidean_distance provides an implementation of the concept OrthogonalDistance,...</div><div class="ttdef"><b>Definition:</b> Euclidean_distance.h:20</div></div>
 <div class="ttc" id="aclassCGAL_1_1Fair_html"><div class="ttname"><a href="classCGAL_1_1Fair.html">CGAL::Fair</a></div><div class="ttdoc">Implements the fair splitting rule.</div><div class="ttdef"><b>Definition:</b> Splitters.h:30</div></div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__square__2_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__square__2.html">CGAL::Random_points_in_square_2</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="Spatial_searchingExampleforWorstCaseScenarios"></a>
 Example for Worst-Case Scenarios for Different Splitters</h2>
 <p>This example program has two 2-dimensional data sets: The first one containing collinear points with exponential increasing distances and the second one with collinear points in the first dimension and one point with a distance exceeding the spread of the other points in the second dimension. These are the worst cases for the midpoint/median rules and can also occur in higher dimensions.</p>
@@ -1097,7 +1108,7 @@ Example for Parallel Neighbor Search</h2>
 <div class="line"><span class="keyword">using </span>Tree = Neighbor_search::Tree;</div>
 <div class="line"><span class="keyword">using </span>Point_with_distance = Neighbor_search::Point_with_transformed_distance;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span>Generator = CGAL::Random_points_in_sphere_3&lt;Point_3&gt;;</div>
+<div class="line"><span class="keyword">using </span>Generator = <a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__sphere__3.html">CGAL::Random_points_in_sphere_3&lt;Point_3&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
@@ -1137,17 +1148,18 @@ Example for Parallel Neighbor Search</h2>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__sphere__3_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__sphere__3.html">CGAL::Random_points_in_sphere_3</a></div></div>
 <div class="ttc" id="astructCGAL_1_1Parallel__tag_html"><div class="ttname"><a href="../STL_Extension/structCGAL_1_1Parallel__tag.html">CGAL::Parallel_tag</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="Performance"></a>
 Performance</h1>
 <h2><a class="anchor" id="OrthogonalPerformance"></a>
 Performance of the Orthogonal Search</h2>
-<p>We took the gargoyle data set (Surface) from aim@shape, and generated the same number of random points in the bbox of the gargoyle (Random). We then consider three scenarios as data/queries. The data set contains 800K points. For each query point we compute the K=10,20,30 closest points, with the default splitter and for the bucket size 10 (default) and 20.</p>
+<p>We took the gargoyle data set (Surface) from aim@shape, and generated the same number of random points in the bbox of the gargoyle (<a class="elRef" href="../Generator/classCGAL_1_1Random.html">Random</a>). We then consider three scenarios as data/queries. The data set contains 800K points. For each query point we compute the K=10,20,30 closest points, with the default splitter and for the bucket size 10 (default) and 20.</p>
 <p>The results were produced with the release 5.1 of CGAL, on an Intel i7 2.3 GHz laptop with 16 GB RAM, compiled with CLang++ 6 with the O3 option.</p>
 <p>The values are the average of ten tests each. We show timings in seconds for both the building of the tree and the queries.</p>
 <center> <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">k   </th><th class="markdownTableHeadRight">bucket size   </th><th class="markdownTableHeadRight">Surface Build   </th><th class="markdownTableHeadRight">Random Build   </th><th class="markdownTableHeadRight">Surface/Surface   </th><th class="markdownTableHeadRight">Surface/Random   </th><th class="markdownTableHeadRight">Random/Random    </th></tr>
+<th class="markdownTableHeadNone">k   </th><th class="markdownTableHeadRight">bucket size   </th><th class="markdownTableHeadRight">Surface Build   </th><th class="markdownTableHeadRight"><a class="elRef" href="../Generator/classCGAL_1_1Random.html">Random</a> Build   </th><th class="markdownTableHeadRight">Surface/Surface   </th><th class="markdownTableHeadRight">Surface/Random   </th><th class="markdownTableHeadRight">Random/Random    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyRight">10   </td><td class="markdownTableBodyRight">0.17   </td><td class="markdownTableBodyRight">0.31   </td><td class="markdownTableBodyRight">1.13   </td><td class="markdownTableBodyRight">15.35   </td><td class="markdownTableBodyRight">3.40    </td></tr>
 <tr class="markdownTableRowEven">
@@ -1164,7 +1176,7 @@ Performance of the Orthogonal Search</h2>
 </center><p>The same experiment is done using the parallel version of the tree building algorithm, and performing the queries in parallel too:</p>
 <center> <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">k   </th><th class="markdownTableHeadRight">bucket size   </th><th class="markdownTableHeadRight">Surface Build   </th><th class="markdownTableHeadRight">Random Build   </th><th class="markdownTableHeadRight">Surface/Surface   </th><th class="markdownTableHeadRight">Surface/Random   </th><th class="markdownTableHeadRight">Random/Random    </th></tr>
+<th class="markdownTableHeadNone">k   </th><th class="markdownTableHeadRight">bucket size   </th><th class="markdownTableHeadRight">Surface Build   </th><th class="markdownTableHeadRight"><a class="elRef" href="../Generator/classCGAL_1_1Random.html">Random</a> Build   </th><th class="markdownTableHeadRight">Surface/Surface   </th><th class="markdownTableHeadRight">Surface/Random   </th><th class="markdownTableHeadRight">Random/Random    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyRight">10   </td><td class="markdownTableBodyRight">0.07   </td><td class="markdownTableBodyRight">0.12   </td><td class="markdownTableBodyRight">0.24   </td><td class="markdownTableBodyRight">3.52   </td><td class="markdownTableBodyRight">0.66    </td></tr>
 <tr class="markdownTableRowEven">

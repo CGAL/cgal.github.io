@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"classKernel_1_1IsDegenerate__3.html#a3df365dab543fc779c23aa031b3aa741":[1,0,0,1,239,3],
+"classKernel_1_1IsDegenerate__3.html#a54569687958fd4914c48fa5d85d804a3":[1,0,0,1,239,1],
 "classKernel_1_1IsDegenerate__3.html#a5dc48e597385a16e47e6b49924332c5c":[1,0,0,1,239,5],
 "classKernel_1_1IsDegenerate__3.html#a66b8341f36ead262054f1b2780b2f854":[1,0,0,1,239,0],
 "classKernel_1_1IsDegenerate__3.html#aacdefe20996a2956bf20dccecacbead0":[1,0,0,1,239,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "group__compare__xy__circular__grp.html#gad4c4b6140a494db45913be987acebcc5":[1,0,5,22,1,0],
 "group__compare__xy__circular__grp.html#gadf28eba2f31263cd46f7d35d866e7ffa":[1,0,5,22,1,1],
 "group__compare__xy__grp.html":[1,0,5,22],
-"group__compare__xy__linear__grp.html":[1,0,5,22,0],
-"group__compare__xy__linear__grp.html#ga6979ac7902358ad28cb66fcd9ad96791":[1,0,5,22,0,1],
-"group__compare__xy__linear__grp.html#ga99c5707cdcbc126783a194696aad388b":[1,0,5,22,0,0]
+"group__compare__xy__linear__grp.html":[1,0,5,22,0]
 };

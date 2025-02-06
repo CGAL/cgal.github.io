@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Compilers and Third Party Dependencies</title>
+<title>CGAL 6.1 - Manual: Compilers and Third Party Dependencies</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -165,7 +173,7 @@ $(document).ready(function(){initNavTree('thirdparty.html',''); initResizable();
 <div class="contents">
 <div class="textblock"> <div id="autotoc" class="toc"></div> <h1><a class="anchor" id="seccompilers"></a>
 Supported Compilers</h1>
-<p>In order to build a program using CGAL, you need a C++ compiler supporting C++17 or later. CGAL 6.0 is supported (continuously tested) for the following compilers/operating systems:</p>
+<p>In order to build a program using CGAL, you need a C++ compiler supporting C++17 or later. CGAL 6.1 is supported (continuously tested) for the following compilers/operating systems:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Operating System   </th><th class="markdownTableHeadLeft">Compiler    </th></tr>
@@ -178,7 +186,7 @@ Supported Compilers</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft"></td><td class="markdownTableBodyLeft">MS Visual <code>C++</code> 15.9, 16.10, 17.0 (Visual Studio 2017, 2019, and 2022)<span class="footnote"><a href="https://visualstudio.microsoft.com/"><code style="display:inline">https://visualstudio.microsoft.com/</code></a></span>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">MacOS X   </td><td class="markdownTableBodyLeft">GNU <code>g++</code> 11.4.0 or later<span class="footnote"><a href="https://gcc.gnu.org/"><code style="display:inline">https://gcc.gnu.org/</code></a></span>    </td></tr>
+<td class="markdownTableBodyLeft">macOS   </td><td class="markdownTableBodyLeft">GNU <code>g++</code> 11.4.0 or later<span class="footnote"><a href="https://gcc.gnu.org/"><code style="display:inline">https://gcc.gnu.org/</code></a></span>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft"></td><td class="markdownTableBodyLeft">Apple <code>Clang</code> compiler versions 10.0.1, 12.0.5, and 15.0.0   </td></tr>
 </table>
@@ -247,11 +255,6 @@ Multiple Precision Floating-point Interval (MPFI)</h2>
 <p><b>Version 1.4 or later</b></p>
 <p>MPFI provides arbitrary precision interval arithmetic with intervals represented using MPFR reliable floating-point numbers. It is based on the libraries GMP and MPFR. In the setting of CGAL, this library is optional: it is used by some models of the <a class="el" href="packages.html#PkgAlgebraicKernelD">Algebraic Kernel</a>.</p>
 <p>MPFI can be downloaded from <a href="https://gitlab.inria.fr/mpfi/mpfi"><code>https://gitlab.inria.fr/mpfi/mpfi</code></a>.</p>
-<h2><a class="anchor" id="thirdpartyRS3"></a>
-RS and RS3</h2>
-<p>RS (Real Solutions) is devoted to the study of the real roots of polynomial systems with a finite number of complex roots (including univariate polynomials). In CGAL, RS is used by one model of the <a class="el" href="packages.html#PkgAlgebraicKernelD">Algebraic Kernel</a>.</p>
-<p>RS is freely distributable for non-commercial use. You can download it from <a href="http://vegas.loria.fr/rs/"><code>http://vegas.loria.fr/rs/</code></a>. Actually, the RS package also includes RS3, the successor of RS, which is used in conjunction with it.</p>
-<p>The libraries RS and RS3 need MPFI, which can be downloaded from <a href="https://gitlab.inria.fr/mpfi/mpfi"><code>https://gitlab.inria.fr/mpfi/mpfi</code></a>.</p>
 <h2><a class="anchor" id="thirdpartyNTL"></a>
 NTL</h2>
 <p><b>Version 5.1 or later</b></p>
@@ -271,7 +274,7 @@ Intel TBB</h2>
 LASlib</h2>
 <p>LASlib is a <code>C++</code> library for handling LIDAR data sets stored in the LAS format (or the compressed LAZ format).</p>
 <p>In CGAL, LASlib is used to provide input and output functions in the <a class="el" href="packages.html#PkgPointSetProcessing3">Point Set Processing</a> package. In order to use LASlib in CGAL programs, the executables should be linked with the CMake imported target <code>CGAL::LASLIB_support</code> provided in <code>CGAL_LASLIB_support.cmake</code>.</p>
-<p>LASlib information can be obtained from <a href="https://lastools.github.io/">https://lastools.github.io/</a> and <a href="https://rapidlasso.de/product-overview/">https://rapidlasso.de/product-overview/</a>. LASlib is usually distributed along with LAStools: for simplicity, CGAL provides <a href="https://github.com/CGAL/LAStools">a fork with a CMake based install procedure</a>.</p>
+<p>LASlib information can be obtained from <a href="https://lastools.github.io/">https://lastools.github.io/</a> and <a href="https://rapidlasso.de/product-overview/">https://rapidlasso.de/product-overview/</a>. LASlib is usually distributed along with LAStools. Current versions of LASlib provide CMake support. BUILD_SHARED_LIBS needs to be set to true on windows to create a dynamic linked library.</p>
 <h2><a class="anchor" id="thirdpartyOpenCV"></a>
 OpenCV</h2>
 <p>OpenCV (Open Computer Vision) is a library designed for computer vision, computer graphics and machine learning.</p>
@@ -293,7 +296,9 @@ Ceres Solver</h2>
 <p>Ceres is an open source C++ library for modeling and solving large, complicated optimization problems.</p>
 <p>In CGAL, Ceres is used by the <a class="elRef" href="../Polygon_mesh_processing/group__PkgPolygonMeshProcessingRef.html">Polygon Mesh Processing Reference</a> package for mesh smoothing, which requires solving complex non-linear least squares problems.</p>
 <p>Visit the official website of the library at <a href="http://ceres-solver.org/index.html"><code>ceres-solver.org</code></a> for more information.</p>
-<dl class="section attention"><dt>Attention</dt><dd>Ceres indicates that <code>glog</code> is a recommended dependency. <code>glog</code> has <code>libunwind</code> as a recommended dependency. On some platforms, linking with <code>libunwind</code> was responsible for an increase of the runtime of the final application. If you experience such an issue, we recommend to compile Ceres without <code>glog</code> support.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Ceres requires to be compiled with the exact same version of Eigen that is used for CGAL.</dd>
+<dd>
+Ceres indicates that <code>glog</code> is a recommended dependency. <code>glog</code> has <code>libunwind</code> as a recommended dependency. On some platforms, linking with <code>libunwind</code> was responsible for an increase of the runtime of the final application. If you experience such an issue, we recommend to compile Ceres without <code>glog</code> support.</dd></dl>
 <h2><a class="anchor" id="thirdpartyGLPK"></a>
 GLPK</h2>
 <p>GLPK (GNU Linear Programming Kit) is a library for solving linear programming (LP), mixed integer programming (MIP), and other related problems.</p>
@@ -307,7 +312,7 @@ SCIP</h2>
 <h2><a class="anchor" id="thirdpartyOSQP"></a>
 OSQP</h2>
 <p>OSQP (Operator Splitting Quadratic Program) is currently one of the fastest open source solvers for convex Quadratic Programs (QP).</p>
-<p>In CGAL, OSQP provides an optional solver for the QP problems often arising in various computational geometry algorithms. In order to use OSQP in CGAL programs, the executables should be linked with the CMake imported target <code>CGAL::OSQP_support</code> provided in <code>CGAL_OSQP_support.cmake</code>.</p>
+<p>In CGAL, OSQP provides an optional solver for the quadratic programming used in the <a class="el" href="packages.html#PkgShapeRegularization">Shape Regularization</a> package. In order to use OSQP in CGAL programs, the executables should be linked with the CMake imported target <code>CGAL::OSQP_support</code> provided in <code>CGAL_OSQP_support.cmake</code>.</p>
 <p>The OSQP web site is <a href="https://osqp.org"><code>https://osqp.org</code></a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

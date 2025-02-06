@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - CGAL and the Boost Graph Library", "index.html", [
+  [ "CGAL 6.1 - CGAL and the Boost Graph Library", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Todo List", "todo.html", null ],
