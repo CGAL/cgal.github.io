@@ -3,7 +3,7 @@ var searchData=
   ['dcel_0',['DCEL',['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2DCEL.html',1,'']]],
   ['dcel_20concepts_1',['DCEL Concepts',['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2ConceptsDCEL.html',1,'']]],
   ['dd_20convex_20hulls_20and_20delaunay_20triangulations_20reference_2',['dD Convex Hulls and Delaunay Triangulations Reference',['../../Convex_hull_d/group__PkgConvexHullDRef.html',1,'']]],
-  ['dd_20frechet_20distance_20reference_3',['dD Frechet Distance Reference',['../../Frechet_distance/group__PkgFrechetDistanceRef.html',1,'']]],
+  ['dd_20fréchet_20distance_20reference_3',['dD Fréchet Distance Reference',['../../Frechet_distance/group__PkgFrechetDistanceRef.html',1,'']]],
   ['dd_20geometry_20kernel_20reference_4',['dD Geometry Kernel Reference',['../../Kernel_d/group__PkgKernelDRef.html',1,'']]],
   ['dd_20range_20and_20segment_20trees_20reference_5',['dD Range and Segment Trees Reference',['../../SearchStructures/group__PkgSearchStructuresRef.html',1,'']]],
   ['dd_20spatial_20searching_20reference_6',['dD Spatial Searching Reference',['../../Spatial_searching/group__PkgSpatialSearchingDRef.html',1,'']]],

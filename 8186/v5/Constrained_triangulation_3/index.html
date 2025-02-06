@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Constrained_triangulation_3/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1 - 3D Constrained Triangulations: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1 - 3D Constrained Triangulations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_CT_3"></a><a class="anchor" id="userchapterct3"></a> </p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Author</dt><dd>Laurent Rineau</dd></dl>
+<div class="image">
+<img src="vase_cdt.png" alt="">
+</div>
+<p>  <br>
+</p>
+<h1><a class="anchor" id="CT_3_CCDT_3"></a>
+Conforming Delaunay Triangulations in 3D</h1>
+<p>This package implements the construction of a 3D conforming Delaunay triangulation, constrained to a set of faces of a surface polygon mesh.</p>
+<p>For any Piecewise Linear Complex (PLC) in 3D, the algorithm builds a Constrained Delaunay triangulation conforming to this PLC. The constrained triangulation does not always exist, and it may be necessary to add Steiner points to the PLC to make it tetrahedralizable.</p>
+<p>The problem is described by Cohen-Steiner et al <a class="el" href="citelist.html#CITEREF_cgal:cohen2002conforming">[2]</a>, and by Si <a class="el" href="citelist.html#CITEREF_cgal:si2008cdt3">[7]</a>.</p>
+<h1><a class="anchor" id="CT_3_definitions"></a>
+Definitions</h1>
+<p>In this section, we define the main concepts that have to be understood to use this package.</p>
+<h2><a class="anchor" id="CT_3_PLC"></a>
+Piecewise Linear Complex</h2>
+<p>A <em>Piecewise Linear Complex</em> is the 3-dimensional generalization of a planar straight-line graph.</p>
+<p>A PLC is built from simple geometric elements, called <em>faces</em> that are topologically connected together in a structured way. `Faces (vertices, edges, and facets) are the basic elements forming the complex. Their geometric counterparts are points, segments, and polygons, respectively. The polygons can be non-convex, have holes, and as many boundary segments as needed. Each face is embedded into the geometric space via the points coordinates.</p>
+<p>The faces must satisfy the following conditions. They must be connected together by their common faces of lower dimension:</p><ul>
+<li>two edges can only intersect at a common vertex which is also in the PLC;</li>
+<li>two facets can only intersect at a common edge or vertex which is also in the PLC.</li>
+</ul>
+<p><a class="anchor" id="fig__plc_fig"></a> </p><div class="image">
+<img src="plc.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__plc_fig">Figure 48.1</a> A Piecewise Linear Complex, made of planar faces, connected by edges and vertices. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="CT_3_CDT"></a>
+Conforming Delaunay Triangulation</h2>
+<p>The goal of the algorithms developed in this package is to compute a constrained Delaunay mesh containing a given set of polygonal constraints in 3D as sub-complex. See package <a class="elRef" href="../Manual/packages.html#PkgTriangulation3">3D Triangulations</a> for more details on Delaunay triangulations.</p>
+<p>A triangulation is a <em>Delaunay triangulation</em> if the circumscribing sphere of any cell of the triangulation contains no vertex in its interior. A <em>constrained Delaunay triangulation</em> is a constrained triangulation which is as much Delaunay as possible, given that some facets are marked as <em>constrained</em>. The circumscribing sphere of any cell contains in its interior no data point which is on the same side of the constrained facet as the cell. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>pour Laurent</dd></dl>
+<p>In 3D, constrained triangulations do not always exist. It can be shown using the example of the Schönhardt polyhedra <a class="el" href="citelist.html#CITEREF_schonhardt1928zerlegung">[4]</a>, <a class="el" href="citelist.html#CITEREF_b-ip-48a">[1]</a>, that requires the addition of Steiner points to be tetrahedralizable (see Figure <a class="el" href="index.html#fig__schonhardt_fig">Figure 48.2</a>).</p>
+<p><a class="anchor" id="fig__schonhardt_fig"></a> </p><div class="image">
+<img src="schonhardt.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__schonhardt_fig">Figure 48.2</a> A Schönhardt polyhedron. </p> </div> <p> <br>
+</p>
+<p>Shewchuk <a class="el" href="citelist.html#CITEREF_cgal:shewchuk1998condition">[5]</a> showed that for any PLC, there exists another PLC that is a refined version of the original one, that admits a constrained Delaunay triangulation. The refined PLC is obtained by adding Steiner points on the input edges and facets, and the constrained triangulation built on this PLC is called a <em>conforming Delaunay triangulation</em>.</p>
+<p>The algorithm implemented in this package is based on the work of Hang Si <a class="el" href="citelist.html#CITEREF_si2005meshing">[6]</a>, <a class="el" href="citelist.html#CITEREF_si2015tetgen">[3]</a>. Steiner points are added on input edges and input facets of the PLC to make it tetrahedralizable.</p>
+<p>Figure <a class="el" href="index.html#fig__plc2cdt_fig">Figure 48.3</a> shows an example of a conforming constrained Delaunay triangulation constructed from a PLC.</p>
+<p><a class="anchor" id="fig__plc2cdt_fig"></a> </p><div class="image">
+<img src="plc_to_cdt.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__plc2cdt_fig">Figure 48.3</a> Left : PLC (360 vertices); Middle : CCDT (2452 vertices); Right : the same CCDT seen with cutplane. </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="CT_3_api"></a>
+API</h1>
+<h2><a class="anchor" id="CT_3_api_classes"></a>
+Classes</h2>
+<p>This package provides one main class <code><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html" title="This class template represents a 3D conforming constrained Delaunay triangulation.">Conforming_constrained_Delaunay_triangulation_3</a></code> that represents a 3D conforming Delaunay triangulation. The class is templated by the geometric traits class and the underlying triangulation class. The other classes that are provided are secondary classes that define the vertex and cell types and metadata that constitute the triangulation.</p>
+<h2><a class="anchor" id="CT_3_api_functions"></a>
+Functions</h2>
+<p>Some helper constructor functions, like <code><a class="el" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8" title="creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.">make_conforming_constrained_Delaunay_triangulation_3()</a></code>, are provided to create a <code><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html" title="This class template represents a 3D conforming constrained Delaunay triangulation.">Conforming_constrained_Delaunay_triangulation_3</a></code> object.</p>
+<h1><a class="anchor" id="CT_3_examples"></a>
+Examples</h1>
+<h2><a class="anchor" id="CT_3_example_ccdt"></a>
+Build a conforming constrained Delaunay triangulation</h2>
+<p>The following example shows how to use the helper constructor function <code><a class="el" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8" title="creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.">make_conforming_constrained_Delaunay_triangulation_3()</a></code> to create a conforming constrained Delaunay triangulation from a given PLC.</p>
+<p><br>
+<b>File</b> <a class="el" href="Constrained_triangulation_3_2conforming_constrained_Delaunay_triangulation_3_8cpp-example.html">Constrained_triangulation_3/conforming_constrained_Delaunay_triangulation_3.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/make_conforming_constrained_Delaunay_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/draw_triangulation_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  CGAL::Surface_mesh&lt;K::Point_3&gt; mesh;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/mpi.off"</span>);</div>
+<div class="line">  std::ifstream in(filename);</div>
+<div class="line">  <span class="keywordflow">if</span>(!in || !<a class="code hl_functionRef" href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a>(in, mesh)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: cannot read file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Read "</span> &lt;&lt; mesh.number_of_vertices() &lt;&lt; <span class="stringliteral">" vertices and "</span></div>
+<div class="line">            &lt;&lt; mesh.number_of_faces() &lt;&lt; <span class="stringliteral">" faces"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> ccdt = <a class="code hl_function" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8">CGAL::make_conforming_constrained_Delaunay_triangulation_3</a>(mesh);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.triangulation().number_of_vertices() &lt;&lt; <span class="charliteral">'\n'</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"Number of constrained facets in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.number_of_constrained_facets() &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../Triangulation_3/group__PkgDrawTriangulation3.html#ga072412258835c1d7e0e2ddd32eee6537">CGAL::draw</a>(ccdt.triangulation());</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="agroup__PkgBGLIoFuncsOFF_html_gadd0f59b6789ef565bb7e95f3d0d89e91"><div class="ttname"><a href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a></div><div class="ttdeci">bool read_OFF(std::istream &amp;is, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgCT__3Functions_html_gaf6c5b49383aa7a8652f9cd50bf171ed8"><div class="ttname"><a href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8">CGAL::make_conforming_constrained_Delaunay_triangulation_3</a></div><div class="ttdeci">auto make_conforming_constrained_Delaunay_triangulation_3(const PolygonMesh &amp;mesh, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.</div><div class="ttdef"><b>Definition:</b> make_conforming_constrained_Delaunay_triangulation_3.h:119</div></div>
+<div class="ttc" id="agroup__PkgDrawTriangulation3_html_ga072412258835c1d7e0e2ddd32eee6537"><div class="ttname"><a href="../Triangulation_3/group__PkgDrawTriangulation3.html#ga072412258835c1d7e0e2ddd32eee6537">CGAL::draw</a></div><div class="ttdeci">void draw(const T3 &amp;at3, const GSOptions &amp;gso)</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="CT_3_example_ccdt_soup"></a>
+Build a conforming constrained Delaunay triangulation from a polygon soup</h2>
+<p>It is also possible to create a conforming constrained Delaunay triangulation from a polygon soup, i.e., a set of polygons for which the connectivity is not known a priori. This example shows an example of building such a triangulation.</p>
+<p><br>
+<b>File</b> <a class="el" href="Constrained_triangulation_3_2conforming_constrained_Delaunay_triangulation_3_from_soup_8cpp-example.html">Constrained_triangulation_3/conforming_constrained_Delaunay_triangulation_3_from_soup.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/make_conforming_constrained_Delaunay_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/draw_triangulation_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  std::vector&lt;K::Point_3&gt; points;</div>
+<div class="line">  std::vector&lt;std::vector&lt;std::size_t&gt;&gt; polygons;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/cubes.off"</span>);</div>
+<div class="line">  std::ifstream in(filename);</div>
+<div class="line">  <span class="keywordflow">if</span>(!in || !<a class="code hl_functionRef" href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a>(in, points, polygons)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: cannot read file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Read "</span> &lt;&lt; points.size() &lt;&lt; <span class="stringliteral">" vertices and "</span></div>
+<div class="line">            &lt;&lt; polygons.size() &lt;&lt; <span class="stringliteral">" polygons"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> ccdt = <a class="code hl_function" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8">CGAL::make_conforming_constrained_Delaunay_triangulation_3</a>(points, polygons);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.triangulation().number_of_vertices() &lt;&lt; <span class="charliteral">'\n'</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"Number of constrained facets in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.number_of_constrained_facets() &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../Triangulation_3/group__PkgDrawTriangulation3.html#ga072412258835c1d7e0e2ddd32eee6537">CGAL::draw</a>(ccdt.triangulation());</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="CT_3_example_ccdt_fpmap"></a>
+Build a conforming constrained Delaunay triangulation with known face patches</h2>
+<p>When the user knows a priori the set of patch ids that he wants to attach to faces, this information can be used and kept valid through the construction of the conforming constrained Delaunay triangulation.</p>
+<p>The following examples shows an example of how to detect surface patches separated by sharp edges, and use this surface segmentation in the tetrahedrization process.</p>
+<p><br>
+<b>File</b> <a class="el" href="Constrained_triangulation_3_2conforming_constrained_Delaunay_triangulation_3_fpmap_8cpp-example.html">Constrained_triangulation_3/conforming_constrained_Delaunay_triangulation_3_fpmap.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/make_conforming_constrained_Delaunay_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/detect_features.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/File_medit.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Mesh = CGAL::Surface_mesh&lt;K::Point_3&gt;;</div>
+<div class="line"><span class="keyword">using </span>face_descriptor = boost::graph_traits&lt;Mesh&gt;::face_descriptor;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>PMP = <a class="code hl_namespaceRef" href="../Polygon_mesh_processing/classCGAL_1_1Polygon__mesh__processing_1_1Adaptive__sizing__field.html">CGAL::Polygon_mesh_processing</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/cross_quad.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!PMP::IO::read_polygon_mesh(filename, mesh)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>EIFMap = boost::property_map&lt;Mesh, CGAL::edge_is_feature_t&gt;::type;</div>
+<div class="line">  <span class="keyword">using </span>FPMap = boost::property_map&lt;Mesh, CGAL::face_patch_id_t&lt;int&gt;&gt;::type;</div>
+<div class="line"> </div>
+<div class="line">  EIFMap eif = get(CGAL::edge_is_feature, mesh);</div>
+<div class="line">  FPMap fpmap = get(CGAL::face_patch_id_t&lt;int&gt;(), mesh);</div>
+<div class="line"> </div>
+<div class="line">  std::size_t number_of_patches = PMP::sharp_edges_segmentation(mesh, 80, eif, fpmap);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Read "</span> &lt;&lt; mesh.number_of_vertices() &lt;&lt; <span class="stringliteral">" vertices and "</span></div>
+<div class="line">                       &lt;&lt; mesh.number_of_faces() &lt;&lt; <span class="stringliteral">" faces\n"</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"Number of patches: "</span> &lt;&lt; number_of_patches &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> ccdt = <a class="code hl_function" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8">CGAL::make_conforming_constrained_Delaunay_triangulation_3</a>(mesh,</div>
+<div class="line">                CGAL::parameters::face_patch_map(fpmap));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.triangulation().number_of_vertices() &lt;&lt; <span class="charliteral">'\n'</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"Number of constrained facets in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.number_of_constrained_facets() &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out(<span class="stringliteral">"ccdt.mesh"</span>);</div>
+<div class="line">  <a class="code hl_functionRef" href="../SMDS_3/group__PkgSMDS3IOFunctions.html#ga9e9fc0fac6919241501c228e438fa2b2">CGAL::IO::write_MEDIT</a>(out, ccdt.triangulation());</div>
+<div class="line">  out.close();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Polygon__mesh__processing_1_1Adaptive__sizing__field_html"><div class="ttname"><a href="../Polygon_mesh_processing/classCGAL_1_1Polygon__mesh__processing_1_1Adaptive__sizing__field.html">CGAL::Polygon_mesh_processing</a></div></div>
+<div class="ttc" id="agroup__PkgSMDS3IOFunctions_html_ga9e9fc0fac6919241501c228e438fa2b2"><div class="ttname"><a href="../SMDS_3/group__PkgSMDS3IOFunctions.html#ga9e9fc0fac6919241501c228e438fa2b2">CGAL::IO::write_MEDIT</a></div><div class="ttdeci">void write_MEDIT(std::ostream &amp;os, const T3 &amp;t3, const NamedParameters &amp;np=parameters::default_values())</div></div>
+</div><!-- fragment --><p>Figure <a class="el" href="index.html#fig__ccdt_fpmap">Figure 48.4</a> shows the input and output of this triangulation construction example.</p>
+<p><a class="anchor" id="fig__ccdt_fpmap"></a> </p><div class="image">
+<img src="ccdt_fpmap.png" alt="">
+</div>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__ccdt_fpmap">Figure 48.4</a> (Left) Input PLC; (Middle-left) The corresponding conforming constrained Delaunay triangulation with one patch per input face; (Middle-Right) Input PLC segmented according to sharp edges; (Right) The corresponding conforming constrained Delaunay triangulation using the segmentation. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="CT_3_example_remesh"></a>
+Remeshing a conforming constrained Delaunay triangulation</h2>
+<p>Once the triangulation is built, it is possible to remesh it using the <code><a class="elRef" href="../Tetrahedral_remeshing/group__PkgTetrahedralRemeshingRef.html#ga263775c52eeb483a86a16aeb9eb31af0">CGAL::tetrahedral_isotropic_remeshing()</a></code> function from the <a class="elRef" href="../Manual/packages.html#PkgTetrahedralRemeshing">Tetrahedral Remeshing</a> package, to improve the quality of the mesh or adapt it to a given sizing field.</p>
+<p>The following example shows how to remesh a conforming constrained Delaunay triangulation.</p>
+<p><br>
+<b>File</b> <a class="el" href="Constrained_triangulation_3_2remesh_constrained_Delaunay_triangulation_3_8cpp-example.html">Constrained_triangulation_3/remesh_constrained_Delaunay_triangulation_3.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#define CGAL_TETRAHEDRAL_REMESHING_VERBOSE 1</span></div>
+<div class="line"><span class="preprocessor">#if defined(CGAL_TEST_SUITE) &amp;&amp; ! (defined(__OPTIMIZE__) || defined(NDEBUG))</span></div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUMBER_OF_ITERATIONS = 1;</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keywordtype">int</span> NUMBER_OF_ITERATIONS = 10;</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/make_conforming_constrained_Delaunay_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/tetrahedral_remeshing.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/draw_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/File_medit.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K   = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Vb  = <a class="code hl_class" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt;K&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Cb  = <a class="code hl_class" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_cell_base_3&lt;K&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Tds = <a class="code hl_classRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">CGAL::Triangulation_data_structure_3&lt;Vb, Cb&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Tr  = <a class="code hl_classRef" href="../Triangulation_3/classCGAL_1_1Triangulation__3.html">CGAL::Triangulation_3&lt;K, Tds&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>CCDT = <a class="code hl_class" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3&lt;K, Tr&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line">{</div>
+<div class="line">  std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/mpi.off"</span>);</div>
+<div class="line">  std::ifstream in(filename);</div>
+<div class="line"> </div>
+<div class="line">  CGAL::Surface_mesh&lt;K::Point_3&gt; mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!in || !<a class="code hl_functionRef" href="../BGL/group__PkgBGLIoFuncsOFF.html#gadd0f59b6789ef565bb7e95f3d0d89e91">CGAL::IO::read_OFF</a>(in, mesh)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: cannot read file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line">  CCDT ccdt = CGAL::make_conforming_constrained_Delaunay_triangulation_3&lt;CCDT&gt;(mesh);</div>
+<div class="line"> </div>
+<div class="line">  Tr tr = <a class="code hl_functionRef" href="../Tetrahedral_remeshing/group__PkgTetrahedralRemeshingRef.html#gacbc8c23061a2db7654c2ef9209adcfb2">CGAL::convert_to_triangulation_3</a>(std::move(ccdt));</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in tr: "</span> &lt;&lt; tr.number_of_vertices() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_functionRef" href="../Tetrahedral_remeshing/group__PkgTetrahedralRemeshingRef.html#ga263775c52eeb483a86a16aeb9eb31af0">CGAL::tetrahedral_isotropic_remeshing</a>(tr, 1.,</div>
+<div class="line">    CGAL::parameters::number_of_iterations(NUMBER_OF_ITERATIONS));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in tr: "</span></div>
+<div class="line">            &lt;&lt; tr.number_of_vertices() &lt;&lt; std::endl;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Triangulation_3/group__PkgDrawTriangulation3.html#ga072412258835c1d7e0e2ddd32eee6537">CGAL::draw</a>(tr);</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream ofs(<span class="stringliteral">"out.mesh"</span>);</div>
+<div class="line">  <a class="code hl_functionRef" href="../SMDS_3/group__PkgSMDS3IOFunctions.html#ga9e9fc0fac6919241501c228e438fa2b2">CGAL::IO::write_MEDIT</a>(ofs, tr);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Conforming__constrained__Delaunay__triangulation__3_html"><div class="ttname"><a href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a></div><div class="ttdoc">This class template represents a 3D conforming constrained Delaunay triangulation.</div><div class="ttdef"><b>Definition:</b> Conforming_constrained_Delaunay_triangulation_3.h:539</div></div>
+<div class="ttc" id="aclassCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3_html"><div class="ttname"><a href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_cell_base_3</a></div><div class="ttdoc">Cell base class for the 3D conforming constrained Delaunay triangulation.</div><div class="ttdef"><b>Definition:</b> Conforming_constrained_Delaunay_triangulation_cell_base_3.h:44</div></div>
+<div class="ttc" id="aclassCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3_html"><div class="ttname"><a href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3</a></div><div class="ttdoc">Vertex base class for the 3D conforming constrained Delaunay triangulation.</div><div class="ttdef"><b>Definition:</b> Conforming_constrained_Delaunay_triangulation_vertex_base_3.h:42</div></div>
+<div class="ttc" id="aclassCGAL_1_1Triangulation__3_html"><div class="ttname"><a href="../Triangulation_3/classCGAL_1_1Triangulation__3.html">CGAL::Triangulation_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Triangulation__data__structure__3_html"><div class="ttname"><a href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">CGAL::Triangulation_data_structure_3</a></div></div>
+<div class="ttc" id="agroup__PkgTetrahedralRemeshingRef_html_ga263775c52eeb483a86a16aeb9eb31af0"><div class="ttname"><a href="../Tetrahedral_remeshing/group__PkgTetrahedralRemeshingRef.html#ga263775c52eeb483a86a16aeb9eb31af0">CGAL::tetrahedral_isotropic_remeshing</a></div><div class="ttdeci">void tetrahedral_isotropic_remeshing(CGAL::Triangulation_3&lt; Traits, TDS, SLDS &gt; &amp;tr, const SizingFunction &amp;sizing, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgTetrahedralRemeshingRef_html_gacbc8c23061a2db7654c2ef9209adcfb2"><div class="ttname"><a href="../Tetrahedral_remeshing/group__PkgTetrahedralRemeshingRef.html#gacbc8c23061a2db7654c2ef9209adcfb2">CGAL::convert_to_triangulation_3</a></div><div class="ttdeci">CGAL::Triangulation_3&lt; typename Tr::Geom_traits, typename Tr::Triangulation_data_structure &gt; convert_to_triangulation_3(CGAL::Mesh_complex_3_in_triangulation_3&lt; Tr, CornerIndex, CurveIndex &gt; c3t3, const NamedParameters &amp;np=parameters::default_values())</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="CT_3_design"></a>
+Design and Implementation History</h1>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

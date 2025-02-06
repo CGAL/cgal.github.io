@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - Manual", "index.html", [
+  [ "CGAL 6.1 - Manual", "index.html", [
     [ "Getting Started with CGAL", "general_intro.html", "general_intro" ],
     [ "Tutorials", "tutorials.html", "tutorials" ],
     [ "Package Overview", "packages.html", [
@@ -87,10 +87,11 @@ var NAVTREE =
         [ "2D Triangulations on the Sphere", "packages.html#PkgTriangulationOnSphere2", null ],
         [ "2D Periodic Triangulations", "packages.html#PkgPeriodic2Triangulation2", null ],
         [ "2D Hyperbolic Delaunay Triangulations", "packages.html#PkgHyperbolicTriangulation2", null ],
+        [ "2D Triangulations on Hyperbolic Surfaces", "packages.html#PkgHyperbolicSurfaceTriangulation2", null ],
         [ "2D Periodic Hyperbolic Triangulations", "packages.html#PkgPeriodic4HyperbolicTriangulation2", null ],
         [ "3D Triangulations", "packages.html#PkgTriangulation3", null ],
         [ "3D Triangulation Data Structure", "packages.html#PkgTDS3", null ],
-        [ "3D Constrained Triangulations", "packages.html#PkgCT_3", null ],
+        [ "3D Constrained Triangulations", "packages.html#PkgConstrainedTriangulation3", null ],
         [ "3D Periodic Triangulations", "packages.html#PkgPeriodic3Triangulation3", null ],
         [ "dD Triangulations", "packages.html#PkgTriangulations", null ],
         [ "2D Alpha Shapes", "packages.html#PkgAlphaShapes2", null ],
@@ -108,6 +109,7 @@ var NAVTREE =
         [ "3D Skin Surface Meshing", "packages.html#PkgSkinSurface3", null ],
         [ "3D Simplicial Mesh Data Structure", "packages.html#PkgSMDS3", null ],
         [ "3D Mesh Generation", "packages.html#PkgMesh3", null ],
+        [ "3D Isosurfacing", "packages.html#PkgIsosurfacing3", null ],
         [ "Tetrahedral Remeshing", "packages.html#PkgTetrahedralRemeshing", null ],
         [ "3D Periodic Mesh Generation", "packages.html#PkgPeriodic3Mesh3", null ],
         [ "3D Alpha Wrapping", "packages.html#PkgAlphaWrap3", null ]
@@ -190,6 +192,7 @@ var NAVTREE =
       [ "License Checking", "license.html#licenseCheck", null ],
       [ "Determining the license of a CGAL file", "license.html#licensesWhere", null ]
     ] ],
+    [ "Doxygen for CGAL", "md_Doxygen_for_CGAL.html", null ],
     [ "Acknowledging CGAL", "how_to_cite_cgal.html", null ],
     [ "Bibliography", "citelist.html", null ]
   ] ]
@@ -198,7 +201,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "citelist.html",
-"packages.html#PkgOrthtree"
+"packages.html#PkgPeriodic3Triangulation3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -4,5 +4,6 @@ var searchData=
   ['range_20search_1',['Range Search',['../../Point_set_2/group__PkgPointSet2RangeSearch.html',1,'']]],
   ['region_20growing_2',['Region Growing',['../../Shape_detection/group__PkgShapeDetectionRG.html',1,'']]],
   ['relates_20algebraic_20extensions_3',['Relates Algebraic Extensions',['../../Number_types/group__nt__ralgebraic.html',1,'']]],
-  ['relates_20rational_4',['Relates Rational',['../../Number_types/group__nt__rrational.html',1,'']]]
+  ['relates_20rational_4',['Relates Rational',['../../Number_types/group__nt__rrational.html',1,'']]],
+  ['repair_20rules_5',['Repair Rules',['../../Polygon_repair/group__PkgPolygonRepairRules.html',1,'']]]
 ];

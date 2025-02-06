@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - Polygon Mesh Processing", "index.html", [
+  [ "CGAL 6.1 - Polygon Mesh Processing", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Todo List", "todo.html", null ],
@@ -38,8 +38,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Poisson_surface_reconstruction_3_2poisson_reconstruction_example_8cpp-example.html",
-"group__PMP__hole__filling__grp.html#ga3abdf2d0558822e85f060966b69cae98",
-"structCGAL_1_1Polyhedral__envelope.html#a891b808e7923aed227837b34f2e2f4dc"
+"group__PMP__geometric__repair__grp.html#ga48008d2b66de8a68a7068f29db15dad6",
+"structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

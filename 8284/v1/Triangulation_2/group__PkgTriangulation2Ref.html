@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D Triangulations: 2D Triangulations Reference</title>
+<title>CGAL 6.1 - 2D Triangulations: 2D Triangulations Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D Triangulations
+   <div id="projectname">CGAL 6.1 - 2D Triangulations
    </div>
   </td>
  </tr>
@@ -165,15 +173,14 @@ $(document).ready(function(){initNavTree('group__PkgTriangulation2Ref.html','');
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader"> </h2>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>check generated documentation </dd></dl>
 <div class="PkgImage">  <div class="image">
 <img src="cdt2d-small.png" alt="">
 </div>
  </div> <div class="PkgSummary"> <div class="PkgAuthors">Mariette Yvinec</div> <div class="PkgDescription">This package allows to build and handle various triangulations for point sets two dimensions. Any CGAL triangulation covers the convex hull of its vertices. Triangulations are built incrementally and can be modified by insertion or removal of vertices. They offer point location facilities. The package provides plain triangulation (whose faces depend on the insertion order of the vertices) and Delaunay triangulations. Regular triangulations are also provided for sets of weighted points. Delaunay and regular triangulations offer nearest neighbor queries and primitives to build the dual Voronoi and power diagrams. Finally, constrained and Delaunay constrained triangulations allows to force some constrained segments to appear as edges of the triangulation. Several versions of constrained and Delaunay constrained triangulations are provided: some of them handle intersections between input constraints segment while others do not. </div> <div class="PkgManuals"></div> </div> <div class="PkgShortInfo"> <b>Introduced in:</b> CGAL 0.9<br>
  <b>Depends on:</b> <a class="elRef" href="../Manual/packages.html#PkgTDS2">2D Triangulation Data Structure</a> <br>
- <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:y-t2-24b">cgal:y-t2-24b</a><br>
+ <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:y-t2-25a">cgal:y-t2-25a</a><br>
  <b>License:</b> <a class="elRef" href="../Manual/license.html#licensesGPL">GPL</a> <br>
- <b>Windows Demos:</b> <a href="https://www.cgal.org/demo/6.0/delaunay_triangulation_2.zip">Delaunay Triangulation</a>, <a href="https://www.cgal.org/demo/6.0/regular_triangulation_2.zip">Regular Triangulation</a>, <a href="https://www.cgal.org/demo/6.0/constrained_delaunay_triangulation_2.zip">Constrained Delaunay Triangulation</a><br>
+ <b>Windows Demos:</b> <a href="https://www.cgal.org/demo/6.1/delaunay_triangulation_2.zip">Delaunay Triangulation</a>, <a href="https://www.cgal.org/demo/6.1/regular_triangulation_2.zip">Regular Triangulation</a>, <a href="https://www.cgal.org/demo/6.1/constrained_delaunay_triangulation_2.zip">Constrained Delaunay Triangulation</a><br>
  </div><p>A triangulation is a 2-dimensional simplicial complex which is pure connected and without singularities. Thus a triangulation can be viewed as a collection of triangular faces, such that two faces either have an empty intersection or share an edge or a vertex.</p>
 <p>The basic elements of the representation are vertices and faces. Each triangular face gives access to its three incident vertices and to its three adjacent faces. Each vertex gives access to one of its incident faces and through that face to the circular list of its incident faces. The edges are not explicitly represented, they are only represented through the adjacency relations of two faces.</p>
 <p>The triangulation classes of CGAL depend on two template parameters. The first template parameter stands for a geometric traits class which is assumed to provide the geometric objects (points, segments and triangles) forming the triangulation and the geometric predicates on those objects. The second template parameter stands for a model of triangulation data structure acting as a container for faces and vertices while taking care of the combinatorial aspects of the triangulation. The concepts and models relative to the triangulation data structure are described in Chapter <a class="elRef" href="../TDS_2/group__PkgTDS2Ref.html">2D Triangulation Data Structure</a>.</p>

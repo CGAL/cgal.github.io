@@ -24,10 +24,9 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - dD Geometry Kernel", "index.html", [
+  [ "CGAL 6.1 - dD Geometry Kernel", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
-    [ "Todo List", "todo.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Class and Concept List", "annotated.html", "annotated" ]
   ] ]
@@ -36,8 +35,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classCGAL_1_1Vector__d.html#a41278e116e5722f162fe71c0f45f0310",
-"classVector.html#ac5bc885e2912f02f7b0c403d969cf8c1"
+"classCGAL_1_1Sphere__d.html#a6e20d81170e58ab7bcb0ce2b3cabca99",
+"classMatrix.html#ab1eb34fc4e69afde03fe9d36e961846a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

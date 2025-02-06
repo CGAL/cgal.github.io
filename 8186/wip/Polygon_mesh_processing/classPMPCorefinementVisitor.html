@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Polygon Mesh Processing: PMPCorefinementVisitor Concept Reference</title>
+<title>CGAL 6.1 - Polygon Mesh Processing: PMPCorefinementVisitor Concept Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Polygon Mesh Processing
+   <div id="projectname">CGAL 6.1 - Polygon Mesh Processing
    </div>
   </td>
  </tr>
@@ -223,7 +231,7 @@ void </td><td class="memItemRight" valign="bottom"><b>edge_split</b> (<a class=
 <tr class="separator:a7e109ecde7ed610a1af1c53d4d8cffe9"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:af2f61a0a46ba27c8bc011838fc987058"><td class="memItemLeft" align="right" valign="top"><a id="af2f61a0a46ba27c8bc011838fc987058" name="af2f61a0a46ba27c8bc011838fc987058"></a>
 void </td><td class="memItemRight" valign="bottom"><b>after_edge_split</b> ()</td></tr>
-<tr class="memdesc:af2f61a0a46ba27c8bc011838fc987058"><td class="mdescLeft"> </td><td class="mdescRight">called when the split of the halfedge <code>h</code> passed at the later call to <code><a class="el" href="classPMPCorefinementVisitor.html#a2c228867e23eef9b90c2826d303ca8a5" title="called before the edge of h in tm is split.">before_edge_split()</a></code> is finished. <br></td></tr>
+<tr class="memdesc:af2f61a0a46ba27c8bc011838fc987058"><td class="mdescLeft"> </td><td class="mdescRight">called when the split of the halfedge <code>h</code> passed at the latter call to <code><a class="el" href="classPMPCorefinementVisitor.html#a2c228867e23eef9b90c2826d303ca8a5" title="called before the edge of h in tm is split.">before_edge_split()</a></code> is finished. <br></td></tr>
 <tr class="separator:af2f61a0a46ba27c8bc011838fc987058"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ab819d40a2bda062d883ac2a6fb62e8f8"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classPMPCorefinementVisitor.html#ab819d40a2bda062d883ac2a6fb62e8f8">add_retriangulation_edge</a> (<a class="el" href="classPMPCorefinementVisitor.html#a9f5a635e082e2a12dcc98baeffe7efac">halfedge_descriptor</a> h, const <a class="el" href="classPMPCorefinementVisitor.html#a1ecf573a53a439e94ff33d0619efb390">Triangle_mesh</a> &amp;tm)</td></tr>
 <tr class="memdesc:ab819d40a2bda062d883ac2a6fb62e8f8"><td class="mdescLeft"> </td><td class="mdescRight">called when a new edge has been added to triangulate a face.  <br></td></tr>
@@ -272,6 +280,10 @@ void </td><td class="memItemRight" valign="bottom"><b>before_vertex_copy</b> (v
 <tr class="memitem:aad3a4eade447e236ec993fc05cb8020e"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classPMPCorefinementVisitor.html#aad3a4eade447e236ec993fc05cb8020e">after_vertex_copy</a> (vertex_descriptor v_src, const <a class="el" href="classPMPCorefinementVisitor.html#a1ecf573a53a439e94ff33d0619efb390">Triangle_mesh</a> &amp;tm_src, vertex_descriptor v_tgt, const <a class="el" href="classPMPCorefinementVisitor.html#a1ecf573a53a439e94ff33d0619efb390">Triangle_mesh</a> &amp;tm_tgt)</td></tr>
 <tr class="memdesc:aad3a4eade447e236ec993fc05cb8020e"><td class="mdescLeft"> </td><td class="mdescRight">called after vertex <code>v_src</code> from <code>tm_src</code> is copied in <code>tm_tgt</code>.  <br></td></tr>
 <tr class="separator:aad3a4eade447e236ec993fc05cb8020e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1276fd28e4443a9cbfa14c5d64258323"><td class="memItemLeft" align="right" valign="top"><a id="a1276fd28e4443a9cbfa14c5d64258323" name="a1276fd28e4443a9cbfa14c5d64258323"></a>
+void </td><td class="memItemRight" valign="bottom"><b>subface_of_coplanar_faces_intersection</b> (<a class="el" href="classPMPCorefinementVisitor.html#a72d353688616d1746e2dd8990a4c3803">face_descriptor</a> f, TriangleMesh &amp;tm)</td></tr>
+<tr class="memdesc:a1276fd28e4443a9cbfa14c5d64258323"><td class="mdescLeft"> </td><td class="mdescRight">called for each face <code>f</code> present in the output mesh <code>tm</code> that corresponds to a face present in both input meshes corefined. <br></td></tr>
+<tr class="separator:a1276fd28e4443a9cbfa14c5d64258323"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Functions used by corefine() for progress tracking</h2></td></tr>
 <tr class="memitem:af44d93902c3e1f4afa11f7a1d12b2624"><td class="memItemLeft" align="right" valign="top"><a id="af44d93902c3e1f4afa11f7a1d12b2624" name="af44d93902c3e1f4afa11f7a1d12b2624"></a>
@@ -580,7 +592,7 @@ void </td><td class="memItemRight" valign="bottom"><b>in_place_operations</b> (
 </div><div class="memdoc">
 
 <p>called before the edge of <code>h</code> in <code>tm</code> is split. </p>
-<p>Each subsequent call to <code><a class="el" href="classPMPCorefinementVisitor.html#a7e109ecde7ed610a1af1c53d4d8cffe9" title="called when a new split is done. The target of hnew is a new split vertex. There is only one call per...">edge_split()</a></code> until the call to <code><a class="el" href="classPMPCorefinementVisitor.html#af2f61a0a46ba27c8bc011838fc987058" title="called when the split of the halfedge h passed at the later call to before_edge_split() is finished.">after_edge_split()</a></code> will correspond to the split of that edge. If <code>edge_split(h_i, tm)</code> is called for <code>i=1</code> to <code>n</code>, <code>h_1</code>, <code>h_2</code>, ... ,<code>h_n</code>, <code>h</code> is the sequence of halfedges representing the edge split (with the same initial orientation). There is only one call per edge. </p>
+<p>Each subsequent call to <code><a class="el" href="classPMPCorefinementVisitor.html#a7e109ecde7ed610a1af1c53d4d8cffe9" title="called when a new split is done. The target of hnew is a new split vertex. There is only one call per...">edge_split()</a></code> until the call to <code><a class="el" href="classPMPCorefinementVisitor.html#af2f61a0a46ba27c8bc011838fc987058" title="called when the split of the halfedge h passed at the latter call to before_edge_split() is finished.">after_edge_split()</a></code> will correspond to the split of that edge. If <code>edge_split(h_i, tm)</code> is called for <code>i=1</code> to <code>n</code>, <code>h_1</code>, <code>h_2</code>, ... ,<code>h_n</code>, <code>h</code> is the sequence of halfedges representing the edge split (with the same initial orientation). There is only one call per edge. </p>
 
 </div>
 </div>

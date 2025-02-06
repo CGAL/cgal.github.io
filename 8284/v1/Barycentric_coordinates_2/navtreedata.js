@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Generalized Barycentric Coordinates", "index.html", [
+  [ "CGAL 6.1 - 2D Generalized Barycentric Coordinates", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Deprecated List", "deprecated.html", null ],

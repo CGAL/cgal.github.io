@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Number Types: CGAL/int.h File Reference</title>
+<title>CGAL 6.1 - Number Types: CGAL/int.h File Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Number Types
+   <div id="projectname">CGAL 6.1 - Number Types
    </div>
   </td>
  </tr>
@@ -163,16 +171,17 @@ $(document).ready(function(){initNavTree('int_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>This header provides all necessary functions so the fundamental types <code>int</code>, <code>long int</code>, and <code>short int</code> become models of their respective algebraic concepts.  
+<p>This header provides all necessary functions so the fundamental types <code>int</code>, <code>long int</code>, and <code>short int</code> are models of the concepts <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> and <code><a class="elRef" href="../Algebraic_foundations/classEuclideanRing.html">EuclideanRing</a></code>.  
 <a href="#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This header provides all necessary functions so the fundamental types <code>int</code>, <code>long int</code>, and <code>short int</code> become models of their respective algebraic concepts. </p>
-<ul>
-<li><code>int</code> is a model of <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> and <code><a class="elRef" href="../Algebraic_foundations/classEuclideanRing.html">EuclideanRing</a></code>,</li>
-<li><code>long int</code> is a model of <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> and <code><a class="elRef" href="../Algebraic_foundations/classEuclideanRing.html">EuclideanRing</a></code></li>
-<li><code>short int</code> is a model of <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> and <code><a class="elRef" href="../Algebraic_foundations/classEuclideanRing.html">EuclideanRing</a></code></li>
-</ul>
-<p>Due to overflow neither of those types is considered as exact. </p>
+<div class="textblock"><p>This header provides all necessary functions so the fundamental types <code>int</code>, <code>long int</code>, and <code>short int</code> are models of the concepts <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> and <code><a class="elRef" href="../Algebraic_foundations/classEuclideanRing.html">EuclideanRing</a></code>. </p>
+<p>Due to overflow neither of those types is considered as exact.</p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> </dd>
+<dt></dt>
+<dd><code><a class="elRef" href="../Algebraic_foundations/classEuclideanRing.html">EuclideanRing</a></code> </dd>
+</dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.6-->

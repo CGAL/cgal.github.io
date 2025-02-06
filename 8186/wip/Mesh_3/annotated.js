@@ -6,6 +6,8 @@ var annotated =
         [ "Detect_features_on_image_bbox", "structCGAL_1_1Mesh__3_1_1Detect__features__on__image__bbox.html", "structCGAL_1_1Mesh__3_1_1Detect__features__on__image__bbox" ]
       ] ],
       [ "Compact_mesh_cell_base_3", "classCGAL_1_1Compact__mesh__cell__base__3.html", null ],
+      [ "Construct_initial_points_gray_image", "structCGAL_1_1Construct__initial__points__gray__image.html", "structCGAL_1_1Construct__initial__points__gray__image" ],
+      [ "Construct_initial_points_labeled_image", "structCGAL_1_1Construct__initial__points__labeled__image.html", "structCGAL_1_1Construct__initial__points__labeled__image" ],
       [ "Image_3", "classCGAL_1_1Image__3.html", "classCGAL_1_1Image__3" ],
       [ "Implicit_multi_domain_to_labeling_function_wrapper", "classCGAL_1_1Implicit__multi__domain__to__labeling__function__wrapper.html", "classCGAL_1_1Implicit__multi__domain__to__labeling__function__wrapper" ],
       [ "Implicit_to_labeling_function_wrapper", "classCGAL_1_1Implicit__to__labeling__function__wrapper.html", "classCGAL_1_1Implicit__to__labeling__function__wrapper" ],
@@ -27,6 +29,7 @@ var annotated =
       [ "Sizing_field_with_aabb_tree", "structCGAL_1_1Sizing__field__with__aabb__tree.html", "structCGAL_1_1Sizing__field__with__aabb__tree" ]
     ] ],
     [ "BisectionGeometricTraits_3", "classBisectionGeometricTraits__3.html", "classBisectionGeometricTraits__3" ],
+    [ "InitialPointsGenerator_3", "classInitialPointsGenerator__3.html", "classInitialPointsGenerator__3" ],
     [ "IntersectionGeometricTraits_3", "classIntersectionGeometricTraits__3.html", "classIntersectionGeometricTraits__3" ],
     [ "MeshCellBase_3", "classMeshCellBase__3.html", "classMeshCellBase__3" ],
     [ "MeshCellCriteria_3", "classMeshCellCriteria__3.html", "classMeshCellCriteria__3" ],

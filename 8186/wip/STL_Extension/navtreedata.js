@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - STL Extensions for CGAL", "index.html", [
+  [ "CGAL 6.1 - STL Extensions for CGAL", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Upgrading Code using Boost Parameters to CGAL Named Function Parameters", "FromBoostNPtoCGALNP.html", null ],

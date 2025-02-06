@@ -58,6 +58,7 @@ var group__PkgPolygonMeshProcessingRef =
       [ "size", "classCGAL_1_1Rigid__triangle__mesh__collision__detection.html#a893dca62b65646d0b27f480dfab150bf", null ]
     ] ],
     [ "CGAL::Polygon_mesh_processing::add_bbox", "group__PkgPolygonMeshProcessingRef.html#gabaf98d2fd9ae599ff1f3a5a6cde79cf3", null ],
+    [ "CGAL::Polygon_mesh_processing::approximated_centroidal_Voronoi_diagram_remeshing", "group__PkgPolygonMeshProcessingRef.html#gaed23e63b12c7fe8268927d17b4d379f1", null ],
     [ "CGAL::Polygon_mesh_processing::bbox", "group__PkgPolygonMeshProcessingRef.html#gaf633ec6397f5f065b01462fe42235d56", null ],
     [ "CGAL::Polygon_mesh_processing::border_halfedges", "group__PkgPolygonMeshProcessingRef.html#ga132e91e574d2454eb39f05a4e8e72099", null ],
     [ "CGAL::Polygon_mesh_processing::detect_corners_of_regions", "group__PkgPolygonMeshProcessingRef.html#gac8e445730d718a2fc49604e865017d2e", null ],
