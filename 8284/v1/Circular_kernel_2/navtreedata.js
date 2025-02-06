@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Circular Geometry Kernel", "index.html", [
+  [ "CGAL 6.1 - 2D Circular Geometry Kernel", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Todo List", "todo.html", null ],

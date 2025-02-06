@@ -10,9 +10,10 @@ var index =
       [ "API", "index.html#MeshingAPI", [
         [ "Meshing", "index.html#Meshing", null ],
         [ "Remeshing", "index.html#Remeshing", [
-          [ "Isotropic Incremental Remeshing", "index.html#Local", null ],
-          [ "Surface Remeshing", "index.html#Delaunay-Based", null ],
-          [ "Remeshing of (Almost) Planar Patches", "index.html#Decimate", null ]
+          [ "Local Isotropic Incremental Remeshing", "index.html#isorem", null ],
+          [ "Delaunay-Based Surface Remeshing", "index.html#mesh3rem", null ],
+          [ "Approximated Discrete Centroidal Voronoi Diagram (ACVD) Remeshing", "index.html#acvdrem", null ],
+          [ "Remeshing of (Almost) Planar Patches", "index.html#decimate", null ]
         ] ],
         [ "Smoothing", "index.html#Smoothing", null ],
         [ "Extrusion", "index.html#Extrusion", null ]
@@ -90,7 +91,8 @@ var index =
       [ "Performance", "index.html#ICCPerformance", null ],
       [ "Interpolated Corrected Curvatures on a Surface Mesh Example", "index.html#ICCExampleSM", null ],
       [ "Interpolated Corrected Curvatures on a Polyhedron Example", "index.html#ICCExamplePH", null ],
-      [ "Interpolated Corrected Curvatures on a Vertex Example", "index.html#ICCExampleSV", null ]
+      [ "Interpolated Corrected Curvatures on a Vertex Example", "index.html#ICCExampleSV", null ],
+      [ "Discrete Curvatures", "index.html#DCurvartures", null ]
     ] ],
     [ "Slicer", "index.html#PMPSlicer", [
       [ "Slicer Example", "index.html#SlicerExample", null ]

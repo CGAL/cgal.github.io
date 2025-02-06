@@ -24,10 +24,10 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - dD Frechet Distance", "index.html", [
+  [ "CGAL 6.1 - dD Frechet Distance", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
-    [ "Todo List", "todo.html", null ],
+    [ "Bibliography", "citelist.html", null ],
     [ "Class and Concept List", "annotated.html", "annotated" ],
     [ "Examples", "examples.html", "examples" ]
   ] ]
@@ -35,7 +35,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Frechet_distance_2Frechet_distance_2_8cpp-example.html"
+"Frechet_distance_2Frechet_DS_2_8cpp-example.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -24,12 +24,13 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - IO Streams", "index.html", [
+  [ "CGAL 6.1 - IO Streams", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Supported File Formats", "IOStreamSupportedFileFormats.html", [
       [ "Object File Format (OFF)", "IOStreamSupportedFileFormats.html#IOStreamOFF", null ],
       [ "Wavefront Advanced Visualizer Object Format (OBJ)", "IOStreamSupportedFileFormats.html#IOStreamOBJ", null ],
+      [ "OpenMesh (OM) File format", "IOStreamSupportedFileFormats.html#IOStreamOM", null ],
       [ "STereoLithography (STL) File Format", "IOStreamSupportedFileFormats.html#IOStreamSTL", null ],
       [ "Polygon File Format (PLY)", "IOStreamSupportedFileFormats.html#IOStreamPLY", null ],
       [ "LAS (Lidar) File Format", "IOStreamSupportedFileFormats.html#IOStreamLAS", null ],

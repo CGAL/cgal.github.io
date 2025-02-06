@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Running a Testsuite Locally</title>
+<title>CGAL 6.1 - Manual: Running a Testsuite Locally</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -166,29 +174,15 @@ $(document).ready(function(){initNavTree('devman_testing.html',''); initResizabl
 <div class="textblock"><dl class="section author"><dt>Authors</dt><dd>CGAL developers</dd></dl>
 <h1><a class="anchor" id="pkgTestsuite"></a>
 Running the Testsuite Locally of a Single Package</h1>
-<p>Before submitting a change for integration into CGAL it is good style to run the testsuite of the modified package and all packages that could be impacted. Here is what you need:</p>
-<ul>
-<li>A shell such as bash (install Cygwin, when you are on Windows)</li>
-<li><em>optional:</em> put <code>Scripts/scripts</code> and <code>Scripts/developer_scripts</code> on your <code>PATH</code> environment variable or Alternatively, you can call the scripts mentioned below using their full path or a relative path</li>
-<li>define the environment variable <code>CGAL_DIR</code>. It should be the directory where you built <a class="elRef" href="../Algebraic_foundations/namespaceCGAL.html">CGAL</a>.</li>
-<li><em>optional:</em> define the environment variables for Boost, GMP, and any optional third party lib, e.g. Eigen.</li>
-<li><em>On Windows:</em> define the environment variable <code>MAKE_CMD</code> (put the line <code>export MAKE_CMD=nmake</code> in your <code>$HOME/.bashrc</code> for VC++)</li>
-<li><em>On Windows:</em> define the environment variable <code>CMAKE_GENERATOR</code> (put the line <code>export CMAKE_GENERATOR='-GNMake Makefiles'</code> in your <code>$HOME/.bashrc</code> for VC++)</li>
-<li>go in the directory you want to test</li>
-<li>Run <code>cgal_test_with_cmake</code> in the <code>test</code> and <code>examples</code> directories of the package. This should run CMake, compile and run, and you can see what happened in the generated file <code>error.txt</code>.</li>
-</ul>
+<p>Before submitting a change for integration into CGAL it is good style to run the testsuite of the modified package and all packages that could be impacted.</p>
+<p>All examples and tests in <a class="elRef" href="../Algebraic_foundations/namespaceCGAL.html">CGAL</a> are now compatible with <code>ctest</code>. So to test all examples or all tests of a package, you simply need to configure with <code>cmake</code> the examples/tests of the package you want to test, adding the option <code>CGAL_ENABLE_TESTING</code> and setting its value to <code>ON</code>. In order to report more warnings, it is recommended to also add the option <code>CGAL_DEV_MODE</code> and to set it to <code>ON</code>. Then a call to the command <code>ctest</code> will compile and run the tests/examples.</p>
 <h1><a class="anchor" id="fullTestsuite"></a>
 Running the Whole Testsuite</h1>
 <p>We describe here how to proceed to the testing of a full copy of <code>master</code> or any branch by creating a <em>flat release</em> (that is having a layout similar to a release rather than a branch layout with header files gathered by packages).</p>
-<p>The creation of the flat release is done using the script <code>create_internal_release</code> located in the directory <code>Scripts/developer_scripts</code>. Running the script with no argument will give the complete usage of this script. We only describe one way of using it.</p>
-<p>The prerequisite is to have a checkout of the branch we want to test. In the example, it will be located in <code>~/Git/cgal/</code>.</p>
-<p>First one goes into a directory where the flat release will be created: </p><div class="fragment"><div class="line">&gt; cd /tmp</div>
-</div><!-- fragment --><p>Then the script <code>create_internal_release</code> is ran: </p><div class="fragment"><div class="line">&gt;  create_internal_release -r <a class="code hl_namespaceRef" href="../Algebraic_foundations/namespaceCGAL.html">CGAL</a>-I-FOO -a ~/Git/cgal/</div>
-<div class="ttc" id="anamespaceCGAL_html"><div class="ttname"><a href="../Algebraic_foundations/namespaceCGAL.html">CGAL</a></div></div>
-</div><!-- fragment --><p>The directory <code>CGAL-I-FOO</code> now contains the flat release of the branch in <code>~/Git/cgal</code>. Then you need to compile this flat release and set <code>CGAL_DIR</code> accordingly as explained in the installation manual.</p>
-<p>To run the test-suite simply do: </p><div class="fragment"><div class="line">&gt; cd <a class="code hl_namespaceRef" href="../Algebraic_foundations/namespaceCGAL.html">CGAL</a>-I-FOO/test</div>
-<div class="line">&gt; ./run_testsuite_with_cmake</div>
-</div><!-- fragment --><p> and wait for the results to be written in the file <code>error.txt</code>. </p>
+<p>The creation of the flat release is done using the <code>cmake</code> script <code>cgal_create_release_with_cmake.cmake</code> located in the directory <code>Scripts/developer_scripts</code>. You can run it using the option <code>-P</code> of <code>cmake</code>: <code>cmake -P cgal_create_release_with_cmake.cmake</code>. For an up-to-date documentation of available options, check the comments at the beginning of the script.</p>
+<p>Then for testing all examples, tests, and demos, in a build directory call <code>cmake</code> on the created release (the path is given by the script if not manually specified)</p>
+<p><code>cmake -DBUILD_TESTING=ON -DWITH_examples=ON -DWITH_tests=ON -DWITH_demos=ON ../CGAL-X.XX/</code></p>
+<p>Finally, a call to the command <code>ctest</code> will compile and run the tests, examples, and demos. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

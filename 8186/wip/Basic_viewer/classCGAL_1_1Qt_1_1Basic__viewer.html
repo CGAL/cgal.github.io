@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL Basic Viewer: CGAL::Qt::Basic_viewer Class Reference</title>
+<title>CGAL 6.1 - CGAL Basic Viewer: CGAL::Qt::Basic_viewer Class Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL Basic Viewer
+   <div id="projectname">CGAL 6.1 - CGAL Basic Viewer
    </div>
   </td>
  </tr>
@@ -174,7 +182,7 @@ $(document).ready(function(){initNavTree('classCGAL_1_1Qt_1_1Basic__viewer.html'
 <div class="textblock"><p>The class <code><a class="el" href="classCGAL_1_1Qt_1_1Basic__viewer.html" title="The class Basic_viewer is a Qt widget based on QGLViewer that allows to visualize 3D elements: points...">Basic_viewer</a></code> is a <a class="el" href="namespaceCGAL_1_1Qt.html">Qt</a> widget based on <code>QGLViewer</code> that allows to visualize 3D elements: points, segments, triangles, rays and lines. </p>
 <p>This class stores a reference to a <code><a class="el" href="classCGAL_1_1Graphics__scene.html" title="The class Graphics_scene stores points, segments, triangles, rays, and lines.">Graphics_scene</a></code>. Elements are added through the scene. This class requires <code>CGAL_Qt6</code>, and is only available if the macro <code>CGAL_USE_BASIC_VIEWER</code> is defined. Linking with the cmake target <code>CGAL::CGAL_Basic_viewer</code> will link with <code>CGAL_Qt6</code> and add the definition <code>CGAL_USE_BASIC_VIEWER</code>.</p>
 <p>CGAL::QGLViewer is our internal fork of <a href="https://github.com/GillesDebunne/libQGLViewer">QGLViewer class</a> which is <em>A versatile 3D OpenGL viewer based on QOpenGLWidget</em>. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Basic_viewer_2draw_several_windows_8cpp-example.html#_a8">Basic_viewer/draw_several_windows.cpp</a>, and <a class="el" href="Basic_viewer_2draw_surface_mesh_small_faces_8cpp-example.html#_a7">Basic_viewer/draw_surface_mesh_small_faces.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Basic_viewer_2draw_several_windows_8cpp-example.html#_a8">Basic_viewer/draw_several_windows.cpp</a>, and <a class="el" href="Basic_viewer_2draw_surface_mesh_small_faces_8cpp-example.html#_a8">Basic_viewer/draw_surface_mesh_small_faces.cpp</a>.</dd>
 </dl>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -211,23 +219,23 @@ void </td><td class="memItemRight" valign="bottom"><b>draw_text</b> (bool b)</t
 <tr class="memdesc:aedc7cd19111b5e3297eb57ffcdde5d15"><td class="mdescLeft"> </td><td class="mdescRight">enables or disables the drawing of texts. <br></td></tr>
 <tr class="separator:aedc7cd19111b5e3297eb57ffcdde5d15"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a8ee84a1b87cb78cc1febb70e26a5734e"><td class="memItemLeft" align="right" valign="top"><a id="a8ee84a1b87cb78cc1febb70e26a5734e" name="a8ee84a1b87cb78cc1febb70e26a5734e"></a>
-void </td><td class="memItemRight" valign="bottom"><b>vertices_mono_color</b> (const CGAL::IO::Color &amp;c)</td></tr>
+void </td><td class="memItemRight" valign="bottom"><b>vertices_mono_color</b> (const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp;c)</td></tr>
 <tr class="memdesc:a8ee84a1b87cb78cc1febb70e26a5734e"><td class="mdescLeft"> </td><td class="mdescRight">sets the color used for vertices in mono color mode. <br></td></tr>
 <tr class="separator:a8ee84a1b87cb78cc1febb70e26a5734e"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a8a8a2bac81262091de0ae7053f08403d"><td class="memItemLeft" align="right" valign="top"><a id="a8a8a2bac81262091de0ae7053f08403d" name="a8a8a2bac81262091de0ae7053f08403d"></a>
-void </td><td class="memItemRight" valign="bottom"><b>edges_mono_color</b> (const CGAL::IO::Color &amp;c)</td></tr>
+void </td><td class="memItemRight" valign="bottom"><b>edges_mono_color</b> (const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp;c)</td></tr>
 <tr class="memdesc:a8a8a2bac81262091de0ae7053f08403d"><td class="mdescLeft"> </td><td class="mdescRight">sets the color used for edges in mono color mode. <br></td></tr>
 <tr class="separator:a8a8a2bac81262091de0ae7053f08403d"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:aedb0462f22181a11f8db5d7adb166ca6"><td class="memItemLeft" align="right" valign="top"><a id="aedb0462f22181a11f8db5d7adb166ca6" name="aedb0462f22181a11f8db5d7adb166ca6"></a>
-void </td><td class="memItemRight" valign="bottom"><b>rays_mono_color</b> (const CGAL::IO::Color &amp;c)</td></tr>
+void </td><td class="memItemRight" valign="bottom"><b>rays_mono_color</b> (const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp;c)</td></tr>
 <tr class="memdesc:aedb0462f22181a11f8db5d7adb166ca6"><td class="mdescLeft"> </td><td class="mdescRight">sets the color used for rays in mono color mode. <br></td></tr>
 <tr class="separator:aedb0462f22181a11f8db5d7adb166ca6"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:adf461a146f83611709ab0c32dcf32b4b"><td class="memItemLeft" align="right" valign="top"><a id="adf461a146f83611709ab0c32dcf32b4b" name="adf461a146f83611709ab0c32dcf32b4b"></a>
-void </td><td class="memItemRight" valign="bottom"><b>lines_mono_color</b> (const CGAL::IO::Color &amp;c)</td></tr>
+void </td><td class="memItemRight" valign="bottom"><b>lines_mono_color</b> (const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp;c)</td></tr>
 <tr class="memdesc:adf461a146f83611709ab0c32dcf32b4b"><td class="mdescLeft"> </td><td class="mdescRight">sets the color used for lines in mono color mode. <br></td></tr>
 <tr class="separator:adf461a146f83611709ab0c32dcf32b4b"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a44e10f92e28b2175f14caa9d9bc2e258"><td class="memItemLeft" align="right" valign="top"><a id="a44e10f92e28b2175f14caa9d9bc2e258" name="a44e10f92e28b2175f14caa9d9bc2e258"></a>
-void </td><td class="memItemRight" valign="bottom"><b>faces_mono_color</b> (const CGAL::IO::Color &amp;c)</td></tr>
+void </td><td class="memItemRight" valign="bottom"><b>faces_mono_color</b> (const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp;c)</td></tr>
 <tr class="memdesc:a44e10f92e28b2175f14caa9d9bc2e258"><td class="mdescLeft"> </td><td class="mdescRight">sets the color used for faces in mono color mode. <br></td></tr>
 <tr class="separator:a44e10f92e28b2175f14caa9d9bc2e258"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ac438bd041a05fa3057ccdf8486ec9d44"><td class="memItemLeft" align="right" valign="top"><a id="ac438bd041a05fa3057ccdf8486ec9d44" name="ac438bd041a05fa3057ccdf8486ec9d44"></a>
@@ -291,23 +299,23 @@ bool </td><td class="memItemRight" valign="bottom"><b>draw_text</b> () const</t
 <tr class="memdesc:a38766a7c2f50f0b6e537031069cab039"><td class="mdescLeft"> </td><td class="mdescRight">returns <code>true</code> if text are drawn. <br></td></tr>
 <tr class="separator:a38766a7c2f50f0b6e537031069cab039"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a3fd29e76fc23b1a83d9c1574d696a366"><td class="memItemLeft" align="right" valign="top"><a id="a3fd29e76fc23b1a83d9c1574d696a366" name="a3fd29e76fc23b1a83d9c1574d696a366"></a>
-const CGAL::IO::Color &amp; </td><td class="memItemRight" valign="bottom"><b>vertices_mono_color</b> () const</td></tr>
+const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp; </td><td class="memItemRight" valign="bottom"><b>vertices_mono_color</b> () const</td></tr>
 <tr class="memdesc:a3fd29e76fc23b1a83d9c1574d696a366"><td class="mdescLeft"> </td><td class="mdescRight">returns the mono color used for vertices. <br></td></tr>
 <tr class="separator:a3fd29e76fc23b1a83d9c1574d696a366"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a5e9ac0b351008621d9ed991f7d779378"><td class="memItemLeft" align="right" valign="top"><a id="a5e9ac0b351008621d9ed991f7d779378" name="a5e9ac0b351008621d9ed991f7d779378"></a>
-const CGAL::IO::Color &amp; </td><td class="memItemRight" valign="bottom"><b>edges_mono_color</b> () const</td></tr>
+const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp; </td><td class="memItemRight" valign="bottom"><b>edges_mono_color</b> () const</td></tr>
 <tr class="memdesc:a5e9ac0b351008621d9ed991f7d779378"><td class="mdescLeft"> </td><td class="mdescRight">returns the mono color used for edges. <br></td></tr>
 <tr class="separator:a5e9ac0b351008621d9ed991f7d779378"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ac7f47cbb077ed763eb0802b43fb83fe8"><td class="memItemLeft" align="right" valign="top"><a id="ac7f47cbb077ed763eb0802b43fb83fe8" name="ac7f47cbb077ed763eb0802b43fb83fe8"></a>
-const CGAL::IO::Color &amp; </td><td class="memItemRight" valign="bottom"><b>rays_mono_color</b> () const</td></tr>
+const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp; </td><td class="memItemRight" valign="bottom"><b>rays_mono_color</b> () const</td></tr>
 <tr class="memdesc:ac7f47cbb077ed763eb0802b43fb83fe8"><td class="mdescLeft"> </td><td class="mdescRight">returns the mono color used for rays. <br></td></tr>
 <tr class="separator:ac7f47cbb077ed763eb0802b43fb83fe8"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a060e3fe0c344fd0c9d57d9d3da7cefd4"><td class="memItemLeft" align="right" valign="top"><a id="a060e3fe0c344fd0c9d57d9d3da7cefd4" name="a060e3fe0c344fd0c9d57d9d3da7cefd4"></a>
-const CGAL::IO::Color &amp; </td><td class="memItemRight" valign="bottom"><b>lines_mono_color</b> () const</td></tr>
+const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp; </td><td class="memItemRight" valign="bottom"><b>lines_mono_color</b> () const</td></tr>
 <tr class="memdesc:a060e3fe0c344fd0c9d57d9d3da7cefd4"><td class="mdescLeft"> </td><td class="mdescRight">returns the mono color used for lines. <br></td></tr>
 <tr class="separator:a060e3fe0c344fd0c9d57d9d3da7cefd4"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a06e47e57d0170c3a41662bc710b28759"><td class="memItemLeft" align="right" valign="top"><a id="a06e47e57d0170c3a41662bc710b28759" name="a06e47e57d0170c3a41662bc710b28759"></a>
-const CGAL::IO::Color &amp; </td><td class="memItemRight" valign="bottom"><b>faces_mono_color</b> () const</td></tr>
+const <a class="elRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> &amp; </td><td class="memItemRight" valign="bottom"><b>faces_mono_color</b> () const</td></tr>
 <tr class="memdesc:a06e47e57d0170c3a41662bc710b28759"><td class="mdescLeft"> </td><td class="mdescRight">returns the mono color used for faces. <br></td></tr>
 <tr class="separator:a06e47e57d0170c3a41662bc710b28759"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ac63dd86122b249ed24678ea9c2ed4681"><td class="memItemLeft" align="right" valign="top"><a id="ac63dd86122b249ed24678ea9c2ed4681" name="ac63dd86122b249ed24678ea9c2ed4681"></a>

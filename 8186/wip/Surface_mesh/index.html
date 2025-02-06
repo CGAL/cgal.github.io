@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Surface Mesh: User Manual</title>
+<title>CGAL 6.1 - Surface Mesh: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Surface Mesh
+   <div id="projectname">CGAL 6.1 - Surface Mesh
    </div>
   </td>
  </tr>
@@ -325,8 +333,8 @@ Example</h2>
 <div class="line">    vb = std::begin(r);</div>
 <div class="line">    ve = std::end(r);</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// or with boost::tie, as the CGAL range derives from std::pair</span></div>
-<div class="line">    <span class="keywordflow">for</span>(boost::tie(vb, ve) = m.vertices(); vb != ve; ++vb){</div>
+<div class="line">    <span class="comment">// or with std::tie, as the CGAL range derives from std::pair</span></div>
+<div class="line">    <span class="keywordflow">for</span>(std::tie(vb, ve) = m.vertices(); vb != ve; ++vb){</div>
 <div class="line">            <span class="comment">// Print vertex index and vertex coordinates</span></div>
 <div class="line">            std::cout &lt;&lt; *vb &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; m.point(*vb) &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
@@ -410,7 +418,7 @@ Example</h2>
 <div class="line">  {</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">"vertices around face "</span> &lt;&lt; f &lt;&lt; std::endl;</div>
 <div class="line">    <a class="code hl_classRef" href="../BGL/classCGAL_1_1Vertex__around__face__iterator.html">CGAL::Vertex_around_face_iterator&lt;Mesh&gt;</a> vbegin, vend;</div>
-<div class="line">    <span class="keywordflow">for</span>(boost::tie(vbegin, vend) = <a class="code hl_functionRef" href="../BGL/group__PkgBGLIterators.html#gabbe82508d78c7c81bf76c2f0dcfd5c9a">vertices_around_face</a>(m.halfedge(f), m);</div>
+<div class="line">    <span class="keywordflow">for</span>(std::tie(vbegin, vend) = <a class="code hl_functionRef" href="../BGL/group__PkgBGLIterators.html#gabbe82508d78c7c81bf76c2f0dcfd5c9a">vertices_around_face</a>(m.halfedge(f), m);</div>
 <div class="line">        vbegin != vend;</div>
 <div class="line">        ++vbegin){</div>
 <div class="line">      std::cout &lt;&lt; *vbegin &lt;&lt; std::endl;</div>
@@ -467,7 +475,7 @@ Example</h2>
 <div class="line">  <span class="comment">// give each vertex a name, the default is empty</span></div>
 <div class="line">  Mesh::Property_map&lt;vertex_descriptor,std::string&gt; name;</div>
 <div class="line">  <span class="keywordtype">bool</span> created;</div>
-<div class="line">  boost::tie(name, created) = m.add_property_map&lt;vertex_descriptor,std::string&gt;(<span class="stringliteral">"v:name"</span>,<span class="stringliteral">"m1"</span>);</div>
+<div class="line">  std::tie(name, created) = m.add_property_map&lt;vertex_descriptor,std::string&gt;(<span class="stringliteral">"v:name"</span>,<span class="stringliteral">"m1"</span>);</div>
 <div class="line">  assert(created);</div>
 <div class="line">  <span class="comment">// add some names to the vertices</span></div>
 <div class="line">  name[v0] = <span class="stringliteral">"hello"</span>;</div>
@@ -477,7 +485,7 @@ Example</h2>
 <div class="line">    <span class="comment">// You get an existing property, and created will be false</span></div>
 <div class="line">    Mesh::Property_map&lt;vertex_descriptor,std::string&gt; name;</div>
 <div class="line">    <span class="keywordtype">bool</span> created;</div>
-<div class="line">    boost::tie(name, created) = m.add_property_map&lt;vertex_descriptor,std::string&gt;(<span class="stringliteral">"v:name"</span>, <span class="stringliteral">""</span>);</div>
+<div class="line">    std::tie(name, created) = m.add_property_map&lt;vertex_descriptor,std::string&gt;(<span class="stringliteral">"v:name"</span>, <span class="stringliteral">""</span>);</div>
 <div class="line">    assert(! created);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -616,7 +624,7 @@ Example</h2>
 <div class="line">    <span class="stringliteral">"        point [ \n"</span>;</div>
 <div class="line"> </div>
 <div class="line">  vertex_iterator vb,ve;</div>
-<div class="line">  <span class="keywordflow">for</span>(boost::tie(vb, ve) = vertices(sm); vb!=ve; ++vb){</div>
+<div class="line">  <span class="keywordflow">for</span>(std::tie(vb, ve) = vertices(sm); vb!=ve; ++vb){</div>
 <div class="line">    std::cout &lt;&lt;  <span class="stringliteral">"        "</span> &lt;&lt; sm.point(*vb) &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -861,7 +869,7 @@ Draw a Surface Mesh</h1>
 Implementation Details</h1>
 <p>As integer type for the indices we have chosen <code>std::uint32_t</code>. On 64 bit operating systems they take only half the size of a pointer. They still allow to have meshes with 2 billion elements.</p>
 <p>We use <code>std::vector</code> for storing properties. So by accessing the address of the 0th element of a property map you can access the underlying raw array. This may be useful, for example for passing an array of points to OpenGL.</p>
-<p>We use a <em>freelist</em> for removed elements. This mean when a vertex gets removed and later <code>add_vertex</code> is called, the memory of the removed element is reused. This especially means that the n'th inserted element has not necessarily the index <code>n-1</code>, and when iterating over elements they will not be enumerated in the insertion order.</p>
+<p>We use a <em>freelist</em> for removed elements. This mean when a vertex gets removed and later <code>add_vertex</code> is called, the memory of the removed element is reused. This especially means that the n-th inserted element has not necessarily the index <code>n-1</code>, and when iterating over elements they will not be enumerated in the insertion order.</p>
 <h1><a class="anchor" id="sectionSurfaceMeshHistory"></a>
 Implementation History</h1>
 <p>This package is derived from an early version of Daniel Sieger and Mario Botsch package <em><a class="el" href="classCGAL_1_1Surface__mesh.html" title="This class is a data structure that can be used as halfedge data structure or polyhedral surface.">Surface_mesh</a></em> <a class="el" href="citelist.html#CITEREF_sieger2011design">[1]</a>, which is inspired from the design of <a href="https://www.openmesh.org/">OpenMesh</a> and the CGAL package <a class="elRef" href="../Manual/packages.html#PkgPolyhedron">3D Polyhedral Surface</a>.</p>

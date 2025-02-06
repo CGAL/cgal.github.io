@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 3D Mesh Generation", "index.html", [
+  [ "CGAL 6.1 - 3D Mesh Generation", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -36,8 +36,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"CGAL_2Mesh_3_2initialize_triangulation_from_gray_image_8h-example.html",
-"classMeshFacetCriteria__3.html#a4803ff8052db2aa5595a43b7ef64e136"
+"Mesh_3_2implicit_functions_8cpp-example.html",
+"classMeshEdgeCriteria__3.html#ad6d0c00829f27332881a1164284d7408"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

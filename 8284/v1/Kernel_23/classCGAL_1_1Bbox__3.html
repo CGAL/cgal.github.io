@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D and 3D Linear Geometry Kernel: CGAL::Bbox_3 Class Reference</title>
+<title>CGAL 6.1 - 2D and 3D Linear Geometry Kernel: CGAL::Bbox_3 Class Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D and 3D Linear Geometry Kernel
+   <div id="projectname">CGAL 6.1 - 2D and 3D Linear Geometry Kernel
    </div>
   </td>
  </tr>
@@ -191,11 +199,11 @@ Related Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Creation</h2></td></tr>
 <tr class="memitem:a75807ebbe9a396b8c3592993e76490df"><td class="memItemLeft" align="right" valign="top"><a id="a75807ebbe9a396b8c3592993e76490df" name="a75807ebbe9a396b8c3592993e76490df"></a>
  </td><td class="memItemRight" valign="bottom"><b>Bbox_3</b> ()</td></tr>
-<tr class="memdesc:a75807ebbe9a396b8c3592993e76490df"><td class="mdescLeft"> </td><td class="mdescRight">introduces an <em>empty</em> bounding box with lower left corner point at \( (\infty, \infty, \infty) \) and with upper right corner point at \( (-\infty, -\infty, -\infty) \), \( \infty \) being <code>std::numeric_limits&lt;double&gt;::infinity()</code>. <br></td></tr>
+<tr class="memdesc:a75807ebbe9a396b8c3592993e76490df"><td class="mdescLeft"> </td><td class="mdescRight">constructs an <em>empty</em> bounding box with lower left corner point at \( (\infty, \infty, \infty) \) and with upper right corner point at \( (-\infty, -\infty, -\infty) \), \( \infty \) being <code>std::numeric_limits&lt;double&gt;::infinity()</code>. <br></td></tr>
 <tr class="separator:a75807ebbe9a396b8c3592993e76490df"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:aca3d5a6c7a80b4ed24d3c6472a729c60"><td class="memItemLeft" align="right" valign="top"><a id="aca3d5a6c7a80b4ed24d3c6472a729c60" name="aca3d5a6c7a80b4ed24d3c6472a729c60"></a>
  </td><td class="memItemRight" valign="bottom"><b>Bbox_3</b> (double x_min, double y_min, double z_min, double x_max, double y_max, double z_max)</td></tr>
-<tr class="memdesc:aca3d5a6c7a80b4ed24d3c6472a729c60"><td class="mdescLeft"> </td><td class="mdescRight">introduces a bounding box <code>b</code> with lexicographically smallest corner point at <code>(xmin, ymin, zmin)</code> and lexicographically largest corner point at <code>(xmax, ymax, zmax)</code>. <br></td></tr>
+<tr class="memdesc:aca3d5a6c7a80b4ed24d3c6472a729c60"><td class="mdescLeft"> </td><td class="mdescRight">constructs a bounding box <code>b</code> with lexicographically smallest corner point at <code>(xmin, ymin, zmin)</code> and lexicographically largest corner point at <code>(xmax, ymax, zmax)</code>. <br></td></tr>
 <tr class="separator:aca3d5a6c7a80b4ed24d3c6472a729c60"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Operations</h2></td></tr>
