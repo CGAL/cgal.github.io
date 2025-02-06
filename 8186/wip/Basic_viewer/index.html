@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL Basic Viewer: User Manual</title>
+<title>CGAL 6.1 - CGAL Basic Viewer: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL Basic Viewer
+   <div id="projectname">CGAL 6.1 - CGAL Basic Viewer
    </div>
   </td>
  </tr>
@@ -175,11 +183,11 @@ Introduction</h1>
 </ul>
 <h1><a class="anchor" id="BV_SoftwareDesign"></a>
 Software Design</h1>
-<p>The diagram in <a class="el" href="index.html#fig__fig_basic_viewer_diagram_class">Figure 118.1</a> shows the main classes and functions of this package.</p>
+<p>The diagram in <a class="el" href="index.html#fig__fig_basic_viewer_diagram_class">Figure 120.1</a> shows the main classes and functions of this package.</p>
 <p><a class="anchor" id="fig__fig_basic_viewer_diagram_class"></a> </p><div class="image">
 <object type="image/svg+xml" data="basic_viewer_diagramme_class.svg" style="pointer-events: none;"></object>
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__fig_basic_viewer_diagram_class">Figure 118.1</a> UML diagram of the classes and functions of the package (only partial representation). </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__fig_basic_viewer_diagram_class">Figure 120.1</a> UML diagram of the classes and functions of the package (only partial representation). </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="BV_BasicUsage"></a>
 Basic Usage: The Global Draw Functions</h1>
@@ -208,7 +216,7 @@ Basic Usage: The Global Draw Functions</h1>
 <p><a class="anchor" id="fig__basic_viewer_ex1"></a> </p><div class="image">
 <img src="lcc_draw.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex1">Figure 118.2</a> Example of drawing of a 3D LCC. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex1">Figure 120.2</a> Example of drawing of a 3D LCC. </p> </div> <p> <br>
 </p>
 <p>Users can interact with the viewer using some specific keys or mouse interactions. Pressing key 'h' makes pop up a help window showing the different shortcuts and mouse interactions. The main functionalities of the viewer are:</p>
 <ul>
@@ -261,15 +269,15 @@ Tuning with Graphics Scene Options</h2>
 <div class="line"><span class="keyword">  </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Change the color of vertices randomly.</span></div>
-<div class="line">  CGAL::IO::Color vertex_color(<span class="keyword">const</span> Mesh&amp;,</div>
+<div class="line">  <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> vertex_color(<span class="keyword">const</span> Mesh&amp;,</div>
 <div class="line">                               <span class="keyword">typename</span> boost::graph_traits&lt;Mesh&gt;::vertex_descriptor)<span class="keyword"> const</span></div>
 <div class="line"><span class="keyword">  </span>{</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">bool</span> v_green=<span class="keyword">true</span>;</div>
 <div class="line">    v_green=!v_green;</div>
 <div class="line">    <span class="keywordflow">if</span>(v_green) <span class="comment">// 1 vertex out of two green (randomly)</span></div>
-<div class="line">    { <span class="keywordflow">return</span> CGAL::IO::Color(0,220,0); }</div>
+<div class="line">    { <span class="keywordflow">return</span> <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a>(0,220,0); }</div>
 <div class="line">    <span class="keywordflow">else</span> <span class="comment">// the others are blue</span></div>
-<div class="line">    { <span class="keywordflow">return</span> CGAL::IO::Color(0,0,220); }</div>
+<div class="line">    { <span class="keywordflow">return</span> <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a>(0,0,220); }</div>
 <div class="line">  }</div>
 <div class="line">};</div>
 <div class="line"> </div>
@@ -289,17 +297,18 @@ Tuning with Graphics Scene Options</h2>
 <div class="line">  <a class="code hl_functionRef" href="../Boolean_set_operations_2/group__PkgDrawPolygonSet2.html#gac5ad1c3be15e88df46b096885a023ff4">CGAL::draw</a>(sm, My_graphics_scene_options());</div>
 <div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1IO_1_1Color_html"><div class="ttname"><a href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a></div></div>
 <div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
 <div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
 <div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
 <div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
 <div class="ttc" id="astructCGAL_1_1Graphics__scene__options_html"><div class="ttname"><a href="structCGAL_1_1Graphics__scene__options.html">CGAL::Graphics_scene_options</a></div><div class="ttdoc">The class Graphics_scene_options is used to tune the way that the cells of a given data structure of ...</div><div class="ttdef"><b>Definition:</b> Graphics_scene_options.h:28</div></div>
 <div class="ttc" id="astructCGAL_1_1Simple__cartesian_html"><div class="ttname"><a href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian</a></div></div>
-</div><!-- fragment --><p>The result of this example can be shown in <a class="el" href="index.html#fig__basic_viewer_ex2">Figure 118.3</a>.</p>
+</div><!-- fragment --><p>The result of this example can be shown in <a class="el" href="index.html#fig__basic_viewer_ex2">Figure 120.3</a>.</p>
 <p><a class="anchor" id="fig__basic_viewer_ex2"></a> </p><div class="image">
 <img src="draw_surface_mesh_vcolor.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex2">Figure 118.3</a> Example of tuned drawing of a 3D surface mesh where some vertex colors are changed. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex2">Figure 120.3</a> Example of tuned drawing of a 3D surface mesh where some vertex colors are changed. </p> </div> <p> <br>
 </p>
 <p>The drawing options can depend on the cells. In the following example the color of each face depends on its height.</p>
 <p><br>
@@ -339,7 +348,7 @@ Tuning with Graphics Scene Options</h2>
 <div class="line">    this-&gt;colored_face=[](<span class="keyword">const</span> Mesh &amp;, <span class="keyword">typename</span> Mesh::Face_index)-&gt;<span class="keywordtype">bool</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; };</div>
 <div class="line"> </div>
 <div class="line">    this-&gt;face_color=[m_min_y, m_max_y]</div>
-<div class="line">      (<span class="keyword">const</span> Mesh&amp; sm, <span class="keyword">typename</span> Mesh::Face_index fi)-&gt;CGAL::IO::Color</div>
+<div class="line">      (<span class="keyword">const</span> Mesh&amp; sm, <span class="keyword">typename</span> Mesh::Face_index fi)-&gt;<a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a></div>
 <div class="line">    {</div>
 <div class="line">      <span class="keywordtype">double</span> res=0.;</div>
 <div class="line">      std::size_t n=0;</div>
@@ -370,11 +379,11 @@ Tuning with Graphics Scene Options</h2>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex3">Figure 118.4</a>.</p>
+</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex3">Figure 120.4</a>.</p>
 <p><a class="anchor" id="fig__basic_viewer_ex3"></a> </p><div class="image">
 <img src="draw_surface_height.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex3">Figure 118.4</a> Example of mesh drawing with a color for each face computed depending on its height. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex3">Figure 120.4</a> Example of mesh drawing with a color for each face computed depending on its height. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="BV_GraphicsScene"></a>
 The Graphics Scene</h1>
@@ -410,8 +419,8 @@ The Graphics Scene</h1>
 <div class="line">{</div>
 <div class="line">  <span class="keywordtype">bool</span> colored_vertex(<span class="keyword">const</span> PS3&amp;, <span class="keyword">typename</span> PS3::const_iterator)<span class="keyword"> const</span></div>
 <div class="line"><span class="keyword">  </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line">  CGAL::IO::Color vertex_color(<span class="keyword">const</span> PS3&amp;, <span class="keyword">typename</span> PS3::const_iterator)<span class="keyword"> const</span></div>
-<div class="line"><span class="keyword">  </span>{ <span class="keywordflow">return</span> CGAL::IO::Color(0,220,0); }</div>
+<div class="line">  <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> vertex_color(<span class="keyword">const</span> PS3&amp;, <span class="keyword">typename</span> PS3::const_iterator)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{ <span class="keywordflow">return</span> <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a>(0,220,0); }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
@@ -458,11 +467,11 @@ The Graphics Scene</h1>
 <div class="ttc" id="aclassKernel_1_1Vector__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a></div></div>
 <div class="ttc" id="agroup__PkgBasicViewerClasses_html_ga95f6a58cad2262cf1a43f99e6e1f81c4"><div class="ttname"><a href="group__PkgBasicViewerClasses.html#ga95f6a58cad2262cf1a43f99e6e1f81c4">CGAL::draw_graphics_scene</a></div><div class="ttdeci">void draw_graphics_scene(const Graphics_scene &amp;graphic_scene, const char *title="CGAL Basic Viewer")</div><div class="ttdoc">opens a new window and draws the given Graphics_scene (which must have been filled before).</div><div class="ttdef"><b>Definition:</b> Basic_viewer.h:172</div></div>
 <div class="ttc" id="agroup__PkgDrawPolygonSet2_html_ga32083adbc962ea8ff36bd79f325f2cdb"><div class="ttname"><a href="../Boolean_set_operations_2/group__PkgDrawPolygonSet2.html#ga32083adbc962ea8ff36bd79f325f2cdb">CGAL::add_to_graphics_scene</a></div><div class="ttdeci">void add_to_graphics_scene(const PS2 &amp;ps2, CGAL::Graphics_scene &amp;gs, const GSOptions &amp;gso)</div></div>
-</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex4">Figure 118.5</a> where we can see in green the original points of the point cloud, superposed with the polyhedron surface reconstructed by the Poisson surface reconstruction method.</p>
+</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex4">Figure 120.5</a> where we can see in green the original points of the point cloud, superposed with the polyhedron surface reconstructed by the Poisson surface reconstruction method.</p>
 <p><a class="anchor" id="fig__basic_viewer_ex4"></a> </p><div class="image">
 <img src="draw_mesh_and_points.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex4">Figure 118.5</a> Example of drawing of a point cloud and a polyhedron in a same viewer. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex4">Figure 120.5</a> Example of drawing of a point cloud and a polyhedron in a same viewer. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="BV_BasicViewer"></a>
 The Basic Viewer Class</h1>
@@ -559,11 +568,11 @@ The Basic Viewer Class</h1>
 <div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1Qt_1_1Basic__viewer_html"><div class="ttname"><a href="classCGAL_1_1Qt_1_1Basic__viewer.html">CGAL::Qt::Basic_viewer</a></div><div class="ttdoc">The class Basic_viewer is a Qt widget based on QGLViewer that allows to visualize 3D elements: points...</div><div class="ttdef"><b>Definition:</b> Basic_viewer.h:13</div></div>
-</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex5">Figure 118.6</a>.</p>
+</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex5">Figure 120.6</a>.</p>
 <p><a class="anchor" id="fig__basic_viewer_ex5"></a> </p><div class="image">
 <img src="draw_several_windows.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex5">Figure 118.6</a> Example of drawing of two <code>Basic_viewer</code> side by side. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex5">Figure 120.6</a> Example of drawing of two <code>Basic_viewer</code> side by side. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="BV_Interactions"></a>
 Adding Interaction</h1>
@@ -617,7 +626,7 @@ Adding Interaction</h1>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    this-&gt;face_color=[<span class="keyword">this</span>](<span class="keyword">const</span> SM&amp; sm,</div>
-<div class="line">                         <span class="keyword">typename</span> boost::graph_traits&lt;SM&gt;::face_descriptor fh) -&gt; CGAL::IO::Color</div>
+<div class="line">                         <span class="keyword">typename</span> boost::graph_traits&lt;SM&gt;::face_descriptor fh) -&gt; <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a></div>
 <div class="line">    { <span class="keywordflow">return</span> this-&gt;get_face_color(sm, fh); };</div>
 <div class="line"> </div>
 <div class="line">    this-&gt;colored_face = [](<span class="keyword">const</span> SM&amp;,</div>
@@ -625,11 +634,11 @@ Adding Interaction</h1>
 <div class="line">    { <span class="keywordflow">return</span> <span class="keyword">true</span>; };</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  CGAL::IO::Color get_face_color(<span class="keyword">const</span> SM&amp; sm,</div>
+<div class="line">  <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> get_face_color(<span class="keyword">const</span> SM&amp; sm,</div>
 <div class="line">                                 <span class="keyword">typename</span> boost::graph_traits&lt;SM&gt;::face_descriptor fh)</div>
 <div class="line">  {</div>
 <div class="line">    <span class="comment">// Default color of faces</span></div>
-<div class="line">    CGAL::IO::Color c(75,160,255);</div>
+<div class="line">    <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a> c(75,160,255);</div>
 <div class="line">    <span class="keywordflow">if</span>(!m_with_size) { <span class="keywordflow">return</span> c; }</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Compare the size of the face with the % m_threshold</span></div>
@@ -639,7 +648,7 @@ Adding Interaction</h1>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// If the face is small, color it in red.</span></div>
 <div class="line">    <span class="keywordflow">if</span> (get(faces_size.value(), fh)&lt;m_min_size + ((m_max_size - m_min_size) / (100 - m_threshold)))</div>
-<div class="line">    { <span class="keywordflow">return</span> CGAL::IO::Color(255,20,20); }</div>
+<div class="line">    { <span class="keywordflow">return</span> <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a>(255,20,20); }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> c; <span class="comment">// Default color</span></div>
 <div class="line">  }</div>
@@ -665,7 +674,7 @@ Adding Interaction</h1>
 <div class="line"> </div>
 <div class="line">  Mesh::Property_map&lt;face_descriptor, FT&gt; faces_size;</div>
 <div class="line">  <span class="keywordtype">bool</span> created;</div>
-<div class="line">  boost::tie(faces_size, created)=sm.add_property_map&lt;face_descriptor, FT&gt;(<span class="stringliteral">"f:size"</span>,0.);</div>
+<div class="line">  std::tie(faces_size, created)=sm.add_property_map&lt;face_descriptor, FT&gt;(<span class="stringliteral">"f:size"</span>,0.);</div>
 <div class="line">  assert(created);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">for</span>(face_descriptor fd : sm.faces())</div>
@@ -731,11 +740,11 @@ Adding Interaction</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1Graphics__scene_html_ac1a3dc6bcdb65938f4564b001a2a1312"><div class="ttname"><a href="classCGAL_1_1Graphics__scene.html#ac1a3dc6bcdb65938f4564b001a2a1312">CGAL::Graphics_scene::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">clears the scene, i.e., removes all points, segments, triangles, and text.</div></div>
 <div class="ttc" id="aclassCGAL_1_1Qt_1_1QApplication__and__basic__viewer_html"><div class="ttname"><a href="classCGAL_1_1Qt_1_1QApplication__and__basic__viewer.html">CGAL::Qt::QApplication_and_basic_viewer</a></div><div class="ttdoc">The class QApplication_and_basic_viewer regroups a Basic_viewer and Qt QApplication.</div><div class="ttdef"><b>Definition:</b> Basic_viewer.h:151</div></div>
-</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex6">Figure 118.7</a>, showing to the left the initial drawing of the 3D model, and to the right the same model after having changed the size threshold.</p>
+</div><!-- fragment --><p>The result of this example is shown in <a class="el" href="index.html#fig__basic_viewer_ex6">Figure 120.7</a>, showing to the left the initial drawing of the 3D model, and to the right the same model after having changed the size threshold.</p>
 <p><a class="anchor" id="fig__basic_viewer_ex6"></a> </p><div class="image">
 <img src="draw_surface_mesh_small_faces.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex6">Figure 118.7</a> Two examples of drawing of a mesh with small faces in red. <b>Left</b>: With the initial threshold. <b>Right</b>: After having increased the threshold. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__basic_viewer_ex6">Figure 120.7</a> Two examples of drawing of a mesh with small faces in red. <b>Left</b>: With the initial threshold. <b>Right</b>: After having increased the threshold. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="BV_Design"></a>
 Design and Implementation History</h1>

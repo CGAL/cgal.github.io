@@ -20,6 +20,11 @@ var group__PkgMesh3SecondaryConcepts =
       [ "Sphere_3", "classBisectionGeometricTraits__3.html#a6dd1e1dc55ae914f2aa75b2a59a5e158", null ],
       [ "Vector_3", "classBisectionGeometricTraits__3.html#a3fd3991e0c68a8c5ad195893ef09bb3c", null ]
     ] ],
+    [ "InitialPointsGenerator_3", "classInitialPointsGenerator__3.html", [
+      [ "C3t3", "classInitialPointsGenerator__3.html#a60a183ca1c26e301a868478457496ef7", null ],
+      [ "MeshDomain", "classInitialPointsGenerator__3.html#adcc41d2f0f7f1542301dec684a3590cd", null ],
+      [ "operator()", "classInitialPointsGenerator__3.html#a1c795803bf7f5ababd5ace85480bb934", null ]
+    ] ],
     [ "IntersectionGeometricTraits_3", "classIntersectionGeometricTraits__3.html", [
       [ "Do_intersect_3", "classIntersectionGeometricTraits__3.html#a5b50b9166990edb9a59a06bd7f168250", null ],
       [ "Intersect_3", "classIntersectionGeometricTraits__3.html#ae0e03751a406a5c035f342d1db5bf27a", null ],

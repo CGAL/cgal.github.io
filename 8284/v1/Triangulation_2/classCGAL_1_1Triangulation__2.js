@@ -109,6 +109,8 @@ var classCGAL_1_1Triangulation__2 =
     [ "number_of_vertices", "classCGAL_1_1Triangulation__2.html#abb274869c3eac8fb775702bf68c4e8f1", null ],
     [ "operator=", "classCGAL_1_1Triangulation__2.html#a40701ad345813f8df044fd197d3c9d96", null ],
     [ "oriented_side", "classCGAL_1_1Triangulation__2.html#a01fbafc011677846a729a809b4b21a99", null ],
+    [ "point", "classCGAL_1_1Triangulation__2.html#a4c033e487fee9ead881374b52c10fb08", null ],
+    [ "point", "classCGAL_1_1Triangulation__2.html#a983cffc38d4dba054cfbbe8ae8791530", null ],
     [ "points", "classCGAL_1_1Triangulation__2.html#acae6c6bf678ec1a90b49498862bb7fa2", null ],
     [ "points_begin", "classCGAL_1_1Triangulation__2.html#a048beaadce99c9bdfeaa69dd68701c32", null ],
     [ "points_end", "classCGAL_1_1Triangulation__2.html#adb17161924b6d2b6e7ac537d6b760728", null ],

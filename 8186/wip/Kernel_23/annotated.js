@@ -356,5 +356,6 @@ var annotated =
       [ "WeightedPoint_2", "classKernel_1_1WeightedPoint__2.html", null ],
       [ "WeightedPoint_3", "classKernel_1_1WeightedPoint__3.html", null ]
     ] ],
-    [ "Kernel", "classKernel.html", "classKernel" ]
+    [ "Kernel", "classKernel.html", "classKernel" ],
+    [ "ProjectionTraitsGeometricTraits_3", "classProjectionTraitsGeometricTraits__3.html", "classProjectionTraitsGeometricTraits__3" ]
 ];

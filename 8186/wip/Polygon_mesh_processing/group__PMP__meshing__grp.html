@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Polygon Mesh Processing: Meshing</title>
+<title>CGAL 6.1 - Polygon Mesh Processing: Meshing</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Polygon Mesh Processing
+   <div id="projectname">CGAL 6.1 - Polygon Mesh Processing
    </div>
   </td>
  </tr>
@@ -777,7 +785,7 @@ template&lt;typename TriangleMesh , typename VertexRange , typename NamedParamet
 <p><code>#include &lt;CGAL/Polygon_mesh_processing/fair.h&gt;</code></p>
 
 <p>fairs a region on a triangle mesh. </p>
-<p>The points of the selected vertices are relocated to yield an as-smooth-as-possible surface patch, based on solving a linear bi-Laplacian system with boundary constraints, described in <a class="el" href="citelist.html#CITEREF_Botsch2008OnLinearVariational">[4]</a>. The optional parameter <code>fairing_continuity</code> gives the ability to control the tangential continuity C<sup> n</sup> of the output mesh.</p>
+<p>The points of the selected vertices are relocated to yield an as-smooth-as-possible surface patch, based on solving a linear bi-Laplacian system with boundary constraints, described in <a class="el" href="citelist.html#CITEREF_Botsch2008OnLinearVariational">[5]</a>. The optional parameter <code>fairing_continuity</code> gives the ability to control the tangential continuity C<sup> n</sup> of the output mesh.</p>
 <p>The region described by <code>vertices</code> might contain multiple disconnected components. Note that the mesh connectivity is not altered in any way, only vertex locations get updated.</p>
 <p>Fairing might fail if fixed vertices, which are used as boundary conditions, do not suffice to solve constructed linear system.</p>
 <p>Note that if the vertex range to which fairing is applied contains all the vertices of the triangle mesh, fairing does not fail, but the mesh gets shrunk to <code><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga9d272a8e3a8080b851741b6d3a44afdc">CGAL::ORIGIN</a></code>.</p>
@@ -1108,7 +1116,7 @@ If <code>true</code>, the end vertices of the edges set as constrained in <code>
 <li>
 A function object used to determinate if a vertex move should be allowed or not during the relaxation step. </li>
 <li>
-<b>Type: </b>Unary functor that provides <code>bool operator()(vertex_descriptor v, Point_3 src, Point_3 tgt)</code> returning <code>true</code> if the vertex <code>v</code> can be moved from <code>src</code> to <code>tgt</code>; <code>Point_3</code> being the value type of the vertex point map  </li>
+<b>Type: </b>Functor that provides <code>bool operator()(vertex_descriptor v, Point_3 src, Point_3 tgt)</code> returning <code>true</code> if the vertex <code>v</code> can be moved from <code>src</code> to <code>tgt</code>; <code>Point_3</code> being the value type of the vertex point map  </li>
 <li>
 <b>Default: </b>If not provided, all moves are allowed. </li>
 </ul>
@@ -2549,7 +2557,7 @@ If <code>true</code>, the end vertices of the edges set as constrained in <code>
 <li>
 A function object used to determinate if a vertex move should be allowed or not </li>
 <li>
-<b>Type: </b>Unary functor that provides <code>bool operator()(vertex_descriptor v, Point_3 src, Point_3 tgt)</code> returning <code>true</code> if the vertex <code>v</code> can be moved from <code>src</code> to <code>tgt</code>; <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a></code> being the value type of the vertex point map  </li>
+<b>Type: </b>Unary functor that provides <code>bool operator()(vertex_descriptor v, Point_3 src, Point_3 tgt)</code> returning <code>true</code> if the vertex <code>v</code> can be moved from <code>src</code> to <code>tgt</code>; <code>Point_3</code> being the value type of the vertex point map  </li>
 <li>
 <b>Default: </b>If not provided, all moves are allowed. </li>
 </ul>

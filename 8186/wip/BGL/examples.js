@@ -23,6 +23,7 @@ var examples =
     [ "BGL_surface_mesh/prim.cpp", "BGL_surface_mesh_2prim_8cpp-example.html", null ],
     [ "BGL_surface_mesh/gwdwg.cpp", "BGL_surface_mesh_2gwdwg_8cpp-example.html", null ],
     [ "BGL_surface_mesh/seam_mesh.cpp", "BGL_surface_mesh_2seam_mesh_8cpp-example.html", null ],
+    [ "BGL_surface_mesh/shortest_path.cpp", "BGL_surface_mesh_2shortest_path_8cpp-example.html", null ],
     [ "BGL_surface_mesh/write_inp.cpp", "BGL_surface_mesh_2write_inp_8cpp-example.html", null ],
     [ "BGL_surface_mesh/surface_mesh_dual.cpp", "BGL_surface_mesh_2surface_mesh_dual_8cpp-example.html", null ],
     [ "BGL_surface_mesh/connected_components.cpp", "BGL_surface_mesh_2connected_components_8cpp-example.html", null ],

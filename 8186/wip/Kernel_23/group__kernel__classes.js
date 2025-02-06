@@ -22,21 +22,21 @@ var group__kernel__classes =
     [ "CGAL::Kernel_traits< T >", "structCGAL_1_1Kernel__traits.html", [
       [ "Kernel", "structCGAL_1_1Kernel__traits.html#adaf2b06e17d5377307fca20b6bc2bbf9", null ]
     ] ],
-    [ "CGAL::Projection_traits_3< K >", "classCGAL_1_1Projection__traits__3.html", [
-      [ "Projection_traits_3", "classCGAL_1_1Projection__traits__3.html#a95c82d8be9b52e69667d677aae2520fd", null ]
+    [ "CGAL::Projection_traits_3< Geom_traits >", "classCGAL_1_1Projection__traits__3.html", [
+      [ "Projection_traits_3", "classCGAL_1_1Projection__traits__3.html#ad077efa38ef330e3e420b1402c3fd9d8", null ]
     ] ],
-    [ "CGAL::Projection_traits_xy_3< K >", "classCGAL_1_1Projection__traits__xy__3.html", [
-      [ "Intersect_2", "classCGAL_1_1Projection__traits__xy__3.html#a19eb806102fe9dc3df9fa6e9d469c0ba", null ],
-      [ "Line_2", "classCGAL_1_1Projection__traits__xy__3.html#a31ab599719e8521c5206553ac8c5d869", null ],
-      [ "Point_2", "classCGAL_1_1Projection__traits__xy__3.html#a9fe40e48e720b29aefe68b3cf8f2de97", null ],
-      [ "Segment_2", "classCGAL_1_1Projection__traits__xy__3.html#a3b0041f57bdb5a7cd0b9d104534d7449", null ],
-      [ "Triangle_2", "classCGAL_1_1Projection__traits__xy__3.html#a61c6c86f02eb7c23d8c5ef010f3a7783", null ],
-      [ "Projection_traits_xy_3", "classCGAL_1_1Projection__traits__xy__3.html#a1e522c66615577e3583f35ae38a13d59", null ],
-      [ "Projection_traits_xy_3", "classCGAL_1_1Projection__traits__xy__3.html#a215240717d5998098c46c60ed0527d05", null ],
-      [ "operator=", "classCGAL_1_1Projection__traits__xy__3.html#a352ad551d86a14b72180b393daebc728", null ]
+    [ "CGAL::Projection_traits_xy_3< Gt >", "classCGAL_1_1Projection__traits__xy__3.html", [
+      [ "Intersect_2", "classCGAL_1_1Projection__traits__xy__3.html#a546d8c7b6f978b535af0e384171e65f0", null ],
+      [ "Line_2", "classCGAL_1_1Projection__traits__xy__3.html#a970383921efae9936fe714faa573846a", null ],
+      [ "Point_2", "classCGAL_1_1Projection__traits__xy__3.html#a498ff8ec4d937ea7ecde0751c61fbbbb", null ],
+      [ "Segment_2", "classCGAL_1_1Projection__traits__xy__3.html#aff036abecc7f61be9b275cd619844c17", null ],
+      [ "Triangle_2", "classCGAL_1_1Projection__traits__xy__3.html#a3c208acd0c97735e80345fb3f29a71a3", null ],
+      [ "Projection_traits_xy_3", "classCGAL_1_1Projection__traits__xy__3.html#a68d8c26d1ca2c72911029a26b2486f2c", null ],
+      [ "Projection_traits_xy_3", "classCGAL_1_1Projection__traits__xy__3.html#a640b04a1cab2024cb750f98807ea83d8", null ],
+      [ "operator=", "classCGAL_1_1Projection__traits__xy__3.html#a93ce42f171802a5959965c1d30bc3422", null ]
     ] ],
-    [ "CGAL::Projection_traits_xz_3< K >", "classCGAL_1_1Projection__traits__xz__3.html", null ],
-    [ "CGAL::Projection_traits_yz_3< K >", "classCGAL_1_1Projection__traits__yz__3.html", null ],
+    [ "CGAL::Projection_traits_xz_3< Gt >", "classCGAL_1_1Projection__traits__xz__3.html", null ],
+    [ "CGAL::Projection_traits_yz_3< Gt >", "classCGAL_1_1Projection__traits__yz__3.html", null ],
     [ "CGAL::Simple_cartesian< FieldNumberType >", "structCGAL_1_1Simple__cartesian.html", [
       [ "FT", "structCGAL_1_1Simple__cartesian.html#a7c21b43a7da612194bd57c927f80ebc3", null ],
       [ "RT", "structCGAL_1_1Simple__cartesian.html#a33d4df5a291b37d25476b6f35c1d1bf9", null ]

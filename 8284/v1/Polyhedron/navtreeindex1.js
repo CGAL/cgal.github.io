@@ -34,7 +34,7 @@ var NAVTREEINDEX1 =
 "classPolyhedronTraits__3.html#af7b7747a5bc8711a69f35d63a14973ce":[1,0,0,1,3],
 "classPolyhedronTraits__3.html#afe3efafb5d41ad592c7fd864beefd255":[1,0,0,1,1],
 "deprecated.html":[2],
-"examples.html":[6],
+"examples.html":[5],
 "group__PkgDrawPolyhedron.html":[1,0,2],
 "group__PkgDrawPolyhedron.html#ga0cd9860fd91978ad7f95d1f802cde68e":[1,0,2,1],
 "group__PkgDrawPolyhedron.html#ga56a8df4559b043b885be909514e6069f":[1,0,2,3],
@@ -66,6 +66,5 @@ var NAVTREEINDEX1 =
 "index.html#sectionPolyIntro":[0,0],
 "index.html#sectionPolyVector":[0,2,4],
 "modules.html":[1],
-"pages.html":[],
-"todo.html":[3]
+"pages.html":[]
 };

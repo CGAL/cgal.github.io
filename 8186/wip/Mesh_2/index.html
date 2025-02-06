@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D Conforming Triangulations and Meshes: User Manual</title>
+<title>CGAL 6.1 - 2D Conforming Triangulations and Meshes: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D Conforming Triangulations and Meshes
+   <div id="projectname">CGAL 6.1 - 2D Conforming Triangulations and Meshes
    </div>
   </td>
  </tr>
@@ -243,11 +251,11 @@ Example: Making a Triangulation Conforming Delaunay and Then Conforming Gabriel<
 <div class="ttc" id="aclassCGAL_1_1Constrained__Delaunay__triangulation__2_html"><div class="ttname"><a href="../Triangulation_2/classCGAL_1_1Constrained__Delaunay__triangulation__2.html">CGAL::Constrained_Delaunay_triangulation_2</a></div></div>
 <div class="ttc" id="aclassCGAL_1_1Constrained__Delaunay__triangulation__2_html_ae157cc826f847c3c781c9e29497c05bd"><div class="ttname"><a href="../Triangulation_2/classCGAL_1_1Constrained__Delaunay__triangulation__2.html#ae157cc826f847c3c781c9e29497c05bd">CGAL::Constrained_Delaunay_triangulation_2::insert</a></div><div class="ttdeci">Vertex_handle insert(Point p, Face_handle f=Face_handle())</div></div>
 <div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
-</div><!-- fragment --><p>See <a class="el" href="index.html#fig__Conformexampleconform">Figure 57.1</a></p>
+</div><!-- fragment --><p>See <a class="el" href="index.html#fig__Conformexampleconform">Figure 58.1</a></p>
 <p><a class="anchor" id="fig__Conformexampleconform"></a> </p><div class="image">
 <img src="example-conform-Delaunay-Gabriel.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Conformexampleconform">Figure 57.1</a> From left to right: Initial Delaunay triangulation, the corresponding conforming Delaunay, and the corresponding Gabriel triangulation. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Conformexampleconform">Figure 58.1</a> From left to right: Initial Delaunay triangulation, the corresponding conforming Delaunay, and the corresponding Gabriel triangulation. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="secMesh_2_meshes"></a>
 Meshes</h1>
@@ -257,18 +265,18 @@ Definitions</h2>
 <p>The domain is the region that the user wants to mesh. It has to be a bounded region of the plane. The domain is defined by a <em>planar straight line graph</em>, <span class="textsc">Pslg</span> for short, which is a set of segments such that two segments in the set are either disjoint or share an endpoint. The segments of the <span class="textsc">Pslg</span> are constraints that will be represented by a union of edges in the mesh. The <span class="textsc">Pslg</span> can also contain isolated points that will appear as vertices of the mesh.</p>
 <p>The segments of the <span class="textsc">Pslg</span> are either segments of the boundary or internals constraints. The segments of the <span class="textsc">Pslg</span> have to cover the boundary of the domain.</p>
 <p>The <span class="textsc">Pslg</span> divides the plane into several connected components. By default, the domain is the union of the bounded connected components.</p>
-<p>See <a class="el" href="index.html#fig__Domain">Figure 57.2</a> for an example of a domain defined without using seed points, and a possible mesh of it.</p>
+<p>See <a class="el" href="index.html#fig__Domain">Figure 58.2</a> for an example of a domain defined without using seed points, and a possible mesh of it.</p>
 <p><a class="anchor" id="fig__Domain"></a> </p><div class="image">
 <img src="domain-domain-mesh.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Domain">Figure 57.2</a> A domain defined without seed points and the generated mesh. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Domain">Figure 58.2</a> A domain defined without seed points and the generated mesh. </p> </div> <p> <br>
 </p>
 <p>The user can override this default by providing a set of seed points. Either seed points mark components to be meshed or they mark components not to be meshed (holes).</p>
-<p>See <a class="el" href="index.html#fig__Domainseeds">Figure 57.3</a> for another domain defined with the same <span class="textsc">Pslg</span> and two seed points used to define holes. In the corresponding mesh these two holes are triangulated but not meshed.</p>
+<p>See <a class="el" href="index.html#fig__Domainseeds">Figure 58.3</a> for another domain defined with the same <span class="textsc">Pslg</span> and two seed points used to define holes. In the corresponding mesh these two holes are triangulated but not meshed.</p>
 <p><a class="anchor" id="fig__Domainseeds"></a> </p><div class="image">
 <img src="domain-seeds-domain-seeds-mesh.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Domainseeds">Figure 57.3</a> A domain with two seeds points defining holes and the generated mesh. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Domainseeds">Figure 58.3</a> A domain with two seeds points defining holes and the generated mesh. </p> </div> <p> <br>
 </p>
 <h2><a class="anchor" id="secMesh_2_criteria"></a>
 Shape and Size Criteria</h2>
@@ -307,16 +315,16 @@ Optimization of Meshes with Lloyd</h2>
 <div class="ttc" id="agroup__PkgMesh2Functions_html_gafeaf59d3fa014da287f8514913b38d05"><div class="ttname"><a href="group__PkgMesh2Functions.html#gafeaf59d3fa014da287f8514913b38d05">CGAL::lloyd_optimize_mesh_2</a></div><div class="ttdeci">Mesh_optimization_return_code lloyd_optimize_mesh_2(CDT &amp;cdt, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">The function lloyd_optimize_mesh_2() is a mesh optimization process based on the minimization of a gl...</div><div class="ttdef"><b>Definition:</b> lloyd_optimize_mesh_2.h:119</div></div>
 </div><!-- fragment --><p> Note that this global function has several named parameters (see details in reference pages) to tune the optimization process.</p>
 <p>This optimization process alternates relocating vertices to the center of mass of their Voronoi cells, and updating the Delaunay connectivity of the triangulation. The center of mass is computed with respect to a sizing function that was designed to preserve the local density of points in the mesh generated by Delaunay refinement.</p>
-<p>See Figure <a class="el" href="index.html#fig__Lloydfigure">Figure 57.4</a> for a mesh generated by <code><a class="el" href="group__PkgMesh2Functions.html#gad0e4753d46c0203cb3d45d102840e483" title="refines the domain defined by a constrained Delaunay triangulation into a mesh satisfying the criteri...">refine_Delaunay_mesh_2()</a></code> and optimized with <code><a class="el" href="group__PkgMesh2Functions.html#gafeaf59d3fa014da287f8514913b38d05" title="The function lloyd_optimize_mesh_2() is a mesh optimization process based on the minimization of a gl...">lloyd_optimize_mesh_2()</a></code>. Figure <a class="el" href="index.html#fig__LloydHistogramfigure">Figure 57.5</a> shows the histogram of angles inside these meshes.</p>
+<p>See <a class="el" href="index.html#fig__Lloydfigure">Figure 58.4</a> for a mesh generated by <code><a class="el" href="group__PkgMesh2Functions.html#gad0e4753d46c0203cb3d45d102840e483" title="refines the domain defined by a constrained Delaunay triangulation into a mesh satisfying the criteri...">refine_Delaunay_mesh_2()</a></code> and optimized with <code><a class="el" href="group__PkgMesh2Functions.html#gafeaf59d3fa014da287f8514913b38d05" title="The function lloyd_optimize_mesh_2() is a mesh optimization process based on the minimization of a gl...">lloyd_optimize_mesh_2()</a></code>. <a class="el" href="index.html#fig__LloydHistogramfigure">Figure 58.5</a> shows the histogram of angles inside these meshes.</p>
 <p><a class="anchor" id="fig__Lloydfigure"></a> </p><div class="image">
 <img src="lloyd.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Lloydfigure">Figure 57.4</a> (Left) Mesh generated by <code><a class="el" href="group__PkgMesh2Functions.html#gad0e4753d46c0203cb3d45d102840e483" title="refines the domain defined by a constrained Delaunay triangulation into a mesh satisfying the criteri...">refine_Delaunay_mesh_2()</a></code> for a uniform sizing criterion. (Right) shows the same mesh after 100 iterations of Lloyd optimization. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Lloydfigure">Figure 58.4</a> (Left) Mesh generated by <code><a class="el" href="group__PkgMesh2Functions.html#gad0e4753d46c0203cb3d45d102840e483" title="refines the domain defined by a constrained Delaunay triangulation into a mesh satisfying the criteri...">refine_Delaunay_mesh_2()</a></code> for a uniform sizing criterion. (Right) shows the same mesh after 100 iterations of Lloyd optimization. </p> </div> <p> <br>
 </p>
 <p><a class="anchor" id="fig__LloydHistogramfigure"></a> </p><div class="image">
 <img src="lloyd-histograms.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__LloydHistogramfigure">Figure 57.5</a> Histograms of angles inside the mesh after Delaunay refinement, and after 10 and 100 iterations of Lloyd optimization. After Delaunay refinement, angles are in the interval [28.5; 121.9] degrees. After 10 iterations of Lloyd optimization, they are in [29.1; 110.8]. 100 iterations take them to [29.3; 109.9]. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__LloydHistogramfigure">Figure 58.5</a> Histograms of angles inside the mesh after Delaunay refinement, and after 10 and 100 iterations of Lloyd optimization. After Delaunay refinement, angles are in the interval [28.5; 121.9] degrees. After 10 iterations of Lloyd optimization, they are in [29.1; 110.8]. 100 iterations take them to [29.3; 109.9]. </p> </div> <p> <br>
 </p>
 <p>As of CGAL 5.6, <code><a class="el" href="group__PkgMesh2Functions.html#gafeaf59d3fa014da287f8514913b38d05" title="The function lloyd_optimize_mesh_2() is a mesh optimization process based on the minimization of a gl...">lloyd_optimize_mesh_2()</a></code> uses <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a> to set parameters. More details are provided in <a class="elRef" href="../STL_Extension/FromBoostNPtoCGALNP.html">Upgrading Code using Boost Parameters to CGAL Named Function Parameters</a>.</p>
 <h2><a class="anchor" id="Mesh_2Examples"></a>

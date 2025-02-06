@@ -55,7 +55,7 @@ var group__PkgSTLExtensionUtilities =
       [ "Uncertain", "classCGAL_1_1Uncertain.html#a419044c5edf548fba4311588499ffd40", null ],
       [ "Uncertain", "classCGAL_1_1Uncertain.html#a4c3a785e7dbaaeac6ae2e5274311a1ab", null ],
       [ "Uncertain", "classCGAL_1_1Uncertain.html#a8a7f6c066b7643180fc7c6c54887c791", null ],
-      [ "enum_cast", "classCGAL_1_1Uncertain.html#a706f7518f1e5daf862b83b47bbad848c", null ],
+      [ "enum_cast", "classCGAL_1_1Uncertain.html#aba9a3c935e55e156a975e6a0891d62c7", null ],
       [ "indeterminate", "classCGAL_1_1Uncertain.html#a9c94b5311d3a5304e16c580334ee84c0", null ],
       [ "inf", "classCGAL_1_1Uncertain.html#aadfe4670d91863370b5850358e74138b", null ],
       [ "is_certain", "classCGAL_1_1Uncertain.html#ad6216622e449e7a0b988704540a1fd42", null ],

@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Handles and Circulators: Handles and Circulators Reference</title>
+<title>CGAL 6.1 - Handles and Circulators: Handles and Circulators Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Handles and Circulators
+   <div id="projectname">CGAL 6.1 - Handles and Circulators
    </div>
   </td>
  </tr>
@@ -170,7 +178,7 @@ $(document).ready(function(){initNavTree('group__PkgHandlesAndCirculatorsRef.htm
 <img src="circulator.png" alt="">
 </div>
  </div> <div class="PkgSummary"> <div class="PkgAuthors">Olivier Devillers, Lutz Kettner, Sylvain Pion, Michael Seel, and Mariette Yvinec</div> <div class="PkgDescription">This package describes handles and circulators. They are related to iterators. Handles allow to dereference but neither to increment nor to decrement. Circulators have no notion of past-the-end, and they are used in CGAL whenever we have cyclic structures. </div> <div class="PkgManuals"></div> </div> <div class="PkgShortInfo"> <b>Introduced in:</b> CGAL 1.0<br>
- <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:dksy-hc-24b">cgal:dksy-hc-24b</a><br>
+ <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:dksy-hc-25a">cgal:dksy-hc-25a</a><br>
  <b>License:</b> <a class="elRef" href="../Manual/license.html#licensesLGPL">LGPL</a> <br>
  </div><p>The concept of iterators in the STL is tailored for linear sequences.</p>
 <p>CGAL extends this in several directions. First, it supports the notion of <code><a class="el" href="classHandle.html" title="Most data structures in CGAL use the concept of Handle in their user interface to refer to the elemen...">Handle</a></code> (also sometimes referred to as the trivial iterator) which is used to document that no traversal operation is needed, only reference to an element. It also uses the <code><a class="el" href="classRange.html" title="CGAL and the STL heavily use the concepts of iterators and iterator ranges to describe linear sequenc...">Range</a></code> and <code><a class="el" href="classConstRange.html" title="A constant iterator range. Refer to the Range concept for more details.">ConstRange</a></code> concepts which encapsulates the access to both the first and the past-the-end iterators of an iterator range.</p>

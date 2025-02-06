@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: GIS (Geographic Information System)</title>
+<title>CGAL 6.1 - Manual: GIS (Geographic Information System)</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -605,7 +613,7 @@ Rastering</h1>
 <p><a class="anchor" id="fig__TutorialGISFigRastering"></a> </p><div class="image">
 <img src="raster.jpg" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="tuto_gis.html#fig__TutorialGISFigRastering">Figure 0.5</a> Raster visualisation of height using a rainbow ramp, ranging from light blue for low values to dark red for high values. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="tuto_gis.html#fig__TutorialGISFigRastering">Figure 0.5</a> Raster visualization of height using a rainbow ramp, ranging from light blue for low values to dark red for high values. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="TutorialGIS_Contour"></a>
 Contouring</h1>

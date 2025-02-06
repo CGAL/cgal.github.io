@@ -1,6 +1,6 @@
 var NAVTREEINDEX0 =
 {
-"annotated.html":[3],
+"annotated.html":[2],
 "classCGAL_1_1Triangulation__data__structure__2.html":[1,0,1],
 "classCGAL_1_1Triangulation__data__structure__2.html#a30f4abb1b5d99e9810066a669e629aba":[1,0,1,2],
 "classCGAL_1_1Triangulation__data__structure__2.html#a4de1346ae930695e3296d9e6c1493c6f":[1,0,1,1],
@@ -169,8 +169,8 @@ var NAVTREEINDEX0 =
 "classTriangulationDataStructure__2_1_1Vertex.html#afd01d17dbe34f6208c74e8b3b72a4d25":[1,0,0,1,6],
 "group__PkgTDS2Concepts.html":[1,0,0],
 "group__PkgTDS2Ref.html":[1,0],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#TDS_2ADataStructureBasedonFacesandVertices":[0,0,0],
 "index.html#TDS_2D_Concept":[0,1],
 "index.html#TDS_2D_Definition":[0,0],
@@ -181,6 +181,5 @@ var NAVTREEINDEX0 =
 "index.html#TDS_2TheRebindMechanism":[0,2,2],
 "index.html#TDS_2TheSetofFacesandVertices":[0,0,1],
 "modules.html":[1],
-"pages.html":[],
-"todo.html":[2]
+"pages.html":[]
 };

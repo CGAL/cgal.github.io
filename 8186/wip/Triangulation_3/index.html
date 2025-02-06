@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Triangulations: User Manual</title>
+<title>CGAL 6.1 - 3D Triangulations: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Triangulations
+   <div id="projectname">CGAL 6.1 - 3D Triangulations
    </div>
   </td>
  </tr>
@@ -172,13 +180,13 @@ Representation</h1>
 <p>In order to deal only with tetrahedra, which is convenient for many applications, the unbounded cell can be subdivided into tetrahedra by considering that each convex hull facet is incident to an <code>infinite cell</code> having as fourth vertex an auxiliary vertex called the <code>infinite vertex</code>. In that way, each facet is incident to exactly two cells and special cases at the boundary of the convex hull are simple to deal with.</p>
 <p>The class <code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a>&lt;<a class="el" href="classTriangulationTraits__3.html">TriangulationTraits_3</a>,<a class="elRef" href="../TDS_3/classTriangulationDataStructure__3.html">TriangulationDataStructure_3</a>&gt;</code> of CGAL implements this point of view and therefore considers the triangulation of the set of points as a set of finite and infinite tetrahedra. Notice that the infinite vertex has no significant coordinates and that no geometric predicate can be applied on it.</p>
 <p>A triangulation is a collection of vertices and cells that are linked together through incidence and adjacency relations. Each cell gives access to its four incident vertices and to its four adjacent cells. Each vertex gives access to one of its incident cells.</p>
-<p>The four vertices of a cell are indexed with 0, 1, 2 and 3 in positive orientation, the positive orientation being defined by the orientation of the underlying Euclidean space \( \mathbb{R}^3\) (see <a class="el" href="index.html#fig__Triangulation3figorient">Figure 46.1</a>). The neighbors of a cell are also indexed with 0, 1, 2, 3 in such a way that the neighbor indexed by \( i\) is opposite to the vertex with the same index.</p>
+<p>The four vertices of a cell are indexed with 0, 1, 2 and 3 in positive orientation, the positive orientation being defined by the orientation of the underlying Euclidean space \( \mathbb{R}^3\) (see <a class="el" href="index.html#fig__Triangulation3figorient">Figure 47.1</a>). The neighbors of a cell are also indexed with 0, 1, 2, 3 in such a way that the neighbor indexed by \( i\) is opposite to the vertex with the same index.</p>
 <p><a class="anchor" id="fig__Triangulation3figorient"></a> </p><div class="image">
 <img src="orient.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figorient">Figure 46.1</a> Orientation of a cell (3-dimensional case). </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figorient">Figure 47.1</a> Orientation of a cell (3-dimensional case). </p> </div> <p> <br>
 </p>
-<p>As in the underlying combinatorial triangulation (see Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">3D Triangulation Data Structure</a>), edges ( \( 1\)-faces) and facets ( \( 2\)-faces) are not explicitly represented: a facet is given by a cell and an index (the facet <code>i</code> of a cell <code>c</code> is the facet of <code>c</code> that is opposite to the vertex with index <code>i</code>) and an edge is given by a cell and two indices (the edge <code>(i,j)</code> of a cell <code>c</code> is the edge whose endpoints are the vertices of <code>c</code> with indices <code>i</code> and <code>j</code>). See <a class="elRef" href="../TDS_3/index.html#fig__TDS3figrepres">Figure 47.1</a>.</p>
+<p>As in the underlying combinatorial triangulation (see Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">3D Triangulation Data Structure</a>), edges ( \( 1\)-faces) and facets ( \( 2\)-faces) are not explicitly represented: a facet is given by a cell and an index (the facet <code>i</code> of a cell <code>c</code> is the facet of <code>c</code> that is opposite to the vertex with index <code>i</code>) and an edge is given by a cell and two indices (the edge <code>(i,j)</code> of a cell <code>c</code> is the edge whose endpoints are the vertices of <code>c</code> with indices <code>i</code> and <code>j</code>). See <a class="elRef" href="../TDS_3/index.html#fig__TDS3figrepres">Figure 48.1</a>.</p>
 <p><b>Degenerate Dimensions</b></p>
 <p>The class <code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a></code> can also deal with triangulations whose dimension \( d\) is less than 3. A triangulation of a set of points in \( \mathbb{R}^d\) covers the whole space \( \mathbb{R}^d\) and consists of cells having \( d+1\) vertices: some of them are infinite, they are obtained by linking the additional infinite vertex to each facet of the convex hull of the points. </p><ul>
 <li>
@@ -195,7 +203,7 @@ Representation</h1>
 <p><b>Validity</b></p>
 <p>A triangulation of \( \mathbb{R}^3\) is said to be <em>locally valid</em> iff</p>
 <p><b>(a)-(b)</b> Its underlying combinatorial graph, the triangulation data structure, is <em>locally valid</em> (see Section <a class="elRef" href="../TDS_3/index.html#TDS3secintro">Introduction</a> of Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">3D Triangulation Data Structure</a>)</p>
-<p><b>(c)</b> Any cell has its vertices ordered according to positive orientation. See <a class="el" href="index.html#fig__Triangulation3figorient">Figure 46.1</a>.</p>
+<p><b>(c)</b> Any cell has its vertices ordered according to positive orientation. See <a class="el" href="index.html#fig__Triangulation3figorient">Figure 47.1</a>.</p>
 <p>When the triangulation is degenerated into a triangulation of dimension 2, the geometric validity reduces to:</p>
 <p><b>(c-2D)</b> For any two adjacent triangles \( (u,v,w_1)\) and \( (u,v,w_2)\) with common edge \( (u,v)\), \( w_1\) and \( w_2\) lie on opposite sides of \( (u,v)\) in the plane.</p>
 <p>When all the points are collinear, this condition becomes:</p>
@@ -214,11 +222,11 @@ Regular Triangulation</h1>
 </p>
 <p> where \( \|{p-z}\|\) is the Euclidean distance between \( p\) and \( z\).</p>
 <p>The weighted points \( {p}^{(w)}\) and \( {z}^{(w)}\) are said to be <em>orthogonal</em> iff \( \Pi{({p}^{(w)},{z}^{(w)})}
-= 0\) (see <a class="el" href="index.html#fig__Triangulation3figortho">Figure 46.2</a>).</p>
+= 0\) (see <a class="el" href="index.html#fig__Triangulation3figortho">Figure 47.2</a>).</p>
 <p><a class="anchor" id="fig__Triangulation3figortho"></a> </p><div class="image">
 <object type="image/svg+xml" data="ortho.svg" style="pointer-events: none;"></object>
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figortho">Figure 46.2</a> Orthogonal weighted points (picture in 2D). </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figortho">Figure 47.2</a> Orthogonal weighted points (picture in 2D). </p> </div> <p> <br>
 </p>
 <p>Four weighted points have a unique common orthogonal weighted point called the <em>power sphere</em>. The weighted point orthogonal to three weighted points in the plane defined by these three points is called the <em>power circle</em>. The <em>power segment</em> will denote the weighted point orthogonal to two weighted points on the line defined by these two points.</p>
 <p>Let \( {S}^{(w)}\) be a set of weighted points in \( \mathbb{R}^3\). A sphere \( {z}^{(w)}\) is said to be <em>regular</em> if \( \forall {p}^{(w)}\in{S}^{(w)},
@@ -229,11 +237,11 @@ Regular Triangulation</h1>
 <p>The implementation of 3D regular triangulation supports insertions of weighted points, and vertex removals. Displacements are not supported in the current implementation.</p>
 <h1><a class="anchor" id="Triangulation3secdesign"></a>
 Software Design</h1>
-<p>The main classes <code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a></code>, <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__3.html" title="The class Delaunay_triangulation_3 represents a three-dimensional Delaunay triangulation.">Delaunay_triangulation_3</a></code> and <code><a class="el" href="classCGAL_1_1Regular__triangulation__3.html" title="Let  be a set of weighted points in .">Regular_triangulation_3</a></code> are connected to each other by the derivation diagram shown in <a class="el" href="index.html#fig__t3_derivation">Figure 46.3</a>. This diagram also shows another class: <code><a class="elRef" href="../TDS_3/structCGAL_1_1Triangulation__utils__3.html">Triangulation_utils_3</a></code>, which provides a set of tools operating on the indices of vertices in cells.</p>
+<p>The main classes <code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a></code>, <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__3.html" title="The class Delaunay_triangulation_3 represents a three-dimensional Delaunay triangulation.">Delaunay_triangulation_3</a></code> and <code><a class="el" href="classCGAL_1_1Regular__triangulation__3.html" title="Let  be a set of weighted points in .">Regular_triangulation_3</a></code> are connected to each other by the derivation diagram shown in <a class="el" href="index.html#fig__t3_derivation">Figure 47.3</a>. This diagram also shows another class: <code><a class="elRef" href="../TDS_3/structCGAL_1_1Triangulation__utils__3.html">Triangulation_utils_3</a></code>, which provides a set of tools operating on the indices of vertices in cells.</p>
 <p><a class="anchor" id="fig__t3_derivation"></a> </p><div class="image">
 <img src="derivation.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__t3_derivation">Figure 46.3</a> Derivation diagram of the 3D triangulation classes. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__t3_derivation">Figure 47.3</a> Derivation diagram of the 3D triangulation classes. </p> </div> <p> <br>
 </p>
 <p>The three main classes (<code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a></code>, <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__3.html" title="The class Delaunay_triangulation_3 represents a three-dimensional Delaunay triangulation.">Delaunay_triangulation_3</a></code> and <code><a class="el" href="classCGAL_1_1Regular__triangulation__3.html" title="Let  be a set of weighted points in .">Regular_triangulation_3</a></code>) provide high-level geometric functionality such as location of a point in the triangulation <a class="el" href="citelist.html#CITEREF_cgal:dpt-wt-02">[11]</a>, insertion and possibly removal of a point <a class="el" href="citelist.html#CITEREF_cgal:dt-pvr3d-03">[8]</a>, and are responsible for the geometric validity. They are built as layers on top of a triangulation data structure, which stores their combinatorial structure. This separation between the geometry and the combinatorics is reflected in the software design by the fact that these three triangulation classes take the following template parameters :</p>
 <ul>
@@ -253,11 +261,11 @@ The Geometric Traits Parameter</h2>
 <p>All kernels provided by CGAL can all be used as models for the geometric traits parameter.</p>
 <h2><a class="anchor" id="Triangulation3sectds"></a>
 The Triangulation Data Structure Parameter</h2>
-<p>The second template parameter of the main classes (<code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a></code>, <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__3.html" title="The class Delaunay_triangulation_3 represents a three-dimensional Delaunay triangulation.">Delaunay_triangulation_3</a></code> and <code><a class="el" href="classCGAL_1_1Regular__triangulation__3.html" title="Let  be a set of weighted points in .">Regular_triangulation_3</a></code>) is a triangulation data structure class. This class can be seen as a container for the cells and vertices maintaining incidence and adjacency relations (see Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">chapterTDS3</a>). A model of this triangulation data structure is <code><a class="elRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">Triangulation_data_structure_3</a></code>, and it is described by the <code><a class="elRef" href="../TDS_3/classTriangulationDataStructure__3.html">TriangulationDataStructure_3</a></code> concept . This model is itself parameterized by a vertex base and a cell base classes, which gives the possibility to customize the vertices and cells used by the triangulation data structure, and hence by the geometric triangulation using it. Depending on the kind of triangulation used, the requirements on the vertex and cell base classes vary, and are expressed by various concepts, following the refinement diagram shown in <a class="el" href="index.html#fig__T3concepthierarchy">Figure 46.4</a>.</p>
+<p>The second template parameter of the main classes (<code><a class="el" href="classCGAL_1_1Triangulation__3.html" title="The class Triangulation_3 represents a 3-dimensional tetrahedralization of points.">Triangulation_3</a></code>, <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__3.html" title="The class Delaunay_triangulation_3 represents a three-dimensional Delaunay triangulation.">Delaunay_triangulation_3</a></code> and <code><a class="el" href="classCGAL_1_1Regular__triangulation__3.html" title="Let  be a set of weighted points in .">Regular_triangulation_3</a></code>) is a triangulation data structure class. This class can be seen as a container for the cells and vertices maintaining incidence and adjacency relations (see Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">chapterTDS3</a>). A model of this triangulation data structure is <code><a class="elRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">Triangulation_data_structure_3</a></code>, and it is described by the <code><a class="elRef" href="../TDS_3/classTriangulationDataStructure__3.html">TriangulationDataStructure_3</a></code> concept . This model is itself parameterized by a vertex base and a cell base classes, which gives the possibility to customize the vertices and cells used by the triangulation data structure, and hence by the geometric triangulation using it. Depending on the kind of triangulation used, the requirements on the vertex and cell base classes vary, and are expressed by various concepts, following the refinement diagram shown in <a class="el" href="index.html#fig__T3concepthierarchy">Figure 47.4</a>.</p>
 <p><a class="anchor" id="fig__T3concepthierarchy"></a> </p><div class="image">
 <img src="concept_hierarchy.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__T3concepthierarchy">Figure 46.4</a> Concepts refinement hierarchy for the vertex and cell base classes parameters. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__T3concepthierarchy">Figure 47.4</a> Concepts refinement hierarchy for the vertex and cell base classes parameters. </p> </div> <p> <br>
 </p>
 <p>A default value for the triangulation data structure parameter is provided in all the triangulation classes, so it need not be specified by the user unless he wants to use a different triangulation data structure or a different vertex or cell base class.</p>
 <h2><a class="anchor" id="Triangulation3seclocpol"></a>
@@ -272,11 +280,11 @@ The Location Policy Parameter</h2>
 <h2><a class="anchor" id="Triangulation_3FlexibilityoftheDesign"></a>
 Flexibility of the Design</h2>
 <p>In order to satisfy as many uses as possible, a design has been selected that allows to exchange different parts to meet the users' needs, while still reusing a maximum of the provided functionalities. We have already seen that the main triangulation classes are parameterized by a geometric traits class and a triangulation data structure (TDS), so that each of them can be interchanged with alternate implementations.</p>
-<p>The most useful flexibility is the ability given to the user to add his own data in the vertices and cells by providing his own vertex and cell base classes to <code><a class="elRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">Triangulation_data_structure_3</a></code>. The <a class="el" href="index.html#fig__T3figlayers">Figure 46.5</a> shows in more detail the flexibility that is provided, and the place where the user can insert his own vertex and/or cell base classes.</p>
+<p>The most useful flexibility is the ability given to the user to add his own data in the vertices and cells by providing his own vertex and cell base classes to <code><a class="elRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">Triangulation_data_structure_3</a></code>. The <a class="el" href="index.html#fig__T3figlayers">Figure 47.5</a> shows in more detail the flexibility that is provided, and the place where the user can insert his own vertex and/or cell base classes.</p>
 <p><a class="anchor" id="fig__T3figlayers"></a> </p><div class="image">
 <img src="design.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__T3figlayers">Figure 46.5</a> Triangulation software design. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__T3figlayers">Figure 47.5</a> Triangulation software design. </p> </div> <p> <br>
 </p>
 <p>The design of the triangulation data structure gives the possibility to store any kind of data, including handles (an entity akin to pointers) directly in the vertex and cell base classes.</p>
 <p>To do so, there are three possibilities. The simplest one is to use the class <code><a class="el" href="classCGAL_1_1Triangulation__vertex__base__with__info__3.html" title="The class Triangulation_vertex_base_with_info_3 is a model of the concept TriangulationVertexBase_3,...">Triangulation_vertex_base_with_info_3</a></code>, and this approach is illustrated in a following subsection <a class="el" href="index.html#Triangulation3secexamplescolor">Adding a Color</a>. The most complicated one, and probably useless for almost all cases, is to write a vertex base class from scratch, following the documented requirements. This is mostly useless because most of the time it is enough to derive from the models that CGAL provides, and add the desired features. In this case, when the user needs to access some type that depends on the triangulation data structure (typically handles), then he should write something like:</p>
@@ -1001,7 +1009,7 @@ Traversing the Triangulation Along a Segment</h2>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassCGAL_1_1Triangulation__simplex__3_html"><div class="ttname"><a href="classCGAL_1_1Triangulation__simplex__3.html">CGAL::Triangulation_simplex_3</a></div><div class="ttdoc">The class Triangulation_simplex_3 stores a simplex of any dimension defined by the Triangulation_3 cl...</div><div class="ttdef"><b>Definition:</b> Triangulation_simplex_3.h:22</div></div>
+<div class="ttc" id="aclassCGAL_1_1Triangulation__simplex__3_html"><div class="ttname"><a href="classCGAL_1_1Triangulation__simplex__3.html">CGAL::Triangulation_simplex_3</a></div><div class="ttdoc">The class Triangulation_simplex_3 stores a simplex of any dimension defined by the TriangulationDataS...</div><div class="ttdef"><b>Definition:</b> Triangulation_simplex_3.h:22</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="Triangulation_3FindingtheCellsinConflict"></a>
 Finding the Cells in Conflict with a Point in a Delaunay Triangulation</h2>
 <p><br>
@@ -1317,7 +1325,7 @@ Draw a 3D Triangulation</h2>
 <p><a class="anchor" id="fig__fig_draw_triangulation_3"></a> </p><div class="image">
 <img src="draw_triangulation_3.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__fig_draw_triangulation_3">Figure 46.6</a> Result of the run of the draw_triangulation_3 program. A window shows the 3D triangulation and allows to navigate through the 3D scene. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__fig_draw_triangulation_3">Figure 47.6</a> Result of the run of the draw_triangulation_3 program. A window shows the 3D triangulation and allows to navigate through the 3D scene. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="Triangulation3seccomplexity"></a>
 Complexity and Performance</h1>
@@ -1342,7 +1350,7 @@ removal of a vertex (using the <code>remove</code> function). </li>
 <li>
 <b><a class="elRef" href="../Manual/classRegular.html">Regular</a> - No hidden points</b> : <code><a class="el" href="classCGAL_1_1Regular__triangulation__3.html" title="Let  be a set of weighted points in .">Regular_triangulation_3</a></code> with hidden points discarded. </li>
 </ul>
-<p><a class="el" href="index.html#fig__Triangulation3figbenchmarks">Figure 46.7</a> shows, for all these types of triangulations, the times in seconds taken to build a triangulation from a given number of points, then the average time to perform one point location in triangulations of various sizes, and the average time to perform one vertex removal (which is largely independent on the size of the triangulation).</p>
+<p><a class="el" href="index.html#fig__Triangulation3figbenchmarks">Figure 47.7</a> shows, for all these types of triangulations, the times in seconds taken to build a triangulation from a given number of points, then the average time to perform one point location in triangulations of various sizes, and the average time to perform one vertex removal (which is largely independent on the size of the triangulation).</p>
 <p>The data sets used here are points randomly distributed in the unit cube (the coordinates are generated using the <code>drand48</code> C function). In the weighted case, the weights are all zero, which means that there are actually no hidden points during execution.</p>
 <p>The measurements have been performed using CGAL 3.6, using the GNU C++ compiler version 4.3.2, under Linux (Fedora 10 distribution), with the compilation options <code>-O3 -DCGAL_NDEBUG</code>. The computer used was equipped with a 64bit Intel Xeon 3GHz processor and 32GB of RAM (a recent desktop machine as of 2009).</p>
 <p><a class="anchor" id="fig__Triangulation3figbenchmarks"></a></p><center> <table cellspacing="5">
@@ -1400,23 +1408,23 @@ removal of a vertex (using the <code>remove</code> function). </li>
 <td align="left" nowrap colspan="5"><hr>
  </td></tr>
 </table>
-</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Triangulation3figbenchmarks">Figure 46.7</a> Running times in seconds for algorithms on 3D triangulations. </p> </div> <p> <br>
+</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Triangulation3figbenchmarks">Figure 47.7</a> Running times in seconds for algorithms on 3D triangulations. </p> </div> <p> <br>
 </p>
 <p>More benchmarks comparing CGAL to other software can be found in <a class="el" href="citelist.html#CITEREF_msri52:liu-snoeyink-05">[17]</a>.</p>
 <h2><a class="anchor" id="Triangulation_3ParallelPerformance"></a>
 Parallel Performance</h2>
-<p>Figure <a class="el" href="index.html#fig__Triangulation3figparallelspeedup">Figure 46.8</a> shows insertion and removal speed-ups obtained using the parallel version of the triangulation algorithms of CGAL 4.5. The machine used is a PC running Windows 7 64-bits with two 6-core Intel Xeon CPU X5660 clocked at 2.80 GHz with 32GB of RAM. The program has been compiled with Microsoft Visual C++ 2012 in Release mode.</p>
+<p><a class="el" href="index.html#fig__Triangulation3figparallelspeedup">Figure 47.8</a> shows insertion and removal speed-ups obtained using the parallel version of the triangulation algorithms of CGAL 4.5. The machine used is a PC running Windows 7 64-bits with two 6-core Intel Xeon CPU X5660 clocked at 2.80 GHz with 32GB of RAM. The program has been compiled with Microsoft Visual C++ 2012 in Release mode.</p>
 <p><a class="anchor" id="fig__Triangulation3figparallelspeedup"></a> </p><div class="image">
 <img src="DT3_parallel_benchmark.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figparallelspeedup">Figure 46.8</a> Speed-up obtained for the insertion of 1M points randomly generated inside a cube (red), and the removal of 100K of them (blue), compared to the sequential version of the algorithm. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figparallelspeedup">Figure 47.8</a> Speed-up obtained for the insertion of 1M points randomly generated inside a cube (red), and the removal of 100K of them (blue), compared to the sequential version of the algorithm. </p> </div> <p> <br>
 </p>
 <h2><a class="anchor" id="Triangulation_3MemoryUsage"></a>
 Memory Usage</h2>
 <p>We give here some indication about the memory usage of the triangulations. Those structures being intensively based on pointers, the size almost doubles on 64bit platforms compared to 32bit.</p>
 <p>The size also depends on the size of the point type which is copied in the vertices (hence on the kernel). Obviously, any user data added to vertices and cells also affect the memory used.</p>
 <p>More specifically, the memory space used to store a triangulation is first a function of the size of its <code>Vertex</code> and <code>Cell</code> types times their numbers (and for volumic distribution, one sees about 6.7 times more cells than vertices). However, these are stored in memory using <code><a class="elRef" href="../STL_Extension/classCGAL_1_1Compact__container.html">Compact_container</a></code>, which allocates them in lists of blocks of growing size, and this requires some additional overhead for bookkeeping. Moreover, memory is only released to the system when clearing or destroying the triangulation. This can be important for algorithms like simplifications of data sets which will produce fragmented memory usage (doing fresh copies of the data structures are one way out in such cases). The asymptotic memory overhead of <code><a class="elRef" href="../STL_Extension/classCGAL_1_1Compact__container.html">Compact_container</a></code> for its internal bookkeeping is otherwise on the order of \(O(\sqrt{n})\).</p>
-<p><a class="el" href="index.html#fig__Triangulation3figmemory">Figure 46.9</a> shows the number of bytes used per points, as measured empirically using <code>Memory_sizer</code> for large triangulations ( \( 10^6\) random points).</p>
+<p><a class="el" href="index.html#fig__Triangulation3figmemory">Figure 47.9</a> shows the number of bytes used per points, as measured empirically using <code>Memory_sizer</code> for large triangulations ( \( 10^6\) random points).</p>
 <p><a class="anchor" id="fig__Triangulation3figmemory"></a></p><center> <table cellspacing="5">
 <tr>
 <td align="left" nowrap colspan="5"><hr>
@@ -1447,7 +1455,7 @@ Memory Usage</h2>
 <td align="left" nowrap colspan="5"><hr>
  </td></tr>
 </table>
-</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Triangulation3figmemory">Figure 46.9</a> Memory usage in bytes per point for large data sets. </p> </div> <p> <br>
+</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Triangulation3figmemory">Figure 47.9</a> Memory usage in bytes per point for large data sets. </p> </div> <p> <br>
 </p>
 <h2><a class="anchor" id="Triangulation_3VariabilityDependingonthe"></a>
 Variability Depending on the Data Sets and the Kernel</h2>
@@ -1456,7 +1464,7 @@ Variability Depending on the Data Sets and the Kernel</h2>
 <p>Using an inexact kernel such as <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">Simple_cartesian</a>&lt;double&gt;</code> would lead to optimal performance, which is only about 30% better than <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a></code>. The latter is strongly recommended since it takes care about potential robustness issues. The former can be used for benchmarking purposes mostly, or when you really know that your data sets won't exhibit any robustness issue.</p>
 <p>Exact predicates take more time to compute when they hit (nearly) degenerate cases. Depending on the data set, this can have a visible impact on the overall performance of the algorithm or not.</p>
 <p>Sometimes you need exact constructions as well, so <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">Exact_predicates_exact_constructions_kernel</a></code> is a must. This is the case for example when you need the <code>dual</code> functions to be exact, or when your input is stored in points of such a kernel for other reasons (because it is the output of another algorithm which has this requirement, for example). This will slow down the computations by a factor of 4 to 5 at least, and it can be much more.</p>
-<p><a class="el" href="index.html#fig__Triangulation3figkernelsanddatasets">Figure 46.10</a> gives more detailed timings about various kernels one the following data sets : random points in a cube, random points on the surface of an ellipsoid, points scanned on the surface of a Buddha statue, points on a molecular surface, and points scanned on a dryer handle. See <a class="el" href="index.html#fig__Triangulation3figdatasets">Figure 46.11</a> for pictures of the last 3 objects, which respectively illustrate volumic data, surfacic data, and data with many degenerate cases. This last data set exhibits an infinite loop with an inexact kernel, and of course we are not sure whether what is computed for the other data sets with this inexact kernel is a Delaunay triangulation. General introductory information about these robustness issues can be found in <a class="el" href="citelist.html#CITEREF_cgta-kmpsy-08">[16]</a>. More benchmarks around this issue can also be found in <a class="el" href="citelist.html#CITEREF_cgal:dp-eegpd-03">[7]</a>.</p>
+<p><a class="el" href="index.html#fig__Triangulation3figkernelsanddatasets">Figure 47.10</a> gives more detailed timings about various kernels one the following data sets : random points in a cube, random points on the surface of an ellipsoid, points scanned on the surface of a Buddha statue, points on a molecular surface, and points scanned on a dryer handle. See <a class="el" href="index.html#fig__Triangulation3figdatasets">Figure 47.11</a> for pictures of the last 3 objects, which respectively illustrate volumic data, surfacic data, and data with many degenerate cases. This last data set exhibits an infinite loop with an inexact kernel, and of course we are not sure whether what is computed for the other data sets with this inexact kernel is a Delaunay triangulation. General introductory information about these robustness issues can be found in <a class="el" href="citelist.html#CITEREF_cgta-kmpsy-08">[16]</a>. More benchmarks around this issue can also be found in <a class="el" href="citelist.html#CITEREF_cgal:dp-eegpd-03">[7]</a>.</p>
 <p><a class="anchor" id="fig__Triangulation3figkernelsanddatasets"></a></p><center> <table cellspacing="5">
 <tr>
 <td align="left" nowrap colspan="6"><hr>
@@ -1503,7 +1511,7 @@ Variability Depending on the Data Sets and the Kernel</h2>
 <td align="left" nowrap colspan="6"><hr>
  </td></tr>
 </table>
-</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Triangulation3figkernelsanddatasets">Figure 46.10</a> Running times (seconds) for various kernels and data sets. </p> </div> <p> <br>
+</center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__Triangulation3figkernelsanddatasets">Figure 47.10</a> Running times (seconds) for various kernels and data sets. </p> </div> <p> <br>
 </p>
 <p><a class="anchor" id="fig__Triangulation3figdatasets"></a> </p><center> <table border="0">
 <tr>
@@ -1518,7 +1526,7 @@ Variability Depending on the Data Sets and the Kernel</h2>
 </div>
     </td></tr>
 </table>
-</center>  <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figdatasets">Figure 46.11</a> Data sets used in the benchmark of <a class="el" href="index.html#fig__Triangulation3figkernelsanddatasets">Figure 46.10</a>. </p> </div> <p> <br>
+</center>  <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Triangulation3figdatasets">Figure 47.11</a> Data sets used in the benchmark of <a class="el" href="index.html#fig__Triangulation3figkernelsanddatasets">Figure 47.10</a>. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="Triangulation_3Design"></a>
 Design and Implementation History</h1>
@@ -1528,7 +1536,7 @@ Design and Implementation History</h1>
 <p>In 2000, Sylvain Pion started working on these packages. He improved the efficiency of triangulations in CGAL 2.3 and 2.4 in several ways <a class="el" href="citelist.html#CITEREF_cgal:bdpty-tc-02">[6]</a> he implemented the Delaunay hierarchy <a class="el" href="citelist.html#CITEREF_cgal:d-dh-02">[12]</a> in 2.3, he improved the memory footprint in 2.4 and 3.0, he also performed work on arithmetic filters <a class="el" href="citelist.html#CITEREF_cgal:dp-eegpd-03">[7]</a> (see <code><a class="elRef" href="../Kernel_23/structCGAL_1_1Filtered__kernel.html">Filtered_kernel</a></code>) to improve the speed of triangulations. He changed the design in CGAL 3.0, allowing users to add handles in their own vertices and cells.</p>
 <p>Olivier Devillers, co-author of preliminary versions of the CGAL 2d triangulations, participated in many discussions, in particular about the perturbations, and more concretely in the implementation of the Delaunay hierarchy.</p>
 <p>In 2005, Christophe Delage implemented the vertex removal function for regular triangulations, using the symbolic perturbation proposed in <a class="el" href="citelist.html#CITEREF_cgal:dt-pvrdr-06">[9]</a>, which allowed to release this functionality in CGAL 3.2.</p>
-<p>In 2006, Nico Kruithof wrote the <code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the Triangulation_3 cl...">Triangulation_simplex_3</a></code> class that can store simplices of any dimension and improved the internal organization of the code.</p>
+<p>In 2006, Nico Kruithof wrote the <code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the TriangulationDataS...">Triangulation_simplex_3</a></code> class that can store simplices of any dimension and improved the internal organization of the code.</p>
 <p>As of March 2007, Christophe Delage made the iterator range insert methods and constructors use <code>spatial_sort</code> to improve efficiency.</p>
 <p>In 2008, Camille Wormser added a few more iterators in the package that were integrated in release 3.4.</p>
 <p>In 2009, Sylvain Pion simplified the design of the Delaunay hierarchy so that it became the simple <code>Fast_location</code> policy in release 3.6.</p>
