@@ -2,6 +2,11 @@
 
 set -e
 
+error() {
+        >&2 echo "ERROR: $1"
+        exit 1
+}
+
 for d in */; do
         pr=${d%/}
         STATE=$(GH_REPO=CGAL/cgal gh pr view "$pr" --json state --jq .state)
@@ -13,8 +18,8 @@ for d in */; do
         echo "#$pr: $STATE"
         if [ "$STATE" != "OPEN" ]; then
                 echo "-> Deleting ./$pr/"
-                git rm -rf --quiet "./$pr" || >&2 echo "ERROR: Failed to delete ./$pr/" && exit 1
-                sed -e "/$pr/d" -i index.html || >&2 echo "ERROR: Failed to remove $pr from index.html" && exit 1
+                git rm -rf --quiet "./$pr" || error "Failed to delete ./$pr/"
+                sed -e "/$pr/d" -i index.html || error "Failed to remove $pr from index.html"
         fi
 done
 cat index.html | grep -F "$(echo */ | tr ' ' '\n')" > index.html
