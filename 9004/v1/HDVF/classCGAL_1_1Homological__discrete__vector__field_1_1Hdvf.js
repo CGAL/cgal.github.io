@@ -1,0 +1,28 @@
+var classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf =
+[
+    [ "Coefficient_ring", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#afd58a71bddcdc90fa592028befb64c94", null ],
+    [ "HDVF_parent", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a45bb44bf5b5038a3a3afbba33ad162b7", null ],
+    [ "Hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a5611ec9eee2e20b49d977ed56c83dd4d", null ],
+    [ "Hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a8fbdc8e1f6fc9dc29ba4533e97e6a16c", null ],
+    [ "~Hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#aa50d53550c10ec2ebc536574e690d495", null ],
+    [ "are_same_cocycles", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a41bebb4bf4ca05e0fec6e608ed030c7f", null ],
+    [ "are_same_cycles", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#addb7c2d73d2a4b55db860c4d1cfc2813", null ],
+    [ "find_pair_M", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a46cca45875a60e3547afafd8c0591166", null ],
+    [ "find_pair_M", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a513d9c88ab60c41ef1cbcf09ada12c60", null ],
+    [ "find_pair_MW", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a28fa73fbf55c085771bd819a75b380db", null ],
+    [ "find_pair_MW", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#aa52a359b0523804d487e9f8b4b3ffb46", null ],
+    [ "find_pair_W", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a3c1b58c9d2f03659be649fe473479542", null ],
+    [ "find_pair_W", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#ab18f6960ffc6c8f8d7fb47a3e39a82a2", null ],
+    [ "find_pairs_M", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#aaf59c53f3592d38358e57a80045a52bd", null ],
+    [ "find_pairs_M", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#ad1f09c6ec51d8f9513889f687f08fa3e", null ],
+    [ "find_pairs_MW", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#ad01a950266f2b09f6058f9f087e076cd", null ],
+    [ "find_pairs_MW", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a3523021b5f9ea8241fad07448f92b6b2", null ],
+    [ "find_pairs_W", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a739cef144f216319d26b896be49071f7", null ],
+    [ "find_pairs_W", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a98c30deb1b9e307a83dadafeda4cf04e", null ],
+    [ "get_annotation", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a520ccd9ddd79961879c56f9b8df1e4b8", null ],
+    [ "get_coannotation", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#af6c9788d65251fef9962d40ac523e165", null ],
+    [ "M", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a153e19d9c68c585162cd82f26eb2a97c", null ],
+    [ "MW", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#ad5f62906f74c31475bd9ae64d9129374", null ],
+    [ "R", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#a99260dc2bd40e17632a71c03bc5238b3", null ],
+    [ "W", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf.html#ac42e8a1212c0bb7ec77a8fca3d77073a", null ]
+];
