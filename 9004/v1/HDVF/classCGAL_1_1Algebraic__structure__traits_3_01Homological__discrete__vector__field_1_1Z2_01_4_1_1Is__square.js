@@ -1,0 +1,4 @@
+var classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4_1_1Is__square =
+[
+    [ "operator()", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4_1_1Is__square.html#ab272da607f6c718bbfbfde83c202d438", null ]
+];
