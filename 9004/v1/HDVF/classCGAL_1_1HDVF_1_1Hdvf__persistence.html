@@ -1,0 +1,927 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1HDVF_1_1Hdvf__persistence.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1 - Homological Discrete Vector Fields: CGAL::HDVF::Hdvf_persistence&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1HDVF_1_1Hdvf__persistence.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1HDVF_1_1Hdvf__persistence-members.html">List of all members</a> |
+<a href="#nested-classes">Classes</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pro-attribs">Protected Attributes</a> |
+<a href="#friends">Friends</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::HDVF::Hdvf_persistence&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a> » <a class="el" href="group__PkgHDVFAlgorithmClasses.html">Algorithm Classes</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/HDVF/Hdvf_persistence.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename CoefficientType, typename ComplexType, typename DegType, typename FiltrationType&gt;<br>
+class CGAL::HDVF::Hdvf_persistence&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a></code> computes persistent homology using HDVFs. </p>
+<p>Hence, unlike other persistence algorithms, beside standard persistent intervals informations (birth/death indices, degrees, associated cells), <code><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a></code> also provides <b>homology and cohomology generators for persistent pairs</b>. Intuitively, holes die when they are "filled" by a cell: associated homology and cohomology generators provide a representation of the hole and of the cells filling the hole.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The ring of coefficients provided should actually be a <b>field</b>.</dd></dl>
+<p>Given a <code><a class="el" href="classFiltration.html" title="The concept Filtration describes the requirements for persistent filtrations associated to persistent...">Filtration</a></code>, the <code><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a></code> constructor basically builds a <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> where indices of cells in the bases follow the filtration order (permutations between initial indices of cells in the chain complex and new indices given by the filtration are stored). Besides, <code><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a></code> derives from <code><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html" title="The class Hdvf_core is the core implementation of homological discrete vector fields (HDVF for short)...">Hdvf_core</a></code> with the <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> parameter type set to <code>Sub_sparse_matrix</code>. Hence, <code><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a></code> computes homology over a larger and larger sub-complex of <code>K</code> (encoded through a Bitboard mask of <code>Sub_sparse_matrix</code>) following the filtration <code>f</code>. At each step of the filtration, the new cell is paired (A operation) with the youngest cell valid for A.</p>
+<p>A few words about persistent generators. At a given time \(t_2\) along the filtration, let us denote by \(\tau\) the \(q+1\)-cell inserted and let us assume that persistent homology computation pairs \(A(\sigma, \tau)\) (let \(t_1\) be the index of \(\sigma\) along the filtration). A new persistent interval \((t_1, t_2)\)is created, generated by \(\sigma\) and filled by \(\tau\). Reduction at time \(t_2-1\) (just before the insertion of \(\tau\)) provides persistent generators: \(g(\sigma)\) is a cycle and \(g(\tau)\) is a chain "filling" this cycle (before the pairing \(A(\sigma, \tau)\), the <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> over \(K_{t_2}\) is not perfect, thus \(g(\tau)\) is not a cycle but a chain bounded by \(q\)-cycles).</p>
+<p>Next figures illustrate such informations for a filtration of a dented double torus.</p>
+<p><img src="lower_star_filtration_z.png" alt="" align="center" width="20%/" class="inline"></p>
+<p><a class="el" href="classFiltration.html" title="The concept Filtration describes the requirements for persistent filtrations associated to persistent...">Filtration</a> <code><a class="el" href="classCGAL_1_1HDVF_1_1Filtration__lower__star.html" title="The class Filtration_lower_star implements the lower star filtration on a given complex implementing ...">Filtration_lower_star</a></code> along the z axis of a dented double torus.</p>
+<p><img src="persistence_cycles1.png" alt="" align="center" width="20%/" class="inline"> <img src="persistence_2generator1.png" alt="" align="center" width="20%/" class="inline"> <img src="persistence_after1.png" alt="" align="center" width="20%/" class="inline"></p>
+<p>The first persistent hole is a dimension 1 hole with a duration of 0.359 along z.</p><ul>
+<li>(Left) the complex at time 622 along the filtration (in blue, the 2-cell \(\tau\) added at time 623). This 1-homology of this complex contains two cycles depicted in white and yellow respectively. Yellow curve: a 1-cycle born at time 319 (with cell \(\sigma\)) along the filtration. White curve: the second 1-cycle of this complex (born at time 156 along the filtration).</li>
+<li>(Middle) the filtration adds the (blue) 2-cell \(\tau\) at time 623: this cell fills one the 1-cycles (actually the "youngest" cycle, thus the yellow one). Middle image illustrates as a yellow patch the "filling 2-chain", a chain a 2-cells filling the hole when the cell \(\tau\) is added. As stated earlier, this filling chain is not a cycle and it equals \(g(\tau)\) in the (non perfect) reduction before the pairing <code>A(319, 623)</code> between \(\sigma\) and \(\tau\). Middle figure illustrates that in the (non perfect) <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> before A operation, \(g(\tau)\) is not a cycle but a chain bounded by \(q\)-cycles.</li>
+<li>(Right) the complex after insertion of \(\tau\) and the pairing <code>A(319, 623)</code> between \(\sigma\) and \(\tau\). Only the white 1-cycle remains (actually its persistent lifetime is infinite).</li>
+</ul>
+<p><img src="persistence_hole2.png" alt="" align="center" width="20%/" class="inline"></p>
+<p>The figure above illustrates next persistent hole (dimension 0 hole) which duration is 0.684 along z. The cell \(\tau\) is added at time 1237 and fills the 0-hole (connected component) introduced at time 756 by the cell \(\sigma\). The persistent generator associated to \(\sigma\) is simply the cell itself identifying its connected component. The persistent generator associated to \(\tau\) is a 1-chain (depicted in yellow) connecting \(\sigma\) to the critical cell identifying the second connected component.</p>
+<p><img src="persistence_hole3.png" alt="" align="center" width="20%/" class="inline"> <img src="persistence_hole4.png" alt="" align="center" width="20%/" class="inline"> <img src="persistence_hole_inf.png" alt="" align="center" width="20%/" class="inline"></p>
+<p>Figures above illustrate next finite persistent intervals and (right) infinite dimension 1 persistent intervals.</p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a></code> </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CoefficientType</td><td>a model of the <code><a class="el" href="classRing.html" title="The concept Ring describes the requirements for the ring of coefficients used to compute homology in ...">Ring</a></code> concept providing the ring used to compute homology. </td></tr>
+    <tr><td class="paramname">ComplexType</td><td>a model of the <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code> concept, providing the type of abstract chain complex used. </td></tr>
+    <tr><td class="paramname">DegType</td><td>a scalar data type used for the degrees of the filtration. </td></tr>
+    <tr><td class="paramname">FiltrationType</td><td>a model of the <code><a class="el" href="classFiltration.html" title="The concept Filtration describes the requirements for persistent filtrations associated to persistent...">Filtration</a></code> concept, providing the filtration used to compute persistence. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="HDVF_2main_per_hdvf_8cpp-example.html#_a0">HDVF/main_per_hdvf.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1iterator.html">iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> over (finite) persistent intervals.  <a href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1iterator.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1PerIntervalInformation.html">PerIntervalInformation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">For persistent diagram iterator (returned by *it)  <a href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1PerIntervalInformation.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a29ee9fb84115af1351ca51ae95ea15ba"><td class="memItemLeft" align="right" valign="top"><a id="a29ee9fb84115af1351ca51ae95ea15ba" name="a29ee9fb84115af1351ca51ae95ea15ba"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_chain</b></td></tr>
+<tr class="memdesc:a29ee9fb84115af1351ca51ae95ea15ba"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major chains. <br></td></tr>
+<tr class="separator:a29ee9fb84115af1351ca51ae95ea15ba"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa9a00bebed30a17f7b97b2526dabc091"><td class="memItemLeft" align="right" valign="top"><a id="aa9a00bebed30a17f7b97b2526dabc091" name="aa9a00bebed30a17f7b97b2526dabc091"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_chain</b></td></tr>
+<tr class="memdesc:aa9a00bebed30a17f7b97b2526dabc091"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major chains. <br></td></tr>
+<tr class="separator:aa9a00bebed30a17f7b97b2526dabc091"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a21f1fafdb293ad3ed091723e013bde7c"><td class="memItemLeft" align="right" valign="top"><a id="a21f1fafdb293ad3ed091723e013bde7c" name="a21f1fafdb293ad3ed091723e013bde7c"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">CGAL::OSM::Sub_sparse_matrix</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_matrix</b></td></tr>
+<tr class="memdesc:a21f1fafdb293ad3ed091723e013bde7c"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major sparse matrices. <br></td></tr>
+<tr class="separator:a21f1fafdb293ad3ed091723e013bde7c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1cc0a5caa0ececb37e597ed0e14c1efe"><td class="memItemLeft" align="right" valign="top"><a id="a1cc0a5caa0ececb37e597ed0e14c1efe" name="a1cc0a5caa0ececb37e597ed0e14c1efe"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">CGAL::OSM::Sub_sparse_matrix</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_matrix</b></td></tr>
+<tr class="memdesc:a1cc0a5caa0ececb37e597ed0e14c1efe"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major sparse matrices. <br></td></tr>
+<tr class="separator:a1cc0a5caa0ececb37e597ed0e14c1efe"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0af888e4c9862df8d1685efe50df49fb"><td class="memItemLeft" align="right" valign="top"><a id="a0af888e4c9862df8d1685efe50df49fb" name="a0af888e4c9862df8d1685efe50df49fb"></a>
+typedef <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">Hdvf_core</a>&lt; CoefficientType, ComplexType, <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a>, <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">CGAL::OSM::Sub_sparse_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>HDVFParent</b></td></tr>
+<tr class="memdesc:a0af888e4c9862df8d1685efe50df49fb"><td class="mdescLeft"> </td><td class="mdescRight">Type of parent <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> class (<a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html" title="The class Hdvf_core is the core implementation of homological discrete vector fields (HDVF for short)...">Hdvf_core</a> with appropriate template parameters) The <a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a> model is set to Sub_sparse_matrix to activate (co)homology computation over a subcomplex. <br></td></tr>
+<tr class="separator:a0af888e4c9862df8d1685efe50df49fb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aae6757fa5a71d980a8f9233c146bbeb2"><td class="memItemLeft" align="right" valign="top"><a id="aae6757fa5a71d980a8f9233c146bbeb2" name="aae6757fa5a71d980a8f9233c146bbeb2"></a>
+typedef FiltrationType </td><td class="memItemRight" valign="bottom"><b>Filtration</b></td></tr>
+<tr class="memdesc:aae6757fa5a71d980a8f9233c146bbeb2"><td class="mdescLeft"> </td><td class="mdescRight">Type of filtrations used to compute persistence. <br></td></tr>
+<tr class="separator:aae6757fa5a71d980a8f9233c146bbeb2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0ded017a3a8f0c4a95915ebbfa8adc57"><td class="memItemLeft" align="right" valign="top"><a id="a0ded017a3a8f0c4a95915ebbfa8adc57" name="a0ded017a3a8f0c4a95915ebbfa8adc57"></a>
+typedef <a class="el" href="namespaceCGAL_1_1HDVF.html#a44eb5b9993040377610a3756b05e077c">DegreePerIntervalT</a>&lt; DegType &gt; </td><td class="memItemRight" valign="bottom"><b>DegreePerInterval</b></td></tr>
+<tr class="memdesc:a0ded017a3a8f0c4a95915ebbfa8adc57"><td class="mdescLeft"> </td><td class="mdescRight">Instanciation of <code>DegreePerIntervalT</code> (persistant intervals degrees) for <code>DegType</code>. <br></td></tr>
+<tr class="separator:a0ded017a3a8f0c4a95915ebbfa8adc57"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0f1fbc7fa905b4225db2af3139f0c9dd"><td class="memItemLeft" align="right" valign="top"><a id="a0f1fbc7fa905b4225db2af3139f0c9dd" name="a0f1fbc7fa905b4225db2af3139f0c9dd"></a>
+typedef <a class="el" href="namespaceCGAL_1_1HDVF.html#a47ea5d613cbd9944a3c46a73df781273">PerHoleT</a>&lt; DegType &gt; </td><td class="memItemRight" valign="bottom"><b>PerHole</b></td></tr>
+<tr class="memdesc:a0f1fbc7fa905b4225db2af3139f0c9dd"><td class="mdescLeft"> </td><td class="mdescRight">Instanciation of <code>PerHoleT</code> (full persistant intervals informations) for <code>DegType</code>. <br></td></tr>
+<tr class="separator:a0f1fbc7fa905b4225db2af3139f0c9dd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab2327829ffe0cef9e0c14ea19847a78d"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::vector&lt; int &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#ab2327829ffe0cef9e0c14ea19847a78d">ExpLabels</a></td></tr>
+<tr class="memdesc:ab2327829ffe0cef9e0c14ea19847a78d"><td class="mdescLeft"> </td><td class="mdescRight">Type for <code>PRIMARY</code>/<code>SECONDARY</code>/<code>CRITICAL</code> labels export Encoding used:  <br></td></tr>
+<tr class="separator:ab2327829ffe0cef9e0c14ea19847a78d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a715620beb738a1c81b57304252b87500"><td class="memItemLeft" align="right" valign="top"><a id="a715620beb738a1c81b57304252b87500" name="a715620beb738a1c81b57304252b87500"></a>
+typedef <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a29ee9fb84115af1351ca51ae95ea15ba">Column_chain</a> </td><td class="memItemRight" valign="bottom"><b>ExpChain</b></td></tr>
+<tr class="memdesc:a715620beb738a1c81b57304252b87500"><td class="mdescLeft"> </td><td class="mdescRight">Type chains export (column-major chains) <br></td></tr>
+<tr class="separator:a715620beb738a1c81b57304252b87500"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classCGAL_1_1HDVF_1_1Hdvf__core')"><img src="closed.png" alt="-"> Public Types inherited from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:a984d1e46bd19d5838d6435fa8d3b726b inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a984d1e46bd19d5838d6435fa8d3b726b" name="a984d1e46bd19d5838d6435fa8d3b726b"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_chain</b></td></tr>
+<tr class="memdesc:a984d1e46bd19d5838d6435fa8d3b726b inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major chains. <br></td></tr>
+<tr class="separator:a984d1e46bd19d5838d6435fa8d3b726b inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac3af46f3b700f43c0297d755a8e87165 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="ac3af46f3b700f43c0297d755a8e87165" name="ac3af46f3b700f43c0297d755a8e87165"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_chain</b></td></tr>
+<tr class="memdesc:ac3af46f3b700f43c0297d755a8e87165 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major chains. <br></td></tr>
+<tr class="separator:ac3af46f3b700f43c0297d755a8e87165 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ada0899ade730ffaf7a3f618f11f4ef56 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="ada0899ade730ffaf7a3f618f11f4ef56" name="ada0899ade730ffaf7a3f618f11f4ef56"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">OSM::Sub_sparse_matrix</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_matrix</b></td></tr>
+<tr class="memdesc:ada0899ade730ffaf7a3f618f11f4ef56 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major sparse matrices. <br></td></tr>
+<tr class="separator:ada0899ade730ffaf7a3f618f11f4ef56 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a24b63a09af622da71dcd07104bb85526 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a24b63a09af622da71dcd07104bb85526" name="a24b63a09af622da71dcd07104bb85526"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sub__sparse__matrix.html">OSM::Sub_sparse_matrix</a>&lt; CoefficientType, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_matrix</b></td></tr>
+<tr class="memdesc:a24b63a09af622da71dcd07104bb85526 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major sparse matrices. <br></td></tr>
+<tr class="separator:a24b63a09af622da71dcd07104bb85526 inherit pub_types_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a335472885949f548dcf309d53c315981"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a335472885949f548dcf309d53c315981">Hdvf_persistence</a> (const ComplexType &amp;K, const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aae6757fa5a71d980a8f9233c146bbeb2">Filtration</a> &amp;f, int hdvf_opt=<a class="el" href="namespaceCGAL_1_1HDVF.html#ad24e3f46221984c7efadfc7e6a62adbc">OPT_BND</a>, bool <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a276bd600614c8e8e397d3a48ab93d370">with_export</a>=false)</td></tr>
+<tr class="memdesc:a335472885949f548dcf309d53c315981"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a> default constructor.  <br></td></tr>
+<tr class="separator:a335472885949f548dcf309d53c315981"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8537e5e0099007c9ae4d975e6c2e5e39"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a8537e5e0099007c9ae4d975e6c2e5e39">compute_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:a8537e5e0099007c9ae4d975e6c2e5e39"><td class="mdescLeft"> </td><td class="mdescRight">Computes a perfect persistent <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>.  <br></td></tr>
+<tr class="separator:a8537e5e0099007c9ae4d975e6c2e5e39"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a276bd600614c8e8e397d3a48ab93d370"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a276bd600614c8e8e397d3a48ab93d370">with_export</a> ()</td></tr>
+<tr class="memdesc:a276bd600614c8e8e397d3a48ab93d370"><td class="mdescLeft"> </td><td class="mdescRight">Gets the "with_export" Boolean flag.  <br></td></tr>
+<tr class="separator:a276bd600614c8e8e397d3a48ab93d370"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6744ce08369e66cf3eda7996345fba1b"><td class="memItemLeft" align="right" valign="top"><a id="a6744ce08369e66cf3eda7996345fba1b" name="a6744ce08369e66cf3eda7996345fba1b"></a>
+const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aae6757fa5a71d980a8f9233c146bbeb2">Filtration</a> &amp; </td><td class="memItemRight" valign="bottom"><b>get_filtration</b> ()</td></tr>
+<tr class="memdesc:a6744ce08369e66cf3eda7996345fba1b"><td class="mdescLeft"> </td><td class="mdescRight">Get a constant reference on the filtration. <br></td></tr>
+<tr class="separator:a6744ce08369e66cf3eda7996345fba1b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6e4777a9f90fe5d216115476df8727c0"><td class="memItemLeft" align="right" valign="top">DegType </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a6e4777a9f90fe5d216115476df8727c0">hole_duration</a> (const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a0f1fbc7fa905b4225db2af3139f0c9dd">PerHole</a> hole) const</td></tr>
+<tr class="memdesc:a6e4777a9f90fe5d216115476df8727c0"><td class="mdescLeft"> </td><td class="mdescRight">Computes the (degree) duration of a persistent interval (ie. persistent hole)  <br></td></tr>
+<tr class="separator:a6e4777a9f90fe5d216115476df8727c0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa611a1e222784ea36661b960807a9392"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aa611a1e222784ea36661b960807a9392">print_hdvf_persistence_info</a> (std::ostream &amp;out)</td></tr>
+<tr class="memdesc:aa611a1e222784ea36661b960807a9392"><td class="mdescLeft"> </td><td class="mdescRight">Prints informations related to the filtration.  <br></td></tr>
+<tr class="separator:aa611a1e222784ea36661b960807a9392"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1ca018696df0847b7133389daa023866"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::vector&lt; int &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a1ca018696df0847b7133389daa023866">psc_labels</a> () const</td></tr>
+<tr class="memdesc:a1ca018696df0847b7133389daa023866"><td class="mdescLeft"> </td><td class="mdescRight">Exports primary/secondary/critical labels (e.g.  <br></td></tr>
+<tr class="separator:a1ca018696df0847b7133389daa023866"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa4b6820f624852b9114252787a16690e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a29ee9fb84115af1351ca51ae95ea15ba">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aa4b6820f624852b9114252787a16690e">homology_chain</a> (size_t cell, int q) const</td></tr>
+<tr class="memdesc:aa4b6820f624852b9114252787a16690e"><td class="mdescLeft"> </td><td class="mdescRight">Exports homology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (e.g.  <br></td></tr>
+<tr class="separator:aa4b6820f624852b9114252787a16690e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad932609106dcbd862e520fc524e6c4e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a29ee9fb84115af1351ca51ae95ea15ba">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#ad932609106dcbd862e520fc524e6c4e4">cohomology_chain</a> (size_t cell, int q) const</td></tr>
+<tr class="memdesc:ad932609106dcbd862e520fc524e6c4e4"><td class="mdescLeft"> </td><td class="mdescRight">Exports cohomology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:ad932609106dcbd862e520fc524e6c4e4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac2bbe5c87f3f5e4ad0fb4cc10ced55e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1iterator.html">iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#ac2bbe5c87f3f5e4ad0fb4cc10ced55e5">begin</a> (bool discard_small=true)</td></tr>
+<tr class="memdesc:ac2bbe5c87f3f5e4ad0fb4cc10ced55e5"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of persistent intervals.  <br></td></tr>
+<tr class="separator:ac2bbe5c87f3f5e4ad0fb4cc10ced55e5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aabf39145d020348ffca46775cf5724fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1iterator.html">iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aabf39145d020348ffca46775cf5724fe">end</a> ()</td></tr>
+<tr class="memdesc:aabf39145d020348ffca46775cf5724fe"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the ending of the chains indices.  <br></td></tr>
+<tr class="separator:aabf39145d020348ffca46775cf5724fe"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core')"><img src="closed.png" alt="-"> Public Member Functions inherited from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:adb42eaf82d186cc376402f1bd3daaafb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#adb42eaf82d186cc376402f1bd3daaafb">Hdvf_core</a> (const ComplexType &amp;K, int hdvf_opt=OPT_FULL)</td></tr>
+<tr class="memdesc:adb42eaf82d186cc376402f1bd3daaafb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a> constructor.  <br></td></tr>
+<tr class="separator:adb42eaf82d186cc376402f1bd3daaafb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acb9081cdc84ed93c073ef82a3a8b07ee inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="acb9081cdc84ed93c073ef82a3a8b07ee" name="acb9081cdc84ed93c073ef82a3a8b07ee"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Hdvf_core</b> (const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">Hdvf_core</a> &amp;hdvf)</td></tr>
+<tr class="separator:acb9081cdc84ed93c073ef82a3a8b07ee inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a35692d39ea225a4fb012fbbe8e2c6beb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a35692d39ea225a4fb012fbbe8e2c6beb" name="a35692d39ea225a4fb012fbbe8e2c6beb"></a>
+ </td><td class="memItemRight" valign="bottom"><b>~Hdvf_core</b> ()</td></tr>
+<tr class="separator:a35692d39ea225a4fb012fbbe8e2c6beb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a84573724b1c17bab17026b1d302a4ab5 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a84573724b1c17bab17026b1d302a4ab5">find_pair_A</a> (int q, bool &amp;found) const</td></tr>
+<tr class="memdesc:a84573724b1c17bab17026b1d302a4ab5 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds a valid <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html" title="Structure to represent data for HDVF operations (pairs of cells).">Pair_cells</a> of dimension q / q+1 for A.  <br></td></tr>
+<tr class="separator:a84573724b1c17bab17026b1d302a4ab5 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a06c93e2535d3582ce34bda218ef19ed0 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a06c93e2535d3582ce34bda218ef19ed0">find_pair_A</a> (int q, bool &amp;found, size_t gamma) const</td></tr>
+<tr class="memdesc:a06c93e2535d3582ce34bda218ef19ed0 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds a valid <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html" title="Structure to represent data for HDVF operations (pairs of cells).">Pair_cells</a> for A containing <code>gamma</code> (a cell of dimension <code>q</code>)  <br></td></tr>
+<tr class="separator:a06c93e2535d3582ce34bda218ef19ed0 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9a7d69e98d3ae00a54f18aecaf321b2c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a9a7d69e98d3ae00a54f18aecaf321b2c">find_pairs_A</a> (int q, bool &amp;found) const</td></tr>
+<tr class="memdesc:a9a7d69e98d3ae00a54f18aecaf321b2c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds <em>all</em> valid <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html" title="Structure to represent data for HDVF operations (pairs of cells).">Pair_cells</a> of dimension q / q+1 for A.  <br></td></tr>
+<tr class="separator:a9a7d69e98d3ae00a54f18aecaf321b2c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6c34b89af7b4c642eaff144529874c14 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a6c34b89af7b4c642eaff144529874c14">find_pairs_A</a> (int q, bool &amp;found, size_t gamma) const</td></tr>
+<tr class="memdesc:a6c34b89af7b4c642eaff144529874c14 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Finds <em>all</em> valid <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html" title="Structure to represent data for HDVF operations (pairs of cells).">Pair_cells</a> for A containing <code>gamma</code> (a cell of dimension <code>q</code>)  <br></td></tr>
+<tr class="separator:a6c34b89af7b4c642eaff144529874c14 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aef8df39b83b5cb813985c59beb0bf0b2 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#aef8df39b83b5cb813985c59beb0bf0b2">A</a> (size_t gamma1, size_t gamma2, int q)</td></tr>
+<tr class="memdesc:aef8df39b83b5cb813985c59beb0bf0b2 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">A operation: pairs critical cells.  <br></td></tr>
+<tr class="separator:aef8df39b83b5cb813985c59beb0bf0b2 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae8142c723877a64298d05b992c56a1f3 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ae8142c723877a64298d05b992c56a1f3">compute_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:ae8142c723877a64298d05b992c56a1f3 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Computes a perfect <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>.  <br></td></tr>
+<tr class="separator:ae8142c723877a64298d05b992c56a1f3 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a32c40450acf2a507fe89cf35ba720c83 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a32c40450acf2a507fe89cf35ba720c83">compute_rand_perfect_hdvf</a> (bool verbose=false)</td></tr>
+<tr class="memdesc:a32c40450acf2a507fe89cf35ba720c83 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Computes a random perfect <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>.  <br></td></tr>
+<tr class="separator:a32c40450acf2a507fe89cf35ba720c83 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aad82965300d8b1e34c256f8ef3a5f712 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#aad82965300d8b1e34c256f8ef3a5f712">is_perfect_hdvf</a> ()</td></tr>
+<tr class="memdesc:aad82965300d8b1e34c256f8ef3a5f712 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Tests if a <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> is perfect.  <br></td></tr>
+<tr class="separator:aad82965300d8b1e34c256f8ef3a5f712 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a43bce902004d15f655f307647a7d5abd inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a43bce902004d15f655f307647a7d5abd">flag</a> (<a class="el" href="namespaceCGAL_1_1HDVF.html#a017efad3cbf4a03532b37f66180a03c8">FlagType</a> flag) const</td></tr>
+<tr class="memdesc:a43bce902004d15f655f307647a7d5abd inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets cells with a given <code>flag</code> in any dimension.  <br></td></tr>
+<tr class="separator:a43bce902004d15f655f307647a7d5abd inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a123594f52526a4f3dcbcff02d88b7777 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a123594f52526a4f3dcbcff02d88b7777">flag_dim</a> (<a class="el" href="namespaceCGAL_1_1HDVF.html#a017efad3cbf4a03532b37f66180a03c8">FlagType</a> flag, int q) const</td></tr>
+<tr class="memdesc:a123594f52526a4f3dcbcff02d88b7777 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets cells with a given <code>flag</code> in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:a123594f52526a4f3dcbcff02d88b7777 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aab56ce3f7c5f295ce601edab1fb00ecc inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCGAL_1_1HDVF.html#a017efad3cbf4a03532b37f66180a03c8">FlagType</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#aab56ce3f7c5f295ce601edab1fb00ecc">cell_flag</a> (int q, size_t tau) const</td></tr>
+<tr class="memdesc:aab56ce3f7c5f295ce601edab1fb00ecc inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the flag of the cell <code>tau</code> in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:aab56ce3f7c5f295ce601edab1fb00ecc inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af87a8e2ad0085a7770e4d2bc17145fe7 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="af87a8e2ad0085a7770e4d2bc17145fe7" name="af87a8e2ad0085a7770e4d2bc17145fe7"></a>
+int </td><td class="memItemRight" valign="bottom"><b>hdvf_opts</b> () const</td></tr>
+<tr class="memdesc:af87a8e2ad0085a7770e4d2bc17145fe7 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> computation option. <br></td></tr>
+<tr class="separator:af87a8e2ad0085a7770e4d2bc17145fe7 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acdcce69239bea68ff207f2c583ca2b6c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="acdcce69239bea68ff207f2c583ca2b6c" name="acdcce69239bea68ff207f2c583ca2b6c"></a>
+const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a24b63a09af622da71dcd07104bb85526">Row_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_f</b> (int q) const</td></tr>
+<tr class="memdesc:acdcce69239bea68ff207f2c583ca2b6c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the row-major matrix of \(f\) (from the reduction associated to the <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>). <br></td></tr>
+<tr class="separator:acdcce69239bea68ff207f2c583ca2b6c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4f67d74c41457ff690fb09d3bf78dd7b inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a4f67d74c41457ff690fb09d3bf78dd7b" name="a4f67d74c41457ff690fb09d3bf78dd7b"></a>
+const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ada0899ade730ffaf7a3f618f11f4ef56">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_g</b> (int q) const</td></tr>
+<tr class="memdesc:a4f67d74c41457ff690fb09d3bf78dd7b inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the column-major matrix of \(g\) (from the reduction associated to the <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>). <br></td></tr>
+<tr class="separator:a4f67d74c41457ff690fb09d3bf78dd7b inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9f4a2c3ca62786b109168b0edff7e292 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a9f4a2c3ca62786b109168b0edff7e292" name="a9f4a2c3ca62786b109168b0edff7e292"></a>
+const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ada0899ade730ffaf7a3f618f11f4ef56">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_h</b> (int q) const</td></tr>
+<tr class="memdesc:a9f4a2c3ca62786b109168b0edff7e292 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the column-major matrix of \(h\) (from the reduction associated to the <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>). <br></td></tr>
+<tr class="separator:a9f4a2c3ca62786b109168b0edff7e292 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9c5c31cdeb27b1eced5a4840e0c382eb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a9c5c31cdeb27b1eced5a4840e0c382eb" name="a9c5c31cdeb27b1eced5a4840e0c382eb"></a>
+const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ada0899ade730ffaf7a3f618f11f4ef56">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><b>matrix_dd</b> (int q) const</td></tr>
+<tr class="memdesc:a9c5c31cdeb27b1eced5a4840e0c382eb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets the column-major matrix of \(\partial'\), reduced boundary operator (from the reduction associated to the <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>). <br></td></tr>
+<tr class="separator:a9c5c31cdeb27b1eced5a4840e0c382eb inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4f91b8c7108b528973a5de648ecad7d3 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a4f91b8c7108b528973a5de648ecad7d3">insert_matrices</a> (std::ostream &amp;out=std::cout) const</td></tr>
+<tr class="memdesc:a4f91b8c7108b528973a5de648ecad7d3 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Prints the matrices of the reduction.  <br></td></tr>
+<tr class="separator:a4f91b8c7108b528973a5de648ecad7d3 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a19f820e12f506eee6c36ac1fd566b1ea inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a19f820e12f506eee6c36ac1fd566b1ea">insert_reduction</a> (std::ostream &amp;out=std::cout) const</td></tr>
+<tr class="memdesc:a19f820e12f506eee6c36ac1fd566b1ea inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Prints the homology and cohomology reduction information.  <br></td></tr>
+<tr class="separator:a19f820e12f506eee6c36ac1fd566b1ea inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a40878bca7cc2a413cc0a650ca42b500a inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::vector&lt; int &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a40878bca7cc2a413cc0a650ca42b500a">psc_labels</a> () const</td></tr>
+<tr class="memdesc:a40878bca7cc2a413cc0a650ca42b500a inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Exports primary/secondary/critical labels (in particular for vtk export)  <br></td></tr>
+<tr class="separator:a40878bca7cc2a413cc0a650ca42b500a inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6188cde00f798190054c01a6d3ba75f4 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a984d1e46bd19d5838d6435fa8d3b726b">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a6188cde00f798190054c01a6d3ba75f4">homology_chain</a> (size_t cell, int q) const</td></tr>
+<tr class="memdesc:a6188cde00f798190054c01a6d3ba75f4 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets homology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:a6188cde00f798190054c01a6d3ba75f4 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac7c497cfb494a7262c16bd2c1a6ecc3d inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a984d1e46bd19d5838d6435fa8d3b726b">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ac7c497cfb494a7262c16bd2c1a6ecc3d">cohomology_chain</a> (size_t cell, int dim) const</td></tr>
+<tr class="memdesc:ac7c497cfb494a7262c16bd2c1a6ecc3d inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Gets cohomology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (used by vtk export).  <br></td></tr>
+<tr class="separator:ac7c497cfb494a7262c16bd2c1a6ecc3d inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae1696861859281a36f22b10e8c278a7c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ae1696861859281a36f22b10e8c278a7c">insert_hdvf_reduction</a> (std::ostream &amp;out)</td></tr>
+<tr class="memdesc:ae1696861859281a36f22b10e8c278a7c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Saves a <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> together with the associated reduction (f, g, h, d matrices)  <br></td></tr>
+<tr class="separator:ae1696861859281a36f22b10e8c278a7c inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6a7365360d15b4b1788c582c0b40b214 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top">std::istream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a6a7365360d15b4b1788c582c0b40b214">extract_hdvf_reduction</a> (std::istream &amp;out)</td></tr>
+<tr class="memdesc:a6a7365360d15b4b1788c582c0b40b214 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="mdescLeft"> </td><td class="mdescRight">Loads a <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> together with the associated reduction (f, g, h, d matrices)  <br></td></tr>
+<tr class="separator:a6a7365360d15b4b1788c582c0b40b214 inherit pub_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a0e1529185a4555d4a90f54755aa04579"><td class="memItemLeft" align="right" valign="top"><a id="a0e1529185a4555d4a90f54755aa04579" name="a0e1529185a4555d4a90f54755aa04579"></a>
+const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aae6757fa5a71d980a8f9233c146bbeb2">Filtration</a> &amp; </td><td class="memItemRight" valign="bottom"><b>_f</b></td></tr>
+<tr class="separator:a0e1529185a4555d4a90f54755aa04579"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9b98474ac8e82aa5202d26db0b1d0925"><td class="memItemLeft" align="right" valign="top"><a id="a9b98474ac8e82aa5202d26db0b1d0925" name="a9b98474ac8e82aa5202d26db0b1d0925"></a>
+std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_K_to_per</b></td></tr>
+<tr class="separator:a9b98474ac8e82aa5202d26db0b1d0925"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a88176e3ebbeb91c0103c9d279cd51c94"><td class="memItemLeft" align="right" valign="top"><a id="a88176e3ebbeb91c0103c9d279cd51c94" name="a88176e3ebbeb91c0103c9d279cd51c94"></a>
+std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_per_to_K</b></td></tr>
+<tr class="separator:a88176e3ebbeb91c0103c9d279cd51c94"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad0aea724849684f26aa1ae02b96c9066"><td class="memItemLeft" align="right" valign="top"><a id="ad0aea724849684f26aa1ae02b96c9066" name="ad0aea724849684f26aa1ae02b96c9066"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a0f1fbc7fa905b4225db2af3139f0c9dd">PerHole</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_persist</b></td></tr>
+<tr class="separator:ad0aea724849684f26aa1ae02b96c9066"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abbbe010048f54ccb859bc5e020c6c4cf"><td class="memItemLeft" align="right" valign="top"><a id="abbbe010048f54ccb859bc5e020c6c4cf" name="abbbe010048f54ccb859bc5e020c6c4cf"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>_with_export</b></td></tr>
+<tr class="separator:abbbe010048f54ccb859bc5e020c6c4cf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9588cd39bef726e596ef376b66c02d8a"><td class="memItemLeft" align="right" valign="top"><a id="a9588cd39bef726e596ef376b66c02d8a" name="a9588cd39bef726e596ef376b66c02d8a"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#ab2327829ffe0cef9e0c14ea19847a78d">ExpLabels</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_export_labels</b></td></tr>
+<tr class="separator:a9588cd39bef726e596ef376b66c02d8a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adfc4e47b104abed8946af0a373e5b562"><td class="memItemLeft" align="right" valign="top"><a id="adfc4e47b104abed8946af0a373e5b562" name="adfc4e47b104abed8946af0a373e5b562"></a>
+std::vector&lt; std::pair&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a715620beb738a1c81b57304252b87500">ExpChain</a>, <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a715620beb738a1c81b57304252b87500">ExpChain</a> &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_export_g</b></td></tr>
+<tr class="separator:adfc4e47b104abed8946af0a373e5b562"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abd41c267380ff5ad96fd7111eca6caa6"><td class="memItemLeft" align="right" valign="top"><a id="abd41c267380ff5ad96fd7111eca6caa6" name="abd41c267380ff5ad96fd7111eca6caa6"></a>
+std::vector&lt; std::pair&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a715620beb738a1c81b57304252b87500">ExpChain</a>, <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a715620beb738a1c81b57304252b87500">ExpChain</a> &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_export_fstar</b></td></tr>
+<tr class="separator:abd41c267380ff5ad96fd7111eca6caa6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a46c24a9ba2fcf389505dd519cd0453dd"><td class="memItemLeft" align="right" valign="top"><a id="a46c24a9ba2fcf389505dd519cd0453dd" name="a46c24a9ba2fcf389505dd519cd0453dd"></a>
+size_t </td><td class="memItemRight" valign="bottom"><b>_t</b></td></tr>
+<tr class="separator:a46c24a9ba2fcf389505dd519cd0453dd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a88b736d37f988eae46adec2213a16319"><td class="memItemLeft" align="right" valign="top"><a id="a88b736d37f988eae46adec2213a16319" name="a88b736d37f988eae46adec2213a16319"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_t_dim</b></td></tr>
+<tr class="separator:a88b736d37f988eae46adec2213a16319"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac4d067fb6b3a3c0346112ea1f0a4ae9e"><td class="memItemLeft" align="right" valign="top"><a id="ac4d067fb6b3a3c0346112ea1f0a4ae9e" name="ac4d067fb6b3a3c0346112ea1f0a4ae9e"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1OSM_1_1Bitboard.html">OSM::Bitboard</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_masks</b></td></tr>
+<tr class="separator:ac4d067fb6b3a3c0346112ea1f0a4ae9e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core')"><img src="closed.png" alt="-"> Protected Attributes inherited from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:adcc5d832267c2af3f6917cce51cf1957 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="adcc5d832267c2af3f6917cce51cf1957" name="adcc5d832267c2af3f6917cce51cf1957"></a>
+std::vector&lt; std::vector&lt; <a class="el" href="namespaceCGAL_1_1HDVF.html#a017efad3cbf4a03532b37f66180a03c8">FlagType</a> &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_flag</b></td></tr>
+<tr class="separator:adcc5d832267c2af3f6917cce51cf1957 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af6734ec56d1457fcd6d3ca29dcf4866b inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="af6734ec56d1457fcd6d3ca29dcf4866b" name="af6734ec56d1457fcd6d3ca29dcf4866b"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_P</b></td></tr>
+<tr class="separator:af6734ec56d1457fcd6d3ca29dcf4866b inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5809fd104377d8892a18fddf9e29bbe8 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a5809fd104377d8892a18fddf9e29bbe8" name="a5809fd104377d8892a18fddf9e29bbe8"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_S</b></td></tr>
+<tr class="separator:a5809fd104377d8892a18fddf9e29bbe8 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a660427455440c4db0d990305bdeaacaa inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a660427455440c4db0d990305bdeaacaa" name="a660427455440c4db0d990305bdeaacaa"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_nb_C</b></td></tr>
+<tr class="separator:a660427455440c4db0d990305bdeaacaa inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6afc9b8f6d1146b3abfdd2bb33e54377 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a6afc9b8f6d1146b3abfdd2bb33e54377" name="a6afc9b8f6d1146b3abfdd2bb33e54377"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a24b63a09af622da71dcd07104bb85526">Row_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_F_row</b></td></tr>
+<tr class="separator:a6afc9b8f6d1146b3abfdd2bb33e54377 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a18b3d1f2d6a4dea48938723b61270810 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a18b3d1f2d6a4dea48938723b61270810" name="a18b3d1f2d6a4dea48938723b61270810"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ada0899ade730ffaf7a3f618f11f4ef56">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_G_col</b></td></tr>
+<tr class="separator:a18b3d1f2d6a4dea48938723b61270810 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a19d1665c65fa4a32d6c6c40d434484cf inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a19d1665c65fa4a32d6c6c40d434484cf" name="a19d1665c65fa4a32d6c6c40d434484cf"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ada0899ade730ffaf7a3f618f11f4ef56">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_H_col</b></td></tr>
+<tr class="separator:a19d1665c65fa4a32d6c6c40d434484cf inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a06df878f7151b046e1f30b79aad93d90 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a06df878f7151b046e1f30b79aad93d90" name="a06df878f7151b046e1f30b79aad93d90"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ada0899ade730ffaf7a3f618f11f4ef56">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_DD_col</b></td></tr>
+<tr class="separator:a06df878f7151b046e1f30b79aad93d90 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9a4aba0f48a6c0b38b304f5a8679e3d0 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a9a4aba0f48a6c0b38b304f5a8679e3d0" name="a9a4aba0f48a6c0b38b304f5a8679e3d0"></a>
+const ComplexType &amp; </td><td class="memItemRight" valign="bottom"><b>_K</b></td></tr>
+<tr class="separator:a9a4aba0f48a6c0b38b304f5a8679e3d0 inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a42a16d3bcb8839509467d1fddea7ceed inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a42a16d3bcb8839509467d1fddea7ceed" name="a42a16d3bcb8839509467d1fddea7ceed"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_hdvf_opt</b></td></tr>
+<tr class="separator:a42a16d3bcb8839509467d1fddea7ceed inherit pro_attribs_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a34e3ca824ff84567999fcfa5a154ba27"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a34e3ca824ff84567999fcfa5a154ba27">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">Hdvf_persistence</a> &amp;per_hdvf)</td></tr>
+<tr class="memdesc:a34e3ca824ff84567999fcfa5a154ba27"><td class="mdescLeft"> </td><td class="mdescRight">Overload of operator&lt;&lt; for <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a>.  <br></td></tr>
+<tr class="separator:a34e3ca824ff84567999fcfa5a154ba27"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classCGAL_1_1HDVF_1_1Hdvf__core')"><img src="closed.png" alt="-"> Protected Member Functions inherited from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a></td></tr>
+<tr class="memitem:a4a807b10946a448fe3872b5cdb55d241 inherit pro_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a4a807b10946a448fe3872b5cdb55d241" name="a4a807b10946a448fe3872b5cdb55d241"></a>
+<a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CoefficientType, ChainTypeFlag &gt; </td><td class="memItemRight" valign="bottom"><b>projection</b> (const <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CoefficientType, ChainTypeFlag &gt; &amp;chain, <a class="el" href="namespaceCGAL_1_1HDVF.html#a017efad3cbf4a03532b37f66180a03c8">FlagType</a> flag, int q) const</td></tr>
+<tr class="separator:a4a807b10946a448fe3872b5cdb55d241 inherit pro_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a075458b5768f5e71bfd5cdd526d61f9d inherit pro_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memItemLeft" align="right" valign="top"><a id="a075458b5768f5e71bfd5cdd526d61f9d" name="a075458b5768f5e71bfd5cdd526d61f9d"></a>
+void </td><td class="memItemRight" valign="bottom"><b>progress_bar</b> (size_t i, size_t n)</td></tr>
+<tr class="separator:a075458b5768f5e71bfd5cdd526d61f9d inherit pro_methods_classCGAL_1_1HDVF_1_1Hdvf__core"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ab2327829ffe0cef9e0c14ea19847a78d" name="ab2327829ffe0cef9e0c14ea19847a78d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2327829ffe0cef9e0c14ea19847a78d">◆ </a></span>ExpLabels</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;std::vector&lt;int&gt; &gt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::ExpLabels</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type for <code>PRIMARY</code>/<code>SECONDARY</code>/<code>CRITICAL</code> labels export Encoding used: </p>
+<ul>
+<li><code>PRIMARY</code>: -1</li>
+<li><code>SECONDARY</code>: +1</li>
+<li><code>CRITICAL</code>: 0 </li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a335472885949f548dcf309d53c315981" name="a335472885949f548dcf309d53c315981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a335472885949f548dcf309d53c315981">◆ </a></span>Hdvf_persistence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::Hdvf_persistence </td>
+          <td>(</td>
+          <td class="paramtype">const ComplexType &amp; </td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#aae6757fa5a71d980a8f9233c146bbeb2">Filtration</a> &amp; </td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>hdvf_opt</em> = <code><a class="el" href="namespaceCGAL_1_1HDVF.html#ad24e3f46221984c7efadfc7e6a62adbc">OPT_BND</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>with_export</em> = <code>false</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a> default constructor. </p>
+<p>Builds an "empty" HDVF_persistence (with all cells critical) associated to the chain complex <code>K</code> and the filtration <code>f</code>. By default, the <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> option is set to OPT_FULL (full reduction computed)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">K</td><td>A chain complex (a model of <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A filtration (a model of <code><a class="el" href="classFiltration.html" title="The concept Filtration describes the requirements for persistent filtrations associated to persistent...">Filtration</a></code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hdvf_opt</td><td>Option for <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a> computation (<code>OPT_BND</code>, <code>OPT_F</code>, <code>OPT_G</code> or <code>OPT_FULL</code>) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">with_export</td><td>Boolean option to activate or not the export of PSC labels and homology/cohomology generators for of persistent intervals of positive duration. This information is used by vtk exporters. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac2bbe5c87f3f5e4ad0fb4cc10ced55e5" name="ac2bbe5c87f3f5e4ad0fb4cc10ced55e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2bbe5c87f3f5e4ad0fb4cc10ced55e5">◆ </a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1iterator.html">iterator</a> <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::begin </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>discard_small</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of persistent intervals. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">discard_small</td><td>If <code>true</code>, the iterator visits only persistent intervals of (strictly) positive degree duration. Otherwise, visit all persistent intervals.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the beginning of the chains indices. </dd></dl>
+
+</div>
+</div>
+<a id="ad932609106dcbd862e520fc524e6c4e4" name="ad932609106dcbd862e520fc524e6c4e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad932609106dcbd862e520fc524e6c4e4">◆ </a></span>cohomology_chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a29ee9fb84115af1351ca51ae95ea15ba">Column_chain</a> <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::cohomology_chain </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exports cohomology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (used by vtk export). </p>
+<p>The method exports the chain \(f^\star(\sigma)\) for \(\sigma\) the cell of index <code>cell</code> and dimension <code>q</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>A column-major chain. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#ac7c497cfb494a7262c16bd2c1a6ecc3d">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a8537e5e0099007c9ae4d975e6c2e5e39" name="a8537e5e0099007c9ae4d975e6c2e5e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8537e5e0099007c9ae4d975e6c2e5e39">◆ </a></span>compute_perfect_hdvf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html">Pair_cells</a> &gt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::compute_perfect_hdvf </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>verbose</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes a perfect persistent <a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a>. </p>
+<p>This method follows the filtration and considers cells one by one. For each of them, it searches the youngest possible cell valid for A (returned by <code>find_pair_A()</code>), and applies the corresponding <code>A()</code> operation. By definition of persistent homology, the <code><a class="el" href="classRing.html" title="The concept Ring describes the requirements for the ring of coefficients used to compute homology in ...">Ring</a></code> of coefficients <em>must be</em> a field.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">verbose</td><td>If this parameter is <code>true</code>, all intermediate reductions are printed out.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The vector of all <code><a class="el" href="structCGAL_1_1HDVF_1_1Pair__cells.html" title="Structure to represent data for HDVF operations (pairs of cells).">Pair_cells</a></code> paired with A. </dd></dl>
+
+</div>
+</div>
+<a id="aabf39145d020348ffca46775cf5724fe" name="aabf39145d020348ffca46775cf5724fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabf39145d020348ffca46775cf5724fe">◆ </a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1HDVF_1_1Hdvf__persistence_1_1iterator.html">iterator</a> <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the ending of the chains indices. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the ending of the chains indices. </dd></dl>
+
+</div>
+</div>
+<a id="a6e4777a9f90fe5d216115476df8727c0" name="a6e4777a9f90fe5d216115476df8727c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4777a9f90fe5d216115476df8727c0">◆ </a></span>hole_duration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">DegType <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::hole_duration </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a0f1fbc7fa905b4225db2af3139f0c9dd">PerHole</a> </td>
+          <td class="paramname"><em>hole</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the (degree) duration of a persistent interval (ie. persistent hole) </p>
+<p>By definitions of "default" values, infinite intervals have a duration of -1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">hole</td><td>Persistent interval considered for duration computation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa4b6820f624852b9114252787a16690e" name="aa4b6820f624852b9114252787a16690e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4b6820f624852b9114252787a16690e">◆ </a></span>homology_chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html#a29ee9fb84115af1351ca51ae95ea15ba">Column_chain</a> <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::homology_chain </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exports homology generators associated to <code>cell</code> (critical cell) of dimension <code>q</code> (e.g. </p>
+<p>forx@ vtk export).</p>
+<p>The method exports the chain \(g(\sigma)\) for \(\sigma\) the cell of index <code>cell</code> and dimension <code>q</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>A column-major chain. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a6188cde00f798190054c01a6d3ba75f4">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="aa611a1e222784ea36661b960807a9392" name="aa611a1e222784ea36661b960807a9392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa611a1e222784ea36661b960807a9392">◆ </a></span>print_hdvf_persistence_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::print_hdvf_persistence_info </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints informations related to the filtration. </p>
+<p>Prints out the filtration and associated permutations (_K_to_per and _per_to_K) between indices of cells in each dimension in the basis of K and indices along the filtration.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">out</td><td>Reference to an out stream. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1ca018696df0847b7133389daa023866" name="a1ca018696df0847b7133389daa023866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca018696df0847b7133389daa023866">◆ </a></span>psc_labels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt; std::vector&lt; int &gt; &gt; <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::psc_labels </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exports primary/secondary/critical labels (e.g. </p>
+<p>for vtk export).</p>
+<p>The method exports the labels of every cells in each dimension. Encoding used:</p><ul>
+<li><code>PRIMARY</code>: -1</li>
+<li><code>SECONDARY</code>: +1</li>
+<li><code>CRITICAL</code>: 0</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing, for each dimension, the vector of labels by cell index. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__core.html#a40878bca7cc2a413cc0a650ca42b500a">CGAL::HDVF::Hdvf_core&lt; CoefficientType, ComplexType, OSM::Sparse_chain, OSM::Sub_sparse_matrix &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a276bd600614c8e8e397d3a48ab93d370" name="a276bd600614c8e8e397d3a48ab93d370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a276bd600614c8e8e397d3a48ab93d370">◆ </a></span>with_export()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">CGAL::HDVF::Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt;::with_export </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the "with_export" Boolean flag. </p>
+<p>If the flag is <code>true</code>, homology/cohomology generators and corresponding PSC labels are exported for each persistent interval of positive duration. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a34e3ca824ff84567999fcfa5a154ba27" name="a34e3ca824ff84567999fcfa5a154ba27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e3ca824ff84567999fcfa5a154ba27">◆ </a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientType , typename ComplexType , typename DegType , typename FiltrationType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">Hdvf_persistence</a>&lt; CoefficientType, ComplexType, DegType, FiltrationType &gt; &amp; </td>
+          <td class="paramname"><em>per_hdvf</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overload of operator&lt;&lt; for <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a>. </p>
+<p>Prints out finite and infinite persistence intervals.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">out</td><td>Reference to an out stream. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">per_hdvf</td><td>Constant reference on the <a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html" title="The class Hdvf_persistence computes persistent homology using HDVFs.">Hdvf_persistence</a> to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1HDVF.html">HDVF</a></li><li class="navelem"><a class="el" href="classCGAL_1_1HDVF_1_1Hdvf__persistence.html">Hdvf_persistence</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
