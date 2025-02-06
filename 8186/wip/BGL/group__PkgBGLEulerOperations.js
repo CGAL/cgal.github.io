@@ -16,6 +16,7 @@ var group__PkgBGLEulerOperations =
     [ "CGAL::Euler::join_vertex", "group__PkgBGLEulerOperations.html#ga1760f0f8e7bf35de6f396b6b86a0b9bb", null ],
     [ "CGAL::Euler::make_hole", "group__PkgBGLEulerOperations.html#gaa305bfc634d2aa7bca376d0550d8363e", null ],
     [ "CGAL::Euler::remove_center_vertex", "group__PkgBGLEulerOperations.html#gafa44d3b18f6492b95bb64c137d2ec18d", null ],
+    [ "CGAL::Euler::remove_degree_2_vertex", "group__PkgBGLEulerOperations.html#gab3455663b7db4624529e54ae3ce2387c", null ],
     [ "CGAL::Euler::remove_face", "group__PkgBGLEulerOperations.html#gacfae7ff8e782da55b941e4487e86c738", null ],
     [ "CGAL::Euler::split_edge", "group__PkgBGLEulerOperations.html#ga01dc93c57ad0079240dd9554de46a176", null ],
     [ "CGAL::Euler::split_face", "group__PkgBGLEulerOperations.html#gadc29dd4ad63e653e4eedf02220bb48da", null ],

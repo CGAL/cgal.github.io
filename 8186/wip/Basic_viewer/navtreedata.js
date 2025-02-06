@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - CGAL Basic Viewer", "index.html", [
+  [ "CGAL 6.1 - CGAL Basic Viewer", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Class and Concept List", "annotated.html", "annotated" ],

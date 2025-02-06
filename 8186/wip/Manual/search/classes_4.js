@@ -38,7 +38,7 @@ var searchData=
   ['envelopetraits_5f3_35',['EnvelopeTraits_3',['../../Envelope_3/classEnvelopeTraits__3.html',1,'']]],
   ['epeck_5fd_36',['Epeck_d',['../../Kernel_d/structCGAL_1_1Epeck__d.html',1,'CGAL']]],
   ['epick_5fd_37',['Epick_d',['../../Kernel_d/structCGAL_1_1Epick__d.html',1,'CGAL']]],
-  ['equal_5f2_38',['Equal_2',['../../Arrangement_on_surface_2/classArrTraits_1_1Equal__2.html',1,'ArrTraits::Equal_2'],['../../Circular_kernel_2/classCircularKernel_1_1Equal__2.html',1,'CircularKernel::Equal_2'],['../../Kernel_23/classKernel_1_1Equal__2.html',1,'Kernel::Equal_2']]],
+  ['equal_5f2_38',['Equal_2',['../../Arrangement_on_surface_2/classAosTraits_1_1Equal__2.html',1,'AosTraits::Equal_2'],['../../Circular_kernel_2/classCircularKernel_1_1Equal__2.html',1,'CircularKernel::Equal_2'],['../../Kernel_23/classKernel_1_1Equal__2.html',1,'Kernel::Equal_2']]],
   ['equal_5f3_39',['Equal_3',['../../Kernel_23/classKernel_1_1Equal__3.html',1,'Kernel::Equal_3'],['../../Circular_kernel_3/classSphericalKernel_1_1Equal__3.html',1,'SphericalKernel::Equal_3']]],
   ['equal_5fd_40',['Equal_d',['../../Kernel_d/classKernel__d_1_1Equal__d.html',1,'Kernel_d']]],
   ['equalitycomparable_41',['EqualityComparable',['../classEqualityComparable.html',1,'']]],

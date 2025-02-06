@@ -8,6 +8,6 @@ var annotated =
       [ "Conforming_constrained_Delaunay_triangulation_vertex_data_3", "structCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__data__3.html", null ]
     ] ],
     [ "ConformingConstrainedDelaunayTriangulationCellBase_3", "classConformingConstrainedDelaunayTriangulationCellBase__3.html", "classConformingConstrainedDelaunayTriangulationCellBase__3" ],
-    [ "ConformingConstrainedDelaunayTriangulationTraits_3", "classConformingConstrainedDelaunayTriangulationTraits__3.html", null ],
+    [ "ConformingConstrainedDelaunayTriangulationTraits_3", "classConformingConstrainedDelaunayTriangulationTraits__3.html", "classConformingConstrainedDelaunayTriangulationTraits__3" ],
     [ "ConformingConstrainedDelaunayTriangulationVertexBase_3", "classConformingConstrainedDelaunayTriangulationVertexBase__3.html", "classConformingConstrainedDelaunayTriangulationVertexBase__3" ]
 ];

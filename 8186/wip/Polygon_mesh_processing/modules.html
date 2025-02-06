@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Polygon Mesh Processing: Reference Manual</title>
+<title>CGAL 6.1 - Polygon Mesh Processing: Reference Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Polygon Mesh Processing
+   <div id="projectname">CGAL 6.1 - Polygon Mesh Processing
    </div>
   </td>
  </tr>
@@ -171,7 +179,7 @@ $(document).ready(function(){initNavTree('modules.html',''); initResizable(); })
 <tr id="row_0_3_" class="even"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__meshing__grp.html" target="_self">Meshing</a></td><td class="desc">Functions to triangulate faces, and to refine and fair regions of a polygon mesh </td></tr>
 <tr id="row_0_4_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__corrected__curvatures__grp.html" target="_self">Corrected Curvature Computation</a></td><td class="desc">Functions to compute the corrected curvatures of a polygon mesh </td></tr>
 <tr id="row_0_5_" class="even"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__normal__grp.html" target="_self">Normal Computation</a></td><td class="desc">Functions to compute unit normals for individual/all vertices or faces </td></tr>
-<tr id="row_0_6_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__measure__grp.html" target="_self">Geometric Measure Functions</a></td><td class="desc">Functions to compute lengths of edges and borders, areas of faces and patches, as well as volumes of closed meshes </td></tr>
+<tr id="row_0_6_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__measure__grp.html" target="_self">Geometric Measure Functions</a></td><td class="desc">Functions to compute discrete curvatures, lengths of edges and borders, areas of faces and patches, volumes of closed meshes </td></tr>
 <tr id="row_0_7_" class="even"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__orientation__grp.html" target="_self">Orientation Functions</a></td><td class="desc">Functions to compute or change the orientation of faces and surfaces </td></tr>
 <tr id="row_0_8_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__intersection__grp.html" target="_self">Intersection Functions</a></td><td class="desc">Functions to test if there are self intersections, and to report faces that do intersect </td></tr>
 <tr id="row_0_9_" class="even"><td class="entry"><span style="width:32px;display:inline-block;"> </span><a class="el" href="group__PMP__combinatorial__repair__grp.html" target="_self">Combinatorial Repair</a></td><td class="desc">Functions to repair polygon soups and polygon meshes </td></tr>

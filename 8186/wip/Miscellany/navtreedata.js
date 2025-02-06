@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - Profiling tools, Hash Map, Union-find, Modifiers", "index.html", [
+  [ "CGAL 6.1 - Profiling tools, Hash Map, Union-find, Modifiers", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Bibliography", "citelist.html", null ],

@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL Basic Viewer: CGAL::Qt::QApplication_and_basic_viewer Class Reference</title>
+<title>CGAL 6.1 - CGAL Basic Viewer: CGAL::Qt::QApplication_and_basic_viewer Class Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL Basic Viewer
+   <div id="projectname">CGAL 6.1 - CGAL Basic Viewer
    </div>
   </td>
  </tr>
@@ -171,7 +179,7 @@ $(document).ready(function(){initNavTree('classCGAL_1_1Qt_1_1QApplication__and__
 <div class="textblock"><p>The class <code><a class="el" href="classCGAL_1_1Qt_1_1QApplication__and__basic__viewer.html" title="The class QApplication_and_basic_viewer regroups a Basic_viewer and Qt QApplication.">QApplication_and_basic_viewer</a></code> regroups a <code><a class="el" href="classCGAL_1_1Qt_1_1Basic__viewer.html" title="The class Basic_viewer is a Qt widget based on QGLViewer that allows to visualize 3D elements: points...">Basic_viewer</a></code> and <a class="el" href="namespaceCGAL_1_1Qt.html">Qt</a> <code>QApplication</code>. </p>
 <p>The <code>QApplication</code> is created in the constructor, but started by the <code><a class="el" href="classCGAL_1_1Qt_1_1QApplication__and__basic__viewer.html#a140d1b9600c96c7d0c304029cd7f5112" title="runs the QApplication, i.e., open the Qt window. A call to this method is blocking,...">run()</a></code> method. This allows for example users to modify the <code>on_key_pressed</code> method of the <code><a class="el" href="classCGAL_1_1Qt_1_1Basic__viewer.html" title="The class Basic_viewer is a Qt widget based on QGLViewer that allows to visualize 3D elements: points...">Basic_viewer</a></code> to define their own behavior.</p>
 <p>This class requires <code>CGAL_Qt6</code>, and is only available if the macro <code>CGAL_USE_BASIC_VIEWER</code> is defined. Linking with the cmake target <code>CGAL::CGAL_Basic_viewer</code> will link with <code>CGAL_Qt6</code> and add the definition <code>CGAL_USE_BASIC_VIEWER</code>. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Basic_viewer_2draw_surface_mesh_small_faces_8cpp-example.html#_a6">Basic_viewer/draw_surface_mesh_small_faces.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Basic_viewer_2draw_surface_mesh_small_faces_8cpp-example.html#_a7">Basic_viewer/draw_surface_mesh_small_faces.cpp</a>.</dd>
 </dl>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>

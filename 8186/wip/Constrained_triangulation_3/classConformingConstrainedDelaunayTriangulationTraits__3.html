@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Constrained Triangulations: ConformingConstrainedDelaunayTriangulationTraits_3 Concept Reference</title>
+<title>CGAL 6.1 - 3D Constrained Triangulations: ConformingConstrainedDelaunayTriangulationTraits_3 Concept Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Constrained Triangulations
+   <div id="projectname">CGAL 6.1 - 3D Constrained Triangulations
    </div>
   </td>
  </tr>
@@ -159,16 +167,20 @@ $(document).ready(function(){initNavTree('classConformingConstrainedDelaunayTria
 </script>
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">ConformingConstrainedDelaunayTriangulationTraits_3 Concept Reference<div class="ingroups"><a class="el" href="group__PkgCT__3Ref.html">3D Constrained Triangulations Reference</a> » <a class="el" href="group__PkgCT__3Concepts.html">Concepts</a></div></div></div>
+  <div class="summary">
+<a href="classConformingConstrainedDelaunayTriangulationTraits__3-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">ConformingConstrainedDelaunayTriangulationTraits_3 Concept Reference<div class="ingroups"><a class="el" href="group__PkgConstrainedTriangulation3Ref.html">3D Constrained Triangulations Reference</a> » <a class="el" href="group__PkgConstrainedTriangulation3Concepts.html">Concepts</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p></p>
 <a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
-<div class="textblock"><p>The concept <code><a class="el" href="classConformingConstrainedDelaunayTriangulationTraits__3.html" title="The concept ConformingConstrainedDelaunayTriangulationTraits_3 specifies the requirements for the geo...">ConformingConstrainedDelaunayTriangulationTraits_3</a></code> specifies the requirements for the geometric traits class of the triangulation used as the first template parameter <code>Triangulation_3</code> in the function template <code><a class="el" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8" title="creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.">CGAL::make_conforming_constrained_Delaunay_triangulation_3()</a></code>. </p>
+<div class="textblock"><p>The concept <code><a class="el" href="classConformingConstrainedDelaunayTriangulationTraits__3.html" title="The concept ConformingConstrainedDelaunayTriangulationTraits_3 specifies the requirements for the geo...">ConformingConstrainedDelaunayTriangulationTraits_3</a></code> specifies the requirements for the geometric traits class of the triangulation used as the first template parameter <code>Triangulation_3</code> in the function template <code><a class="el" href="group__PkgConstrainedTriangulation3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8" title="creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.">CGAL::make_conforming_constrained_Delaunay_triangulation_3()</a></code>. </p>
 <dl>
 <dt>Refines</dt>
 <dd><code><a class="elRef" href="../Triangulation_3/classDelaunayTriangulationTraits__3.html">DelaunayTriangulationTraits_3</a></code> </dd>
+<dt></dt>
+<dd><code><a class="elRef" href="../Kernel_23/classProjectionTraitsGeometricTraits__3.html">ProjectionTraitsGeometricTraits_3</a></code> </dd>
 </dl>
 <dl>
 <dt>Has models</dt>
@@ -176,10 +188,100 @@ $(document).ready(function(){initNavTree('classConformingConstrainedDelaunayTria
 <dt></dt>
 <dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a> (recommended)</code> </dd>
 <dt></dt>
-<dd>all CGAL kernels </dd>
+<dd>All models of the concept <code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code> </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add the requirements in the concept <code><a class="el" href="classConformingConstrainedDelaunayTriangulationTraits__3.html" title="The concept ConformingConstrainedDelaunayTriangulationTraits_3 specifies the requirements for the geo...">ConformingConstrainedDelaunayTriangulationTraits_3</a></code>.</dd></dl>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr class="memitem:a834e4a09e8ccb3e55f96da2056865617"><td class="memItemLeft" align="right" valign="top"><a id="a834e4a09e8ccb3e55f96da2056865617" name="a834e4a09e8ccb3e55f96da2056865617"></a>
+using </td><td class="memItemRight" valign="bottom"><b>FT</b> = <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td></tr>
+<tr class="memdesc:a834e4a09e8ccb3e55f96da2056865617"><td class="mdescLeft"> </td><td class="mdescRight">The number type. <br></td></tr>
+<tr class="separator:a834e4a09e8ccb3e55f96da2056865617"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a935f61dc6a5d5c9ab47e1926739bbd4c"><td class="memItemLeft" align="right" valign="top"><a id="a935f61dc6a5d5c9ab47e1926739bbd4c" name="a935f61dc6a5d5c9ab47e1926739bbd4c"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Vector_3</b> = <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td></tr>
+<tr class="memdesc:a935f61dc6a5d5c9ab47e1926739bbd4c"><td class="mdescLeft"> </td><td class="mdescRight">The vector type. <br></td></tr>
+<tr class="separator:a935f61dc6a5d5c9ab47e1926739bbd4c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5a4e690d8df08df69e1598da1063f024"><td class="memItemLeft" align="right" valign="top"><a id="a5a4e690d8df08df69e1598da1063f024" name="a5a4e690d8df08df69e1598da1063f024"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Construct_vertex_3</b> = <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td></tr>
+<tr class="memdesc:a5a4e690d8df08df69e1598da1063f024"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object model of <code>ConstructVertex_3</code> <br></td></tr>
+<tr class="separator:a5a4e690d8df08df69e1598da1063f024"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Operations</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following functions give access to the predicate and construction objects: </p>
+</td></tr>
+<tr class="memitem:af2ec0cbef495043b2c73f7683cc895c6"><td class="memItemLeft" align="right" valign="top"><a id="af2ec0cbef495043b2c73f7683cc895c6" name="af2ec0cbef495043b2c73f7683cc895c6"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>angle_3_object</b> ()</td></tr>
+<tr class="memdesc:af2ec0cbef495043b2c73f7683cc895c6"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>Angle_3</code> <br></td></tr>
+<tr class="separator:af2ec0cbef495043b2c73f7683cc895c6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acf188ae4bc17124af039b26f5a576a34"><td class="memItemLeft" align="right" valign="top"><a id="acf188ae4bc17124af039b26f5a576a34" name="acf188ae4bc17124af039b26f5a576a34"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>compare_angle_3_object</b> ()</td></tr>
+<tr class="memdesc:acf188ae4bc17124af039b26f5a576a34"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of `CompareAngle_3 <br></td></tr>
+<tr class="separator:acf188ae4bc17124af039b26f5a576a34"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1ade8135e20a4d2b3901fb7b634d8302"><td class="memItemLeft" align="right" valign="top"><a id="a1ade8135e20a4d2b3901fb7b634d8302" name="a1ade8135e20a4d2b3901fb7b634d8302"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>compute_scalar_product_3_object</b> ()</td></tr>
+<tr class="memdesc:a1ade8135e20a4d2b3901fb7b634d8302"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ComputeScalarProduct_3</code> <br></td></tr>
+<tr class="separator:a1ade8135e20a4d2b3901fb7b634d8302"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8dc3a364caa15d400026a13d33a419ce"><td class="memItemLeft" align="right" valign="top"><a id="a8dc3a364caa15d400026a13d33a419ce" name="a8dc3a364caa15d400026a13d33a419ce"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>compute_squared_length_3_object</b> ()</td></tr>
+<tr class="memdesc:a8dc3a364caa15d400026a13d33a419ce"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ComputeSquaredLength_3</code> <br></td></tr>
+<tr class="separator:a8dc3a364caa15d400026a13d33a419ce"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac3676fbd23022d3d8ab4d75f38d18563"><td class="memItemLeft" align="right" valign="top"><a id="ac3676fbd23022d3d8ab4d75f38d18563" name="ac3676fbd23022d3d8ab4d75f38d18563"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>construct_cross_product_vector_3_object</b> ()</td></tr>
+<tr class="memdesc:ac3676fbd23022d3d8ab4d75f38d18563"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructCrossProductVector_3</code> <br></td></tr>
+<tr class="separator:ac3676fbd23022d3d8ab4d75f38d18563"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab61082cb59dbe5f26ed98af65046571b"><td class="memItemLeft" align="right" valign="top"><a id="ab61082cb59dbe5f26ed98af65046571b" name="ab61082cb59dbe5f26ed98af65046571b"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>construct_midpoint_3_object</b> ()</td></tr>
+<tr class="memdesc:ab61082cb59dbe5f26ed98af65046571b"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructMidpoint_3</code> <br></td></tr>
+<tr class="separator:ab61082cb59dbe5f26ed98af65046571b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4b9fd1cc596b43afcd1614f031157394"><td class="memItemLeft" align="right" valign="top"><a id="a4b9fd1cc596b43afcd1614f031157394" name="a4b9fd1cc596b43afcd1614f031157394"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>construct_vector_3_object</b> ()</td></tr>
+<tr class="memdesc:a4b9fd1cc596b43afcd1614f031157394"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructVector_3</code> <br></td></tr>
+<tr class="separator:a4b9fd1cc596b43afcd1614f031157394"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8d91c3174db9d0a9eb155c0ddb9e42ac"><td class="memItemLeft" align="right" valign="top"><a id="a8d91c3174db9d0a9eb155c0ddb9e42ac" name="a8d91c3174db9d0a9eb155c0ddb9e42ac"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>construct_scaled_vector_3_object</b> ()</td></tr>
+<tr class="memdesc:a8d91c3174db9d0a9eb155c0ddb9e42ac"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructScaledVector_3</code> <br></td></tr>
+<tr class="separator:a8d91c3174db9d0a9eb155c0ddb9e42ac"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab755a07dea78f0e6aef6fde51b547ef7"><td class="memItemLeft" align="right" valign="top"><a id="ab755a07dea78f0e6aef6fde51b547ef7" name="ab755a07dea78f0e6aef6fde51b547ef7"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>construct_sum_of_vectors_3_object</b> ()</td></tr>
+<tr class="memdesc:ab755a07dea78f0e6aef6fde51b547ef7"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructSumOfVectors_3</code> <br></td></tr>
+<tr class="separator:ab755a07dea78f0e6aef6fde51b547ef7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a68709d97876a5f28572ac98daa948c5c"><td class="memItemLeft" align="right" valign="top"><a id="a68709d97876a5f28572ac98daa948c5c" name="a68709d97876a5f28572ac98daa948c5c"></a>
+<a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>construct_translated_point_3_object</b> ()</td></tr>
+<tr class="memdesc:a68709d97876a5f28572ac98daa948c5c"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructTranslatedPoint_3</code> <br></td></tr>
+<tr class="separator:a68709d97876a5f28572ac98daa948c5c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa27aa717ade2d6c45db60f9d41ca4481"><td class="memItemLeft" align="right" valign="top"><a id="aa27aa717ade2d6c45db60f9d41ca4481" name="aa27aa717ade2d6c45db60f9d41ca4481"></a>
+<a class="el" href="classConformingConstrainedDelaunayTriangulationTraits__3.html#a5a4e690d8df08df69e1598da1063f024">Construct_vertex_3</a> </td><td class="memItemRight" valign="bottom"><b>construct_vertex_3_object</b> ()</td></tr>
+<tr class="memdesc:aa27aa717ade2d6c45db60f9d41ca4481"><td class="mdescLeft"> </td><td class="mdescRight">returns a function object model of <code>ConstructVertex_3</code> <br></td></tr>
+<tr class="separator:aa27aa717ade2d6c45db60f9d41ca4481"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1f4646933594db47cbb0c7b265baa7cf"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classConformingConstrainedDelaunayTriangulationTraits__3.html#a1f4646933594db47cbb0c7b265baa7cf">is_degenerate_3_object</a> ()</td></tr>
+<tr class="memdesc:a1f4646933594db47cbb0c7b265baa7cf"><td class="mdescLeft"> </td><td class="mdescRight">returns a predicate object that must provide the function operators:  <br></td></tr>
+<tr class="separator:a1f4646933594db47cbb0c7b265baa7cf"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1f4646933594db47cbb0c7b265baa7cf" name="a1f4646933594db47cbb0c7b265baa7cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4646933594db47cbb0c7b265baa7cf">◆ </a></span>is_degenerate_3_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> ConformingConstrainedDelaunayTriangulationTraits_3::is_degenerate_3_object </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a predicate object that must provide the function operators: </p>
+<ul>
+<li><code>bool operator()(Triangle_3 t)</code></li>
+<li><code>bool operator()(Tetrahedron_3 t)</code></li>
+</ul>
+<p>which return true iff the object is degenerate. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.6-->
 <!-- start footer part -->

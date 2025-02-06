@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Triangulations: CGAL::Triangulation_3&lt; Traits, TDS, SLDS &gt; Class Template Reference</title>
+<title>CGAL 6.1 - 3D Triangulations: CGAL::Triangulation_3&lt; Traits, TDS, SLDS &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Triangulations
+   <div id="projectname">CGAL 6.1 - 3D Triangulations
    </div>
   </td>
  </tr>
@@ -600,11 +608,11 @@ bool </td><td class="memItemRight" valign="bottom"><b>are_equal</b> (const <a c
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Flips</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p>Two kinds of flips exist for a three-dimensional triangulation.</p>
-<p>They are reciprocal. To be flipped, an edge must be incident to three tetrahedra. During the flip, these three tetrahedra disappear and two tetrahedra appear. <a class="el" href="classCGAL_1_1Triangulation__3.html#fig__Triangulation3figflips">Figure 46.1</a> (left) shows the edge that is flipped as bold dashed, and one of its three incident facets is shaded. On the right, the facet shared by the two new tetrahedra is shaded. Flips are possible only under the following conditions: - the edge or facet to be flipped is not on the boundary of the convex hull of the triangulation - the five points involved are in convex position.</p>
+<p>They are reciprocal. To be flipped, an edge must be incident to three tetrahedra. During the flip, these three tetrahedra disappear and two tetrahedra appear. <a class="el" href="classCGAL_1_1Triangulation__3.html#fig__Triangulation3figflips">Figure 47.1</a> (left) shows the edge that is flipped as bold dashed, and one of its three incident facets is shaded. On the right, the facet shared by the two new tetrahedra is shaded. Flips are possible only under the following conditions: - the edge or facet to be flipped is not on the boundary of the convex hull of the triangulation - the five points involved are in convex position.</p>
 <p><a class="anchor" id="fig__Triangulation3figflips"></a> </p><div class="image">
 <img src="flips.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="classCGAL_1_1Triangulation__3.html#fig__Triangulation3figflips">Figure 46.1</a> Flips </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="classCGAL_1_1Triangulation__3.html#fig__Triangulation3figflips">Figure 47.1</a> Flips </p> </div> <p> <br>
 </p>
 <p>The following methods guarantee the validity of the resulting 3D triangulation. Flips for a 2d triangulation are not implemented yet. </p>
 </td></tr>
@@ -854,7 +862,7 @@ std::array&lt; <a class="el" href="classCGAL_1_1Triangulation__3.html#a1ba56e37b
 <li>an infinite cell in the special case where the segment does not intersect any finite facet. In this case, exactly one infinite cell is visited. This cell shares a facet <code>f</code> with a finite cell <code>c</code> such that <code>f</code> is intersected by the line through the source of <code>[s,t]</code> and the vertex of <code>c</code> opposite of <code>f</code>.</li>
 </ol>
 <p><code>Segment_simplex_iterator</code> implements the concept <code><a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a></code> and is non-mutable. It is invalidated by any modification of one of the cells traversed.</p>
-<p>Its <code>value_type</code> is <code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the Triangulation_3 cl...">Triangulation_simplex_3</a></code>. </p>
+<p>Its <code>value_type</code> is <code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the TriangulationDataS...">Triangulation_simplex_3</a></code>. </p>
 </td></tr>
 <tr class="memitem:a31e80cca5efe64571de4017067299449"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Triangulation__3.html#a822c7264ac03f629735cb85be4871e1f">Segment_simplex_iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Triangulation__3.html#a31e80cca5efe64571de4017067299449">segment_traverser_simplices_begin</a> (<a class="el" href="classCGAL_1_1Triangulation__3.html#a1ba56e37b3a5acb1ba49a56d9d101a19">Vertex_handle</a> vs, <a class="el" href="classCGAL_1_1Triangulation__3.html#a1ba56e37b3a5acb1ba49a56d9d101a19">Vertex_handle</a> vt) const</td></tr>
 <tr class="memdesc:a31e80cca5efe64571de4017067299449"><td class="mdescLeft"> </td><td class="mdescRight">returns the iterator that allows to visit the simplices intersected by the line segment <code>[vs,vt]</code>.  <br></td></tr>
@@ -1045,7 +1053,7 @@ template&lt;typename Traits , typename TDS , typename SLDS &gt; </div>
 </div><div class="memdoc">
 
 <p>iterator over simplices intersected by a line segment. </p>
-<p><code>Segment_simplex_iterator</code> implements the concept <code><a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a></code> and is non-mutable. Its value type is <code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the Triangulation_3 cl...">Triangulation_simplex_3</a></code>. </p>
+<p><code>Segment_simplex_iterator</code> implements the concept <code><a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a></code> and is non-mutable. Its value type is <code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the TriangulationDataS...">Triangulation_simplex_3</a></code>. </p>
 
 </div>
 </div>

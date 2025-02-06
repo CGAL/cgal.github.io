@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Constrained Triangulations: CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt; Traits, Vertex_base &gt; Class Template Reference</title>
+<title>CGAL 6.1 - 3D Constrained Triangulations: CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt; Traits, Vertex_base &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Constrained Triangulations
+   <div id="projectname">CGAL 6.1 - 3D Constrained Triangulations
    </div>
   </td>
  </tr>
@@ -165,17 +173,17 @@ $(document).ready(function(){initNavTree('classCGAL_1_1Conforming__constrained__
 <a href="#pub-types">Public Types</a> |
 <a href="#pub-methods">Public Member Functions</a> |
 <a href="#pub-static-methods">Static Public Member Functions</a>  </div>
-  <div class="headertitle"><div class="title">CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt; Traits, Vertex_base &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgCT__3Ref.html">3D Constrained Triangulations Reference</a> » <a class="el" href="group__PkgCT__3Classes.html">Class Templates</a></div></div></div>
+  <div class="headertitle"><div class="title">CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt; Traits, Vertex_base &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgConstrainedTriangulation3Ref.html">3D Constrained Triangulations Reference</a> » <a class="el" href="group__PkgConstrainedTriangulation3Classes.html">Classes and Class Templates</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;CGAL/Conforming_constrained_Delaunay_triangulation_vertex_base_3.h&gt;</code></p>
 
-<h2 class="groupheader">Inherits from</h2><p><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">CGAL::Base_with_time_stamp&lt; typename Base &gt;</a>.</p>
+<h2 class="groupheader">Inherits from</h2><p><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">CGAL::Base_with_time_stamp&lt; typename B_w_ts_base &gt;</a>.</p>
 <a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Traits, typename Vertex_base = Triangulation_vertex_base_3&lt;Traits&gt;&gt;<br>
-class CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt; Traits, Vertex_base &gt;</div><p>The <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html" title="The Conforming_constrained_Delaunay_triangulation_vertex_base_3 class is a vertex base class for the ...">Conforming_constrained_Delaunay_triangulation_vertex_base_3</a> class is a vertex base class for the conforming constrained Delaunay triangulation in 3D. </p>
-<p>This class is derived from the <code><a class="elRef" href="../Triangulation_3/classCGAL_1_1Triangulation__vertex__base__3.html">Triangulation_vertex_base_3</a></code> class and provides additional functionality required by <code><a class="el" href="group__PkgCT__3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8" title="creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.">make_conforming_constrained_Delaunay_triangulation_3()</a></code>.</p>
+class CGAL::Conforming_constrained_Delaunay_triangulation_vertex_base_3&lt; Traits, Vertex_base &gt;</div><p>Vertex base class for the 3D conforming constrained Delaunay triangulation. </p>
+<p>This class is derived from the <code><a class="elRef" href="../Triangulation_3/classCGAL_1_1Triangulation__vertex__base__3.html">Triangulation_vertex_base_3</a></code> class and provides additional functionality required by <code><a class="el" href="group__PkgConstrainedTriangulation3Functions.html#gaf6c5b49383aa7a8652f9cd50bf171ed8" title="creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh.">make_conforming_constrained_Delaunay_triangulation_3()</a></code>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Traits</td><td>The geometric traits class, model of <code><a class="elRef" href="../Triangulation_3/classDelaunayTriangulationTraits__3.html">DelaunayTriangulationTraits_3</a></code>. It must be the same as the geometric traits class of the triangulation. </td></tr>
@@ -201,13 +209,13 @@ Public Types</h2></td></tr>
 <tr class="memitem:a79c0e661e330d658b88ad23ef887cb13"><td class="memItemLeft" align="right" valign="top"><a id="a79c0e661e330d658b88ad23ef887cb13" name="a79c0e661e330d658b88ad23ef887cb13"></a>
 using </td><td class="memItemRight" valign="bottom"><b>Base</b> = <a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">Base_with_time_stamp</a>&lt; Vertex_base &gt;</td></tr>
 <tr class="separator:a79c0e661e330d658b88ad23ef887cb13"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a56d5bbc102d73b4129747c1622a1096d"><td class="memItemLeft" align="right" valign="top"><a id="a56d5bbc102d73b4129747c1622a1096d" name="a56d5bbc102d73b4129747c1622a1096d"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Index</b> = CDT_3_face_index</td></tr>
-<tr class="separator:a56d5bbc102d73b4129747c1622a1096d"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="inherit_header pub_types_classCGAL_1_1Base__with__time__stamp"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classCGAL_1_1Base__with__time__stamp')"><img src="closed.png" alt="-"> Public Types inherited from <a class="el" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">CGAL::Base_with_time_stamp&lt; typename Base &gt;</a></td></tr>
-<tr class="memitem:aa97f02c649be59d53dced27840f7e539 inherit pub_types_classCGAL_1_1Base__with__time__stamp"><td class="memItemLeft" align="right" valign="top"><a id="aa97f02c649be59d53dced27840f7e539" name="aa97f02c649be59d53dced27840f7e539"></a>
-typedef <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a> </td><td class="memItemRight" valign="bottom"><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html#aa97f02c649be59d53dced27840f7e539">Has_timestamp</a></td></tr>
-<tr class="separator:aa97f02c649be59d53dced27840f7e539 inherit pub_types_classCGAL_1_1Base__with__time__stamp"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a519e6e140a83d6ef3832a516a9769c41"><td class="memItemLeft" align="right" valign="top"><a id="a519e6e140a83d6ef3832a516a9769c41" name="a519e6e140a83d6ef3832a516a9769c41"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Index</b> = int</td></tr>
+<tr class="separator:a519e6e140a83d6ef3832a516a9769c41"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_types_classCGAL_1_1Base__with__time__stamp"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classCGAL_1_1Base__with__time__stamp')"><img src="closed.png" alt="-"> Public Types inherited from <a class="el" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">CGAL::Base_with_time_stamp&lt; typename B_w_ts_base &gt;</a></td></tr>
+<tr class="memitem:aa9fb87d760c43fdf524780758acc90a4 inherit pub_types_classCGAL_1_1Base__with__time__stamp"><td class="memItemLeft" align="right" valign="top"><a id="aa9fb87d760c43fdf524780758acc90a4" name="aa9fb87d760c43fdf524780758acc90a4"></a>
+typedef <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a> </td><td class="memItemRight" valign="bottom"><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html#aa9fb87d760c43fdf524780758acc90a4">Has_timestamp</a></td></tr>
+<tr class="separator:aa9fb87d760c43fdf524780758acc90a4 inherit pub_types_classCGAL_1_1Base__with__time__stamp"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -218,10 +226,10 @@ int </td><td class="memItemRight" valign="bottom"><b>in_dimension</b> () const<
 void </td><td class="memItemRight" valign="bottom"><b>set_dimension</b> (int d)</td></tr>
 <tr class="separator:a9144f0a33302af88aa53762af0bd913f"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a72da8a440e327b003586fe480a696a41"><td class="memItemLeft" align="right" valign="top"><a id="a72da8a440e327b003586fe480a696a41" name="a72da8a440e327b003586fe480a696a41"></a>
-<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html#a56d5bbc102d73b4129747c1622a1096d">Index</a> </td><td class="memItemRight" valign="bottom"><b>index</b> () const</td></tr>
+<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html#a519e6e140a83d6ef3832a516a9769c41">Index</a> </td><td class="memItemRight" valign="bottom"><b>index</b> () const</td></tr>
 <tr class="separator:a72da8a440e327b003586fe480a696a41"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ab712363d15993b66c05f3a33a9aa3172"><td class="memItemLeft" align="right" valign="top"><a id="ab712363d15993b66c05f3a33a9aa3172" name="ab712363d15993b66c05f3a33a9aa3172"></a>
-void </td><td class="memItemRight" valign="bottom"><b>set_index</b> (<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html#a56d5bbc102d73b4129747c1622a1096d">Index</a> i)</td></tr>
+void </td><td class="memItemRight" valign="bottom"><b>set_index</b> (<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html#a519e6e140a83d6ef3832a516a9769c41">Index</a> i)</td></tr>
 <tr class="separator:ab712363d15993b66c05f3a33a9aa3172"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a9c0ff31fc3e39c8a36745da152858467"><td class="memItemLeft" align="right" valign="top"><a id="a9c0ff31fc3e39c8a36745da152858467" name="a9c0ff31fc3e39c8a36745da152858467"></a>
 bool </td><td class="memItemRight" valign="bottom"><b>is_c2t3_cache_valid</b> () const</td></tr>
@@ -238,22 +246,23 @@ std::size_t </td><td class="memItemRight" valign="bottom"><b>cached_number_of_i
 <tr class="memitem:a1a411dcd56206da3f2ebf2e042bd01a6"><td class="memItemLeft" align="right" valign="top"><a id="a1a411dcd56206da3f2ebf2e042bd01a6" name="a1a411dcd56206da3f2ebf2e042bd01a6"></a>
 std::size_t </td><td class="memItemRight" valign="bottom"><b>cached_number_of_components</b> () const</td></tr>
 <tr class="separator:a1a411dcd56206da3f2ebf2e042bd01a6"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a39075577734761e2e60181730040ac48"><td class="memItemLeft" align="right" valign="top"><a id="a39075577734761e2e60181730040ac48" name="a39075577734761e2e60181730040ac48"></a>
-void </td><td class="memItemRight" valign="bottom"><b>sync</b> ()</td></tr>
-<tr class="separator:a39075577734761e2e60181730040ac48"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7d6219f60d35429881271ec3e1ea3637"><td class="memTemplParams" colspan="2"><a id="a7d6219f60d35429881271ec3e1ea3637" name="a7d6219f60d35429881271ec3e1ea3637"></a>
+template&lt;typename Tr &gt; </td></tr>
+<tr class="memitem:a7d6219f60d35429881271ec3e1ea3637"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><b>sync_vertex_type_with_dimension_and_index</b> (const Tr &amp;tr)</td></tr>
+<tr class="separator:a7d6219f60d35429881271ec3e1ea3637"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a76dc7a151644fc5ff02e09788ca20370"><td class="memItemLeft" align="right" valign="top"><a id="a76dc7a151644fc5ff02e09788ca20370" name="a76dc7a151644fc5ff02e09788ca20370"></a>
 <a class="el" href="structCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__data__3.html">Conforming_constrained_Delaunay_triangulation_vertex_data_3</a> &amp; </td><td class="memItemRight" valign="bottom"><b>ccdt_3_data</b> ()</td></tr>
 <tr class="separator:a76dc7a151644fc5ff02e09788ca20370"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a802e0fdd9fdf8564f8e0e25df4ade414"><td class="memItemLeft" align="right" valign="top"><a id="a802e0fdd9fdf8564f8e0e25df4ade414" name="a802e0fdd9fdf8564f8e0e25df4ade414"></a>
 const <a class="el" href="structCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__data__3.html">Conforming_constrained_Delaunay_triangulation_vertex_data_3</a> &amp; </td><td class="memItemRight" valign="bottom"><b>ccdt_3_data</b> () const</td></tr>
 <tr class="separator:a802e0fdd9fdf8564f8e0e25df4ade414"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="inherit_header pub_methods_classCGAL_1_1Base__with__time__stamp"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCGAL_1_1Base__with__time__stamp')"><img src="closed.png" alt="-"> Public Member Functions inherited from <a class="el" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">CGAL::Base_with_time_stamp&lt; typename Base &gt;</a></td></tr>
-<tr class="memitem:a6a5f0a1fd9f5cec9f9e1bb8d06c0c9f5 inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memItemLeft" align="right" valign="top"><a id="a6a5f0a1fd9f5cec9f9e1bb8d06c0c9f5" name="a6a5f0a1fd9f5cec9f9e1bb8d06c0c9f5"></a>
-std::size_t </td><td class="memItemRight" valign="bottom"><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html#a6a5f0a1fd9f5cec9f9e1bb8d06c0c9f5">time_stamp</a> () const</td></tr>
-<tr class="separator:a6a5f0a1fd9f5cec9f9e1bb8d06c0c9f5 inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a267ba2f968cf8b10ec443182c53707b7 inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memItemLeft" align="right" valign="top"><a id="a267ba2f968cf8b10ec443182c53707b7" name="a267ba2f968cf8b10ec443182c53707b7"></a>
-void </td><td class="memItemRight" valign="bottom"><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html#a267ba2f968cf8b10ec443182c53707b7">set_time_stamp</a> (const std::size_t &amp;ts)</td></tr>
-<tr class="separator:a267ba2f968cf8b10ec443182c53707b7 inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="inherit_header pub_methods_classCGAL_1_1Base__with__time__stamp"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCGAL_1_1Base__with__time__stamp')"><img src="closed.png" alt="-"> Public Member Functions inherited from <a class="el" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html">CGAL::Base_with_time_stamp&lt; typename B_w_ts_base &gt;</a></td></tr>
+<tr class="memitem:a12cf6e25f73d03f4953512e44798880e inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memItemLeft" align="right" valign="top"><a id="a12cf6e25f73d03f4953512e44798880e" name="a12cf6e25f73d03f4953512e44798880e"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html#a12cf6e25f73d03f4953512e44798880e">time_stamp</a> () const</td></tr>
+<tr class="separator:a12cf6e25f73d03f4953512e44798880e inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aebfe06880364b78bc3756984d3b71434 inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memItemLeft" align="right" valign="top"><a id="aebfe06880364b78bc3756984d3b71434" name="aebfe06880364b78bc3756984d3b71434"></a>
+void </td><td class="memItemRight" valign="bottom"><a class="elRef" href="../STL_Extension/classCGAL_1_1Base__with__time__stamp.html#aebfe06880364b78bc3756984d3b71434">set_time_stamp</a> (const std::size_t &amp;ts)</td></tr>
+<tr class="separator:aebfe06880364b78bc3756984d3b71434 inherit pub_methods_classCGAL_1_1Base__with__time__stamp"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>

@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Polygon Mesh Processing: CGAL::Side_of_triangle_mesh&lt; TriangleMesh, GeomTraits, VertexPointMap_ &gt; Class Template Reference</title>
+<title>CGAL 6.1 - Polygon Mesh Processing: CGAL::Side_of_triangle_mesh&lt; TriangleMesh, GeomTraits, VertexPointMap_ &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Polygon Mesh Processing
+   <div id="projectname">CGAL 6.1 - Polygon Mesh Processing
    </div>
   </td>
  </tr>
@@ -185,7 +193,7 @@ class CGAL::Side_of_triangle_mesh&lt; TriangleMesh, GeomTraits, VertexPointMap_ 
 </dl>
 <p><b>Implementation Details</b><br>
  The current implementation is based on the number of triangles intersected by a ray having the query point as source. The do-intersect predicate used to detect if a triangle is intersected is able to detect if a triangle is intersected in its interior or on its boundary. In case it is intersected on its boundary, another ray is picked. In order to speed queries, the first ray used is an axis aligned one that depends on the extents of the bbox of the input mesh. In case other rays are needed to conclude, the rays are generated from a random uniform sampling of a sphere. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Polygon_mesh_processing_2point_inside_example_8cpp-example.html#_a6">Polygon_mesh_processing/point_inside_example.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Polygon_mesh_processing_2isotropic_remeshing_with_allow_move_8cpp-example.html#_a2">Polygon_mesh_processing/isotropic_remeshing_with_allow_move.cpp</a>, and <a class="el" href="Polygon_mesh_processing_2point_inside_example_8cpp-example.html#_a6">Polygon_mesh_processing/point_inside_example.cpp</a>.</dd>
 </dl>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -207,10 +215,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a05c896871012c2e0e86fac65db6b5912"><td class="mdescLeft"> </td><td class="mdescRight">Constructor that takes a pre-built CGAL <code><a class="elRef" href="../AABB_tree/classCGAL_1_1AABB__tree.html">AABB_tree</a></code> of the triangulated surface mesh primitives.  <br></td></tr>
 <tr class="separator:a05c896871012c2e0e86fac65db6b5912"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a0a2b740ebc8f4f7d395cef082aa2a01c"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html#a0a2b740ebc8f4f7d395cef082aa2a01c">Side_of_triangle_mesh</a> (<a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html">Side_of_triangle_mesh</a> &amp;&amp;other)</td></tr>
-<tr class="memdesc:a0a2b740ebc8f4f7d395cef082aa2a01c"><td class="mdescLeft"> </td><td class="mdescRight">Constructor moving an instance of <a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a> to a new memory location with minimal memory copy.  <br></td></tr>
+<tr class="memdesc:a0a2b740ebc8f4f7d395cef082aa2a01c"><td class="mdescLeft"> </td><td class="mdescRight">Constructor moving an instance of <code><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a></code> to a new memory location with minimal memory copy.  <br></td></tr>
 <tr class="separator:a0a2b740ebc8f4f7d395cef082aa2a01c"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:af18f0a7795027cc92a372fa0d9a2710e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html">Side_of_triangle_mesh</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html#af18f0a7795027cc92a372fa0d9a2710e">operator=</a> (<a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html">Side_of_triangle_mesh</a> &amp;&amp;other)</td></tr>
-<tr class="memdesc:af18f0a7795027cc92a372fa0d9a2710e"><td class="mdescLeft"> </td><td class="mdescRight">Assign operator moving an instance of <a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a> to this location with minimal memory copy.  <br></td></tr>
+<tr class="memdesc:af18f0a7795027cc92a372fa0d9a2710e"><td class="mdescLeft"> </td><td class="mdescRight">Assign operator moving an instance of <code><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a></code> to this location with minimal memory copy.  <br></td></tr>
 <tr class="separator:af18f0a7795027cc92a372fa0d9a2710e"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ae618cf6fa412ea74219bb7ca3760d311"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gaf6030e89dadcc1f45369b0cdc5d9e111">Bounded_side</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html#ae618cf6fa412ea74219bb7ca3760d311">operator()</a> (const Point &amp;point) const</td></tr>
 <tr class="memdesc:ae618cf6fa412ea74219bb7ca3760d311"><td class="mdescLeft"> </td><td class="mdescRight">returns the location of a query point  <br></td></tr>
@@ -362,10 +370,10 @@ template&lt;class TriangleMesh , class GeomTraits , class VertexPointMap_  = Def
       </table>
 </div><div class="memdoc">
 
-<p>Constructor moving an instance of <a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a> to a new memory location with minimal memory copy. </p>
+<p>Constructor moving an instance of <code><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a></code> to a new memory location with minimal memory copy. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The instance to be moved </td></tr>
+    <tr><td class="paramname">other</td><td>the instance to be moved </td></tr>
   </table>
   </dd>
 </dl>
@@ -425,14 +433,14 @@ template&lt;class TriangleMesh , class GeomTraits , class VertexPointMap_  = Def
       </table>
 </div><div class="memdoc">
 
-<p>Assign operator moving an instance of <a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a> to this location with minimal memory copy. </p>
+<p>Assign operator moving an instance of <code><a class="el" href="classCGAL_1_1Side__of__triangle__mesh.html" title="This class provides an efficient point location functionality with respect to a domain bounded by one...">Side_of_triangle_mesh</a></code> to this location with minimal memory copy. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The instance to be moved </td></tr>
+    <tr><td class="paramname">other</td><td>the instance to be moved </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A reference to this </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to <code>this</code> </dd></dl>
 
 </div>
 </div>

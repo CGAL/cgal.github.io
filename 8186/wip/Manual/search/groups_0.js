@@ -31,6 +31,7 @@ var searchData=
   ['2d_20straight_20skeleton_20and_20polygon_20offsetting_20reference_28',['2D Straight Skeleton and Polygon Offsetting Reference',['../../Straight_skeleton_2/group__PkgStraightSkeleton2Ref.html',1,'']]],
   ['2d_20triangulation_20data_20structure_20reference_29',['2D Triangulation Data Structure Reference',['../../TDS_2/group__PkgTDS2Ref.html',1,'']]],
   ['2d_20triangulation_20on_20the_20sphere_20reference_30',['2D Triangulation on the Sphere Reference',['../../Triangulation_on_sphere_2/group__PkgTriangulationOnSphere2Ref.html',1,'']]],
-  ['2d_20triangulations_20reference_31',['2D Triangulations Reference',['../../Triangulation_2/group__PkgTriangulation2Ref.html',1,'']]],
-  ['2d_20voronoi_20diagram_20adaptor_20reference_32',['2D Voronoi Diagram Adaptor Reference',['../../Voronoi_diagram_2/group__PkgVoronoiDiagram2Ref.html',1,'']]]
+  ['2d_20triangulations_20on_20hyperbolic_20surfaces_20reference_31',['2D Triangulations on Hyperbolic Surfaces Reference',['../../Triangulation_on_hyperbolic_surface_2/group__PkgHyperbolicSurfaceTriangulation2Ref.html',1,'']]],
+  ['2d_20triangulations_20reference_32',['2D Triangulations Reference',['../../Triangulation_2/group__PkgTriangulation2Ref.html',1,'']]],
+  ['2d_20voronoi_20diagram_20adaptor_20reference_33',['2D Voronoi Diagram Adaptor Reference',['../../Voronoi_diagram_2/group__PkgVoronoiDiagram2Ref.html',1,'']]]
 ];

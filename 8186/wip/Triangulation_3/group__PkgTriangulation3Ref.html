@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Triangulations: 3D Triangulations Reference</title>
+<title>CGAL 6.1 - 3D Triangulations: 3D Triangulations Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Triangulations
+   <div id="projectname">CGAL 6.1 - 3D Triangulations
    </div>
   </td>
  </tr>
@@ -171,14 +179,14 @@ $(document).ready(function(){initNavTree('group__PkgTriangulation3Ref.html','');
 </div>
  </div> <div class="PkgSummary"> <div class="PkgAuthors">Clément Jamin, Sylvain Pion, and Monique Teillaud</div> <div class="PkgDescription">This package allows to build and handle triangulations for point sets in three dimensions. Any CGAL triangulation covers the convex hull of its vertices. Triangulations are build incrementally and can be modified by insertion, displacements or removal of vertices. They offer point location facilities. The package provides plain triangulation (whose faces depends on the insertion order of the vertices) and Delaunay triangulations. <a class="elRef" href="../Manual/classRegular.html">Regular</a> triangulations are also provided for sets of weighted points. Delaunay and regular triangulations offer nearest neighbor queries and primitives to build the dual Voronoi and power diagrams. Optionally, the main Delaunay and regular triangulation algorithms (insert, remove) support multi-core shared-memory architectures to take advantage of available parallelism.</div> <div class="PkgManuals"></div> </div> <div class="PkgShortInfo"> <b>Introduced in:</b> CGAL 2.1<br>
  <b>Depends on:</b> <a class="elRef" href="../Manual/packages.html#PkgTDS3">3D Triangulation Data Structure</a> <br>
- <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:pt-t3-24b">cgal:pt-t3-24b</a><br>
+ <b>BibTeX:</b> <a href="../Manual/how_to_cite_cgal.html#cgal:pt-t3-25a">cgal:pt-t3-25a</a><br>
  <b>License:</b> <a class="elRef" href="../Manual/license.html#licensesGPL">GPL</a> <br>
- <b>Windows Demo:</b> <a href="https://www.cgal.org/demo/6.0/triangulation_3.zip">3D Triangulations</a><br>
+ <b>Windows Demo:</b> <a href="https://www.cgal.org/demo/6.1/triangulation_3.zip">3D Triangulations</a><br>
  </div><p>A three-dimensional triangulation is a three-dimensional simplicial complex, pure connected and without singularities <a class="el" href="citelist.html#CITEREF_by-ag-98">[4]</a>. Its cells (<code>3</code>-faces) are such that two cells either do not intersect or share a common facet (<code>2</code>-face), edge (<code>1</code>-face) or vertex (<code>0</code>-face).</p>
 <p>The basic 3D-triangulation class of CGAL is primarily designed to represent the triangulations of a set of points \( A \) in \( \mathbb{R}^3 \). It can be viewed as a partition of the convex hull of \( A \) into tetrahedra whose vertices are the points of \( A \). Together with the unbounded cell having the convex hull boundary as its frontier, the triangulation forms a partition of \( \mathbb{R}^3 \).</p>
 <p>In order to deal only with tetrahedra, which is convenient for many applications, the unbounded cell can be subdivided into tetrahedra by considering that each convex hull facet is incident to an <em>infinite cell</em> having as fourth vertex an auxiliary vertex called the <em>infinite vertex</em>. In that way, each facet is incident to exactly two cells and special cases at the boundary of the convex hull are simple to deal with.</p>
 <p>A triangulation is a collection of vertices and cells that are linked together through incidence and adjacency relations. Each cell gives access to its four incident vertices and to its four adjacent cells. Each vertex gives access to one of its incident cells.</p>
-<p>The four vertices of a cell are indexed with 0, 1, 2 and 3 in positive orientation, the positive orientation being defined by the orientation of the underlying Euclidean space \( \mathbb{R}^3 \). The neighbors of a cell are also indexed with 0, 1, 2, 3 in such a way that the neighbor indexed by <code>i</code> is opposite to the vertex with the same index. See <a class="el" href="index.html#fig__Triangulation3figorient">Figure 46.1</a>.</p>
+<p>The four vertices of a cell are indexed with 0, 1, 2 and 3 in positive orientation, the positive orientation being defined by the orientation of the underlying Euclidean space \( \mathbb{R}^3 \). The neighbors of a cell are also indexed with 0, 1, 2, 3 in such a way that the neighbor indexed by <code>i</code> is opposite to the vertex with the same index. See <a class="el" href="index.html#fig__Triangulation3figorient">Figure 47.1</a>.</p>
  <h2 class="groupheader">Classified Reference Pages</h2> <h2>Concepts</h2>
 <ul>
 <li><code><a class="el" href="classTriangulationTraits__3.html">TriangulationTraits_3</a></code></li>
@@ -210,7 +218,7 @@ $(document).ready(function(){initNavTree('group__PkgTriangulation3Ref.html','');
 <li><code><a class="el" href="classCGAL_1_1Regular__triangulation__vertex__base__3.html" title="The class Regular_triangulation_vertex_base_3 is a model of the concept RegularTriangulationVertexBas...">CGAL::Regular_triangulation_vertex_base_3</a>&lt;<a class="el" href="classRegularTriangulationTraits__3.html" title="The concept RegularTriangulationTraits_3 is the first template parameter of the class CGAL::Regular_t...">RegularTriangulationTraits_3</a>,Vb&gt;</code></li>
 <li><code><a class="el" href="classCGAL_1_1Regular__triangulation__cell__base__3.html" title="The class Regular_triangulation_cell_base_with_weighted_circumcenter_3 derives from Cb,...">CGAL::Regular_triangulation_cell_base_3</a>&lt;<a class="el" href="classRegularTriangulationTraits__3.html" title="The concept RegularTriangulationTraits_3 is the first template parameter of the class CGAL::Regular_t...">RegularTriangulationTraits_3</a>,Cb&gt;</code></li>
 <li><code><a class="el" href="classCGAL_1_1Regular__triangulation__cell__base__with__weighted__circumcenter__3.html" title="The class Regular_triangulation_cell_base_with_weighted_circumcenter_3 derives from Cb,...">CGAL::Regular_triangulation_cell_base_with_weighted_circumcenter_3</a>&lt;<a class="el" href="classRegularTriangulationTraits__3.html" title="The concept RegularTriangulationTraits_3 is the first template parameter of the class CGAL::Regular_t...">RegularTriangulationTraits_3</a>,Cb&gt;</code></li>
-<li><code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the Triangulation_3 cl...">CGAL::Triangulation_simplex_3</a>&lt;Triangulation_3&gt;</code></li>
+<li><code><a class="el" href="classCGAL_1_1Triangulation__simplex__3.html" title="The class Triangulation_simplex_3 stores a simplex of any dimension defined by the TriangulationDataS...">CGAL::Triangulation_simplex_3</a>&lt;Triangulation_3&gt;</code></li>
 </ul>
 <h3>Traits Classes</h3>
 <ul>

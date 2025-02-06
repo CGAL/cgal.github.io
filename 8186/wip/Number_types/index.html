@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Number Types: User Manual</title>
+<title>CGAL 6.1 - Number Types: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Number Types
+   <div id="projectname">CGAL 6.1 - Number Types
    </div>
   </td>
  </tr>
@@ -168,7 +176,7 @@ Introduction</h1>
 <p>This chapter gives an overview of the number types supported by CGAL. Number types must fulfill certain syntactical and semantic requirements, such that they can be successfully used in CGAL code. In general they are expected to be a model of an algebraic structure concepts and in case they model a subring of the real numbers they are also a model of <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code>. For an overview of the algebraic structure concepts see Section <a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html">Algebraic Foundations Reference</a>.</p>
 <h1><a class="anchor" id="Number_typesBuilt"></a>
 Built-in Number Types</h1>
-<p>The built-in number types <code>float</code>, <code>double</code> and <code>long double</code> have the required arithmetic and comparison operators. They lack some required routines though which are automatically included by CGAL. <span class="footnote">The functions can be found in the header files <code style="display:inline"><a class="el" href="int_8h.html" title="This header provides all necessary functions so the fundamental types int, long int,...">CGAL/int.h</a></code>, <code style="display:inline"><a class="el" href="float_8h.html" title="This header provides all necessary functions so the fundamental type float is a model of the concepts...">CGAL/float.h</a></code>, <code style="display:inline"><a class="el" href="double_8h.html" title="This header provides all necessary functions so the fundamental type double is a model of the concept...">CGAL/double.h</a></code> and <code style="display:inline"><a class="el" href="long__long_8h.html" title="This header provides all necessary functions so the fundamental type long long int is an RealEmbeddab...">CGAL/long_long.h</a></code>.</span></p>
+<p>The built-in number types <code>float</code>, <code>double</code> and <code>long double</code> have the required arithmetic and comparison operators. They lack some required routines though which are automatically included by CGAL. <span class="footnote">The functions can be found in the header files <code style="display:inline"><a class="el" href="int_8h.html" title="This header provides all necessary functions so the fundamental types int, long int,...">CGAL/int.h</a></code>, <code style="display:inline"><a class="el" href="float_8h.html" title="This header provides all necessary functions so the fundamental type float is a model of the concepts...">CGAL/float.h</a></code>, <code style="display:inline"><a class="el" href="double_8h.html" title="This header provides all necessary functions so the fundamental type double is a model of the concept...">CGAL/double.h</a></code> and <code style="display:inline"><a class="el" href="long__long_8h.html" title="This header provides all necessary functions so the fundamental type long long int is a model of the ...">CGAL/long_long.h</a></code>.</span></p>
 <p>All built-in number types of C++ can represent a discrete (bounded) subset of the rational numbers only. We assume that the floating-point arithmetic of your machine follows IEEE floating-point standard. Since the floating-point culture has much more infrastructural support (hardware, language definition and compiler) than exact computation, it is very efficient. Like with all number types with finite precision representation which are used as approximations to the infinite ranges of integers or real numbers, the built-in number types are inherently potentially inexact. Be aware of this if you decide to use the efficient built-in number types: you have to cope with numerical problems. For example, you can compute the intersection point of two lines and then check whether this point lies on the two lines. With floating point arithmetic, roundoff errors may cause the answer of the check to be <code>false</code>. With the built-in integer types overflow might occur.</p>
 <h1><a class="anchor" id="Number_typesCGAL"></a>
 Number Types Provided by CGAL</h1>

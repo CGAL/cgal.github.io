@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 3D Periodic Triangulations: User Manual</title>
+<title>CGAL 6.1 - 3D Periodic Triangulations: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 3D Periodic Triangulations
+   <div id="projectname">CGAL 6.1 - 3D Periodic Triangulations
    </div>
   </td>
  </tr>
@@ -176,28 +184,28 @@ R^3/G\). The parameter \( c\) defines the period.</p>
 T_c^3\). The implementation works not directly on elements of \( \mathbb
 T_c^3\) but on some representatives in \( \mathbb R^3\). So there need to be distinguished representatives to work on. Given \( \alpha\), \( \beta\), and \( \gamma\), the cube \( [\alpha,\alpha+c)\times[\beta,\beta+c)\times[\gamma,\gamma+c)\) contains exactly one representative of each element in \( \mathbb
 T_c^3\). We call it <em>original domain</em>. From now on, when we talk about <em>points</em>, we generally mean representatives of elements of \( \mathbb T_c^3\) that lie inside the original domain. Note that any input point is required to be an element of the half-open cube representing the original domain as defined above.</p>
-<p>There are simplices containing points inside the original domain but also points outside it. The points outside the original domain are periodic copies of points inside the original domain. So, to specify a simplex we need points together with some additional information that determines the respective periodic copy of each point. The set of representatives of an element of \( \mathbb T_c^3\) is a cubic point grid. We address each representative by a three-dimensional integer vector \( (o_x,o_y,o_z)\), called <em>offset</em>. It represents the number of periods a representative in the original domain must be translated in \( x\)-, \( y\)-, and \( z\)-direction. The vector \( (0,0,0)\) corresponds to the representative in the original domain. To specify a \( k\)-simplex we need \( k+1\) point-offset pairs (cf. <a class="el" href="index.html#fig__P3Triangulation3figoffsets">Figure 49.1</a>).</p>
+<p>There are simplices containing points inside the original domain but also points outside it. The points outside the original domain are periodic copies of points inside the original domain. So, to specify a simplex we need points together with some additional information that determines the respective periodic copy of each point. The set of representatives of an element of \( \mathbb T_c^3\) is a cubic point grid. We address each representative by a three-dimensional integer vector \( (o_x,o_y,o_z)\), called <em>offset</em>. It represents the number of periods a representative in the original domain must be translated in \( x\)-, \( y\)-, and \( z\)-direction. The vector \( (0,0,0)\) corresponds to the representative in the original domain. To specify a \( k\)-simplex we need \( k+1\) point-offset pairs (cf. <a class="el" href="index.html#fig__P3Triangulation3figoffsets">Figure 50.1</a>).</p>
 <p><a class="anchor" id="fig__P3Triangulation3figoffsets"></a> </p><div class="image">
 <img src="offsets.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__P3Triangulation3figoffsets">Figure 49.1</a> Offsets in a cell. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__P3Triangulation3figoffsets">Figure 50.1</a> Offsets in a cell. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="P3Triangulation3secintro"></a>
 Representation</h1>
 <p>A triangulation is a collection of vertices and cells that are linked together through incidence and adjacency relations. Each cell gives access to its four incident vertices, their corresponding offsets, and to its four adjacent cells. Each vertex gives access to one of its incident cells.</p>
 <p>The four vertices of a cell are indexed with 0, 1, 2 and 3 in positive orientation. The orientation of a simplex in \( \mathbb T_c^3\) is defined as the orientation of the corresponding simplex in \( \mathbb
-R^3\) given by representatives determined by the respective offsets (see <a class="el" href="index.html#fig__P3Triangulation3figorient">Figure 49.2</a>).</p>
+R^3\) given by representatives determined by the respective offsets (see <a class="el" href="index.html#fig__P3Triangulation3figorient">Figure 50.2</a>).</p>
 <p><a class="anchor" id="fig__P3Triangulation3figorient"></a> </p><div class="image">
 <img src="orient.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__P3Triangulation3figorient">Figure 49.2</a> Orientation of a cell. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__P3Triangulation3figorient">Figure 50.2</a> Orientation of a cell. </p> </div> <p> <br>
 </p>
-<p>As in the underlying combinatorial triangulation (see Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">3D Triangulation Data Structure</a>), the neighbors of a cell are indexed with 0, 1, 2, 3 in such a way that the neighbor indexed by \( i\) is opposite to the vertex with the same index. Also edges ( \( 1\)-faces) and facets ( \( 2\)-faces) are not explicitly represented: a facet is given by a cell and an index (the facet <code>i</code> of a cell <code>c</code> is the facet of <code>c</code> that is opposite to the vertex with index <code>i</code>) and an edge is given by a cell and two indices (the edge <code>(i,j)</code> of a cell <code>c</code> is the edge whose endpoints are the vertices of <code>c</code> with indices <code>i</code> and <code>j</code>). See <a class="elRef" href="../TDS_3/index.html#fig__TDS3figrepres">Figure 47.1</a> of chapter 3D Triangulation Data Structure.</p>
-<p>Some point sets do not admit a triangulation in \( \mathbb T_c^3\). In this case we use 27 periodic copies of the point set arranged in a cube of edge length \( 3c\). Any point set constructed in this way has a triangulation in \( \mathbb R^3/G'\) with \( G'=((3c\cdot\mathbb Z)^3,+)\) <a class="el" href="citelist.html#CITEREF_cgal:ct-c3pt-09">[1]</a>. So we compute the triangulation in this space, which is a <em>27-sheeted covering space</em> of \( \mathbb T_c^3\) (see <a class="el" href="index.html#fig__P3Triangulation3figcovering">Figure 49.3</a>).</p>
+<p>As in the underlying combinatorial triangulation (see Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">3D Triangulation Data Structure</a>), the neighbors of a cell are indexed with 0, 1, 2, 3 in such a way that the neighbor indexed by \( i\) is opposite to the vertex with the same index. Also edges ( \( 1\)-faces) and facets ( \( 2\)-faces) are not explicitly represented: a facet is given by a cell and an index (the facet <code>i</code> of a cell <code>c</code> is the facet of <code>c</code> that is opposite to the vertex with index <code>i</code>) and an edge is given by a cell and two indices (the edge <code>(i,j)</code> of a cell <code>c</code> is the edge whose endpoints are the vertices of <code>c</code> with indices <code>i</code> and <code>j</code>). See <a class="elRef" href="../TDS_3/index.html#fig__TDS3figrepres">Figure 48.1</a> of chapter 3D Triangulation Data Structure.</p>
+<p>Some point sets do not admit a triangulation in \( \mathbb T_c^3\). In this case we use 27 periodic copies of the point set arranged in a cube of edge length \( 3c\). Any point set constructed in this way has a triangulation in \( \mathbb R^3/G'\) with \( G'=((3c\cdot\mathbb Z)^3,+)\) <a class="el" href="citelist.html#CITEREF_cgal:ct-c3pt-09">[1]</a>. So we compute the triangulation in this space, which is a <em>27-sheeted covering space</em> of \( \mathbb T_c^3\) (see <a class="el" href="index.html#fig__P3Triangulation3figcovering">Figure 50.3</a>).</p>
 <p><a class="anchor" id="fig__P3Triangulation3figcovering"></a> </p><div class="image">
 <img src="it_UNIQUE_small.jpg" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__P3Triangulation3figcovering">Figure 49.3</a> The same periodic triangulation in the 1-sheeted covering space and the 27-sheeted covering space. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__P3Triangulation3figcovering">Figure 50.3</a> The same periodic triangulation in the 1-sheeted covering space and the 27-sheeted covering space. </p> </div> <p> <br>
 </p>
 <p>The machinery that manages the copies is largely hidden from the user. However there are some effects that cannot be ignored. For example if the point set does not permit a triangulation in \( \mathbb
 T_c^3\) then the combinatorial iterators (<code>Cell_iterator</code>, <code>Facet_iterator</code>, <code>Edge_iterator</code>, and <code>Vertex_iterator</code>) return all simplices that are internally stored, which correspond to 27 periodic copies of each geometric primitive (Tetrahedron, Triangle, Segment, and Point). This is necessary to ensure consistency in the adjacency relations. In case it is desired to have only one periodic copy of each primitive, we provide <em>geometric</em> iterators. They return geometric primitives of the triangulation without relations between them. Another effect is that when the algorithm switches from the 27-sheeted covering space to the 1-sheeted covering space, the <code>Vertex_handle</code>s and <code>Cell_handle</code>s referencing deleted items become invalid.</p>
@@ -205,7 +213,7 @@ T_c^3\) then the combinatorial iterators (<code>Cell_iterator</code>, <code>Face
 <p><b>Validity</b></p>
 <p>A periodic triangulation is said to be <code>locally valid</code> iff</p>
 <p><b>(a)-(b)</b> Its underlying combinatorial graph, the triangulation data structure, is <code>locally valid</code> (see Section <a class="elRef" href="../TDS_3/index.html#TDS3secintro">Representation</a> of Chapter <a class="elRef" href="../TDS_3/index.html#chapterTDS3">3D Triangulation Data Structure</a>)</p>
-<p><b>(c)</b> Any cell has its vertices ordered according to positive orientation. See <a class="el" href="index.html#fig__P3Triangulation3figorient">Figure 49.2</a>.</p>
+<p><b>(c)</b> Any cell has its vertices ordered according to positive orientation. See <a class="el" href="index.html#fig__P3Triangulation3figorient">Figure 50.2</a>.</p>
 <h1><a class="anchor" id="Periodic_3_triangulation_3Delaunay"></a>
 Delaunay Triangulation</h1>
 <p>The class <code><a class="el" href="classCGAL_1_1Periodic__3__Delaunay__triangulation__3.html" title="The class Periodic_3_Delaunay_triangulation_3 represents a Delaunay triangulation in three-dimensiona...">Periodic_3_Delaunay_triangulation_3</a></code> implements Delaunay triangulations of point sets in \( \mathbb T_c^3\).</p>

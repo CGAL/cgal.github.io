@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Introduction</title>
+<title>CGAL 6.1 - Manual: Introduction</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -214,7 +222,7 @@ Ease of Use</h2>
 <p>In those cases where handling of degeneracies turns out to be inefficient, special variants that are more efficient but less general should be provided in the library in addition to the general algorithms handling all degeneracies. Of course, it needs to be clearly documented which degeneracies are handled and which are not.</p>
 <h2><a class="anchor" id="Developer_manualEfficiency"></a>
 Efficiency</h2>
-<p>For most geometric algorithms theoretical results for the time and space complexity are known. Also, the theoretic interest in efficiency for realistic inputs, as opposed to worst-case situations, is growing <a class="el" href="citelist.html#CITEREF_v-ffrim-97">[14]</a>. For practical purposes, insight into the constant factors hidden in the \(O( )\)-notation is necessary, especially if there are several competing algorithms.</p>
+<p>For most geometric algorithms theoretical results for the time and space complexity are known. Also, the theoretic interest in efficiency for realistic inputs, as opposed to worst-case situations, is growing <a class="el" href="citelist.html#CITEREF_v-ffrim-97">[14]</a>. For practical purposes, insight into the constant factors hidden in the \(O(~)\)-notation is necessary, especially if there are several competing algorithms.</p>
 <p>Therefore, different implementations should be supplied if there is not one best solution, as, for example, when there is a tradeoff between time and space or a more efficient implementation when there are no or few degeneracies.</p>
 <h1><a class="anchor" id="secoverall_design"></a>
 The overall design</h1>
