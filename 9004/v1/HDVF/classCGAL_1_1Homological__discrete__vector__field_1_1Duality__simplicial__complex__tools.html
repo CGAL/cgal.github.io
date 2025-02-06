@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1 - Homological Discrete Vector Fields: CGAL::Homological_discrete_vector_field::Duality_simplicial_complex_tools&lt; CoefficientRing &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools-members.html">List of all members</a> |
+<a href="#nested-classes">Classes</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Homological_discrete_vector_field::Duality_simplicial_complex_tools&lt; CoefficientRing &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a> » <a class="el" href="group__PkgHDVFAlgorithmClasses.html">Algorithm Classes</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/HDVF/Geometric_chain_complex_tools.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename CoefficientRing&gt;<br>
+class CGAL::Homological_discrete_vector_field::Duality_simplicial_complex_tools&lt; CoefficientRing &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html" title="The class Duality_simplicial_complex_tools is dedicated to Alexander duality for 3D surface meshes.">Duality_simplicial_complex_tools</a></code> is dedicated to Alexander duality for 3D surface meshes. </p>
+<p>Starting from a simplicial chain complex (encoding a 3D surface mesh), it provides methods to embed the complex into a larger icosphere and generate a 3D constrained Delaunay triangulation.</p>
+<p>Technically, starting from a <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Simplicial__chain__complex.html" title="The class Simplicial_chain_complex refines the Abstract_simplicial_chain_complex class by assigning c...">Simplicial_chain_complex</a> <code>_K</code>, the method <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a32f847fbfc8d3bc2f3b084275a3ec51f" title="Generates a subcomplex K and a complex  with  from a simplicial complex _K.">simplicial_chain_complex_bb()</a></code> builds a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Simplicial__chain__complex.html" title="The class Simplicial_chain_complex refines the Abstract_simplicial_chain_complex class by assigning c...">Simplicial_chain_complex</a></code> <code>L</code> and a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a></code> <code>K</code>.</p><ul>
+<li>L : complex built out of _K together with a closing icosphere, meshed by tetgen (constrained Delaunay triangulation)</li>
+<li>K (<a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a>) : <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html" title="The class Sub_chain_complex_mask is a technical class implementing a sub chain complex.">Sub_chain_complex_mask</a> identifying _K inside L</li>
+</ul>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CoefficientRing</td><td>a model of the <code><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></code> concept providing the ring used to compute homology. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="HDVF_2main_dual_hdvf_8cpp-example.html#_a4">HDVF/main_dual_hdvf.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html">Complex_duality_data</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">Type returned by <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a32f847fbfc8d3bc2f3b084275a3ec51f" title="Generates a subcomplex K and a complex  with  from a simplicial complex _K.">simplicial_chain_complex_bb()</a></code>.  <a href="structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a43defae00fbcf96715ff81c66a641241"><td class="memItemLeft" align="right" valign="top"><a id="a43defae00fbcf96715ff81c66a641241" name="a43defae00fbcf96715ff81c66a641241"></a>
+typedef <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Simplicial__chain__complex.html">Simplicial_chain_complex</a>&lt; CoefficientRing &gt; </td><td class="memItemRight" valign="bottom"><b>Chain_complex</b></td></tr>
+<tr class="memdesc:a43defae00fbcf96715ff81c66a641241"><td class="mdescLeft"> </td><td class="mdescRight">Type of simplicial chain complex encoding <code>L</code>. <br></td></tr>
+<tr class="separator:a43defae00fbcf96715ff81c66a641241"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad60a571e8bfb5e0949765d4fa8a3d25b"><td class="memItemLeft" align="right" valign="top"><a id="ad60a571e8bfb5e0949765d4fa8a3d25b" name="ad60a571e8bfb5e0949765d4fa8a3d25b"></a>
+typedef <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Sub__chain__complex__mask.html">Sub_chain_complex_mask</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a43defae00fbcf96715ff81c66a641241">Chain_complex</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Sub_chain_complex</b></td></tr>
+<tr class="memdesc:ad60a571e8bfb5e0949765d4fa8a3d25b"><td class="mdescLeft"> </td><td class="mdescRight">Type of sub chain complex mask encoding the sub complex <code>K</code>. <br></td></tr>
+<tr class="separator:ad60a571e8bfb5e0949765d4fa8a3d25b"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a110250dbab2714f04651e354374e8601"><td class="memItemLeft" align="right" valign="top"><a id="a110250dbab2714f04651e354374e8601" name="a110250dbab2714f04651e354374e8601"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Duality_simplicial_complex_tools</b> ()</td></tr>
+<tr class="memdesc:a110250dbab2714f04651e354374e8601"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a> constructor. <br></td></tr>
+<tr class="separator:a110250dbab2714f04651e354374e8601"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a32f847fbfc8d3bc2f3b084275a3ec51f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html">Complex_duality_data</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a32f847fbfc8d3bc2f3b084275a3ec51f">simplicial_chain_complex_bb</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a43defae00fbcf96715ff81c66a641241">Chain_complex</a> &amp;_K, double BB_ratio=1.5, const std::string &amp;out_file_prefix="file_K_closed.off")</td></tr>
+<tr class="memdesc:a32f847fbfc8d3bc2f3b084275a3ec51f"><td class="mdescLeft"> </td><td class="mdescRight">Generates a subcomplex \(K\)K and a complex \(L\) with \(K\subseteq L\) from a simplicial complex <code>_K</code>.  <br></td></tr>
+<tr class="separator:a32f847fbfc8d3bc2f3b084275a3ec51f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa143e380466117c8bcfec3672fe884f0"><td class="memItemLeft" align="right" valign="top"><a id="aa143e380466117c8bcfec3672fe884f0" name="aa143e380466117c8bcfec3672fe884f0"></a>
+static <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html">Mesh_object_io</a> &amp; </td><td class="memItemRight" valign="bottom"><b>export_meshObject</b> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a43defae00fbcf96715ff81c66a641241">Chain_complex</a> &amp;_CC)</td></tr>
+<tr class="memdesc:aa143e380466117c8bcfec3672fe884f0"><td class="mdescLeft"> </td><td class="mdescRight">Exports a SimpComplex to a MeshObject <br>
+ <br></td></tr>
+<tr class="separator:aa143e380466117c8bcfec3672fe884f0"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a32f847fbfc8d3bc2f3b084275a3ec51f" name="a32f847fbfc8d3bc2f3b084275a3ec51f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f847fbfc8d3bc2f3b084275a3ec51f">◆ </a></span>simplicial_chain_complex_bb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html">Complex_duality_data</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html">CGAL::Homological_discrete_vector_field::Duality_simplicial_complex_tools</a>&lt; CoefficientRing &gt;::simplicial_chain_complex_bb </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html#a43defae00fbcf96715ff81c66a641241">Chain_complex</a> &amp; </td>
+          <td class="paramname"><em>_K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double </td>
+          <td class="paramname"><em>BB_ratio</em> = <code>1.5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp; </td>
+          <td class="paramname"><em>out_file_prefix</em> = <code>"file_K_closed.off"</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generates a subcomplex \(K\)K and a complex \(L\) with \(K\subseteq L\) from a simplicial complex <code>_K</code>. </p>
+<p><code>_K</code> is embedded into a larger icosphere and a 3D constrained Delaunay triangulation is generated. Then \(K\), \(L\) and vertex coordinates are extracted and stored in a <code><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html" title="Type returned by simplicial_chain_complex_bb().">Complex_duality_data</a></code> structure.</p>
+<p>The following figures shows the resulting complex with an initial <code>Twirl</code> mesh (right - sectional view): <img src="HDVF_twirl_view1.png" alt="" align="center" width="35%/" class="inline"> <img src="HDVF_twirl_view2.png" alt="" align="center" width="30%/" class="inline"></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_K</td><td>Simplicial chain complex (working mesh). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">BB_ratio</td><td>Ratio of the "closing" icosphere diameter with respect to the diameter of the object's bounding box. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">out_file_prefix</td><td>Prefix of tetgen intermediate files (default: "file_K_closed.off"). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">Homological_discrete_vector_field</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools.html">Duality_simplicial_complex_tools</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

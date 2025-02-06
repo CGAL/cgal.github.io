@@ -1,0 +1,4 @@
+var classCGAL_1_1Real__embeddable__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4_1_1Is__negative =
+[
+    [ "operator()", "classCGAL_1_1Real__embeddable__traits_3_01Homological__discrete__vector__field_1_1Z2_01_4_1_1Is__negative.html#a82e4b282958a471d4a549eee8c24ffd0", null ]
+];
