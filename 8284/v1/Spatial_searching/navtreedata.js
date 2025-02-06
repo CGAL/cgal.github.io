@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - dD Spatial Searching", "index.html", [
+  [ "CGAL 6.1 - dD Spatial Searching", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Bibliography", "citelist.html", null ],

@@ -2,6 +2,7 @@ var annotated =
 [
     [ "CGAL", null, [
       [ "Aff_transformation_d", "classCGAL_1_1Aff__transformation__d.html", "classCGAL_1_1Aff__transformation__d" ],
+      [ "Bbox_d", "classCGAL_1_1Bbox__d.html", "classCGAL_1_1Bbox__d" ],
       [ "Cartesian_d", "classCGAL_1_1Cartesian__d.html", null ],
       [ "Direction_d", "classCGAL_1_1Direction__d.html", "classCGAL_1_1Direction__d" ],
       [ "Epeck_d", "structCGAL_1_1Epeck__d.html", "structCGAL_1_1Epeck__d" ],
