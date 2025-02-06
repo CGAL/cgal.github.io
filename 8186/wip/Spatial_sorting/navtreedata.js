@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - Spatial Sorting", "index.html", [
+  [ "CGAL 6.1 - Spatial Sorting", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Bibliography", "citelist.html", null ],

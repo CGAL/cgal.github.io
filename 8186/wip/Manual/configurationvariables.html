@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Summary of CGAL's Configuration Variables</title>
+<title>CGAL 6.1 - Manual: Summary of CGAL's Configuration Variables</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -250,33 +258,9 @@ Variables Providing Information About 3rd-Party Libraries</h2>
 <p>Since 3rd-party libraries are system wide, many of the CMake variables listed below can alternatively be given as similarly-named environment variables instead. Keep in mind that you must provide one or the other but never both.</p>
 <h2><a class="anchor" id="installation_boost"></a>
 Boost Libraries</h2>
-<h3><a class="anchor" id="inst_boost_1_72_plus"></a>
-Version 1.72 and Later</h3>
 <p>Starting from Boost 1.72, the cmake config mode can be used for configuring the Boost version to use by setting the environment variable <code>Boost_DIR</code> to the path containing the file <code>BoostConfig.cmake</code>. For example if you manually installed Boost 1.77 with <code>--prefix=&lt;path&gt;</code>, then you should set <code>Boost_DIR=&lt;path&gt;/lib/cmake/Boost-1.77.0</code>.</p>
-<h3><a class="anchor" id="inst_boost_up_2_1_69"></a>
-Version 1.69 and Earlier</h3>
-<dl class="section warning"><dt>Warning</dt><dd>If you have a version of Boost greater than 1.69 already installed on your system, and you want to configure and compile with an earlier version of Boost, then you will need to set the CMake variable <code>Boost_NO_BOOST_CMAKE</code> to <code>ON</code> (otherwise the <code>FindBoost.cmake</code> module of CMake will start searching for <code>BoostConfig.cmake</code>, and ignore the <code>BOOST_ROOT</code> variable).</dd></dl>
-<p>In most cases, if Boost is not automatically found, setting the <code>BOOST_ROOT</code> variable is enough. If it is not, you can specify the header and library directories individually. You can also provide the full pathname to a specific compiled library if it cannot be found in the library directory or its name is non-standard.</p>
 <p>By default, when Boost binary libraries are needed, the shared versions are used if present. You can set the variable <code>CGAL_Boost_USE_STATIC_LIBS</code> to <code>ON</code> if you want to link with static versions explicitly.</p>
 <p>On Windows, if you link with Boost shared libraries, you must ensure that the <code>.dll</code> files are found by the dynamic linker, at run time. For example, you can add the path to the Boost <code>.dll</code> to the <code>PATH</code> environment variable.</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadLeft">Variable   </th><th class="markdownTableHeadLeft">Description   </th><th class="markdownTableHeadLeft">Type    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>BOOST_ROOT</code><span class="footnote">The environment variable can be spelled either <code style="display:inline">BOOST_ROOT</code> or <code style="display:inline">BOOSTROOT</code></span>   </td><td class="markdownTableBodyLeft">Root directory of your Boost installation   </td><td class="markdownTableBodyLeft">Either CMake or Environment    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><code>Boost_INCLUDE_DIR</code>   </td><td class="markdownTableBodyLeft">Directory containing the <code>boost/version.hpp</code> file   </td><td class="markdownTableBodyLeft">CMake    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>BOOST_INCLUDEDIR</code>   </td><td class="markdownTableBodyLeft">Idem   </td><td class="markdownTableBodyLeft">Environment    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><code>Boost_LIBRARY_DIRS</code>   </td><td class="markdownTableBodyLeft">Directory containing the compiled Boost libraries   </td><td class="markdownTableBodyLeft">CMake    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>BOOST_LIBRARYDIR</code>   </td><td class="markdownTableBodyLeft">Idem   </td><td class="markdownTableBodyLeft">Environment    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><code>Boost_(xyz)_LIBRARY_RELEASE</code>   </td><td class="markdownTableBodyLeft">Full pathname to a release build of the compiled 'xyz' Boost library   </td><td class="markdownTableBodyLeft">CMake    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>Boost_(xyz)_LIBRARY_DEBUG</code>   </td><td class="markdownTableBodyLeft">Full pathname to a debug build of the compiled 'xyz' Boost library   </td><td class="markdownTableBodyLeft">CMake   </td></tr>
-</table>
 <h2><a class="anchor" id="installation_gmp"></a>
 GMP and MPFR Libraries</h2>
 <p>Under Windows, auto-linking is used, so only the <em>directory</em> containing the libraries is needed and you would specify <code>GMP|MPFR_LIBRARY_DIR</code> rather than <code>GMP|MPFR_LIBRARIES</code>. On the other hand, under Linux the actual library filename is needed. Thus you would specify <code>GMP|MPFR_LIBRARIES</code>. In no case you need to specify both.</p>
@@ -536,7 +520,7 @@ GLPK library</h2>
 <h1><a class="anchor" id="installation_compiler_workarounds"></a>
 Compiler Workarounds</h1>
 <p>A number of boolean flags are used to workaround compiler bugs and limitations. They all start with the prefix <code>CGAL_CFG</code>. These flags are used to work around compiler bugs and limitations.</p>
-<p>For each installation a file <code>&lt;CGAL/compiler_config.h&gt;</code> is defined, with the correct settings of all flags. This file is generated automatically by CMake, and it is located in the <code>include</code> directory of where you run CMake. For an in-source configuration this means <code>CGAL-6.0</code><code>/include</code>.</p>
+<p>For each installation a file <code>&lt;CGAL/compiler_config.h&gt;</code> is defined, with the correct settings of all flags. This file is generated automatically by CMake, and it is located in the <code>include</code> directory of where you run CMake. For an in-source configuration this means <code>CGAL-6.1</code><code>/include</code>.</p>
 <p>The test programs used to generate the <code>compiler_config.h</code> file can be found in <code>config/testfiles</code>. Both <code>compiler_config.h</code> and the test programs contain a short description of the problem. In case of trouble with one of the <code>CGAL_CFG</code> flags, it is a good idea to take a look at it.</p>
 <p>The file <code>CGAL/compiler_config.h</code> is included from <code>&lt;CGAL/config.h&gt;</code>. which is included by all CGAL header files. </p>
 </div></div><!-- contents -->

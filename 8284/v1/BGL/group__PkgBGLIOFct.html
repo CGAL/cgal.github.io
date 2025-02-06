@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL and the Boost Graph Library: I/O Functions</title>
+<title>CGAL 6.1 - CGAL and the Boost Graph Library: I/O Functions</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL and the Boost Graph Library
+   <div id="projectname">CGAL 6.1 - CGAL and the Boost Graph Library
    </div>
   </td>
  </tr>
@@ -178,6 +186,9 @@ Modules</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:group__PkgBGLIoFuncsOBJ"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgBGLIoFuncsOBJ.html">OBJ I/O Functions</a></td></tr>
 <tr class="memdesc:group__PkgBGLIoFuncsOBJ"><td class="mdescLeft"> </td><td class="mdescRight">I/O Functions for the <a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamOBJ">Wavefront Advanced Visualizer Object Format (OBJ)</a>. <br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:group__PkgBGLIoFuncsOM"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgBGLIoFuncsOM.html">OM I/O Functions</a></td></tr>
+<tr class="memdesc:group__PkgBGLIoFuncsOM"><td class="mdescLeft"> </td><td class="mdescRight">I/O Functions for the <a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamOM">OpenMesh (OM) File format</a>. <br></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:group__PkgBGLIoFuncsOFF"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="group__PkgBGLIoFuncsOFF.html">OFF I/O Functions</a></td></tr>
 <tr class="memdesc:group__PkgBGLIoFuncsOFF"><td class="mdescLeft"> </td><td class="mdescRight">I/O Functions for the <a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamOFF">Object File Format (OFF)</a>. <br></td></tr>
@@ -249,6 +260,7 @@ template&lt;class Graph , typename NamedParameters  = parameters::Default_named_
 <p>Supported file formats are the following:</p><ul>
 <li><a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamOFF">Object File Format (OFF)</a> (<code>.off</code>)</li>
 <li><a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamOBJ">Wavefront Advanced Visualizer Object Format (OBJ)</a> (<code>.obj</code>)</li>
+<li><a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamOM">OpenMesh (OM) File format</a> (<code>.om</code>)</li>
 <li><a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamSTL">STereoLithography (STL) File Format</a> (<code>.stl</code>)</li>
 <li><a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamPLY">Polygon File Format (PLY)</a> (<code>.ply</code>)</li>
 <li><a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamGocad">GOCAD (TS) File Format</a> (<code>.ts</code>)</li>

@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL and the Boost Graph Library: BGL_surface_mesh/surface_mesh_partition.cpp</title>
+<title>CGAL 6.1 - CGAL and the Boost Graph Library: BGL_surface_mesh/surface_mesh_partition.cpp</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL and the Boost Graph Library
+   <div id="projectname">CGAL 6.1 - CGAL and the Boost Graph Library
    </div>
   </td>
  </tr>
@@ -215,7 +223,7 @@ $(document).ready(function(){initNavTree('BGL_surface_mesh_2surface_mesh_partiti
 <div class="line">  std::ofstream outxyz(<span class="stringliteral">"out.xyz"</span>);</div>
 <div class="line">  outxyz.precision(17);</div>
 <div class="line">  boost::graph_traits&lt;SM&gt;::vertex_iterator vit, ve;</div>
-<div class="line">  boost::tie(vit, ve) = vertices(sm);</div>
+<div class="line">  std::tie(vit, ve) = vertices(sm);</div>
 <div class="line">  <span class="keywordflow">for</span>(; vit!=ve; ++vit)</div>
 <div class="line">  {</div>
 <div class="line">    <span class="keywordflow">if</span>(get(vertex_pid_map, *vit) == 0)</div>
@@ -225,9 +233,9 @@ $(document).ready(function(){initNavTree('BGL_surface_mesh_2surface_mesh_partiti
 <div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
-<div class="ttc" id="agroup__PkgBGLHelperFct_html_ga2682fb7d5f4ff4eb65607ae4118e31bc"><div class="ttname"><a href="group__PkgBGLHelperFct.html#ga2682fb7d5f4ff4eb65607ae4118e31bc">CGAL::copy_face_graph</a></div><div class="ttdeci">void copy_face_graph(const SourceMesh &amp;sm, TargetMesh &amp;tm, const NamedParameters1 &amp;np1=parameters::default_values(), const NamedParameters2 &amp;np2=parameters::default_values())</div><div class="ttdoc">copies a source model of FaceListGraph into a target model of a FaceListGraph.</div><div class="ttdef"><b>Definition:</b> copy_face_graph.h:328</div></div>
-<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">reads a polygon mesh from a file.</div><div class="ttdef"><b>Definition:</b> polygon_mesh_io.h:123</div></div>
-<div class="ttc" id="agroup__PkgBGLIOFct_html_gafa143949a33371dc6df8307be1ab8a66"><div class="ttname"><a href="group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a></div><div class="ttdeci">bool write_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">writes a polygon mesh in a file.</div><div class="ttdef"><b>Definition:</b> polygon_mesh_io.h:223</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_ga2682fb7d5f4ff4eb65607ae4118e31bc"><div class="ttname"><a href="group__PkgBGLHelperFct.html#ga2682fb7d5f4ff4eb65607ae4118e31bc">CGAL::copy_face_graph</a></div><div class="ttdeci">void copy_face_graph(const SourceMesh &amp;sm, TargetMesh &amp;tm, const NamedParameters1 &amp;np1=parameters::default_values(), const NamedParameters2 &amp;np2=parameters::default_values())</div><div class="ttdoc">copies a source model of FaceListGraph into a target model of a FaceListGraph.</div><div class="ttdef"><b>Definition:</b> copy_face_graph.h:350</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">reads a polygon mesh from a file.</div><div class="ttdef"><b>Definition:</b> polygon_mesh_io.h:125</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_gafa143949a33371dc6df8307be1ab8a66"><div class="ttname"><a href="group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a></div><div class="ttdeci">bool write_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">writes a polygon mesh in a file.</div><div class="ttdef"><b>Definition:</b> polygon_mesh_io.h:229</div></div>
 <div class="ttc" id="agroup__PkgBGLPartition_html_gad72efc6b61c92ee8704858dc0b7062e9"><div class="ttname"><a href="group__PkgBGLPartition.html#gad72efc6b61c92ee8704858dc0b7062e9">CGAL::METIS::partition_dual_graph</a></div><div class="ttdeci">void partition_dual_graph(const TriangleMesh &amp;tm, int nparts, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">computes a partition of the input triangular mesh into nparts parts, based on the mesh's dual graph.</div><div class="ttdef"><b>Definition:</b> partition_dual_graph.h:192</div></div>
 <div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
 <div class="ttc" id="apartition_8h_html"><div class="ttname"><a href="partition_8h.html">partition.h</a></div><div class="ttdoc">Convenience header file including the headers for all the partitioning-related free functions of this...</div></div>

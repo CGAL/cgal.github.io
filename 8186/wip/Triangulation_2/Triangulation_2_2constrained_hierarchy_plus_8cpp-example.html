@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D Triangulations: Triangulation_2/constrained_hierarchy_plus.cpp</title>
+<title>CGAL 6.1 - 2D Triangulations: Triangulation_2/constrained_hierarchy_plus.cpp</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D Triangulations
+   <div id="projectname">CGAL 6.1 - 2D Triangulations
    </div>
   </td>
  </tr>
@@ -187,24 +195,25 @@ $(document).ready(function(){initNavTree('Triangulation_2_2constrained_hierarchy
 <div class="line">main( )</div>
 <div class="line">{</div>
 <div class="line">  Triangulation cdt;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Inserting a grid 5 x 5 of  constraints "</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Inserting a grid 5 x 5 of 10 intersecting constraints "</span> &lt;&lt; std::endl;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 6; ++i)</div>
 <div class="line">    cdt.<a id="a9" name="a9"></a><a class="code hl_function" href="classCGAL_1_1Constrained__triangulation__plus__2.html#aa8870c3ead46efaac0c7c7f3916b4ed5">insert_constraint</a>( Point(0,i), Point(6,i));</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 1; j &lt; 6; ++j)</div>
 <div class="line">    cdt.insert_constraint( Point(j,0), Point(j,6));</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">int</span> count = 0;</div>
-<div class="line">  <span class="keywordflow">for</span> (Triangulation::Subconstraint_iterator scit = cdt.subconstraints_begin();</div>
-<div class="line">       scit != cdt.subconstraints_end();</div>
-<div class="line">       ++scit)  ++count;</div>
+<div class="line">  <span class="keyword">using </span>Sc = Triangulation::Subconstraint;</div>
+<div class="line">  <span class="keywordflow">for</span> ([[maybe_unused]] <span class="keyword">const</span> Sc&amp; sc :  cdt.subconstraints()) {</div>
+<div class="line">    ++count;</div>
+<div class="line">  }</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">"The number of resulting constrained edges is  "</span>;</div>
 <div class="line">  std::cout &lt;&lt;  count &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">//verbose mode of is_valid ; shows the number of vertices at each  level</span></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">"The number of vertices at successive levels"</span> &lt;&lt; std::endl;</div>
-<div class="line">  assert(cdt.is_valid(<span class="keyword">true</span>));</div>
+<div class="line">  <span class="keywordtype">bool</span> valid = cdt.is_valid(<span class="keyword">true</span>);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">  <span class="keywordflow">return</span> valid ? 0 : 1;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1Constrained__Delaunay__triangulation__2_html"><div class="ttname"><a href="classCGAL_1_1Constrained__Delaunay__triangulation__2.html">CGAL::Constrained_Delaunay_triangulation_2</a></div><div class="ttdoc">A constrained Delaunay triangulation is a triangulation with constrained edges which tries to be as m...</div><div class="ttdef"><b>Definition:</b> Constrained_Delaunay_triangulation_2.h:96</div></div>
 <div class="ttc" id="aclassCGAL_1_1Constrained__triangulation__face__base__2_html"><div class="ttname"><a href="classCGAL_1_1Constrained__triangulation__face__base__2.html">CGAL::Constrained_triangulation_face_base_2</a></div><div class="ttdoc">The class Constrained_triangulation_face_base_2 is the default model for the concept ConstrainedTrian...</div><div class="ttdef"><b>Definition:</b> Constrained_triangulation_face_base_2.h:34</div></div>

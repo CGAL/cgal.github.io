@@ -17,5 +17,6 @@ var searchData=
   ['gmp_14',['GMP',['../../Number_types/group__nt__gmp.html',1,'']]],
   ['gocad_20i_2fo_20functions_15',['GOCAD I/O Functions',['../../BGL/group__PkgBGLIoFuncsGOCAD.html',1,'(Global Namespace)'],['../../Stream_support/group__PkgStreamSupportIoFuncsGOCAD.html',1,'(Global Namespace)']]],
   ['graph_20adaptors_16',['Graph Adaptors',['../../BGL/group__PkgBGLAdaptors.html',1,'']]],
-  ['graphics_20item_20classes_17',['Graphics Item Classes',['../../GraphicsView/group__PkgGraphicsViewGraphicsItemClasses.html',1,'']]]
+  ['graph_20traversal_17',['Graph Traversal',['../../BGL/group__PkgBGLTraversal.html',1,'']]],
+  ['graphics_20item_20classes_18',['Graphics Item Classes',['../../GraphicsView/group__PkgGraphicsViewGraphicsItemClasses.html',1,'']]]
 ];

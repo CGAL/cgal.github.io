@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D Polygons: CGAL::Multipolygon_with_holes_2&lt; Kernel, Container &gt; Class Template Reference</title>
+<title>CGAL 6.1 - 2D Polygons: CGAL::Multipolygon_with_holes_2&lt; Kernel, Container_ &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D Polygons
+   <div id="projectname">CGAL 6.1 - 2D Polygons
    </div>
   </td>
  </tr>
@@ -164,15 +172,15 @@ $(document).ready(function(){initNavTree('classCGAL_1_1Multipolygon__with__holes
 <a href="#pub-types">Public Types</a> |
 <a href="#pub-methods">Public Member Functions</a> |
 <a href="#related">Related Functions</a>  </div>
-  <div class="headertitle"><div class="title">CGAL::Multipolygon_with_holes_2&lt; Kernel, Container &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgPolygon2Ref.html">2D Polygon Reference</a></div></div></div>
+  <div class="headertitle"><div class="title">CGAL::Multipolygon_with_holes_2&lt; Kernel, Container_ &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgPolygon2Ref.html">2D Polygon Reference</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;CGAL/Multipolygon_with_holes_2.h&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, class <a class="elRef" href="../Manual/classContainer.html">Container</a> = std::vector&lt;typename Kernel::Point_2&gt;&gt;<br>
-class CGAL::Multipolygon_with_holes_2&lt; Kernel, Container &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html" title="The class Multipolygon_with_holes_2 models the concept MultipolygonWithHoles_2.">Multipolygon_with_holes_2</a></code> models the concept <code><a class="el" href="classMultipolygonWithHoles__2.html">MultipolygonWithHoles_2</a></code>. </p>
-<p>It is parameterized with two types (<code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code> and <code><a class="elRef" href="../Manual/classContainer.html">Container</a></code>) that are used to instantiate the types <code><a class="el" href="classCGAL_1_1Polygon__2.html" title="The class Polygon_2 implements polygons.">Polygon_2</a>&lt;<a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>,<a class="elRef" href="../Manual/classContainer.html">Container</a>&gt;</code> and <code><a class="el" href="classCGAL_1_1Polygon__with__holes__2.html" title="The class Polygon_with_holes_2 models the concept GeneralPolygonWithHoles_2.">Polygon_with_holes_2</a>&lt;<a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>,<a class="elRef" href="../Manual/classContainer.html">Container</a>&gt;</code>. The latter is used to represent each polygon with holes. The former is converted to the latter.</p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, class Container_ = std::vector&lt;typename Kernel::Point_2&gt;&gt;<br>
+class CGAL::Multipolygon_with_holes_2&lt; Kernel, Container_ &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html" title="The class Multipolygon_with_holes_2 models the concept MultipolygonWithHoles_2.">Multipolygon_with_holes_2</a></code> models the concept <code><a class="el" href="classMultipolygonWithHoles__2.html">MultipolygonWithHoles_2</a></code>. </p>
+<p>It is parameterized with two types (<code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code> and <code>Container_</code>) that are used to instantiate the types <code><a class="el" href="classCGAL_1_1Polygon__2.html" title="The class Polygon_2 implements polygons.">Polygon_2</a>&lt;<a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>,Container_&gt;</code> and <code><a class="el" href="classCGAL_1_1Polygon__with__holes__2.html" title="The class Polygon_with_holes_2 models the concept GeneralPolygonWithHoles_2.">Polygon_with_holes_2</a>&lt;<a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>,Container_&gt;</code>. The latter is used to represent each polygon with holes. The former is converted to the latter.</p>
 <dl>
 <dt>Is model of</dt>
 <dd><code><a class="el" href="classMultipolygonWithHoles__2.html">MultipolygonWithHoles_2</a></code> </dd>
@@ -182,50 +190,50 @@ class CGAL::Multipolygon_with_holes_2&lt; Kernel, Container &gt;</div><p>The cla
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:abac63d31dfe6a053e95862f97accbd84"><td class="memItemLeft" align="right" valign="top"><a id="abac63d31dfe6a053e95862f97accbd84" name="abac63d31dfe6a053e95862f97accbd84"></a>
+<tr class="memitem:afdcbd1b6888e6321c279f7a43c50f23b"><td class="memItemLeft" align="right" valign="top"><a id="afdcbd1b6888e6321c279f7a43c50f23b" name="afdcbd1b6888e6321c279f7a43c50f23b"></a>
 using </td><td class="memItemRight" valign="bottom"><b>Size</b> = unsigned int</td></tr>
-<tr class="memdesc:abac63d31dfe6a053e95862f97accbd84"><td class="mdescLeft"> </td><td class="mdescRight">the size type <br></td></tr>
-<tr class="separator:abac63d31dfe6a053e95862f97accbd84"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memdesc:afdcbd1b6888e6321c279f7a43c50f23b"><td class="mdescLeft"> </td><td class="mdescRight">the size type <br></td></tr>
+<tr class="separator:afdcbd1b6888e6321c279f7a43c50f23b"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5cd8d17189b68c964f290ee518d6ac08"><td class="memItemLeft" align="right" valign="top"><a id="a5cd8d17189b68c964f290ee518d6ac08" name="a5cd8d17189b68c964f290ee518d6ac08"></a>
+<tr class="memitem:ac14b3a027ec9bc1e472354621500df60"><td class="memItemLeft" align="right" valign="top"><a id="ac14b3a027ec9bc1e472354621500df60" name="ac14b3a027ec9bc1e472354621500df60"></a>
  </td><td class="memItemRight" valign="bottom"><b>Multipolygon_with_holes_2</b> ()=default</td></tr>
-<tr class="memdesc:a5cd8d17189b68c964f290ee518d6ac08"><td class="mdescLeft"> </td><td class="mdescRight">Default constructor. <br></td></tr>
-<tr class="separator:a5cd8d17189b68c964f290ee518d6ac08"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a8367a3ff7b634e645513ce6341d069e9"><td class="memTemplParams" colspan="2"><a id="a8367a3ff7b634e645513ce6341d069e9" name="a8367a3ff7b634e645513ce6341d069e9"></a>
+<tr class="memdesc:ac14b3a027ec9bc1e472354621500df60"><td class="mdescLeft"> </td><td class="mdescRight">Default constructor. <br></td></tr>
+<tr class="separator:ac14b3a027ec9bc1e472354621500df60"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abfd089428bc957e408ad709803618459"><td class="memTemplParams" colspan="2"><a id="abfd089428bc957e408ad709803618459" name="abfd089428bc957e408ad709803618459"></a>
 template&lt;typename PolygonsInputIterator &gt; </td></tr>
-<tr class="memitem:a8367a3ff7b634e645513ce6341d069e9"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><b>Multipolygon_with_holes_2</b> (PolygonsInputIterator p_begin, PolygonsInputIterator p_end)</td></tr>
-<tr class="memdesc:a8367a3ff7b634e645513ce6341d069e9"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from polygons. <br></td></tr>
-<tr class="separator:a8367a3ff7b634e645513ce6341d069e9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abfd089428bc957e408ad709803618459"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><b>Multipolygon_with_holes_2</b> (PolygonsInputIterator p_begin, PolygonsInputIterator p_end)</td></tr>
+<tr class="memdesc:abfd089428bc957e408ad709803618459"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from polygons. <br></td></tr>
+<tr class="separator:abfd089428bc957e408ad709803618459"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="related" name="related"></a>
 Related Functions</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
 </td></tr>
-<tr class="memitem:af5b0068a1e5377a69063534d54d881f8"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> , class <a class="elRef" href="../Manual/classContainer.html">Container</a> &gt; </td></tr>
-<tr class="memitem:af5b0068a1e5377a69063534d54d881f8"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html#af5b0068a1e5377a69063534d54d881f8">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html">Multipolygon_with_holes_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" href="../Manual/classContainer.html">Container</a> &gt; &amp;mp)</td></tr>
-<tr class="memdesc:af5b0068a1e5377a69063534d54d881f8"><td class="mdescLeft"> </td><td class="mdescRight">inserts a multipolygon with holes to the output stream <code>os</code>.  <br></td></tr>
-<tr class="separator:af5b0068a1e5377a69063534d54d881f8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abd1b22d12ae5c1b583935cc08b49de76"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> , class Container_ &gt; </td></tr>
+<tr class="memitem:abd1b22d12ae5c1b583935cc08b49de76"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html#abd1b22d12ae5c1b583935cc08b49de76">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html">Multipolygon_with_holes_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, Container_ &gt; &amp;mp)</td></tr>
+<tr class="memdesc:abd1b22d12ae5c1b583935cc08b49de76"><td class="mdescLeft"> </td><td class="mdescRight">inserts a multipolygon with holes to the output stream <code>os</code>.  <br></td></tr>
+<tr class="separator:abd1b22d12ae5c1b583935cc08b49de76"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Definition</h2></td></tr>
-<tr class="memitem:ad4c0f8b6ec0e00514e4ee8df2dfe8377"><td class="memItemLeft" align="right" valign="top"><a id="ad4c0f8b6ec0e00514e4ee8df2dfe8377" name="ad4c0f8b6ec0e00514e4ee8df2dfe8377"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Polygon_2</b> = <a class="el" href="classCGAL_1_1Polygon__2.html">CGAL::Polygon_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" href="../Manual/classContainer.html">Container</a> &gt;</td></tr>
-<tr class="memdesc:ad4c0f8b6ec0e00514e4ee8df2dfe8377"><td class="mdescLeft"> </td><td class="mdescRight">polygon type <br></td></tr>
-<tr class="separator:ad4c0f8b6ec0e00514e4ee8df2dfe8377"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a4b36e39c6f7d6421aeb10bd18391ecdc"><td class="memItemLeft" align="right" valign="top"><a id="a4b36e39c6f7d6421aeb10bd18391ecdc" name="a4b36e39c6f7d6421aeb10bd18391ecdc"></a>
-using </td><td class="memItemRight" valign="bottom"><b>Polygon_with_holes_2</b> = <a class="el" href="classCGAL_1_1Polygon__with__holes__2.html">CGAL::Polygon_with_holes_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" href="../Manual/classContainer.html">Container</a> &gt;</td></tr>
-<tr class="memdesc:a4b36e39c6f7d6421aeb10bd18391ecdc"><td class="mdescLeft"> </td><td class="mdescRight">polygon with holes type <br></td></tr>
-<tr class="separator:a4b36e39c6f7d6421aeb10bd18391ecdc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1cc05ccb4eef2fb30cffbf52faea98c2"><td class="memItemLeft" align="right" valign="top"><a id="a1cc05ccb4eef2fb30cffbf52faea98c2" name="a1cc05ccb4eef2fb30cffbf52faea98c2"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Polygon_2</b> = <a class="el" href="classCGAL_1_1Polygon__2.html">CGAL::Polygon_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, Container_ &gt;</td></tr>
+<tr class="memdesc:a1cc05ccb4eef2fb30cffbf52faea98c2"><td class="mdescLeft"> </td><td class="mdescRight">polygon type <br></td></tr>
+<tr class="separator:a1cc05ccb4eef2fb30cffbf52faea98c2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ade2463e3f5ad67be6bf06ea7fab23ed5"><td class="memItemLeft" align="right" valign="top"><a id="ade2463e3f5ad67be6bf06ea7fab23ed5" name="ade2463e3f5ad67be6bf06ea7fab23ed5"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Polygon_with_holes_2</b> = <a class="el" href="classCGAL_1_1Polygon__with__holes__2.html">CGAL::Polygon_with_holes_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, Container_ &gt;</td></tr>
+<tr class="memdesc:ade2463e3f5ad67be6bf06ea7fab23ed5"><td class="mdescLeft"> </td><td class="mdescRight">polygon with holes type <br></td></tr>
+<tr class="separator:ade2463e3f5ad67be6bf06ea7fab23ed5"><td class="memSeparator" colspan="2"> </td></tr>
 </table>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="af5b0068a1e5377a69063534d54d881f8" name="af5b0068a1e5377a69063534d54d881f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5b0068a1e5377a69063534d54d881f8">◆ </a></span>operator&lt;&lt;()</h2>
+<a id="abd1b22d12ae5c1b583935cc08b49de76" name="abd1b22d12ae5c1b583935cc08b49de76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd1b22d12ae5c1b583935cc08b49de76">◆ </a></span>operator&lt;&lt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> , class <a class="elRef" href="../Manual/classContainer.html">Container</a> &gt; </div>
+template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> , class Container_ &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -239,7 +247,7 @@ template&lt;class <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html">Multipolygon_with_holes_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Multipolygon__with__holes__2.html">Multipolygon_with_holes_2</a>&lt; <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>, Container_ &gt; &amp; </td>
           <td class="paramname"><em>mp</em> </td>
         </tr>
         <tr>

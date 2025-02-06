@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - IO Streams: WKT I/O Functions</title>
+<title>CGAL 6.1 - IO Streams: WKT I/O Functions</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - IO Streams
+   <div id="projectname">CGAL 6.1 - IO Streams
    </div>
   </td>
  </tr>
@@ -257,8 +265,8 @@ template&lt;typename LineString &gt; </div>
 <p>The first line starting with LINESTRING in the stream will be used.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Linestring</td><td>must be a model of <code><a class="elRef" href="../Manual/classRandomAccessRange.html">RandomAccessRange</a></code> of <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code>, and have:<ul>
-<li>a function <code>push_back()</code> that takes a <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code>.</li>
+    <tr><td class="paramname">Linestring</td><td>must be a model of <code><a class="elRef" href="../Manual/classRandomAccessRange.html">RandomAccessRange</a></code> of <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> or <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code>, and have:<ul>
+<li>a function <code>push_back()</code> that takes a point.</li>
 <li>a function <code><a class="elRef" href="../BGL/group__PkgBGLHelperFct.html#ga4d3b9bb446f55fd37206eeba9d582296">clear()</a></code>,</li>
 <li>a function <code>resize()</code> that takes a <code>size_type</code></li>
 <li>an <code>operator[]()</code> that takes a <code>size_type</code>.</li>
@@ -268,7 +276,9 @@ template&lt;typename LineString &gt; </div>
   </dd>
 </dl>
 <dl class="section attention"><dt>Attention</dt><dd>Only Cartesian Kernels with double or float as <code>FT</code> are supported.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd>
+<dd>
+<code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code> </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Stream_support_2Linestring_WKT_8cpp-example.html#a2">Stream_support/Linestring_WKT.cpp</a>.</dd>
 </dl>
 
@@ -317,8 +327,7 @@ template&lt;typename MultiLineString &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section attention"><dt>Attention</dt><dd>Only Cartesian Kernels with double or float as <code>FT</code> are supported.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Only Cartesian Kernels with double or float as <code>FT</code> are supported. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Stream_support_2Linestring_WKT_8cpp-example.html#a3">Stream_support/Linestring_WKT.cpp</a>.</dd>
 </dl>
 
@@ -605,12 +614,14 @@ template&lt;typename LineString &gt; </div>
 <p>writes the content of <code>ls</code> into a WKT stream. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">LineString</td><td>must be a <code><a class="elRef" href="../Manual/classRandomAccessRange.html">RandomAccessRange</a></code> of <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code>.</td></tr>
+    <tr><td class="paramname">LineString</td><td>must be a <code><a class="elRef" href="../Manual/classRandomAccessRange.html">RandomAccessRange</a></code> of <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> or <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code>.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section attention"><dt>Attention</dt><dd>Only Cartesian Kernels with double or float as <code>FT</code> are supported.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd>
+<dd>
+<code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code> </dd></dl>
 
 </div>
 </div>
@@ -689,12 +700,14 @@ template&lt;typename MultiPoint &gt; </div>
 <p>writes the content of <code>mp</code> into a WKT stream. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">MultiPoint</td><td>must be a <code><a class="elRef" href="../Manual/classRandomAccessRange.html">RandomAccessRange</a></code> of <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code>.</td></tr>
+    <tr><td class="paramname">MultiPoint</td><td>must be a <code><a class="elRef" href="../Manual/classRandomAccessRange.html">RandomAccessRange</a></code> of <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> or <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code>.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section attention"><dt>Attention</dt><dd>Only Cartesian Kernels with double or float as <code>FT</code> are supported.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd>
+<dd>
+<code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd></dl>
 
 </div>
 </div>
@@ -775,12 +788,14 @@ template&lt;typename Point &gt; </div>
 <p>writes <code>point</code> into a WKT stream. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Point</td><td>is a <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code></td></tr>
+    <tr><td class="paramname">Point</td><td>is a <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> or <code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code></td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section attention"><dt>Attention</dt><dd>Only Cartesian Kernels with double or float as <code>FT</code> are supported.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__2.html">CGAL::Point_2</a></code> </dd>
+<dd>
+<code><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">CGAL::Point_3</a></code> </dd></dl>
 
 </div>
 </div>

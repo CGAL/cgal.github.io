@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - CGAL and the Boost Graph Library", "index.html", [
+  [ "CGAL 6.1 - CGAL and the Boost Graph Library", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Todo List", "todo.html", null ],
@@ -38,7 +38,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BGL_arrangement_2_2arr_print_8h-example.html",
-"group__PkgBGLIoFuncsOFF.html#ga7fea2ad290d2bdd73e490740769f28c4"
+"group__PkgBGLIoFuncsOFF.html#ga577755cd808352de3844bd9fc9208788"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

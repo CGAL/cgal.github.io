@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Polygon Mesh Processing: Polygon_mesh_processing/interpolated_corrected_curvatures_SM.cpp</title>
+<title>CGAL 6.1 - Polygon Mesh Processing: Polygon_mesh_processing/interpolated_corrected_curvatures_SM.cpp</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Polygon Mesh Processing
+   <div id="projectname">CGAL 6.1 - Polygon Mesh Processing
    </div>
   </td>
  </tr>
@@ -196,11 +204,11 @@ $(document).ready(function(){initNavTree('Polygon_mesh_processing_2interpolated_
 <div class="line">  Mesh::Property_map&lt;vertex_descriptor, Epic_kernel::FT&gt;</div>
 <div class="line">    mean_curvature_map, Gaussian_curvature_map;</div>
 <div class="line"> </div>
-<div class="line">  boost::tie(mean_curvature_map, created) =</div>
+<div class="line">  std::tie(mean_curvature_map, created) =</div>
 <div class="line">    smesh.add_property_map&lt;vertex_descriptor, Epic_kernel::FT&gt;(<span class="stringliteral">"v:mean_curvature_map"</span>, 0);</div>
 <div class="line">  assert(created);</div>
 <div class="line"> </div>
-<div class="line">  boost::tie(Gaussian_curvature_map, created) =</div>
+<div class="line">  std::tie(Gaussian_curvature_map, created) =</div>
 <div class="line">    smesh.add_property_map&lt;vertex_descriptor, Epic_kernel::FT&gt;(<span class="stringliteral">"v:Gaussian_curvature_map"</span>, 0);</div>
 <div class="line">  assert(created);</div>
 <div class="line"> </div>
@@ -208,7 +216,7 @@ $(document).ready(function(){initNavTree('Polygon_mesh_processing_2interpolated_
 <div class="line">  Mesh::Property_map&lt;vertex_descriptor, PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;&gt;</div>
 <div class="line">    principal_curvatures_and_directions_map;</div>
 <div class="line"> </div>
-<div class="line">  boost::tie(principal_curvatures_and_directions_map, created) =</div>
+<div class="line">  std::tie(principal_curvatures_and_directions_map, created) =</div>
 <div class="line">    smesh.add_property_map&lt;vertex_descriptor, PMP::Principal_curvatures_and_directions&lt;Epic_kernel&gt;&gt;</div>
 <div class="line">    (<span class="stringliteral">"v:principal_curvatures_and_directions_map"</span>, { 0, 0,</div>
 <div class="line">        Epic_kernel::Vector_3(0,0,0),</div>

@@ -58,13 +58,12 @@ var searchData=
   ['frechet_5fdistance_5ftraits_5f2_55',['Frechet_distance_traits_2',['../../Frechet_distance/classCGAL_1_1Frechet__distance__traits__2.html',1,'CGAL']]],
   ['frechet_5fdistance_5ftraits_5f3_56',['Frechet_distance_traits_3',['../../Frechet_distance/classCGAL_1_1Frechet__distance__traits__3.html',1,'CGAL']]],
   ['frechet_5fdistance_5ftraits_5fd_57',['Frechet_distance_traits_d',['../../Frechet_distance/classCGAL_1_1Frechet__distance__traits__d.html',1,'CGAL']]],
-  ['frechetdistancenearneighborsds_58',['FrechetDistanceNearNeighborsDS',['../../Frechet_distance/classCGAL_1_1FrechetDistanceNearNeighborsDS.html',1,'CGAL']]],
-  ['frechetdistancetraits_59',['FrechetDistanceTraits',['../../Frechet_distance/classFrechetDistanceTraits.html',1,'']]],
-  ['fromdoubleconstructible_60',['FromDoubleConstructible',['../../Algebraic_foundations/classFromDoubleConstructible.html',1,'']]],
-  ['fromintconstructible_61',['FromIntConstructible',['../../Algebraic_foundations/classFromIntConstructible.html',1,'']]],
-  ['fullcell_62',['FullCell',['../../Triangulation/classTriangulationDataStructure_1_1FullCell.html',1,'TriangulationDataStructure']]],
-  ['fullcelldata_63',['FullCellData',['../../Triangulation/classFullCellData.html',1,'']]],
-  ['fuzzy_5fiso_5fbox_64',['Fuzzy_iso_box',['../../Spatial_searching/classCGAL_1_1Fuzzy__iso__box.html',1,'CGAL']]],
-  ['fuzzy_5fsphere_65',['Fuzzy_sphere',['../../Spatial_searching/classCGAL_1_1Fuzzy__sphere.html',1,'CGAL']]],
-  ['fuzzyqueryitem_66',['FuzzyQueryItem',['../../Spatial_searching/classFuzzyQueryItem.html',1,'']]]
+  ['frechetdistancetraits_58',['FrechetDistanceTraits',['../../Frechet_distance/classFrechetDistanceTraits.html',1,'']]],
+  ['fromdoubleconstructible_59',['FromDoubleConstructible',['../../Algebraic_foundations/classFromDoubleConstructible.html',1,'']]],
+  ['fromintconstructible_60',['FromIntConstructible',['../../Algebraic_foundations/classFromIntConstructible.html',1,'']]],
+  ['fullcell_61',['FullCell',['../../Triangulation/classTriangulationDataStructure_1_1FullCell.html',1,'TriangulationDataStructure']]],
+  ['fullcelldata_62',['FullCellData',['../../Triangulation/classFullCellData.html',1,'']]],
+  ['fuzzy_5fiso_5fbox_63',['Fuzzy_iso_box',['../../Spatial_searching/classCGAL_1_1Fuzzy__iso__box.html',1,'CGAL']]],
+  ['fuzzy_5fsphere_64',['Fuzzy_sphere',['../../Spatial_searching/classCGAL_1_1Fuzzy__sphere.html',1,'CGAL']]],
+  ['fuzzyqueryitem_65',['FuzzyQueryItem',['../../Spatial_searching/classFuzzyQueryItem.html',1,'']]]
 ];

@@ -19,6 +19,10 @@ var examples =
     [ "Polygon_mesh_processing/refine_fair_example.cpp", "Polygon_mesh_processing_2refine_fair_example_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/mesh_slicer_example.cpp", "Polygon_mesh_processing_2mesh_slicer_example_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/isotropic_remeshing_example.cpp", "Polygon_mesh_processing_2isotropic_remeshing_example_8cpp-example.html", null ],
+    [ "Polygon_mesh_processing/isotropic_remeshing_of_patch_example.cpp", "Polygon_mesh_processing_2isotropic_remeshing_of_patch_example_8cpp-example.html", null ],
+    [ "Polygon_mesh_processing/isotropic_remeshing_with_allow_move.cpp", "Polygon_mesh_processing_2isotropic_remeshing_with_allow_move_8cpp-example.html", null ],
+    [ "Polygon_mesh_processing/isotropic_remeshing_with_custom_sizing_example.cpp", "Polygon_mesh_processing_2isotropic_remeshing_with_custom_sizing_example_8cpp-example.html", null ],
+    [ "Polygon_mesh_processing/isotropic_remeshing_with_sizing_example.cpp", "Polygon_mesh_processing_2isotropic_remeshing_with_sizing_example_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/interpolated_corrected_curvatures_SM.cpp", "Polygon_mesh_processing_2interpolated_corrected_curvatures_SM_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/interpolated_corrected_curvatures_PH.cpp", "Polygon_mesh_processing_2interpolated_corrected_curvatures_PH_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/interpolated_corrected_curvatures_vertex.cpp", "Polygon_mesh_processing_2interpolated_corrected_curvatures_vertex_8cpp-example.html", null ],
@@ -46,6 +50,7 @@ var examples =
     [ "Polygon_mesh_processing/cc_compatible_orientations.cpp", "Polygon_mesh_processing_2cc_compatible_orientations_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/remesh_planar_patches.cpp", "Polygon_mesh_processing_2remesh_planar_patches_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/remesh_almost_planar_patches.cpp", "Polygon_mesh_processing_2remesh_almost_planar_patches_8cpp-example.html", null ],
+    [ "Polygon_mesh_processing/acvd_remeshing_example.cpp", "Polygon_mesh_processing_2acvd_remeshing_example_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/sample_example.cpp", "Polygon_mesh_processing_2sample_example_8cpp-example.html", null ],
     [ "Polygon_mesh_processing/soup_autorefinement.cpp", "Polygon_mesh_processing_2soup_autorefinement_8cpp-example.html", null ]
 ];

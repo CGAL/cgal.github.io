@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"classPeriodic__3DelaunayTriangulationTraits__3.html#aa389978c75b6d48b0292fb051318a59e":[1,0,0,0,4],
+"classPeriodic__3DelaunayTriangulationTraits__3.html#aa89b6eb052ece6046fe675f0a27490a3":[1,0,0,0,5],
+"classPeriodic__3DelaunayTriangulationTraits__3.html#ac3e2f4329866d050df1fa3daed97f041":[1,0,0,0,11],
 "classPeriodic__3DelaunayTriangulationTraits__3.html#ac9be24d712f99b7312f53350ecda3206":[1,0,0,0,8],
 "classPeriodic__3DelaunayTriangulationTraits__3.html#adce0c369b72a0e8becb50da3d6dc83cb":[1,0,0,0,0],
 "classPeriodic__3DelaunayTriangulationTraits__3.html#aea88b45c8bfeeb87b53181d3e71b108e":[1,0,0,0,2],
@@ -76,8 +79,8 @@ var NAVTREEINDEX1 =
 "group__PkgPeriodic3Triangulation3MainClasses.html":[1,0,1],
 "group__PkgPeriodic3Triangulation3Ref.html":[1,0],
 "group__PkgPeriodic3Triangulation3TraitsClasses.html":[1,0,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#P3Triangulation3secTraits":[0,5,0],
 "index.html#P3Triangulation3secTraitsK":[0,5,0,3],
 "index.html#P3Triangulation3secTraitsP3DT3":[0,5,0,1],

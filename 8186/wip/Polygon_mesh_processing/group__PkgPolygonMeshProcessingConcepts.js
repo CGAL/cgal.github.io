@@ -47,6 +47,7 @@ var group__PkgPolygonMeshProcessingConcepts =
       [ "start_handling_edge_face_intersections", "classPMPCorefinementVisitor.html#a0d160a1573cd93115b300ec86c9221d8", null ],
       [ "start_handling_intersection_of_coplanar_faces", "classPMPCorefinementVisitor.html#ad742db01b774aed6b3edca64e5795ee3", null ],
       [ "start_triangulating_faces", "classPMPCorefinementVisitor.html#adf3a799f88e90df66b9f44468c996bd6", null ],
+      [ "subface_of_coplanar_faces_intersection", "classPMPCorefinementVisitor.html#a1276fd28e4443a9cbfa14c5d64258323", null ],
       [ "triangulating_faces_step", "classPMPCorefinementVisitor.html#a9499eac0ae81a5a469e28c3fdc41e2b0", null ]
     ] ],
     [ "PMPDistanceTraits", "classPMPDistanceTraits.html", [

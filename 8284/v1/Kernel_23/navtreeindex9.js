@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"index.html#Kernel_23Acknowledgment":[0,6,0],
+"index.html#Kernel_23AnExtensiveExample":[0,4,1],
 "index.html#Kernel_23CartesianKernels":[0,1,1],
 "index.html#Kernel_23ChoosingaKernelandPredefinedKernels":[0,1,5],
 "index.html#Kernel_23Constructions":[0,3,1],

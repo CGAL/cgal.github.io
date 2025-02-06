@@ -13,7 +13,7 @@ var group__PkgBGLConcepts =
     ] ],
     [ "FaceListGraph", "classFaceListGraph.html", [
       [ "faces", "classFaceListGraph.html#aa41f33712acf4d99ee07b3bcad5a43c3", null ],
-      [ "num_faces", "classFaceListGraph.html#ae3691e005c7de885c421251b4b713747", null ]
+      [ "num_faces", "classFaceListGraph.html#a2d9abc6e5ce6e352c12d99aa9d43050d", null ]
     ] ],
     [ "HalfedgeGraph", "classHalfedgeGraph.html", [
       [ "edge", "classHalfedgeGraph.html#af91c1492c51f0f3d2589c68b67f646fe", null ],
@@ -28,7 +28,7 @@ var group__PkgBGLConcepts =
     ] ],
     [ "HalfedgeListGraph", "classHalfedgeListGraph.html", [
       [ "halfedges", "classHalfedgeListGraph.html#abdd8822c5cbb8e83de1df45abc3521f2", null ],
-      [ "num_halfedges", "classHalfedgeListGraph.html#ace9a0b926be802e66ad008fd974d6ccb", null ]
+      [ "num_halfedges", "classHalfedgeListGraph.html#aca1f1bbc2998e0523f339b54a9710a39", null ]
     ] ],
     [ "MutableFaceGraph", "classMutableFaceGraph.html", [
       [ "add_edge", "classMutableFaceGraph.html#abdff90635f2e56d0f47d61a4d30d92d8", null ],
