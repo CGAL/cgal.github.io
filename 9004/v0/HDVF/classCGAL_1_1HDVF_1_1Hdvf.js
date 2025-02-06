@@ -1,0 +1,27 @@
+var classCGAL_1_1HDVF_1_1Hdvf =
+[
+    [ "HDVF_coreT", "classCGAL_1_1HDVF_1_1Hdvf.html#acb1437f3c99e5cc3f3a4fce654cd6aea", null ],
+    [ "Hdvf", "classCGAL_1_1HDVF_1_1Hdvf.html#a463fe5a6c406e024887bf8e5618a7afe", null ],
+    [ "Hdvf", "classCGAL_1_1HDVF_1_1Hdvf.html#aa0df86745dff666d4e2630e1ae9f3856", null ],
+    [ "~Hdvf", "classCGAL_1_1HDVF_1_1Hdvf.html#a594509ef632fb35874582d17a0ab934a", null ],
+    [ "are_same_cocycles", "classCGAL_1_1HDVF_1_1Hdvf.html#ae1076c35f0fa9647d4553eda132911f9", null ],
+    [ "are_same_cycles", "classCGAL_1_1HDVF_1_1Hdvf.html#a8d693e753b9b6ad6c261fd623a1dc7a5", null ],
+    [ "find_pair_M", "classCGAL_1_1HDVF_1_1Hdvf.html#a558604ea8ebf356272ca510c6167d996", null ],
+    [ "find_pair_M", "classCGAL_1_1HDVF_1_1Hdvf.html#ac3f4ac0c1cd288ceba717fa349a55a0d", null ],
+    [ "find_pair_MW", "classCGAL_1_1HDVF_1_1Hdvf.html#a854492024b4a52160856fa2553844879", null ],
+    [ "find_pair_MW", "classCGAL_1_1HDVF_1_1Hdvf.html#adbbb7e90f5e41149eeea4f064109c63d", null ],
+    [ "find_pair_W", "classCGAL_1_1HDVF_1_1Hdvf.html#a8a59e0181eb3b82fabbea0706f21a4df", null ],
+    [ "find_pair_W", "classCGAL_1_1HDVF_1_1Hdvf.html#af7a51cda357e258c18b795013f5bb440", null ],
+    [ "find_pairs_M", "classCGAL_1_1HDVF_1_1Hdvf.html#a8f080a20af6ac8163543d7a109850256", null ],
+    [ "find_pairs_M", "classCGAL_1_1HDVF_1_1Hdvf.html#a82e09a14d142985f3c4b1720372b8de8", null ],
+    [ "find_pairs_MW", "classCGAL_1_1HDVF_1_1Hdvf.html#aba974bed5d1b9a2bc6a1bc022dbfb1da", null ],
+    [ "find_pairs_MW", "classCGAL_1_1HDVF_1_1Hdvf.html#ad22ef9138714f10ab84e692b57e258a7", null ],
+    [ "find_pairs_W", "classCGAL_1_1HDVF_1_1Hdvf.html#af406b3f8622c7503496301e50d4d3b66", null ],
+    [ "find_pairs_W", "classCGAL_1_1HDVF_1_1Hdvf.html#a664b906d4b11eac6ddece6f58e207a9b", null ],
+    [ "get_annotation", "classCGAL_1_1HDVF_1_1Hdvf.html#ac9b19e33f6a47a49e8c40bf6d2e3af00", null ],
+    [ "get_coannotation", "classCGAL_1_1HDVF_1_1Hdvf.html#a95cd404f59b9db6d05c139b27f6caa92", null ],
+    [ "M", "classCGAL_1_1HDVF_1_1Hdvf.html#a425ddd7a54f6c33ccebfbc0a8be1f3d2", null ],
+    [ "MW", "classCGAL_1_1HDVF_1_1Hdvf.html#a9ecb50f0746a5c9889fdd716ac0f8675", null ],
+    [ "R", "classCGAL_1_1HDVF_1_1Hdvf.html#adb88e2ce4bc4ec08b48a51e7b4d17121", null ],
+    [ "W", "classCGAL_1_1HDVF_1_1Hdvf.html#a9e0a9a39deae69150973f8f486c66205", null ]
+];
