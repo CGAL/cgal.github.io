@@ -21,6 +21,5 @@ var NAVTREEINDEX1 =
 "structCGAL_1_1Field__with__sqrt__tag.html":[1,0,6],
 "structCGAL_1_1Integral__domain__tag.html":[1,0,7],
 "structCGAL_1_1Integral__domain__without__division__tag.html":[1,0,8],
-"structCGAL_1_1Unique__factorization__domain__tag.html":[1,0,9],
-"todo.html":[3]
+"structCGAL_1_1Unique__factorization__domain__tag.html":[1,0,9]
 };

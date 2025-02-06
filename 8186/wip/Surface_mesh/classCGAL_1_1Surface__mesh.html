@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Surface Mesh: CGAL::Surface_mesh&lt; P &gt; Class Template Reference</title>
+<title>CGAL 6.1 - Surface Mesh: CGAL::Surface_mesh&lt; P &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Surface Mesh
+   <div id="projectname">CGAL 6.1 - Surface Mesh
    </div>
   </td>
  </tr>
@@ -231,7 +239,7 @@ typedef std::uint32_t </td><td class="memItemRight" valign="bottom"><b>size_typ
 <tr class="separator:a1ed5d319c356af9b4abb49f7aafaa57e"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Range Types</h2></td></tr>
-<tr><td class="ititle" colspan="2"><p>Each range <code>R</code> in this section has a nested type <code>R::iterator</code>, is convertible to <code>std::pair&lt;R::iterator,R::iterator&gt;</code>, so that one can use <code>boost::tie()</code>, and can be used with <code>BOOST_FOREACH()</code>, as well as with the C++11 range based for-loop. </p>
+<tr><td class="ititle" colspan="2"><p>Each range <code>R</code> in this section has a nested type <code>R::iterator</code>, is convertible to <code>std::pair&lt;R::iterator,R::iterator&gt;</code>, so that one can use <code>std::tie()</code>, and can be used with <code>BOOST_FOREACH()</code>, as well as with the C++11 range based for-loop. </p>
 </td></tr>
 <tr class="memitem:a81371c8abd2daaf53bb457945a3a7d15"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Surface__mesh.html#a81371c8abd2daaf53bb457945a3a7d15">Vertex_range</a></td></tr>
 <tr class="memdesc:a81371c8abd2daaf53bb457945a3a7d15"><td class="mdescLeft"> </td><td class="mdescRight">The range over all vertex indices.  <br></td></tr>
@@ -574,7 +582,7 @@ void </td><td class="memItemRight" valign="bottom"><b>set_halfedge</b> (<a clas
 <tr class="separator:a055f041aff1eb896f148b6d38534eccd"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:aa2da347a8d3a70595ed10b5cdef811b4"><td class="memItemLeft" align="right" valign="top"><a id="aa2da347a8d3a70595ed10b5cdef811b4" name="aa2da347a8d3a70595ed10b5cdef811b4"></a>
 <a class="el" href="classCGAL_1_1Surface__mesh_1_1Vertex__index.html">Vertex_index</a> </td><td class="memItemRight" valign="bottom"><b>vertex</b> (<a class="el" href="classCGAL_1_1Surface__mesh_1_1Edge__index.html">Edge_index</a> e, unsigned int i) const</td></tr>
-<tr class="memdesc:aa2da347a8d3a70595ed10b5cdef811b4"><td class="mdescLeft"> </td><td class="mdescRight">returns the i'th vertex of edge <code>e</code>, for <code>i=0</code> or <code>1</code>. <br></td></tr>
+<tr class="memdesc:aa2da347a8d3a70595ed10b5cdef811b4"><td class="mdescLeft"> </td><td class="mdescRight">returns the i-th vertex of edge <code>e</code>, for <code>i=0</code> or <code>1</code>. <br></td></tr>
 <tr class="separator:aa2da347a8d3a70595ed10b5cdef811b4"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a437671cfff86f382a6492628aec0c850"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Surface__mesh_1_1Halfedge__index.html">Halfedge_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Surface__mesh.html#a437671cfff86f382a6492628aec0c850">halfedge</a> (<a class="el" href="classCGAL_1_1Surface__mesh_1_1Vertex__index.html">Vertex_index</a> <a class="el" href="classCGAL_1_1Surface__mesh.html#a25636a372cb22645aba7175c5b5af3fc">source</a>, <a class="el" href="classCGAL_1_1Surface__mesh_1_1Vertex__index.html">Vertex_index</a> <a class="el" href="classCGAL_1_1Surface__mesh.html#a1039dd1e0b038b526ddebe477e67f531">target</a>) const</td></tr>
 <tr class="memdesc:a437671cfff86f382a6492628aec0c850"><td class="mdescLeft"> </td><td class="mdescRight">finds a halfedge between two vertices.  <br></td></tr>
@@ -591,7 +599,7 @@ void </td><td class="memItemRight" valign="bottom"><b>set_halfedge</b> (<a clas
 <tr class="separator:a06e2df07fec1e5e105521e16763082fc"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a7a9f0599ddc39fef56bc32108bef7814"><td class="memItemLeft" align="right" valign="top"><a id="a7a9f0599ddc39fef56bc32108bef7814" name="a7a9f0599ddc39fef56bc32108bef7814"></a>
 <a class="el" href="classCGAL_1_1Surface__mesh_1_1Halfedge__index.html">Halfedge_index</a> </td><td class="memItemRight" valign="bottom"><b>halfedge</b> (<a class="el" href="classCGAL_1_1Surface__mesh_1_1Edge__index.html">Edge_index</a> e, unsigned int i) const</td></tr>
-<tr class="memdesc:a7a9f0599ddc39fef56bc32108bef7814"><td class="mdescLeft"> </td><td class="mdescRight">returns the i'th halfedge of edge <code>e</code>, for <code>i=0</code> or <code>1</code>. <br></td></tr>
+<tr class="memdesc:a7a9f0599ddc39fef56bc32108bef7814"><td class="mdescLeft"> </td><td class="mdescRight">returns the i-th halfedge of edge <code>e</code>, for <code>i=0</code> or <code>1</code>. <br></td></tr>
 <tr class="separator:a7a9f0599ddc39fef56bc32108bef7814"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Degree Functions</h2></td></tr>

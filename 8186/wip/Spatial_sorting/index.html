@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Spatial Sorting: User Manual</title>
+<title>CGAL 6.1 - Spatial Sorting: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Spatial Sorting
+   <div id="projectname">CGAL 6.1 - Spatial Sorting
    </div>
   </td>
  </tr>
@@ -174,39 +182,39 @@ Hilbert Sorting</h1>
 <p>In 2D, one can construct a space filling curve, that is a mapping \( f\) of \( [0,1]\) to the unit square \( [0,1]^2\), such that \( f(0)=(0,0)\) and \( f(1)=(1,0)\) in the following way: the unit square is subdivided in four such that</p>
 <dl class="section user"><dt></dt><dd>\( f([0,\frac{1}{4}])=[0,\frac{1}{2}]^2\), \( f([\frac{1}{4},\frac{1}{2}])=[0,\frac{1}{2}]\times[\frac{1}{2},1]\), \( f([\frac{1}{2},\frac{3}{4}])=[\frac{1}{2},1]^2\), and \( f([\frac{3}{4},1])=[\frac{1}{2},1]\times[0,\frac{1}{2}].\) <br>
  \( f(\frac{1}{4})=(0,\frac{1}{2})\), \( f(\frac{1}{2})=(\frac{1}{2},\frac{1}{2})\), and \( f(\frac{3}{4})=(1,\frac{1}{2})\).</dd></dl>
-<p>Then each square is subdivided in the same way recursively. <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert8">Figure 98.1</a> illustrates this process.</p>
+<p>Then each square is subdivided in the same way recursively. <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert8">Figure 100.1</a> illustrates this process.</p>
 <p><a class="anchor" id="fig__Spatial_sorting_fig_Hilbert8"></a> </p><div class="image">
 <img src="Hilbert8.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert8">Figure 98.1</a> Hilbert mapping </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert8">Figure 100.1</a> Hilbert mapping </p> </div> <p> <br>
 </p>
-<p>Now given a set of 2D points, they can be sorted in the order they have on such a space filling curve. Note that at each step, we split a square exactly at its center; we call this subdivision policy: <em>middle</em> policy (see <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_middle">Figure 98.2</a>).</p>
+<p>Now given a set of 2D points, they can be sorted in the order they have on such a space filling curve. Note that at each step, we split a square exactly at its center; we call this subdivision policy: <em>middle</em> policy (see <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_middle">Figure 100.2</a>).</p>
 <p><a class="anchor" id="fig__Spatial_sorting_fig_Hilbert_middle"></a> </p><div class="image">
 <img src="Hilbert-middle.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_middle">Figure 98.2</a> Hilbert sort with middle policy </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_middle">Figure 100.2</a> Hilbert sort with middle policy </p> </div> <p> <br>
 </p>
-<p>If instead of subdividing the square in a fixed way at its center, as above, we subdivide it by splitting at the median point (in \( x\) or \( y\) directions alternating), we construct a 2-d tree adapted to the point set. This tree can be visited in a similar manner and we get also a suitable ordering of the points; we call this subdivision policy: <em>median</em> policy (see <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_median">Figure 98.3</a>).</p>
+<p>If instead of subdividing the square in a fixed way at its center, as above, we subdivide it by splitting at the median point (in \( x\) or \( y\) directions alternating), we construct a 2-d tree adapted to the point set. This tree can be visited in a similar manner and we get also a suitable ordering of the points; we call this subdivision policy: <em>median</em> policy (see <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_median">Figure 100.3</a>).</p>
 <p><a class="anchor" id="fig__Spatial_sorting_fig_Hilbert_median"></a> </p><div class="image">
 <img src="Hilbert-median.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_median">Figure 98.3</a> Hilbert sort with median policy </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_median">Figure 100.3</a> Hilbert sort with median policy </p> </div> <p> <br>
 </p>
 <p>The middle policy is easier to analyze, and is interesting in practice for well distributed set of points in small dimension (if the number of points is really larger than \( 2^d\)). The median policy should be preferred for high dimension or if the point set distribution is not regular (or unknown). Since the median policy cannot be much worse than the middle policy, while the converse can happen, the median policy is the default behavior. Most theoretical results are using the middle policy <a class="el" href="citelist.html#CITEREF_acr-icb-03">[1]</a>, <a class="el" href="citelist.html#CITEREF_bg-sfche-89">[2]</a>, <a class="el" href="citelist.html#CITEREF_b-aahsf-71">[3]</a>, <a class="el" href="citelist.html#CITEREF_pb-scpts-89">[4]</a>.</p>
 <p>CGAL provides Hilbert sorting for points in 2D, 3D and higher dimensions, in the middle and the median policies.</p>
 <p>We also consider space filling curves on a given sphere. The method is described for the unit sphere below; it works on any sphere by an affine transformation. The points to be sorted are supposed to be close to the sphere.</p>
-<p>Actually, we approximate a space filling curve on the unit sphere by a space filling curve on a cube (with facets at \(x, y, z = \pm 1/\sqrt{3}\)). Roughly speaking, we split the original set of points in six subsets corresponding to the six facets of the cube. The subset corresponding to a facet \(f\) is the set of points that lie in the half-space defined by the supporting plane of \(f\) that does not contain the origin. And then we basically use the 2D Hilbert sort with its corresponding policy, as explained above for the projection of the points in each subset on its corresponding facet of the cube. The axes orientation on each facet is chosen so that the space filling curve covers the whole cube without any jump; see <a class="el" href="index.html#fig__Spatial_sorting_fig_Faces_orientations">Figure 98.4</a>. A point can lie in more than one such half-plane, so, we give a priority for each facet of the cube. The priority order is: first, the facet of the cube at \(x = 1/\sqrt{3}\); second, the facet of the cube at \(y = 1/\sqrt{3}\); third, the facet of the cube at \( x = -1/\sqrt{3}\); fourth, the facet of the cube at \( z = 1/\sqrt{3}\); fifth, the facet of the cube at \( y = -1/\sqrt{3}\); and, sixth, the facet of the cube at \( z = -1/\sqrt{3}\).</p>
+<p>Actually, we approximate a space filling curve on the unit sphere by a space filling curve on a cube (with facets at \(x, y, z = \pm 1/\sqrt{3}\)). Roughly speaking, we split the original set of points in six subsets corresponding to the six facets of the cube. The subset corresponding to a facet \(f\) is the set of points that lie in the half-space defined by the supporting plane of \(f\) that does not contain the origin. And then we basically use the 2D Hilbert sort with its corresponding policy, as explained above for the projection of the points in each subset on its corresponding facet of the cube. The axes orientation on each facet is chosen so that the space filling curve covers the whole cube without any jump; see <a class="el" href="index.html#fig__Spatial_sorting_fig_Faces_orientations">Figure 100.4</a>. A point can lie in more than one such half-plane, so, we give a priority for each facet of the cube. The priority order is: first, the facet of the cube at \(x = 1/\sqrt{3}\); second, the facet of the cube at \(y = 1/\sqrt{3}\); third, the facet of the cube at \( x = -1/\sqrt{3}\); fourth, the facet of the cube at \( z = 1/\sqrt{3}\); fifth, the facet of the cube at \( y = -1/\sqrt{3}\); and, sixth, the facet of the cube at \( z = -1/\sqrt{3}\).</p>
 <p>If points are not close to the sphere, they are still sorted the same way, however there is no guarantee that such an order is good anymore.</p>
 <p><a class="anchor" id="fig__Spatial_sorting_fig_Faces_orientations"></a> </p><div class="image">
 <img src="HilbertOnSphere.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Faces_orientations">Figure 98.4</a> A 2D Hilbert sort for each facet of the cube </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Faces_orientations">Figure 100.4</a> A 2D Hilbert sort for each facet of the cube </p> </div> <p> <br>
 </p>
-<p>Points sorted on the sphere according to the description above are depicted in <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_on_sphere">Figure 98.5</a>.</p>
+<p>Points sorted on the sphere according to the description above are depicted in <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_on_sphere">Figure 100.5</a>.</p>
 <p><a class="anchor" id="fig__Spatial_sorting_fig_Hilbert_on_sphere"></a> </p><div class="image">
 <img src="HilbertOnSphereIllustration.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_on_sphere">Figure 98.5</a> Hilbert sort on the sphere </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Spatial_sorting_fig_Hilbert_on_sphere">Figure 100.5</a> Hilbert sort on the sphere </p> </div> <p> <br>
 </p>
 <h2><a class="anchor" id="Spatial_sortingExamples"></a>
 Examples</h2>

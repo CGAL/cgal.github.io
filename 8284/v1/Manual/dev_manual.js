@@ -117,6 +117,6 @@ var dev_manual =
     ] ],
     [ "Editorial Board", "devman_submission.html", null ],
     [ "Recommended Reading", "devman_info.html", null ],
-    [ "Creating a CMake Script for a Program Using CGAL", "devman_create_cgal_CMakeLists.html", "devman_create_cgal_CMakeLists" ],
+    [ "Creating a CMake Script for a Program Using CGAL", "devman_create_cgal_CMakeLists.html", null ],
     [ "Deprecation Notice", "deprecated.html", null ]
 ];

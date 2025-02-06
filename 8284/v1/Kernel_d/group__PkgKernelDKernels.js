@@ -2,6 +2,7 @@ var group__PkgKernelDKernels =
 [
     [ "CGAL::Cartesian_d< FieldNumberType >", "classCGAL_1_1Cartesian__d.html", null ],
     [ "CGAL::Epeck_d< DimensionTag >", "structCGAL_1_1Epeck__d.html", [
+      [ "Cartesian_const_iterator", "classCGAL_1_1Epeck__d_1_1Cartesian__const__iterator.html", null ],
       [ "Compute_power_product_d", "classCGAL_1_1Epeck__d_1_1Compute__power__product__d.html", [
         [ "operator()", "classCGAL_1_1Epeck__d_1_1Compute__power__product__d.html#a1abf9e86ae72210065b8adefb5880baf", null ]
       ] ],
@@ -10,6 +11,13 @@ var group__PkgKernelDKernels =
       ] ],
       [ "Compute_squared_radius_smallest_orthogonal_sphere_d", "classCGAL_1_1Epeck__d_1_1Compute__squared__radius__smallest__orthogonal__sphere__d.html", [
         [ "operator()", "classCGAL_1_1Epeck__d_1_1Compute__squared__radius__smallest__orthogonal__sphere__d.html#a0639f975f2e981dbc56a7fccd535c9c4", null ]
+      ] ],
+      [ "Construct_bbox_d", "classCGAL_1_1Epeck__d_1_1Construct__bbox__d.html", [
+        [ "operator()", "classCGAL_1_1Epeck__d_1_1Construct__bbox__d.html#a002508089a7474157113e964b62cd5ab", null ]
+      ] ],
+      [ "Construct_cartesian_const_iterator_d", "classCGAL_1_1Epeck__d_1_1Construct__cartesian__const__iterator__d.html", [
+        [ "operator()", "classCGAL_1_1Epeck__d_1_1Construct__cartesian__const__iterator__d.html#af78628fb06e81ddebd6d545325d4f6c9", null ],
+        [ "operator()", "classCGAL_1_1Epeck__d_1_1Construct__cartesian__const__iterator__d.html#a34c05b09bd774c68cf8a8b054e13b8ca", null ]
       ] ],
       [ "Construct_circumcenter_d", "classCGAL_1_1Epeck__d_1_1Construct__circumcenter__d.html", [
         [ "operator()", "classCGAL_1_1Epeck__d_1_1Construct__circumcenter__d.html#a1f463d9eeb8a5178cfc942b7fc598208", null ]
@@ -35,14 +43,18 @@ var group__PkgKernelDKernels =
         [ "point", "classCGAL_1_1Epeck__d_1_1Weighted__point__d.html#a549a54f5d4036bb83cdf8388ee2e4392", null ],
         [ "weight", "classCGAL_1_1Epeck__d_1_1Weighted__point__d.html#a355f608ada26c51ca4d25ef1a0c3d081", null ]
       ] ],
+      [ "Dimension", "structCGAL_1_1Epeck__d.html#a88985d103b5d0aebe0dc8e84563af017", null ],
       [ "compute_power_product_d_object", "structCGAL_1_1Epeck__d.html#a7ccdf4751927f32268a85c248a9011fa", null ],
       [ "compute_squared_radius_d_object", "structCGAL_1_1Epeck__d.html#a9c4f62f72554c0b27211a4092078ed11", null ],
       [ "compute_squared_radius_smallest_orthogonal_sphere_d_object", "structCGAL_1_1Epeck__d.html#ab6fbd525834a031b4f9521dc6d739bfd", null ],
+      [ "construct_bbox_d_object", "structCGAL_1_1Epeck__d.html#ad5fa157301005b94c13e0397631498fc", null ],
+      [ "construct_cartesian_const_iterator_d_object", "structCGAL_1_1Epeck__d.html#a8f6c6edd3b67be70a1ea237629a7ab8f", null ],
       [ "construct_circumcenter_d_object", "structCGAL_1_1Epeck__d.html#a75e86d0eb5e31dacc10be76bf040534e", null ],
       [ "construct_power_sphere_d_object", "structCGAL_1_1Epeck__d.html#aa1b85436638e50dfa272079406251716", null ],
       [ "power_side_of_bounded_power_sphere_d_object", "structCGAL_1_1Epeck__d.html#a7b1af01a9027a8b38ed58fe28c02d92f", null ]
     ] ],
     [ "CGAL::Epick_d< DimensionTag >", "structCGAL_1_1Epick__d.html", [
+      [ "Cartesian_const_iterator", "classCGAL_1_1Epick__d_1_1Cartesian__const__iterator.html", null ],
       [ "Compute_power_product_d", "classCGAL_1_1Epick__d_1_1Compute__power__product__d.html", [
         [ "operator()", "classCGAL_1_1Epick__d_1_1Compute__power__product__d.html#aa4a6e8dde383cc425ed68d4dfe204384", null ]
       ] ],
@@ -51,6 +63,13 @@ var group__PkgKernelDKernels =
       ] ],
       [ "Compute_squared_radius_smallest_orthogonal_sphere_d", "classCGAL_1_1Epick__d_1_1Compute__squared__radius__smallest__orthogonal__sphere__d.html", [
         [ "operator()", "classCGAL_1_1Epick__d_1_1Compute__squared__radius__smallest__orthogonal__sphere__d.html#ac92cbe831b625fd389b5c0d77ff1cfb6", null ]
+      ] ],
+      [ "Construct_bbox_d", "classCGAL_1_1Epick__d_1_1Construct__bbox__d.html", [
+        [ "operator()", "classCGAL_1_1Epick__d_1_1Construct__bbox__d.html#aa5dfddcdcf688256b144526189a6b245", null ]
+      ] ],
+      [ "Construct_cartesian_const_iterator_d", "classCGAL_1_1Epick__d_1_1Construct__cartesian__const__iterator__d.html", [
+        [ "operator()", "classCGAL_1_1Epick__d_1_1Construct__cartesian__const__iterator__d.html#afe513a70bd46801777651067d608f92d", null ],
+        [ "operator()", "classCGAL_1_1Epick__d_1_1Construct__cartesian__const__iterator__d.html#a464e39a21f73632a6976f4dfdfa2963e", null ]
       ] ],
       [ "Construct_circumcenter_d", "classCGAL_1_1Epick__d_1_1Construct__circumcenter__d.html", [
         [ "operator()", "classCGAL_1_1Epick__d_1_1Construct__circumcenter__d.html#a892a5d3a914006621ea77b836a736e72", null ]
@@ -76,9 +95,12 @@ var group__PkgKernelDKernels =
         [ "point", "classCGAL_1_1Epick__d_1_1Weighted__point__d.html#a9b77f652a34b7158b8a6ef409fc5dd5c", null ],
         [ "weight", "classCGAL_1_1Epick__d_1_1Weighted__point__d.html#a84455a617e79e81d96d8a076541ce757", null ]
       ] ],
+      [ "Dimension", "structCGAL_1_1Epick__d.html#a83c080de9668f89dc00c36d54ba43678", null ],
       [ "compute_power_product_d_object", "structCGAL_1_1Epick__d.html#a0af5a95ee2e04d215cff5cad7a9e51b9", null ],
       [ "compute_squared_radius_d_object", "structCGAL_1_1Epick__d.html#a5a0a6d8bba700df9f0d6f097cc98f05b", null ],
       [ "compute_squared_radius_smallest_orthogonal_sphere_d_object", "structCGAL_1_1Epick__d.html#a19065bd4d28cf59a79599e333186818f", null ],
+      [ "construct_bbox_d_object", "structCGAL_1_1Epick__d.html#a72731ffd31163f2abbb48d7557db36bc", null ],
+      [ "construct_cartesian_const_iterator_d_object", "structCGAL_1_1Epick__d.html#a368bd01adeedf138cccf95c1b22a03d5", null ],
       [ "construct_circumcenter_d_object", "structCGAL_1_1Epick__d.html#a3e10f48baee7efa1440b3805d508e976", null ],
       [ "construct_power_sphere_d_object", "structCGAL_1_1Epick__d.html#a0a250ae573f68129510fba1dc30ec497", null ],
       [ "power_side_of_bounded_power_sphere_d_object", "structCGAL_1_1Epick__d.html#a0de03a87fc05ff298e74d714ecc8cbf1", null ]

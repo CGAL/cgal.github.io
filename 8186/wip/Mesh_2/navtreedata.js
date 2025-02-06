@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Conforming Triangulations and Meshes", "index.html", [
+  [ "CGAL 6.1 - 2D Conforming Triangulations and Meshes", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Deprecated List", "deprecated.html", null ],

@@ -1,8 +1,8 @@
 var classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3 =
 [
     [ "Rebind_TDS", "structCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3_1_1Rebind__TDS.html", "structCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3_1_1Rebind__TDS" ],
-    [ "Subdomain_index", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#afe94a0ef5966489c90398a8aea7c7490", null ],
-    [ "Surface_patch_index", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#abcb665c21772de0a213a8fd100ea06d3", null ],
+    [ "Subdomain_index", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#adffc41efbc243761e8bc166424bd535d", null ],
+    [ "Surface_patch_index", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#adb09d0ebe0a08996e112a1bd4d0be37d", null ],
     [ "ccdt_3_data", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#afa532e01c4af94746193c18505ae89f2", null ],
     [ "ccdt_3_data", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#a2dad2e7002765bbdc18ce15f6fb7b646", null ],
     [ "io_signature", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html#a5601b4f56d12ef1a1b35a16dc73c4820", null ],

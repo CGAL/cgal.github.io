@@ -795,22 +795,22 @@ var group__PkgKernel23ConceptsFunctionObjects =
       [ "operator()", "classKernel_1_1ConstructUnitNormal__3.html#af52f0200f5a8f15da4ff1729849f4cef", null ]
     ] ],
     [ "Kernel::ConstructVector_2", "classKernel_1_1ConstructVector__2.html", [
+      [ "operator()", "classKernel_1_1ConstructVector__2.html#afbfcc927aabeb1f71231324efee7c5a5", null ],
       [ "operator()", "classKernel_1_1ConstructVector__2.html#a6c8d4c1b6a56392c34a10868d2482fe8", null ],
       [ "operator()", "classKernel_1_1ConstructVector__2.html#ab4fc4a886e18906b685946f5ccf469f9", null ],
       [ "operator()", "classKernel_1_1ConstructVector__2.html#a5a7d56e589df4d2487a77c8d0602e3e1", null ],
       [ "operator()", "classKernel_1_1ConstructVector__2.html#a56811757789d71a566b13ee86a7a90fc", null ],
       [ "operator()", "classKernel_1_1ConstructVector__2.html#a87acd718350d56f0347427ce1bf702a7", null ],
-      [ "operator()", "classKernel_1_1ConstructVector__2.html#ad25e50a78605652e062f0774dd573646", null ],
-      [ "operator()", "classKernel_1_1ConstructVector__2.html#a4d3c929999e6b1eecd63307c5bebab1e", null ]
+      [ "operator()", "classKernel_1_1ConstructVector__2.html#ad25e50a78605652e062f0774dd573646", null ]
     ] ],
     [ "Kernel::ConstructVector_3", "classKernel_1_1ConstructVector__3.html", [
+      [ "operator()", "classKernel_1_1ConstructVector__3.html#a0fc7fef29c56c910ac5026ad2c88e054", null ],
       [ "operator()", "classKernel_1_1ConstructVector__3.html#a165a6f439792b1dd1b669a314a446569", null ],
       [ "operator()", "classKernel_1_1ConstructVector__3.html#a519e87b215c9a9d90604c83c73d5d73e", null ],
       [ "operator()", "classKernel_1_1ConstructVector__3.html#a3cb9482318a4f0baa5ca10eb609dd77e", null ],
       [ "operator()", "classKernel_1_1ConstructVector__3.html#ab14e10bb07bdb4aeb089b109f06cd807", null ],
       [ "operator()", "classKernel_1_1ConstructVector__3.html#a4dac6e18d033d738c65ee9e77075bf6e", null ],
-      [ "operator()", "classKernel_1_1ConstructVector__3.html#a2a9cf2319d1127fa3b4a476b0d39bcdf", null ],
-      [ "operator()", "classKernel_1_1ConstructVector__3.html#a9e77d55edabd4dd52e1ec9c6ac2aa041", null ]
+      [ "operator()", "classKernel_1_1ConstructVector__3.html#a2a9cf2319d1127fa3b4a476b0d39bcdf", null ]
     ] ],
     [ "Kernel::ConstructVertex_2", "classKernel_1_1ConstructVertex__2.html", [
       [ "operator()", "classKernel_1_1ConstructVertex__2.html#a73fa0e80b1e9f32f4376efc3234ff799", null ],
@@ -919,6 +919,7 @@ var group__PkgKernel23ConceptsFunctionObjects =
       [ "operator()", "classKernel_1_1HasOnBoundedSide__2.html#aed0f3d341534cf2dbf5ed228618170ab", null ]
     ] ],
     [ "Kernel::HasOnBoundedSide_3", "classKernel_1_1HasOnBoundedSide__3.html", [
+      [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#af95a3c7c651b4fe3ecb0ec08f4d07d1c", null ],
       [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#a140f0de6d600f58133edbbd2c054aea4", null ],
       [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#a0bfac78507f1fe1c9f946408f7f1b0b9", null ],
       [ "operator()", "classKernel_1_1HasOnBoundedSide__3.html#a879efe7f55b4ae8f2bd0d1acca42b6e4", null ],
@@ -950,6 +951,7 @@ var group__PkgKernel23ConceptsFunctionObjects =
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__2.html#a8ca70b14d279c41a5c1d314b1de22b59", null ]
     ] ],
     [ "Kernel::HasOnUnboundedSide_3", "classKernel_1_1HasOnUnboundedSide__3.html", [
+      [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a9cf16ab055032c75bd715d10b76b10a8", null ],
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a4b2c27a0593727a253a416adadc37d29", null ],
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a3778b1b8f39cad82d92a5bcbd49a9086", null ],
       [ "operator()", "classKernel_1_1HasOnUnboundedSide__3.html#a690242150d4b9397e441273361574774", null ]

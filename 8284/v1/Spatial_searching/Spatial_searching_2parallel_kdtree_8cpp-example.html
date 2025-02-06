@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - dD Spatial Searching: Spatial_searching/parallel_kdtree.cpp</title>
+<title>CGAL 6.1 - dD Spatial Searching: Spatial_searching/parallel_kdtree.cpp</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - dD Spatial Searching
+   <div id="projectname">CGAL 6.1 - dD Spatial Searching
    </div>
   </td>
  </tr>
@@ -178,7 +186,7 @@ $(document).ready(function(){initNavTree('Spatial_searching_2parallel_kdtree_8cp
 <div class="line"><span class="keyword">using </span>Tree = Neighbor_search::Tree;</div>
 <div class="line"><span class="keyword">using </span>Point_with_distance = Neighbor_search::Point_with_transformed_distance;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span>Generator = CGAL::Random_points_in_sphere_3&lt;Point_3&gt;;</div>
+<div class="line"><span class="keyword">using </span>Generator = <a id="_a4" name="_a4"></a><a class="code hl_classRef" href="../Generator/classCGAL_1_1Random__points__in__sphere__3.html">CGAL::Random_points_in_sphere_3&lt;Point_3&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
@@ -194,7 +202,7 @@ $(document).ready(function(){initNavTree('Spatial_searching_2parallel_kdtree_8cp
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Build tree in parallel</span></div>
 <div class="line">  Tree tree(points.begin(), points.end());</div>
-<div class="line">  tree.build&lt;<a id="_a4" name="_a4"></a><a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1Parallel__tag.html">CGAL::Parallel_tag</a>&gt;();</div>
+<div class="line">  tree.build&lt;<a id="_a5" name="_a5"></a><a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1Parallel__tag.html">CGAL::Parallel_tag</a>&gt;();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Query tree in parallel</span></div>
 <div class="line">  std::vector&lt;std::vector&lt;Point_3&gt; &gt; neighbors (points.size());</div>
@@ -219,6 +227,7 @@ $(document).ready(function(){initNavTree('Spatial_searching_2parallel_kdtree_8cp
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassCGAL_1_1Orthogonal__k__neighbor__search_html"><div class="ttname"><a href="classCGAL_1_1Orthogonal__k__neighbor__search.html">CGAL::Orthogonal_k_neighbor_search</a></div><div class="ttdoc">The class Orthogonal_k_neighbor_search implements approximatek-nearest and k-furthest neighbor search...</div><div class="ttdef"><b>Definition:</b> Orthogonal_k_neighbor_search.h:31</div></div>
+<div class="ttc" id="aclassCGAL_1_1Random__points__in__sphere__3_html"><div class="ttname"><a href="../Generator/classCGAL_1_1Random__points__in__sphere__3.html">CGAL::Random_points_in_sphere_3</a></div></div>
 <div class="ttc" id="aclassCGAL_1_1Search__traits__3_html"><div class="ttname"><a href="classCGAL_1_1Search__traits__3.html">CGAL::Search_traits_3</a></div><div class="ttdoc">The class Search_traits_3 can be used as a template parameter of the kd tree and the search classes.</div><div class="ttdef"><b>Definition:</b> Search_traits_3.h:19</div></div>
 <div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
 <div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>

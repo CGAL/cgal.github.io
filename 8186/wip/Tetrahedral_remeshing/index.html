@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Tetrahedral Remeshing: User Manual</title>
+<title>CGAL 6.1 - Tetrahedral Remeshing: User Manual</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Tetrahedral Remeshing
+   <div id="projectname">CGAL 6.1 - Tetrahedral Remeshing
    </div>
   </td>
  </tr>
@@ -175,28 +183,28 @@ Multi-Material Isotropic Tetrahedral Remeshing</h1>
 Remeshing Algorithm</h2>
 <p>Specific remeshing rules have been designed to satisfy the following criteria. First, the algorithm preserves the geometric complex topology, including multi-material surface patches and polyline features. Polyline features can be defined as intersections between more than two subdomains, or listed by the user. Second, it has been made possible to remesh only a selection of cells, instead of remeshing the whole domain, while preserving or remeshing the interface surfaces between the preserved and the remeshed tetrahedra.</p>
 <p>All the local atomic operations that are performed by the algorithm preserve the input topology of the geometric complex.</p>
-<p>The tetrahedral remeshing algorithm improves the quality of dihedral angles, while targeting the user-defined uniform sizing field and preserving the topology of the feature complex, as highlighted by <a class="el" href="index.html#fig__Remesh_liver">Figure 62.1</a>.</p>
+<p>The tetrahedral remeshing algorithm improves the quality of dihedral angles, while targeting the user-defined uniform sizing field and preserving the topology of the feature complex, as highlighted by <a class="el" href="index.html#fig__Remesh_liver">Figure 64.1</a>.</p>
 <p>Experimental evidence shows that a higher number of remeshing iterations leads to a mesh with a improved fidelity to the sizing criterion, and higher quality dihedral angles.</p>
 <p><a class="anchor" id="fig__Remesh_liver"></a> </p><div class="image">
 <img src="tetrahedral_remeshing_before_after.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Remesh_liver">Figure 62.1</a> Tetrahedral mesh, modified by our tetrahedral remeshing method. (Left) Before remeshing, dihedral angles were in the interval [1.3; 177.8]. (Right) After remeshing and keeping the same density, dihedral angles are in the interval [12,7; 157.7]. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__Remesh_liver">Figure 64.1</a> Tetrahedral mesh, modified by our tetrahedral remeshing method. (Left) Before remeshing, dihedral angles were in the interval [1.3; 177.8]. (Right) After remeshing and keeping the same density, dihedral angles are in the interval [12,7; 157.7]. </p> </div> <p> <br>
 </p>
 <h2><a class="anchor" id="ssecSizing"></a>
 Sizing Field</h2>
 <p>Tetrahedral isotropic remeshing algorithm is led by a target sizing field, that can be either uniform, adaptive, or custom.</p>
 <p>The sizing field establishes the local target edge length for the remeshed tetrahedra. Two sizing fields are provided: a uniform and a mesh-adaptive sizing field. With <code><a class="el" href="classCGAL_1_1Uniform__sizing__field.html">CGAL::Uniform_sizing_field</a></code>, all tetrahedra edges are targeted to have equal lengths, as depicted in Section <a class="el" href="index.html#secTetRemeshing">Multi-Material Isotropic Tetrahedral Remeshing</a> . With <code><a class="el" href="classCGAL_1_1Adaptive__remeshing__sizing__field.html">CGAL::Adaptive_remeshing_sizing_field</a></code>, tetrahedra edge lengths remain locally close to the local size of simplices in the input mesh.</p>
-<p>The difference between remeshing with uniform and adaptive sizing fields is depicted in <a class="el" href="index.html#fig__uniform_and_adaptive_tet">Figure 62.2</a>.</p>
+<p>The difference between remeshing with uniform and adaptive sizing fields is depicted in <a class="el" href="index.html#fig__uniform_and_adaptive_tet">Figure 64.2</a>.</p>
 <p><a class="anchor" id="fig__uniform_and_adaptive_tet"></a> </p><div class="image">
 <img src="uniform_and_adaptive_remeshing.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__uniform_and_adaptive_tet">Figure 62.2</a> Tetrahedral mesh, modified by our tetrahedral remeshing method. (Left) Before remeshing; dihedral angles in the interval [0.1; 179.8], 33,936 vertices. (Middle) After remeshing with uniform sizing field, targeting the average edge length of input (left) mesh; dihedral angles in the interval [9.8; 165.5], 301,127 vertices. (Right) After remeshing with adaptive sizing field; dihedral angles in the interval [6.8; 166.2], 38,602 vertices. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__uniform_and_adaptive_tet">Figure 64.2</a> Tetrahedral mesh, modified by our tetrahedral remeshing method. (Left) Before remeshing; dihedral angles in the interval [0.1; 179.8], 33,936 vertices. (Middle) After remeshing with uniform sizing field, targeting the average edge length of input (left) mesh; dihedral angles in the interval [9.8; 165.5], 301,127 vertices. (Right) After remeshing with adaptive sizing field; dihedral angles in the interval [6.8; 166.2], 38,602 vertices. </p> </div> <p> <br>
 </p>
-<p>It is also possible to use a custom sizing function, like for example the same sizing field as the one used for initial tetrahedral mesh generation using the CGAL <a class="elRef" href="../Manual/packages.html#PkgMesh3">3D Mesh Generation</a> package, and consecutive consistent isotropic remeshing, as shown by <a class="el" href="index.html#fig__sphere_sizing_field">Figure 62.3</a>. Note that the remeshed version is denser than the one generated by <code><a class="elRef" href="../Mesh_3/group__PkgMesh3Functions.html#gac8599a0c967075f740bf8e2e92c4770e">CGAL::make_mesh_3()</a></code>. This happens because here, the sizing field is used both as a lower and an upper bound for edge lengths, whereas in mesh generation it is used only as an upper bound on simplex sizes.</p>
+<p>It is also possible to use a custom sizing function, like for example the same sizing field as the one used for initial tetrahedral mesh generation using the CGAL <a class="elRef" href="../Manual/packages.html#PkgMesh3">3D Mesh Generation</a> package, and consecutive consistent isotropic remeshing, as shown by <a class="el" href="index.html#fig__sphere_sizing_field">Figure 64.3</a>. Note that the remeshed version is denser than the one generated by <code><a class="elRef" href="../Mesh_3/group__PkgMesh3Functions.html#gac8599a0c967075f740bf8e2e92c4770e">CGAL::make_mesh_3()</a></code>. This happens because here, the sizing field is used both as a lower and an upper bound for edge lengths, whereas in mesh generation it is used only as an upper bound on simplex sizes.</p>
 <p><a class="anchor" id="fig__sphere_sizing_field"></a> </p><div class="image">
 <img src="sphere_with_sizing.png" alt="">
 </div>
-   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__sphere_sizing_field">Figure 62.3</a> Tetrahedral mesh, modified by our uniform tetrahedral remeshing method. (Left) Before remeshing, dihedral angles were in the interval <code>[0.2; 179.7]</code>. (Middle) After remeshing with a uniform target edge length equal to the average edge length of the input mesh. Dihedral angles are in the interval <code>[13.2; 157.3]</code>. (Right) After remeshing with the same sizing field as the one used for mesh generation. Dihedral angles are in the interval <code>[10.4; 162.3]</code>. </p> </div> <p> <br>
+   <div class="cgal_figure_caption"> <p>  <a class="el" href="index.html#fig__sphere_sizing_field">Figure 64.3</a> Tetrahedral mesh, modified by our uniform tetrahedral remeshing method. (Left) Before remeshing, dihedral angles were in the interval <code>[0.2; 179.7]</code>. (Middle) After remeshing with a uniform target edge length equal to the average edge length of the input mesh. Dihedral angles are in the interval <code>[13.2; 157.3]</code>. (Right) After remeshing with the same sizing field as the one used for mesh generation. Dihedral angles are in the interval <code>[10.4; 162.3]</code>. </p> </div> <p> <br>
 </p>
 <h1><a class="anchor" id="secTetRemeshingAPI"></a>
 API</h1>

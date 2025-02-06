@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Installing CGAL libraries</title>
+<title>CGAL 6.1 - Manual: Installing CGAL libraries</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -168,7 +176,7 @@ $(document).ready(function(){initNavTree('installation.html',''); initResizable(
 <p>It is assumed that you have downloaded a source archive of CGAL, and are using Linux or macOS.</p>
 <h1><a class="anchor" id="installation_idealworld"></a>
 Quick Installation</h1>
-<p>Ideally, installing CGAL, as well as compiling some examples shipped by CGAL is as simple as: </p><pre class="fragment">cd $HOME/CGAL-6.0
+<p>Ideally, installing CGAL, as well as compiling some examples shipped by CGAL is as simple as: </p><pre class="fragment">cd $HOME/CGAL-6.1
 mkdir build
 cd build
 cmake ..                                                                          # configure CGAL
@@ -230,14 +238,14 @@ Other CMake Variables</h2>
 <p>Note that CMake maintains a cache name <code>CMakeCache.txt</code>. If you change options (or your environment changes), it is best to remove that file to avoid problems.</p>
 <h2><a class="anchor" id="installation_configuring_gui"></a>
 Configuring CGAL with the CMake GUI</h2>
-<p>The simplest way to start the configuration process is to run the graphical user interface of CMake, <code>cmake-gui</code>. You must pass as argument the root directory of CGAL. For example: </p><pre class="fragment">cd CGAL-6.0/build
+<p>The simplest way to start the configuration process is to run the graphical user interface of CMake, <code>cmake-gui</code>. You must pass as argument the root directory of CGAL. For example: </p><pre class="fragment">cd CGAL-6.1/build
 cmake-gui .. # The two dots indicate the parent directory
 </pre><p> After <code>cmake-gui</code> opens, press <em>Configure</em>. A dialog will pop up and you will have to choose what shall be generated. After you have made your choice and pressed <em>Finish</em>, you will see the output of configuration tests in the lower portion of the application. When these tests are done, you will see many red entries in the upper portion of the application. Just ignore them and press <em>Configure</em>. By now CMake should have found many libraries and have initialized variables. If you still find red entries, you have to provide the necessary information. This typically happens if you have installed software at non-standard locations.</p>
 <p>Providing information and pressing <em>Configure</em> goes on until all entries are grayed. You are now ready to press <em>Generate</em>. Once this is done, you can quit <code>cmake-gui</code>.</p>
 <p>Without an explicit <code>CMAKE_BUILD_TYPE</code>, <code>CMake</code> does not add any additional build flags. This will result in a default build without any debug symbols, and without any optimizations. You should set the variable <code>CMAKE_BUILD_TYPE</code> to <code>Debug</code> to compile with debug symbols, or <code>Release</code> to enable optimizations.</p>
 <h2><a class="anchor" id="installation_configuring_cmd"></a>
 Configuring CGAL with the cmake Command-Line Tool</h2>
-<p>Alternatively, you can run the command-line tool called <code>cmake</code>. You pass as argument the root directory of CGAL. The command line tool <code>cmake</code> accepts CMake variables as arguments of the form <code>-D&lt;VAR&gt;:&lt;TYPE&gt;=&lt;VALUE&gt;</code>, as in the example above, but this is only useful if you already know which variables need to be explicitly defined. For example: </p><pre class="fragment">cd CGAL-6.0/build
+<p>Alternatively, you can run the command-line tool called <code>cmake</code>. You pass as argument the root directory of CGAL. The command line tool <code>cmake</code> accepts CMake variables as arguments of the form <code>-D&lt;VAR&gt;:&lt;TYPE&gt;=&lt;VALUE&gt;</code>, as in the example above, but this is only useful if you already know which variables need to be explicitly defined. For example: </p><pre class="fragment">cd CGAL-6.1/build
 cmake ..
 </pre><p> The configuration process not only determines the location of the required dependencies, it also dynamically generates a <code>compiler_config.h</code> file, which encodes the properties of your system and a special file named <code>CGALConfig.cmake</code>, which is used to build programs using CGAL. The purpose of this file is explained below.</p>
  <div class="CGALAdvanced"> <div>Advanced</div> <p>CMake keeps the variables that a user can manipulate in a so-called <em>CMake cache</em>, a simple text file named <code>CMakeCache.txt</code>, whose entries are of the form <code>VARIABLE:TYPE=VALUE</code>. Advanced users can manually edit this file, instead of going through the interactive configuration session. </p> </div> <h2><a class="anchor" id="installation_cgalconfig"></a>
@@ -247,12 +255,12 @@ CGALConfig.cmake</h2>
 Multiple Builds</h1>
 <p>While you can choose between release or debug builds, it is not possible to generate different variants during a single configuration. You need to run CMake in a different directory for each variant you are interested in, each with its own selection of configuration parameters.</p>
 <p>CMake stores the resulting makefiles, along with several temporary and auxiliary files such as the variables cache, in the directory where it is executed, called <code>CMAKE_BINARY_DIR</code>, but it takes the source files and configuration scripts from <code>CMAKE_SOURCE_DIR</code>.</p>
-<p>The binary and source directories do not need to be the same. Thus, you can configure multiple variants by creating a distinct directory for each configuration and by running CMake from there. This is known in CMake terminology as <em>out-of-source configuration</em>, as opposite to an <em>in-source configuration</em>, as showed in the previous sections. You can, for example, generate subdirectories <code>CGAL-6.0</code><code>/build/debug</code> and <code>CGAL-6.0</code><code>/build/release</code> for two configurations, respectively: </p><pre class="fragment">mkdir CGAL-6.0/build/debug
-cd CGAL-6.0/build/debug
+<p>The binary and source directories do not need to be the same. Thus, you can configure multiple variants by creating a distinct directory for each configuration and by running CMake from there. This is known in CMake terminology as <em>out-of-source configuration</em>, as opposite to an <em>in-source configuration</em>, as showed in the previous sections. You can, for example, generate subdirectories <code>CGAL-6.1</code><code>/build/debug</code> and <code>CGAL-6.1</code><code>/build/release</code> for two configurations, respectively: </p><pre class="fragment">mkdir CGAL-6.1/build/debug
+cd CGAL-6.1/build/debug
 cmake -DCMAKE_BUILD_TYPE=Debug ../..
 
-mkdir CGAL-6.0/build/release
-cd CGAL-6.0/build/release
+mkdir CGAL-6.1/build/release
+cd CGAL-6.1/build/release
 cmake -DCMAKE_BUILD_TYPE=Release ../..
 </pre><h2><a class="anchor" id="ssec_installation_build_ex_demos"></a>
 Building Examples and Demos</h2>

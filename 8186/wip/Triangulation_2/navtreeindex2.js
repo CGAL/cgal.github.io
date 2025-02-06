@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"index.html#Subsection_2D_Triangulations_Regular_Example":[0,5,3],
+"index.html#Subsection_2D_Triangulations_Voronoi":[0,4,2],
+"index.html#Subsection_Constrained_plus_avoids_cascacding":[0,8,1],
+"index.html#Subsection_Edges_and_Constraints":[0,8,0],
+"index.html#Subsubsection_2D_Triangulation_Basic_Geometric_Traits":[0,3,2],
+"index.html#Triangulation2Draw":[0,3,4],
+"index.html#Triangulation_2ACyclicDependency":[0,10,1],
 "index.html#Triangulation_2ARepresentationBasedonFaces":[0,1,1],
 "index.html#Triangulation_2AddingColors":[0,10,2],
 "index.html#Triangulation_2AddingHandles":[0,10,3],
@@ -26,6 +33,5 @@ var NAVTREEINDEX2 =
 "structCGAL_1_1Exact__predicates__tag.html":[1,0,1,5],
 "structCGAL_1_1No__constraint__intersection__requiring__constructions__tag.html":[1,0,1,3],
 "structCGAL_1_1No__constraint__intersection__tag.html":[1,0,1,2],
-"structCGAL_1_1No__intersection__tag.html":[1,0,1,1],
-"todo.html":[3]
+"structCGAL_1_1No__intersection__tag.html":[1,0,1,1]
 };

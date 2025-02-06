@@ -1,16 +1,17 @@
 var classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3 =
 [
-    [ "Constrained_facets_iterator", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a4874c93c3f7de6509278a1cf7f861794", null ],
-    [ "Constrained_facets_range", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a5cb173b1abb9e4befaa18b6c9f44a110", null ],
-    [ "Conforming_constrained_Delaunay_triangulation_3", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a8bf1dd72662fa1953aa4e4f657e8ff56", null ],
-    [ "Conforming_constrained_Delaunay_triangulation_3", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a63062c0b64657eaa7421501a829999b4", null ],
-    [ "Conforming_constrained_Delaunay_triangulation_3", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a24ca1dda7df7dcb065b3c153275e98f9", null ],
-    [ "constrained_facets", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a3a02b394e253aa2c2566d870e9de7160", null ],
-    [ "constrained_facets_begin", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a814e55567bbcaa8331fa4e57280cc16b", null ],
-    [ "constrained_facets_end", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a8c154375b48ab5b0552fcf428d29d9e0", null ],
-    [ "is_facet_constrained", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a6be02c5fcfc5a6411bca56fa81211009", null ],
-    [ "is_facet_constrained", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a7eca1d31d6d6deaa88db5cddce381157", null ],
-    [ "number_of_constrained_facets", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ab87e0a2250b2cbb7a5e3b28d00519c8a", null ],
-    [ "triangulation", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#af65697ba06d8e94a9d0d01c0ce257e13", null ],
-    [ "triangulation", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#acecb13cfd5ffb14dca186d0543bea8c6", null ]
+    [ "Constrained_facets_iterator", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1", null ],
+    [ "Constrained_facets_range", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#abe4ae57d6a2f208292dd505f5f29a933", null ],
+    [ "Triangulation", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a4a143b431231aeb87e817a2dd45a9809", null ],
+    [ "Conforming_constrained_Delaunay_triangulation_3", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ab7d07b9682487aef4d5000e07742f565", null ],
+    [ "Conforming_constrained_Delaunay_triangulation_3", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ae56ed0176140a16df12dae9b09b9aabf", null ],
+    [ "Conforming_constrained_Delaunay_triangulation_3", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a9d5cb14dee450ab637342d5c54fa6fe1", null ],
+    [ "constrained_facets", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ad3a624e6773025731d91b9b461e945bf", null ],
+    [ "constrained_facets_begin", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a089fe970fe597899f55b819998b210ea", null ],
+    [ "constrained_facets_end", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a152b1f2c8e72b43af595f6715763490f", null ],
+    [ "is_facet_constrained", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a9d741464a33356825db195526f3e152e", null ],
+    [ "is_facet_constrained", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a0d9a514ee72510c82e7c0d2ad99d9f13", null ],
+    [ "number_of_constrained_facets", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a20439a4463d805e178fb69149ee1f752", null ],
+    [ "triangulation", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#aa4f2ddbfb1f07cd4b9b3545435cb0b2b", null ],
+    [ "triangulation", "classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a36c8c85f76660425c1c7d6b7a1be5344", null ]
 ];

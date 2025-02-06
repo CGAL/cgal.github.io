@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: Using CGAL on Windows (with Visual C++)</title>
+<title>CGAL 6.1 - Manual: Using CGAL on Windows (with Visual C++)</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -163,7 +171,7 @@ $(document).ready(function(){initNavTree('windows.html',''); initResizable(); })
   <div class="headertitle"><div class="title">Using CGAL on Windows (with Visual C++) </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"> <div id="autotoc" class="toc"></div> <p>CGAL 6.0 is supported for the following MS Visual <code>C++</code> compilers: 15.9, 16.0, 17.0 (Visual Studio 2017, 2019, and 2022).</p>
+<div class="textblock"> <div id="autotoc" class="toc"></div> <p>CGAL 6.1 is supported for the following MS Visual <code>C++</code> compilers: 15.9, 16.0, 17.0 (Visual Studio 2017, 2019, and 2022).</p>
 <p>CGAL is a library that has mandatory dependencies that must be first installed: <a class="el" href="thirdparty.html#thirdpartyBoost">Boost</a> and a <a class="el" href="thirdparty.html#thirdpartyMP">Multi Precision Number Type Library</a>.</p>
 <p>You have two options to install CGAL and its dependencies: you can either use the <em>Vcpkg library manager</em>, which will automatically install an appropriate version of these dependencies as you install CGAL, or you can install the dependencies on your own (making sure that you are using a supported version) by following their respective installation instructions.</p>
 <p>If you choose to use <code>vcpkg</code>, you might have to bootstrap and download and compile it, but from then on <code>vcpkg</code> will make your life easier. On the other hand, if you need to use a specific version, or have already installed a certain version of a dependency and do not wish to potentially have multiple versions installed, you will want to use the CGAL source archive.</p>
@@ -184,15 +192,15 @@ Installing CGAL with Vcpkg</h2>
 <p>Note that CGAL is a header-only library, and there are therefore no <code>lib</code> or <code>dll</code> files for CGAL.</p>
 <h2><a class="anchor" id="ssec-vcpkg-compile-example"></a>
 Compiling an Example</h2>
-<p>In this section we show how to compile a program that uses CGAL. The examples you find in these User Manual pages are not downloaded when you install CGAL with the Vcpkg library manager. You must download them separately from the following download page: <a href="https://github.com/CGAL/cgal/releases/download/v6.0/CGAL-6.0-examples.zip">CGAL-6.0-examples.zip</a></p>
+<p>In this section we show how to compile a program that uses CGAL. The examples you find in these User Manual pages are not downloaded when you install CGAL with the Vcpkg library manager. You must download them separately from the following download page: <a href="https://github.com/CGAL/cgal/releases/download/v6.1/CGAL-6.1-examples.zip">CGAL-6.1-examples.zip</a></p>
 <p>Assuming you have unzipped this file in your home directory <code>C:\Users\Me</code>, we will next compile an example from the 2D Triangulation package.</p>
 <h3><a class="anchor" id="sssec-vcpkg-configuration-example"></a>
 Configuring of an Example</h3>
 <p>Before building anything using CGAL, you have to choose the compiler/linker, set compiler and linker flags, specify which third-party libraries you want to use and where they can be found. Gathering all this information is called <em>configuration</em> and we use <em>CMake</em> as configuration tool (see Section <a class="el" href="thirdparty.html#seccmake">CMake</a> for more information on supported versions and where to download it).</p>
-<p>The end of the process is marked by the generation of a Visual C++ solution and a project file that you can use to build your program. </p><pre class="fragment">C:\Users\Me\CGAL-6.0&gt; cd examples\Triangulation_2
-C:\Users\Me\CGAL-6.0\examples\Triangulation_2&gt; mkdir build
-C:\Users\Me\CGAL-6.0\examples\Triangulation_2&gt; cd build
-C:\Users\Me\CGAL-6.0\examples\Triangulation_2\build&gt; cmake-gui ..
+<p>The end of the process is marked by the generation of a Visual C++ solution and a project file that you can use to build your program. </p><pre class="fragment">C:\Users\Me\CGAL-6.1&gt; cd examples\Triangulation_2
+C:\Users\Me\CGAL-6.1\examples\Triangulation_2&gt; mkdir build
+C:\Users\Me\CGAL-6.1\examples\Triangulation_2&gt; cd build
+C:\Users\Me\CGAL-6.1\examples\Triangulation_2\build&gt; cmake-gui ..
 </pre><p> The command <code>cmake-gui</code> launches the graphical interface for <code>cmake</code>. When you hit the <em>Configure</em> button, you must: </p><ul>
 <li>
 specify the <em>Generator</em> (e.g., Visual Studio 16 2019), </li>
@@ -218,19 +226,19 @@ Additional Dependencies</h3>
 <p>Note that not all optional dependencies are available through the Vcpkg library manager. In this case, you must download and install them independently (see page <a class="el" href="thirdparty.html">Compilers and Third Party Dependencies</a> for information on support versions and download links) as well as fill the missing information within the <code>CMake</code> interface until configuration is successful (no more red lines indicating missing dependencies).</p>
  <div class="CGALAdvanced"> <div>Advanced</div> <p>You may also decide to solve missing dependencies using the <code>CMake</code> command line tool (which is not recommended). If so, the page <a class="el" href="configurationvariables.html">Summary of CGAL's Configuration Variables</a> lists variables which can be used to specify the location of third-party software. </p> </div> <h3><a class="anchor" id="sssect-vcpkg-compilation"></a>
 Compilation of an Example</h3>
-<p>Once the configuration process is successful, hit the <em>Generate</em> button, and you will find the file <code>Triangulation_2_examples.sln</code> in the directory <code>C:\Users\Me\CGAL-6.0\examples\Triangulation_2\build</code>. Double-click it to open it. There is one project per <code>.cpp</code> file in the directory. Compile them all, or just the one you are interested in.</p>
+<p>Once the configuration process is successful, hit the <em>Generate</em> button, and you will find the file <code>Triangulation_2_examples.sln</code> in the directory <code>C:\Users\Me\CGAL-6.1\examples\Triangulation_2\build</code>. Double-click it to open it. There is one project per <code>.cpp</code> file in the directory. Compile them all, or just the one you are interested in.</p>
 <h2><a class="anchor" id="subsect-vpckg-my-code"></a>
 Configuring and Compiling Your Code Using CGAL</h2>
 <p>Configuring and compiling your own code is practically the same as for CGAL examples if you use <code>cmake</code>. Running <code>cmake</code> (or <code>cmake-gui</code>) requires a <code>CMakeLists.txt</code> file. This file is automatically provided for all examples and demos of CGAL. For your own programs, you are advised to look at the <code>CMakeLists.txt</code> files in the example folder of the package(s) that you are using to learn how to specify CGAL and additional third party dependencies.</p>
 <h1><a class="anchor" id="install-from-source"></a>
 Installing from the Source Archive</h1>
-<p>You can download and extract <code>CGAL-6.0</code><code>.zip</code> from <a href="https://www.cgal.org/download/windows.html">https://www.cgal.org/download/windows.html</a>.</p>
+<p>You can download and extract <code>CGAL-6.1</code><code>.zip</code> from <a href="https://www.cgal.org/download/windows.html">https://www.cgal.org/download/windows.html</a>.</p>
 <h2><a class="anchor" id="ssect-installer-gmp-mpfr"></a>
 Installing GMP and MPFR</h2>
-<p>Precompiled version of GMP and MPFR are provided in the asset <em>GMP and MPFR libraries, for Windows 64bits</em> from <a href="https://github.com/CGAL/cgal/releases">https://github.com/CGAL/cgal/releases</a>. If you only install those libraries to use CGAL, then you should extract this archive inside the directory <code>CGAL-6.0</code> created when extracting the CGAL zip source archive. That way those dependencies will be automatically detected by cmake (you should then get the directory <code>CGAL-6.0</code><code>\</code><code>auxiliary</code><code>\</code><code>gmp</code>).</p>
+<p>Precompiled version of GMP and MPFR are provided in the asset <em>GMP and MPFR libraries, for Windows 64bits</em> from <a href="https://github.com/CGAL/cgal/releases">https://github.com/CGAL/cgal/releases</a>. If you only install those libraries to use CGAL, then you should extract this archive inside the directory <code>CGAL-6.1</code> created when extracting the CGAL zip source archive. That way those dependencies will be automatically detected by cmake (you should then get the directory <code>CGAL-6.1</code><code>\</code><code>auxiliary</code><code>\</code><code>gmp</code>).</p>
 <h2><a class="anchor" id="ssect-installer-boost"></a>
 Installing Boost</h2>
-<p><code>Boost</code> is a mandatory dependency of CGAL. Binary versions of <code>Boost</code> are available on <a href="https://sourceforge.net/projects/boost/files/boost-binaries/">SourceForge</a>. The <code>Boost</code> installers install both <code>Boost</code> headers and precompiled libraries. Please note that the CGAL project is not responsible for the files provided on this website. When CGAL 6.0 was released, the latest version of <code>Boost</code> was 1.71. A typical installation of <code>Boost</code> would consist of the following steps:</p>
+<p><code>Boost</code> is a mandatory dependency of CGAL. Binary versions of <code>Boost</code> are available on <a href="https://sourceforge.net/projects/boost/files/boost-binaries/">SourceForge</a>. The <code>Boost</code> installers install both <code>Boost</code> headers and precompiled libraries. Please note that the CGAL project is not responsible for the files provided on this website. When CGAL 6.1 was released, the latest version of <code>Boost</code> was 1.71. A typical installation of <code>Boost</code> would consist of the following steps:</p>
 <ul>
 <li>
 Download and run the file boost_1_71_0-msvc-XX.Y-64.exe (where XX.Y = 14.0 for VC 2015, XX.Y = 14.1 for 2017, XX.Y = 14.2 for VC 2019). </li>
@@ -251,10 +259,10 @@ Add the path to the Boost <code>dlls</code> (<code>C:\dev\libboost_1_71_0\lib64-
 Compiling an Example</h2>
 <p>We assume that you have downloaded the examples with the CGAL Installer.</p>
 <p>Before building anything using CGAL, you have to choose the compiler/linker, set compiler and linker flags, specify which third-party libraries you want to use and where they can be found. Gathering all this information is called <em>configuration</em> and we use CMake as configuration tool (see Section <a class="el" href="thirdparty.html#seccmake">CMake</a> for more information on minimal supported versions and where to download it).</p>
-<p>The end of the process is marked by the generation of a Visual C++ solution and a project file that you can use to build your program. </p><pre class="fragment">C:\dev\CGAL-6.0&gt; cd examples\Triangulation_2
-C:\dev\CGAL-6.0\examples\Triangulation_2&gt; mkdir build
-C:\dev\CGAL-6.0\examples\Triangulation_2&gt; cd build
-C:\dev\CGAL-6.0\examples\Triangulation_2\build&gt; cmake-gui ..
+<p>The end of the process is marked by the generation of a Visual C++ solution and a project file that you can use to build your program. </p><pre class="fragment">C:\dev\CGAL-6.1&gt; cd examples\Triangulation_2
+C:\dev\CGAL-6.1\examples\Triangulation_2&gt; mkdir build
+C:\dev\CGAL-6.1\examples\Triangulation_2&gt; cd build
+C:\dev\CGAL-6.1\examples\Triangulation_2\build&gt; cmake-gui ..
 </pre><p> The command <code>cmake-gui</code> launches the graphical interface for <code>cmake</code>. When you hit the <em>Configure</em> button, you must: </p><ul>
 <li>
 Specify the <em>Generator</em>, e.g., Visual Studio 16 2019), and </li>
@@ -279,7 +287,7 @@ Add the bin directory of Qt, e.g. add <code>C:\dev\Qt\Qt6.13.1\msvcXXXX_YY\bin</
 <p>You must follow a similar process for other dependencies (see page <a class="el" href="thirdparty.html">Compilers and Third Party Dependencies</a> for information on supported versions of third party libraries as well as download links) and fill the missing information within the <code>CMake</code> interface until configuration is successful (no more red lines indicating missing dependencies).</p>
  <div class="CGALAdvanced"> <div>Advanced</div> <p>You may also decide to solve missing dependencies using the <code>CMake</code> command line tool (which is not recommended). If so, the page <a class="el" href="configurationvariables.html">Summary of CGAL's Configuration Variables</a> lists variables which can be used to specify the location of third-party software. </p> </div> <h3><a class="anchor" id="sssect-installer-compilation"></a>
 Compilation of an Example</h3>
-<p>Once the configuration process is successful, hit the <em>Generate</em> button, and you will find the file <code>Triangulation_2_examples.sln</code> in the directory <code>C:\dev\CGAL-6.0\examples\Triangulation_2\build</code>. Double-click it in order to open it. You will see one project per <code>.cpp</code> file. Compile them all, or just the one you are interested in.</p>
+<p>Once the configuration process is successful, hit the <em>Generate</em> button, and you will find the file <code>Triangulation_2_examples.sln</code> in the directory <code>C:\dev\CGAL-6.1\examples\Triangulation_2\build</code>. Double-click it in order to open it. You will see one project per <code>.cpp</code> file. Compile them all, or just the one you are interested in.</p>
 <h2><a class="anchor" id="subsect-installer-my-code"></a>
 Configuring and Compiling My Code Using CGAL</h2>
 <p>Configuring and compiling your own code is practically the same as for CGAL examples if you use <code>cmake</code>. Running <code>cmake</code> (or <code>cmake-gui</code>) requires a <code>CMakeLists.txt</code> file. This file is automatically provided for all examples and demos of CGAL. For your own programs, you are advised to look at the <code>CMakeLists.txt</code> files in the example folder of the package(s) that you are using to learn how to specify CGAL and additional third party dependencies.</p>

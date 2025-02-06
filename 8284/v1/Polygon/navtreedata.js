@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Polygons", "index.html", [
+  [ "CGAL 6.1 - 2D Polygons", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Class and Concept List", "annotated.html", "annotated" ],

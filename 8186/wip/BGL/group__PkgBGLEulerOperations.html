@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL and the Boost Graph Library: Euler Operations</title>
+<title>CGAL 6.1 - CGAL and the Boost Graph Library: Euler Operations</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL and the Boost Graph Library
+   <div id="projectname">CGAL 6.1 - CGAL and the Boost Graph Library
    </div>
   </td>
  </tr>
@@ -250,6 +258,10 @@ template&lt;typename VertexRange , typename PMesh &gt; </td></tr>
 <tr class="memitem:ga174af506cebf3def60b56a3501843864"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgBGLEulerOperations.html#ga174af506cebf3def60b56a3501843864">CGAL::Euler::flip_edge</a> (typename boost::graph_traits&lt; Graph &gt;::halfedge_descriptor h, Graph &amp;g)</td></tr>
 <tr class="memdesc:ga174af506cebf3def60b56a3501843864"><td class="mdescLeft"> </td><td class="mdescRight">performs an edge flip, rotating the edge pointed by <code>h</code> by one vertex in the direction of the face orientation.  <br></td></tr>
 <tr class="separator:ga174af506cebf3def60b56a3501843864"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gab3455663b7db4624529e54ae3ce2387c"><td class="memTemplParams" colspan="2">template&lt;typename Graph &gt; </td></tr>
+<tr class="memitem:gab3455663b7db4624529e54ae3ce2387c"><td class="memTemplItemLeft" align="right" valign="top">boost::graph_traits&lt; Graph &gt;::halfedge_descriptor </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgBGLEulerOperations.html#gab3455663b7db4624529e54ae3ce2387c">CGAL::Euler::remove_degree_2_vertex</a> (const typename boost::graph_traits&lt; Graph &gt;::halfedge_descriptor h, Graph &amp;g)</td></tr>
+<tr class="memdesc:gab3455663b7db4624529e54ae3ce2387c"><td class="mdescLeft"> </td><td class="mdescRight">removes the target vertex of <code>h</code>, merging its incident edges into a single edge linking the two vertices adjacent to the vertex being removed.  <br></td></tr>
+<tr class="separator:gab3455663b7db4624529e54ae3ce2387c"><td class="memSeparator" colspan="2"> </td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaddf9d21ebb0ad54d9502e9ea507aa5db" name="gaddf9d21ebb0ad54d9502e9ea507aa5db"></a>
@@ -920,6 +932,56 @@ template&lt;typename Graph &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd><code>prev(h, g)</code></dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>None of the incident faces of <code>target(h,g)</code> is a hole. There are at least two distinct faces incident to the faces that are incident to <code>target(h,g)</code>. (This prevents the operation from collapsing a volume into two faces glued together with opposite orientations, such as would happen with any vertex of a tetrahedron.)</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgBGLEulerOperations.html#gaddf9d21ebb0ad54d9502e9ea507aa5db" title="creates a barycentric triangulation of the face incident to h.">add_center_vertex()</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="gab3455663b7db4624529e54ae3ce2387c" name="gab3455663b7db4624529e54ae3ce2387c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab3455663b7db4624529e54ae3ce2387c">◆ </a></span>remove_degree_2_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Graph &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::graph_traits&lt; Graph &gt;::halfedge_descriptor CGAL::Euler::remove_degree_2_vertex </td>
+          <td>(</td>
+          <td class="paramtype">const typename boost::graph_traits&lt; Graph &gt;::halfedge_descriptor </td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp; </td>
+          <td class="paramname"><em>g</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/boost/graph/Euler_operations.h&gt;</code></p>
+
+<p>removes the target vertex of <code>h</code>, merging its incident edges into a single edge linking the two vertices adjacent to the vertex being removed. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Graph</td><td>must be a model of <code><a class="el" href="classMutableFaceGraph.html" title="The concept MutableFaceGraph refines the concepts FaceGraph and MutableHalfedgeGraph and adds the req...">MutableFaceGraph</a></code></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>halfedge descriptor </td></tr>
+    <tr><td class="paramname">g</td><td>the graph</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an halfedge linking the two vertices adjacent to the vertex being removed.</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>degree(target(h, g), g) == 2</code>.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="group__PkgBGLEulerOperations.html#gafa44d3b18f6492b95bb64c137d2ec18d" title="removes the vertex target(h, g) and all incident halfedges thereby merging all incident faces.">remove_center_vertex()</a></code> </dd></dl>
 
 </div>
 </div>

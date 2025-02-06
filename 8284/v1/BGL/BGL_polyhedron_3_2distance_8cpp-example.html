@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - CGAL and the Boost Graph Library: BGL_polyhedron_3/distance.cpp</title>
+<title>CGAL 6.1 - CGAL and the Boost Graph Library: BGL_polyhedron_3/distance.cpp</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - CGAL and the Boost Graph Library
+   <div id="projectname">CGAL 6.1 - CGAL and the Boost Graph Library
    </div>
   </td>
  </tr>
@@ -188,9 +196,9 @@ $(document).ready(function(){initNavTree('BGL_polyhedron_3_2distance_8cpp-exampl
 <div class="line">  vertex_iterator vb, ve;</div>
 <div class="line">  <span class="keywordtype">int</span> index = 0;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// boost::tie assigns the first and second element of the std::pair</span></div>
+<div class="line">  <span class="comment">// std::tie assigns the first and second element of the std::pair</span></div>
 <div class="line">  <span class="comment">// returned by boost::vertices to the variables vit and ve</span></div>
-<div class="line">  <span class="keywordflow">for</span>(boost::tie(vb,ve)=vertices(P); vb!=ve; ++vb ){</div>
+<div class="line">  <span class="keywordflow">for</span>(std::tie(vb,ve)=vertices(P); vb!=ve; ++vb ){</div>
 <div class="line">    vertex_descriptor  vd = *vb;</div>
 <div class="line">    vd-&gt;id() = index++;</div>
 <div class="line">  }</div>
@@ -201,7 +209,7 @@ $(document).ready(function(){initNavTree('BGL_polyhedron_3_2distance_8cpp-exampl
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Here we start at an arbitrary vertex</span></div>
 <div class="line">  <span class="comment">// Any other vertex could be the starting point</span></div>
-<div class="line">  boost::tie(vb,ve)=vertices(P);</div>
+<div class="line">  std::tie(vb,ve)=vertices(P);</div>
 <div class="line">  vertex_descriptor  vd = *vb;</div>
 <div class="line"> </div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">"We compute distances to "</span> &lt;&lt; vd-&gt;point() &lt;&lt; std::endl;</div>
@@ -218,7 +226,7 @@ $(document).ready(function(){initNavTree('BGL_polyhedron_3_2distance_8cpp-exampl
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Traverse all vertices and show at what distance they are</span></div>
-<div class="line">  <span class="keywordflow">for</span>(boost::tie(vb,ve)=vertices(P); vb!=ve; ++vb ){</div>
+<div class="line">  <span class="keywordflow">for</span>(std::tie(vb,ve)=vertices(P); vb!=ve; ++vb ){</div>
 <div class="line">    vd = *vb;</div>
 <div class="line">    std::cout &lt;&lt;  vd-&gt;point() &lt;&lt; <span class="stringliteral">"  is "</span> &lt;&lt; distance[vd-&gt;id()] &lt;&lt; <span class="stringliteral">" hops away"</span> &lt;&lt; std::endl;</div>
 <div class="line">  }</div>

@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - IO Streams: Supported File Formats</title>
+<title>CGAL 6.1 - IO Streams: Supported File Formats</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - IO Streams
+   <div id="projectname">CGAL 6.1 - IO Streams
    </div>
   </td>
  </tr>
@@ -167,6 +175,7 @@ $(document).ready(function(){initNavTree('IOStreamSupportedFileFormats.html','')
 <ul>
 <li><a class="el" href="IOStreamSupportedFileFormats.html#IOStreamOFF">Object File Format (OFF)</a></li>
 <li><a class="el" href="IOStreamSupportedFileFormats.html#IOStreamOBJ">Wavefront Advanced Visualizer Object Format (OBJ)</a></li>
+<li><a class="el" href="IOStreamSupportedFileFormats.html#IOStreamOM">OpenMesh (OM) File format</a></li>
 <li><a class="el" href="IOStreamSupportedFileFormats.html#IOStreamSTL">STereoLithography (STL) File Format</a></li>
 <li><a class="el" href="IOStreamSupportedFileFormats.html#IOStreamPLY">Polygon File Format (PLY)</a></li>
 <li><a class="el" href="IOStreamSupportedFileFormats.html#IOStreamXYZ">XYZ File Format</a></li>
@@ -232,6 +241,18 @@ Wavefront Advanced Visualizer Object Format (OBJ)</h1>
 <td>Polygon Soup </td><td>Any point + polygon range </td><td><a class="el" href="group__PkgStreamSupportIoFuncsOBJ.html">CGAL::IO::write_OBJ(const std::string&amp;, const PointRange&amp;, const PolygonRange&amp;)</a>  </td></tr>
 </table>
 <p>If the data of a polygon mesh cannot be read in a <code><a class="elRef" href="../BGL/classFaceGraph.html">FaceGraph</a></code> due to bad orientation or manifoldness issues, consider using <a class="elRef" href="../Polygon_mesh_processing/group__PMP__IO__grp.html"><code>CGAL::Polygon_mesh_processing::IO::read_polygon_mesh()</code> </a>, which offers combinatorial repairing while reading bad inputs.</p>
+<h1><a class="anchor" id="IOStreamOM"></a>
+OpenMesh (OM) File format</h1>
+<p>The OpenMesh proprietary format, using the file extension <code>.om</code>, can be used to represent collections of planar polygons with possibly shared vertices. Additionally, it allows to store and restore custom properties along with the standard properties.</p>
+<p>More information are provided <a href="https://www.graphics.rwth-aachen.de/media/openmesh_static/Documentations/OpenMesh-Doc-Latest/a06338.html">here</a>.</p>
+<table class="iotable">
+<tr>
+<th colspan="4">OpenMesh Format (OM)  </th></tr>
+<tr>
+<td width="75">Input </td><td width="175">Polygon Mesh </td><td width="250">Any model of <code><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></code> </td><td width="500"><a class="elRef" href="../BGL/group__PkgBGLIoFuncsOM.html">CGAL::IO::read_OM(const std::string&amp;, Graph&amp;)</a>  </td></tr>
+<tr>
+<td>Output </td><td>Polygon Mesh </td><td>Any model of <code><a class="elRef" href="../BGL/classFaceGraph.html">FaceGraph</a></code> </td><td><a class="elRef" href="../BGL/group__PkgBGLIoFuncsOM.html">CGAL::IO::write_OM(const std::string&amp;, const Graph&amp;)</a>  </td></tr>
+</table>
 <h1><a class="anchor" id="IOStreamSTL"></a>
 STereoLithography (STL) File Format</h1>
 <p>The <code>STL</code> file format, using the file extension <code>.stl</code>, is an ASCII or binary format native to the stereolithography CAD software created by 3D Systems. STL files describe the surface geometry of a three-dimensional object.</p>

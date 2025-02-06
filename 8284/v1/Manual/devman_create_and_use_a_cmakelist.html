@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: How to use CGAL with CMake</title>
+<title>CGAL 6.1 - Manual: How to use CGAL with CMake</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -185,7 +193,7 @@ Minimal Example Using Qt6</h1>
 <p>This section describes a minimal example of a program that uses CGAL and Qt6 for some GUI features.</p>
 <h2><a class="anchor" id="subcmake"></a>
 CMakeLists.txt</h2>
- <div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.12...3.29)</div>
+ <div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.12...3.31)</div>
 <div class="line">project(Surface_mesh_Examples)</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#CGAL_Qt6 is needed for the drawing.</span></div>
 <div class="line">find_package(<a class="code hl_namespaceRef" href="../Algebraic_foundations/namespaceCGAL.html">CGAL</a> REQUIRED OPTIONAL_COMPONENTS Qt6)</div>
@@ -194,7 +202,7 @@ CMakeLists.txt</h2>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordflow">if</span>(CGAL_Qt6_FOUND)</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">  #link it with the required CGAL libraries</span></div>
-<div class="line">  target_link_libraries(draw_surface_mesh PUBLIC CGAL::CGAL_Basic_viewer)</div>
+<div class="line">  target_link_libraries(draw_surface_mesh PRIVATE CGAL::CGAL_Basic_viewer)</div>
 <div class="line">endif()</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#end of the file</span></div>

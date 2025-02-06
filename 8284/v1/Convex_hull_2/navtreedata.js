@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Convex Hulls and Extreme Points", "index.html", [
+  [ "CGAL 6.1 - 2D Convex Hulls and Extreme Points", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Bibliography", "citelist.html", null ],

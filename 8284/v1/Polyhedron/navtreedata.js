@@ -24,11 +24,10 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 3D Polyhedral Surface", "index.html", [
+  [ "CGAL 6.1 - 3D Polyhedral Surface", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Deprecated List", "deprecated.html", null ],
-    [ "Todo List", "todo.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Class and Concept List", "annotated.html", "annotated" ],
     [ "Examples", "examples.html", "examples" ]

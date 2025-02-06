@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - Manual: General Information</title>
+<title>CGAL 6.1 - Manual: General Information</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -64,13 +64,21 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +105,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - Manual
+   <div id="projectname">CGAL 6.1 - Manual
    </div>
   </td>
   <!-- We disable the search box because we have added it in the
@@ -181,7 +189,7 @@ C++17 Support</h1>
 <p>CGAL is based on the version C++17 of the C++ standard.</p>
 <h1><a class="anchor" id="preliminaries_secchecks"></a>
 Checks</h1>
-<p>Much of the CGAL code contains assert statements for preconditions, and postconditions of functions as well as in the code. These assertions can be switched on and off per package and the user can change the error behaviour. For details see Section <a class="elRef" href="../STL_Extension/index.html#secchecks">Checks</a> of Chapter <a class="elRef" href="../STL_Extension/index.html#Chapter_STL_Extensions_for_CGAL">Chapter_STL_Extensions_for_CGAL</a>.</p>
+<p>Much of the CGAL code contains assert statements for preconditions, and postconditions of functions as well as in the code. These assertions can be switched on and off per package and the user can change the error behavior. For details see Section <a class="elRef" href="../STL_Extension/index.html#secchecks">Checks</a> of Chapter <a class="elRef" href="../STL_Extension/index.html#Chapter_STL_Extensions_for_CGAL">Chapter_STL_Extensions_for_CGAL</a>.</p>
 <h1><a class="anchor" id="Preliminaries_flags"></a>
 Compile-time Flags to Control Inlining</h1>
 <p>Making functions inlined can, at times, improve the efficiency of your code. However this is not always the case and it can differ for a single function depending on the application in which it is used. Thus CGAL defines a set of compile-time macros that can be used to control whether certain functions are designated as inlined functions or not. The following table lists the macros and their default values, which are set in one of the CGAL include files.</p>
