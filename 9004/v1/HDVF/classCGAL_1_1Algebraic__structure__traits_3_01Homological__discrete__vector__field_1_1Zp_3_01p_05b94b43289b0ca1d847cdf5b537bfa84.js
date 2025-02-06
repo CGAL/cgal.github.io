@@ -1,0 +1,4 @@
+var classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_05b94b43289b0ca1d847cdf5b537bfa84 =
+[
+    [ "operator()", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_05b94b43289b0ca1d847cdf5b537bfa84.html#a4f6c6f78399f13b6d623af9af669bf19", null ]
+];

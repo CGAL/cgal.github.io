@@ -1,0 +1,7 @@
+var classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_01T_00_01false_01_4_01_4 =
+[
+    [ "Is_invertible", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_081a680221ed0b95114c66d7d1e579423.html", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_081a680221ed0b95114c66d7d1e579423" ],
+    [ "Is_exact", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_01T_00_01false_01_4_01_4.html#a9981fa663951c8615bfddbf6e1b57e4e", null ],
+    [ "Is_numerical_sensitive", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_01T_00_01false_01_4_01_4.html#a40ff6d25476322ce9b57d7a30c43f6e7", null ],
+    [ "Type", "classCGAL_1_1Algebraic__structure__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_01T_00_01false_01_4_01_4.html#a44c8b7c83cc4196eae27753b9721607b", null ]
+];

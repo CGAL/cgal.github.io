@@ -1,0 +1,4 @@
+var classCGAL_1_1Real__embeddable__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_01T_00_01IsPrime_01_4_01_4_1_1Abs =
+[
+    [ "operator()", "classCGAL_1_1Real__embeddable__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_01T_00_01IsPrime_01_4_01_4_1_1Abs.html#a178d90af7fcc2aea524384dedca6652d", null ]
+];

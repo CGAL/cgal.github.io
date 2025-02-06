@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Variational_medial_axis/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1 - Dynamic Skeletonization Via Variational Medial Axis Sampling: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1 - Dynamic Skeletonization Via Variational Medial Axis Sampling
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_VMAS"></a></p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Author</dt><dd>Qijia Huang <a class="anchor" id="fig__main_image"></a><center> <img src="main_image.png" alt="" width="1100px" class="inline"> </center>  <div class="cgal_figure_caption">  <a class="el" href="index.html#fig__main_image">Figure 83.1</a> Medial skeleton of a bug model. Given a triangulated mesh(left), the medial skeleton is extracted, where each vertex corresponds a sphere(middle) and the connectivity of these spheres constructs a mesh(right) known as <em><b>Medial mesh</b></em>  </div>  <br>
+ </dd></dl>
+<h1><a class="anchor" id="VMASIntroduction"></a>
+Introduction</h1>
+<p>The skeleton is a fundamental structure with numerous applications in shape matching, shape segmentation, shape deformation, etc. A generalization of the skeleton is the medial axis, defined as the set of points that are equidistant to two or more points on the boundary of a shape. In this context, each point of the medial axis can be viewed as the center of a maximal inscribed ball, often referred to as a <b>medial sphere</b>.</p>
+<p>This package implements a skeletonization algorithm <a class="el" href="citelist.html#CITEREF_huang2024dynamic">[1]</a> that extracts a coarse, discrete approximation of the medial axis from a triangulated surface mesh without borders. Unlike the <a class="elRef" href="../Manual/packages.html#PkgSurfaceMeshSkeletonization">Surface_mesh_skeletonization</a> package, which computes a purely curve-based (1D) skeleton, the output of this method is a non-manifold triangle mesh that may contain both curve (1D) and surface (2D) elements, a structure sometimes referred to as a <b>medial mesh</b>. Each vertex of the resulting mesh corresponds to a medial sphere, and the edges and faces encode the adjacency relationships between these spheres. One can reconstruct the original mesh by interpolating between spheres according their adjacency relationships. For each edge, interpolating between two spheres yields a <em>medial cone</em>. For each face, interpolating between three spheres yields a <em>medial slab</em>. <a class="anchor" id="fig__cone_slab"></a></p><center> <img src="cone_slab.png" alt="" width="600px" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__cone_slab">Figure 83.2</a> Interpolation of medial mesh. (a) medial cone (b) medial slab. Image taken from <a class="el" href="citelist.html#CITEREF_li2015q">[2]</a> </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="VMASOverview"></a>
+Overview</h1>
+<p>At the core of the method is a variational optimization problem whose objective is to minimize an error metric that measures the distance between each medial sphere and its associated surface points(cluster vertices), so that each sphere accurately represents the local geometry of the shape.</p>
+<p>The process begins by initializing a single cluster containing all surface vertices and fitting an initial medial sphere using the variational error metric. New spheres are then progressively inserted in regions with the highest approximation error. Each insertion triggers updates to both the cluster vertices and the set of medial spheres in an iterative optimization loop. The algorithm terminates when either the target number of spheres is reached or the maximum number of iterations is exceeded. Finally, the connectivity of the medial skeleton is constructed based on the adjacency relations between vertex clusters. <a class="anchor" id="fig__vmas_fig_result"></a></p><center> <img src="overview.png" alt="" width="1100px" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__vmas_fig_result">Figure 83.3</a> Overview of the algorithm, image taken from <a class="el" href="citelist.html#CITEREF_huang2024dynamic">[1]</a> </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="VMASAPI"></a>
+User Interface Description</h1>
+<h2><a class="anchor" id="VMASio"></a>
+Input and Output</h2>
+<p>The method takes as input triangulated surface mesh which can be a mode of <code><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></code>, such as <code><a class="elRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></code>. It also requires Eigen (version 3.2 or later) for the use of the <code>Eigen::LDLT</code> solver, which is employed to solve the linear systems arising during optimization.</p>
+<p>The output is stored in a <code><a class="el" href="classCGAL_1_1Medial__skeleton.html" title="Class representing the medial skeleton of a shape.">Medial_skeleton</a></code> structure, which contains three containers:</p><ul>
+<li><b>vertices</b>: each element corresponds to a medial sphere,</li>
+<li><b>edges</b>: each element is a <code>std::pair&lt;std::size_t, std::size_t&gt;</code> encoding the adjacency between two spheres,</li>
+<li><b>faces</b>: each element is a triplet of <code>Sphere_ID</code>(std::array&lt;std::size_t, 3&gt;) values encoding a triangular patch connecting three spheres.</li>
+</ul>
+<p>A helper function <code>CGAL:IO::write_PLY()</code> is provided to export the resulting skeleton to a <code>.ply</code> file, which can then be visualized in external software such as Blender.</p>
+<h2><a class="anchor" id="VMASacc"></a>
+Acceleration Structure</h2>
+<p>After the optimization step, the medial spheres may deviate slightly from the true medial axis. To project them back onto the medial axis, the algorithm performs a <b>correction step</b> using the <b>shrinking ball algorithm</b>,<a class="el" href="citelist.html#CITEREF_ma20123d">[3]</a> which requires computing the <b>closest point</b> on the surface from a given position.</p>
+<p>To accelerate this closest point query, two types of spatial search structures are supported:</p>
+<ul>
+<li><code><a class="elRef" href="../STL_Extension/structCGAL_1_1KD__tree__tag.html">CGAL::KD_tree_tag</a></code>: uses a KD-tree constructed from the surface sample points.</li>
+<li><code><a class="elRef" href="../STL_Extension/structCGAL_1_1BVH__tag.html">CGAL::BVH_tag</a></code>: uses a bounding volume hierarchy (BVH) built from the faces of the input triangle mesh.</li>
+</ul>
+<p>The user can choose the desired structure by passing the corresponding tag via the <code>CGAL::parameters::acceleration_structure()</code> named parameter. The essential difference is that the KD-tree restricts sphere placement to be constrained by surface sampled points only, while the BVH allows medial spheres to touch the interior of mesh faces. In general, we recommend using the KD-tree (which is also the default) since the surface will be densely sampled at the beginning of the algorithm.</p>
+<h2><a class="anchor" id="VMASfree"></a>
+Free function</h2>
+<p>The function <code><a class="el" href="group__PkgVMASRef.html#gae93f1f9db5a2975aac61d17731a432b9" title="extracts a medial skeleton for the triangle mesh tmesh.">CGAL::extract_variational_medial_skeleton()</a></code> provides a convenient interface for users who want to quickly extract a medial skeleton with specified parameters. This function accepts the following parameters:</p><ul>
+<li><code>number_of_spheres</code>: target number of medial spheres</li>
+<li><code>number_of_samples</code>: number of points that will be sampled on the surface</li>
+<li><code>lambda</code>: weight balancing the energy terms</li>
+<li><code>random_seed</code>: random seed for generating sample points on the surface</li>
+<li><code>number_of_iterations</code>: maximum number of iterations</li>
+<li><code>concurrency_tag</code>: execution mode - sequential or parallel</li>
+</ul>
+<p>The following example showcases the usage of this function:</p>
+<p><br>
+<b>File</b> <a class="el" href="Variational_medial_axis_2vmas_free_function_8cpp-example.html">Variational_medial_axis/vmas_free_function.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/extract_variational_medial_skeleton.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Mesh = <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;K::Point_3&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Medial_skeleton = <a class="code hl_class" href="classCGAL_1_1Medial__skeleton.html">CGAL::Medial_skeleton&lt;Mesh&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/elephant.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  Medial_skeleton skeleton = <a class="code hl_function" href="group__PkgVMASRef.html#gae93f1f9db5a2975aac61d17731a432b9">extract_variational_medial_skeleton</a>(</div>
+<div class="line">      mesh, CGAL::parameters::number_of_iterations(1000)<span class="comment">// number of max iterations</span></div>
+<div class="line">      .number_of_spheres(200) <span class="comment">// target number of spheres</span></div>
+<div class="line">      .number_of_samples(20000) <span class="comment">// number of surface samples</span></div>
+<div class="line">      .lambda(0.2) <span class="comment">// lambda parameter for the optimization</span></div>
+<div class="line">      .random_seed(10) <span class="comment">// random seed for point sampling</span></div>
+<div class="line">      .concurrency_tag(<a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1Parallel__tag.html">CGAL::Parallel_tag</a>{}) <span class="comment">// use parallel execution</span></div>
+<div class="line">      .acceleration_structure(<a class="code hl_structRef" href="../STL_Extension/structCGAL_1_1BVH__tag.html">CGAL::BVH_tag</a>{}) <span class="comment">// use BVH for acceleration</span></div>
+<div class="line">      .verbose(<span class="keyword">true</span>)); <span class="comment">// enable verbose output</span></div>
+<div class="line">  <span class="comment">// Write skeleton to PLY file</span></div>
+<div class="line">  std::string output_filename = <span class="stringliteral">"skeleton.ply"</span>;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsPLY.html#ga62510f84cfdb4ba91996702fc4b1d3ac">CGAL::IO::write_PLY</a>(skeleton, output_filename, CGAL::parameters::stream_precision(9));</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Medial__skeleton_html"><div class="ttname"><a href="classCGAL_1_1Medial__skeleton.html">CGAL::Medial_skeleton</a></div><div class="ttdoc">Class representing the medial skeleton of a shape.</div><div class="ttdef"><b>Definition:</b> Variational_medial_axis_sampling.h:204</div></div>
+<div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgStreamSupportIoFuncsPLY_html_ga62510f84cfdb4ba91996702fc4b1d3ac"><div class="ttname"><a href="../Stream_support/group__PkgStreamSupportIoFuncsPLY.html#ga62510f84cfdb4ba91996702fc4b1d3ac">CGAL::IO::write_PLY</a></div><div class="ttdeci">bool write_PLY(std::ostream &amp;out, const PointRange &amp;points, const PolygonRange &amp;polygons, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgVMASRef_html_gae93f1f9db5a2975aac61d17731a432b9"><div class="ttname"><a href="group__PkgVMASRef.html#gae93f1f9db5a2975aac61d17731a432b9">CGAL::extract_variational_medial_skeleton</a></div><div class="ttdeci">CGAL::Medial_skeleton&lt; TriangleMesh &gt; extract_variational_medial_skeleton(const TriangleMesh &amp;tmesh, const NamedParameters &amp;np=parameters::default_values())</div><div class="ttdoc">extracts a medial skeleton for the triangle mesh tmesh.</div><div class="ttdef"><b>Definition:</b> extract_variational_medial_skeleton.h:90</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+<div class="ttc" id="astructCGAL_1_1BVH__tag_html"><div class="ttname"><a href="../STL_Extension/structCGAL_1_1BVH__tag.html">CGAL::BVH_tag</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Parallel__tag_html"><div class="ttname"><a href="../STL_Extension/structCGAL_1_1Parallel__tag.html">CGAL::Parallel_tag</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="VMASfunctionobject"></a>
+Function object</h2>
+<p>The class <code><a class="el" href="classCGAL_1_1Variational__medial__axis__sampling.html" title="Algorithm class for extracting a variational medial skeleton from a triangulated surface mesh.">CGAL::Variational_medial_axis_sampling</a></code> provides some advanced usage of the algorithm Several key functions are provided for algorithm control:</p><ul>
+<li><code><a class="el" href="classCGAL_1_1Variational__medial__axis__sampling.html#a8ede691cb2d08367b222f228ccba8e8e" title="computes a static skeleton based on the Variational Medial Axis Sampling method.">CGAL::Variational_medial_axis_sampling::sample()</a></code>: Executes the complete algorithm with specified parameters and returns a boolean indicating success. The algorithm may fail either when the optimization does not converge (the error stays above the error threshold) or when the surface sampling is not dense enough to generate a sufficient number of medial spheres. The parameters are the same as those of the free function.</li>
+<li><code><a class="el" href="classCGAL_1_1Variational__medial__axis__sampling.html#acf3e09478612c75c5be302c40436867e" title="updates the medial spheres by performing a single step of the algorithm.">CGAL::Variational_medial_axis_sampling::update_single_step()</a></code>: Performs a single iteration of the optimization process, with optional sphere splitting enabled. This allows for step-by-step execution and monitoring of the algorithm's progress.</li>
+<li><code><a class="el" href="classCGAL_1_1Variational__medial__axis__sampling.html#a57c9f367dc1d44aea281340645e22d19" title="performs a specified number of algorithm iterations.">CGAL::Variational_medial_axis_sampling::update()</a></code>: Executes a specified number of optimization iterations without sphere splitting.</li>
+<li><code><a class="el" href="classCGAL_1_1Variational__medial__axis__sampling.html#acda3999030b8424c4afca572d1d09494" title="adds spheres by iteratively splitting existing spheres.">CGAL::Variational_medial_axis_sampling::add_spheres(int nb_spheres)</a></code>: Adds a specified number of spheres by iteratively splitting existing spheres.</li>
+</ul>
+<p>The following example shows a different configuration of the parameters and basic usage of the above functions:</p>
+<p><br>
+<b>File</b> <a class="el" href="Variational_medial_axis_2vmas_class_interface_8cpp-example.html">Variational_medial_axis/vmas_class_interface.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Variational_medial_axis_sampling.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Mesh = <a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;K::Point_3&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/chair.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh;</div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, mesh))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Invalid input."</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> 1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classCGAL_1_1Variational__medial__axis__sampling.html">CGAL::Variational_medial_axis_sampling&lt;Mesh, CGAL::Parallel_if_available_tag&gt;</a> vmas(mesh);</div>
+<div class="line">  <span class="comment">// Compute medial skeleton with custom parameters</span></div>
+<div class="line">  vmas.sample(</div>
+<div class="line">      CGAL::parameters::number_of_iterations(1000) <span class="comment">// number of max iterations</span></div>
+<div class="line">      .number_of_spheres(200)<span class="comment">// target number of spheres</span></div>
+<div class="line">      .lambda(0.2) <span class="comment">// lambda parameter for the optimization</span></div>
+<div class="line">      .verbose(<span class="keyword">true</span>)); <span class="comment">// enable verbose output</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// add additional 3 sphere, this function will update the medial skeleton automatically</span></div>
+<div class="line">  vmas.add_spheres(3);</div>
+<div class="line">  <span class="comment">// update the medial skeleton with 20 iterations</span></div>
+<div class="line">  vmas.update(20);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Exporting skeleton..."</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> skeleton = vmas.skeleton();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Write skeleton to PLY file</span></div>
+<div class="line">  std::string output_filename = <span class="stringliteral">"skeleton.ply"</span>;</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsPLY.html#ga62510f84cfdb4ba91996702fc4b1d3ac">CGAL::IO::write_PLY</a>(skeleton, output_filename, CGAL::parameters::stream_precision(9));</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="ttc" id="aclassCGAL_1_1Variational__medial__axis__sampling_html"><div class="ttname"><a href="classCGAL_1_1Variational__medial__axis__sampling.html">CGAL::Variational_medial_axis_sampling</a></div><div class="ttdoc">Algorithm class for extracting a variational medial skeleton from a triangulated surface mesh.</div><div class="ttdef"><b>Definition:</b> Variational_medial_axis_sampling.h:539</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="VMASlimits"></a>
+Limitations and Practical Considerations</h1>
+<p>By definition, the medial axis of a shape is homotopy equivalent to the original object. However, since this algorithm aims to generate coarse approximation of medial axis, it does <b>not</b> provide any theoretical guarantee that the extracted skeleton preserves the topology of the input. While the algorithm can handle meshes with multiple connected components, the resulting medial skeleton is only topologically faithful when a sufficient number of spheres is used to capture the correct connectivity. Furthermore, this method does not perform well on CAD models, which typically require additional feature detection to preserve sharp features. </p>
+<h1><a class="anchor" id="VMASDesign"></a>
+Design and Implementation History</h1>
+<p>This package is the result of the work of Qijia Huang during the 2025 season of the Google Summer of Code, mentored by Sébastien Loriot. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>

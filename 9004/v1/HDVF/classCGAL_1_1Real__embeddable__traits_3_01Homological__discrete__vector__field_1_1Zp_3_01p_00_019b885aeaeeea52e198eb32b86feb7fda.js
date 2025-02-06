@@ -1,0 +1,4 @@
+var classCGAL_1_1Real__embeddable__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_019b885aeaeeea52e198eb32b86feb7fda =
+[
+    [ "operator()", "classCGAL_1_1Real__embeddable__traits_3_01Homological__discrete__vector__field_1_1Zp_3_01p_00_019b885aeaeeea52e198eb32b86feb7fda.html#a5da91d1355035ad7adeb0d837f10f853", null ]
+];

@@ -1,0 +1,5 @@
+var structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data =
+[
+    [ "K_complex", "structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html#a319c89edd7d08e97dd621678f6e7c5dc", null ],
+    [ "L_complex", "structCGAL_1_1Homological__discrete__vector__field_1_1Duality__simplicial__complex__tools_1_1Complex__duality__data.html#ab41b3925658160a2b7a089ad2e5115bd", null ]
+];
