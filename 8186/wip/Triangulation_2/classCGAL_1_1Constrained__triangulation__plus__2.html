@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11">
 <meta name="generator" content="Doxygen 1.9.6">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CGAL 6.0 - 2D Triangulations: CGAL::Constrained_triangulation_plus_2&lt; Tr &gt; Class Template Reference</title>
+<title>CGAL 6.1 - 2D Triangulations: CGAL::Constrained_triangulation_plus_2&lt; Tr &gt; Class Template Reference</title>
 <!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
 <script type="text/javascript" src="../Manual/jquery.js"></script>
 <script type="text/javascript" src="../Manual/dynsections.js"></script>
@@ -34,7 +34,6 @@
 <script type="text/javascript" src="../Manual/search/search.js"></script>
 <!-- Manually done below. -->
 <link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
-<!-- This should probably be an extrastylesheet instead of hardcoded. -->
 <link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -75,11 +74,20 @@ MathJax.Hub.Config(
   }
 }
 );
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
 //]]>
 </script>
 <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <script src="modules.js" type="text/javascript"></script>
-<link href="cgal_stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -111,7 +119,7 @@ MathJax.Hub.Config(
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CGAL 6.0 - 2D Triangulations
+   <div id="projectname">CGAL 6.1 - 2D Triangulations
    </div>
   </td>
  </tr>
@@ -227,32 +235,36 @@ typedef Tr::Intersection_tag </td><td class="memItemRight" valign="bottom"><b>I
 <tr class="memdesc:a136e59f7ed41cac6f861ae614bba1f3d"><td class="mdescLeft"> </td><td class="mdescRight">The identifier of a polyline constraint.  <br></td></tr>
 <tr class="separator:a136e59f7ed41cac6f861ae614bba1f3d"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a8de286842d93f3ed1a3a13305a46a598"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a8de286842d93f3ed1a3a13305a46a598">Constraint_iterator</a></td></tr>
-<tr class="memdesc:a8de286842d93f3ed1a3a13305a46a598"><td class="mdescLeft"> </td><td class="mdescRight">An iterator to visit all the input constraints.  <br></td></tr>
+<tr class="memdesc:a8de286842d93f3ed1a3a13305a46a598"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional iterator to visit all the input constraints.  <br></td></tr>
 <tr class="separator:a8de286842d93f3ed1a3a13305a46a598"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:a49e8b829ca7199eb0b1ab18a29015eab"><td class="memItemLeft" align="right" valign="top"><a id="a49e8b829ca7199eb0b1ab18a29015eab" name="a49e8b829ca7199eb0b1ab18a29015eab"></a>
-typedef <a class="elRef" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a>&lt; <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a8de286842d93f3ed1a3a13305a46a598">Constraint_iterator</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Constraints</b></td></tr>
-<tr class="memdesc:a49e8b829ca7199eb0b1ab18a29015eab"><td class="mdescLeft"> </td><td class="mdescRight">A range type for iterating over all constraints. <br></td></tr>
-<tr class="separator:a49e8b829ca7199eb0b1ab18a29015eab"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a23f216dd9ebd11d5697494500cc1615b"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a23f216dd9ebd11d5697494500cc1615b">Constraints</a></td></tr>
+<tr class="memdesc:a23f216dd9ebd11d5697494500cc1615b"><td class="mdescLeft"> </td><td class="mdescRight">A range type for iterating over all constraints.  <br></td></tr>
+<tr class="separator:a23f216dd9ebd11d5697494500cc1615b"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:aea74ca3e4d971d098f8debe10427cdd6"><td class="memItemLeft" align="right" valign="top"><a id="aea74ca3e4d971d098f8debe10427cdd6" name="aea74ca3e4d971d098f8debe10427cdd6"></a>
 typedef std::pair&lt; Vertex_handle, Vertex_handle &gt; </td><td class="memItemRight" valign="bottom"><b>Subconstraint</b></td></tr>
 <tr class="memdesc:aea74ca3e4d971d098f8debe10427cdd6"><td class="mdescLeft"> </td><td class="mdescRight">A subconstraint is a pair of vertices that correspond to an <code>Edge</code>. <br></td></tr>
 <tr class="separator:aea74ca3e4d971d098f8debe10427cdd6"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ab658142eecab7e14cd2bea9872a486e0"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#ab658142eecab7e14cd2bea9872a486e0">Subconstraint_iterator</a></td></tr>
-<tr class="memdesc:ab658142eecab7e14cd2bea9872a486e0"><td class="mdescLeft"> </td><td class="mdescRight">An iterator to visit all the subconstraints of the triangulation.  <br></td></tr>
+<tr class="memdesc:ab658142eecab7e14cd2bea9872a486e0"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional iterator to visit all the subconstraints of the triangulation.  <br></td></tr>
 <tr class="separator:ab658142eecab7e14cd2bea9872a486e0"><td class="memSeparator" colspan="2"> </td></tr>
-<tr class="memitem:affdf3afc591109f9f4a36c002769e355"><td class="memItemLeft" align="right" valign="top"><a id="affdf3afc591109f9f4a36c002769e355" name="affdf3afc591109f9f4a36c002769e355"></a>
-typedef <a class="elRef" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a>&lt; <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#ab658142eecab7e14cd2bea9872a486e0">Subconstraint_iterator</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Subconstraints</b></td></tr>
-<tr class="memdesc:affdf3afc591109f9f4a36c002769e355"><td class="mdescLeft"> </td><td class="mdescRight">A range type for iterating over all subconstraints. <br></td></tr>
-<tr class="separator:affdf3afc591109f9f4a36c002769e355"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a161aa980f13071199ed6da29ab6faed6"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a161aa980f13071199ed6da29ab6faed6">Subconstraints</a></td></tr>
+<tr class="memdesc:a161aa980f13071199ed6da29ab6faed6"><td class="mdescLeft"> </td><td class="mdescRight">A range type for iterating over all subconstraints.  <br></td></tr>
+<tr class="separator:a161aa980f13071199ed6da29ab6faed6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab265e6d4f4b3494ca35305924dae77ce"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#ab265e6d4f4b3494ca35305924dae77ce">Subconstraint_and_contexts_iterator</a></td></tr>
+<tr class="memdesc:ab265e6d4f4b3494ca35305924dae77ce"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional iterator to visit all the subconstraints of the triangulation and the contexts of their enclosing constraints.  <br></td></tr>
+<tr class="separator:ab265e6d4f4b3494ca35305924dae77ce"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa99af77a8e48fe575cbdc198f2c27eac"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#aa99af77a8e48fe575cbdc198f2c27eac">Subconstraints_and_contexts</a></td></tr>
+<tr class="memdesc:aa99af77a8e48fe575cbdc198f2c27eac"><td class="mdescLeft"> </td><td class="mdescRight">A range type for iterating over all subconstraints.  <br></td></tr>
+<tr class="separator:aa99af77a8e48fe575cbdc198f2c27eac"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a0d38b6bac2db9859af3ff67c2226f3e8"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a0d38b6bac2db9859af3ff67c2226f3e8">Vertices_in_constraint_iterator</a></td></tr>
-<tr class="memdesc:a0d38b6bac2db9859af3ff67c2226f3e8"><td class="mdescLeft"> </td><td class="mdescRight">An iterator on the vertices of the chain of subconstraints representing a constraint.  <br></td></tr>
+<tr class="memdesc:a0d38b6bac2db9859af3ff67c2226f3e8"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional iterator on the vertices of the chain of subconstraints representing a constraint.  <br></td></tr>
 <tr class="separator:a0d38b6bac2db9859af3ff67c2226f3e8"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ac9e4a6b9d892bd683c36dc64ae0613e4"><td class="memItemLeft" align="right" valign="top"><a id="ac9e4a6b9d892bd683c36dc64ae0613e4" name="ac9e4a6b9d892bd683c36dc64ae0613e4"></a>
 typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Vertices_in_constraint</b></td></tr>
 <tr class="memdesc:ac9e4a6b9d892bd683c36dc64ae0613e4"><td class="mdescLeft"> </td><td class="mdescRight">A range type for iterating over the vertices of the constraint. <br></td></tr>
 <tr class="separator:ac9e4a6b9d892bd683c36dc64ae0613e4"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:aef6be20e8480b93efce170502f6978d8"><td class="memItemLeft" align="right" valign="top">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#aef6be20e8480b93efce170502f6978d8">Context_iterator</a></td></tr>
-<tr class="memdesc:aef6be20e8480b93efce170502f6978d8"><td class="mdescLeft"> </td><td class="mdescRight">An iterator on constraints enclosing a given subconstraint.  <br></td></tr>
+<tr class="memdesc:aef6be20e8480b93efce170502f6978d8"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional iterator on constraints enclosing a given subconstraint.  <br></td></tr>
 <tr class="separator:aef6be20e8480b93efce170502f6978d8"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a89d33a944c4d5e75a1072ee28f5ff747"><td class="memItemLeft" align="right" valign="top"><a id="a89d33a944c4d5e75a1072ee28f5ff747" name="a89d33a944c4d5e75a1072ee28f5ff747"></a>
 typedef <a class="elRef" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a>&lt; <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#aef6be20e8480b93efce170502f6978d8">Context_iterator</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Contexts</b></td></tr>
@@ -354,6 +366,8 @@ void </td><td class="memItemRight" valign="bottom"><b>remove_constraint</b> (<a
 <tr class="separator:a3da93b2d820bfdeda305837faeb2c4ef"><td class="memSeparator" colspan="2"> </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Access</h2></td></tr>
+<tr><td class="ititle" colspan="2"><dl class="section note"><dt>Note</dt><dd>Since CGAL-6.1, the value type of the range returned by <code><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#af25114a7e1675194367f8f9de9de90d2" title="returns a range of subconstraints.">subconstraints()</a></code> has changed from <code>const std::pair&lt;const Subconstraint, std::list&lt;<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2_1_1Context.html" title="A context enables the access to the vertices of a constraint that pass through a subconstraint.">Context</a>&gt;*&gt;</code> to <code>Subconstraint</code>. The old range type is now returned by the function <code><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#aa9fb63e060d1754bda255e57768166cd" title="returns a range of subconstraints with the contexts of their enclosing constraints.">subconstraints_and_contexts()</a></code>. </dd></dl>
+</td></tr>
 <tr class="memitem:af143a50f92ea75ec497f353f91f1ed7f"><td class="memItemLeft" align="right" valign="top"><a id="af143a50f92ea75ec497f353f91f1ed7f" name="af143a50f92ea75ec497f353f91f1ed7f"></a>
 <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a8de286842d93f3ed1a3a13305a46a598">Constraint_iterator</a> </td><td class="memItemRight" valign="bottom"><b>constraints_begin</b> () const</td></tr>
 <tr class="memdesc:af143a50f92ea75ec497f353f91f1ed7f"><td class="mdescLeft"> </td><td class="mdescRight">returns a <code>Constraint_iterator</code> that points at the first constraint of the triangulation. <br></td></tr>
@@ -363,7 +377,7 @@ void </td><td class="memItemRight" valign="bottom"><b>remove_constraint</b> (<a
 <tr class="memdesc:ae20decc4280b27f5d61009fec92b397e"><td class="mdescLeft"> </td><td class="mdescRight">returns the past-the-end iterator of the constraints of the triangulation. <br></td></tr>
 <tr class="separator:ae20decc4280b27f5d61009fec92b397e"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a0fbd6978137bc8fc919fbb13ce3679c4"><td class="memItemLeft" align="right" valign="top"><a id="a0fbd6978137bc8fc919fbb13ce3679c4" name="a0fbd6978137bc8fc919fbb13ce3679c4"></a>
-<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a49e8b829ca7199eb0b1ab18a29015eab">Constraints</a> </td><td class="memItemRight" valign="bottom"><b>constraints</b> () const</td></tr>
+<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a23f216dd9ebd11d5697494500cc1615b">Constraints</a> </td><td class="memItemRight" valign="bottom"><b>constraints</b> () const</td></tr>
 <tr class="memdesc:a0fbd6978137bc8fc919fbb13ce3679c4"><td class="mdescLeft"> </td><td class="mdescRight">returns a range of constraints. <br></td></tr>
 <tr class="separator:a0fbd6978137bc8fc919fbb13ce3679c4"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:ad02088fd486bc5b753d8fc781e867630"><td class="memItemLeft" align="right" valign="top"><a id="ad02088fd486bc5b753d8fc781e867630" name="ad02088fd486bc5b753d8fc781e867630"></a>
@@ -375,9 +389,21 @@ void </td><td class="memItemRight" valign="bottom"><b>remove_constraint</b> (<a
 <tr class="memdesc:a0e0f1fb5f0490175516c2c82143a3a76"><td class="mdescLeft"> </td><td class="mdescRight">returns the past-the-end iterator of the subconstraints of the triangulation. <br></td></tr>
 <tr class="separator:a0e0f1fb5f0490175516c2c82143a3a76"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:af25114a7e1675194367f8f9de9de90d2"><td class="memItemLeft" align="right" valign="top"><a id="af25114a7e1675194367f8f9de9de90d2" name="af25114a7e1675194367f8f9de9de90d2"></a>
-<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#affdf3afc591109f9f4a36c002769e355">Subconstraints</a> </td><td class="memItemRight" valign="bottom"><b>subconstraints</b> () const</td></tr>
+<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a161aa980f13071199ed6da29ab6faed6">Subconstraints</a> </td><td class="memItemRight" valign="bottom"><b>subconstraints</b> () const</td></tr>
 <tr class="memdesc:af25114a7e1675194367f8f9de9de90d2"><td class="mdescLeft"> </td><td class="mdescRight">returns a range of subconstraints. <br></td></tr>
 <tr class="separator:af25114a7e1675194367f8f9de9de90d2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac9184ecc28fbe1225d1fe77064d219ad"><td class="memItemLeft" align="right" valign="top"><a id="ac9184ecc28fbe1225d1fe77064d219ad" name="ac9184ecc28fbe1225d1fe77064d219ad"></a>
+<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#ab265e6d4f4b3494ca35305924dae77ce">Subconstraint_and_contexts_iterator</a> </td><td class="memItemRight" valign="bottom"><b>subconstraints_and_contexts_begin</b> () const</td></tr>
+<tr class="memdesc:ac9184ecc28fbe1225d1fe77064d219ad"><td class="mdescLeft"> </td><td class="mdescRight">returns a <code>Subconstraint_and_contexts_iterator</code> pointing at the first subconstraint of the triangulation. <br></td></tr>
+<tr class="separator:ac9184ecc28fbe1225d1fe77064d219ad"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac1845c5bafa9242d0bc7ea8a3dc5a44f"><td class="memItemLeft" align="right" valign="top"><a id="ac1845c5bafa9242d0bc7ea8a3dc5a44f" name="ac1845c5bafa9242d0bc7ea8a3dc5a44f"></a>
+<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#ab265e6d4f4b3494ca35305924dae77ce">Subconstraint_and_contexts_iterator</a> </td><td class="memItemRight" valign="bottom"><b>subconstraints_and_contexts_end</b> () const</td></tr>
+<tr class="memdesc:ac1845c5bafa9242d0bc7ea8a3dc5a44f"><td class="mdescLeft"> </td><td class="mdescRight">returns the past-the-end iterator of the subconstraints of the triangulation. <br></td></tr>
+<tr class="separator:ac1845c5bafa9242d0bc7ea8a3dc5a44f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa9fb63e060d1754bda255e57768166cd"><td class="memItemLeft" align="right" valign="top"><a id="aa9fb63e060d1754bda255e57768166cd" name="aa9fb63e060d1754bda255e57768166cd"></a>
+<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#aa99af77a8e48fe575cbdc198f2c27eac">Subconstraints_and_contexts</a> </td><td class="memItemRight" valign="bottom"><b>subconstraints_and_contexts</b> () const</td></tr>
+<tr class="memdesc:aa9fb63e060d1754bda255e57768166cd"><td class="mdescLeft"> </td><td class="mdescRight">returns a range of subconstraints with the contexts of their enclosing constraints. <br></td></tr>
+<tr class="separator:aa9fb63e060d1754bda255e57768166cd"><td class="memSeparator" colspan="2"> </td></tr>
 <tr class="memitem:a877fe20e5208707263b7ba2445ec8d44"><td class="memItemLeft" align="right" valign="top">int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a877fe20e5208707263b7ba2445ec8d44">number_of_enclosing_constraints</a> (Vertex_handle va, Vertex_handle vb) const</td></tr>
 <tr class="memdesc:a877fe20e5208707263b7ba2445ec8d44"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of constraints enclosing the subconstraint <code>(va,vb)</code>.  <br></td></tr>
 <tr class="separator:a877fe20e5208707263b7ba2445ec8d44"><td class="memSeparator" colspan="2"> </td></tr>
@@ -442,8 +468,27 @@ template&lt;typename Tr &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>An iterator to visit all the input constraints. </p>
+<p>A bidirectional iterator to visit all the input constraints. </p>
 <p>The order of visit is undefined. The value type of this iterator is <code>Constraint_id</code>. </p>
+
+</div>
+</div>
+<a id="a23f216dd9ebd11d5697494500cc1615b" name="a23f216dd9ebd11d5697494500cc1615b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23f216dd9ebd11d5697494500cc1615b">◆ </a></span>Constraints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tr &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html">CGAL::Constrained_triangulation_plus_2</a>&lt; Tr &gt;::Constraints</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A range type for iterating over all constraints. </p>
+<p>The iterator type of the range is <code>Constraint_iterator</code>. </p>
 
 </div>
 </div>
@@ -461,7 +506,7 @@ template&lt;typename Tr &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>An iterator on constraints enclosing a given subconstraint. </p>
+<p>A bidirectional iterator on constraints enclosing a given subconstraint. </p>
 <p>The value type of this iterator is <code><a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2_1_1Context.html" title="A context enables the access to the vertices of a constraint that pass through a subconstraint.">Context</a></code>. </p>
 
 </div>
@@ -484,6 +529,25 @@ template&lt;typename Tr &gt; </div>
  <div class="CGALAdvanced"> <div>Advanced</div> <p>An iterator on the points of the original constraint before simplification steps are applied. The value type of this iterator is <code>Point</code>. A <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html#a0d38b6bac2db9859af3ff67c2226f3e8"><code>Vertices_in_constraint_iterator</code></a> can be converted into a <code>Points_in_constraint_iterator</code>, but not the other way around. </p> </div>  
 </div>
 </div>
+<a id="ab265e6d4f4b3494ca35305924dae77ce" name="ab265e6d4f4b3494ca35305924dae77ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab265e6d4f4b3494ca35305924dae77ce">◆ </a></span>Subconstraint_and_contexts_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tr &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html">CGAL::Constrained_triangulation_plus_2</a>&lt; Tr &gt;::Subconstraint_and_contexts_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A bidirectional iterator to visit all the subconstraints of the triangulation and the contexts of their enclosing constraints. </p>
+<p>The order of visit is undefined. The value type of this iterator is <code>const std::pair&lt;const Subconstraint, std::list&lt;<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2_1_1Context.html" title="A context enables the access to the vertices of a constraint that pass through a subconstraint.">Context</a>&gt;*&gt;</code>. </p>
+
+</div>
+</div>
 <a id="ab658142eecab7e14cd2bea9872a486e0" name="ab658142eecab7e14cd2bea9872a486e0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab658142eecab7e14cd2bea9872a486e0">◆ </a></span>Subconstraint_iterator</h2>
 
@@ -498,8 +562,46 @@ template&lt;typename Tr &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>An iterator to visit all the subconstraints of the triangulation. </p>
-<p>The order of visit is undefined. The value type of this iterator is <code>std::pair&lt;Subconstraint,std::list&lt;<a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2_1_1Context.html" title="A context enables the access to the vertices of a constraint that pass through a subconstraint.">Context</a>&gt;*&gt;</code> corresponding to the vertices of the subconstraint. </p>
+<p>A bidirectional iterator to visit all the subconstraints of the triangulation. </p>
+<p>The order of visit is undefined. The value type of this iterator is <code>Subconstraint</code>. </p>
+
+</div>
+</div>
+<a id="a161aa980f13071199ed6da29ab6faed6" name="a161aa980f13071199ed6da29ab6faed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161aa980f13071199ed6da29ab6faed6">◆ </a></span>Subconstraints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tr &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html">CGAL::Constrained_triangulation_plus_2</a>&lt; Tr &gt;::Subconstraints</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A range type for iterating over all subconstraints. </p>
+<p>The iterator type of the range is <code>Subconstraint_iterator</code>. </p>
+
+</div>
+</div>
+<a id="aa99af77a8e48fe575cbdc198f2c27eac" name="aa99af77a8e48fe575cbdc198f2c27eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa99af77a8e48fe575cbdc198f2c27eac">◆ </a></span>Subconstraints_and_contexts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tr &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Constrained__triangulation__plus__2.html">CGAL::Constrained_triangulation_plus_2</a>&lt; Tr &gt;::Subconstraints_and_contexts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A range type for iterating over all subconstraints. </p>
+<p>The iterator type of the range is <code>Subconstraint_and_contexts_iterator</code>. </p>
 
 </div>
 </div>
@@ -517,7 +619,7 @@ template&lt;typename Tr &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>An iterator on the vertices of the chain of subconstraints representing a constraint. </p>
+<p>A bidirectional iterator on the vertices of the chain of subconstraints representing a constraint. </p>
 <p>The value type of this iterator is <code>Vertex_handle</code>. </p>
 
 </div>

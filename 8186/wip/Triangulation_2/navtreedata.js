@@ -24,11 +24,10 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Triangulations", "index.html", [
+  [ "CGAL 6.1 - 2D Triangulations", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
     [ "Deprecated List", "deprecated.html", null ],
-    [ "Todo List", "todo.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Class and Concept List", "annotated.html", "annotated" ],
     [ "Examples", "examples.html", "examples" ]
@@ -38,8 +37,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Triangulation_2_2adding_handles_8cpp-example.html",
-"classCGAL_1_1Triangulation__2.html#a4b3389b24fe7bfe703151375d15a745a",
-"index.html#Triangulation_2ARepresentationBasedonFaces"
+"classCGAL_1_1Triangulation__2.html#a433cff4ceaeaba390df1a968d93a4899",
+"index.html#Subsection_2D_Triangulations_Regular_Example"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

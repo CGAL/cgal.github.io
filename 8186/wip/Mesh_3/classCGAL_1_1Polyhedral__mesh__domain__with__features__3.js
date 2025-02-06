@@ -1,6 +1,6 @@
 var classCGAL_1_1Polyhedral__mesh__domain__with__features__3 =
 [
-    [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a41552115cde4e7c05a17df02955c8ba5", null ],
+    [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a0ce75a90e88563944ac12db6c4d0a6b7", null ],
     [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a6028cafa6549170749f026f9354d2096", null ],
     [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a03bb630b104206e106c8db3361114ba2", null ],
     [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#aea9cb8c3128172a8fac9ca70f4873ff4", null ],

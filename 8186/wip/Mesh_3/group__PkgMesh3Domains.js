@@ -12,7 +12,7 @@ var group__PkgMesh3Domains =
       [ "Construct_intersection", "structCGAL_1_1Polyhedral__mesh__domain__3_1_1Construct__intersection.html", null ],
       [ "Do_intersect_surface", "structCGAL_1_1Polyhedral__mesh__domain__3_1_1Do__intersect__surface.html", null ],
       [ "Is_in_domain", "structCGAL_1_1Polyhedral__mesh__domain__3_1_1Is__in__domain.html", null ],
-      [ "Polyhedral_mesh_domain_3", "classCGAL_1_1Polyhedral__mesh__domain__3.html#a3c93c8c580afc479d10c9173817cc58e", null ],
+      [ "Polyhedral_mesh_domain_3", "classCGAL_1_1Polyhedral__mesh__domain__3.html#a8f61dfeca9b7ca4ec6f7718b0ffb9a79", null ],
       [ "Polyhedral_mesh_domain_3", "classCGAL_1_1Polyhedral__mesh__domain__3.html#afdd05a187eb76df413a7b6906642e268", null ],
       [ "Polyhedral_mesh_domain_3", "classCGAL_1_1Polyhedral__mesh__domain__3.html#a13a07fd13ffc58ded914420169143c7d", null ],
       [ "Polyhedral_mesh_domain_3", "classCGAL_1_1Polyhedral__mesh__domain__3.html#a0148fe3a78de546d4543bde4e7be6d2c", null ],
@@ -23,7 +23,7 @@ var group__PkgMesh3Domains =
       [ "surface_patch_index", "classCGAL_1_1Polyhedral__mesh__domain__3.html#a848293ebbe85ccd62785b07f1bddda42", null ]
     ] ],
     [ "CGAL::Polyhedral_mesh_domain_with_features_3< IGT, Polyhedron >", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html", [
-      [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a41552115cde4e7c05a17df02955c8ba5", null ],
+      [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a0ce75a90e88563944ac12db6c4d0a6b7", null ],
       [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a6028cafa6549170749f026f9354d2096", null ],
       [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#a03bb630b104206e106c8db3361114ba2", null ],
       [ "Polyhedral_mesh_domain_with_features_3", "classCGAL_1_1Polyhedral__mesh__domain__with__features__3.html#aea9cb8c3128172a8fac9ca70f4873ff4", null ],

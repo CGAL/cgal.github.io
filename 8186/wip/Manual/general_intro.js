@@ -52,7 +52,6 @@ var general_intro =
         [ "PointMatcher", "thirdparty.html#thirdpartylibpointmatcher", null ],
         [ "LEDA", "thirdparty.html#thirdpartyLeda", null ],
         [ "Multiple Precision Floating-point Interval (MPFI)", "thirdparty.html#thirdpartyMPFI", null ],
-        [ "RS and RS3", "thirdparty.html#thirdpartyRS3", null ],
         [ "NTL", "thirdparty.html#thirdpartyNTL", null ],
         [ "ESBTL", "thirdparty.html#thirdpartyESBTL", null ],
         [ "Intel TBB", "thirdparty.html#thirdpartyTBB", null ],
@@ -75,10 +74,7 @@ var general_intro =
         [ "Miscellaneous Variables", "configurationvariables.html#installation_misc", null ],
         [ "Variables Used Only When Building Programs (Such as Demos or Examples)", "configurationvariables.html#installation_variables_building", null ],
         [ "Variables Providing Information About 3rd-Party Libraries", "configurationvariables.html#installation_variables_third_party", null ],
-        [ "Boost Libraries", "configurationvariables.html#installation_boost", [
-          [ "Version 1.72 and Later", "configurationvariables.html#inst_boost_1_72_plus", null ],
-          [ "Version 1.69 and Earlier", "configurationvariables.html#inst_boost_up_2_1_69", null ]
-        ] ],
+        [ "Boost Libraries", "configurationvariables.html#installation_boost", null ],
         [ "GMP and MPFR Libraries", "configurationvariables.html#installation_gmp", null ],
         [ "Qt6 Library", "configurationvariables.html#installation_qt6", null ],
         [ "LEDA Library", "configurationvariables.html#installation_leda", null ],

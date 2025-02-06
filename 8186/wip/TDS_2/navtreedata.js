@@ -24,10 +24,9 @@
 */
 var NAVTREE =
 [
-  [ "CGAL 6.0 - 2D Triangulation Data Structure", "index.html", [
+  [ "CGAL 6.1 - 2D Triangulation Data Structure", "index.html", [
     [ "User Manual", "index.html", "index" ],
     [ "Reference Manual", "modules.html", "modules" ],
-    [ "Todo List", "todo.html", null ],
     [ "Class and Concept List", "annotated.html", "annotated" ]
   ] ]
 ];

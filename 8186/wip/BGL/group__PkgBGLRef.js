@@ -13,6 +13,7 @@ var group__PkgBGLRef =
     [ "Graph Adaptors", "group__PkgBGLAdaptors.html", "group__PkgBGLAdaptors" ],
     [ "Euler Operations", "group__PkgBGLEulerOperations.html", "group__PkgBGLEulerOperations" ],
     [ "Partitioning Operations", "group__PkgBGLPartition.html", "group__PkgBGLPartition" ],
+    [ "Graph Traversal", "group__PkgBGLTraversal.html", "group__PkgBGLTraversal" ],
     [ "I/O Functions", "group__PkgBGLIOFct.html", "group__PkgBGLIOFct" ],
     [ "graph_traits_inheritance_macros.h", "graph__traits__inheritance__macros_8h.html", null ]
 ];
