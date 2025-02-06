@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Alpha_wrap_2/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 2D Alpha Wrapping: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 2D Alpha Wrapping
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_2D_Alpha_wrapping"></a></p> <div id="autotoc" class="toc"></div> <dl class="section author"><dt>Authors</dt><dd>Pierre Alliez, David Cohen-Steiner, Michael Hemmer, Cédric Portaneri, Mael Rouxel-Labbé</dd></dl>
+<center> <img src="aw2_banner.png" alt="" style="max-width:70%;" class="inline"> </center><p>Note: a three-dimensional version of this package is also available: <a class="elRef" href="../Manual/packages.html#PkgAlphaWrap3">3D Alpha Wrapping</a>.</p>
+<h1><a class="anchor" id="aw2_introduction"></a>
+Introduction</h1>
+<p>Various tasks in geometric modeling and processing require 2D objects represented as valid polygons, where "valid" refers to polygons that are closed, intersection-free (simple), orientable, and 1-manifold. Such representations offer well-defined notions of interior/exterior and geodesic neighborhoods.</p>
+<p>2D data are usually acquired through measurements, possibly followed by reconstruction, designed by humans, or generated through imperfect automated processes. As a result, they can exhibit a wide variety of defects including gaps, missing data, self-intersections, degeneracies such as zero-area structures, and non-manifold features.</p>
+<p>Given the large repertoire of possible defects, many methods and data structures have been proposed to repair specific defects (see for example the package <a class="elRef" href="../Manual/packages.html#PkgPolygonRepair">2D Polygon Repair</a>), usually with the goal of guaranteeing specific properties in the repaired 2D model. Reliably repairing all types of defects is an ill-posed problem as many valid solutions exist for a given 2D model with defects. In addition, the input model can be overly complex with unnecessary geometric details, spurious topological structures, nonessential inner components, or excessively fine discretizations. For applications such as collision avoidance, path planning, or simulation, getting an approximation (i.e., a silhouette) of the input can be more relevant than repairing it. Approximation herein refers to an approach capable of filtering out inner structures, fine details and cavities, as well as wrapping the input within a user-defined offset margin.</p>
+<p>Given an input 2D geometry, we address the problem of computing a conservative approximation, where conservative means that the output is guaranteed to strictly enclose the input. We seek unconditional robustness in the sense that the output polygon should be valid (oriented, 1-manifold, and without self-intersections), even for raw input with many defects and degeneracies. The default input is a soup of 2D segments, but the generic interface leaves the door open to other types of finite 2D primitives such as point sets.</p>
+<p><a class="anchor" id="fig__aw2_inputs_fig"></a></p><center> <img src="aw2_segment_soup.png" alt="" style="max-width:70%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_inputs_fig">Figure 60.1</a> (Left) Shrink-wrapping output from a segment soup with many intersections and gaps. (Center &amp; Right) Possible input degeneracies: non-manifold vertices and zero-area structures. The algorithm handles these cases by wrapping an offset of the input. </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="aw2_definition"></a>
+Approach</h1>
+<p>Many approaches have been devised to enclose a 2D model within a volume, featuring different balances between the runtime and quality (i.e., tightness) of the approximation. Within the simplest cases, an axis-aligned or oriented bounding box clearly satisfies some desired properties; however, the approximation error is uncontrollable and often very large. Computing the convex hull of the input also matches some of the desired properties and improves the quality of the result, albeit at the price of increasing the runtime. However, the approximation remains crude, especially in the case of several components.</p>
+<p>The convex hull is, in fact, a special case of alpha shapes (<a class="elRef" href="../Alpha_shapes_2/index.html#Chapter_2D_Alpha_Shapes">Chapter_2D_Alpha_Shapes</a>). Mathematically, the alpha shape is a subcomplex of the Delaunay triangulation, with simplicies being part of the complex depending on the size of their minimal (empty) Delaunay ball. Intuitively, constructing 2D alpha shapes can be thought of as carving 2D space with an empty ball of user-defined radius alpha. Alpha shapes yield provable, good piecewise-linear approximations of a shape <a class="el" href="citelist.html#CITEREF_bb-srmua-97t">[1]</a>, but are defined on point sets, whereas we wish to deal with more general input data, such as segment soups. Even after sampling the segment soup, alpha shapes do not guarantee to be conservative for any alpha. Finally, inner structures are also carved within the volumes, instead of being filtered out.</p>
+<p>Inspired by alpha shapes, we replace the above notion of carving by <em>shrink-wrapping</em>: we iteratively construct a subcomplex of a 2D Delaunay triangulation by starting from a simple 2D Delaunay triangulation enclosing the input, and then iteratively removing eligible triangles that lie on the boundary of the complex. In addition, the underlying triangulation—and thus the complex incidentally—is refined as shrinking proceeds. Thus, instead of carving from the convex hull of the input data as in alpha shapes, we construct an entirely new polygon through a Delaunay refinement-like algorithm. The refinement algorithm inserts Steiner points on the boundary of an offset volume, defined as a level set of the unsigned distance field to the input.</p>
+<p>This process both prevents the creation of inner structures within the output and avoids superfluous computations. In addition, detaching our wrap construction from the geometry and discretization of the input has several advantages: (1) the underlying data is not restricted to a specific format (polygon soups, segment soups, point sets, etc.) as all that is required is answering three basic geometric queries: (a) the distance between a point and the input, (b) the projection of a query point onto the input, (c) an intersection test between a triangle and the input, and (2) The user has more freedom to trade tightness to the input for final polgyon complexity, as constructing a conservative approximation on a large offset of the input requires fewer polygon edges.</p>
+<h2><a class="anchor" id="aw2_algorithm"></a>
+Algorithm</h2>
+<p><b>Initialization</b>. The algorithm is initialized by inserting the four corner vertices of a loose bounding box into a 2D Delaunay triangulation. In the 2D Delaunay triangulation of CGAL, all edges are adjacent to two triangle faces. Each edge of the boundary of the Delaunay triangulation, which coincides with one edge of the convex hull of the triangulation vertices, is adjacent to a so-called <em>infinite</em> triangle face, an abstract face connected to the so-called <em>infinite vertex</em> to ensure the aforementioned double-edge adjacency. Initially, all infinite faces are tagged as outside, and all finite triangle faces are tagged as inside.</p>
+<p><b>Shrink-wrapping</b>. The shrink-wrapping algorithm proceeds by traversing the faces of the Delaunay triangulation from outside to inside, flood-filling from one face to its adjacent face, and tagging the adjacent face as outside whenever possible (the term "possible" is specified later). Flood filling is implemented via a priority queue of Delaunay triangle edges representing the traversal between the two adjacent faces of the edge, from outside to inside. These edges are referred to as <em>gates</em> in the following.</p>
+<p>Given an outside face and its adjacent inside face, the common edge (i.e., a gate) is said to be <em>alpha-traversable</em> if its circumradius is larger than the user-defined parameter alpha, where circumradius refers to the radius of the relating segment's Delaunay ball. Intuitively, cavities smaller than alpha are not accessible as their gates are not alpha-traversable.</p>
+<p>Initialized by the alpha-traversable gates on the convex hull, the priority queue contains only alpha-traversable gates and is sorted by decreasing order of the circumradius of the gate. Traversal can be seen as a continuous process that advances along dual Voronoi edges of the gates, with a pencil of empty balls circumscribing the gate.</p>
+<p><a class="anchor" id="fig__aw2_pencil_fig"></a></p><center> <img src="aw2_pencil.png" alt="" style="max-width:30%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_pencil_fig">Figure 60.2</a> (Left) Pencil of empty circles (blue) circumscribing a Delaunay edge (green) in a 2D Delaunay triangulation (black). From the top triangle circumcenter <em>c1</em> to the bottom triangle circumcenter <em>c2</em>, the dual Voronoi edge denoted by <em>e</em> (doted red) is the trace of centers of the largest circles that are empty of Delaunay vertex. (Right) The graph corresponding to the left example. The x-axis corresponds to the position of empty circle centers located on the Voronoi edge <em>e</em>, from <em>c1</em> to <em>c2</em>. The y-axis is the radius value of the corresponding empty circles. In this case, the minimum radius of this pencil of empty circle is located at the midpoint of the green Delaunay edge. In our algorithm, a gate (green Delaunay edge) is said to be not alpha-traversable when the minimum radius of the pencil of empty circle is smaller than alpha. </p> </div> <p> <br>
+</p>
+<p>When traversing from an outside face \( f_o \) to an inside face \( f_i \) through an alpha-traversable edge \( e \), two criteria are tested to prevent the wrapping process from colliding with the input:</p>
+<p>(1) We check for an intersection between the dual Voronoi edge of \( e \), i.e. the segment between the circumcenters of the two incident faces, and the <em>offset surface</em>, defined as the level set of unsigned isosurface to the input. If one or several intersections exists, the first intersection point, along the dual Voronoi edge oriented from outside to inside is inserted into the triangulation as a Steiner point.</p>
+<p>(2) If the dual Voronoi edge does not intersect the offset surface but the neighboring face \( f_i \) intersects the input, we compute the projection of the circumcenter of \( f_i \) onto the offset surface, and insert it into the triangulation as a Steiner point (which destroys \( f_i \)).</p>
+<p>After each of the above Steiner point insertions, all new incident faces are tagged as inside, and the newly alpha-traversable gates are pushed into the priority queue.</p>
+<p>If none of the above two criteria are met, the neighboring face \( f_i \) is traversed and tagged as outside. Alpha-Traversable edges of \( f_i \) that are separating inside from outside faces are pushed as new gates into the priority queue.</p>
+<p>Once the queue empties—a process that is guaranteed as edges (and their circumradii) become smaller due to the insertion of new Steiner points—the construction phase terminates. The output (multi)polygon is extracted from the Delaunay triangulation as the set of edges separating inside from outside faces.</p>
+<p>The figure below depicts the steps of the algorithm.</p>
+<p><a class="anchor" id="fig__aw2_steps_fig"></a></p><center> <img src="aw2_steps.jpg" alt="" style="max-width:95%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_steps_fig">Figure 60.3</a> Steps of the shrink-wrapping algorithm in 2D. The algorithm is initialized by inserting the corners of the loose bounding box of the input (red) into a Delaunay triangulation, and all finite triangles are tagged inside (grey). The current gate (green edge) popped out from the queue is alpha-traversable. The triangle adjacent to the gate is tagged outside when it does not intersect the input, and new alpha-traversable gates are pushed to the queue. When the adjacent triangle intersects the input, a new Steiner point (large green disc) is computed and inserted into the triangulation, all neighboring triangles are tagged inside, new alpha-traversable gates are pushed to the queue, and traversal is resumed. Grey edges depict the Delaunay triangulation. Blue edges depict the Voronoi diagram. Pink circles depict the empty circle of radius alpha. The output edges (dark blue) separate inside from outside triangles. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="aw2_guarantees"></a>
+Guarantees</h2>
+<p>The algorithm is proven to terminate and to produce a set of 1-manifold, simple polygons that strictly enclose the input data. The key element to the proof is that we wrap from outside to inside and never allow a face that intersects the input to be flagged inside. Furthermore, both criteria that lead to refinement of the triangulation insert Steiner points that are guaranteed to break the faces in need of refinement and reduce the neighbor edges' circumradii.</p>
+<p>Because the main refinement criterion is the insertion of an intersection between a dual Voronoi edge and an offset of the input, or the projection of a Voronoi vertex onto the offset of the input, the algorithm has similarities to popular meshing algorithms based on Delaunay filtering and refinement (see <a class="elRef" href="../Mesh_3/index.html#Chapter_3D_Mesh_Generation">Chapter_3D_Mesh_Generation</a>).</p>
+<h1><a class="anchor" id="aw2_interface"></a>
+Interface</h1>
+<p>Our algorithm takes as input a set of segments in 2D, provided either as a segment soup or as a set of polygons, and two user-defined scalar parameters: the <em>alpha</em> and the <em>offset</em> values. It proceeds by shrink-wrapping and refining a 2D Delaunay triangulation starting from a loose bounding box of the input. The parameter <em>alpha</em> refers to the size of cavities or holes that cannot be traversed during wrapping, and hence to the final level of detail, as alpha acts like a sizing field in a common Delaunay refinement algorithm (<a class="elRef" href="../Mesh_3/index.html#Chapter_3D_Mesh_Generation">Chapter_3D_Mesh_Generation</a>). The parameter <em>offset</em> refers to the distance between the vertices of the refined triangulation and the input, so that a large offset translates into a loose enclosing of the input. This second parameter offers a means to control the trade-off between tightness and complexity.</p>
+<p>The main entry point of the component is the global function <code><a class="el" href="group__AW2__free__functions__grp.html#ga71e6fa0ffd8d4975fa53f02e822410be" title="computes a watertight, 1-manifold, simple multipolygon that strictly contains an input indexed face s...">CGAL::alpha_wrap_2()</a></code> that generates the alpha wrap; this function takes as input a point set, a polyline soup, or a polygon soup. There is no prerequisite on the input connectivity so that it can take inputs with islands, self-intersections, or overlaps, as well as combinatorial or geometrical degeneracies.</p>
+<p>The underlying traits class must be a model of the <code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code> concept. It should use a floating point number type as inexactness is inherent to the algorithm since there is no closed form description of new vertices on the offset surface.</p>
+<p>The output is a multi polygon, i.e., a set of polygons, whose type is chosen by the user, under the constraint that it must be a model of the <code>MultiPolygonWithHoles_2</code> concept.</p>
+<h1><a class="anchor" id="aw2_parameters"></a>
+Choosing Parameters</h1>
+<p>The two parameters of the algorithm impact both the level of detail and complexity of the output wrap.</p>
+<h2><a class="anchor" id="aw2_alpha"></a>
+Alpha</h2>
+<p>The main parameter, alpha, controls whether a Delaunay edge is traversable during shrink-wrapping. Alpha's main purpose is to control the size of the empty balls used during wrapping, and thus to determine which features will appear in the output: indeed, a edge is alpha-traversable if its circumradius is larger than alpha; hence, the algorithm can only shrink-wrap through straits or holes with diameters larger than alpha. A second, less direct consequence is that as long as a edge has a circumradius larger than alpha, the incident inside face will be visited and possibly refined. Therefore, when the algorithm terminates, all edges have a circumradius smaller than alpha. This parameter thus also behaves like a sizing criterion on the edges of the output.</p>
+<p><a class="anchor" id="fig__aw2_alpha_param_fig"></a></p><center> <img src="aw2_alpha_croc.png" alt="" style="max-width:90%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_alpha_param_fig">Figure 60.4</a> Impact of the alpha parameter on the output. (Left) The input segment soup, generated from an SVG file. The input has many self-intersections, non-manifold vertices, superfluous geometric details and spurious topological structures. (Middle &amp; Right) This component approximates the input conservatively and produces valid polygons with different complexity and fidelity to the input, depending on the alpha parameter. The smaller the alpha, the deeper the shrink-wrapping process will enter cavities. The alpha parameter is decreasing from left to right, to respectively 1/50, 1/100 and 1/300 of the longest diagonal of the input bounding box. A large alpha will produce an output less complex but less faithful to the input. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="aw2_offset"></a>
+Offset</h2>
+<p>The second parameter, the offset distance, controls the distance from the input and thus the definition of the offset isosurface onto which the vertices of the output polygon are located. This parameter controls the tightness of the result, which has, in turn, a few consequences. Firstly, locating vertices away from the input enables the algorithm to generate a less complex result, especially in convex areas. A trivial example of this behavior would be a very dense circle-shaped polygon, for which an as-tight-as-possible envelope would also need to be very dense. Secondly, the farther the isosurface is from the input, the more new points are inserted through the first criterion (i.e., through intersection with dual Voronoi edge, see Section <a class="el" href="index.html#aw2_algorithm">Algorithm</a>); thus, the quality of the output improves in terms of angles of the triangle elements. Finally, and depending on the value of the alpha parameter, a large offset can also offer defeaturing capabilities. However, using a small offset parameter will tend to better preserve sharp features as projection Steiner points tend to project onto convex sharp features.</p>
+<p><a class="anchor" id="fig__aw2_offset_param_fig"></a></p><center> <img src="aw3_sharp_feature.jpg" alt="" style="max-width:90%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_offset_param_fig">Figure 60.5</a> [TO BE UPDATED] Impact of the offset parameter on the output. (Left) Input mesh generated by meshing a NURBS CAD model in parameter space. (Right) The smaller the offset, the closest sample points are to the input. The offset parameter is decreasing from left to right, to respectively 1/50, 1/200 and 1/1000 of the longest diagonal of the input bounding box. The alpha parameter is equal to 1/50 of the longest diagonal of the input bounding box for all level of details. A larger offset will produce an output less complex with better triangle quality. However, the sharp features (red edges) are well-preserved when the offset parameter is small. </p> </div> <p> <br>
+</p>
+<p><a class="anchor" id="fig__aw2_steiner_fig"></a></p><center> <img src="aw2_steiner.jpg" alt="" style="max-width:90%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_steiner_fig">Figure 60.6</a> Steiner points. The projection Steiner points (green) are computed by projecting the triangle circumcenter onto the offset. The intersection Steiner points (blue) are computed as the first intersection point between the Voronoi edge and the offset. (Left) When the offset parameter is small, the algorithm produces more projection Steiner points, which tends to improve the preservation of convex sharp features. (Right) When the offset parameter is large, the algorithm produces more intersection Steiner points. </p> </div> <p> <br>
+</p>
+<p>By default, we recommend to set the offset parameter to a small fraction of alpha, such that alpha becomes the main parameter that controls the final level of detail.</p>
+<p>The image below illustrates the impact of both parameters.</p>
+<p><a class="anchor" id="fig__aw2_param_grid_fig"></a></p><center> <img src="aw3_alpha_offset_bike.jpg" alt="" style="max-width:80%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_param_grid_fig">Figure 60.7</a> [UPDATE] Different alpha and offset values on the bike model (533,000 triangles). The x-axis represents the offset value equal to 1/5000, 1/2000, 1/500, 1/200, 1/50, 1/20 and 1/5 of the longest diagonal of the input bounding box, from left to right. The y-axis represents the alpha value equal to 1/300, 1/100, 1/50, 1/20 and 1/5 of the longest diagonal of the input bounding box, from bottom to top. The numbers below each level of detail represents their number of triangles. Depending on the alpha value, an offset too small or too large will produce outputs with higher complexity. For each alpha, the models with lower complexity can be used as a scale-space representations for collision detection, from near to far distances. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="aw2_two_side"></a>
+A Note on "Two-Sided" Wraps</h2>
+<p>The offset parameter is crucial to our approach because it guarantees that the output is a set of 1-manifold, simple polygons. Indeed, and even when the input is a zero-area structure such as a single segment, the output wrap is a thin domain enclosing the said segment <a class="el" href="index.html#fig__aw2_inputs_fig">Figure 60.1</a>.</p>
+<p>Users should keep in mind that the wrapping algorithm performs with an the unsigned distance field, and has no means of determining whether it is acting on both sides of a same input segment. It will thus produce two-sided wraps in the case of holes in the input and values of alpha smaller than the size of the holes.</p>
+<p><a class="anchor" id="fig__aw2_double_sided_fig"></a></p><center> <img src="aw2_double_sided.jpg" alt="" style="max-width:30%;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__aw2_double_sided_fig">Figure 60.8</a> Wrapping a Bunny in 2D, with decreasing values for alpha. When alpha is small enough with respect the diameter of the holes, the algorithm generates a two-sided wrap. </p> </div> <p> <br>
+</p>
+<h1><a class="anchor" id="aw2_examples"></a>
+Examples</h1>
+<h2><a class="anchor" id="aw2_examples_polylines"></a>
+Wrapping a Set of Polylines</h2>
+<p>The following example illustrates how to construct the wrap of a soup of 2D segments. Alpha is set to 1/20 of the bounding box's longest diagonal edge length, and offset set to 1/30 of alpha (i.e., 1/600 of the bounding box diagonal edge length).</p>
+<p><br>
+<b>File</b> <a class="el" href="Alpha_wrap_2_2polyline_wrap_2_8cpp-example.html">Alpha_wrap_2/polyline_wrap_2.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#define CGAL_AW2_DEBUG_PP </span><span class="comment">// @tmp</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include "output_helper.h"</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/alpha_wrap_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Multipolygon_with_holes_2.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/WKT.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Point_2 = K::Point_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Points = std::vector&lt;Point_2&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polyline = std::vector&lt;Point_2&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polylines = std::vector&lt;Polyline&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Multipolygon = <a class="code hl_classRef" href="../Polygon/classCGAL_1_1Multipolygon__with__holes__2.html">CGAL::Multipolygon_with_holes_2&lt;K&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  std::cout.precision(17);</div>
+<div class="line">  std::cerr.precision(17);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> std::string filename = argc &gt; 1 ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"wkt/LetterAbis.wkt"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// read_multi_linestring() expects an actual MULTILINESTRING entry whereas read_WKT() will read</span></div>
+<div class="line">  <span class="comment">// all MULTILINESTRING and LINESTRING into a multi-linestring.</span></div>
+<div class="line">  Points pts_in;</div>
+<div class="line">  Polylines mls_in;</div>
+<div class="line">  Multipolygon mp_in;</div>
+<div class="line">  std::ifstream in(filename);</div>
+<div class="line">  <span class="keywordflow">if</span>(!in || !<a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#ga774fb181cf36889b2d4da65f4c72bdf7">CGAL::IO::read_WKT</a>(in, pts_in, mls_in, mp_in))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Can't read input file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; mls_in.size() &lt;&lt; <span class="stringliteral">" input polylines"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Compute the alpha and offset values</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> relative_alpha = (argc &gt; 2) ? std::stod(argv[2]) : 20.;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> relative_offset = (argc &gt; 3) ? std::stod(argv[3]) : 300.;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html">CGAL::Bbox_2</a> bbox;</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keyword">const</span> Polyline&amp; ls : mls_in) {</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keyword">const</span> Point_2&amp; pt : ls) {</div>
+<div class="line">      bbox += pt.bbox();</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> diag_length = std::sqrt(<a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a9e48dd530dea0cc1a28b5e9bc14a64ff">xmax</a>() - bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a63af1afb0d6da705540fa204039053e6">xmin</a>()) +</div>
+<div class="line">                                       <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a0baeec271d6b81c384254b13e102e584">ymax</a>() - bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a849e45ce29fc5bdd02a6a2fc898a9880">ymin</a>()));</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = diag_length / relative_alpha;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> offset = diag_length / relative_offset;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"absolute alpha = "</span> &lt;&lt; alpha &lt;&lt; <span class="stringliteral">" absolute offset = "</span> &lt;&lt; offset &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Construct the wrap</span></div>
+<div class="line">  CGAL::Real_timer t;</div>
+<div class="line">  t.start();</div>
+<div class="line"> </div>
+<div class="line">  Multipolygon wrap;</div>
+<div class="line">  <a class="code hl_function" href="group__AW2__free__functions__grp.html#ga71e6fa0ffd8d4975fa53f02e822410be">CGAL::alpha_wrap_2</a>(mls_in, alpha, offset, wrap);</div>
+<div class="line"> </div>
+<div class="line">  t.stop();</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Result: "</span> &lt;&lt; wrap.polygons_with_holes().size() &lt;&lt; <span class="stringliteral">" polygons"</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Took "</span> &lt;&lt; t.time() &lt;&lt; <span class="stringliteral">" s."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Save the result</span></div>
+<div class="line">  <span class="keyword">const</span> std::string output_name = generate_output_name(filename, relative_alpha, relative_offset);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Writing to "</span> &lt;&lt; output_name &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out(output_name);</div>
+<div class="line">  out.precision(std::numeric_limits&lt;double&gt;::max_digits10);</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#ga56eb9fc151c6a52af723d65612f4d2ee">CGAL::IO::write_multi_polygon_WKT</a>(out, wrap);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__2_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__2.html">CGAL::Bbox_2</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__2_html_a0baeec271d6b81c384254b13e102e584"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__2.html#a0baeec271d6b81c384254b13e102e584">CGAL::Bbox_2::ymax</a></div><div class="ttdeci">double ymax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__2_html_a63af1afb0d6da705540fa204039053e6"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__2.html#a63af1afb0d6da705540fa204039053e6">CGAL::Bbox_2::xmin</a></div><div class="ttdeci">double xmin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__2_html_a849e45ce29fc5bdd02a6a2fc898a9880"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__2.html#a849e45ce29fc5bdd02a6a2fc898a9880">CGAL::Bbox_2::ymin</a></div><div class="ttdeci">double ymin() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__2_html_a9e48dd530dea0cc1a28b5e9bc14a64ff"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__2.html#a9e48dd530dea0cc1a28b5e9bc14a64ff">CGAL::Bbox_2::xmax</a></div><div class="ttdeci">double xmax() const</div></div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Multipolygon__with__holes__2_html"><div class="ttname"><a href="../Polygon/classCGAL_1_1Multipolygon__with__holes__2.html">CGAL::Multipolygon_with_holes_2</a></div></div>
+<div class="ttc" id="agroup__AW2__free__functions__grp_html_ga71e6fa0ffd8d4975fa53f02e822410be"><div class="ttname"><a href="group__AW2__free__functions__grp.html#ga71e6fa0ffd8d4975fa53f02e822410be">CGAL::alpha_wrap_2</a></div><div class="ttdeci">void alpha_wrap_2(const PointRange &amp;points, const FaceRange &amp;faces, const double alpha, const double offset, MultipolygonWithHoles &amp;alpha_wrap, const InputNamedParameters &amp;np)</div><div class="ttdoc">computes a watertight, 1-manifold, simple multipolygon that strictly contains an input indexed face s...</div><div class="ttdef"><b>Definition:</b> alpha_wrap_2.h:153</div></div>
+<div class="ttc" id="agroup__PkgAlgebraicFoundationsRef_html_ga07001b5ddc5c43096c811c91a306be9a"><div class="ttname"><a href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a></div><div class="ttdeci">NT square(const NT &amp;x)</div></div>
+<div class="ttc" id="agroup__PkgStreamSupportIoFuncsWKT_html_ga56eb9fc151c6a52af723d65612f4d2ee"><div class="ttname"><a href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#ga56eb9fc151c6a52af723d65612f4d2ee">CGAL::IO::write_multi_polygon_WKT</a></div><div class="ttdeci">std::ostream &amp; write_multi_polygon_WKT(std::ostream &amp;out, MultiPolygon &amp;polygons)</div></div>
+<div class="ttc" id="agroup__PkgStreamSupportIoFuncsWKT_html_ga774fb181cf36889b2d4da65f4c72bdf7"><div class="ttname"><a href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#ga774fb181cf36889b2d4da65f4c72bdf7">CGAL::IO::read_WKT</a></div><div class="ttdeci">bool read_WKT(std::istream &amp;is, MultiPoint &amp;points, MultiLineString &amp;polylines, MultiPolygon &amp;polygons)</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="aw2_examples_polygons"></a>
+Wrapping a Multipolygon</h2>
+<p>For polygons, we use multipolygons to represent input sets of polygons (possibly with holes). The following example uses the <a class="elRef" href="../Stream_support/IOStreamSupportedFileFormats.html#IOStreamWKT">WKT file format</a> to read such input and wrap it. Note the possible usage of the <a class="elRef" href="../Manual/packages.html#PkgPolygonRepair">2D Polygon Repair</a> package if a pre-emptive repair of the polygons is desired.</p>
+<p><br>
+<b>File</b> <a class="el" href="Alpha_wrap_2_2polygon_wrap_2_8cpp-example.html">Alpha_wrap_2/polygon_wrap_2.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#define CGAL_AW2_DEBUG_PP </span><span class="comment">// @tmp (here and at other places)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include "output_helper.h"</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/alpha_wrap_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Multipolygon_with_holes_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_repair/repair.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/WKT.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Point_2 = K::Point_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Multipolygon = <a class="code hl_classRef" href="../Polygon/classCGAL_1_1Multipolygon__with__holes__2.html">CGAL::Multipolygon_with_holes_2&lt;K&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Polygon_with_holes = Multipolygon::Polygon_with_holes_2;</div>
+<div class="line"><span class="keyword">using </span>Polygon = Polygon_with_holes::Polygon_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  std::cout.precision(17);</div>
+<div class="line">  std::cerr.precision(17);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> std::string filename = argc &gt; 1 ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"wkt/issue.wkt"</span>);</div>
+<div class="line">  std::ifstream in(filename);</div>
+<div class="line">  Multipolygon mp_in;</div>
+<div class="line">  <span class="keywordflow">if</span>(!in || !<a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#gab00420bb054eb7aa139a74910ab9fbd9">CGAL::IO::read_multi_polygon_WKT</a>(in, mp_in))</div>
+<div class="line">  {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Can't read input file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; mp_in.polygons_with_holes().size() &lt;&lt; <span class="stringliteral">" input polygons"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Optional:</span></div>
+<div class="line">  <span class="comment">// use Polygon_repair to specify which strategy should be used to determine</span></div>
+<div class="line">  <span class="comment">// what is inside and what is outside for invalid polygons.</span></div>
+<div class="line">  <span class="comment">// We could also not repair, but then all edges (whether from the outer boundaries</span></div>
+<div class="line">  <span class="comment">// or from the hole boundaries) are taken into account.</span></div>
+<div class="line">  <span class="keyword">auto</span> rule = <a class="code hl_structRef" href="../Polygon_repair/structCGAL_1_1Polygon__repair_1_1Even__odd__rule.html">CGAL::Polygon_repair::Even_odd_rule</a>();</div>
+<div class="line">  Multipolygon mp_repaired = <a class="code hl_functionRef" href="../Polygon_repair/group__PkgPolygonRepairFunctions.html#gac19cf27226df0fae15e4c1b3f9065a9a">CGAL::Polygon_repair::repair</a>(mp_in, rule);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"post repair # = "</span> &lt;&lt; mp_repaired.polygons_with_holes().size() &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Compute the alpha and offset values</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> relative_alpha = (argc &gt; 2) ? std::stod(argv[2]) : 10.;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> relative_offset = (argc &gt; 3) ? std::stod(argv[3]) : 300.;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html">CGAL::Bbox_2</a> bbox = mp_repaired.bbox();</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> diag_length = std::sqrt(<a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a9e48dd530dea0cc1a28b5e9bc14a64ff">xmax</a>() - bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a63af1afb0d6da705540fa204039053e6">xmin</a>()) +</div>
+<div class="line">                                       <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a0baeec271d6b81c384254b13e102e584">ymax</a>() - bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a849e45ce29fc5bdd02a6a2fc898a9880">ymin</a>()));</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = diag_length / relative_alpha;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> offset = diag_length / relative_offset;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"absolute alpha = "</span> &lt;&lt; alpha &lt;&lt; <span class="stringliteral">" absolute offset = "</span> &lt;&lt; offset &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Construct the wrap</span></div>
+<div class="line">  CGAL::Real_timer t;</div>
+<div class="line">  t.start();</div>
+<div class="line"> </div>
+<div class="line">  Multipolygon wrap;</div>
+<div class="line">  <a class="code hl_function" href="group__AW2__free__functions__grp.html#ga71e6fa0ffd8d4975fa53f02e822410be">CGAL::alpha_wrap_2</a>(mp_repaired, alpha, offset, wrap);</div>
+<div class="line"> </div>
+<div class="line">  t.stop();</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Result: "</span> &lt;&lt; wrap.polygons_with_holes().size() &lt;&lt; <span class="stringliteral">" polygons"</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Took "</span> &lt;&lt; t.time() &lt;&lt; <span class="stringliteral">" s."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Save the result</span></div>
+<div class="line">  <span class="keyword">const</span> std::string output_name = generate_output_name(filename, relative_alpha, relative_offset);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Writing to "</span> &lt;&lt; output_name &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out(output_name);</div>
+<div class="line">  out.precision(std::numeric_limits&lt;double&gt;::max_digits10);</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#ga56eb9fc151c6a52af723d65612f4d2ee">CGAL::IO::write_multi_polygon_WKT</a>(out, wrap);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__PkgPolygonRepairFunctions_html_gac19cf27226df0fae15e4c1b3f9065a9a"><div class="ttname"><a href="../Polygon_repair/group__PkgPolygonRepairFunctions.html#gac19cf27226df0fae15e4c1b3f9065a9a">CGAL::Polygon_repair::repair</a></div><div class="ttdeci">Multipolygon_with_holes_2&lt; Kernel, Container &gt; repair(const Polygon_2&lt; Kernel, Container &gt; &amp;p, Rule=Rule())</div></div>
+<div class="ttc" id="agroup__PkgStreamSupportIoFuncsWKT_html_gab00420bb054eb7aa139a74910ab9fbd9"><div class="ttname"><a href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#gab00420bb054eb7aa139a74910ab9fbd9">CGAL::IO::read_multi_polygon_WKT</a></div><div class="ttdeci">bool read_multi_polygon_WKT(std::istream &amp;in, MultiPolygon &amp;polygons)</div></div>
+<div class="ttc" id="astructCGAL_1_1Polygon__repair_1_1Even__odd__rule_html"><div class="ttname"><a href="../Polygon_repair/structCGAL_1_1Polygon__repair_1_1Even__odd__rule.html">CGAL::Polygon_repair::Even_odd_rule</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="aw2_examples_points"></a>
+Wrapping a Point Cloud</h2>
+<p>Finally, the following example demonstrates how to wrap a 2D point set constructed from the projection of an input 3D point cloud.</p>
+<p><br>
+<b>File</b> <a class="el" href="Alpha_wrap_2_2point_set_wrap_2_8cpp-example.html">Alpha_wrap_2/point_set_wrap_2.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#define CGAL_AW2_DEBUG_PP</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include "output_helper.h"</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/alpha_wrap_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Multipolygon_with_holes_2.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Point_set_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/read_points.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/WKT.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>K = <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Point_2 = K::Point_2;</div>
+<div class="line"><span class="keyword">using </span>Point_3 = K::Point_3;</div>
+<div class="line"><span class="keyword">using </span>Vector_2 = K::Vector_2;</div>
+<div class="line"><span class="keyword">using </span>Vector_3 = K::Vector_3;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point_set_2 = CGAL::Point_set_3&lt;Point_2, Vector_2&gt;;</div>
+<div class="line"><span class="keyword">using </span>Point_set_3 = CGAL::Point_set_3&lt;Point_3, Vector_3&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Multipolygon = <a class="code hl_classRef" href="../Polygon/classCGAL_1_1Multipolygon__with__holes__2.html">CGAL::Multipolygon_with_holes_2&lt;K&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  std::cout.precision(17);</div>
+<div class="line">  std::cerr.precision(17);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> std::string filename = argc &gt; 1 ? argv[1] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"points_3/circles.ply"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// This code reads a _3D_ point file</span></div>
+<div class="line">  Point_set_3 point_set_3;</div>
+<div class="line">  <span class="keywordflow">if</span>(!CGAL::IO::read_points(filename,</div>
+<div class="line">                            point_set_3.index_back_inserter(),</div>
+<div class="line">                            CGAL::parameters::point_map(point_set_3.point_push_map())))</div>
+<div class="line">  {</div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"Can't read input file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Project onto the xy plane</span></div>
+<div class="line">  Point_set_2 point_set_2;</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p3 : point_set_3.points())</div>
+<div class="line">    point_set_2.insert(Point_2(p3.x(), p3.y()));</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; point_set_2.size() &lt;&lt; <span class="stringliteral">" points"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Compute the alpha and offset values</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> relative_alpha = (argc &gt; 2) ? std::stod(argv[2]) : 10.;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> relative_offset = (argc &gt; 3) ? std::stod(argv[3]) : 300.;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html">CGAL::Bbox_2</a> bbox;</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2 : point_set_2.points())</div>
+<div class="line">    bbox += p2.bbox();</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream proj_out(<span class="stringliteral">"projected.xyz"</span>);</div>
+<div class="line">  proj_out.precision(std::numeric_limits&lt;double&gt;::max_digits10);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2 : point_set_2.points())</div>
+<div class="line">    proj_out &lt;&lt; p2 &lt;&lt; <span class="stringliteral">" 0\n"</span>;</div>
+<div class="line">  proj_out.close();</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> diag_length = std::sqrt(<a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a9e48dd530dea0cc1a28b5e9bc14a64ff">xmax</a>() - bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a63af1afb0d6da705540fa204039053e6">xmin</a>()) +</div>
+<div class="line">                                       <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga07001b5ddc5c43096c811c91a306be9a">CGAL::square</a>(bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a0baeec271d6b81c384254b13e102e584">ymax</a>() - bbox.<a class="code hl_functionRef" href="../Kernel_23/classCGAL_1_1Bbox__2.html#a849e45ce29fc5bdd02a6a2fc898a9880">ymin</a>()));</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = diag_length / relative_alpha;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> offset = diag_length / relative_offset;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"absolute alpha = "</span> &lt;&lt; alpha &lt;&lt; <span class="stringliteral">" absolute offset = "</span> &lt;&lt; offset &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Construct the wrap</span></div>
+<div class="line">  CGAL::Real_timer t;</div>
+<div class="line">  t.start();</div>
+<div class="line"> </div>
+<div class="line">  Multipolygon wrap;</div>
+<div class="line">  <a class="code hl_function" href="group__AW2__free__functions__grp.html#ga71e6fa0ffd8d4975fa53f02e822410be">CGAL::alpha_wrap_2</a>(point_set_2.points(), alpha, offset, wrap);</div>
+<div class="line"> </div>
+<div class="line">  t.stop();</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Result: "</span> &lt;&lt; wrap.polygons_with_holes().size() &lt;&lt; <span class="stringliteral">" polygon(s)"</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Took "</span> &lt;&lt; t.time() &lt;&lt; <span class="stringliteral">" s."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Save the result</span></div>
+<div class="line">  <span class="keyword">const</span> std::string output_name = generate_output_name(filename, relative_alpha, relative_offset);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Writing to "</span> &lt;&lt; output_name &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream out(output_name);</div>
+<div class="line">  out.precision(std::numeric_limits&lt;double&gt;::max_digits10);</div>
+<div class="line">  <a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportIoFuncsWKT.html#ga56eb9fc151c6a52af723d65612f4d2ee">CGAL::IO::write_multi_polygon_WKT</a>(out, wrap);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Done."</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>
