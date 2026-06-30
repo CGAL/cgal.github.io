@@ -1,0 +1,1508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Mesh_3/classMeshTriangulationTraits__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - 3D Mesh Generation: MeshTriangulationTraits_3 Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - 3D Mesh Generation
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classMeshTriangulationTraits__3.html','','classMeshTriangulationTraits__3-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classMeshTriangulationTraits__3-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MeshTriangulationTraits_3 Concept Reference<div class="ingroups"><a class="el" href="group__PkgMesh3Ref.html">Reference Manual</a> » <a class="el" href="group__PkgMesh3Concepts.html">Main Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classMeshTriangulationTraits__3.html" title="The concept MeshTriangulationTraits_3 describes the requirements for the geometric traits class of th...">MeshTriangulationTraits_3</a></span> describes the requirements for the geometric traits class of the underlying regular triangulation used during a mesh generation process. </p>
+  <dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Triangulation_3/classRegularTriangulationTraits__3.html">RegularTriangulationTraits_3</a></code> </dd>
+</dl>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd>All models of the CGAL concept <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span> </dd>
+</dl>
+<p>In addition to the requirements described for the traits class <a class="elRef" href="../Triangulation_3/classRegularTriangulationTraits__3.html">RegularTriangulationTraits_3</a>, the geometric traits class of a regular triangulation used in mesh generation must fulfill the following requirements. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:aab8e02c41206b16178539dde526e7b93" id="r_aab8e02c41206b16178539dde526e7b93"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aab8e02c41206b16178539dde526e7b93">FT</a></td></tr>
+<tr class="memdesc:aab8e02c41206b16178539dde526e7b93"><td class="mdescLeft"> </td><td class="mdescRight">Numerical type.  <br></td></tr>
+<tr class="memitem:aaa978f04d92ab77ec82c90eeac066bb5" id="r_aaa978f04d92ab77ec82c90eeac066bb5"><td class="memItemLeft"><a id="aaa978f04d92ab77ec82c90eeac066bb5" name="aaa978f04d92ab77ec82c90eeac066bb5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vector_3</b></td></tr>
+<tr class="memdesc:aaa978f04d92ab77ec82c90eeac066bb5"><td class="mdescLeft"> </td><td class="mdescRight">The vector type. <br></td></tr>
+<tr class="memitem:a412dfd18add49954482f528155a4cad5" id="r_a412dfd18add49954482f528155a4cad5"><td class="memItemLeft"><a id="a412dfd18add49954482f528155a4cad5" name="a412dfd18add49954482f528155a4cad5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Sphere_3</b></td></tr>
+<tr class="memdesc:a412dfd18add49954482f528155a4cad5"><td class="mdescLeft"> </td><td class="mdescRight">The sphere type. <br></td></tr>
+<tr class="memitem:a6742e641b8a1fba513ce17613d22e4f7" id="r_a6742e641b8a1fba513ce17613d22e4f7"><td class="memItemLeft"><a id="a6742e641b8a1fba513ce17613d22e4f7" name="a6742e641b8a1fba513ce17613d22e4f7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Iso_cuboid_3</b></td></tr>
+<tr class="memdesc:a6742e641b8a1fba513ce17613d22e4f7"><td class="mdescLeft"> </td><td class="mdescRight">The isocuboid type. <br></td></tr>
+<tr class="memitem:adea13daacd252a6d16d2561101d489d5" id="r_adea13daacd252a6d16d2561101d489d5"><td class="memItemLeft"><a id="adea13daacd252a6d16d2561101d489d5" name="adea13daacd252a6d16d2561101d489d5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Aff_transformation_3</b></td></tr>
+<tr class="memdesc:adea13daacd252a6d16d2561101d489d5"><td class="mdescLeft"> </td><td class="mdescRight">The affine transformation type. <br></td></tr>
+<tr class="memitem:a818250d5c716e7675f7885223de45555" id="r_a818250d5c716e7675f7885223de45555"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a818250d5c716e7675f7885223de45555">Do_intersect_3</a></td></tr>
+<tr class="memdesc:a818250d5c716e7675f7885223de45555"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a859fb2b0694965de4e5f36711b59eda9" id="r_a859fb2b0694965de4e5f36711b59eda9"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a859fb2b0694965de4e5f36711b59eda9">Equal_3</a></td></tr>
+<tr class="memdesc:a859fb2b0694965de4e5f36711b59eda9"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ae8461db44ff929d425f8e2481f84a218" id="r_ae8461db44ff929d425f8e2481f84a218"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ae8461db44ff929d425f8e2481f84a218">Is_degenerate_3</a></td></tr>
+<tr class="memdesc:ae8461db44ff929d425f8e2481f84a218"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a5291e00e2f04a1893bc3297d8dcaef4e" id="r_a5291e00e2f04a1893bc3297d8dcaef4e"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5291e00e2f04a1893bc3297d8dcaef4e">Collinear_3</a></td></tr>
+<tr class="memdesc:a5291e00e2f04a1893bc3297d8dcaef4e"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a40a2be96e1089deb9f2d61b0a2b946ea" id="r_a40a2be96e1089deb9f2d61b0a2b946ea"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a40a2be96e1089deb9f2d61b0a2b946ea">Compare_weighted_squared_radius_3</a></td></tr>
+<tr class="memdesc:a40a2be96e1089deb9f2d61b0a2b946ea"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a991d55aab4ab0703e7fed04c5aef56fe" id="r_a991d55aab4ab0703e7fed04c5aef56fe"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a991d55aab4ab0703e7fed04c5aef56fe">Compute_approximate_dihedral_angle_3</a></td></tr>
+<tr class="memdesc:a991d55aab4ab0703e7fed04c5aef56fe"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a896828b3b1cbc47c6229dc0a9e464c96" id="r_a896828b3b1cbc47c6229dc0a9e464c96"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a896828b3b1cbc47c6229dc0a9e464c96">Compute_area_3</a></td></tr>
+<tr class="memdesc:a896828b3b1cbc47c6229dc0a9e464c96"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:aad91048867aedd1448003d3ae64deb76" id="r_aad91048867aedd1448003d3ae64deb76"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aad91048867aedd1448003d3ae64deb76">Compute_power_distance_to_power_sphere_3</a></td></tr>
+<tr class="memdesc:aad91048867aedd1448003d3ae64deb76"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a07ae9c6e5eabf6e700eaa9c9cc8f1154" id="r_a07ae9c6e5eabf6e700eaa9c9cc8f1154"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a07ae9c6e5eabf6e700eaa9c9cc8f1154">Compute_squared_area_3</a></td></tr>
+<tr class="memdesc:a07ae9c6e5eabf6e700eaa9c9cc8f1154"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a8bf7fb81ba129a5b3ad1142a2e737f23" id="r_a8bf7fb81ba129a5b3ad1142a2e737f23"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a8bf7fb81ba129a5b3ad1142a2e737f23">Compute_squared_distance_3</a></td></tr>
+<tr class="memdesc:a8bf7fb81ba129a5b3ad1142a2e737f23"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:aa5b7a20356c479b9503dead3d75bf901" id="r_aa5b7a20356c479b9503dead3d75bf901"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa5b7a20356c479b9503dead3d75bf901">Compute_squared_length_3</a></td></tr>
+<tr class="memdesc:aa5b7a20356c479b9503dead3d75bf901"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ae062e8ad270bf3d0055068cc4b68da19" id="r_ae062e8ad270bf3d0055068cc4b68da19"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ae062e8ad270bf3d0055068cc4b68da19">Compute_squared_radius_3</a></td></tr>
+<tr class="memdesc:ae062e8ad270bf3d0055068cc4b68da19"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0b18f069d046d50337f7317ca28e100c" id="r_a0b18f069d046d50337f7317ca28e100c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0b18f069d046d50337f7317ca28e100c">Compute_squared_radius_smallest_orthogonal_sphere_3</a></td></tr>
+<tr class="memdesc:a0b18f069d046d50337f7317ca28e100c"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a083082f46d536bdbae4837f1ea4885f0" id="r_a083082f46d536bdbae4837f1ea4885f0"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a083082f46d536bdbae4837f1ea4885f0">Compute_volume_3</a></td></tr>
+<tr class="memdesc:a083082f46d536bdbae4837f1ea4885f0"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a3989c76c3dc0f3d6aa04beaffac0db4a" id="r_a3989c76c3dc0f3d6aa04beaffac0db4a"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3989c76c3dc0f3d6aa04beaffac0db4a">Compute_weight_3</a></td></tr>
+<tr class="memdesc:a3989c76c3dc0f3d6aa04beaffac0db4a"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:ac23012af0f0217788c4f8d03eab1c5fa" id="r_ac23012af0f0217788c4f8d03eab1c5fa"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac23012af0f0217788c4f8d03eab1c5fa">Construct_base_vector_3</a></td></tr>
+<tr class="memdesc:ac23012af0f0217788c4f8d03eab1c5fa"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a3d06429620435cad108b20ddff583365" id="r_a3d06429620435cad108b20ddff583365"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3d06429620435cad108b20ddff583365">Construct_orthogonal_vector_3</a></td></tr>
+<tr class="memdesc:a3d06429620435cad108b20ddff583365"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a8830030d0eb8f5fef3e904c613a8b5d1" id="r_a8830030d0eb8f5fef3e904c613a8b5d1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a8830030d0eb8f5fef3e904c613a8b5d1">Construct_center_3</a></td></tr>
+<tr class="memdesc:a8830030d0eb8f5fef3e904c613a8b5d1"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a6502706352c9a825d0b25a11ead33d91" id="r_a6502706352c9a825d0b25a11ead33d91"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a6502706352c9a825d0b25a11ead33d91">Construct_weighted_circumcenter_3</a></td></tr>
+<tr class="memdesc:a6502706352c9a825d0b25a11ead33d91"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:ac4f68e264a602625daefaaa2a034e952" id="r_ac4f68e264a602625daefaaa2a034e952"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac4f68e264a602625daefaaa2a034e952">Construct_centroid_3</a></td></tr>
+<tr class="memdesc:ac4f68e264a602625daefaaa2a034e952"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:ab28363b4ca133aaadea6af71faed0a7a" id="r_ab28363b4ca133aaadea6af71faed0a7a"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab28363b4ca133aaadea6af71faed0a7a">Construct_midpoint_3</a></td></tr>
+<tr class="memdesc:ab28363b4ca133aaadea6af71faed0a7a"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a9ecf555640a057c3724db05845584afa" id="r_a9ecf555640a057c3724db05845584afa"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9ecf555640a057c3724db05845584afa">Construct_normal_3</a></td></tr>
+<tr class="memdesc:a9ecf555640a057c3724db05845584afa"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0ecffe732165cb82ffdc1207a1e46670" id="r_a0ecffe732165cb82ffdc1207a1e46670"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0ecffe732165cb82ffdc1207a1e46670">Construct_sphere_3</a></td></tr>
+<tr class="memdesc:a0ecffe732165cb82ffdc1207a1e46670"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a47536d5445fc73bfcb5932a9339fbb18" id="r_a47536d5445fc73bfcb5932a9339fbb18"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a47536d5445fc73bfcb5932a9339fbb18">Construct_tetrahedron_3</a></td></tr>
+<tr class="memdesc:a47536d5445fc73bfcb5932a9339fbb18"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:afafd282d7a09b282ba974aaaa9606222" id="r_afafd282d7a09b282ba974aaaa9606222"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afafd282d7a09b282ba974aaaa9606222">Construct_translated_point_3</a></td></tr>
+<tr class="memdesc:afafd282d7a09b282ba974aaaa9606222"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ac25586b213a72ec45d49c6989ee8b039" id="r_ac25586b213a72ec45d49c6989ee8b039"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac25586b213a72ec45d49c6989ee8b039">Construct_vector_3</a></td></tr>
+<tr class="memdesc:ac25586b213a72ec45d49c6989ee8b039"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a2392ec8405fae8603059d4bcc62b5a92" id="r_a2392ec8405fae8603059d4bcc62b5a92"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a2392ec8405fae8603059d4bcc62b5a92">Construct_opposite_vector_3</a></td></tr>
+<tr class="memdesc:a2392ec8405fae8603059d4bcc62b5a92"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a05dfb57f7cf7fb1bbdfb130a696ddda8" id="r_a05dfb57f7cf7fb1bbdfb130a696ddda8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a05dfb57f7cf7fb1bbdfb130a696ddda8">Construct_scaled_vector_3</a></td></tr>
+<tr class="memdesc:a05dfb57f7cf7fb1bbdfb130a696ddda8"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a7dacb5dfa876dce5a2e2e71f877447c1" id="r_a7dacb5dfa876dce5a2e2e71f877447c1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a7dacb5dfa876dce5a2e2e71f877447c1">Intersect_3</a></td></tr>
+<tr class="memdesc:a7dacb5dfa876dce5a2e2e71f877447c1"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a5291e00e2f04a1893bc3297d8dcaef4e" name="a5291e00e2f04a1893bc3297d8dcaef4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5291e00e2f04a1893bc3297d8dcaef4e">◆ </a></span>Collinear_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5291e00e2f04a1893bc3297d8dcaef4e">MeshTriangulationTraits_3::Collinear_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, Point_3 r)</span></p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> are collinear. </p>
+
+</div>
+</div>
+<a id="a40a2be96e1089deb9f2d61b0a2b946ea" name="a40a2be96e1089deb9f2d61b0a2b946ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a2be96e1089deb9f2d61b0a2b946ea">◆ </a></span>Compare_weighted_squared_radius_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a40a2be96e1089deb9f2d61b0a2b946ea">MeshTriangulationTraits_3::Compare_weighted_squared_radius_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">bool operator()(Point_3 p, FT w)</span></p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, FT w)</span></p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, Point_3 r, FT w)</span></p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s, FT w)</span></p>
+<p>which compare the weight of the smallest sphere orthogonal to the input weighted point(s) with the input weight. </p>
+
+</div>
+</div>
+<a id="a991d55aab4ab0703e7fed04c5aef56fe" name="a991d55aab4ab0703e7fed04c5aef56fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991d55aab4ab0703e7fed04c5aef56fe">◆ </a></span>Compute_approximate_dihedral_angle_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a991d55aab4ab0703e7fed04c5aef56fe">MeshTriangulationTraits_3::Compute_approximate_dihedral_angle_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span></p>
+<p>which returns an approximation of the signed dihedral angle in the tetrahedron <span class="tt">pqrs</span> of edge <span class="tt">pq</span>. The sign is negative if <span class="tt">orientation(p,q,r,s)</span> is <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> and positive otherwise. The angle is given in degrees. </p>
+
+</div>
+</div>
+<a id="a896828b3b1cbc47c6229dc0a9e464c96" name="a896828b3b1cbc47c6229dc0a9e464c96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896828b3b1cbc47c6229dc0a9e464c96">◆ </a></span>Compute_area_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a896828b3b1cbc47c6229dc0a9e464c96">MeshTriangulationTraits_3::Compute_area_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span></p>
+<p>which returns the area of the triangle <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>. </p>
+
+</div>
+</div>
+<a id="aad91048867aedd1448003d3ae64deb76" name="aad91048867aedd1448003d3ae64deb76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad91048867aedd1448003d3ae64deb76">◆ </a></span>Compute_power_distance_to_power_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aad91048867aedd1448003d3ae64deb76">MeshTriangulationTraits_3::Compute_power_distance_to_power_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s, Point_3 t)</span></p>
+<p>which returns the squared radius of the sphere centered in <span class="tt">t</span> and orthogonal to the sphere orthogonal to <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>, and <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="a07ae9c6e5eabf6e700eaa9c9cc8f1154" name="a07ae9c6e5eabf6e700eaa9c9cc8f1154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07ae9c6e5eabf6e700eaa9c9cc8f1154">◆ </a></span>Compute_squared_area_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a07ae9c6e5eabf6e700eaa9c9cc8f1154">MeshTriangulationTraits_3::Compute_squared_area_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Triangle_3 t)</span></p>
+<p>which returns the squared area of the triangle <span class="tt">t</span>. </p>
+
+</div>
+</div>
+<a id="a8bf7fb81ba129a5b3ad1142a2e737f23" name="a8bf7fb81ba129a5b3ad1142a2e737f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf7fb81ba129a5b3ad1142a2e737f23">◆ </a></span>Compute_squared_distance_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a8bf7fb81ba129a5b3ad1142a2e737f23">MeshTriangulationTraits_3::Compute_squared_distance_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q)</span></p>
+<p>which returns the squared distance between two points <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="aa5b7a20356c479b9503dead3d75bf901" name="aa5b7a20356c479b9503dead3d75bf901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5b7a20356c479b9503dead3d75bf901">◆ </a></span>Compute_squared_length_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa5b7a20356c479b9503dead3d75bf901">MeshTriangulationTraits_3::Compute_squared_length_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Vector_3 v)</span></p>
+<p>which returns the squared length of <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="ae062e8ad270bf3d0055068cc4b68da19" name="ae062e8ad270bf3d0055068cc4b68da19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae062e8ad270bf3d0055068cc4b68da19">◆ </a></span>Compute_squared_radius_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ae062e8ad270bf3d0055068cc4b68da19">MeshTriangulationTraits_3::Compute_squared_radius_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Sphere_3 s)</span></p>
+<p>which returns the squared radius of the sphere <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="a0b18f069d046d50337f7317ca28e100c" name="a0b18f069d046d50337f7317ca28e100c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b18f069d046d50337f7317ca28e100c">◆ </a></span>Compute_squared_radius_smallest_orthogonal_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0b18f069d046d50337f7317ca28e100c">MeshTriangulationTraits_3::Compute_squared_radius_smallest_orthogonal_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span></p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span></p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q)</span></p>
+<p>which returns the squared radius of the smallest sphere orthogonal to the argument(s). </p>
+
+</div>
+</div>
+<a id="a083082f46d536bdbae4837f1ea4885f0" name="a083082f46d536bdbae4837f1ea4885f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083082f46d536bdbae4837f1ea4885f0">◆ </a></span>Compute_volume_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a083082f46d536bdbae4837f1ea4885f0">MeshTriangulationTraits_3::Compute_volume_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span></p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Tetrahedron_3 t)</span></p>
+<p>which respectively return the volume of the tetrahedron formed by the points <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>, and <span class="tt">s</span> and of the tetrahedron <span class="tt">t</span>. </p>
+
+</div>
+</div>
+<a id="a3989c76c3dc0f3d6aa04beaffac0db4a" name="a3989c76c3dc0f3d6aa04beaffac0db4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3989c76c3dc0f3d6aa04beaffac0db4a">◆ </a></span>Compute_weight_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3989c76c3dc0f3d6aa04beaffac0db4a">MeshTriangulationTraits_3::Compute_weight_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Weighted_point_3 p)</span></p>
+<p>which returns the weight of the weighted point <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="ac23012af0f0217788c4f8d03eab1c5fa" name="ac23012af0f0217788c4f8d03eab1c5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23012af0f0217788c4f8d03eab1c5fa">◆ </a></span>Construct_base_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac23012af0f0217788c4f8d03eab1c5fa">MeshTriangulationTraits_3::Construct_base_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Plane_3 p, int index)</span>,</p>
+<p>which returns:</p><ul>
+<li>when <span class="tt">index == 1</span>: a vector <span class="tt">b1</span> that is orthogonal to the normal <span class="tt">n</span> to plane <span class="tt">h</span>;</li>
+<li>when <span class="tt">index == 2</span>: a vector <span class="tt">b2</span> that is orthogonal to <span class="tt">n</span> and <span class="tt">b1</span> and such that for an arbitrary point <span class="tt">p</span> on the plane <span class="tt">h</span>, the orientation of <span class="tt">p</span>, <span class="tt">p + b1</span>, <span class="tt">p + b2</span>, and <span class="tt">p + n</span> is positive. </li>
+</ul>
+
+</div>
+</div>
+<a id="a8830030d0eb8f5fef3e904c613a8b5d1" name="a8830030d0eb8f5fef3e904c613a8b5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8830030d0eb8f5fef3e904c613a8b5d1">◆ </a></span>Construct_center_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a8830030d0eb8f5fef3e904c613a8b5d1">MeshTriangulationTraits_3::Construct_center_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Point_3 operator()(Sphere_3 q)</span>,</p>
+<p>which returns the center of the sphere <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="ac4f68e264a602625daefaaa2a034e952" name="ac4f68e264a602625daefaaa2a034e952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4f68e264a602625daefaaa2a034e952">◆ </a></span>Construct_centroid_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac4f68e264a602625daefaaa2a034e952">MeshTriangulationTraits_3::Construct_centroid_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">Point_3 operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p><span class="tt">Point_3 operator()(Tetrahedron_3 t)</span>,</p>
+<p>which respectively return the centroid of the points <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span>, and the centroid of the tetrahedron <span class="tt">t</span>. </p>
+
+</div>
+</div>
+<a id="ab28363b4ca133aaadea6af71faed0a7a" name="ab28363b4ca133aaadea6af71faed0a7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab28363b4ca133aaadea6af71faed0a7a">◆ </a></span>Construct_midpoint_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab28363b4ca133aaadea6af71faed0a7a">MeshTriangulationTraits_3::Construct_midpoint_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Point_3 operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which returns the midpoint of the segment pq. </p>
+
+</div>
+</div>
+<a id="a9ecf555640a057c3724db05845584afa" name="a9ecf555640a057c3724db05845584afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ecf555640a057c3724db05845584afa">◆ </a></span>Construct_normal_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9ecf555640a057c3724db05845584afa">MeshTriangulationTraits_3::Construct_normal_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p>which returns the normal of the vectors <span class="tt">q-p</span> and <span class="tt">r-p</span>. </p>
+
+</div>
+</div>
+<a id="a2392ec8405fae8603059d4bcc62b5a92" name="a2392ec8405fae8603059d4bcc62b5a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2392ec8405fae8603059d4bcc62b5a92">◆ </a></span>Construct_opposite_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a2392ec8405fae8603059d4bcc62b5a92">MeshTriangulationTraits_3::Construct_opposite_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Vector_3 v)</span></p>
+<p>which returns <span class="tt">-v</span>. </p>
+
+</div>
+</div>
+<a id="a3d06429620435cad108b20ddff583365" name="a3d06429620435cad108b20ddff583365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d06429620435cad108b20ddff583365">◆ </a></span>Construct_orthogonal_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3d06429620435cad108b20ddff583365">MeshTriangulationTraits_3::Construct_orthogonal_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Plane_3 p)</span>,</p>
+<p>which returns a vector that is orthogonal to the plane <span class="tt">p</span> and directed to the positive side of <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="a05dfb57f7cf7fb1bbdfb130a696ddda8" name="a05dfb57f7cf7fb1bbdfb130a696ddda8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05dfb57f7cf7fb1bbdfb130a696ddda8">◆ </a></span>Construct_scaled_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a05dfb57f7cf7fb1bbdfb130a696ddda8">MeshTriangulationTraits_3::Construct_scaled_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Vector_3 v, FT scale)</span></p>
+<p>which returns the vector <span class="tt">v</span> scaled by a factor <span class="tt">scale</span>. </p>
+
+</div>
+</div>
+<a id="a0ecffe732165cb82ffdc1207a1e46670" name="a0ecffe732165cb82ffdc1207a1e46670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ecffe732165cb82ffdc1207a1e46670">◆ </a></span>Construct_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0ecffe732165cb82ffdc1207a1e46670">MeshTriangulationTraits_3::Construct_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a412dfd18add49954482f528155a4cad5" title="The sphere type.">Sphere_3</a> operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which returns the smallest sphere which passes through the points p and q. </p>
+
+</div>
+</div>
+<a id="a47536d5445fc73bfcb5932a9339fbb18" name="a47536d5445fc73bfcb5932a9339fbb18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47536d5445fc73bfcb5932a9339fbb18">◆ </a></span>Construct_tetrahedron_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a47536d5445fc73bfcb5932a9339fbb18">MeshTriangulationTraits_3::Construct_tetrahedron_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Tetrahedron_3 operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span>,</p>
+<p>which returns the tetrahedron with vertices <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>, and <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="afafd282d7a09b282ba974aaaa9606222" name="afafd282d7a09b282ba974aaaa9606222"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afafd282d7a09b282ba974aaaa9606222">◆ </a></span>Construct_translated_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afafd282d7a09b282ba974aaaa9606222">MeshTriangulationTraits_3::Construct_translated_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Point_3 operator()(Point_3 p, Vector_3 v)</span>,</p>
+<p>which returns the point obtained by translating <span class="tt">p</span> by the vector <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="ac25586b213a72ec45d49c6989ee8b039" name="ac25586b213a72ec45d49c6989ee8b039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac25586b213a72ec45d49c6989ee8b039">◆ </a></span>Construct_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac25586b213a72ec45d49c6989ee8b039">MeshTriangulationTraits_3::Construct_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which returns a vector from two points. </p>
+
+</div>
+</div>
+<a id="a6502706352c9a825d0b25a11ead33d91" name="a6502706352c9a825d0b25a11ead33d91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6502706352c9a825d0b25a11ead33d91">◆ </a></span>Construct_weighted_circumcenter_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a6502706352c9a825d0b25a11ead33d91">MeshTriangulationTraits_3::Construct_weighted_circumcenter_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">Point_3 operator()(Weighted_point_3 p, Weighted_point_3 q, Weighted_point_3 r, Weighted_point_3 s)</span>,</p>
+<p><span class="tt">Point_3 operator()(Weighted_point_3 p, Weighted_point_3 q, Weighted_point_3 r, Weighted_point_3 s)</span>,</p>
+<p><span class="tt">Point_3 operator()(Weighted_point_3 p, Weighted_point_3 q, Weighted_point_3 r, Weighted_point_3 s)</span>,</p>
+<p>which return the center of the smallest orthogonal sphere to the input weighted points. </p>
+
+</div>
+</div>
+<a id="a818250d5c716e7675f7885223de45555" name="a818250d5c716e7675f7885223de45555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a818250d5c716e7675f7885223de45555">◆ </a></span>Do_intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a818250d5c716e7675f7885223de45555">MeshTriangulationTraits_3::Do_intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Sphere_3 s1, Sphere_3 s2)</span></p>
+<p>which returns <span class="tt">true</span> iff the spheres <span class="tt">s1</span> and <span class="tt">s2</span> intersect. </p>
+
+</div>
+</div>
+<a id="a859fb2b0694965de4e5f36711b59eda9" name="a859fb2b0694965de4e5f36711b59eda9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a859fb2b0694965de4e5f36711b59eda9">◆ </a></span>Equal_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a859fb2b0694965de4e5f36711b59eda9">MeshTriangulationTraits_3::Equal_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q)</span></p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span> and <span class="tt">q</span> are equal. </p>
+
+</div>
+</div>
+<a id="aab8e02c41206b16178539dde526e7b93" name="aab8e02c41206b16178539dde526e7b93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8e02c41206b16178539dde526e7b93">◆ </a></span>FT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aab8e02c41206b16178539dde526e7b93">MeshTriangulationTraits_3::FT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Numerical type. </p>
+<p>Must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> and <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldWithSqrt.html">FieldWithSqrt</a></span>, and constructible from a <span class="tt">double</span>. </p>
+
+</div>
+</div>
+<a id="a7dacb5dfa876dce5a2e2e71f877447c1" name="a7dacb5dfa876dce5a2e2e71f877447c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dacb5dfa876dce5a2e2e71f877447c1">◆ </a></span>Intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a7dacb5dfa876dce5a2e2e71f877447c1">MeshTriangulationTraits_3::Intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">std::optional&lt; std::variant&lt; T... &gt; &gt; operator()(Segment_3 s, Plane_3 p)</span></p>
+<p><span class="tt">std::optional&lt; std::variant&lt; T... &gt; &gt; operator()(Ray_3 r, Iso_cuboid i)</span></p>
+<p><span class="tt">std::optional&lt; std::variant&lt; T... &gt; &gt; operator()(Segment_3 s, Iso_cuboid i)</span></p>
+<p>which returns the intersection region of two geometrical objects. </p>
+
+</div>
+</div>
+<a id="ae8461db44ff929d425f8e2481f84a218" name="ae8461db44ff929d425f8e2481f84a218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8461db44ff929d425f8e2481f84a218">◆ </a></span>Is_degenerate_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ae8461db44ff929d425f8e2481f84a218">MeshTriangulationTraits_3::Is_degenerate_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operators: </p>
+<p><span class="tt">bool operator()(Segment_3 s)</span></p>
+<p><span class="tt">bool operator()(Ray_3 s)</span></p>
+<p>which return <span class="tt">true</span> iff the object is degenerate. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classMeshTriangulationTraits__3.html">MeshTriangulationTraits_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/MeshTriangulationTraits_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classMeshTriangulationTraits__3.html" title="The concept MeshTriangulationTraits_3 describes the requirements for the geometric traits class of th...">MeshTriangulationTraits_3</a></span> describes the requirements for the geometric traits class of the underlying regular triangulation used during a mesh generation process. </p>
+  <dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Triangulation_3/classRegularTriangulationTraits__3.html">RegularTriangulationTraits_3</a></code> </dd>
+</dl>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd>All models of the CGAL concept <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span> </dd>
+</dl>
+<p>In addition to the requirements described for the traits class <a class="elRef" href="../Triangulation_3/classRegularTriangulationTraits__3.html">RegularTriangulationTraits_3</a>, the geometric traits class of a regular triangulation used in mesh generation must fulfill the following requirements. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:aab8e02c41206b16178539dde526e7b93" id="r_aab8e02c41206b16178539dde526e7b93"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aab8e02c41206b16178539dde526e7b93">FT</a></td></tr>
+<tr class="memdesc:aab8e02c41206b16178539dde526e7b93"><td class="mdescLeft"> </td><td class="mdescRight">Numerical type.  <br></td></tr>
+<tr class="memitem:aaa978f04d92ab77ec82c90eeac066bb5" id="r_aaa978f04d92ab77ec82c90eeac066bb5"><td class="memItemLeft"><a id="aaa978f04d92ab77ec82c90eeac066bb5" name="aaa978f04d92ab77ec82c90eeac066bb5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vector_3</b></td></tr>
+<tr class="memdesc:aaa978f04d92ab77ec82c90eeac066bb5"><td class="mdescLeft"> </td><td class="mdescRight">The vector type. <br></td></tr>
+<tr class="memitem:a412dfd18add49954482f528155a4cad5" id="r_a412dfd18add49954482f528155a4cad5"><td class="memItemLeft"><a id="a412dfd18add49954482f528155a4cad5" name="a412dfd18add49954482f528155a4cad5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Sphere_3</b></td></tr>
+<tr class="memdesc:a412dfd18add49954482f528155a4cad5"><td class="mdescLeft"> </td><td class="mdescRight">The sphere type. <br></td></tr>
+<tr class="memitem:a6742e641b8a1fba513ce17613d22e4f7" id="r_a6742e641b8a1fba513ce17613d22e4f7"><td class="memItemLeft"><a id="a6742e641b8a1fba513ce17613d22e4f7" name="a6742e641b8a1fba513ce17613d22e4f7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Iso_cuboid_3</b></td></tr>
+<tr class="memdesc:a6742e641b8a1fba513ce17613d22e4f7"><td class="mdescLeft"> </td><td class="mdescRight">The isocuboid type. <br></td></tr>
+<tr class="memitem:adea13daacd252a6d16d2561101d489d5" id="r_adea13daacd252a6d16d2561101d489d5"><td class="memItemLeft"><a id="adea13daacd252a6d16d2561101d489d5" name="adea13daacd252a6d16d2561101d489d5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Aff_transformation_3</b></td></tr>
+<tr class="memdesc:adea13daacd252a6d16d2561101d489d5"><td class="mdescLeft"> </td><td class="mdescRight">The affine transformation type. <br></td></tr>
+<tr class="memitem:a818250d5c716e7675f7885223de45555" id="r_a818250d5c716e7675f7885223de45555"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a818250d5c716e7675f7885223de45555">Do_intersect_3</a></td></tr>
+<tr class="memdesc:a818250d5c716e7675f7885223de45555"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a859fb2b0694965de4e5f36711b59eda9" id="r_a859fb2b0694965de4e5f36711b59eda9"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a859fb2b0694965de4e5f36711b59eda9">Equal_3</a></td></tr>
+<tr class="memdesc:a859fb2b0694965de4e5f36711b59eda9"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ae8461db44ff929d425f8e2481f84a218" id="r_ae8461db44ff929d425f8e2481f84a218"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ae8461db44ff929d425f8e2481f84a218">Is_degenerate_3</a></td></tr>
+<tr class="memdesc:ae8461db44ff929d425f8e2481f84a218"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a5291e00e2f04a1893bc3297d8dcaef4e" id="r_a5291e00e2f04a1893bc3297d8dcaef4e"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5291e00e2f04a1893bc3297d8dcaef4e">Collinear_3</a></td></tr>
+<tr class="memdesc:a5291e00e2f04a1893bc3297d8dcaef4e"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a40a2be96e1089deb9f2d61b0a2b946ea" id="r_a40a2be96e1089deb9f2d61b0a2b946ea"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a40a2be96e1089deb9f2d61b0a2b946ea">Compare_weighted_squared_radius_3</a></td></tr>
+<tr class="memdesc:a40a2be96e1089deb9f2d61b0a2b946ea"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a991d55aab4ab0703e7fed04c5aef56fe" id="r_a991d55aab4ab0703e7fed04c5aef56fe"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a991d55aab4ab0703e7fed04c5aef56fe">Compute_approximate_dihedral_angle_3</a></td></tr>
+<tr class="memdesc:a991d55aab4ab0703e7fed04c5aef56fe"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a896828b3b1cbc47c6229dc0a9e464c96" id="r_a896828b3b1cbc47c6229dc0a9e464c96"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a896828b3b1cbc47c6229dc0a9e464c96">Compute_area_3</a></td></tr>
+<tr class="memdesc:a896828b3b1cbc47c6229dc0a9e464c96"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:aad91048867aedd1448003d3ae64deb76" id="r_aad91048867aedd1448003d3ae64deb76"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aad91048867aedd1448003d3ae64deb76">Compute_power_distance_to_power_sphere_3</a></td></tr>
+<tr class="memdesc:aad91048867aedd1448003d3ae64deb76"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a07ae9c6e5eabf6e700eaa9c9cc8f1154" id="r_a07ae9c6e5eabf6e700eaa9c9cc8f1154"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a07ae9c6e5eabf6e700eaa9c9cc8f1154">Compute_squared_area_3</a></td></tr>
+<tr class="memdesc:a07ae9c6e5eabf6e700eaa9c9cc8f1154"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a8bf7fb81ba129a5b3ad1142a2e737f23" id="r_a8bf7fb81ba129a5b3ad1142a2e737f23"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a8bf7fb81ba129a5b3ad1142a2e737f23">Compute_squared_distance_3</a></td></tr>
+<tr class="memdesc:a8bf7fb81ba129a5b3ad1142a2e737f23"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:aa5b7a20356c479b9503dead3d75bf901" id="r_aa5b7a20356c479b9503dead3d75bf901"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa5b7a20356c479b9503dead3d75bf901">Compute_squared_length_3</a></td></tr>
+<tr class="memdesc:aa5b7a20356c479b9503dead3d75bf901"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ae062e8ad270bf3d0055068cc4b68da19" id="r_ae062e8ad270bf3d0055068cc4b68da19"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ae062e8ad270bf3d0055068cc4b68da19">Compute_squared_radius_3</a></td></tr>
+<tr class="memdesc:ae062e8ad270bf3d0055068cc4b68da19"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0b18f069d046d50337f7317ca28e100c" id="r_a0b18f069d046d50337f7317ca28e100c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0b18f069d046d50337f7317ca28e100c">Compute_squared_radius_smallest_orthogonal_sphere_3</a></td></tr>
+<tr class="memdesc:a0b18f069d046d50337f7317ca28e100c"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a083082f46d536bdbae4837f1ea4885f0" id="r_a083082f46d536bdbae4837f1ea4885f0"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a083082f46d536bdbae4837f1ea4885f0">Compute_volume_3</a></td></tr>
+<tr class="memdesc:a083082f46d536bdbae4837f1ea4885f0"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:a3989c76c3dc0f3d6aa04beaffac0db4a" id="r_a3989c76c3dc0f3d6aa04beaffac0db4a"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3989c76c3dc0f3d6aa04beaffac0db4a">Compute_weight_3</a></td></tr>
+<tr class="memdesc:a3989c76c3dc0f3d6aa04beaffac0db4a"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:ac23012af0f0217788c4f8d03eab1c5fa" id="r_ac23012af0f0217788c4f8d03eab1c5fa"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac23012af0f0217788c4f8d03eab1c5fa">Construct_base_vector_3</a></td></tr>
+<tr class="memdesc:ac23012af0f0217788c4f8d03eab1c5fa"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a3d06429620435cad108b20ddff583365" id="r_a3d06429620435cad108b20ddff583365"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3d06429620435cad108b20ddff583365">Construct_orthogonal_vector_3</a></td></tr>
+<tr class="memdesc:a3d06429620435cad108b20ddff583365"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a8830030d0eb8f5fef3e904c613a8b5d1" id="r_a8830030d0eb8f5fef3e904c613a8b5d1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a8830030d0eb8f5fef3e904c613a8b5d1">Construct_center_3</a></td></tr>
+<tr class="memdesc:a8830030d0eb8f5fef3e904c613a8b5d1"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a6502706352c9a825d0b25a11ead33d91" id="r_a6502706352c9a825d0b25a11ead33d91"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a6502706352c9a825d0b25a11ead33d91">Construct_weighted_circumcenter_3</a></td></tr>
+<tr class="memdesc:a6502706352c9a825d0b25a11ead33d91"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:ac4f68e264a602625daefaaa2a034e952" id="r_ac4f68e264a602625daefaaa2a034e952"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac4f68e264a602625daefaaa2a034e952">Construct_centroid_3</a></td></tr>
+<tr class="memdesc:ac4f68e264a602625daefaaa2a034e952"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+<tr class="memitem:ab28363b4ca133aaadea6af71faed0a7a" id="r_ab28363b4ca133aaadea6af71faed0a7a"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab28363b4ca133aaadea6af71faed0a7a">Construct_midpoint_3</a></td></tr>
+<tr class="memdesc:ab28363b4ca133aaadea6af71faed0a7a"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a9ecf555640a057c3724db05845584afa" id="r_a9ecf555640a057c3724db05845584afa"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9ecf555640a057c3724db05845584afa">Construct_normal_3</a></td></tr>
+<tr class="memdesc:a9ecf555640a057c3724db05845584afa"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0ecffe732165cb82ffdc1207a1e46670" id="r_a0ecffe732165cb82ffdc1207a1e46670"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0ecffe732165cb82ffdc1207a1e46670">Construct_sphere_3</a></td></tr>
+<tr class="memdesc:a0ecffe732165cb82ffdc1207a1e46670"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a47536d5445fc73bfcb5932a9339fbb18" id="r_a47536d5445fc73bfcb5932a9339fbb18"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a47536d5445fc73bfcb5932a9339fbb18">Construct_tetrahedron_3</a></td></tr>
+<tr class="memdesc:a47536d5445fc73bfcb5932a9339fbb18"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:afafd282d7a09b282ba974aaaa9606222" id="r_afafd282d7a09b282ba974aaaa9606222"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afafd282d7a09b282ba974aaaa9606222">Construct_translated_point_3</a></td></tr>
+<tr class="memdesc:afafd282d7a09b282ba974aaaa9606222"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ac25586b213a72ec45d49c6989ee8b039" id="r_ac25586b213a72ec45d49c6989ee8b039"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac25586b213a72ec45d49c6989ee8b039">Construct_vector_3</a></td></tr>
+<tr class="memdesc:ac25586b213a72ec45d49c6989ee8b039"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a2392ec8405fae8603059d4bcc62b5a92" id="r_a2392ec8405fae8603059d4bcc62b5a92"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a2392ec8405fae8603059d4bcc62b5a92">Construct_opposite_vector_3</a></td></tr>
+<tr class="memdesc:a2392ec8405fae8603059d4bcc62b5a92"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a05dfb57f7cf7fb1bbdfb130a696ddda8" id="r_a05dfb57f7cf7fb1bbdfb130a696ddda8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a05dfb57f7cf7fb1bbdfb130a696ddda8">Construct_scaled_vector_3</a></td></tr>
+<tr class="memdesc:a05dfb57f7cf7fb1bbdfb130a696ddda8"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a7dacb5dfa876dce5a2e2e71f877447c1" id="r_a7dacb5dfa876dce5a2e2e71f877447c1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a7dacb5dfa876dce5a2e2e71f877447c1">Intersect_3</a></td></tr>
+<tr class="memdesc:a7dacb5dfa876dce5a2e2e71f877447c1"><td class="mdescLeft"> </td><td class="mdescRight">A constructor object that must provide the function operators:  <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a5291e00e2f04a1893bc3297d8dcaef4e" name="a5291e00e2f04a1893bc3297d8dcaef4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5291e00e2f04a1893bc3297d8dcaef4e">◆ </a></span>Collinear_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5291e00e2f04a1893bc3297d8dcaef4e">MeshTriangulationTraits_3::Collinear_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, Point_3 r)</span></p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> are collinear. </p>
+
+</div>
+</div>
+<a id="a40a2be96e1089deb9f2d61b0a2b946ea" name="a40a2be96e1089deb9f2d61b0a2b946ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a2be96e1089deb9f2d61b0a2b946ea">◆ </a></span>Compare_weighted_squared_radius_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a40a2be96e1089deb9f2d61b0a2b946ea">MeshTriangulationTraits_3::Compare_weighted_squared_radius_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">bool operator()(Point_3 p, FT w)</span></p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, FT w)</span></p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, Point_3 r, FT w)</span></p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s, FT w)</span></p>
+<p>which compare the weight of the smallest sphere orthogonal to the input weighted point(s) with the input weight. </p>
+
+</div>
+</div>
+<a id="a991d55aab4ab0703e7fed04c5aef56fe" name="a991d55aab4ab0703e7fed04c5aef56fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991d55aab4ab0703e7fed04c5aef56fe">◆ </a></span>Compute_approximate_dihedral_angle_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a991d55aab4ab0703e7fed04c5aef56fe">MeshTriangulationTraits_3::Compute_approximate_dihedral_angle_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span></p>
+<p>which returns an approximation of the signed dihedral angle in the tetrahedron <span class="tt">pqrs</span> of edge <span class="tt">pq</span>. The sign is negative if <span class="tt">orientation(p,q,r,s)</span> is <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> and positive otherwise. The angle is given in degrees. </p>
+
+</div>
+</div>
+<a id="a896828b3b1cbc47c6229dc0a9e464c96" name="a896828b3b1cbc47c6229dc0a9e464c96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896828b3b1cbc47c6229dc0a9e464c96">◆ </a></span>Compute_area_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a896828b3b1cbc47c6229dc0a9e464c96">MeshTriangulationTraits_3::Compute_area_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span></p>
+<p>which returns the area of the triangle <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>. </p>
+
+</div>
+</div>
+<a id="aad91048867aedd1448003d3ae64deb76" name="aad91048867aedd1448003d3ae64deb76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad91048867aedd1448003d3ae64deb76">◆ </a></span>Compute_power_distance_to_power_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aad91048867aedd1448003d3ae64deb76">MeshTriangulationTraits_3::Compute_power_distance_to_power_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s, Point_3 t)</span></p>
+<p>which returns the squared radius of the sphere centered in <span class="tt">t</span> and orthogonal to the sphere orthogonal to <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>, and <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="a07ae9c6e5eabf6e700eaa9c9cc8f1154" name="a07ae9c6e5eabf6e700eaa9c9cc8f1154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07ae9c6e5eabf6e700eaa9c9cc8f1154">◆ </a></span>Compute_squared_area_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a07ae9c6e5eabf6e700eaa9c9cc8f1154">MeshTriangulationTraits_3::Compute_squared_area_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Triangle_3 t)</span></p>
+<p>which returns the squared area of the triangle <span class="tt">t</span>. </p>
+
+</div>
+</div>
+<a id="a8bf7fb81ba129a5b3ad1142a2e737f23" name="a8bf7fb81ba129a5b3ad1142a2e737f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf7fb81ba129a5b3ad1142a2e737f23">◆ </a></span>Compute_squared_distance_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a8bf7fb81ba129a5b3ad1142a2e737f23">MeshTriangulationTraits_3::Compute_squared_distance_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q)</span></p>
+<p>which returns the squared distance between two points <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="aa5b7a20356c479b9503dead3d75bf901" name="aa5b7a20356c479b9503dead3d75bf901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5b7a20356c479b9503dead3d75bf901">◆ </a></span>Compute_squared_length_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa5b7a20356c479b9503dead3d75bf901">MeshTriangulationTraits_3::Compute_squared_length_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Vector_3 v)</span></p>
+<p>which returns the squared length of <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="ae062e8ad270bf3d0055068cc4b68da19" name="ae062e8ad270bf3d0055068cc4b68da19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae062e8ad270bf3d0055068cc4b68da19">◆ </a></span>Compute_squared_radius_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ae062e8ad270bf3d0055068cc4b68da19">MeshTriangulationTraits_3::Compute_squared_radius_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Sphere_3 s)</span></p>
+<p>which returns the squared radius of the sphere <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="a0b18f069d046d50337f7317ca28e100c" name="a0b18f069d046d50337f7317ca28e100c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b18f069d046d50337f7317ca28e100c">◆ </a></span>Compute_squared_radius_smallest_orthogonal_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0b18f069d046d50337f7317ca28e100c">MeshTriangulationTraits_3::Compute_squared_radius_smallest_orthogonal_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span></p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span></p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q)</span></p>
+<p>which returns the squared radius of the smallest sphere orthogonal to the argument(s). </p>
+
+</div>
+</div>
+<a id="a083082f46d536bdbae4837f1ea4885f0" name="a083082f46d536bdbae4837f1ea4885f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083082f46d536bdbae4837f1ea4885f0">◆ </a></span>Compute_volume_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a083082f46d536bdbae4837f1ea4885f0">MeshTriangulationTraits_3::Compute_volume_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span></p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Tetrahedron_3 t)</span></p>
+<p>which respectively return the volume of the tetrahedron formed by the points <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>, and <span class="tt">s</span> and of the tetrahedron <span class="tt">t</span>. </p>
+
+</div>
+</div>
+<a id="a3989c76c3dc0f3d6aa04beaffac0db4a" name="a3989c76c3dc0f3d6aa04beaffac0db4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3989c76c3dc0f3d6aa04beaffac0db4a">◆ </a></span>Compute_weight_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3989c76c3dc0f3d6aa04beaffac0db4a">MeshTriangulationTraits_3::Compute_weight_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt"><a class="el" href="#aab8e02c41206b16178539dde526e7b93" title="Numerical type.">FT</a> operator()(Weighted_point_3 p)</span></p>
+<p>which returns the weight of the weighted point <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="ac23012af0f0217788c4f8d03eab1c5fa" name="ac23012af0f0217788c4f8d03eab1c5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23012af0f0217788c4f8d03eab1c5fa">◆ </a></span>Construct_base_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac23012af0f0217788c4f8d03eab1c5fa">MeshTriangulationTraits_3::Construct_base_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Plane_3 p, int index)</span>,</p>
+<p>which returns:</p><ul>
+<li>when <span class="tt">index == 1</span>: a vector <span class="tt">b1</span> that is orthogonal to the normal <span class="tt">n</span> to plane <span class="tt">h</span>;</li>
+<li>when <span class="tt">index == 2</span>: a vector <span class="tt">b2</span> that is orthogonal to <span class="tt">n</span> and <span class="tt">b1</span> and such that for an arbitrary point <span class="tt">p</span> on the plane <span class="tt">h</span>, the orientation of <span class="tt">p</span>, <span class="tt">p + b1</span>, <span class="tt">p + b2</span>, and <span class="tt">p + n</span> is positive. </li>
+</ul>
+
+</div>
+</div>
+<a id="a8830030d0eb8f5fef3e904c613a8b5d1" name="a8830030d0eb8f5fef3e904c613a8b5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8830030d0eb8f5fef3e904c613a8b5d1">◆ </a></span>Construct_center_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a8830030d0eb8f5fef3e904c613a8b5d1">MeshTriangulationTraits_3::Construct_center_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Point_3 operator()(Sphere_3 q)</span>,</p>
+<p>which returns the center of the sphere <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="ac4f68e264a602625daefaaa2a034e952" name="ac4f68e264a602625daefaaa2a034e952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4f68e264a602625daefaaa2a034e952">◆ </a></span>Construct_centroid_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac4f68e264a602625daefaaa2a034e952">MeshTriangulationTraits_3::Construct_centroid_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">Point_3 operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p><span class="tt">Point_3 operator()(Tetrahedron_3 t)</span>,</p>
+<p>which respectively return the centroid of the points <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span>, and the centroid of the tetrahedron <span class="tt">t</span>. </p>
+
+</div>
+</div>
+<a id="ab28363b4ca133aaadea6af71faed0a7a" name="ab28363b4ca133aaadea6af71faed0a7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab28363b4ca133aaadea6af71faed0a7a">◆ </a></span>Construct_midpoint_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab28363b4ca133aaadea6af71faed0a7a">MeshTriangulationTraits_3::Construct_midpoint_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Point_3 operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which returns the midpoint of the segment pq. </p>
+
+</div>
+</div>
+<a id="a9ecf555640a057c3724db05845584afa" name="a9ecf555640a057c3724db05845584afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ecf555640a057c3724db05845584afa">◆ </a></span>Construct_normal_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9ecf555640a057c3724db05845584afa">MeshTriangulationTraits_3::Construct_normal_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p>which returns the normal of the vectors <span class="tt">q-p</span> and <span class="tt">r-p</span>. </p>
+
+</div>
+</div>
+<a id="a2392ec8405fae8603059d4bcc62b5a92" name="a2392ec8405fae8603059d4bcc62b5a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2392ec8405fae8603059d4bcc62b5a92">◆ </a></span>Construct_opposite_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a2392ec8405fae8603059d4bcc62b5a92">MeshTriangulationTraits_3::Construct_opposite_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Vector_3 v)</span></p>
+<p>which returns <span class="tt">-v</span>. </p>
+
+</div>
+</div>
+<a id="a3d06429620435cad108b20ddff583365" name="a3d06429620435cad108b20ddff583365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d06429620435cad108b20ddff583365">◆ </a></span>Construct_orthogonal_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3d06429620435cad108b20ddff583365">MeshTriangulationTraits_3::Construct_orthogonal_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Plane_3 p)</span>,</p>
+<p>which returns a vector that is orthogonal to the plane <span class="tt">p</span> and directed to the positive side of <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="a05dfb57f7cf7fb1bbdfb130a696ddda8" name="a05dfb57f7cf7fb1bbdfb130a696ddda8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05dfb57f7cf7fb1bbdfb130a696ddda8">◆ </a></span>Construct_scaled_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a05dfb57f7cf7fb1bbdfb130a696ddda8">MeshTriangulationTraits_3::Construct_scaled_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Vector_3 v, FT scale)</span></p>
+<p>which returns the vector <span class="tt">v</span> scaled by a factor <span class="tt">scale</span>. </p>
+
+</div>
+</div>
+<a id="a0ecffe732165cb82ffdc1207a1e46670" name="a0ecffe732165cb82ffdc1207a1e46670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ecffe732165cb82ffdc1207a1e46670">◆ </a></span>Construct_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0ecffe732165cb82ffdc1207a1e46670">MeshTriangulationTraits_3::Construct_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a412dfd18add49954482f528155a4cad5" title="The sphere type.">Sphere_3</a> operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which returns the smallest sphere which passes through the points p and q. </p>
+
+</div>
+</div>
+<a id="a47536d5445fc73bfcb5932a9339fbb18" name="a47536d5445fc73bfcb5932a9339fbb18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47536d5445fc73bfcb5932a9339fbb18">◆ </a></span>Construct_tetrahedron_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a47536d5445fc73bfcb5932a9339fbb18">MeshTriangulationTraits_3::Construct_tetrahedron_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Tetrahedron_3 operator()(Point_3 p, Point_3 q, Point_3 r, Point_3 s)</span>,</p>
+<p>which returns the tetrahedron with vertices <span class="tt">p</span>, <span class="tt">q</span>, <span class="tt">r</span>, and <span class="tt">s</span>. </p>
+
+</div>
+</div>
+<a id="afafd282d7a09b282ba974aaaa9606222" name="afafd282d7a09b282ba974aaaa9606222"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afafd282d7a09b282ba974aaaa9606222">◆ </a></span>Construct_translated_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afafd282d7a09b282ba974aaaa9606222">MeshTriangulationTraits_3::Construct_translated_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt">Point_3 operator()(Point_3 p, Vector_3 v)</span>,</p>
+<p>which returns the point obtained by translating <span class="tt">p</span> by the vector <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="ac25586b213a72ec45d49c6989ee8b039" name="ac25586b213a72ec45d49c6989ee8b039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac25586b213a72ec45d49c6989ee8b039">◆ </a></span>Construct_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac25586b213a72ec45d49c6989ee8b039">MeshTriangulationTraits_3::Construct_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aaa978f04d92ab77ec82c90eeac066bb5" title="The vector type.">Vector_3</a> operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which returns a vector from two points. </p>
+
+</div>
+</div>
+<a id="a6502706352c9a825d0b25a11ead33d91" name="a6502706352c9a825d0b25a11ead33d91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6502706352c9a825d0b25a11ead33d91">◆ </a></span>Construct_weighted_circumcenter_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a6502706352c9a825d0b25a11ead33d91">MeshTriangulationTraits_3::Construct_weighted_circumcenter_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">Point_3 operator()(Weighted_point_3 p, Weighted_point_3 q, Weighted_point_3 r, Weighted_point_3 s)</span>,</p>
+<p><span class="tt">Point_3 operator()(Weighted_point_3 p, Weighted_point_3 q, Weighted_point_3 r, Weighted_point_3 s)</span>,</p>
+<p><span class="tt">Point_3 operator()(Weighted_point_3 p, Weighted_point_3 q, Weighted_point_3 r, Weighted_point_3 s)</span>,</p>
+<p>which return the center of the smallest orthogonal sphere to the input weighted points. </p>
+
+</div>
+</div>
+<a id="a818250d5c716e7675f7885223de45555" name="a818250d5c716e7675f7885223de45555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a818250d5c716e7675f7885223de45555">◆ </a></span>Do_intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a818250d5c716e7675f7885223de45555">MeshTriangulationTraits_3::Do_intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Sphere_3 s1, Sphere_3 s2)</span></p>
+<p>which returns <span class="tt">true</span> iff the spheres <span class="tt">s1</span> and <span class="tt">s2</span> intersect. </p>
+
+</div>
+</div>
+<a id="a859fb2b0694965de4e5f36711b59eda9" name="a859fb2b0694965de4e5f36711b59eda9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a859fb2b0694965de4e5f36711b59eda9">◆ </a></span>Equal_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a859fb2b0694965de4e5f36711b59eda9">MeshTriangulationTraits_3::Equal_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_3 p, Point_3 q)</span></p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span> and <span class="tt">q</span> are equal. </p>
+
+</div>
+</div>
+<a id="aab8e02c41206b16178539dde526e7b93" name="aab8e02c41206b16178539dde526e7b93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8e02c41206b16178539dde526e7b93">◆ </a></span>FT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aab8e02c41206b16178539dde526e7b93">MeshTriangulationTraits_3::FT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Numerical type. </p>
+<p>Must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> and <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldWithSqrt.html">FieldWithSqrt</a></span>, and constructible from a <span class="tt">double</span>. </p>
+
+</div>
+</div>
+<a id="a7dacb5dfa876dce5a2e2e71f877447c1" name="a7dacb5dfa876dce5a2e2e71f877447c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dacb5dfa876dce5a2e2e71f877447c1">◆ </a></span>Intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a7dacb5dfa876dce5a2e2e71f877447c1">MeshTriangulationTraits_3::Intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor object that must provide the function operators: </p>
+<p><span class="tt">std::optional&lt; std::variant&lt; T... &gt; &gt; operator()(Segment_3 s, Plane_3 p)</span></p>
+<p><span class="tt">std::optional&lt; std::variant&lt; T... &gt; &gt; operator()(Ray_3 r, Iso_cuboid i)</span></p>
+<p><span class="tt">std::optional&lt; std::variant&lt; T... &gt; &gt; operator()(Segment_3 s, Iso_cuboid i)</span></p>
+<p>which returns the intersection region of two geometrical objects. </p>
+
+</div>
+</div>
+<a id="ae8461db44ff929d425f8e2481f84a218" name="ae8461db44ff929d425f8e2481f84a218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8461db44ff929d425f8e2481f84a218">◆ </a></span>Is_degenerate_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ae8461db44ff929d425f8e2481f84a218">MeshTriangulationTraits_3::Is_degenerate_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operators: </p>
+<p><span class="tt">bool operator()(Segment_3 s)</span></p>
+<p><span class="tt">bool operator()(Ray_3 s)</span></p>
+<p>which return <span class="tt">true</span> iff the object is degenerate. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classMeshTriangulationTraits__3.html">MeshTriangulationTraits_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

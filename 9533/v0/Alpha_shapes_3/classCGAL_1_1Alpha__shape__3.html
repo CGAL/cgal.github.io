@@ -1,0 +1,929 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Alpha_shapes_3/classCGAL_1_1Alpha__shape__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - 3D Alpha Shapes: CGAL::Alpha_shape_3&lt; Dt, ExactAlphaComparisonTag &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - 3D Alpha Shapes
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classCGAL_1_1Alpha__shape__3.html','','classCGAL_1_1Alpha__shape__3-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Alpha__shape__3-members.html">List of all members</a> |
+<a href="#related">Related Symbols</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Alpha_shape_3&lt; Dt, ExactAlphaComparisonTag &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgAlphaShapes3Ref.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Alpha_shape_3.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p>Dt.</p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Dt, typename ExactAlphaComparisonTag&gt;<br>
+class CGAL::Alpha_shape_3&lt; Dt, ExactAlphaComparisonTag &gt;</div><p>The class <span class="tt"><a class="el" href="classCGAL_1_1Alpha__shape__3.html" title="The class Alpha_shape_3 represents the family of alpha shapes of points in the 3D space for all real ...">Alpha_shape_3</a></span> represents the family of alpha shapes of points in the 3D space for <em>all</em> real \( \alpha\). </p>
+<p>It maintains an underlying triangulation of the class <span class="tt">Dt</span>. Each k-dimensional face of Dt is associated with an interval that specifies for which values of alpha the face belongs to the alpha shape.</p>
+<p>Note that this class is used for <em>basic</em>, <em>weighted</em>, and <em>periodic</em> Alpha Shapes.</p>
+<p>The modifying functions <span class="tt">insert</span> and <span class="tt">remove</span> will overwrite the one inherited from the underlying triangulation class <span class="tt">Dt</span>. At the moment, only the static version is implemented.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Dt</td><td>must be either <span class="tt"><a class="elRef" href="../Triangulation_3/classCGAL_1_1Delaunay__triangulation__3.html">Delaunay_triangulation_3</a></span>, <span class="tt"><a class="elRef" href="../Triangulation_3/classCGAL_1_1Regular__triangulation__3.html">Regular_triangulation_3</a></span>, <span class="tt"><a class="elRef" href="../Periodic_3_triangulation_3/classCGAL_1_1Periodic__3__Delaunay__triangulation__3.html">Periodic_3_Delaunay_triangulation_3</a></span> or <span class="tt"><a class="elRef" href="../Periodic_3_triangulation_3/classCGAL_1_1Periodic__3__regular__triangulation__3.html">Periodic_3_regular_triangulation_3</a></span>. Note that <span class="tt">Dt::Geom_traits</span>, <span class="tt">Dt::Vertex</span>, and <span class="tt">Dt::Face</span> must be model the concepts <span class="tt"><a class="el" href="classAlphaShapeTraits__3.html" title="The concept AlphaShapeTraits_3 describes the requirements for the geometric traits class of the under...">AlphaShapeTraits_3</a></span>, <span class="tt"><a class="el" href="classAlphaShapeVertex__3.html" title="The concept AlphaShapeVertex_3 describes the requirements for the base vertex of an alpha shape.">AlphaShapeVertex_3</a></span> and <span class="tt"><a class="el" href="classAlphaShapeCell__3.html" title="The concept AlphaShapeCell_3 describes the requirements for the base cell of an alpha shape.">AlphaShapeCell_3</a></span>, respectively.</td></tr>
+    <tr><td class="paramname">The</td><td>second template parameter <span class="tt">ExactAlphaComparisonTag</span> is a tag that, when set to <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1"><span class="tt">Tag_true</span></a>, triggers exact comparisons between alpha values. This is useful when the Delaunay triangulation is instantiated with an exact predicates inexact constructions kernel. By default the <span class="tt">ExactAlphaComparisonTag</span> is set to <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0"><span class="tt">Tag_false</span></a> as it induces a small overhead. Note that the tag <span class="tt">ExactAlphaComparisonTag</span> is currently ignored (meaning that the code will behave as if <span class="tt">ExactAlphaComparisonTag</span> were set to <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0"><span class="tt">Tag_false</span></a>) if <span class="tt">Dt::Geom_traits::FT</span> is not a floating point number type as this strategy does not make sense if the traits class already provides exact constructions.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd><ul>
+<li>
+When the tag <span class="tt">ExactAlphaComparisonTag</span> is set to <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1"><span class="tt">Tag_true</span></a>, the class <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Cartesian__converter.html">Cartesian_converter</a></span> is used internally to switch between the traits class and the CGAL kernel <span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian</a>&lt;NT&gt;</span>, where <span class="tt">NT</span> can be either <span class="tt"><a class="elRef" href="../Number_types/classCGAL_1_1Interval__nt.html">CGAL::Interval_nt</a></span> or <span class="tt"><a class="elRef" href="../Number_types/group__nt__cgal.html#ga0849ff44771b19582218ebdfa5614f64">CGAL::Exact_rational</a></span>. <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Cartesian__converter.html">Cartesian_converter</a></span> must thus offer the necessary functors to convert a three-dimensional point of the traits class to a three-dimensional point of <span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Simple__cartesian.html">CGAL::Simple_cartesian</a>&lt;NT&gt;</span>. However, these functors are not necessarily provided by the basic <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Cartesian__converter.html">Cartesian_converter</a></span>, for example when a custom point is used. In this case, a partial specialization of <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Cartesian__converter.html">Cartesian_converter</a></span> must be provided by the user. An example of such specialization is given in the two-dimensional Alpha Shapes example <a class="el" href="Alpha_shapes_2_2ex_alpha_projection_traits_8cpp-example.html" title="Alpha_shapes_2/ex_alpha_projection_traits.cpp">ex_alpha_projection_traits.cpp</a>. </li>
+<li>
+The tag <span class="tt">ExactAlphaComparisonTag</span> cannot be used in conjunction with periodic triangulations. When the tag <span class="tt">ExactAlphaComparisonTag</span> is set to <a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1"><span class="tt">Tag_true</span></a>, the evaluations of predicates such as <span class="tt">Side_of_oriented_sphere_3</span> are done lazily. Consequently, the predicates store pointers to the geometrical positions of the points passed as arguments of the predicates. It is thus important that these points are not temporary objects. Points of the triangulation are accessed using the function <span class="tt">point(Cell_handle, int)</span> of the underlying triangulation. In the case of periodic triangulations, the <span class="tt">point(Cell_handle, int)</span> function is actually a construction that returns a temporary, which thus cannot be used along with a lazy predicate evaluation. </li>
+</ul>
+</dd></dl>
+<p><b>I/O</b><br>
+ The I/O operators are defined for <span class="tt">iostream</span>, and for the window stream provided by CGAL. The format for the iostream is an internal format.</p>
+<p><b>Implementation</b><br>
+</p>
+<p>In <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">GENERAL</a></span> mode, the alpha intervals of each triangulation face is computed and stored at initialization time. In <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160" title="the complex is regularized, that is singular faces are dropped and the alpha complex includes only a ...">REGULARIZED</a></span> mode, the alpha shape intervals of edges are not stored nor computed at initialization. Edges are simply classified on the fly upon request. This allows to have much faster building of alpha shapes in <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160" title="the complex is regularized, that is singular faces are dropped and the alpha complex includes only a ...">REGULARIZED</a></span> mode.</p>
+<p>Function <span class="tt"><a class="el" href="#aa55712b98abbe5baf5e794e9813f2466" title="Returns an iterator pointing to an element with -value alpha, or the corresponding past-the-end itera...">Alpha_shape_3::alpha_find()</a></span> uses linear search, while <span class="tt"><a class="el" href="#a6045c904b2d57b880d2fd15de3b771cb" title="Returns an iterator pointing to the first element with -value not less than alpha.">Alpha_shape_3::alpha_lower_bound()</a></span> and <span class="tt"><a class="el" href="#a04a2700d86384a9318647c5b27658c45" title="Returns an iterator pointing to the first element with -value greater than alpha.">Alpha_shape_3::alpha_upper_bound()</a></span> use binary search. <span class="tt"><a class="el" href="#a50affeb78ec8dd9075231c574c59b401" title="Returns the number of solid components of the alpha shape, that is, the number of components of its r...">Alpha_shape_3::number_of_solid_components()</a></span> performs a graph traversal and takes time linear in the number of cells of the underlying triangulation. <span class="tt"><a class="el" href="#accd959f5316156b0c9cd425a7ad073ac" title="Returns an iterator pointing to smallest  value such that the alpha shape satisfies the following two...">Alpha_shape_3::find_optimal_alpha()</a></span> uses binary search and takes time \(O(n \log n)\), where \( n\) is the number of points. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Alpha_shapes_3_2ex_alpha_shapes_3_8cpp-example.html#_a4">Alpha_shapes_3/ex_alpha_shapes_3.cpp</a>, <a class="el" href="Alpha_shapes_3_2ex_alpha_shapes_exact_alpha_8cpp-example.html#_a5">Alpha_shapes_3/ex_alpha_shapes_exact_alpha.cpp</a>, <a class="el" href="Alpha_shapes_3_2ex_alpha_shapes_with_fast_location_3_8cpp-example.html#_a4">Alpha_shapes_3/ex_alpha_shapes_with_fast_location_3.cpp</a>, <a class="el" href="Alpha_shapes_3_2ex_periodic_alpha_shapes_3_8cpp-example.html#_a9">Alpha_shapes_3/ex_periodic_alpha_shapes_3.cpp</a>, <a class="el" href="Alpha_shapes_3_2ex_weighted_alpha_shapes_3_8cpp-example.html#_a6">Alpha_shapes_3/ex_weighted_alpha_shapes_3.cpp</a>, and <a class="el" href="Alpha_shapes_3_2ex_weighted_periodic_alpha_shapes_3_8cpp-example.html#_a9">Alpha_shapes_3/ex_weighted_periodic_alpha_shapes_3.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-related" class="groupheader"><a id="related" name="related"></a>
+Related Symbols</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member symbols.) </p>
+</td></tr>
+<tr class="memitem:a3283cef535fce97f37a8d1557abc5ce0" id="r_a3283cef535fce97f37a8d1557abc5ce0"><td class="memItemLeft">std::ostream &amp; </td><td class="memItemRight"><a class="el" href="#a3283cef535fce97f37a8d1557abc5ce0">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="#a616fec3f0ff3357bbce2fc3bbd29ec3e">Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt; &amp;A)</td></tr>
+<tr class="memdesc:a3283cef535fce97f37a8d1557abc5ce0"><td class="mdescLeft"> </td><td class="mdescRight">Inserts the alpha shape <span class="tt">A</span> for the current alpha value into the stream <span class="tt">os</span>.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:aa6941cdb345b82d9aad513f8b7b1a6ef" id="r_aa6941cdb345b82d9aad513f8b7b1a6ef"><td class="memItemLeft">enum  </td><td class="memItemRight"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> { <a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c">GENERAL</a>
+, <a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a>
+ }</td></tr>
+<tr class="memdesc:aa6941cdb345b82d9aad513f8b7b1a6ef"><td class="mdescLeft"> </td><td class="mdescRight">In GENERAL mode, In REGULARIZED mode,.  <a href="#aa6941cdb345b82d9aad513f8b7b1a6ef">More...</a><br></td></tr>
+<tr class="memitem:ae887e9ecdaca28790f6ccdd73b84e40c" id="r_ae887e9ecdaca28790f6ccdd73b84e40c"><td class="memItemLeft">enum  </td><td class="memItemRight"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> { <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40cac00e772e98e2ec3b2af765b18c0e5467">EXTERIOR</a>
+, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca4fe33b826e16321706a6d2e3428fd992">SINGULAR</a>
+, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b">REGULAR</a>
+, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca8e65f253cf2f5db945f6665bfa645506">INTERIOR</a>
+ }</td></tr>
+<tr class="memdesc:ae887e9ecdaca28790f6ccdd73b84e40c"><td class="mdescLeft"> </td><td class="mdescRight">Enum to classify the faces of the underlying triangulation with respect to the alpha shape.  <a href="#ae887e9ecdaca28790f6ccdd73b84e40c">More...</a><br></td></tr>
+<tr class="memitem:a35b6db1db513f8cde1409ecbafef9927" id="r_a35b6db1db513f8cde1409ecbafef9927"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a35b6db1db513f8cde1409ecbafef9927">Gt</a></td></tr>
+<tr class="memdesc:a35b6db1db513f8cde1409ecbafef9927"><td class="mdescLeft"> </td><td class="mdescRight">the alpha shape traits type.  <br></td></tr>
+<tr class="memitem:a4f4f472d5f13900af9eb12d688d497e5" id="r_a4f4f472d5f13900af9eb12d688d497e5"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a></td></tr>
+<tr class="memdesc:a4f4f472d5f13900af9eb12d688d497e5"><td class="mdescLeft"> </td><td class="mdescRight">the number type of alpha values.  <br></td></tr>
+<tr class="memitem:ab4406e2de893a89a316ea94eea46c316" id="r_ab4406e2de893a89a316ea94eea46c316"><td class="memItemLeft">typedef Dt::Point </td><td class="memItemRight"><a class="el" href="#ab4406e2de893a89a316ea94eea46c316">Point</a></td></tr>
+<tr class="memdesc:ab4406e2de893a89a316ea94eea46c316"><td class="mdescLeft"> </td><td class="mdescRight">The point type.  <br></td></tr>
+<tr class="memitem:a00e9d0fe1b46d84edc91b8546b72eff5" id="r_a00e9d0fe1b46d84edc91b8546b72eff5"><td class="memItemLeft"><a id="a00e9d0fe1b46d84edc91b8546b72eff5" name="a00e9d0fe1b46d84edc91b8546b72eff5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>size_type</b></td></tr>
+<tr class="memdesc:a00e9d0fe1b46d84edc91b8546b72eff5"><td class="mdescLeft"> </td><td class="mdescRight">The size type. <br></td></tr>
+<tr class="memitem:ac4275fa2b0b9312eb6c967f4e61afe35" id="r_ac4275fa2b0b9312eb6c967f4e61afe35"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a></td></tr>
+<tr class="memdesc:ac4275fa2b0b9312eb6c967f4e61afe35"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional and non-mutable iterator that allow to traverse the increasing sequence of different alpha values.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr class="memitem:a616fec3f0ff3357bbce2fc3bbd29ec3e" id="r_a616fec3f0ff3357bbce2fc3bbd29ec3e"><td class="memItemLeft"><a id="a616fec3f0ff3357bbce2fc3bbd29ec3e" name="a616fec3f0ff3357bbce2fc3bbd29ec3e"></a>
+ </td><td class="memItemRight"><b>Alpha_shape_3</b> (<a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> alpha=0, <a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> m=<a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a>)</td></tr>
+<tr class="memdesc:a616fec3f0ff3357bbce2fc3bbd29ec3e"><td class="mdescLeft"> </td><td class="mdescRight">Introduces an empty alpha shape, sets the current alpha value to <span class="tt">alpha</span> and the mode to <span class="tt">m</span>. <br></td></tr>
+<tr class="memitem:a04b37aa511b45f84a8912ae3353bfe73" id="r_a04b37aa511b45f84a8912ae3353bfe73"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#a04b37aa511b45f84a8912ae3353bfe73">Alpha_shape_3</a> (Dt &amp;dt, <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> alpha=0, <a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> m=<a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a>)</td></tr>
+<tr class="memdesc:a04b37aa511b45f84a8912ae3353bfe73"><td class="mdescLeft"> </td><td class="mdescRight">Builds an alpha shape of mode <span class="tt">m</span> from the triangulation <span class="tt">dt</span>.  <br></td></tr>
+<tr class="memitem:a9f428e9c8a8fa662127a56b847d296d5" id="r_a9f428e9c8a8fa662127a56b847d296d5"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a>&gt; </td></tr>
+<tr class="memitem:a9f428e9c8a8fa662127a56b847d296d5 template"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#a9f428e9c8a8fa662127a56b847d296d5">Alpha_shape_3</a> (<a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a> first, <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a> last, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=0, <a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> m=<a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a>)</td></tr>
+<tr class="memdesc:a9f428e9c8a8fa662127a56b847d296d5"><td class="mdescLeft"> </td><td class="mdescRight">Builds an alpha shape of mode <span class="tt">m</span> for the points in the range <span class="tt">[first,last)</span> and set the current alpha value to <span class="tt">alpha</span>.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Modifiers</h2></td></tr>
+<tr class="memitem:a8ee6ccb89259b856b07d3852eb8f7e5f" id="r_a8ee6ccb89259b856b07d3852eb8f7e5f"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a>&gt; </td></tr>
+<tr class="memitem:a8ee6ccb89259b856b07d3852eb8f7e5f template"><td class="memItemLeft">std::ptrdiff_t </td><td class="memItemRight"><a class="el" href="#a8ee6ccb89259b856b07d3852eb8f7e5f">make_alpha_shape</a> (<a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a> first, <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a> last)</td></tr>
+<tr class="memdesc:a8ee6ccb89259b856b07d3852eb8f7e5f"><td class="mdescLeft"> </td><td class="mdescRight">Initialize the alpha shape data structure for points in the range <span class="tt">[first,last)</span>.  <br></td></tr>
+<tr class="memitem:ab44d66c4bc7809a4ec77457156d1254c" id="r_ab44d66c4bc7809a4ec77457156d1254c"><td class="memItemLeft"><a id="ab44d66c4bc7809a4ec77457156d1254c" name="ab44d66c4bc7809a4ec77457156d1254c"></a>
+void </td><td class="memItemRight"><b>clear</b> ()</td></tr>
+<tr class="memdesc:ab44d66c4bc7809a4ec77457156d1254c"><td class="mdescLeft"> </td><td class="mdescRight">Clears the structure. <br></td></tr>
+<tr class="memitem:a6341256b28bb454f7d7b6a3be552b0cc" id="r_a6341256b28bb454f7d7b6a3be552b0cc"><td class="memItemLeft"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> </td><td class="memItemRight"><a class="el" href="#a6341256b28bb454f7d7b6a3be552b0cc">set_alpha</a> (const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha)</td></tr>
+<tr class="memdesc:a6341256b28bb454f7d7b6a3be552b0cc"><td class="mdescLeft"> </td><td class="mdescRight">Sets the \( \alpha\)-value to <span class="tt">alpha</span>.  <br></td></tr>
+<tr class="memitem:a160314e33caf43ab29b307de6cbb672f" id="r_a160314e33caf43ab29b307de6cbb672f"><td class="memItemLeft"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> </td><td class="memItemRight"><a class="el" href="#a160314e33caf43ab29b307de6cbb672f">set_mode</a> (<a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> m=<a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a>)</td></tr>
+<tr class="memdesc:a160314e33caf43ab29b307de6cbb672f"><td class="mdescLeft"> </td><td class="mdescRight">Sets the mode of the alpha shape to <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">GENERAL</a></span> or <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160" title="the complex is regularized, that is singular faces are dropped and the alpha complex includes only a ...">REGULARIZED</a></span>.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Query Functions</h2></td></tr>
+<tr class="memitem:af3284c43e01f788da0dfad093897a85d" id="r_af3284c43e01f788da0dfad093897a85d"><td class="memItemLeft"><a id="af3284c43e01f788da0dfad093897a85d" name="af3284c43e01f788da0dfad093897a85d"></a>
+<a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> </td><td class="memItemRight"><b>get_mode</b> (void) const</td></tr>
+<tr class="memdesc:af3284c43e01f788da0dfad093897a85d"><td class="mdescLeft"> </td><td class="mdescRight">Returns whether the alpha shape is general or regularized. <br></td></tr>
+<tr class="memitem:a1ff033f6adfd4d205ace3ed7ec8f9f0e" id="r_a1ff033f6adfd4d205ace3ed7ec8f9f0e"><td class="memItemLeft"><a id="a1ff033f6adfd4d205ace3ed7ec8f9f0e" name="a1ff033f6adfd4d205ace3ed7ec8f9f0e"></a>
+const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp; </td><td class="memItemRight"><b>get_alpha</b> (void) const</td></tr>
+<tr class="memdesc:a1ff033f6adfd4d205ace3ed7ec8f9f0e"><td class="mdescLeft"> </td><td class="mdescRight">Returns the current \( \alpha\)-value. <br></td></tr>
+<tr class="memitem:aedcec11f4f08ab679db71ea2d8fe8017" id="r_aedcec11f4f08ab679db71ea2d8fe8017"><td class="memItemLeft">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp; </td><td class="memItemRight"><a class="el" href="#aedcec11f4f08ab679db71ea2d8fe8017">get_nth_alpha</a> (int n) const</td></tr>
+<tr class="memdesc:aedcec11f4f08ab679db71ea2d8fe8017"><td class="mdescLeft"> </td><td class="mdescRight">Returns the <span class="tt">n</span>-th <span class="tt">alpha</span>-value, sorted in an increasing order.  <br></td></tr>
+<tr class="memitem:a6cbdf2a4759e799c06772d15ff2b77f9" id="r_a6cbdf2a4759e799c06772d15ff2b77f9"><td class="memItemLeft"><a id="a6cbdf2a4759e799c06772d15ff2b77f9" name="a6cbdf2a4759e799c06772d15ff2b77f9"></a>
+<a class="el" href="#a00e9d0fe1b46d84edc91b8546b72eff5">size_type</a> </td><td class="memItemRight"><b>number_of_alphas</b> () const</td></tr>
+<tr class="memdesc:a6cbdf2a4759e799c06772d15ff2b77f9"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of different alpha-values. <br></td></tr>
+<tr class="memitem:a80f288c11e351134db95c0b971eee54c" id="r_a80f288c11e351134db95c0b971eee54c"><td class="memItemLeft"><a id="a80f288c11e351134db95c0b971eee54c" name="a80f288c11e351134db95c0b971eee54c"></a>
+<a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> </td><td class="memItemRight"><b>classify</b> (const <a class="el" href="#ab4406e2de893a89a316ea94eea46c316">Point</a> &amp;p, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:a80f288c11e351134db95c0b971eee54c"><td class="mdescLeft"> </td><td class="mdescRight">Locates a point <span class="tt">p</span> in the underlying triangulation and Classifies the associated k-face with respect to <span class="tt">alpha</span>. <br></td></tr>
+<tr class="memitem:aeea04c78712a6458bfddc91ca188e911" id="r_aeea04c78712a6458bfddc91ca188e911"><td class="memItemLeft"><a id="aeea04c78712a6458bfddc91ca188e911" name="aeea04c78712a6458bfddc91ca188e911"></a>
+<a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> </td><td class="memItemRight"><b>classify</b> (Cell_handle f, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:aeea04c78712a6458bfddc91ca188e911"><td class="mdescLeft"> </td><td class="mdescRight">Classifies the cell <span class="tt">f</span> of the underlying triangulation with respect to <span class="tt">alpha</span>. <br></td></tr>
+<tr class="memitem:ad9c8f9e14be596815c691c78379b5a45" id="r_ad9c8f9e14be596815c691c78379b5a45"><td class="memItemLeft"><a id="ad9c8f9e14be596815c691c78379b5a45" name="ad9c8f9e14be596815c691c78379b5a45"></a>
+<a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> </td><td class="memItemRight"><b>classify</b> (Facet f, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:ad9c8f9e14be596815c691c78379b5a45"><td class="mdescLeft"> </td><td class="mdescRight">Classifies the facet <span class="tt">f</span> of the underlying triangulation with respect to <span class="tt">alpha</span>. <br></td></tr>
+<tr class="memitem:a4802899bb754d039260e0528b9209618" id="r_a4802899bb754d039260e0528b9209618"><td class="memItemLeft"><a id="a4802899bb754d039260e0528b9209618" name="a4802899bb754d039260e0528b9209618"></a>
+<a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> </td><td class="memItemRight"><b>classify</b> (Cell_handle f, int i, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:a4802899bb754d039260e0528b9209618"><td class="mdescLeft"> </td><td class="mdescRight">Classifies the facet of the cell <span class="tt">f</span> opposite to the vertex with index <span class="tt">i</span> of the underlying triangulation with respect to <span class="tt">alpha</span>. <br></td></tr>
+<tr class="memitem:adb2d8d6ba3951a1e0c7abc3e3becef09" id="r_adb2d8d6ba3951a1e0c7abc3e3becef09"><td class="memItemLeft"><a id="adb2d8d6ba3951a1e0c7abc3e3becef09" name="adb2d8d6ba3951a1e0c7abc3e3becef09"></a>
+<a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> </td><td class="memItemRight"><b>classify</b> (const Edge &amp;e, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:adb2d8d6ba3951a1e0c7abc3e3becef09"><td class="mdescLeft"> </td><td class="mdescRight">Classifies the edge <span class="tt">e</span> with respect to <span class="tt">alpha</span> . <br></td></tr>
+<tr class="memitem:a80e9322dea066a400a6459ecda121ee2" id="r_a80e9322dea066a400a6459ecda121ee2"><td class="memItemLeft"><a id="a80e9322dea066a400a6459ecda121ee2" name="a80e9322dea066a400a6459ecda121ee2"></a>
+<a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> </td><td class="memItemRight"><b>classify</b> (Vertex_handle v, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:a80e9322dea066a400a6459ecda121ee2"><td class="mdescLeft"> </td><td class="mdescRight">Classifies the vertex <span class="tt">v</span> of the underlying triangulation with respect to <span class="tt">alpha</span>. <br></td></tr>
+<tr class="memitem:a47269efdb1bcffc880b5323060269622" id="r_a47269efdb1bcffc880b5323060269622"><td class="memItemLeft"><a id="a47269efdb1bcffc880b5323060269622" name="a47269efdb1bcffc880b5323060269622"></a>
+<a class="el" href="classCGAL_1_1Alpha__status.html">Alpha_status</a>&lt; <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &gt; </td><td class="memItemRight"><b>get_alpha_status</b> (const Edge &amp;e) const</td></tr>
+<tr class="memdesc:a47269efdb1bcffc880b5323060269622"><td class="mdescLeft"> </td><td class="mdescRight">Returns the alpha-status of the edge <span class="tt">e</span>. <br></td></tr>
+<tr class="memitem:ad059d7a28a69f410ff04e3e57f5d4896" id="r_ad059d7a28a69f410ff04e3e57f5d4896"><td class="memItemLeft"><a id="ad059d7a28a69f410ff04e3e57f5d4896" name="ad059d7a28a69f410ff04e3e57f5d4896"></a>
+<a class="el" href="classCGAL_1_1Alpha__status.html">Alpha_status</a>&lt; <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &gt; </td><td class="memItemRight"><b>get_alpha_status</b> (const Facet &amp;f) const</td></tr>
+<tr class="memdesc:ad059d7a28a69f410ff04e3e57f5d4896"><td class="mdescLeft"> </td><td class="mdescRight">Returns the alpha-status of the facet <span class="tt">f</span>. <br></td></tr>
+<tr class="memitem:a2fc51e1699b61b18efdeb9d7083c13b5" id="r_a2fc51e1699b61b18efdeb9d7083c13b5"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </td></tr>
+<tr class="memitem:a2fc51e1699b61b18efdeb9d7083c13b5 template"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#a2fc51e1699b61b18efdeb9d7083c13b5">get_alpha_shape_cells</a> (<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> it, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> type, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>())</td></tr>
+<tr class="memdesc:a2fc51e1699b61b18efdeb9d7083c13b5"><td class="mdescLeft"> </td><td class="mdescRight">Write the cells which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>.  <br></td></tr>
+<tr class="memitem:a0da61f30e79cb3b1e0bed2cb574bf818" id="r_a0da61f30e79cb3b1e0bed2cb574bf818"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </td></tr>
+<tr class="memitem:a0da61f30e79cb3b1e0bed2cb574bf818 template"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#a0da61f30e79cb3b1e0bed2cb574bf818">get_alpha_shape_facets</a> (<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> it, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> type, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>())</td></tr>
+<tr class="memdesc:a0da61f30e79cb3b1e0bed2cb574bf818"><td class="mdescLeft"> </td><td class="mdescRight">Write the facets which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>.  <br></td></tr>
+<tr class="memitem:a66957885cfa46e0c254e01d7d45c2b8d" id="r_a66957885cfa46e0c254e01d7d45c2b8d"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </td></tr>
+<tr class="memitem:a66957885cfa46e0c254e01d7d45c2b8d template"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#a66957885cfa46e0c254e01d7d45c2b8d">get_alpha_shape_edges</a> (<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> it, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> type, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>())</td></tr>
+<tr class="memdesc:a66957885cfa46e0c254e01d7d45c2b8d"><td class="mdescLeft"> </td><td class="mdescRight">Write the edges which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>.  <br></td></tr>
+<tr class="memitem:a5f229bd1091a1a1bd280e4ab289cac1e" id="r_a5f229bd1091a1a1bd280e4ab289cac1e"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </td></tr>
+<tr class="memitem:a5f229bd1091a1a1bd280e4ab289cac1e template"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#a5f229bd1091a1a1bd280e4ab289cac1e">get_alpha_shape_vertices</a> (<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> it, <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a> type, const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha)</td></tr>
+<tr class="memdesc:a5f229bd1091a1a1bd280e4ab289cac1e"><td class="mdescLeft"> </td><td class="mdescRight">Write the vertices which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>.  <br></td></tr>
+<tr class="memitem:a63f7c9b44160ca226dac70adb3d8bba7" id="r_a63f7c9b44160ca226dac70adb3d8bba7"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </td></tr>
+<tr class="memitem:a63f7c9b44160ca226dac70adb3d8bba7 template"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#a63f7c9b44160ca226dac70adb3d8bba7">filtration</a> (<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> it) const</td></tr>
+<tr class="memdesc:a63f7c9b44160ca226dac70adb3d8bba7"><td class="mdescLeft"> </td><td class="mdescRight">Output all the faces of the triangulation in increasing order of the alpha value for which they appear in the alpha complex.  <br></td></tr>
+<tr class="memitem:a81a9e396d265ad0e78dc725ec84a7e78" id="r_a81a9e396d265ad0e78dc725ec84a7e78"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </td></tr>
+<tr class="memitem:a81a9e396d265ad0e78dc725ec84a7e78 template"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#a81a9e396d265ad0e78dc725ec84a7e78">filtration_with_alpha_values</a> (<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> it) const</td></tr>
+<tr class="memdesc:a81a9e396d265ad0e78dc725ec84a7e78"><td class="mdescLeft"> </td><td class="mdescRight">Output all the faces of the triangulation in increasing order of the alpha value for which they appear in the alpha complex.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Traversal of the alpha-Values</h2></td></tr>
+<tr class="memitem:a69bb7c06ee3efe1e72492e5311f0050f" id="r_a69bb7c06ee3efe1e72492e5311f0050f"><td class="memItemLeft"><a id="a69bb7c06ee3efe1e72492e5311f0050f" name="a69bb7c06ee3efe1e72492e5311f0050f"></a>
+<a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> </td><td class="memItemRight"><b>alpha_begin</b> () const</td></tr>
+<tr class="memdesc:a69bb7c06ee3efe1e72492e5311f0050f"><td class="mdescLeft"> </td><td class="mdescRight">Returns an iterator that allows to traverse the sorted sequence of \( \alpha\)-values of the family of alpha shapes. <br></td></tr>
+<tr class="memitem:ad8f7e57f0878e73a076f386fbea2918b" id="r_ad8f7e57f0878e73a076f386fbea2918b"><td class="memItemLeft"><a id="ad8f7e57f0878e73a076f386fbea2918b" name="ad8f7e57f0878e73a076f386fbea2918b"></a>
+<a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> </td><td class="memItemRight"><b>alpha_end</b> () const</td></tr>
+<tr class="memdesc:ad8f7e57f0878e73a076f386fbea2918b"><td class="mdescLeft"> </td><td class="mdescRight">Returns the corresponding past-the-end iterator. <br></td></tr>
+<tr class="memitem:aa55712b98abbe5baf5e794e9813f2466" id="r_aa55712b98abbe5baf5e794e9813f2466"><td class="memItemLeft"><a id="aa55712b98abbe5baf5e794e9813f2466" name="aa55712b98abbe5baf5e794e9813f2466"></a>
+<a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> </td><td class="memItemRight"><b>alpha_find</b> (const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha) const</td></tr>
+<tr class="memdesc:aa55712b98abbe5baf5e794e9813f2466"><td class="mdescLeft"> </td><td class="mdescRight">Returns an iterator pointing to an element with \( \alpha\)-value <span class="tt">alpha</span>, or the corresponding past-the-end iterator if such an element is not found. <br></td></tr>
+<tr class="memitem:a6045c904b2d57b880d2fd15de3b771cb" id="r_a6045c904b2d57b880d2fd15de3b771cb"><td class="memItemLeft"><a id="a6045c904b2d57b880d2fd15de3b771cb" name="a6045c904b2d57b880d2fd15de3b771cb"></a>
+<a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> </td><td class="memItemRight"><b>alpha_lower_bound</b> (const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha) const</td></tr>
+<tr class="memdesc:a6045c904b2d57b880d2fd15de3b771cb"><td class="mdescLeft"> </td><td class="mdescRight">Returns an iterator pointing to the first element with \( \alpha\)-value not less than <span class="tt">alpha</span>. <br></td></tr>
+<tr class="memitem:a04a2700d86384a9318647c5b27658c45" id="r_a04a2700d86384a9318647c5b27658c45"><td class="memItemLeft"><a id="a04a2700d86384a9318647c5b27658c45" name="a04a2700d86384a9318647c5b27658c45"></a>
+<a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> </td><td class="memItemRight"><b>alpha_upper_bound</b> (const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha) const</td></tr>
+<tr class="memdesc:a04a2700d86384a9318647c5b27658c45"><td class="mdescLeft"> </td><td class="mdescRight">Returns an iterator pointing to the first element with \( \alpha\)-value greater than <span class="tt">alpha</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr class="memitem:a50affeb78ec8dd9075231c574c59b401" id="r_a50affeb78ec8dd9075231c574c59b401"><td class="memItemLeft"><a id="a50affeb78ec8dd9075231c574c59b401" name="a50affeb78ec8dd9075231c574c59b401"></a>
+<a class="el" href="#a00e9d0fe1b46d84edc91b8546b72eff5">size_type</a> </td><td class="memItemRight"><b>number_of_solid_components</b> (const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;alpha=<a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()) const</td></tr>
+<tr class="memdesc:a50affeb78ec8dd9075231c574c59b401"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of solid components of the alpha shape, that is, the number of components of its regularized version. <br></td></tr>
+<tr class="memitem:accd959f5316156b0c9cd425a7ad073ac" id="r_accd959f5316156b0c9cd425a7ad073ac"><td class="memItemLeft"><a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> </td><td class="memItemRight"><a class="el" href="#accd959f5316156b0c9cd425a7ad073ac">find_optimal_alpha</a> (<a class="el" href="#a00e9d0fe1b46d84edc91b8546b72eff5">size_type</a> nb_components) const</td></tr>
+<tr class="memdesc:accd959f5316156b0c9cd425a7ad073ac"><td class="mdescLeft"> </td><td class="mdescRight">Returns an iterator pointing to smallest \( \alpha\) value such that the alpha shape satisfies the following two properties:  <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="ac4275fa2b0b9312eb6c967f4e61afe35" name="ac4275fa2b0b9312eb6c967f4e61afe35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4275fa2b0b9312eb6c967f4e61afe35">◆ </a></span>Alpha_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::Alpha_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A bidirectional and non-mutable iterator that allow to traverse the increasing sequence of different alpha values. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Its <span class="tt">value_type</span> is <span class="tt"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5" title="the number type of alpha values.">FT</a></span>. </dd></dl>
+
+</div>
+</div>
+<a id="a4f4f472d5f13900af9eb12d688d497e5" name="a4f4f472d5f13900af9eb12d688d497e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4f472d5f13900af9eb12d688d497e5">◆ </a></span>FT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::FT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the number type of alpha values. </p>
+<p>In case <span class="tt">ExactAlphaComparisonTag</span> is <span class="tt"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></span>, it is Gt::FT.</p>
+<p>In case <span class="tt">ExactAlphaComparisonTag</span> is <span class="tt"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></span>, it is a number type allowing filtered exact comparisons (that is, interval arithmetic is first used before resorting to exact arithmetic). Access to the interval containing the exact value is provided through the function <span class="tt">FT::Approximate_nt approx() const</span> where <span class="tt">FT::Approximate_nt</span> is <span class="tt"><a class="elRef" href="../Number_types/classCGAL_1_1Interval__nt.html">Interval_nt</a>&lt;Protected&gt;</span> with <span class="tt">Protected=true</span>. Access to the exact value is provided through the function <span class="tt">FT::Exact_nt exact() const</span> where <span class="tt">FT::Exact_nt</span> depends on the configuration of CGAL (it may be <span class="tt"><a class="elRef" href="../Number_types/classmpq__class.html">mpq_class</a></span>, <span class="tt"><a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">Gmpq</a></span>, <span class="tt"><a class="elRef" href="../Number_types/classCGAL_1_1Quotient.html">Quotient</a>&lt;<a class="elRef" href="../Number_types/classCGAL_1_1MP__Float.html">CGAL::MP_Float</a>&gt;</span>, etc). An overload for the function <span class="tt">double to_double(FT)</span> is also available. Its precision is controlled through <span class="tt">FT::set_relative_precision_of_to_double()</span> in exactly the same way as with <span class="tt"><a class="elRef" href="../Number_types/classCGAL_1_1Lazy__exact__nt.html">Lazy_exact_nt</a>&lt;NT&gt;</span>, so a call to <span class="tt"><a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">to_double</a></span> may trigger an exact evaluation. It must be noted that an object of type <span class="tt"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5" title="the number type of alpha values.">FT</a></span> is valid as long as the alpha shapes class that creates it is valid and has not been modified. For convenience, classical comparison operators are provided for the type <span class="tt"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5" title="the number type of alpha values.">FT</a></span>. </p>
+
+</div>
+</div>
+<a id="a35b6db1db513f8cde1409ecbafef9927" name="a35b6db1db513f8cde1409ecbafef9927"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35b6db1db513f8cde1409ecbafef9927">◆ </a></span>Gt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::Gt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the alpha shape traits type. </p>
+<p>It has to derive from a triangulation traits class. For example <span class="tt">Dt::Point</span> is a point class. </p>
+
+</div>
+</div>
+<a id="ab4406e2de893a89a316ea94eea46c316" name="ab4406e2de893a89a316ea94eea46c316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4406e2de893a89a316ea94eea46c316">◆ </a></span>Point</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Dt::Point <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::Point</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The point type. </p>
+<p>For basic alpha shapes, <span class="tt"><a class="el" href="#ab4406e2de893a89a316ea94eea46c316" title="The point type.">Point</a></span> will be equal to <span class="tt">Gt::Point_3</span>. For weighted alpha shapes, <span class="tt"><a class="el" href="#ab4406e2de893a89a316ea94eea46c316" title="The point type.">Point</a></span> will be equal to <span class="tt">Gt::Weighted_point_3</span>. </p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
+<a id="ae887e9ecdaca28790f6ccdd73b84e40c" name="ae887e9ecdaca28790f6ccdd73b84e40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae887e9ecdaca28790f6ccdd73b84e40c">◆ </a></span>Classification_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">CGAL::Alpha_shape_3::Classification_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enum to classify the faces of the underlying triangulation with respect to the alpha shape. </p>
+<p>In <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">GENERAL</a></span> mode, for \( k=(0,1,2)\), each k-dimensional simplex of the triangulation can be classified as <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40cac00e772e98e2ec3b2af765b18c0e5467">EXTERIOR</a></span>, <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca4fe33b826e16321706a6d2e3428fd992">SINGULAR</a></span>, <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b">REGULAR</a></span> or <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca8e65f253cf2f5db945f6665bfa645506">INTERIOR</a></span>. In <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">GENERAL</a></span> mode a \( k\) simplex is <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b">REGULAR</a></span> if it is on the boundary f the alpha complex and belongs to a \( k+1\) simplex in this complex and it is <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca4fe33b826e16321706a6d2e3428fd992">SINGULAR</a></span> if it is a boundary simplex that is not included in a \( k+1\) simplex of the complex.</p>
+<p>In <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160" title="the complex is regularized, that is singular faces are dropped and the alpha complex includes only a ...">REGULARIZED</a></span> mode, for \( k=(0,1,2)\) each k-dimensional simplex of the triangulation can be classified as <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40cac00e772e98e2ec3b2af765b18c0e5467">EXTERIOR</a></span>, <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b">REGULAR</a></span> or <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca8e65f253cf2f5db945f6665bfa645506">INTERIOR</a></span>, i.e.\ there is no singular faces. A \( k\) simplex is <span class="tt"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b">REGULAR</a></span> if it is on the boundary of alpha complex and belongs to a tetrahedral cell of the complex. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae887e9ecdaca28790f6ccdd73b84e40cac00e772e98e2ec3b2af765b18c0e5467" name="ae887e9ecdaca28790f6ccdd73b84e40cac00e772e98e2ec3b2af765b18c0e5467"></a>EXTERIOR </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae887e9ecdaca28790f6ccdd73b84e40ca4fe33b826e16321706a6d2e3428fd992" name="ae887e9ecdaca28790f6ccdd73b84e40ca4fe33b826e16321706a6d2e3428fd992"></a>SINGULAR </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b" name="ae887e9ecdaca28790f6ccdd73b84e40ca0cd7a695e3b6b042c77b53c770dc776b"></a>REGULAR </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae887e9ecdaca28790f6ccdd73b84e40ca8e65f253cf2f5db945f6665bfa645506" name="ae887e9ecdaca28790f6ccdd73b84e40ca8e65f253cf2f5db945f6665bfa645506"></a>INTERIOR </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="aa6941cdb345b82d9aad513f8b7b1a6ef" name="aa6941cdb345b82d9aad513f8b7b1a6ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6941cdb345b82d9aad513f8b7b1a6ef">◆ </a></span>Mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">CGAL::Alpha_shape_3::Mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>In GENERAL mode, In REGULARIZED mode,. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" name="aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c"></a>GENERAL </td><td class="fielddoc"><p>the alpha complex can have singular faces, i.e., faces of dimension \( k\), for \( k=(0,1,2)\) that are not subfaces of a \( k+1\) face of the complex. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160" name="aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160"></a>REGULARIZED </td><td class="fielddoc"><p>the complex is regularized, that is singular faces are dropped and the alpha complex includes only a subset of the tetrahedral cells of the triangulation and the subfaces of those cells. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a04b37aa511b45f84a8912ae3353bfe73" name="a04b37aa511b45f84a8912ae3353bfe73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b37aa511b45f84a8912ae3353bfe73">◆ </a></span>Alpha_shape_3() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::Alpha_shape_3 </td>
+          <td>(</td>
+          <td class="paramtype">Dt &amp;</td>          <td class="paramname"><span class="paramname"><em>dt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a></td>          <td class="paramname"><span class="paramname"><em>alpha</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Builds an alpha shape of mode <span class="tt">m</span> from the triangulation <span class="tt">dt</span>. </p>
+<dl class="section attention"><dt>Attention</dt><dd>This operation destroys the triangulation <span class="tt">dt</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a9f428e9c8a8fa662127a56b847d296d5" name="a9f428e9c8a8fa662127a56b847d296d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f428e9c8a8fa662127a56b847d296d5">◆ </a></span>Alpha_shape_3() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::Alpha_shape_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></td>          <td class="paramname"><span class="paramname"><em>last</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Builds an alpha shape of mode <span class="tt">m</span> for the points in the range <span class="tt">[first,last)</span> and set the current alpha value to <span class="tt">alpha</span>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">InputIterator</td><td>must be an input iterator with value type <span class="tt"><a class="el" href="#ab4406e2de893a89a316ea94eea46c316" title="The point type.">Point</a></span> (the point type of the underlying triangulation.) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a63f7c9b44160ca226dac70adb3d8bba7" name="a63f7c9b44160ca226dac70adb3d8bba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63f7c9b44160ca226dac70adb3d8bba7">◆ </a></span>filtration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::filtration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>it</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output all the faces of the triangulation in increasing order of the alpha value for which they appear in the alpha complex. </p>
+<p>In case of equal alpha value lower dimensional faces are output first.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OutputIterator</td><td>must be an output iterator accepting variables of type <span class="tt"><a class="elRef" href="../STL_Extension/classCGAL_1_1Object.html">Object</a></span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>The result of this function depends on the mode of the Alpha-shape. In most case, <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">Alpha_shape_3::GENERAL</a></span> is the most interesting one. </dd></dl>
+
+</div>
+</div>
+<a id="a81a9e396d265ad0e78dc725ec84a7e78" name="a81a9e396d265ad0e78dc725ec84a7e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81a9e396d265ad0e78dc725ec84a7e78">◆ </a></span>filtration_with_alpha_values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::filtration_with_alpha_values </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>it</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output all the faces of the triangulation in increasing order of the alpha value for which they appear in the alpha complex. </p>
+<p>In case of equal alpha value lower dimensional faces are output first. In addition the value of alpha at which each face appears are also reported. Each face and its alpha value are reported successively.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OutputIterator</td><td>must be an output iterator accepting variables of type <span class="tt"><a class="elRef" href="../STL_Extension/classCGAL_1_1Object.html">Object</a></span> and <span class="tt"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5" title="the number type of alpha values.">FT</a></span>. The class <span class="tt"><a class="elRef" href="../STL_Extension/classCGAL_1_1Dispatch__output__iterator.html">Dispatch_output_iterator</a></span> can be used for this purpose.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>The result of this function dependents on the mode of the Alpha-shape. In most case, <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">Alpha_shape_3::GENERAL</a></span> is the most interesting one. </dd></dl>
+
+</div>
+</div>
+<a id="accd959f5316156b0c9cd425a7ad073ac" name="accd959f5316156b0c9cd425a7ad073ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accd959f5316156b0c9cd425a7ad073ac">◆ </a></span>find_optimal_alpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ac4275fa2b0b9312eb6c967f4e61afe35">Alpha_iterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::find_optimal_alpha </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a00e9d0fe1b46d84edc91b8546b72eff5">size_type</a></td>          <td class="paramname"><span class="paramname"><em>nb_components</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns an iterator pointing to smallest \( \alpha\) value such that the alpha shape satisfies the following two properties: </p>
+<ul>
+<li>All data points are either on the boundary or in the interior of the regularized version of the alpha shape.</li>
+<li>The number of solid component of the alpha shape is equal to or smaller than <span class="tt">nb_components</span>. </li>
+</ul>
+
+</div>
+</div>
+<a id="a2fc51e1699b61b18efdeb9d7083c13b5" name="a2fc51e1699b61b18efdeb9d7083c13b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fc51e1699b61b18efdeb9d7083c13b5">◆ </a></span>get_alpha_shape_cells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::get_alpha_shape_cells </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>it</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write the cells which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>. </p>
+<p>Returns past the end of the output sequence. </p>
+
+</div>
+</div>
+<a id="a66957885cfa46e0c254e01d7d45c2b8d" name="a66957885cfa46e0c254e01d7d45c2b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66957885cfa46e0c254e01d7d45c2b8d">◆ </a></span>get_alpha_shape_edges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::get_alpha_shape_edges </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>it</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write the edges which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>. </p>
+<p>Returns past the end of the output sequence. </p>
+
+</div>
+</div>
+<a id="a0da61f30e79cb3b1e0bed2cb574bf818" name="a0da61f30e79cb3b1e0bed2cb574bf818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0da61f30e79cb3b1e0bed2cb574bf818">◆ </a></span>get_alpha_shape_facets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::get_alpha_shape_facets </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>it</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a1ff033f6adfd4d205ace3ed7ec8f9f0e">get_alpha</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write the facets which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>. </p>
+<p>Returns past the end of the output sequence. </p>
+
+</div>
+</div>
+<a id="a5f229bd1091a1a1bd280e4ab289cac1e" name="a5f229bd1091a1a1bd280e4ab289cac1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f229bd1091a1a1bd280e4ab289cac1e">◆ </a></span>get_alpha_shape_vertices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::get_alpha_shape_vertices </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>it</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ae887e9ecdaca28790f6ccdd73b84e40c">Classification_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write the vertices which are of type <span class="tt">type</span> for the alpha value <span class="tt">alpha</span> to the sequence pointed to by the output iterator <span class="tt">it</span>. </p>
+<p>Returns past the end of the output sequence. </p>
+
+</div>
+</div>
+<a id="aedcec11f4f08ab679db71ea2d8fe8017" name="aedcec11f4f08ab679db71ea2d8fe8017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedcec11f4f08ab679db71ea2d8fe8017">◆ </a></span>get_nth_alpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp; <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::get_nth_alpha </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the <span class="tt">n</span>-th <span class="tt">alpha</span>-value, sorted in an increasing order. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">n</span> &lt; number of alphas. </dd></dl>
+
+</div>
+</div>
+<a id="a8ee6ccb89259b856b07d3852eb8f7e5f" name="a8ee6ccb89259b856b07d3852eb8f7e5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ee6ccb89259b856b07d3852eb8f7e5f">◆ </a></span>make_alpha_shape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a>&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ptrdiff_t <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::make_alpha_shape </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></td>          <td class="paramname"><span class="paramname"><em>last</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the alpha shape data structure for points in the range <span class="tt">[first,last)</span>. </p>
+<p>Returns the number of data points inserted in the underlying triangulation.</p>
+<p>If the function is applied to an non-empty alpha shape data structure, it is cleared before initialization. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">InputIterator</td><td>must be an input iterator with value type <span class="tt"><a class="el" href="#ab4406e2de893a89a316ea94eea46c316" title="The point type.">Point</a></span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6341256b28bb454f7d7b6a3be552b0cc" name="a6341256b28bb454f7d7b6a3be552b0cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6341256b28bb454f7d7b6a3be552b0cc">◆ </a></span>set_alpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::set_alpha </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a4f4f472d5f13900af9eb12d688d497e5">FT</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the \( \alpha\)-value to <span class="tt">alpha</span>. </p>
+<p>Returns the previous \( \alpha\)-value. </p><dl class="section pre"><dt>Precondition</dt><dd><span class="tt">alpha</span> \( \geq0\). </dd></dl>
+
+</div>
+</div>
+<a id="a160314e33caf43ab29b307de6cbb672f" name="a160314e33caf43ab29b307de6cbb672f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160314e33caf43ab29b307de6cbb672f">◆ </a></span>set_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a> <a class="el" href="classCGAL_1_1Alpha__shape__3.html">CGAL::Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt;::set_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6ef">Mode</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160">REGULARIZED</a></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the mode of the alpha shape to <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa4684ead732e31e7517685b9e59d3005c" title="the alpha complex can have singular faces, i.e., faces of dimension , for  that are not subfaces of a...">GENERAL</a></span> or <span class="tt"><a class="el" href="#aa6941cdb345b82d9aad513f8b7b1a6efa2566c900e41f0e4b1beb80b34044c160" title="the complex is regularized, that is singular faces are dropped and the alpha complex includes only a ...">REGULARIZED</a></span>. </p>
+<p>Returns the previous mode. Changing the mode of an alpha shape entails a partial re-computation of the data structure. </p>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a3283cef535fce97f37a8d1557abc5ce0" name="a3283cef535fce97f37a8d1557abc5ce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3283cef535fce97f37a8d1557abc5ce0">◆ </a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Dt, typename ExactAlphaComparisonTag&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a616fec3f0ff3357bbce2fc3bbd29ec3e">Alpha_shape_3</a>&lt; Dt, ExactAlphaComparisonTag &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>A</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel related">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inserts the alpha shape <span class="tt">A</span> for the current alpha value into the stream <span class="tt">os</span>. </p>
+<p>Defined in <span class="tt">CGAL/IO/io.h</span></p>
+<dl class="section pre"><dt>Precondition</dt><dd>The insert operator must be defined for <span class="tt"><a class="el" href="#ab4406e2de893a89a316ea94eea46c316" title="The point type.">Point</a></span>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a href="classCGAL_1_1Alpha__shape__3.html">Alpha_shape_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

@@ -1,0 +1,1664 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Boolean_set_operations_2/group__boolean__do__intersect.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.4 - 2D Regularized Boolean Set-Operations: Intersection Testing Functions</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.4 - 2D Regularized Boolean Set-Operations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('group__boolean__do__intersect.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Intersection Testing Functions<div class="ingroups"><a class="el" href="group__PkgBooleanSetOperations2Ref.html">2D Regularized Boolean Set-Operations Reference</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p><a class="anchor" id="ref_bso_do_intersect"></a> There are several overloaded function templates called <code><a class="el" href="group__boolean__do__intersect.html#gac76408f47b6c801abc330cc27bf8102e" title="determines whether two polygons intersect in their interior. ">do_intersect()</a></code> that determine whether the interior of two or more polygons intersect.</p>
+<p>A function template in this group that accepts two input polygons has one of the following signatures: </p><table cellpadding="3" border="0">
+<tr>
+<td align="right"><b>1.1.</b></td><td><code>bool do_intersect(const Type1&amp; pgn1, const Type2&amp; pgn2, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>1.2.</b></td><td><code>bool do_intersect(const Type1&amp; pgn1, const Type2&amp; pgn2);</code> </td></tr>
+<tr>
+<td align="right"><b> 2.</b></td><td><code>bool do_intersect(const Type1&amp; pgn1, const Type2&amp; pgn2, const GpsTraits&amp; traits);</code> </td></tr>
+</table>
+<p>There are also function templates that accept one or two ranges of input polygons: </p><table cellpadding="3" border="0">
+<tr>
+<td align="right"><b>3.1.</b></td><td><code>bool do_intersect(<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>3.2.</b></td><td><code>bool <a class="el" href="group__boolean__do__intersect.html#ga6f1b6ee2458c9e6add60957c18c8bccb" title="Given a range of polygons or a range of polygons with holes (resp. ">do_intersect(InputIterator begin, InputIterator end)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b> 4.</b></td><td><code>bool <a class="el" href="group__boolean__do__intersect.html#ga304dda7918910268cd3112ab44ae67f0" title="Given a range of polygons or a range of polygons with holes (resp. ">do_intersect(InputIterator begin, InputIterator end, const GpsTraits&amp; traits)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>5.1.</b></td><td><code>bool do_intersect(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>5.2.</b></td><td><code>bool <a class="el" href="group__boolean__do__intersect.html#ga214a6a61c682a3ed826f7f8a0968d956" title="Given a range of polygons (resp. ">do_intersect(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b> 6.</b></td><td><code>bool <a class="el" href="group__boolean__do__intersect.html#ga36e78954f46fa8951c75dd9e3f109655" title="Given a range of polygons (resp. ">do_intersect(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, const GpsTraits&amp; traits)</a>;</code> </td></tr>
+</table>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundary of the input polygons are treated as a cyclic sequence of single ( \(x\)-monotone) segments or as a cyclic sequence of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygons bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, the input polygons are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information.</td></tr>
+  </table>
+  </dd>
+</dl>
+<ul>
+<li>The types <code>Type1</code> and <code>Type2</code> of the parameters of <code>InputIterator1::value_type</code> and <code>InputIterator2::value_type</code> must be convertible to the types specified in a row in the table below, respectively.</li>
+<li>The types that apply to signatures (<b>1.1.</b>) and (<b>5.1.</b>) above are restricted to those listed in rows <b>1–4</b> in the table below.</li>
+<li>The types that apply to signatures (<b>1.2.</b>) and (<b>5.2.</b>) above are restricted to those listed in rows <b>5–8</b> in the table below.</li>
+<li>The type of <code>InputIterator::value_type</code> in (<b>3.1.</b>) above must be convertible to either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code>.</li>
+<li>The type of <code>InputIterator::value_type</code> in (<b>3.2.</b>) above must be convertible to either <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>.</li>
+</ul>
+<div align="left"> <table cellpadding="3" border="1">
+<tr>
+<th> </th><th><code>Type1</code> </th><th><code>Type2</code> </th></tr>
+<tr>
+<td><b>1</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td></tr>
+<tr>
+<td><b>2</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>3</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td></tr>
+<tr>
+<td><b>4</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>5</b></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td></tr>
+<tr>
+<td><b>6</b></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>7</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td></tr>
+<tr>
+<td><b>8</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+</table>
+</div><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1,pgn2</td><td>the input polygons. </td></tr>
+    <tr><td class="paramname">(end,begin)</td><td>a range of input polygons. </td></tr>
+    <tr><td class="paramname">(end1,begin1)</td><td>the first range of input polygons. </td></tr>
+    <tr><td class="paramname">(end2,begin2)</td><td>the second range of input polygons. </td></tr>
+    <tr><td class="paramname">traits</td><td>an optional traits object.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__boolean__complement.html"><code>CGAL::Regularized_boolean_operations_2::complement()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__intersection.html"><code>CGAL::Regularized_boolean_operations_2::intersection()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__join.html"><code>CGAL::Regularized_boolean_operations_2::join()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__difference.html"><code>CGAL::Regularized_boolean_operations_2::difference()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__symmetric__difference.html"><code>CGAL::Regularized_boolean_operations_2::symmetric_difference()</code> </a> </dd>
+<dd>
+<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/group__do__intersect__polygons__grp.html"><code>CGAL::do_intersect()</code> </a> </dd></dl>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members" id="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gac76408f47b6c801abc330cc27bf8102e"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:gac76408f47b6c801abc330cc27bf8102e"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gac76408f47b6c801abc330cc27bf8102e">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:gac76408f47b6c801abc330cc27bf8102e"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#gac76408f47b6c801abc330cc27bf8102e">More...</a><br /></td></tr>
+<tr class="separator:gac76408f47b6c801abc330cc27bf8102e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga172c36c2b41c897452be1e33b7a580b5"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga172c36c2b41c897452be1e33b7a580b5"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga172c36c2b41c897452be1e33b7a580b5">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga172c36c2b41c897452be1e33b7a580b5"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga172c36c2b41c897452be1e33b7a580b5">More...</a><br /></td></tr>
+<tr class="separator:ga172c36c2b41c897452be1e33b7a580b5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga82a66ab4cd65f8b8a77a1a86ea8fabb4"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:ga82a66ab4cd65f8b8a77a1a86ea8fabb4"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga82a66ab4cd65f8b8a77a1a86ea8fabb4">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:ga82a66ab4cd65f8b8a77a1a86ea8fabb4"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga82a66ab4cd65f8b8a77a1a86ea8fabb4">More...</a><br /></td></tr>
+<tr class="separator:ga82a66ab4cd65f8b8a77a1a86ea8fabb4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2a44eeabf259ae75f37e8538991a83cf"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga2a44eeabf259ae75f37e8538991a83cf"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga2a44eeabf259ae75f37e8538991a83cf">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga2a44eeabf259ae75f37e8538991a83cf"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga2a44eeabf259ae75f37e8538991a83cf">More...</a><br /></td></tr>
+<tr class="separator:ga2a44eeabf259ae75f37e8538991a83cf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2c1d706a4b027457bd4862a5c0cb6ee3"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:ga2c1d706a4b027457bd4862a5c0cb6ee3"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga2c1d706a4b027457bd4862a5c0cb6ee3">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:ga2c1d706a4b027457bd4862a5c0cb6ee3"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga2c1d706a4b027457bd4862a5c0cb6ee3">More...</a><br /></td></tr>
+<tr class="separator:ga2c1d706a4b027457bd4862a5c0cb6ee3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaa8ea06d0cec304e55d67e69d6bc6f36f"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gaa8ea06d0cec304e55d67e69d6bc6f36f"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gaa8ea06d0cec304e55d67e69d6bc6f36f">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gaa8ea06d0cec304e55d67e69d6bc6f36f"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#gaa8ea06d0cec304e55d67e69d6bc6f36f">More...</a><br /></td></tr>
+<tr class="separator:gaa8ea06d0cec304e55d67e69d6bc6f36f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae5cfdc0cedd3c911380f99f4555e9ac7"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:gae5cfdc0cedd3c911380f99f4555e9ac7"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gae5cfdc0cedd3c911380f99f4555e9ac7">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:gae5cfdc0cedd3c911380f99f4555e9ac7"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons with holes intersect in their interior.  <a href="group__boolean__do__intersect.html#gae5cfdc0cedd3c911380f99f4555e9ac7">More...</a><br /></td></tr>
+<tr class="separator:gae5cfdc0cedd3c911380f99f4555e9ac7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga35c2c66a5bc042b491ab37a69bdf4533"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga35c2c66a5bc042b491ab37a69bdf4533"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga35c2c66a5bc042b491ab37a69bdf4533">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga35c2c66a5bc042b491ab37a69bdf4533"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons with holes intersect in their interior.  <a href="group__boolean__do__intersect.html#ga35c2c66a5bc042b491ab37a69bdf4533">More...</a><br /></td></tr>
+<tr class="separator:ga35c2c66a5bc042b491ab37a69bdf4533"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga0e8e0312912bbc3547968a222500c3a6"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits &gt; </td></tr>
+<tr class="memitem:ga0e8e0312912bbc3547968a222500c3a6"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga0e8e0312912bbc3547968a222500c3a6">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:ga0e8e0312912bbc3547968a222500c3a6"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga0e8e0312912bbc3547968a222500c3a6">More...</a><br /></td></tr>
+<tr class="separator:ga0e8e0312912bbc3547968a222500c3a6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gafa2b16d3832399388cdd42ec09f3b073"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits &gt; </td></tr>
+<tr class="memitem:gafa2b16d3832399388cdd42ec09f3b073"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gafa2b16d3832399388cdd42ec09f3b073">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:gafa2b16d3832399388cdd42ec09f3b073"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#gafa2b16d3832399388cdd42ec09f3b073">More...</a><br /></td></tr>
+<tr class="separator:gafa2b16d3832399388cdd42ec09f3b073"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga06d1aa473640d1c86c2387caf3d94478"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits &gt; </td></tr>
+<tr class="memitem:ga06d1aa473640d1c86c2387caf3d94478"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga06d1aa473640d1c86c2387caf3d94478">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:ga06d1aa473640d1c86c2387caf3d94478"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga06d1aa473640d1c86c2387caf3d94478">More...</a><br /></td></tr>
+<tr class="separator:ga06d1aa473640d1c86c2387caf3d94478"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga74da2c72ec1eb174abfc090af36a380f"><td class="memTemplParams" colspan="2">template&lt;typename Polygon &gt; </td></tr>
+<tr class="memitem:ga74da2c72ec1eb174abfc090af36a380f"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga74da2c72ec1eb174abfc090af36a380f">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn2)</td></tr>
+<tr class="memdesc:ga74da2c72ec1eb174abfc090af36a380f"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons with holes intersect in their interior.  <a href="group__boolean__do__intersect.html#ga74da2c72ec1eb174abfc090af36a380f">More...</a><br /></td></tr>
+<tr class="separator:ga74da2c72ec1eb174abfc090af36a380f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga6f1b6ee2458c9e6add60957c18c8bccb"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator &gt; </td></tr>
+<tr class="memitem:ga6f1b6ee2458c9e6add60957c18c8bccb"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga6f1b6ee2458c9e6add60957c18c8bccb">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end)</td></tr>
+<tr class="memdesc:ga6f1b6ee2458c9e6add60957c18c8bccb"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons or a range of polygons with holes (resp.  <a href="group__boolean__do__intersect.html#ga6f1b6ee2458c9e6add60957c18c8bccb">More...</a><br /></td></tr>
+<tr class="separator:ga6f1b6ee2458c9e6add60957c18c8bccb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gabd6cbe830fc26aa7433e1deed163dbcd"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gabd6cbe830fc26aa7433e1deed163dbcd"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gabd6cbe830fc26aa7433e1deed163dbcd">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gabd6cbe830fc26aa7433e1deed163dbcd"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons or a range of polygons with holes (resp.  <a href="group__boolean__do__intersect.html#gabd6cbe830fc26aa7433e1deed163dbcd">More...</a><br /></td></tr>
+<tr class="separator:gabd6cbe830fc26aa7433e1deed163dbcd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga214a6a61c682a3ed826f7f8a0968d956"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 &gt; </td></tr>
+<tr class="memitem:ga214a6a61c682a3ed826f7f8a0968d956"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga214a6a61c682a3ed826f7f8a0968d956">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2)</td></tr>
+<tr class="memdesc:ga214a6a61c682a3ed826f7f8a0968d956"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__do__intersect.html#ga214a6a61c682a3ed826f7f8a0968d956">More...</a><br /></td></tr>
+<tr class="separator:ga214a6a61c682a3ed826f7f8a0968d956"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga9bd4272ae6505b501976350599dd1a3f"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga9bd4272ae6505b501976350599dd1a3f"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga9bd4272ae6505b501976350599dd1a3f">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga9bd4272ae6505b501976350599dd1a3f"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__do__intersect.html#ga9bd4272ae6505b501976350599dd1a3f">More...</a><br /></td></tr>
+<tr class="separator:ga9bd4272ae6505b501976350599dd1a3f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga00d8638f34376e06de5af967090eab5e"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga00d8638f34376e06de5af967090eab5e"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga00d8638f34376e06de5af967090eab5e">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga00d8638f34376e06de5af967090eab5e"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga00d8638f34376e06de5af967090eab5e">More...</a><br /></td></tr>
+<tr class="separator:ga00d8638f34376e06de5af967090eab5e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae215bea0500736e12c635a9d9b9a7a10"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gae215bea0500736e12c635a9d9b9a7a10"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gae215bea0500736e12c635a9d9b9a7a10">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, const GpsTraits &amp;traits, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gae215bea0500736e12c635a9d9b9a7a10"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#gae215bea0500736e12c635a9d9b9a7a10">More...</a><br /></td></tr>
+<tr class="separator:gae215bea0500736e12c635a9d9b9a7a10"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae3c7aa7fd44304adb264cab70900f872"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gae3c7aa7fd44304adb264cab70900f872"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gae3c7aa7fd44304adb264cab70900f872">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gae3c7aa7fd44304adb264cab70900f872"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#gae3c7aa7fd44304adb264cab70900f872">More...</a><br /></td></tr>
+<tr class="separator:gae3c7aa7fd44304adb264cab70900f872"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga4f20b42e3e0c5d47833a3989968a2cd3"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga4f20b42e3e0c5d47833a3989968a2cd3"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga4f20b42e3e0c5d47833a3989968a2cd3">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga4f20b42e3e0c5d47833a3989968a2cd3"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two polygons with holes intersect in their interior.  <a href="group__boolean__do__intersect.html#ga4f20b42e3e0c5d47833a3989968a2cd3">More...</a><br /></td></tr>
+<tr class="separator:ga4f20b42e3e0c5d47833a3989968a2cd3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga3b73288f5f115bac9653f871aa848ed0"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga3b73288f5f115bac9653f871aa848ed0"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga3b73288f5f115bac9653f871aa848ed0">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga3b73288f5f115bac9653f871aa848ed0"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga3b73288f5f115bac9653f871aa848ed0">More...</a><br /></td></tr>
+<tr class="separator:ga3b73288f5f115bac9653f871aa848ed0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga23eb875142cb6922de55d24f68bbe7cb"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga23eb875142cb6922de55d24f68bbe7cb"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga23eb875142cb6922de55d24f68bbe7cb">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga23eb875142cb6922de55d24f68bbe7cb"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga23eb875142cb6922de55d24f68bbe7cb">More...</a><br /></td></tr>
+<tr class="separator:ga23eb875142cb6922de55d24f68bbe7cb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga4a56f5cd328e624760e7a4e66f30a8df"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga4a56f5cd328e624760e7a4e66f30a8df"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga4a56f5cd328e624760e7a4e66f30a8df">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga4a56f5cd328e624760e7a4e66f30a8df"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons intersect in their interior.  <a href="group__boolean__do__intersect.html#ga4a56f5cd328e624760e7a4e66f30a8df">More...</a><br /></td></tr>
+<tr class="separator:ga4a56f5cd328e624760e7a4e66f30a8df"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad3543ff8006e907287bcbb5e315c642b"><td class="memTemplParams" colspan="2">template&lt;typename Polygon , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gad3543ff8006e907287bcbb5e315c642b"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#gad3543ff8006e907287bcbb5e315c642b">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gad3543ff8006e907287bcbb5e315c642b"><td class="mdescLeft"> </td><td class="mdescRight">determines whether two general polygons with holes intersect in their interior.  <a href="group__boolean__do__intersect.html#gad3543ff8006e907287bcbb5e315c642b">More...</a><br /></td></tr>
+<tr class="separator:gad3543ff8006e907287bcbb5e315c642b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga304dda7918910268cd3112ab44ae67f0"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga304dda7918910268cd3112ab44ae67f0"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga304dda7918910268cd3112ab44ae67f0">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga304dda7918910268cd3112ab44ae67f0"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons or a range of polygons with holes (resp.  <a href="group__boolean__do__intersect.html#ga304dda7918910268cd3112ab44ae67f0">More...</a><br /></td></tr>
+<tr class="separator:ga304dda7918910268cd3112ab44ae67f0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga36e78954f46fa8951c75dd9e3f109655"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga36e78954f46fa8951c75dd9e3f109655"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__do__intersect.html#ga36e78954f46fa8951c75dd9e3f109655">CGAL::Regularized_boolean_set_operations_2::do_intersect</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga36e78954f46fa8951c75dd9e3f109655"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__do__intersect.html#ga36e78954f46fa8951c75dd9e3f109655">More...</a><br /></td></tr>
+<tr class="separator:ga36e78954f46fa8951c75dd9e3f109655"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gac76408f47b6c801abc330cc27bf8102e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac76408f47b6c801abc330cc27bf8102e">◆ </a></span>do_intersect() <span class="overload">[1/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga172c36c2b41c897452be1e33b7a580b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga172c36c2b41c897452be1e33b7a580b5">◆ </a></span>do_intersect() <span class="overload">[2/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted to general polygons, bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga82a66ab4cd65f8b8a77a1a86ea8fabb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga82a66ab4cd65f8b8a77a1a86ea8fabb4">◆ </a></span>do_intersect() <span class="overload">[3/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga2a44eeabf259ae75f37e8538991a83cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2a44eeabf259ae75f37e8538991a83cf">◆ </a></span>do_intersect() <span class="overload">[4/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted to a general polygon and a general polygon with holes, respectively, bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga2c1d706a4b027457bd4862a5c0cb6ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2c1d706a4b027457bd4862a5c0cb6ee3">◆ </a></span>do_intersect() <span class="overload">[5/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gaa8ea06d0cec304e55d67e69d6bc6f36f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8ea06d0cec304e55d67e69d6bc6f36f">◆ </a></span>do_intersect() <span class="overload">[6/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted to a general polygon with holes and a general polygon, respectively, bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gae5cfdc0cedd3c911380f99f4555e9ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae5cfdc0cedd3c911380f99f4555e9ac7">◆ </a></span>do_intersect() <span class="overload">[7/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons with holes intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga35c2c66a5bc042b491ab37a69bdf4533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga35c2c66a5bc042b491ab37a69bdf4533">◆ </a></span>do_intersect() <span class="overload">[8/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons with holes intersect in their interior. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted to general polygon with holes , bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga0e8e0312912bbc3547968a222500c3a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0e8e0312912bbc3547968a222500c3a6">◆ </a></span>do_intersect() <span class="overload">[9/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gafa2b16d3832399388cdd42ec09f3b073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafa2b16d3832399388cdd42ec09f3b073">◆ </a></span>do_intersect() <span class="overload">[10/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga06d1aa473640d1c86c2387caf3d94478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga06d1aa473640d1c86c2387caf3d94478">◆ </a></span>do_intersect() <span class="overload">[11/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga74da2c72ec1eb174abfc090af36a380f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74da2c72ec1eb174abfc090af36a380f">◆ </a></span>do_intersect() <span class="overload">[12/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Polygon &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons with holes intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga6f1b6ee2458c9e6add60957c18c8bccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6f1b6ee2458c9e6add60957c18c8bccb">◆ </a></span>do_intersect() <span class="overload">[13/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>Given a range of polygons or a range of polygons with holes (resp. </p>
+<p>a range of general polygons or a range of general polygons with holes) determines whether the open polygons (resp. general polygons) in the range have a common point. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the pairwise intersections of all open polygons or polygons with holes (resp. general polygons or general polygons with holes) in the range [*begin,*end) overlap, and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gabd6cbe830fc26aa7433e1deed163dbcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabd6cbe830fc26aa7433e1deed163dbcd">◆ </a></span>do_intersect() <span class="overload">[14/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>Given a range of polygons or a range of polygons with holes (resp. </p>
+<p>a range of general polygons or a range of general polygons with holes) determines whether the open polygons (resp. general polygons) in the range have a common point. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the polygons in the input range are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygon with holes , bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the pairwise intersections of all open polygons or polygons with holes (resp. general polygons or general polygons with holes) in the range [*begin,*end) overlap, and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga214a6a61c682a3ed826f7f8a0968d956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga214a6a61c682a3ed826f7f8a0968d956">◆ </a></span>do_intersect() <span class="overload">[15/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) determines whether the open polygons (resp. general polygons) in the two ranges have a common point. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the pairwise intersections of all open polygons (resp. general polygons) and polygons with holes (resp. general polygons with holes) in the ranges [*begin1,*end1) and [*begin2,*end2), respectively, overlap, and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga9bd4272ae6505b501976350599dd1a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9bd4272ae6505b501976350599dd1a3f">◆ </a></span>do_intersect() <span class="overload">[16/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) determines whether the open polygons (resp. general polygons) in the two ranges have a common point. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the polygons in the input ranges are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygon with holes , bounded by polylines before the operation is actually performed. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the pairwise intersections of all open polygons (resp. general polygons) and polygons with holes (resp. general polygons with holes) in the ranges [*begin1,*end1) and [*begin2,*end2), respectively, overlap, and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga00d8638f34376e06de5af967090eab5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga00d8638f34376e06de5af967090eab5e">◆ </a></span>do_intersect() <span class="overload">[17/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gae215bea0500736e12c635a9d9b9a7a10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae215bea0500736e12c635a9d9b9a7a10">◆ </a></span>do_intersect() <span class="overload">[18/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gae3c7aa7fd44304adb264cab70900f872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae3c7aa7fd44304adb264cab70900f872">◆ </a></span>do_intersect() <span class="overload">[19/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga4f20b42e3e0c5d47833a3989968a2cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4f20b42e3e0c5d47833a3989968a2cd3">◆ </a></span>do_intersect() <span class="overload">[20/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two polygons with holes intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga3b73288f5f115bac9653f871aa848ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3b73288f5f115bac9653f871aa848ed0">◆ </a></span>do_intersect() <span class="overload">[21/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd>
+<dd>
+<code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga23eb875142cb6922de55d24f68bbe7cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga23eb875142cb6922de55d24f68bbe7cb">◆ </a></span>do_intersect() <span class="overload">[22/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd>
+<dd>
+<code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga4a56f5cd328e624760e7a4e66f30a8df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4a56f5cd328e624760e7a4e66f30a8df">◆ </a></span>do_intersect() <span class="overload">[23/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd>
+<dd>
+<code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gad3543ff8006e907287bcbb5e315c642b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad3543ff8006e907287bcbb5e315c642b">◆ </a></span>do_intersect() <span class="overload">[24/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Polygon , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>determines whether two general polygons with holes intersect in their interior. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>pgn1</code> and <code>pgn2</code> intersect in their interiro and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd>
+<dd>
+<code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga304dda7918910268cd3112ab44ae67f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga304dda7918910268cd3112ab44ae67f0">◆ </a></span>do_intersect() <span class="overload">[25/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>Given a range of polygons or a range of polygons with holes (resp. </p>
+<p>a range of general polygons or a range of general polygons with holes) determines whether the open polygons (resp. general polygons) in the range have a common point. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the pairwise intersections of all open polygons or polygons with holes (resp. general polygons or general polygons with holes) in the range [*begin,*end) overlap, and <code>false</code> otherwise. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga36e78954f46fa8951c75dd9e3f109655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga36e78954f46fa8951c75dd9e3f109655">◆ </a></span>do_intersect() <span class="overload">[26/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::do_intersect </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/do_intersect.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) determines whether the open polygons (resp. general polygons) in the two ranges have a common point. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the pairwise intersections of all open polygons (resp. general polygons) and polygons with holes (resp. general polygons with holes) in the ranges [*begin1,*end1) and [*begin2,*end2), respectively, overlap, and <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Dec 3 2021 15:10:37 for CGAL 5.4 - 2D Regularized Boolean Set-Operations by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

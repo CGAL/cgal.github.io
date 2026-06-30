@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Interpolation/group__PkgInterpolationRegularNeighborCoordinates2.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - 2D and Surface Function Interpolation: CGAL::regular_neighbor_coordinates_2()</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - 2D and Surface Function Interpolation
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('group__PkgInterpolationRegularNeighborCoordinates2.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::regular_neighbor_coordinates_2() <div class="ingroups"><a class="el" href="group__PkgInterpolation2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgInterpolation2NatNeighbor.html">Natural Neighbor Coordinate Computation</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader"> </h2>
+<div class="textblock"><p>The functions <span class="tt"><a class="el" href="#ga8fc26e371da4e18ee766d68b22af4106" title="Computes the regular neighbor coordinates for p with respect to the weighted points in the two-dimens...">regular_neighbor_coordinates_2()</a></span> compute natural neighbor coordinates, also called Sibson's coordinates, for weighted <span class="tt">2D</span> points provided a two-dimensional regular triangulation and a (weighted) query point inside the convex hull of the vertices of the triangulation. </p>
+<p>We call these coordinates <em>regular neighbor coordinates</em>.</p>
+<p><b>Implementation</b><br>
+</p>
+<p>This function computes the areas stolen from the power cells of points in the regular triangulation <span class="tt">rt</span> by the insertion of the query point <span class="tt">p</span>. The total area of the power cell of <span class="tt">p</span> is also computed and returned by the function.</p>
+<dl class="section attention"><dt>Attention</dt><dd>If <span class="tt">p</span> lies outside the convex hull, the coordinate values cannot be computed and the third value of the result triple is set to <span class="tt">false</span>.</dd></dl>
+<p><b>Output Format</b><br>
+</p>
+<p>The return type is identical for all overloads of <span class="tt"><a class="el" href="#ga8fc26e371da4e18ee766d68b22af4106" title="Computes the regular neighbor coordinates for p with respect to the weighted points in the two-dimens...">CGAL::regular_neighbor_coordinates_2()</a></span>: it is <span class="tt"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt;CoordinateOutputIterator, Rt::Geom_traits::FT, bool &gt;</span></p>
+<p><a class="elRef" href="../Manual/classRegular.html">Regular</a> neighbor coordinates are output in the first value of the triple, using an output iterator (see the concept <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span>). Internally, these coordinates are associated to some of the vertices of the triangulation, and a natural value type for the output iterator would thus be <span class="tt">std::pair&lt;Rt::Vertex_handle, Rt::Geom_traits::FT&gt;</span>. However, to allow flexibility in the format of the output, a functor passed as argument can be used to format the output as desired: this functor must have argument type <span class="tt">std::pair&lt;Rt::Vertex_handle, Rt::Geom_traits::FT&gt;</span> and its result type and the value type of the output iterator must be identical.</p>
+<p>For example, we can use a functor of type <a class="elRef" href="../STL_Extension/structCGAL_1_1Identity.html">CGAL::Identity&lt;std::pair&lt;Rt::Vertex_handle, Rt::Geom_traits::FT&gt; &gt; </a> and an output iterator with value type <span class="tt">std::pair&lt;Rt::Vertex_handle, Rt::Geom_traits::FT&gt;</span> or we could extract the bare point and use a value type: <span class="tt">std::pair&lt;Rt::Weighted_point, Rt::Geom_traits::FT&gt;</span>, or simply the coordinates, etc.</p>
+<p>This functor can be omitted and will default, for backward compatibility reasons, to a functor that extracts the point from the vertex, and the output iterator must then have value type <span class="tt">std::pair&lt;Rt::Weighted_point, Rt::Geom_traits::FT&gt;</span>.</p>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="group__PkgInterpolationNaturalNeighborCoordinates2.html" title="The functions natural_neighbor_coordinates_2() compute natural neighbor coordinates,...">CGAL::natural_neighbor_coordinates_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="group__PkgInterpolationSurfaceNeighborCoordinates3.html" title="The functions surface_neighbor_coordinates_3() compute natural neighbor coordinates for surface point...">3D Surface Neighbor Coordinates Functions</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="group__PkgInterpolation2Interpolation.html">Interpolation Functions</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga8fc26e371da4e18ee766d68b22af4106" id="r_ga8fc26e371da4e18ee766d68b22af4106"><td class="memTemplParams" colspan="2">template&lt;class Rt, class CoordinateOutputIterator, class OutputFunctor&gt; </td></tr>
+<tr class="memitem:ga8fc26e371da4e18ee766d68b22af4106 template"><td class="memItemLeft"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt; CoordinateOutputIterator, typename Rt::Geom_traits::FT, bool &gt; </td><td class="memItemRight"><a class="el" href="#ga8fc26e371da4e18ee766d68b22af4106">CGAL::regular_neighbor_coordinates_2</a> (const Rt &amp;rt, const typename Rt::Weighted_point &amp;p, CoordinateOutputIterator out, OutputFunctor fct, typename Rt::Face_handle start=typename Rt::Face_handle())</td></tr>
+<tr class="memdesc:ga8fc26e371da4e18ee766d68b22af4106"><td class="mdescLeft"> </td><td class="mdescRight">Computes the regular neighbor coordinates for <span class="tt">p</span> with respect to the weighted points in the two-dimensional regular triangulation <span class="tt">rt</span>.  <br></td></tr>
+<tr class="memitem:ga5cc28acccca6ea608abfcc2525a8bf2a" id="r_ga5cc28acccca6ea608abfcc2525a8bf2a"><td class="memTemplParams" colspan="2">template&lt;class Rt, class CoordinateOutputIterator, class OutputFunctor, class EdgeIterator, class VertexIterator&gt; </td></tr>
+<tr class="memitem:ga5cc28acccca6ea608abfcc2525a8bf2a template"><td class="memItemLeft"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt; CoordinateOutputIterator, typename Traits::FT, bool &gt; </td><td class="memItemRight"><a class="el" href="#ga5cc28acccca6ea608abfcc2525a8bf2a">CGAL::regular_neighbor_coordinates_2</a> (const Rt &amp;rt, const typename Traits::Weighted_point &amp;p, CoordinateOutputIterator out, OutputFunctor fct, EdgeIterator hole_begin, EdgeIterator hole_end, VertexIterator hidden_vertices_begin, VertexIterator hidden_vertices_end)</td></tr>
+<tr class="memdesc:ga5cc28acccca6ea608abfcc2525a8bf2a"><td class="mdescLeft"> </td><td class="mdescRight">Computes the regular neighbor coordinates for <span class="tt">p</span> with respect to the weighted points in the two-dimensional regular triangulation <span class="tt">rt</span>.  <br></td></tr>
+<tr class="memitem:ga92a6a6277e01784518649cfb1d952af8" id="r_ga92a6a6277e01784518649cfb1d952af8"><td class="memTemplParams" colspan="2">template&lt;class Rt, class CoordinateOutputIterator, class OutputFunctor&gt; </td></tr>
+<tr class="memitem:ga92a6a6277e01784518649cfb1d952af8 template"><td class="memItemLeft"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt; CoordinateOutputIterator, typename Rt::Geom_traits::FT, bool &gt; </td><td class="memItemRight"><a class="el" href="#ga92a6a6277e01784518649cfb1d952af8">CGAL::regular_neighbor_coordinates_2</a> (const Rt &amp;rt, typename Rt::Vertex_handle vh, CoordinateOutputIterator out, OutputFunctor fct)</td></tr>
+<tr class="memdesc:ga92a6a6277e01784518649cfb1d952af8"><td class="mdescLeft"> </td><td class="mdescRight">Computes the regular neighbor coordinates of the point <span class="tt">vh-&gt;point()</span> with respect to the vertices of <span class="tt">rt</span> excluding <span class="tt">vh-&gt;point()</span>.  <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ga8fc26e371da4e18ee766d68b22af4106" name="ga8fc26e371da4e18ee766d68b22af4106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8fc26e371da4e18ee766d68b22af4106">◆ </a></span>regular_neighbor_coordinates_2() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Rt, class CoordinateOutputIterator, class OutputFunctor&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt; CoordinateOutputIterator, typename Rt::Geom_traits::FT, bool &gt; CGAL::regular_neighbor_coordinates_2 </td>
+          <td>(</td>
+          <td class="paramtype">const Rt &amp;</td>          <td class="paramname"><span class="paramname"><em>rt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename Rt::Weighted_point &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CoordinateOutputIterator</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputFunctor</td>          <td class="paramname"><span class="paramname"><em>fct</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename Rt::Face_handle</td>          <td class="paramname"><span class="paramname"><em>start</em></span><span class="paramdefsep"> = </span><span class="paramdefval">typename Rt::Face_handle()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/regular_neighbor_coordinates_2.h&gt;</code></p>
+
+<p>Computes the regular neighbor coordinates for <span class="tt">p</span> with respect to the weighted points in the two-dimensional regular triangulation <span class="tt">rt</span>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Rt</td><td>must be a <span class="tt"><a class="elRef" href="../Triangulation_2/classCGAL_1_1Regular__triangulation__2.html">Regular_triangulation_2</a>&lt;Traits, Tds&gt;</span>. <span class="tt">Traits</span> must be a model of the concepts <span class="tt"><a class="elRef" href="../Triangulation_2/classRegularTriangulationTraits__2.html">RegularTriangulationTraits_2</a></span> and <span class="tt"><a class="elRef" href="../Polygon/classPolygonTraits__2.html">PolygonTraits_2</a></span>. </td></tr>
+    <tr><td class="paramname">CoordinateOutputIterator</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> and have the value type <span class="tt">OutputFunctor::result_type</span>. The output computed by the function is placed starting at <span class="tt">out</span>. </td></tr>
+    <tr><td class="paramname">OutputFunctor</td><td>must be a functor with argument type <span class="tt">std::pair&lt;Rt::Vertex_handle, Rt::Geom_traits::FT&gt;</span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>See <a class="el" href="group__PkgInterpolationRegularNeighborCoordinates2.html">above </a> for a detailed explanation on the usage of <span class="tt">OutputFunctor</span>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rt</td><td>is the regular triangulation. </td></tr>
+    <tr><td class="paramname">p</td><td>is the query point. </td></tr>
+    <tr><td class="paramname">out</td><td>is an object of type <span class="tt">CoordinateOutputIterator</span>. </td></tr>
+    <tr><td class="paramname">fct</td><td>is an object of type <span class="tt">OutputFunctor</span>. </td></tr>
+    <tr><td class="paramname">start</td><td>is an optional argument that is used as a hint of where the locate process has to start its search.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A triple consisting of:<ul>
+<li>a sequence of objects of types <span class="tt">OutputFunctor::result_type</span>, starting at <span class="tt">out</span>.</li>
+<li>the normalization factor of the coordinates.</li>
+<li>a Boolean value which is set to <span class="tt">true</span> if the coordinate computation was successful, and <span class="tt">false</span> otherwise.</li>
+</ul>
+</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If the weight of <span class="tt">p</span> is so small that the point <span class="tt">p</span> would not have any power cell if it were inserted in the power diagram, then the resulting triple will be <span class="tt">(out, 0, true)</span> with no additional entry in <span class="tt">out</span> (compared to its state in input). </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Interpolation_2rn_coordinates_2_8cpp-example.html#a4">Interpolation/rn_coordinates_2.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga5cc28acccca6ea608abfcc2525a8bf2a" name="ga5cc28acccca6ea608abfcc2525a8bf2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5cc28acccca6ea608abfcc2525a8bf2a">◆ </a></span>regular_neighbor_coordinates_2() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Rt, class CoordinateOutputIterator, class OutputFunctor, class EdgeIterator, class VertexIterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt; CoordinateOutputIterator, typename Traits::FT, bool &gt; CGAL::regular_neighbor_coordinates_2 </td>
+          <td>(</td>
+          <td class="paramtype">const Rt &amp;</td>          <td class="paramname"><span class="paramname"><em>rt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename Traits::Weighted_point &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CoordinateOutputIterator</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputFunctor</td>          <td class="paramname"><span class="paramname"><em>fct</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EdgeIterator</td>          <td class="paramname"><span class="paramname"><em>hole_begin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EdgeIterator</td>          <td class="paramname"><span class="paramname"><em>hole_end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexIterator</td>          <td class="paramname"><span class="paramname"><em>hidden_vertices_begin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexIterator</td>          <td class="paramname"><span class="paramname"><em>hidden_vertices_end</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/regular_neighbor_coordinates_2.h&gt;</code></p>
+
+<p>Computes the regular neighbor coordinates for <span class="tt">p</span> with respect to the weighted points in the two-dimensional regular triangulation <span class="tt">rt</span>. </p>
+<p>The iterator range <span class="tt">[hole_begin, hole_end)</span> determines the boundary edges of the conflict zone of <span class="tt">p</span> in the triangulation <span class="tt">rt</span>. <a class="elRef" href="../Triangulation_2/classCGAL_1_1Regular__triangulation__2.html#ac0cfbef1539e5d87688e52b75186b5f6"><span class="tt">rt.hidden_vertices_begin()</span></a> and <a class="elRef" href="../Triangulation_2/classCGAL_1_1Regular__triangulation__2.html#ae6014aaf628273c5dbb384c3aa3c917d"><span class="tt">rt.hidden_vertices_end()</span></a> determines the iterator range over the hidden vertices of the conflict zone of <span class="tt">p</span> in<span class="tt">rt</span>. Those ranges can, for example, be computed using the function <a class="elRef" href="../Triangulation_2/classCGAL_1_1Regular__triangulation__2.html#a0654d7f27609e26cd0dae4e68fad6c56"><span class="tt">rt.get_boundary_of_conflicts_and_hidden_vertices(p,std::back_inserter(hole),
+std::back_inserter(hidden_vertices), start)</span></a>.</p>
+<p><b>Requirements</b><br>
+ Same as above. </p>
+
+</div>
+</div>
+<a id="ga92a6a6277e01784518649cfb1d952af8" name="ga92a6a6277e01784518649cfb1d952af8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga92a6a6277e01784518649cfb1d952af8">◆ </a></span>regular_neighbor_coordinates_2() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Rt, class CoordinateOutputIterator, class OutputFunctor&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../STL_Extension/classCGAL_1_1Triple.html">CGAL::Triple</a>&lt; CoordinateOutputIterator, typename Rt::Geom_traits::FT, bool &gt; CGAL::regular_neighbor_coordinates_2 </td>
+          <td>(</td>
+          <td class="paramtype">const Rt &amp;</td>          <td class="paramname"><span class="paramname"><em>rt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename Rt::Vertex_handle</td>          <td class="paramname"><span class="paramname"><em>vh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CoordinateOutputIterator</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputFunctor</td>          <td class="paramname"><span class="paramname"><em>fct</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/regular_neighbor_coordinates_2.h&gt;</code></p>
+
+<p>Computes the regular neighbor coordinates of the point <span class="tt">vh-&gt;point()</span> with respect to the vertices of <span class="tt">rt</span> excluding <span class="tt">vh-&gt;point()</span>. </p>
+<p><b>Requirements</b><br>
+ Same as above. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

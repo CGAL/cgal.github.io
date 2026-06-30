@@ -1,0 +1,1120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Polygon_mesh_processing/group__PMP__distance__grp.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - Polygon Mesh Processing: Distance Functions</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - Polygon Mesh Processing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('group__PMP__distance__grp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Distance Functions <div class="ingroups"><a class="el" href="group__PkgPolygonMeshProcessingRef.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader"> </h2>
+<div class="textblock"><p>Functions to compute the distance between meshes, between a mesh and a point set and between a point set and a mesh. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga6307a4504382c46dc3b0e578ca1f7a3b" id="r_ga6307a4504382c46dc3b0e578ca1f7a3b"><td class="memTemplParams" colspan="2">template&lt;class PointOutputIterator, class TriangleMesh, class NamedParameters = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga6307a4504382c46dc3b0e578ca1f7a3b template"><td class="memItemLeft">PointOutputIterator </td><td class="memItemRight"><a class="el" href="#ga6307a4504382c46dc3b0e578ca1f7a3b">CGAL::Polygon_mesh_processing::sample_triangle_mesh</a> (const TriangleMesh &amp;tm, PointOutputIterator out, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga6307a4504382c46dc3b0e578ca1f7a3b"><td class="mdescLeft"> </td><td class="mdescRight">generates points on <span class="tt">tm</span> and outputs them to <span class="tt">out</span>; the sampling method is selected using named parameters.  <br></td></tr>
+<tr class="memitem:ga276e117793ebf6abbb3629423ad700e9" id="r_ga276e117793ebf6abbb3629423ad700e9"><td class="memTemplParams" colspan="2">template&lt;class PointOutputIterator, class TriangleRange, class PointRange, class NamedParameters = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga276e117793ebf6abbb3629423ad700e9 template"><td class="memItemLeft">PointOutputIterator </td><td class="memItemRight"><a class="el" href="#ga276e117793ebf6abbb3629423ad700e9">CGAL::Polygon_mesh_processing::sample_triangle_soup</a> (const PointRange &amp;points, const TriangleRange &amp;triangles, PointOutputIterator out, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga276e117793ebf6abbb3629423ad700e9"><td class="mdescLeft"> </td><td class="mdescRight">generates points on a triangle soup and puts them to <span class="tt">out</span>; the sampling method is selected using named parameters.  <br></td></tr>
+<tr class="memitem:gaed9454c6ed046cd4fb7928cf2b5f7c2c" id="r_gaed9454c6ed046cd4fb7928cf2b5f7c2c"><td class="memTemplParams" colspan="2">template&lt;class Concurrency_tag, class TriangleMesh, class PointRange, class NamedParameters = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gaed9454c6ed046cd4fb7928cf2b5f7c2c template"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#gaed9454c6ed046cd4fb7928cf2b5f7c2c">CGAL::Polygon_mesh_processing::max_distance_to_triangle_mesh</a> (const PointRange &amp;points, const TriangleMesh &amp;tm, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gaed9454c6ed046cd4fb7928cf2b5f7c2c"><td class="mdescLeft"> </td><td class="mdescRight">returns the distance to <span class="tt">tm</span> of the point from <span class="tt">points</span> that is the furthest from <span class="tt">tm</span>.  <br></td></tr>
+<tr class="memitem:ga74376aa81d44d745426acfad5a0ac8de" id="r_ga74376aa81d44d745426acfad5a0ac8de"><td class="memTemplParams" colspan="2">template&lt;class Concurrency_tag, class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga74376aa81d44d745426acfad5a0ac8de template"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#ga74376aa81d44d745426acfad5a0ac8de">CGAL::Polygon_mesh_processing::approximate_Hausdorff_distance</a> (const TriangleMesh &amp;tm1, const TriangleMesh &amp;tm2, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga74376aa81d44d745426acfad5a0ac8de"><td class="mdescLeft"> </td><td class="mdescRight">computes the approximate Hausdorff distance from <span class="tt">tm1</span> to <span class="tt">tm2</span> by returning the distance of the farthest point from <span class="tt">tm2</span> amongst a sampling of <span class="tt">tm1</span> generated with the function <span class="tt"><a class="el" href="#ga6307a4504382c46dc3b0e578ca1f7a3b" title="generates points on tm and outputs them to out; the sampling method is selected using named parameter...">sample_triangle_mesh()</a></span> with <span class="tt">tm1</span> and <span class="tt">np1</span> as parameter.  <br></td></tr>
+<tr class="memitem:ga035fdbf660615b036cb3f47f7997b739" id="r_ga035fdbf660615b036cb3f47f7997b739"><td class="memTemplParams" colspan="2">template&lt;class Concurrency_tag, class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga035fdbf660615b036cb3f47f7997b739 template"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#ga035fdbf660615b036cb3f47f7997b739">CGAL::Polygon_mesh_processing::approximate_symmetric_Hausdorff_distance</a> (const TriangleMesh &amp;tm1, const TriangleMesh &amp;tm2, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga035fdbf660615b036cb3f47f7997b739"><td class="mdescLeft"> </td><td class="mdescRight">returns the approximate symmetric Hausdorff distance between <span class="tt">tm1</span> and <span class="tt">tm2</span>, that is the maximum of <span class="tt">approximate_Hausdorff_distance(tm1, tm2, np1, np2)</span> and <span class="tt">approximate_Hausdorff_distance(tm2, tm1, np2, np1)</span>.  <br></td></tr>
+<tr class="memitem:ga3451246234c24dd4f03d17fc17d50336" id="r_ga3451246234c24dd4f03d17fc17d50336"><td class="memTemplParams" colspan="2">template&lt;class TriangleMesh, class PointRange, class NamedParameters = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga3451246234c24dd4f03d17fc17d50336 template"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#ga3451246234c24dd4f03d17fc17d50336">CGAL::Polygon_mesh_processing::approximate_max_distance_to_point_set</a> (const TriangleMesh &amp;tm, const PointRange &amp;points, const double precision, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga3451246234c24dd4f03d17fc17d50336"><td class="mdescLeft"> </td><td class="mdescRight">returns an approximation of the distance between <span class="tt">points</span> and the point lying on <span class="tt">tm</span> that is the farthest from <span class="tt">points</span>.  <br></td></tr>
+<tr class="memitem:gac251a5e983df7ee6aa61623cdb9ec454" id="r_gac251a5e983df7ee6aa61623cdb9ec454"><td class="memTemplParams" colspan="2">template&lt;class Concurrency_tag, class TriangleMesh1, class TriangleMesh2, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gac251a5e983df7ee6aa61623cdb9ec454 template"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#gac251a5e983df7ee6aa61623cdb9ec454">CGAL::Polygon_mesh_processing::bounded_error_Hausdorff_distance</a> (const TriangleMesh1 &amp;tm1, const TriangleMesh2 &amp;tm2, const double error_bound=0.0001, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gac251a5e983df7ee6aa61623cdb9ec454"><td class="mdescLeft"> </td><td class="mdescRight">returns an estimate on the Hausdorff distance from <span class="tt">tm1</span> to <span class="tt">tm2</span> that is at most <span class="tt">error_bound</span> away from the actual Hausdorff distance from <span class="tt">tm1</span> to <span class="tt">tm2</span>.  <br></td></tr>
+<tr class="memitem:gaff7bb1f6909363380f3947f1fabf06a0" id="r_gaff7bb1f6909363380f3947f1fabf06a0"><td class="memTemplParams" colspan="2">template&lt;class Concurrency_tag, class TriangleMesh1, class TriangleMesh2, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gaff7bb1f6909363380f3947f1fabf06a0 template"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#gaff7bb1f6909363380f3947f1fabf06a0">CGAL::Polygon_mesh_processing::bounded_error_symmetric_Hausdorff_distance</a> (const TriangleMesh1 &amp;tm1, const TriangleMesh2 &amp;tm2, const double error_bound, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gaff7bb1f6909363380f3947f1fabf06a0"><td class="mdescLeft"> </td><td class="mdescRight">returns the the symmetric Hausdorff distance, that is the maximum of <span class="tt">bounded_error_Hausdorff_distance(tm1, tm2, error_bound, np1, np2)</span> and <span class="tt">bounded_error_Hausdorff_distance(tm2, tm1, error_bound, np2, np1)</span>.  <br></td></tr>
+<tr class="memitem:gacd7487071c9d409e91c37a731999a239" id="r_gacd7487071c9d409e91c37a731999a239"><td class="memTemplParams" colspan="2">template&lt;class Concurrency_tag, class TriangleMesh1, class TriangleMesh2, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gacd7487071c9d409e91c37a731999a239 template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#gacd7487071c9d409e91c37a731999a239">CGAL::Polygon_mesh_processing::is_Hausdorff_distance_larger</a> (const TriangleMesh1 &amp;tm1, const TriangleMesh2 &amp;tm2, const double distance_bound, const double error_bound, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:gacd7487071c9d409e91c37a731999a239"><td class="mdescLeft"> </td><td class="mdescRight">returns <span class="tt">true</span> if the Hausdorff distance between two meshes is larger than the user-defined max distance, otherwise it returns <span class="tt">false</span>.  <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ga74376aa81d44d745426acfad5a0ac8de" name="ga74376aa81d44d745426acfad5a0ac8de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74376aa81d44d745426acfad5a0ac8de">◆ </a></span>approximate_Hausdorff_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Concurrency_tag, class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double CGAL::Polygon_mesh_processing::approximate_Hausdorff_distance </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>computes the approximate Hausdorff distance from <span class="tt">tm1</span> to <span class="tt">tm2</span> by returning the distance of the farthest point from <span class="tt">tm2</span> amongst a sampling of <span class="tt">tm1</span> generated with the function <span class="tt"><a class="el" href="#ga6307a4504382c46dc3b0e578ca1f7a3b" title="generates points on tm and outputs them to out; the sampling method is selected using named parameter...">sample_triangle_mesh()</a></span> with <span class="tt">tm1</span> and <span class="tt">np1</span> as parameter. </p>
+<p>A parallel version is provided and requires the executable to be linked against the <a href="https://github.com/oneapi-src/oneTBB">Intel TBB library</a>. To control the number of threads used, the user may use the <span class="tt">tbb::task_scheduler_init</span> class. See the <a href="https://software.intel.com/content/www/us/en/develop/documentation/onetbb-documentation/top.html">TBB documentation</a> for more details.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Concurrency_tag</td><td>enables sequential versus parallel algorithm. Possible values are <span class="tt"><a class="elRef" href="../STL_Extension/structCGAL_1_1Sequential__tag.html">Sequential_tag</a></span>, <span class="tt"><a class="elRef" href="../STL_Extension/structCGAL_1_1Parallel__tag.html">Parallel_tag</a></span>, and <span class="tt"><a class="elRef" href="../STL_Extension/structCGAL_1_1Parallel__if__available__tag.html">Parallel_if_available_tag</a></span>. </td></tr>
+    <tr><td class="paramname">TriangleMesh</td><td>a model of the concepts <span class="tt"><a class="elRef" href="../BGL/classEdgeListGraph.html">EdgeListGraph</a></span> and <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> for <span class="tt">tm1</span> </td></tr>
+    <tr><td class="paramname">NamedParameters2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> for <span class="tt">tm2</span></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>the triangle mesh that will be sampled </td></tr>
+    <tr><td class="paramname">tm2</td><td>the triangle mesh to compute the distance to </td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> forwarded to <span class="tt"><a class="el" href="#ga6307a4504382c46dc3b0e578ca1f7a3b" title="generates points on tm and outputs them to out; the sampling method is selected using named parameter...">sample_triangle_mesh()</a></span> </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm2</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm2)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">tm1</span> and <span class="tt">tm2</span> are non-empty triangle meshes. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Polygon_mesh_processing_2hausdorff_distance_remeshing_example_8cpp-example.html#_a4">Polygon_mesh_processing/hausdorff_distance_remeshing_example.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga3451246234c24dd4f03d17fc17d50336" name="ga3451246234c24dd4f03d17fc17d50336"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3451246234c24dd4f03d17fc17d50336">◆ </a></span>approximate_max_distance_to_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh, class PointRange, class NamedParameters = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double CGAL::Polygon_mesh_processing::approximate_max_distance_to_point_set </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PointRange &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>precision</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp;</td>          <td class="paramname"><span class="paramname"><em>np</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>returns an approximation of the distance between <span class="tt">points</span> and the point lying on <span class="tt">tm</span> that is the farthest from <span class="tt">points</span>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a range of <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a></span>, model of <span class="tt"><a class="elRef" href="../Circulator/classRange.html">Range</a></span> </td></tr>
+    <tr><td class="paramname">TriangleMesh</td><td>a model of the concept <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm</td><td>a triangle mesh </td></tr>
+    <tr><td class="paramname">points</td><td>a range of points </td></tr>
+    <tr><td class="paramname">precision</td><td>for each triangle of <span class="tt">tm</span>, the distance of its farthest point from <span class="tt">points</span> is bounded. A triangle is subdivided into sub-triangles so that the difference of its distance bounds is smaller than <span class="tt">precision</span>. <span class="tt">precision</span> must be strictly positive to avoid infinite loops. </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPDistanceTraits.html" title="The concept PMPDistanceTraits is a refinement of the concepts AABBGeomTraits_3 and SpatialSortingTrai...">PMPDistanceTraits</a></span> </li>
+<li>
+<b>Default: </b>a CGAL <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> deduced from the point type, using <span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a></span> </li>
+<li>
+<b>Extra: </b>The geometric traits class must be compatible with the vertex point type. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">tm</span> is a non-empty triangle mesh and <span class="tt">points</span> is not empty. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Poisson_surface_reconstruction_3_2poisson_reconstruction_example_8cpp-example.html#a12">Poisson_surface_reconstruction_3/poisson_reconstruction_example.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga035fdbf660615b036cb3f47f7997b739" name="ga035fdbf660615b036cb3f47f7997b739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga035fdbf660615b036cb3f47f7997b739">◆ </a></span>approximate_symmetric_Hausdorff_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Concurrency_tag, class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double CGAL::Polygon_mesh_processing::approximate_symmetric_Hausdorff_distance </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>returns the approximate symmetric Hausdorff distance between <span class="tt">tm1</span> and <span class="tt">tm2</span>, that is the maximum of <span class="tt">approximate_Hausdorff_distance(tm1, tm2, np1, np2)</span> and <span class="tt">approximate_Hausdorff_distance(tm2, tm1, np2, np1)</span>. </p>
+<p>See the function <span class="tt"><a class="el" href="#ga74376aa81d44d745426acfad5a0ac8de" title="computes the approximate Hausdorff distance from tm1 to tm2 by returning the distance of the farthest...">approximate_Hausdorff_distance()</a></span> for a complete description of the parameters and requirements. </p>
+
+</div>
+</div>
+<a id="gac251a5e983df7ee6aa61623cdb9ec454" name="gac251a5e983df7ee6aa61623cdb9ec454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac251a5e983df7ee6aa61623cdb9ec454">◆ </a></span>bounded_error_Hausdorff_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Concurrency_tag, class TriangleMesh1, class TriangleMesh2, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double CGAL::Polygon_mesh_processing::bounded_error_Hausdorff_distance </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh1 &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleMesh2 &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>error_bound</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0.0001</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>returns an estimate on the Hausdorff distance from <span class="tt">tm1</span> to <span class="tt">tm2</span> that is at most <span class="tt">error_bound</span> away from the actual Hausdorff distance from <span class="tt">tm1</span> to <span class="tt">tm2</span>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Concurrency_tag</td><td>enables sequential versus parallel algorithm. Possible values are <span class="tt"><a class="elRef" href="../STL_Extension/structCGAL_1_1Sequential__tag.html">Sequential_tag</a></span> and <span class="tt"><a class="elRef" href="../STL_Extension/structCGAL_1_1Parallel__tag.html">Parallel_tag</a></span>. Currently, the parallel version is not implemented and the sequential version is always used whatever tag is chosen!</td></tr>
+    <tr><td class="paramname">TriangleMesh1</td><td>a model of the concept <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span> </td></tr>
+    <tr><td class="paramname">TriangleMesh2</td><td>a model of the concept <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span></td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>a triangle mesh </td></tr>
+    <tr><td class="paramname">tm2</td><td>another triangle mesh</td></tr>
+    <tr><td class="paramname">error_bound</td><td>a maximum bound by which the Hausdorff distance estimate is allowed to deviate from the actual Hausdorff distance.</td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tmX</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMeshX&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tmX)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMeshX</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>match_faces</b> </button> <div class="content"><ul>
+<li>
+a boolean tag that turns on the preprocessing step that filters out all faces which belong to both meshes and hence do not contribute to the final distance </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b>true </li>
+<li>
+<b>Extra: </b>Both <span class="tt">np1</span> and <span class="tt">np2</span> must have this tag set to <span class="tt">true</span> in order to activate this preprocessing. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">tm1</span> and <span class="tt">tm2</span> are non-empty triangle meshes.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the one-sided Hausdorff distance </dd></dl>
+
+</div>
+</div>
+<a id="gaff7bb1f6909363380f3947f1fabf06a0" name="gaff7bb1f6909363380f3947f1fabf06a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaff7bb1f6909363380f3947f1fabf06a0">◆ </a></span>bounded_error_symmetric_Hausdorff_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Concurrency_tag, class TriangleMesh1, class TriangleMesh2, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double CGAL::Polygon_mesh_processing::bounded_error_symmetric_Hausdorff_distance </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh1 &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleMesh2 &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>error_bound</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>returns the the symmetric Hausdorff distance, that is the maximum of <span class="tt">bounded_error_Hausdorff_distance(tm1, tm2, error_bound, np1, np2)</span> and <span class="tt">bounded_error_Hausdorff_distance(tm2, tm1, error_bound, np2, np1)</span>. </p>
+<p>This function optimizes all internal calls to shared data structures in order to speed up the computation.</p>
+<p>See the function <span class="tt"><a class="el" href="#gac251a5e983df7ee6aa61623cdb9ec454" title="returns an estimate on the Hausdorff distance from tm1 to tm2 that is at most error_bound away from t...">CGAL::Polygon_mesh_processing::bounded_error_Hausdorff_distance()</a></span> for a complete description of the parameters and requirements. </p>
+
+</div>
+</div>
+<a id="gacd7487071c9d409e91c37a731999a239" name="gacd7487071c9d409e91c37a731999a239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacd7487071c9d409e91c37a731999a239">◆ </a></span>is_Hausdorff_distance_larger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Concurrency_tag, class TriangleMesh1, class TriangleMesh2, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Polygon_mesh_processing::is_Hausdorff_distance_larger </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh1 &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleMesh2 &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>distance_bound</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>error_bound</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>returns <span class="tt">true</span> if the Hausdorff distance between two meshes is larger than the user-defined max distance, otherwise it returns <span class="tt">false</span>. </p>
+<p>The distance used to compute the proximity of the meshes is the bounded-error Hausdorff distance. Instead of computing the full distance and checking it against the user-provided value, this function returns early if certain criteria show that the meshes do not satisfy the provided <span class="tt">distance_bound</span>.</p>
+<p>See the function <span class="tt"><a class="el" href="#gac251a5e983df7ee6aa61623cdb9ec454" title="returns an estimate on the Hausdorff distance from tm1 to tm2 that is at most error_bound away from t...">CGAL::Polygon_mesh_processing::bounded_error_Hausdorff_distance()</a></span> for a complete description of the parameters and requirements. The following extra named parameter is available for <span class="tt">np1</span>:</p>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>use_one_sided_hausdorff</b> </button> <div class="content"><ul>
+<li>
+a boolean tag indicating if the one-sided Hausdorff distance should be used. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">true</span> </li>
+<li>
+<b>Extra: </b>If this tag is set to <span class="tt">false</span>, the symmetric Hausdorff distance is used. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a id="gaed9454c6ed046cd4fb7928cf2b5f7c2c" name="gaed9454c6ed046cd4fb7928cf2b5f7c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaed9454c6ed046cd4fb7928cf2b5f7c2c">◆ </a></span>max_distance_to_triangle_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Concurrency_tag, class TriangleMesh, class PointRange, class NamedParameters = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double CGAL::Polygon_mesh_processing::max_distance_to_triangle_mesh </td>
+          <td>(</td>
+          <td class="paramtype">const PointRange &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp;</td>          <td class="paramname"><span class="paramname"><em>np</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>returns the distance to <span class="tt">tm</span> of the point from <span class="tt">points</span> that is the furthest from <span class="tt">tm</span>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a range of <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Point__3.html">Point_3</a></span>, model of <span class="tt"><a class="elRef" href="../Circulator/classRange.html">Range</a></span>. Its iterator type is <span class="tt"><a class="elRef" href="../Manual/classRandomAccessIterator.html">RandomAccessIterator</a></span>. </td></tr>
+    <tr><td class="paramname">TriangleMesh</td><td>a model of the concepts <span class="tt"><a class="elRef" href="../BGL/classEdgeListGraph.html">EdgeListGraph</a></span> and <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>the range of points of interest </td></tr>
+    <tr><td class="paramname">tm</td><td>the triangle mesh to compute the distance to </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPDistanceTraits.html" title="The concept PMPDistanceTraits is a refinement of the concepts AABBGeomTraits_3 and SpatialSortingTrai...">PMPDistanceTraits</a></span> </li>
+<li>
+<b>Default: </b>a CGAL <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> deduced from the point type, using <span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a></span> </li>
+<li>
+<b>Extra: </b>The geometric traits class must be compatible with the vertex point type. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">tm</span> is a non-empty triangle mesh and <span class="tt">points</span> is not empty. </dd></dl>
+
+</div>
+</div>
+<a id="ga6307a4504382c46dc3b0e578ca1f7a3b" name="ga6307a4504382c46dc3b0e578ca1f7a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6307a4504382c46dc3b0e578ca1f7a3b">◆ </a></span>sample_triangle_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class PointOutputIterator, class TriangleMesh, class NamedParameters = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">PointOutputIterator CGAL::Polygon_mesh_processing::sample_triangle_mesh </td>
+          <td>(</td>
+          <td class="paramtype">const TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PointOutputIterator</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp;</td>          <td class="paramname"><span class="paramname"><em>np</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>generates points on <span class="tt">tm</span> and outputs them to <span class="tt">out</span>; the sampling method is selected using named parameters. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of the concepts <span class="tt"><a class="elRef" href="../BGL/classEdgeListGraph.html">EdgeListGraph</a></span> and <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span> </td></tr>
+    <tr><td class="paramname">PointOutputIterator</td><td>a model of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> holding objects of the same point type as the value type of the point type associated to the mesh <span class="tt">tm</span>, i.e., the value type of the vertex point map property map, if provided, or the value type of the internal point property map otherwise </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm</td><td>the triangle mesh to be sampled </td></tr>
+    <tr><td class="paramname">out</td><td>output iterator to be filled with sample points </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPDistanceTraits.html" title="The concept PMPDistanceTraits is a refinement of the concepts AABBGeomTraits_3 and SpatialSortingTrai...">PMPDistanceTraits</a></span> </li>
+<li>
+<b>Default: </b>a CGAL <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> deduced from the point type, using <span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a></span> </li>
+<li>
+<b>Extra: </b>The geometric traits class must be compatible with the vertex point type. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>random_seed</b> </button> <div class="content"><ul>
+<li>
+a value to seed the random number generator </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>a value generated with <span class="tt">std::time()</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>use_random_uniform_sampling</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, points are generated uniformly at random on faces and/or edges of <span class="tt">tm</span>. If <span class="tt">do_sample_faces</span> is <span class="tt">true</span>, random points will be iteratively generated uniformly at random in the triangle of a face selected with probability proportional to its area. If <span class="tt">do_sample_edges</span> is <span class="tt">true</span>, random points will be iteratively generated uniformly at random in the segment of an edge selected with probability proportional to its length. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Type: </b><span class="tt">true</span> </li>
+<li>
+<b>Extra: </b>For faces, the number of sample points is the value passed to the named parameter <span class="tt">number_of_points_on_faces</span>. If not set, the value passed to the named parameter <span class="tt">number_of_points_per_area_unit</span> is multiplied by the area of <span class="tt">tm</span> to get the number of sample points. If none of these parameters is set, the number of points sampled is <span class="tt">num_vertices(tm)</span>. For edges, the number of the number of sample points is the value passed to the named parameter <span class="tt">number_of_points_on_edges</span>. If not set, the value passed to the named parameter <span class="tt">number_of_points_per_distance_unit</span> is multiplied by the sum of the length of edges of <span class="tt">tm</span> to get the number of sample points. If none of these parameters is set, the number of points sampled is <span class="tt">num_vertices(tm)</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>use_grid_sampling</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, points are generated on a grid in each triangle, with a minimum of one point per triangle. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b>The distance between two consecutive points in the grid is that of the length of the smallest non-null edge of <span class="tt">tm</span> or the value passed to the named parameter <span class="tt">grid_spacing</span>. Edges are also split using the same distance, if requested. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>use_monte_carlo_sampling</b> </button> <div class="content"><ul>
+<li>
+if <span class="tt">true</span> is passed, points are generated randomly in each triangle and/or on each edge. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b>For faces, the number of points per triangle is the value passed to the named parameter <span class="tt">number_of_points_per_face</span>. If not set, the value passed to the named parameter <span class="tt">number_of_points_per_area_unit</span> is used to pick a number of points per face proportional to the triangle area with a minimum of one point per face. If none of these parameters is set, 2 divided by the square of the length of the smallest non-null edge of <span class="tt">tm</span> is used as if it was passed to <span class="tt">number_of_points_per_area_unit</span>. For edges, the number of points per edge is the value passed to the named parameter <span class="tt">number_of_points_per_edge</span>. If not set, the value passed to the named parameter <span class="tt">number_of_points_per_distance_unit</span> is used to pick a number of points per edge proportional to the length of the edge with a minimum of one point per face. If none of these parameters is set, 1 divided by the length of the smallest non-null edge of <span class="tt">tm</span> is used as if it was passed to <span class="tt">number_of_points_per_distance_unit</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>do_sample_vertices</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, the vertices of <span class="tt">tm</span> are part of the sample. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">true</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>do_sample_edges</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, edges of <span class="tt">tm</span> are sampled. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">true</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>do_sample_faces</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, faces of <span class="tt">tm</span> are sampled. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">true</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>grid_spacing</b> </button> <div class="content"><ul>
+<li>
+a value used as the grid spacing for the grid sampling method </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b>the length of the shortest, non-degenerate edge of <span class="tt">tm</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_on_edges</b> </button> <div class="content"><ul>
+<li>
+a value used for the random sampling method as the number of points to pick exclusively on edges </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b><span class="tt">num_vertices(tm)</span> or a value based on <span class="tt">nb_points_per_distance_unit</span>, if it is defined </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_on_faces</b> </button> <div class="content"><ul>
+<li>
+a value used for the random sampling method as the number of points to pick on the surface </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b><span class="tt">num_vertices(tm)</span> or a value based on <span class="tt">nb_points_per_area_unit</span>, if it is defined </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_per_distance_unit</b> </button> <div class="content"><ul>
+<li>
+a value used for the random sampling and the Monte Carlo sampling methods to respectively determine the total number of points on edges and the number of points per edge </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b><span class="tt">1</span> divided by the length of the shortest, non-degenerate edge of <span class="tt">tm</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_per_edge</b> </button> <div class="content"><ul>
+<li>
+a value used by the Monte-Carlo sampling method as the number of points per edge to pick </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b><span class="tt">0</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_per_area_unit</b> </button> <div class="content"><ul>
+<li>
+a value used for the random sampling and the Monte Carlo sampling methods to respectively determine the total number of points inside faces and the number of points per face </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b><span class="tt">2</span> divided by the squared length of the shortest, non-degenerate edge of <span class="tt">tm</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_per_face</b> </button> <div class="content"><ul>
+<li>
+a value used by the Monte-Carlo sampling method as the number of points per face to pick </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b><span class="tt">0</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#ga276e117793ebf6abbb3629423ad700e9" title="generates points on a triangle soup and puts them to out; the sampling method is selected using named...">CGAL::Polygon_mesh_processing::sample_triangle_soup()</a></span> </dd></dl>
+
+</div>
+</div>
+<a id="ga276e117793ebf6abbb3629423ad700e9" name="ga276e117793ebf6abbb3629423ad700e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga276e117793ebf6abbb3629423ad700e9">◆ </a></span>sample_triangle_soup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class PointOutputIterator, class TriangleRange, class PointRange, class NamedParameters = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">PointOutputIterator CGAL::Polygon_mesh_processing::sample_triangle_soup </td>
+          <td>(</td>
+          <td class="paramtype">const PointRange &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TriangleRange &amp;</td>          <td class="paramname"><span class="paramname"><em>triangles</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PointOutputIterator</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters &amp;</td>          <td class="paramname"><span class="paramname"><em>np</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/distance.h&gt;</code></p>
+
+<p>generates points on a triangle soup and puts them to <span class="tt">out</span>; the sampling method is selected using named parameters. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">PointRange</td><td>a model of the concept <span class="tt"><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></span> whose value type is the point type. </td></tr>
+    <tr><td class="paramname">TriangleRange</td><td>a model of the concept <span class="tt"><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></span> whose <span class="tt">value_type</span> is itself a model of the concept <span class="tt"><a class="elRef" href="../Manual/classRandomAccessContainer.html">RandomAccessContainer</a></span> whose <span class="tt">value_type</span> is an unsigned integral value. </td></tr>
+    <tr><td class="paramname">PointOutputIterator</td><td>a model of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> holding objects of the same type as <span class="tt">PointRange</span>'s value type </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>the points of the soup </td></tr>
+    <tr><td class="paramname">triangles</td><td>a <span class="tt">TriangleRange</span> containing the triangles of the soup to be sampled </td></tr>
+    <tr><td class="paramname">out</td><td>output iterator to be filled with sample points </td></tr>
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>geom_traits</b> </button> <div class="content"><ul>
+<li>
+an instance of a geometric traits class </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPDistanceTraits.html" title="The concept PMPDistanceTraits is a refinement of the concepts AABBGeomTraits_3 and SpatialSortingTrai...">PMPDistanceTraits</a></span> </li>
+<li>
+<b>Default: </b>a CGAL <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> deduced from the point type, using <span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a></span> </li>
+<li>
+<b>Extra: </b>The geometric traits class must be compatible with the point range's point type. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>random_seed</b> </button> <div class="content"><ul>
+<li>
+a value to seed the random number generator </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>a value generated with <span class="tt">std::time()</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>use_random_uniform_sampling</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, points are generated in a random and uniform way over the triangles of the soup. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Type: </b><span class="tt">true</span> </li>
+<li>
+<b>Extra: </b>The number of sample points is the value passed to the named parameter <span class="tt">number_of_points_on_faces</span>. If not set, the value passed to the named parameter <span class="tt">number_of_points_per_area_unit</span> is multiplied by the area of the soup to get the number of sample points. If none of these parameters is set, the number of points sampled is <span class="tt">points.size()</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>use_grid_sampling</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, points are generated on a grid in each triangle, with a minimum of one point per triangle. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b>The distance between two consecutive points in the grid is that of the length of the smallest non-null edge of the soup or the value passed to the named parameter <span class="tt">grid_spacing</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>use_monte_carlo_sampling</b> </button> <div class="content"><ul>
+<li>
+if <span class="tt">true</span> is passed, points are generated randomly in each triangle. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b>The number of points per triangle is the value passed to the named parameter <span class="tt">number_of_points_per_face</span>. If not set, the value passed to the named parameter <span class="tt">number_of_points_per_area_unit</span> is used to pick a number of points per face proportional to the triangle area with a minimum of one point per face. If none of these parameters is set, the number of points per area unit is set to 2 divided by the square of the length of the smallest non-null edge of the soup. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>do_sample_vertices</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, the points of <span class="tt">points</span> are part of the sample. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">true</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>do_sample_faces</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> is passed, faces of the soup are sampled. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">true</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>grid_spacing</b> </button> <div class="content"><ul>
+<li>
+a value used as the grid spacing for the grid sampling method </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b>the length of the shortest, non-degenerate edge of the soup </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_on_faces</b> </button> <div class="content"><ul>
+<li>
+a value used for the random sampling method as the number of points to pick on the surface </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b><span class="tt">points.size()</span> or a value based on <span class="tt">nb_points_per_area_unit</span>, if it is defined </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_per_face</b> </button> <div class="content"><ul>
+<li>
+a value used by the Monte-Carlo sampling method as the number of points per face to pick </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b><span class="tt">0</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_points_per_area_unit</b> </button> <div class="content"><ul>
+<li>
+a value used for the random sampling and the Monte Carlo sampling methods to respectively determine the total number of points inside faces and the number of points per face </li>
+<li>
+<b>Type: </b>double </li>
+<li>
+<b>Default: </b><span class="tt">2</span> divided by the squared length of the shortest, non-degenerate edge of the soup </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section attention"><dt>Attention</dt><dd>Contrary to <span class="tt"><a class="el" href="#ga6307a4504382c46dc3b0e578ca1f7a3b" title="generates points on tm and outputs them to out; the sampling method is selected using named parameter...">sample_triangle_mesh()</a></span>, this method does not allow to sample edges.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#ga6307a4504382c46dc3b0e578ca1f7a3b" title="generates points on tm and outputs them to out; the sampling method is selected using named parameter...">CGAL::Polygon_mesh_processing::sample_triangle_mesh()</a></span> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,964 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Triangulation_on_sphere_2/classTriangulationOnSphereTraits__2.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - 2D Triangulations on the Sphere: TriangulationOnSphereTraits_2 Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - 2D Triangulations on the Sphere
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classTriangulationOnSphereTraits__2.html','','classTriangulationOnSphereTraits__2-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classTriangulationOnSphereTraits__2-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">TriangulationOnSphereTraits_2 Concept Reference<div class="ingroups"><a class="el" href="group__PkgTriangulationOnSphere2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgTriangulationOnSphere2Concepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Spatial_sorting/classSpatialSortingTraits__3.html">SpatialSortingTraits_3</a></code> </dd>
+</dl>
+<p>The concept <span class="tt"><a class="el" href="classTriangulationOnSphereTraits__2.html">TriangulationOnSphereTraits_2</a></span> describes the set of requirements to be fulfilled by any class used to instantiate the first template parameter of the class <span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__sphere__2.html" title="The class Triangulation_on_sphere_2 is the basic class designed to represent a triangulation of a poi...">CGAL::Triangulation_on_sphere_2</a>&lt;Traits, Tds&gt;</span>. This concept provides the types of the geometric primitives used in the triangulation and the function object types for the required predicates on those primitives.</p>
+<p>In particular, the traits class is expected to contain information about the sphere (center and radius) on which the points of the triangulation lie, as well as to provide means to change this information.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__sphere__traits__2.html" title="The class Delaunay_triangulation_on_sphere_traits_2 is a model of the concept DelaunayTriangulationOn...">CGAL::Delaunay_triangulation_on_sphere_traits_2</a></span> </dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Projection__on__sphere__traits__3.html" title="The class Projection_on_sphere_traits_3 is a model of the concept DelaunayTriangulationOnSphereTraits...">CGAL::Projection_on_sphere_traits_3</a></span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classDelaunayTriangulationOnSphereTraits__2.html">DelaunayTriangulationOnSphereTraits_2</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:adffcfb8d923e5b155ce854c3441c4fcb" id="r_adffcfb8d923e5b155ce854c3441c4fcb"><td class="memItemLeft"><a id="adffcfb8d923e5b155ce854c3441c4fcb" name="adffcfb8d923e5b155ce854c3441c4fcb"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>FT</b></td></tr>
+<tr class="memdesc:adffcfb8d923e5b155ce854c3441c4fcb"><td class="mdescLeft"> </td><td class="mdescRight">The number type; must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span>. <br></td></tr>
+<tr class="memitem:a40a502e3a9bc2191293f585823d99aad" id="r_a40a502e3a9bc2191293f585823d99aad"><td class="memItemLeft"><a id="a40a502e3a9bc2191293f585823d99aad" name="a40a502e3a9bc2191293f585823d99aad"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_on_sphere_2</b></td></tr>
+<tr class="memdesc:a40a502e3a9bc2191293f585823d99aad"><td class="mdescLeft"> </td><td class="mdescRight">The point type of the triangulation, representing a point on the sphere. <br></td></tr>
+<tr class="memitem:a9882fad4564dbce875f1e06b3f7d54cd" id="r_a9882fad4564dbce875f1e06b3f7d54cd"><td class="memItemLeft"><a id="a9882fad4564dbce875f1e06b3f7d54cd" name="a9882fad4564dbce875f1e06b3f7d54cd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Arc_on_sphere_2</b></td></tr>
+<tr class="memdesc:a9882fad4564dbce875f1e06b3f7d54cd"><td class="mdescLeft"> </td><td class="mdescRight">An arc of a great circle, used to represent a curved segment (a Voronoi or a Delaunay edge). <br></td></tr>
+<tr class="memitem:aa6f3e25de9e17334dc3b92b949e6dad7" id="r_aa6f3e25de9e17334dc3b92b949e6dad7"><td class="memItemLeft"><a id="aa6f3e25de9e17334dc3b92b949e6dad7" name="aa6f3e25de9e17334dc3b92b949e6dad7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_3</b></td></tr>
+<tr class="memdesc:aa6f3e25de9e17334dc3b92b949e6dad7"><td class="mdescLeft"> </td><td class="mdescRight">The 3D point type. <br></td></tr>
+<tr class="memitem:a6f12171853e0d7ea65fdd8766d3ee6b4" id="r_a6f12171853e0d7ea65fdd8766d3ee6b4"><td class="memItemLeft"><a id="a6f12171853e0d7ea65fdd8766d3ee6b4" name="a6f12171853e0d7ea65fdd8766d3ee6b4"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Segment_3</b></td></tr>
+<tr class="memdesc:a6f12171853e0d7ea65fdd8766d3ee6b4"><td class="mdescLeft"> </td><td class="mdescRight">The 3D segment type. <br></td></tr>
+<tr class="memitem:aed86feab29ceb6077f39c5c4122211a3" id="r_aed86feab29ceb6077f39c5c4122211a3"><td class="memItemLeft"><a id="aed86feab29ceb6077f39c5c4122211a3" name="aed86feab29ceb6077f39c5c4122211a3"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Triangle_3</b></td></tr>
+<tr class="memdesc:aed86feab29ceb6077f39c5c4122211a3"><td class="mdescLeft"> </td><td class="mdescRight">The 3D triangle type. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Predicates</h2></td></tr>
+<tr class="memitem:afd2b488c9d27c9de48c0d4bb27202b11" id="r_afd2b488c9d27c9de48c0d4bb27202b11"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afd2b488c9d27c9de48c0d4bb27202b11">Collinear_are_strictly_ordered_on_great_circle_2</a></td></tr>
+<tr class="memdesc:afd2b488c9d27c9de48c0d4bb27202b11"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:adbe715f38f73ac1e072a8b9812bd9b2c" id="r_adbe715f38f73ac1e072a8b9812bd9b2c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#adbe715f38f73ac1e072a8b9812bd9b2c">Compare_on_sphere_2</a></td></tr>
+<tr class="memdesc:adbe715f38f73ac1e072a8b9812bd9b2c"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:a9460c4f1ee9a08919f56ca8f91660e4e" id="r_a9460c4f1ee9a08919f56ca8f91660e4e"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9460c4f1ee9a08919f56ca8f91660e4e">Equal_on_sphere_2</a></td></tr>
+<tr class="memdesc:a9460c4f1ee9a08919f56ca8f91660e4e"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:a4825fda1c98fd9299f27634a60870a43" id="r_a4825fda1c98fd9299f27634a60870a43"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a4825fda1c98fd9299f27634a60870a43">Orientation_on_sphere_2</a></td></tr>
+<tr class="memdesc:a4825fda1c98fd9299f27634a60870a43"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:afb850a8f2d2a75cb47ddbe25f15d6665" id="r_afb850a8f2d2a75cb47ddbe25f15d6665"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afb850a8f2d2a75cb47ddbe25f15d6665">Side_of_oriented_circle_on_sphere_2</a></td></tr>
+<tr class="memdesc:afb850a8f2d2a75cb47ddbe25f15d6665"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Constructions</h2></td></tr>
+<tr class="memitem:a7a401b7328b16e3a1f1ca8b24707beb8" id="r_a7a401b7328b16e3a1f1ca8b24707beb8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a7a401b7328b16e3a1f1ca8b24707beb8">Construct_arc_on_sphere_2</a></td></tr>
+<tr class="memdesc:a7a401b7328b16e3a1f1ca8b24707beb8"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:aa5355516229e1b6b8375b955e55b8951" id="r_aa5355516229e1b6b8375b955e55b8951"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa5355516229e1b6b8375b955e55b8951">Construct_point_on_sphere_2</a></td></tr>
+<tr class="memdesc:aa5355516229e1b6b8375b955e55b8951"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:a4b7c44f23634bab698794c56e3992ba2" id="r_a4b7c44f23634bab698794c56e3992ba2"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a4b7c44f23634bab698794c56e3992ba2">Construct_point_3</a></td></tr>
+<tr class="memdesc:a4b7c44f23634bab698794c56e3992ba2"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:a90141dcefb6dc3866c6469651ab0e1ea" id="r_a90141dcefb6dc3866c6469651ab0e1ea"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a90141dcefb6dc3866c6469651ab0e1ea">Construct_segment_3</a></td></tr>
+<tr class="memdesc:a90141dcefb6dc3866c6469651ab0e1ea"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:ab72e578444dcbdb784495ea2bfefbf16" id="r_ab72e578444dcbdb784495ea2bfefbf16"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab72e578444dcbdb784495ea2bfefbf16">Construct_triangle_3</a></td></tr>
+<tr class="memdesc:ab72e578444dcbdb784495ea2bfefbf16"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following functions provide access to the predicate and constructor objects. </p>
+</td></tr>
+<tr class="memitem:ac6636154ff686544a80457830accfb78" id="r_ac6636154ff686544a80457830accfb78"><td class="memItemLeft"><a id="ac6636154ff686544a80457830accfb78" name="ac6636154ff686544a80457830accfb78"></a>
+<a class="el" href="#adbe715f38f73ac1e072a8b9812bd9b2c">Compare_on_sphere_2</a> </td><td class="memItemRight"><b>compare_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a265864f8a07206bdea6fe3f03491c708" id="r_a265864f8a07206bdea6fe3f03491c708"><td class="memItemLeft"><a id="a265864f8a07206bdea6fe3f03491c708" name="a265864f8a07206bdea6fe3f03491c708"></a>
+<a class="el" href="#a9460c4f1ee9a08919f56ca8f91660e4e">Equal_on_sphere_2</a> </td><td class="memItemRight"><b>equal_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a6291a049ad1d64ef37dcebc65b422cb5" id="r_a6291a049ad1d64ef37dcebc65b422cb5"><td class="memItemLeft"><a id="a6291a049ad1d64ef37dcebc65b422cb5" name="a6291a049ad1d64ef37dcebc65b422cb5"></a>
+<a class="el" href="#a4825fda1c98fd9299f27634a60870a43">Orientation_on_sphere_2</a> </td><td class="memItemRight"><b>orientation_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a963cd8929ba800b5f4802baf56d3292b" id="r_a963cd8929ba800b5f4802baf56d3292b"><td class="memItemLeft"><a id="a963cd8929ba800b5f4802baf56d3292b" name="a963cd8929ba800b5f4802baf56d3292b"></a>
+<a class="el" href="#afb850a8f2d2a75cb47ddbe25f15d6665">Side_of_oriented_circle_on_sphere_2</a> </td><td class="memItemRight"><b>side_of_oriented_circle_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a06b96068e1ef464447c8ae7f33ece934" id="r_a06b96068e1ef464447c8ae7f33ece934"><td class="memItemLeft"><a id="a06b96068e1ef464447c8ae7f33ece934" name="a06b96068e1ef464447c8ae7f33ece934"></a>
+<a class="el" href="#afd2b488c9d27c9de48c0d4bb27202b11">Collinear_are_strictly_ordered_on_great_circle_2</a> </td><td class="memItemRight"><b>collinear_are_strictly_ordered_on_great_circle_2_object</b> ()</td></tr>
+<tr class="memitem:ac5d21bd926fc9bec3f7d01985e386018" id="r_ac5d21bd926fc9bec3f7d01985e386018"><td class="memItemLeft"><a id="ac5d21bd926fc9bec3f7d01985e386018" name="ac5d21bd926fc9bec3f7d01985e386018"></a>
+<a class="el" href="#a7a401b7328b16e3a1f1ca8b24707beb8">Construct_arc_on_sphere_2</a> </td><td class="memItemRight"><b>construct_arc_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a254c6504bb49953d984a00e377c55469" id="r_a254c6504bb49953d984a00e377c55469"><td class="memItemLeft"><a id="a254c6504bb49953d984a00e377c55469" name="a254c6504bb49953d984a00e377c55469"></a>
+<a class="el" href="#aa5355516229e1b6b8375b955e55b8951">Construct_point_on_sphere_2</a> </td><td class="memItemRight"><b>construct_point_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a0f11c3631fc21caf7d4c174b9b1c29be" id="r_a0f11c3631fc21caf7d4c174b9b1c29be"><td class="memItemLeft"><a id="a0f11c3631fc21caf7d4c174b9b1c29be" name="a0f11c3631fc21caf7d4c174b9b1c29be"></a>
+<a class="el" href="#a4b7c44f23634bab698794c56e3992ba2">Construct_point_3</a> </td><td class="memItemRight"><b>construct_point_3_object</b> ()</td></tr>
+<tr class="memitem:a39d523963d051855ec34f613b57ec764" id="r_a39d523963d051855ec34f613b57ec764"><td class="memItemLeft"><a id="a39d523963d051855ec34f613b57ec764" name="a39d523963d051855ec34f613b57ec764"></a>
+<a class="el" href="#a90141dcefb6dc3866c6469651ab0e1ea">Construct_segment_3</a> </td><td class="memItemRight"><b>construct_segment_3_object</b> ()</td></tr>
+<tr class="memitem:a6822847cfa27ef08ddd0edb586ded61f" id="r_a6822847cfa27ef08ddd0edb586ded61f"><td class="memItemLeft"><a id="a6822847cfa27ef08ddd0edb586ded61f" name="a6822847cfa27ef08ddd0edb586ded61f"></a>
+<a class="el" href="#ab72e578444dcbdb784495ea2bfefbf16">Construct_triangle_3</a> </td><td class="memItemRight"><b>construct_triangle_3_object</b> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Configuration of the spherical domain</h2></td></tr>
+<tr class="memitem:aa0478d05495c0c088cc37a2a95834757" id="r_aa0478d05495c0c088cc37a2a95834757"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#aa0478d05495c0c088cc37a2a95834757">set_center</a> (<a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7">Point_3</a> center)</td></tr>
+<tr class="memdesc:aa0478d05495c0c088cc37a2a95834757"><td class="mdescLeft"> </td><td class="mdescRight">sets the center of the sphere.  <br></td></tr>
+<tr class="memitem:a11999045009bb61c10e4ff18cd5d82d7" id="r_a11999045009bb61c10e4ff18cd5d82d7"><td class="memItemLeft"><a id="a11999045009bb61c10e4ff18cd5d82d7" name="a11999045009bb61c10e4ff18cd5d82d7"></a>
+<a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7">Point_3</a> </td><td class="memItemRight"><b>center</b> () const</td></tr>
+<tr class="memdesc:a11999045009bb61c10e4ff18cd5d82d7"><td class="mdescLeft"> </td><td class="mdescRight">returns the center of the sphere. <br></td></tr>
+<tr class="memitem:a79949403017b5bfa230631f9bdb910d5" id="r_a79949403017b5bfa230631f9bdb910d5"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a79949403017b5bfa230631f9bdb910d5">set_radius</a> (<a class="el" href="#adffcfb8d923e5b155ce854c3441c4fcb">FT</a> radius)</td></tr>
+<tr class="memdesc:a79949403017b5bfa230631f9bdb910d5"><td class="mdescLeft"> </td><td class="mdescRight">sets the radius of the sphere.  <br></td></tr>
+<tr class="memitem:abcc0a344f8ba2c372860cc21803c6c50" id="r_abcc0a344f8ba2c372860cc21803c6c50"><td class="memItemLeft"><a id="abcc0a344f8ba2c372860cc21803c6c50" name="abcc0a344f8ba2c372860cc21803c6c50"></a>
+<a class="el" href="#adffcfb8d923e5b155ce854c3441c4fcb">FT</a> </td><td class="memItemRight"><b>radius</b> () const</td></tr>
+<tr class="memdesc:abcc0a344f8ba2c372860cc21803c6c50"><td class="mdescLeft"> </td><td class="mdescRight">returns the radius of the sphere. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Precision predicates</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>When a kernel does not offer arbitrary precision - or at least an exact representation of algebraic coordinates, which is usually the case for the sake of computational speed, then most points that are theoretically on the sphere are not in practice exactly on the sphere.</p>
+<p>When this is the case, it cannot be guaranteed that all points are in a convex position, which can then result in points being hidden upon insertion, see <a class="el" href="citelist.html#CITEREF_cgal:ccplr-redtp-10">[1]</a>. To ensure that no point is hidden, a trick is to enforce a gap between points (<a class="el" href="citelist.html#CITEREF_cgal:ccplr-redtp-10">[1]</a>, Lemma 4.1). This gap is based on a fixed maximal allowed distance \( \delta \) between a point and the theoretical sphere. The gap must then be at least \( 2 \sqrt{R\delta} \), where \( R \) is the radius of the sphere.</p>
+<p>The following two predicates serve to check if the point is on the sphere, that is if for a model-defined \( \delta \) the distance to the sphere is smaller than \( \delta \) and if the distance between two points is greater than \( 2 \sqrt{R\delta} \). It is also of course possible to construct traits classes with arbitrary precision or with a representation that ensures that points are exactly on the sphere and in this case, \( \delta = 0 \) can be chosen and the predicates below are trivial.</p>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__sphere__traits__2.html" title="The class Delaunay_triangulation_on_sphere_traits_2 is a model of the concept DelaunayTriangulationOn...">CGAL::Delaunay_triangulation_on_sphere_traits_2</a></span> </dd></dl>
+</td></tr>
+<tr class="memitem:a37cc151d3bf935923db004e62528fdbf" id="r_a37cc151d3bf935923db004e62528fdbf"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a37cc151d3bf935923db004e62528fdbf">is_on_sphere</a> (<a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a> p)</td></tr>
+<tr class="memdesc:a37cc151d3bf935923db004e62528fdbf"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the point <span class="tt">p</span> is on the sphere or not.  <br></td></tr>
+<tr class="memitem:aba204e427e1c7909743e8bc48d830365" id="r_aba204e427e1c7909743e8bc48d830365"><td class="memItemLeft"><a id="aba204e427e1c7909743e8bc48d830365" name="aba204e427e1c7909743e8bc48d830365"></a>
+bool </td><td class="memItemRight"><b>are_points_too_close</b> (<a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a> p, <a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a> q)</td></tr>
+<tr class="memdesc:aba204e427e1c7909743e8bc48d830365"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the points <span class="tt">p</span> and <span class="tt">q</span> are too close (see <a href="https://doc.cgal.org/latest/Triangulation_on_sphere_2/classTriangulationOnSphereTraits__2.html#amgrpbc40b59d2ea2be0fc60516e5f7bb0f92">Precision predicates</a>). <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="afd2b488c9d27c9de48c0d4bb27202b11" name="afd2b488c9d27c9de48c0d4bb27202b11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd2b488c9d27c9de48c0d4bb27202b11">◆ </a></span>Collinear_are_strictly_ordered_on_great_circle_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afd2b488c9d27c9de48c0d4bb27202b11">TriangulationOnSphereTraits_2::Collinear_are_strictly_ordered_on_great_circle_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q, Point_on_sphere_2 r)</span></p>
+<p>which returns <span class="tt">true</span> if <span class="tt">r</span> strictly lies on the shortest path between <span class="tt">p</span> and <span class="tt">q</span> on the great circle passing through <span class="tt">p</span> and <span class="tt">q</span>.</p>
+<p>If <span class="tt">p</span> and <span class="tt">q</span> are diametrically opposed, <span class="tt">true</span> is returned. </p>
+
+</div>
+</div>
+<a id="adbe715f38f73ac1e072a8b9812bd9b2c" name="adbe715f38f73ac1e072a8b9812bd9b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe715f38f73ac1e072a8b9812bd9b2c">◆ </a></span>Compare_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#adbe715f38f73ac1e072a8b9812bd9b2c">TriangulationOnSphereTraits_2::Compare_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q)</span></p>
+<p>which returns <span class="tt">true</span> or <span class="tt">false</span> based on a consistent, user-defined strict total order of points. </p>
+
+</div>
+</div>
+<a id="a7a401b7328b16e3a1f1ca8b24707beb8" name="a7a401b7328b16e3a1f1ca8b24707beb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a401b7328b16e3a1f1ca8b24707beb8">◆ </a></span>Construct_arc_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a7a401b7328b16e3a1f1ca8b24707beb8">TriangulationOnSphereTraits_2::Construct_arc_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#a9882fad4564dbce875f1e06b3f7d54cd" title="An arc of a great circle, used to represent a curved segment (a Voronoi or a Delaunay edge).">Arc_on_sphere_2</a> operator()(Point_on_sphere_2 p, Point_on_sphere_2 q)</span></p>
+<p>which introduces an arc of great circle, with source <span class="tt">p</span> and target <span class="tt">q</span>.</p>
+<p>The circular arc constructed from a source, and a target, is defined as the set of points of the great circle that lie between the source <span class="tt">p</span> and the target <span class="tt">q</span>, when traversing the great circle counterclockwise seen from the side of the plane of the great circle pointed by its <em>positive</em> normal vectors.</p>
+<p>In this definition, we say that a normal vector \( (a,b,c)\) is <em>positive</em> if \( (a,b,c)&gt;(0,0,0)\) (i.e. \( (a&gt;0) || (a==0) \&amp;\&amp; (b&gt;0) || (a==0)\&amp;\&amp;(b==0)\&amp;\&amp;(c&gt;0)\)).</p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">p</span> and <span class="tt">q</span> are not diametrically opposed. </dd></dl>
+
+</div>
+</div>
+<a id="a4b7c44f23634bab698794c56e3992ba2" name="a4b7c44f23634bab698794c56e3992ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b7c44f23634bab698794c56e3992ba2">◆ </a></span>Construct_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a4b7c44f23634bab698794c56e3992ba2">TriangulationOnSphereTraits_2::Construct_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7" title="The 3D point type.">Point_3</a> operator()(Point_on_sphere_2 p)</span>,</p>
+<p>which expresses the point <span class="tt">p</span> on the sphere as a point in the embedding 3D space. </p>
+
+</div>
+</div>
+<a id="aa5355516229e1b6b8375b955e55b8951" name="aa5355516229e1b6b8375b955e55b8951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5355516229e1b6b8375b955e55b8951">◆ </a></span>Construct_point_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa5355516229e1b6b8375b955e55b8951">TriangulationOnSphereTraits_2::Construct_point_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#a40a502e3a9bc2191293f585823d99aad" title="The point type of the triangulation, representing a point on the sphere.">Point_on_sphere_2</a> operator()(Point_3 p)</span>,</p>
+<p>which expresses the point <span class="tt">p</span>, a 3D point living on the sphere, using the (user-defined) point-on-sphere representation. </p>
+
+</div>
+</div>
+<a id="a90141dcefb6dc3866c6469651ab0e1ea" name="a90141dcefb6dc3866c6469651ab0e1ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90141dcefb6dc3866c6469651ab0e1ea">◆ </a></span>Construct_segment_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a90141dcefb6dc3866c6469651ab0e1ea">TriangulationOnSphereTraits_2::Construct_segment_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#a6f12171853e0d7ea65fdd8766d3ee6b4" title="The 3D segment type.">Segment_3</a> operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which constructs a segment from two 3D points. </p>
+
+</div>
+</div>
+<a id="ab72e578444dcbdb784495ea2bfefbf16" name="ab72e578444dcbdb784495ea2bfefbf16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72e578444dcbdb784495ea2bfefbf16">◆ </a></span>Construct_triangle_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab72e578444dcbdb784495ea2bfefbf16">TriangulationOnSphereTraits_2::Construct_triangle_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#aed86feab29ceb6077f39c5c4122211a3" title="The 3D triangle type.">Triangle_3</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p>which constructs a triangle from three 3D points. </p>
+
+</div>
+</div>
+<a id="a9460c4f1ee9a08919f56ca8f91660e4e" name="a9460c4f1ee9a08919f56ca8f91660e4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9460c4f1ee9a08919f56ca8f91660e4e">◆ </a></span>Equal_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9460c4f1ee9a08919f56ca8f91660e4e">TriangulationOnSphereTraits_2::Equal_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q)</span></p>
+<p>which returns <span class="tt">true</span> if, and only if, <span class="tt">p</span> and <span class="tt">q</span> are equal. </p>
+
+</div>
+</div>
+<a id="a4825fda1c98fd9299f27634a60870a43" name="a4825fda1c98fd9299f27634a60870a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4825fda1c98fd9299f27634a60870a43">◆ </a></span>Orientation_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a4825fda1c98fd9299f27634a60870a43">TriangulationOnSphereTraits_2::Orientation_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">Orientation operator()(Point_on_sphere_2 p, Point_on_sphere_2 q, Point_on_sphere_2 r)</span></p>
+<p>which returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, if <span class="tt">r</span> lies on the left hemisphere while walking the shortest path between <span class="tt">p</span> and <span class="tt">q</span> on the great circle defined by <span class="tt">p</span> and <span class="tt">q</span>; returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> if <span class="tt">r</span> lies on the right hemisphere; and returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> if <span class="tt">r</span> lies on the great circle.</p>
+<p>If <span class="tt">p</span> and <span class="tt">q</span> are diametrically opposed, <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> is returned. </p>
+
+</div>
+</div>
+<a id="afb850a8f2d2a75cb47ddbe25f15d6665" name="afb850a8f2d2a75cb47ddbe25f15d6665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb850a8f2d2a75cb47ddbe25f15d6665">◆ </a></span>Side_of_oriented_circle_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afb850a8f2d2a75cb47ddbe25f15d6665">TriangulationOnSphereTraits_2::Side_of_oriented_circle_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q, Point_on_sphere_2 r, Point_on_sphere_2 s)</span></p>
+<p>which returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, if <span class="tt">s</span> lies on the positive side of the oriented plane <span class="tt">h</span> defined by <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span>; returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> if <span class="tt">s</span> lies on the negative side of <span class="tt">h</span>; and returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> if <span class="tt">s</span> lies on <span class="tt">h</span>. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a37cc151d3bf935923db004e62528fdbf" name="a37cc151d3bf935923db004e62528fdbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37cc151d3bf935923db004e62528fdbf">◆ </a></span>is_on_sphere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TriangulationOnSphereTraits_2::is_on_sphere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns whether the point <span class="tt">p</span> is on the sphere or not. </p>
+<dl class="section note"><dt>Note</dt><dd>A point that is not on the sphere will not be inserted in the triangulation. </dd></dl>
+
+</div>
+</div>
+<a id="aa0478d05495c0c088cc37a2a95834757" name="aa0478d05495c0c088cc37a2a95834757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0478d05495c0c088cc37a2a95834757">◆ </a></span>set_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TriangulationOnSphereTraits_2::set_center </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7">Point_3</a></td>          <td class="paramname"><span class="paramname"><em>center</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets the center of the sphere. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is meant to be used only by the triangulation class as modifying the domain requires clearing the triangulation. Users can change the domain using <span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__sphere__2.html#abb242907b37f4ee1bc02ce8ddbd91a41">CGAL::Triangulation_on_sphere_2::set_center_and_radius()</a></span>. </dd></dl>
+
+</div>
+</div>
+<a id="a79949403017b5bfa230631f9bdb910d5" name="a79949403017b5bfa230631f9bdb910d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79949403017b5bfa230631f9bdb910d5">◆ </a></span>set_radius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TriangulationOnSphereTraits_2::set_radius </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#adffcfb8d923e5b155ce854c3441c4fcb">FT</a></td>          <td class="paramname"><span class="paramname"><em>radius</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets the radius of the sphere. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is meant to be used only by the triangulation class as modifying the domain requires clearing the triangulation. Users can change the domain using <span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__sphere__2.html#abb242907b37f4ee1bc02ce8ddbd91a41">CGAL::Triangulation_on_sphere_2::set_center_and_radius()</a></span>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classTriangulationOnSphereTraits__2.html">TriangulationOnSphereTraits_2</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/TriangulationOnSphereTraits_2.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Spatial_sorting/classSpatialSortingTraits__3.html">SpatialSortingTraits_3</a></code> </dd>
+</dl>
+<p>The concept <span class="tt"><a class="el" href="classTriangulationOnSphereTraits__2.html">TriangulationOnSphereTraits_2</a></span> describes the set of requirements to be fulfilled by any class used to instantiate the first template parameter of the class <span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__sphere__2.html" title="The class Triangulation_on_sphere_2 is the basic class designed to represent a triangulation of a poi...">CGAL::Triangulation_on_sphere_2</a>&lt;Traits, Tds&gt;</span>. This concept provides the types of the geometric primitives used in the triangulation and the function object types for the required predicates on those primitives.</p>
+<p>In particular, the traits class is expected to contain information about the sphere (center and radius) on which the points of the triangulation lie, as well as to provide means to change this information.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__sphere__traits__2.html" title="The class Delaunay_triangulation_on_sphere_traits_2 is a model of the concept DelaunayTriangulationOn...">CGAL::Delaunay_triangulation_on_sphere_traits_2</a></span> </dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Projection__on__sphere__traits__3.html" title="The class Projection_on_sphere_traits_3 is a model of the concept DelaunayTriangulationOnSphereTraits...">CGAL::Projection_on_sphere_traits_3</a></span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classDelaunayTriangulationOnSphereTraits__2.html">DelaunayTriangulationOnSphereTraits_2</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:adffcfb8d923e5b155ce854c3441c4fcb" id="r_adffcfb8d923e5b155ce854c3441c4fcb"><td class="memItemLeft"><a id="adffcfb8d923e5b155ce854c3441c4fcb" name="adffcfb8d923e5b155ce854c3441c4fcb"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>FT</b></td></tr>
+<tr class="memdesc:adffcfb8d923e5b155ce854c3441c4fcb"><td class="mdescLeft"> </td><td class="mdescRight">The number type; must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span>. <br></td></tr>
+<tr class="memitem:a40a502e3a9bc2191293f585823d99aad" id="r_a40a502e3a9bc2191293f585823d99aad"><td class="memItemLeft"><a id="a40a502e3a9bc2191293f585823d99aad" name="a40a502e3a9bc2191293f585823d99aad"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_on_sphere_2</b></td></tr>
+<tr class="memdesc:a40a502e3a9bc2191293f585823d99aad"><td class="mdescLeft"> </td><td class="mdescRight">The point type of the triangulation, representing a point on the sphere. <br></td></tr>
+<tr class="memitem:a9882fad4564dbce875f1e06b3f7d54cd" id="r_a9882fad4564dbce875f1e06b3f7d54cd"><td class="memItemLeft"><a id="a9882fad4564dbce875f1e06b3f7d54cd" name="a9882fad4564dbce875f1e06b3f7d54cd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Arc_on_sphere_2</b></td></tr>
+<tr class="memdesc:a9882fad4564dbce875f1e06b3f7d54cd"><td class="mdescLeft"> </td><td class="mdescRight">An arc of a great circle, used to represent a curved segment (a Voronoi or a Delaunay edge). <br></td></tr>
+<tr class="memitem:aa6f3e25de9e17334dc3b92b949e6dad7" id="r_aa6f3e25de9e17334dc3b92b949e6dad7"><td class="memItemLeft"><a id="aa6f3e25de9e17334dc3b92b949e6dad7" name="aa6f3e25de9e17334dc3b92b949e6dad7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_3</b></td></tr>
+<tr class="memdesc:aa6f3e25de9e17334dc3b92b949e6dad7"><td class="mdescLeft"> </td><td class="mdescRight">The 3D point type. <br></td></tr>
+<tr class="memitem:a6f12171853e0d7ea65fdd8766d3ee6b4" id="r_a6f12171853e0d7ea65fdd8766d3ee6b4"><td class="memItemLeft"><a id="a6f12171853e0d7ea65fdd8766d3ee6b4" name="a6f12171853e0d7ea65fdd8766d3ee6b4"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Segment_3</b></td></tr>
+<tr class="memdesc:a6f12171853e0d7ea65fdd8766d3ee6b4"><td class="mdescLeft"> </td><td class="mdescRight">The 3D segment type. <br></td></tr>
+<tr class="memitem:aed86feab29ceb6077f39c5c4122211a3" id="r_aed86feab29ceb6077f39c5c4122211a3"><td class="memItemLeft"><a id="aed86feab29ceb6077f39c5c4122211a3" name="aed86feab29ceb6077f39c5c4122211a3"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Triangle_3</b></td></tr>
+<tr class="memdesc:aed86feab29ceb6077f39c5c4122211a3"><td class="mdescLeft"> </td><td class="mdescRight">The 3D triangle type. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Predicates</h2></td></tr>
+<tr class="memitem:afd2b488c9d27c9de48c0d4bb27202b11" id="r_afd2b488c9d27c9de48c0d4bb27202b11"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afd2b488c9d27c9de48c0d4bb27202b11">Collinear_are_strictly_ordered_on_great_circle_2</a></td></tr>
+<tr class="memdesc:afd2b488c9d27c9de48c0d4bb27202b11"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:adbe715f38f73ac1e072a8b9812bd9b2c" id="r_adbe715f38f73ac1e072a8b9812bd9b2c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#adbe715f38f73ac1e072a8b9812bd9b2c">Compare_on_sphere_2</a></td></tr>
+<tr class="memdesc:adbe715f38f73ac1e072a8b9812bd9b2c"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:a9460c4f1ee9a08919f56ca8f91660e4e" id="r_a9460c4f1ee9a08919f56ca8f91660e4e"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9460c4f1ee9a08919f56ca8f91660e4e">Equal_on_sphere_2</a></td></tr>
+<tr class="memdesc:a9460c4f1ee9a08919f56ca8f91660e4e"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:a4825fda1c98fd9299f27634a60870a43" id="r_a4825fda1c98fd9299f27634a60870a43"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a4825fda1c98fd9299f27634a60870a43">Orientation_on_sphere_2</a></td></tr>
+<tr class="memdesc:a4825fda1c98fd9299f27634a60870a43"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+<tr class="memitem:afb850a8f2d2a75cb47ddbe25f15d6665" id="r_afb850a8f2d2a75cb47ddbe25f15d6665"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afb850a8f2d2a75cb47ddbe25f15d6665">Side_of_oriented_circle_on_sphere_2</a></td></tr>
+<tr class="memdesc:afb850a8f2d2a75cb47ddbe25f15d6665"><td class="mdescLeft"> </td><td class="mdescRight">Predicate object type.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Constructions</h2></td></tr>
+<tr class="memitem:a7a401b7328b16e3a1f1ca8b24707beb8" id="r_a7a401b7328b16e3a1f1ca8b24707beb8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a7a401b7328b16e3a1f1ca8b24707beb8">Construct_arc_on_sphere_2</a></td></tr>
+<tr class="memdesc:a7a401b7328b16e3a1f1ca8b24707beb8"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:aa5355516229e1b6b8375b955e55b8951" id="r_aa5355516229e1b6b8375b955e55b8951"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa5355516229e1b6b8375b955e55b8951">Construct_point_on_sphere_2</a></td></tr>
+<tr class="memdesc:aa5355516229e1b6b8375b955e55b8951"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:a4b7c44f23634bab698794c56e3992ba2" id="r_a4b7c44f23634bab698794c56e3992ba2"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a4b7c44f23634bab698794c56e3992ba2">Construct_point_3</a></td></tr>
+<tr class="memdesc:a4b7c44f23634bab698794c56e3992ba2"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:a90141dcefb6dc3866c6469651ab0e1ea" id="r_a90141dcefb6dc3866c6469651ab0e1ea"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a90141dcefb6dc3866c6469651ab0e1ea">Construct_segment_3</a></td></tr>
+<tr class="memdesc:a90141dcefb6dc3866c6469651ab0e1ea"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+<tr class="memitem:ab72e578444dcbdb784495ea2bfefbf16" id="r_ab72e578444dcbdb784495ea2bfefbf16"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab72e578444dcbdb784495ea2bfefbf16">Construct_triangle_3</a></td></tr>
+<tr class="memdesc:ab72e578444dcbdb784495ea2bfefbf16"><td class="mdescLeft"> </td><td class="mdescRight">Construction object.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following functions provide access to the predicate and constructor objects. </p>
+</td></tr>
+<tr class="memitem:ac6636154ff686544a80457830accfb78" id="r_ac6636154ff686544a80457830accfb78"><td class="memItemLeft"><a id="ac6636154ff686544a80457830accfb78" name="ac6636154ff686544a80457830accfb78"></a>
+<a class="el" href="#adbe715f38f73ac1e072a8b9812bd9b2c">Compare_on_sphere_2</a> </td><td class="memItemRight"><b>compare_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a265864f8a07206bdea6fe3f03491c708" id="r_a265864f8a07206bdea6fe3f03491c708"><td class="memItemLeft"><a id="a265864f8a07206bdea6fe3f03491c708" name="a265864f8a07206bdea6fe3f03491c708"></a>
+<a class="el" href="#a9460c4f1ee9a08919f56ca8f91660e4e">Equal_on_sphere_2</a> </td><td class="memItemRight"><b>equal_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a6291a049ad1d64ef37dcebc65b422cb5" id="r_a6291a049ad1d64ef37dcebc65b422cb5"><td class="memItemLeft"><a id="a6291a049ad1d64ef37dcebc65b422cb5" name="a6291a049ad1d64ef37dcebc65b422cb5"></a>
+<a class="el" href="#a4825fda1c98fd9299f27634a60870a43">Orientation_on_sphere_2</a> </td><td class="memItemRight"><b>orientation_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a963cd8929ba800b5f4802baf56d3292b" id="r_a963cd8929ba800b5f4802baf56d3292b"><td class="memItemLeft"><a id="a963cd8929ba800b5f4802baf56d3292b" name="a963cd8929ba800b5f4802baf56d3292b"></a>
+<a class="el" href="#afb850a8f2d2a75cb47ddbe25f15d6665">Side_of_oriented_circle_on_sphere_2</a> </td><td class="memItemRight"><b>side_of_oriented_circle_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a06b96068e1ef464447c8ae7f33ece934" id="r_a06b96068e1ef464447c8ae7f33ece934"><td class="memItemLeft"><a id="a06b96068e1ef464447c8ae7f33ece934" name="a06b96068e1ef464447c8ae7f33ece934"></a>
+<a class="el" href="#afd2b488c9d27c9de48c0d4bb27202b11">Collinear_are_strictly_ordered_on_great_circle_2</a> </td><td class="memItemRight"><b>collinear_are_strictly_ordered_on_great_circle_2_object</b> ()</td></tr>
+<tr class="memitem:ac5d21bd926fc9bec3f7d01985e386018" id="r_ac5d21bd926fc9bec3f7d01985e386018"><td class="memItemLeft"><a id="ac5d21bd926fc9bec3f7d01985e386018" name="ac5d21bd926fc9bec3f7d01985e386018"></a>
+<a class="el" href="#a7a401b7328b16e3a1f1ca8b24707beb8">Construct_arc_on_sphere_2</a> </td><td class="memItemRight"><b>construct_arc_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a254c6504bb49953d984a00e377c55469" id="r_a254c6504bb49953d984a00e377c55469"><td class="memItemLeft"><a id="a254c6504bb49953d984a00e377c55469" name="a254c6504bb49953d984a00e377c55469"></a>
+<a class="el" href="#aa5355516229e1b6b8375b955e55b8951">Construct_point_on_sphere_2</a> </td><td class="memItemRight"><b>construct_point_on_sphere_2_object</b> ()</td></tr>
+<tr class="memitem:a0f11c3631fc21caf7d4c174b9b1c29be" id="r_a0f11c3631fc21caf7d4c174b9b1c29be"><td class="memItemLeft"><a id="a0f11c3631fc21caf7d4c174b9b1c29be" name="a0f11c3631fc21caf7d4c174b9b1c29be"></a>
+<a class="el" href="#a4b7c44f23634bab698794c56e3992ba2">Construct_point_3</a> </td><td class="memItemRight"><b>construct_point_3_object</b> ()</td></tr>
+<tr class="memitem:a39d523963d051855ec34f613b57ec764" id="r_a39d523963d051855ec34f613b57ec764"><td class="memItemLeft"><a id="a39d523963d051855ec34f613b57ec764" name="a39d523963d051855ec34f613b57ec764"></a>
+<a class="el" href="#a90141dcefb6dc3866c6469651ab0e1ea">Construct_segment_3</a> </td><td class="memItemRight"><b>construct_segment_3_object</b> ()</td></tr>
+<tr class="memitem:a6822847cfa27ef08ddd0edb586ded61f" id="r_a6822847cfa27ef08ddd0edb586ded61f"><td class="memItemLeft"><a id="a6822847cfa27ef08ddd0edb586ded61f" name="a6822847cfa27ef08ddd0edb586ded61f"></a>
+<a class="el" href="#ab72e578444dcbdb784495ea2bfefbf16">Construct_triangle_3</a> </td><td class="memItemRight"><b>construct_triangle_3_object</b> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Configuration of the spherical domain</h2></td></tr>
+<tr class="memitem:aa0478d05495c0c088cc37a2a95834757" id="r_aa0478d05495c0c088cc37a2a95834757"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#aa0478d05495c0c088cc37a2a95834757">set_center</a> (<a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7">Point_3</a> center)</td></tr>
+<tr class="memdesc:aa0478d05495c0c088cc37a2a95834757"><td class="mdescLeft"> </td><td class="mdescRight">sets the center of the sphere.  <br></td></tr>
+<tr class="memitem:a11999045009bb61c10e4ff18cd5d82d7" id="r_a11999045009bb61c10e4ff18cd5d82d7"><td class="memItemLeft"><a id="a11999045009bb61c10e4ff18cd5d82d7" name="a11999045009bb61c10e4ff18cd5d82d7"></a>
+<a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7">Point_3</a> </td><td class="memItemRight"><b>center</b> () const</td></tr>
+<tr class="memdesc:a11999045009bb61c10e4ff18cd5d82d7"><td class="mdescLeft"> </td><td class="mdescRight">returns the center of the sphere. <br></td></tr>
+<tr class="memitem:a79949403017b5bfa230631f9bdb910d5" id="r_a79949403017b5bfa230631f9bdb910d5"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a79949403017b5bfa230631f9bdb910d5">set_radius</a> (<a class="el" href="#adffcfb8d923e5b155ce854c3441c4fcb">FT</a> radius)</td></tr>
+<tr class="memdesc:a79949403017b5bfa230631f9bdb910d5"><td class="mdescLeft"> </td><td class="mdescRight">sets the radius of the sphere.  <br></td></tr>
+<tr class="memitem:abcc0a344f8ba2c372860cc21803c6c50" id="r_abcc0a344f8ba2c372860cc21803c6c50"><td class="memItemLeft"><a id="abcc0a344f8ba2c372860cc21803c6c50" name="abcc0a344f8ba2c372860cc21803c6c50"></a>
+<a class="el" href="#adffcfb8d923e5b155ce854c3441c4fcb">FT</a> </td><td class="memItemRight"><b>radius</b> () const</td></tr>
+<tr class="memdesc:abcc0a344f8ba2c372860cc21803c6c50"><td class="mdescLeft"> </td><td class="mdescRight">returns the radius of the sphere. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Precision predicates</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>When a kernel does not offer arbitrary precision - or at least an exact representation of algebraic coordinates, which is usually the case for the sake of computational speed, then most points that are theoretically on the sphere are not in practice exactly on the sphere.</p>
+<p>When this is the case, it cannot be guaranteed that all points are in a convex position, which can then result in points being hidden upon insertion, see <a class="el" href="citelist.html#CITEREF_cgal:ccplr-redtp-10">[1]</a>. To ensure that no point is hidden, a trick is to enforce a gap between points (<a class="el" href="citelist.html#CITEREF_cgal:ccplr-redtp-10">[1]</a>, Lemma 4.1). This gap is based on a fixed maximal allowed distance \( \delta \) between a point and the theoretical sphere. The gap must then be at least \( 2 \sqrt{R\delta} \), where \( R \) is the radius of the sphere.</p>
+<p>The following two predicates serve to check if the point is on the sphere, that is if for a model-defined \( \delta \) the distance to the sphere is smaller than \( \delta \) and if the distance between two points is greater than \( 2 \sqrt{R\delta} \). It is also of course possible to construct traits classes with arbitrary precision or with a representation that ensures that points are exactly on the sphere and in this case, \( \delta = 0 \) can be chosen and the predicates below are trivial.</p>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__sphere__traits__2.html" title="The class Delaunay_triangulation_on_sphere_traits_2 is a model of the concept DelaunayTriangulationOn...">CGAL::Delaunay_triangulation_on_sphere_traits_2</a></span> </dd></dl>
+</td></tr>
+<tr class="memitem:a37cc151d3bf935923db004e62528fdbf" id="r_a37cc151d3bf935923db004e62528fdbf"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a37cc151d3bf935923db004e62528fdbf">is_on_sphere</a> (<a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a> p)</td></tr>
+<tr class="memdesc:a37cc151d3bf935923db004e62528fdbf"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the point <span class="tt">p</span> is on the sphere or not.  <br></td></tr>
+<tr class="memitem:aba204e427e1c7909743e8bc48d830365" id="r_aba204e427e1c7909743e8bc48d830365"><td class="memItemLeft"><a id="aba204e427e1c7909743e8bc48d830365" name="aba204e427e1c7909743e8bc48d830365"></a>
+bool </td><td class="memItemRight"><b>are_points_too_close</b> (<a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a> p, <a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a> q)</td></tr>
+<tr class="memdesc:aba204e427e1c7909743e8bc48d830365"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the points <span class="tt">p</span> and <span class="tt">q</span> are too close (see <a href="https://doc.cgal.org/latest/Triangulation_on_sphere_2/classTriangulationOnSphereTraits__2.html#amgrpbc40b59d2ea2be0fc60516e5f7bb0f92">Precision predicates</a>). <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="afd2b488c9d27c9de48c0d4bb27202b11" name="afd2b488c9d27c9de48c0d4bb27202b11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd2b488c9d27c9de48c0d4bb27202b11">◆ </a></span>Collinear_are_strictly_ordered_on_great_circle_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afd2b488c9d27c9de48c0d4bb27202b11">TriangulationOnSphereTraits_2::Collinear_are_strictly_ordered_on_great_circle_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q, Point_on_sphere_2 r)</span></p>
+<p>which returns <span class="tt">true</span> if <span class="tt">r</span> strictly lies on the shortest path between <span class="tt">p</span> and <span class="tt">q</span> on the great circle passing through <span class="tt">p</span> and <span class="tt">q</span>.</p>
+<p>If <span class="tt">p</span> and <span class="tt">q</span> are diametrically opposed, <span class="tt">true</span> is returned. </p>
+
+</div>
+</div>
+<a id="adbe715f38f73ac1e072a8b9812bd9b2c" name="adbe715f38f73ac1e072a8b9812bd9b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe715f38f73ac1e072a8b9812bd9b2c">◆ </a></span>Compare_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#adbe715f38f73ac1e072a8b9812bd9b2c">TriangulationOnSphereTraits_2::Compare_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q)</span></p>
+<p>which returns <span class="tt">true</span> or <span class="tt">false</span> based on a consistent, user-defined strict total order of points. </p>
+
+</div>
+</div>
+<a id="a7a401b7328b16e3a1f1ca8b24707beb8" name="a7a401b7328b16e3a1f1ca8b24707beb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a401b7328b16e3a1f1ca8b24707beb8">◆ </a></span>Construct_arc_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a7a401b7328b16e3a1f1ca8b24707beb8">TriangulationOnSphereTraits_2::Construct_arc_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#a9882fad4564dbce875f1e06b3f7d54cd" title="An arc of a great circle, used to represent a curved segment (a Voronoi or a Delaunay edge).">Arc_on_sphere_2</a> operator()(Point_on_sphere_2 p, Point_on_sphere_2 q)</span></p>
+<p>which introduces an arc of great circle, with source <span class="tt">p</span> and target <span class="tt">q</span>.</p>
+<p>The circular arc constructed from a source, and a target, is defined as the set of points of the great circle that lie between the source <span class="tt">p</span> and the target <span class="tt">q</span>, when traversing the great circle counterclockwise seen from the side of the plane of the great circle pointed by its <em>positive</em> normal vectors.</p>
+<p>In this definition, we say that a normal vector \( (a,b,c)\) is <em>positive</em> if \( (a,b,c)&gt;(0,0,0)\) (i.e. \( (a&gt;0) || (a==0) \&amp;\&amp; (b&gt;0) || (a==0)\&amp;\&amp;(b==0)\&amp;\&amp;(c&gt;0)\)).</p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">p</span> and <span class="tt">q</span> are not diametrically opposed. </dd></dl>
+
+</div>
+</div>
+<a id="a4b7c44f23634bab698794c56e3992ba2" name="a4b7c44f23634bab698794c56e3992ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b7c44f23634bab698794c56e3992ba2">◆ </a></span>Construct_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a4b7c44f23634bab698794c56e3992ba2">TriangulationOnSphereTraits_2::Construct_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7" title="The 3D point type.">Point_3</a> operator()(Point_on_sphere_2 p)</span>,</p>
+<p>which expresses the point <span class="tt">p</span> on the sphere as a point in the embedding 3D space. </p>
+
+</div>
+</div>
+<a id="aa5355516229e1b6b8375b955e55b8951" name="aa5355516229e1b6b8375b955e55b8951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5355516229e1b6b8375b955e55b8951">◆ </a></span>Construct_point_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa5355516229e1b6b8375b955e55b8951">TriangulationOnSphereTraits_2::Construct_point_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#a40a502e3a9bc2191293f585823d99aad" title="The point type of the triangulation, representing a point on the sphere.">Point_on_sphere_2</a> operator()(Point_3 p)</span>,</p>
+<p>which expresses the point <span class="tt">p</span>, a 3D point living on the sphere, using the (user-defined) point-on-sphere representation. </p>
+
+</div>
+</div>
+<a id="a90141dcefb6dc3866c6469651ab0e1ea" name="a90141dcefb6dc3866c6469651ab0e1ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90141dcefb6dc3866c6469651ab0e1ea">◆ </a></span>Construct_segment_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a90141dcefb6dc3866c6469651ab0e1ea">TriangulationOnSphereTraits_2::Construct_segment_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#a6f12171853e0d7ea65fdd8766d3ee6b4" title="The 3D segment type.">Segment_3</a> operator()(Point_3 p, Point_3 q)</span>,</p>
+<p>which constructs a segment from two 3D points. </p>
+
+</div>
+</div>
+<a id="ab72e578444dcbdb784495ea2bfefbf16" name="ab72e578444dcbdb784495ea2bfefbf16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72e578444dcbdb784495ea2bfefbf16">◆ </a></span>Construct_triangle_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab72e578444dcbdb784495ea2bfefbf16">TriangulationOnSphereTraits_2::Construct_triangle_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construction object. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt"><a class="el" href="#aed86feab29ceb6077f39c5c4122211a3" title="The 3D triangle type.">Triangle_3</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p>which constructs a triangle from three 3D points. </p>
+
+</div>
+</div>
+<a id="a9460c4f1ee9a08919f56ca8f91660e4e" name="a9460c4f1ee9a08919f56ca8f91660e4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9460c4f1ee9a08919f56ca8f91660e4e">◆ </a></span>Equal_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9460c4f1ee9a08919f56ca8f91660e4e">TriangulationOnSphereTraits_2::Equal_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q)</span></p>
+<p>which returns <span class="tt">true</span> if, and only if, <span class="tt">p</span> and <span class="tt">q</span> are equal. </p>
+
+</div>
+</div>
+<a id="a4825fda1c98fd9299f27634a60870a43" name="a4825fda1c98fd9299f27634a60870a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4825fda1c98fd9299f27634a60870a43">◆ </a></span>Orientation_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a4825fda1c98fd9299f27634a60870a43">TriangulationOnSphereTraits_2::Orientation_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">Orientation operator()(Point_on_sphere_2 p, Point_on_sphere_2 q, Point_on_sphere_2 r)</span></p>
+<p>which returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, if <span class="tt">r</span> lies on the left hemisphere while walking the shortest path between <span class="tt">p</span> and <span class="tt">q</span> on the great circle defined by <span class="tt">p</span> and <span class="tt">q</span>; returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> if <span class="tt">r</span> lies on the right hemisphere; and returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> if <span class="tt">r</span> lies on the great circle.</p>
+<p>If <span class="tt">p</span> and <span class="tt">q</span> are diametrically opposed, <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> is returned. </p>
+
+</div>
+</div>
+<a id="afb850a8f2d2a75cb47ddbe25f15d6665" name="afb850a8f2d2a75cb47ddbe25f15d6665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb850a8f2d2a75cb47ddbe25f15d6665">◆ </a></span>Side_of_oriented_circle_on_sphere_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afb850a8f2d2a75cb47ddbe25f15d6665">TriangulationOnSphereTraits_2::Side_of_oriented_circle_on_sphere_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate object type. </p>
+<p>Must provide the operator:</p>
+<p><span class="tt">bool operator()(Point_on_sphere_2 p, Point_on_sphere_2 q, Point_on_sphere_2 r, Point_on_sphere_2 s)</span></p>
+<p>which returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, if <span class="tt">s</span> lies on the positive side of the oriented plane <span class="tt">h</span> defined by <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span>; returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> if <span class="tt">s</span> lies on the negative side of <span class="tt">h</span>; and returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> if <span class="tt">s</span> lies on <span class="tt">h</span>. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a37cc151d3bf935923db004e62528fdbf" name="a37cc151d3bf935923db004e62528fdbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37cc151d3bf935923db004e62528fdbf">◆ </a></span>is_on_sphere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TriangulationOnSphereTraits_2::is_on_sphere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a40a502e3a9bc2191293f585823d99aad">Point_on_sphere_2</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns whether the point <span class="tt">p</span> is on the sphere or not. </p>
+<dl class="section note"><dt>Note</dt><dd>A point that is not on the sphere will not be inserted in the triangulation. </dd></dl>
+
+</div>
+</div>
+<a id="aa0478d05495c0c088cc37a2a95834757" name="aa0478d05495c0c088cc37a2a95834757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0478d05495c0c088cc37a2a95834757">◆ </a></span>set_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TriangulationOnSphereTraits_2::set_center </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aa6f3e25de9e17334dc3b92b949e6dad7">Point_3</a></td>          <td class="paramname"><span class="paramname"><em>center</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets the center of the sphere. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is meant to be used only by the triangulation class as modifying the domain requires clearing the triangulation. Users can change the domain using <span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__sphere__2.html#abb242907b37f4ee1bc02ce8ddbd91a41">CGAL::Triangulation_on_sphere_2::set_center_and_radius()</a></span>. </dd></dl>
+
+</div>
+</div>
+<a id="a79949403017b5bfa230631f9bdb910d5" name="a79949403017b5bfa230631f9bdb910d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79949403017b5bfa230631f9bdb910d5">◆ </a></span>set_radius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TriangulationOnSphereTraits_2::set_radius </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#adffcfb8d923e5b155ce854c3441c4fcb">FT</a></td>          <td class="paramname"><span class="paramname"><em>radius</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets the radius of the sphere. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is meant to be used only by the triangulation class as modifying the domain requires clearing the triangulation. Users can change the domain using <span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__sphere__2.html#abb242907b37f4ee1bc02ce8ddbd91a41">CGAL::Triangulation_on_sphere_2::set_center_and_radius()</a></span>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classTriangulationOnSphereTraits__2.html">TriangulationOnSphereTraits_2</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

@@ -1,0 +1,25 @@
+var NAVTREEINDEX0 =
+{
+"Ball_merge_surface_reconstruction_2ball_merge_reconstruction_8cpp-example.html":[4,2],
+"Ball_merge_surface_reconstruction_2ball_merge_reconstruction_global_8cpp-example.html":[4,0],
+"Ball_merge_surface_reconstruction_2ball_merge_reconstruction_local_8cpp-example.html":[4,1],
+"annotated.html":[3],
+"citelist.html":[2],
+"classCGAL_1_1Ball__merge__surface__reconstruction.html":[1,0,0],
+"classCGAL_1_1Ball__merge__surface__reconstruction.html#a34d9fb05f1439b2275c2bc2dfa2eb148":[1,0,0,0],
+"classCGAL_1_1Ball__merge__surface__reconstruction.html#a3a9fea3f8b8237e64594edf26189c69f":[1,0,0,2],
+"classCGAL_1_1Ball__merge__surface__reconstruction.html#a7c5ac4d5c9ffc8231e067454a716bd7c":[1,0,0,1],
+"examples.html":[4],
+"group__PkgBallMergeRef.html":[1,0],
+"group__PkgBallMergeRef.html#ga2021477d3b46b2d94f57f3b44c44c60c":[1,0,1],
+"group__PkgBallMergeRef.html#ga654894ccc53ad98079e94d1921a2c70d":[1,0,2],
+"index.html":[],
+"index.html":[0],
+"index.html#secBMSRChoose":[0,0,0],
+"index.html#secBMSRPar":[0,0,1],
+"index.html#secBMSRdefinitions":[0,0],
+"index.html#secBMSRexamples":[0,1],
+"index.html#secBMSRhistory":[0,2],
+"modules.html":[1],
+"pages.html":[]
+};

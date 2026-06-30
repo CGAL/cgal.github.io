@@ -1,0 +1,765 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Straight_skeleton_2/group__PkgStraightSkeleton2OffsetFunctions.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - 2D Straight Skeleton and Polygon Offsetting: Offset Construction Functions</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - 2D Straight Skeleton and Polygon Offsetting
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('group__PkgStraightSkeleton2OffsetFunctions.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Offset Construction Functions <div class="ingroups"><a class="el" href="group__PkgStraightSkeleton2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgStraightSkeleton2Functions.html">Functions</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader"> </h2>
+<div class="textblock"><p>The following functions are used to construct the inward or outward offsets of a polygon. </p>
+<h1 class="doxsection"><a class="anchor" id="SLSKernelChoices"></a>
+Kernel Choices</h1>
+<p>Up to three different kernels can be used in the offset construction process: </p><ul>
+<li>
+<b>Input Kernel (<span class="tt">InK</span>):</b> This is the kernel type of the input polygons.  </li>
+<li>
+<b>Skeleton Kernel (<span class="tt">SsK</span>):</b> This is the kernel used for the construction of the (partial) straight skeleton. It might differ from the Input <a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a> for example if the input is based on exact number types, but you wish to speed up the construction of the straight skeleton, using a lighter kernel such as <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></span>.  </li>
+<li>
+<b>Offset (Output) Kernel (<span class="tt">OfK</span>):</b> This is the kernel used for the construction of the offset polygons and is thus the kernel type for the output.  </li>
+</ul>
+<p>When the kernel differs, <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Cartesian__converter.html">CGAL::Cartesian_converter</a></span> is used to convert from one kernel to the other.</p>
+<p>By default, <span class="tt">SsK</span> and <span class="tt">OfK</span> are chosen as <span class="tt"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></span> as a compromise between speed and robustness. See also Section <a class="el" href="index.html#Straight_skeleton_2CreateOffsetPolygonsfrom_1" title="Create Offset Polygons from a Polygon (With or Without Holes)">Create Offset Polygons from a Polygon (With or Without Holes)</a>.</p>
+<h1 class="doxsection"><a class="anchor" id="SLSOffsetPolygonReturnType"></a>
+Polygon Return Type</h1>
+<p>There are two classes of offset construction functions: those that simply return all the offset polygons, and those that also create an arrangement of the polygons to create a polygon with holes. The latter contain <em>_with_holes</em> in the name.</p>
+<p>The return type of the offset construction function is thus dediced by whether or not it is a simple polygon or a polygon with holes, and on the dictated output kernel (see Section <a class="el" href="#SLSKernelChoices" title="Kernel Choices">Kernel Choices</a>). Thus, for an input polygon type <span class="tt">InKPolygon</span> in an offset construction that does <b>not</b> arrange polygons (e.g. <span class="tt">create_interior_skeleton_and_offset_polygons_2()</span>): </p><ul>
+<li>
+If the kernel type <span class="tt">InK</span> of the input polygon type is <b>different</b> from the output kernel type <span class="tt">OfK</span>, then the output polygon type is <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__2.html">CGAL::Polygon_2</a>&lt;OfK&gt;</span>.  </li>
+<li>
+If the kernel type <span class="tt">InK</span> is <b>equal</b> to the output kernel type <span class="tt">OfK</span>, but the input polygon is a polygon <b>with holes</b> (a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span>), then the return type is <span class="tt">InKPolygon::General_polygon_2</span>.  </li>
+<li>
+If the kernel type <span class="tt">InK</span> of the input polygon type is <b>equal</b> to the output kernel type <span class="tt">OfK</span>, and the input polygon is a polygon <b>without holes</b> (a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with <span class="tt">InK::Point_2</span> value type), then the return type is <span class="tt">InKPolygon</span>.  </li>
+</ul>
+<p>Similarly, if the return type is a polygon with holes (e.g. <span class="tt">create_interior_skeleton_and_offset_polygons_with_holes_2()</span>, a similar dispatch exists: </p><ul>
+<li>
+If the kernel type <span class="tt">InK</span> of the input polygon type is <b>different</b> from the output kernel type <span class="tt">OfK</span>, then the output polygon type is <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">CGAL::Polygon_with_holes_2</a>&lt;OfK&gt;</span>.  </li>
+<li>
+If the kernel type <span class="tt">InK</span> is <b>equal</b> to the output kernel type <span class="tt">OfK</span>, but the input polygon is a polygon <b>with holes</b> (a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span>), then the return type is <span class="tt">InKPolygon</span>.  </li>
+<li>
+If the kernel type <span class="tt">InK</span> of the input polygon type is <b>equal</b> to the output kernel type <span class="tt">OfK</span>, and the input polygon is a polygon <b>without holes</b> (a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with <span class="tt">InK::Point_2</span> value type), then the return type is <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">CGAL::Polygon_with_holes_2</a>&lt;OfK&gt;</span>.  </li>
+</ul>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gafd9733f1c41a778c6e274017ddae9ade" id="r_gafd9733f1c41a778c6e274017ddae9ade"><td class="memTemplParams" colspan="2">template&lt;class K, class InputPolygonPtrIterator, class OutputPolygonWithHolesPtrIterator&gt; </td></tr>
+<tr class="memitem:gafd9733f1c41a778c6e274017ddae9ade template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#gafd9733f1c41a778c6e274017ddae9ade">CGAL::arrange_offset_polygons_2</a> (InputPolygonPtrIterator begin, InputPolygonPtrIterator end, OutputPolygonWithHolesPtrIterator out, const K &amp;k)</td></tr>
+<tr class="memdesc:gafd9733f1c41a778c6e274017ddae9ade"><td class="mdescLeft"> </td><td class="mdescRight">The function <span class="tt"><a class="el" href="#gafd9733f1c41a778c6e274017ddae9ade" title="The function arrange_offset_polygons_2() arranges the sequence of 2D polygons obtained by create_offs...">arrange_offset_polygons_2()</a></span> arranges the sequence of 2D polygons obtained by <span class="tt"><a class="el" href="#ga36fe6fd001343f6cd0a3e8b06d1c325c" title="returns a container with the offset polygons at distance offset obtained from the straight skeleton s...">create_offset_polygons_2()</a></span> into 2D polygons with holes by determining geometric parent-hole relationships using a simple algorithm based on the particular characteristics of offset polygons.  <br></td></tr>
+<tr class="memitem:ga80c0848e0145bbd531b1fc178fd07d33" id="r_ga80c0848e0145bbd531b1fc178fd07d33"><td class="memTemplParams" colspan="2">template&lt;class <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a>, class Traits&gt; </td></tr>
+<tr class="memitem:ga80c0848e0145bbd531b1fc178fd07d33 template"><td class="memItemLeft">std::optional&lt; typename Traits::FT &gt; </td><td class="memItemRight"><a class="el" href="#ga80c0848e0145bbd531b1fc178fd07d33">CGAL::compute_outer_frame_margin</a> (<a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a> first, <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a> beyond, typename Traits::FT offset, const Traits &amp;traits=Default_traits)</td></tr>
+<tr class="memdesc:ga80c0848e0145bbd531b1fc178fd07d33"><td class="mdescLeft"> </td><td class="mdescRight">computes the separation required between a polygon and the outer frame used to obtain an exterior skeleton suitable for the computation of outer offset polygons at a given distance.  <br></td></tr>
+<tr class="memitem:ga36fe6fd001343f6cd0a3e8b06d1c325c" id="r_ga36fe6fd001343f6cd0a3e8b06d1c325c"><td class="memTemplParams" colspan="2">template&lt;typename OfKPolygon, typename FT, typename StraightSkeleton, typename OfK&gt; </td></tr>
+<tr class="memitem:ga36fe6fd001343f6cd0a3e8b06d1c325c template"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; </td><td class="memItemRight"><a class="el" href="#ga36fe6fd001343f6cd0a3e8b06d1c325c">CGAL::create_offset_polygons_2</a> (FT offset, const StraightSkeleton &amp;ss, OfK k=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>())</td></tr>
+<tr class="memdesc:ga36fe6fd001343f6cd0a3e8b06d1c325c"><td class="mdescLeft"> </td><td class="mdescRight">returns a container with the offset polygons at distance <span class="tt">offset</span> obtained from the straight skeleton <span class="tt">ss</span>.  <br></td></tr>
+<tr class="memitem:ga4baa6cdc2cc19c341be875742387254b" id="r_ga4baa6cdc2cc19c341be875742387254b"><td class="memTemplParams" colspan="2">template&lt;typename OfKPolygon, typename FT, typename InKPolygon, typename HoleIterator, typename OfK, typename SsK&gt; </td></tr>
+<tr class="memitem:ga4baa6cdc2cc19c341be875742387254b template"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; </td><td class="memItemRight"><a class="el" href="#ga4baa6cdc2cc19c341be875742387254b">CGAL::create_interior_skeleton_and_offset_polygons_2</a> (FT offset, const InKPolygon &amp;outer_boundary, HoleIterator holes_begin, HoleIterator holes_end, OfK ofk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>, SsK ssk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>())</td></tr>
+<tr class="memdesc:ga4baa6cdc2cc19c341be875742387254b"><td class="mdescLeft"> </td><td class="mdescRight">returns a container with all the inner offset polygons at distance <span class="tt">offset</span> of a 2D polygon with holes.  <br></td></tr>
+<tr class="memitem:gaf0d0e8321d70cd97e6441b6ce77bdc89" id="r_gaf0d0e8321d70cd97e6441b6ce77bdc89"><td class="memTemplParams" colspan="2">template&lt;typename OfKPolygon, typename FT, typename InKPolygon, typename OfK, typename SsK&gt; </td></tr>
+<tr class="memitem:gaf0d0e8321d70cd97e6441b6ce77bdc89 template"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; </td><td class="memItemRight"><a class="el" href="#gaf0d0e8321d70cd97e6441b6ce77bdc89">CGAL::create_interior_skeleton_and_offset_polygons_2</a> (FT offset, const InKPolygon &amp;poly, OfK ofk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>, SsK ssk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>())</td></tr>
+<tr class="memdesc:gaf0d0e8321d70cd97e6441b6ce77bdc89"><td class="mdescLeft"> </td><td class="mdescRight">returns a container with all the inner offset polygons at distance <span class="tt">offset</span> of the 2D polygon <span class="tt">poly</span>.  <br></td></tr>
+<tr class="memitem:gaee243d012e7f942b4d1365dc307546b8" id="r_gaee243d012e7f942b4d1365dc307546b8"><td class="memTemplParams" colspan="2">template&lt;typename OfKPolygon, typename FT, typename InKPolygon, typename OfK, typename SsK&gt; </td></tr>
+<tr class="memitem:gaee243d012e7f942b4d1365dc307546b8 template"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; </td><td class="memItemRight"><a class="el" href="#gaee243d012e7f942b4d1365dc307546b8">CGAL::create_exterior_skeleton_and_offset_polygons_2</a> (FT offset, const InKPolygon &amp;poly, OfK ofk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>(), SsK ssk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>())</td></tr>
+<tr class="memdesc:gaee243d012e7f942b4d1365dc307546b8"><td class="mdescLeft"> </td><td class="mdescRight">returns a container with all the outer offset polygons at distance <span class="tt">offset</span> of the 2D polygon <span class="tt">poly</span>.  <br></td></tr>
+<tr class="memitem:gabe025331b6e803f2f942305123a02306" id="r_gabe025331b6e803f2f942305123a02306"><td class="memTemplParams" colspan="2">template&lt;class OfKPolygon, class FT, class InKPolygon, class OfK, class SsK&gt; </td></tr>
+<tr class="memitem:gabe025331b6e803f2f942305123a02306 template"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; </td><td class="memItemRight"><a class="el" href="#gabe025331b6e803f2f942305123a02306">CGAL::create_interior_skeleton_and_offset_polygons_with_holes_2</a> (FT offset, const InKPolygon &amp;poly_with_holes, OfK ofk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>, SsK ssk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>)</td></tr>
+<tr class="memdesc:gabe025331b6e803f2f942305123a02306"><td class="mdescLeft"> </td><td class="mdescRight">returns a container with all the inner offset polygons <em>with holes</em> at distance <span class="tt">offset</span> of the 2D polygon with holes <span class="tt">poly_with_holes</span>.  <br></td></tr>
+<tr class="memitem:ga7627d015c03abaea59b144576afebf70" id="r_ga7627d015c03abaea59b144576afebf70"><td class="memTemplParams" colspan="2">template&lt;class OfKPolygon, class FT, class InKPolygon, class OfK, class SsK&gt; </td></tr>
+<tr class="memitem:ga7627d015c03abaea59b144576afebf70 template"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; </td><td class="memItemRight"><a class="el" href="#ga7627d015c03abaea59b144576afebf70">CGAL::create_exterior_skeleton_and_offset_polygons_with_holes_2</a> (FT offset, const InKPolygon &amp;poly_with_holes, OfK ofk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>(), SsK ssk=<a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>())</td></tr>
+<tr class="memdesc:ga7627d015c03abaea59b144576afebf70"><td class="mdescLeft"> </td><td class="mdescRight">returns a container with all the outer offset polygons <em>with holes</em> at distance <span class="tt">offset</span> of the 2D polygon <span class="tt">poly_with_holes</span>.  <br></td></tr>
+<tr class="memitem:ga84423baa5902a7d6c2f8278f93d82f32" id="r_ga84423baa5902a7d6c2f8278f93d82f32"><td class="memTemplParams" colspan="2">template&lt;class Target_skeleton, class Source_skeleton, class Items_converter&gt; </td></tr>
+<tr class="memitem:ga84423baa5902a7d6c2f8278f93d82f32 template"><td class="memItemLeft">std::shared_ptr&lt; Target_skeleton &gt; </td><td class="memItemRight"><a class="el" href="#ga84423baa5902a7d6c2f8278f93d82f32">CGAL::convert_straight_skeleton_2</a> (Source_skeleton const &amp;s, Items_converted const &amp;ic=Items_converter())</td></tr>
+<tr class="memdesc:ga84423baa5902a7d6c2f8278f93d82f32"><td class="mdescLeft"> </td><td class="mdescRight">returns a new straight skeleton data structure with the same combinatorial and geometric data as <span class="tt">s</span> using the items converter <span class="tt">ic</span> to convert the geometric embedding to the types of the target skeleton.  <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="gafd9733f1c41a778c6e274017ddae9ade" name="gafd9733f1c41a778c6e274017ddae9ade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafd9733f1c41a778c6e274017ddae9ade">◆ </a></span>arrange_offset_polygons_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class K, class InputPolygonPtrIterator, class OutputPolygonWithHolesPtrIterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::arrange_offset_polygons_2 </td>
+          <td>(</td>
+          <td class="paramtype">InputPolygonPtrIterator</td>          <td class="paramname"><span class="paramname"><em>begin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputPolygonPtrIterator</td>          <td class="paramname"><span class="paramname"><em>end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputPolygonWithHolesPtrIterator</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const K &amp;</td>          <td class="paramname"><span class="paramname"><em>k</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/arrange_offset_polygons_2.h&gt;</code></p>
+
+<p>The function <span class="tt"><a class="el" href="#gafd9733f1c41a778c6e274017ddae9ade" title="The function arrange_offset_polygons_2() arranges the sequence of 2D polygons obtained by create_offs...">arrange_offset_polygons_2()</a></span> arranges the sequence of 2D polygons obtained by <span class="tt"><a class="el" href="#ga36fe6fd001343f6cd0a3e8b06d1c325c" title="returns a container with the offset polygons at distance offset obtained from the straight skeleton s...">create_offset_polygons_2()</a></span> into 2D polygons with holes by determining geometric parent-hole relationships using a simple algorithm based on the particular characteristics of offset polygons. </p>
+<p>The function determines parent-hole relationships among the polygons given by <span class="tt">[begin,end]</span> creating <span class="tt">std::shared_ptr&lt; <a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a> &gt;</span> objects added to the output sequence given <span class="tt">out</span>. A <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga5aa0906f2432d414090dd8723c10f304">CLOCKWISE</a></span> oriented polygon <span class="tt">H</span> is a hole of a <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga39fcfbab0b0f0ce9139ad1613e21d60d">COUNTERCLOCKWISE</a></span> polygon <span class="tt">P</span>, iff at least one vertex of <span class="tt">H</span> is <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ggaf6030e89dadcc1f45369b0cdc5d9e111ad8333d35d4801c08b3a5ae9e94d7cabe">ON_BOUNDED_SIDE</a></span> of <span class="tt">P</span>.</p>
+<p>This function should not be used to arrange arbitrary polygons into polygons with holes unless they meet the requirements specified below.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>The input polygons must be simple. </dd>
+<dd>
+The set of input polygons are unique and interior disjoint. That is, given distinct polygons <span class="tt">P</span> and <span class="tt">Q</span>, there are vertices of <span class="tt">P</span> which are not on the boundary of <span class="tt">Q</span> and are all on the bounded or unbounded side of <span class="tt">Q</span> (but not both).</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">K</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. </td></tr>
+    <tr><td class="paramname">InputPolygonPtrIterator</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></span> whose <span class="tt">value_type</span> is a smart pointer (such as <span class="tt">std::shared_ptr</span>) whose <span class="tt">element_type</span> is a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with value type <span class="tt">K::Point_2</span>. </td></tr>
+    <tr><td class="paramname">OutputPolygonWithHolesPtrIterator</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> whose <span class="tt">value_type</span> is a smart pointer (such as <span class="tt">std::shared_ptr</span>) whose <span class="tt">element_type</span> is a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if no error was encountered, and <span class="tt">false</span> otherwise.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="group__PkgStraightSkeleton2SkeletonFunctions.html#ga02808f3323f2e728f04e982020d1e9fd" title="creates a straight skeleton in the exterior of a 2D polygon with holes.">CGAL::create_exterior_straight_skeleton_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__builder__2.html" title="The class Straight_skeleton_builder_2 encapsulates the construction of the 2D straight skeleton in th...">CGAL::Straight_skeleton_builder_2</a></span> </dd></dl>
+
+</div>
+</div>
+<a id="ga80c0848e0145bbd531b1fc178fd07d33" name="ga80c0848e0145bbd531b1fc178fd07d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga80c0848e0145bbd531b1fc178fd07d33">◆ </a></span>compute_outer_frame_margin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class <a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a>, class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; typename Traits::FT &gt; CGAL::compute_outer_frame_margin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></td>          <td class="paramname"><span class="paramname"><em>beyond</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename Traits::FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Traits &amp;</td>          <td class="paramname"><span class="paramname"><em>traits</em></span><span class="paramdefsep"> = </span><span class="paramdefval">Default_traits</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/compute_outer_frame_margin.h&gt;</code></p>
+
+<p>computes the separation required between a polygon and the outer frame used to obtain an exterior skeleton suitable for the computation of outer offset polygons at a given distance. </p>
+<p>Given a non-degenerate strictly-simple 2D polygon whose vertices are passed in the range [<span class="tt">first</span>,<span class="tt">beyond</span>), calculates the largest Euclidean distance <span class="tt">d</span> between each input vertex and its corresponding offset vertex at a distance <span class="tt">offset</span>.</p>
+<p>If such a distance can be approximately computed, returns an <span class="tt">optional&lt;FT&gt;</span> with the value <span class="tt">d + (offset * 1.05)</span>. If the distance cannot be computed, not even approximately, due to overflow for instance, returns an empty <span class="tt">optional&lt;FT&gt;</span> (an <em>absent result</em>).</p>
+<p>This result is the required separation between the input polygon and the rectangular frame used to construct an exterior offset contour at distance <span class="tt">offset</span> (which is done by placing the polygon as a hole of that frame).</p>
+<p>Such a separation must be computed in this way because if the frame is too close to the polygon, the inward offset contour from the frame could collide with the outward offset contour of the polygon, resulting in a merged contour offset instead of two contour offsets, one of them corresponding to the frame.</p>
+<p>Simply using <span class="tt">2*offset</span> as the separation is incorrect since <span class="tt">offset</span> is the distance between an offset line and its original, not between an offset vertex and its original. The latter, which is calculated by this function and needed to place the frame sufficiently away from the polygon, can be thousands of times larger than <span class="tt">offset</span>.</p>
+<p>If the result is <em>absent</em>, any attempt to construct an exterior offset polygon at distance <span class="tt">offset</span> will fail. This will occur whenever the polygon has a vertex with an internal angle approaching <span class="tt">0</span> (because the offset vertex of a vertex whose internal angle equals 0 is at <em>infinity</em>).</p>
+<p>The default traits class <span class="tt">Default_traits</span> is an instance of the class <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;<a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a>&gt;</span> parameterized on the kernel in which the type <span class="tt">InputIterator::value_type</span> is defined.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>must be a model for <span class="tt"><a class="el" href="classPolygonOffsetBuilderTraits__2.html">PolygonOffsetBuilderTraits_2</a></span>. </td></tr>
+    <tr><td class="paramname">InputIterator</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></span> with <span class="tt">value_type</span> equivalent to <span class="tt">Traits::Point_2</span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">offset &gt; 0</span>. </dd>
+<dd>
+The range [<span class="tt">first</span>,<span class="tt">beyond</span>) contains the vertices of a non-degenerate strictly-simple 2D polygon.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classPolygonOffsetBuilderTraits__2.html">PolygonOffsetBuilderTraits_2</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">CGAL::Polygon_offset_builder_traits_2</a>&lt;K&gt;</span> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Straight_skeleton_2_2Low_level_API_8cpp-example.html#a10">Straight_skeleton_2/Low_level_API.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga84423baa5902a7d6c2f8278f93d82f32" name="ga84423baa5902a7d6c2f8278f93d82f32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga84423baa5902a7d6c2f8278f93d82f32">◆ </a></span>convert_straight_skeleton_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Target_skeleton, class Source_skeleton, class Items_converter&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; Target_skeleton &gt; CGAL::convert_straight_skeleton_2 </td>
+          <td>(</td>
+          <td class="paramtype">Source_skeleton const &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Items_converted const &amp;</td>          <td class="paramname"><span class="paramname"><em>ic</em></span><span class="paramdefsep"> = </span><span class="paramdefval">Items_converter()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Straight_skeleton_converter_2.h&gt;</code></p>
+
+<p>returns a new straight skeleton data structure with the same combinatorial and geometric data as <span class="tt">s</span> using the items converter <span class="tt">ic</span> to convert the geometric embedding to the types of the target skeleton. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Target_skeleton</td><td>must be a model of <span class="tt"><a class="el" href="classStraightSkeleton__2.html">StraightSkeleton_2</a></span> </td></tr>
+    <tr><td class="paramname">Source_skeleton</td><td>must be a model of <span class="tt"><a class="el" href="classStraightSkeleton__2.html">StraightSkeleton_2</a></span> </td></tr>
+    <tr><td class="paramname">Items_converter</td><td>must be a model of <span class="tt"><a class="el" href="classStraightSkeletonItemsConverter__2.html" title="The concept StraightSkeletonItemsConverter_2 describes the requirements for items converter passed as...">StraightSkeletonItemsConverter_2</a></span></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="structCGAL_1_1Straight__skeleton__items__converter__2.html">CGAL::Straight_skeleton_items_converter_2</a>&lt;SrcSs,TgtSs,NTCV&gt;</span> </dd>
+<dd>
+<span class="tt"><a class="el" href="structCGAL_1_1Straight__skeleton__converter__2.html" title="The class Straight_skeleton_converter_2 converts a straight skeleton instantiated using certain trait...">CGAL::Straight_skeleton_converter_2</a>&lt;SrcSs,TgtSs,ItemsCV&gt;</span> </dd></dl>
+
+</div>
+</div>
+<a id="gaee243d012e7f942b4d1365dc307546b8" name="gaee243d012e7f942b4d1365dc307546b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaee243d012e7f942b4d1365dc307546b8">◆ </a></span>create_exterior_skeleton_and_offset_polygons_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OfKPolygon, typename FT, typename InKPolygon, typename OfK, typename SsK&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; CGAL::create_exterior_skeleton_and_offset_polygons_2 </td>
+          <td>(</td>
+          <td class="paramtype">FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InKPolygon &amp;</td>          <td class="paramname"><span class="paramname"><em>poly</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OfK</td>          <td class="paramname"><span class="paramname"><em>ofk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SsK</td>          <td class="paramname"><span class="paramname"><em>ssk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/create_offset_polygons_2.h&gt;</code></p>
+
+<p>returns a container with all the outer offset polygons at distance <span class="tt">offset</span> of the 2D polygon <span class="tt">poly</span>. </p>
+<p>The exterior skeleton is limited by an outer rectangular frame placed at a margin sufficiently large to allow the offset polygons to be constructed.</p>
+<dl class="section note"><dt>Note</dt><dd>A temporary straight skeleton is constructed in the <em>limited exterior</em> of the input polygon to obtain the offsets. The construction of this skeleton is the most expensive operation, therefore, to construct offsets at more than one single distance, use the separate functions <span class="tt"><a class="el" href="group__PkgStraightSkeleton2SkeletonFunctions.html#ga02808f3323f2e728f04e982020d1e9fd" title="creates a straight skeleton in the exterior of a 2D polygon with holes.">create_exterior_straight_skeleton_2()</a></span> and <span class="tt"><a class="el" href="#ga36fe6fd001343f6cd0a3e8b06d1c325c" title="returns a container with the offset polygons at distance offset obtained from the straight skeleton s...">create_offset_polygons_2()</a></span> instead.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OfKPolygon</td><td>is a polygon without holes type determined from <span class="tt">OfK</span> and <span class="tt">InKPolygon</span>, see Section <a class="el" href="#SLSOffsetPolygonReturnType" title="Polygon Return Type">Polygon Return Type</a>. </td></tr>
+    <tr><td class="paramname">FT</td><td>must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> convertible to <span class="tt">OfK::FT</span> and <span class="tt">SsK::FT</span>. </td></tr>
+    <tr><td class="paramname">InKPolygon</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with value type <span class="tt">InK::Point_2</span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt;InK&gt;</span>) or a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;InK&gt;</span>). </td></tr>
+    <tr><td class="paramname">OfK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;OfK&gt;</span> for constructing the offset polygons. </td></tr>
+    <tr><td class="paramname">SsK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__builder__traits__2.html">Straight_skeleton_builder_traits_2</a>&lt;SsK&gt;</span> for constructing the straight skeleton.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If <span class="tt">SsK != OfK</span> the constructed straight skeleton is converted to <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;OfK&gt;</span>.</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">offset</span> is positive </dd>
+<dd>
+<span class="tt">poly</span> is weakly simple, counterclockwise polygon.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#ga4baa6cdc2cc19c341be875742387254b" title="returns a container with all the inner offset polygons at distance offset of a 2D polygon with holes.">CGAL::create_interior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="#ga7627d015c03abaea59b144576afebf70" title="returns a container with all the outer offset polygons with holes at distance offset of the 2D polygo...">CGAL::create_exterior_skeleton_and_offset_polygons_with_holes_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__2.html" title="The class Polygon_offset_builder_2 encapsulates the construction of inward offset contours of a 2D si...">Polygon_offset_builder_2</a></span> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Straight_skeleton_2_2Create_skeleton_and_offset_polygons_2_8cpp-example.html#a4">Straight_skeleton_2/Create_skeleton_and_offset_polygons_2.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga7627d015c03abaea59b144576afebf70" name="ga7627d015c03abaea59b144576afebf70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7627d015c03abaea59b144576afebf70">◆ </a></span>create_exterior_skeleton_and_offset_polygons_with_holes_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class OfKPolygon, class FT, class InKPolygon, class OfK, class SsK&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; CGAL::create_exterior_skeleton_and_offset_polygons_with_holes_2 </td>
+          <td>(</td>
+          <td class="paramtype">FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InKPolygon &amp;</td>          <td class="paramname"><span class="paramname"><em>poly_with_holes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OfK</td>          <td class="paramname"><span class="paramname"><em>ofk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SsK</td>          <td class="paramname"><span class="paramname"><em>ssk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/create_offset_polygons_from_polygon_with_holes_2.h&gt;</code></p>
+
+<p>returns a container with all the outer offset polygons <em>with holes</em> at distance <span class="tt">offset</span> of the 2D polygon <span class="tt">poly_with_holes</span>. </p>
+<p>Note that the offset of the outer frame is ignored.</p>
+<p>This is equivalent to a call to <span class="tt"><a class="el" href="#gafd9733f1c41a778c6e274017ddae9ade" title="The function arrange_offset_polygons_2() arranges the sequence of 2D polygons obtained by create_offs...">CGAL::arrange_offset_polygons_2()</a></span> on the output of <a class="el" href="#gaee243d012e7f942b4d1365dc307546b8"><span class="tt">create_exterior_skeleton_and_offset_polygons_2(offset, poly_with_holes, ofk, ssk)</span> </a> after having filtered out the polygon corresponding to the offset of the outer frame and having reversed the orientation of all other polygons.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OfKPolygon</td><td>is a polygon without holes type determined by <span class="tt">OfK</span> and <span class="tt">InKPolygon</span>, see Section <a class="el" href="#SLSOffsetPolygonReturnType" title="Polygon Return Type">Polygon Return Type</a>. </td></tr>
+    <tr><td class="paramname">FT</td><td>must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> convertible to <span class="tt">OfK::FT</span> and <span class="tt">SsK::FT</span>. </td></tr>
+    <tr><td class="paramname">InKPolygon</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with value type <span class="tt">InK::Point_2</span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt;InK&gt;</span>) or a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;InK&gt;</span>). </td></tr>
+    <tr><td class="paramname">OfK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;OfK&gt;</span> for constructing the offset polygons. </td></tr>
+    <tr><td class="paramname">SsK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__builder__traits__2.html">Straight_skeleton_builder_traits_2</a>&lt;SsK&gt;</span> for constructing the straight skeleton.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If <span class="tt">SsK != OfK</span> the constructed straight skeleton is converted to <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;OfK&gt;</span>.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#gaee243d012e7f942b4d1365dc307546b8" title="returns a container with all the outer offset polygons at distance offset of the 2D polygon poly.">CGAL::create_exterior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="#gabe025331b6e803f2f942305123a02306" title="returns a container with all the inner offset polygons with holes at distance offset of the 2D polygo...">CGAL::create_interior_skeleton_and_offset_polygons_with_holes_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__2.html" title="The class Polygon_offset_builder_2 encapsulates the construction of inward offset contours of a 2D si...">Polygon_offset_builder_2</a></span> </dd></dl>
+
+</div>
+</div>
+<a id="ga4baa6cdc2cc19c341be875742387254b" name="ga4baa6cdc2cc19c341be875742387254b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4baa6cdc2cc19c341be875742387254b">◆ </a></span>create_interior_skeleton_and_offset_polygons_2() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OfKPolygon, typename FT, typename InKPolygon, typename HoleIterator, typename OfK, typename SsK&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; CGAL::create_interior_skeleton_and_offset_polygons_2 </td>
+          <td>(</td>
+          <td class="paramtype">FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InKPolygon &amp;</td>          <td class="paramname"><span class="paramname"><em>outer_boundary</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HoleIterator</td>          <td class="paramname"><span class="paramname"><em>holes_begin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HoleIterator</td>          <td class="paramname"><span class="paramname"><em>holes_end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OfK</td>          <td class="paramname"><span class="paramname"><em>ofk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SsK</td>          <td class="paramname"><span class="paramname"><em>ssk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/create_offset_polygons_2.h&gt;</code></p>
+
+<p>returns a container with all the inner offset polygons at distance <span class="tt">offset</span> of a 2D polygon with holes. </p>
+<p>The outer boundary is <span class="tt">outer_boundary</span> and its holes are given by <span class="tt">[holes_begin,holes_end)</span>.</p>
+<dl class="section note"><dt>Note</dt><dd>A temporary straight skeleton is constructed in the interior of the input polygon to obtain the offsets. The construction of this skeleton is the most expensive operation, therefore, to construct offsets at more than one single distance, it is advised to use <span class="tt"><a class="el" href="group__PkgStraightSkeleton2SkeletonFunctions.html#gae1eec4fe2422502d32906f11306a4979" title="creates a straight skeleton in the interior of the 2D polygon with holes.">create_interior_straight_skeleton_2()</a></span> to create the skeleton only once, and then call <span class="tt"><a class="el" href="#ga36fe6fd001343f6cd0a3e8b06d1c325c" title="returns a container with the offset polygons at distance offset obtained from the straight skeleton s...">create_offset_polygons_2()</a></span> for each distance.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OfKPolygon</td><td>is a polygon without holes type determined from <span class="tt">OfK</span> and <span class="tt">InKPolygon</span>, see Section <a class="el" href="#SLSOffsetPolygonReturnType" title="Polygon Return Type">Polygon Return Type</a>. </td></tr>
+    <tr><td class="paramname">FT</td><td>must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> convertible to <span class="tt">OfK::FT</span> and <span class="tt">SsK::FT</span>. </td></tr>
+    <tr><td class="paramname">HoleIterator</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classInputIterator.html">InputIterator</a></span> with value type being a model of <span class="tt"><a class="elRef" href="../Circulator/classConstRange.html">ConstRange</a></span> with value type <span class="tt">SsK::Point_2</span>. </td></tr>
+    <tr><td class="paramname">InKPolygon</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with value type <span class="tt">InK::Point_2</span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt;InK&gt;</span>). </td></tr>
+    <tr><td class="paramname">OfK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;OfK&gt;</span> for constructing the offset polygons. </td></tr>
+    <tr><td class="paramname">SsK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__builder__traits__2.html">Straight_skeleton_builder_traits_2</a>&lt;SsK&gt;</span> for constructing the straight skeleton.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If <span class="tt">SsK != OfK</span> the constructed straight skeleton is converted to <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;OfK&gt;</span>.</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">outer_boundary</span> describes a weakly simple, counterclockwise polygon. </dd>
+<dd>
+<span class="tt">[holes_begin,holes_end)</span> is a range of weakly simple, clockwise polygons. </dd>
+<dd>
+Holes do not intersect each other or the outer boundary.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#gaee243d012e7f942b4d1365dc307546b8" title="returns a container with all the outer offset polygons at distance offset of the 2D polygon poly.">CGAL::create_exterior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="#gabe025331b6e803f2f942305123a02306" title="returns a container with all the inner offset polygons with holes at distance offset of the 2D polygo...">CGAL::create_interior_skeleton_and_offset_polygons_with_holes_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__2.html" title="The class Polygon_offset_builder_2 encapsulates the construction of inward offset contours of a 2D si...">Polygon_offset_builder_2</a></span> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Straight_skeleton_2_2Create_saop_from_polygon_with_holes_2_8cpp-example.html#a4">Straight_skeleton_2/Create_saop_from_polygon_with_holes_2.cpp</a>, and <a class="el" href="Straight_skeleton_2_2Create_skeleton_and_offset_polygons_2_8cpp-example.html#a3">Straight_skeleton_2/Create_skeleton_and_offset_polygons_2.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="gaf0d0e8321d70cd97e6441b6ce77bdc89" name="gaf0d0e8321d70cd97e6441b6ce77bdc89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf0d0e8321d70cd97e6441b6ce77bdc89">◆ </a></span>create_interior_skeleton_and_offset_polygons_2() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OfKPolygon, typename FT, typename InKPolygon, typename OfK, typename SsK&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; CGAL::create_interior_skeleton_and_offset_polygons_2 </td>
+          <td>(</td>
+          <td class="paramtype">FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InKPolygon &amp;</td>          <td class="paramname"><span class="paramname"><em>poly</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OfK</td>          <td class="paramname"><span class="paramname"><em>ofk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SsK</td>          <td class="paramname"><span class="paramname"><em>ssk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/create_offset_polygons_2.h&gt;</code></p>
+
+<p>returns a container with all the inner offset polygons at distance <span class="tt">offset</span> of the 2D polygon <span class="tt">poly</span>. </p>
+<dl class="section note"><dt>Note</dt><dd>A temporary straight skeleton is constructed in the interior of the input polygon to obtain the offsets. The construction of this skeleton is the most expensive operation, therefore, to construct offsets at more than one single distance, it is advised to use <span class="tt"><a class="el" href="group__PkgStraightSkeleton2SkeletonFunctions.html#gae1eec4fe2422502d32906f11306a4979" title="creates a straight skeleton in the interior of the 2D polygon with holes.">create_interior_straight_skeleton_2()</a></span> to create the skeleton only once, and then call <span class="tt"><a class="el" href="#ga36fe6fd001343f6cd0a3e8b06d1c325c" title="returns a container with the offset polygons at distance offset obtained from the straight skeleton s...">create_offset_polygons_2()</a></span> for each distance</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OfKPolygon</td><td>is a polygon without holes type determined by <span class="tt">OfK</span> and <span class="tt">InKPolygon</span>, see Section <a class="el" href="#SLSOffsetPolygonReturnType" title="Polygon Return Type">Polygon Return Type</a>. </td></tr>
+    <tr><td class="paramname">FT</td><td>must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> convertible to <span class="tt">OfK::FT</span> and <span class="tt">SsK::FT</span>. </td></tr>
+    <tr><td class="paramname">InKPolygon</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with value type <span class="tt">InK::Point_2</span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt;InK&gt;</span>) or a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;InK&gt;</span>). </td></tr>
+    <tr><td class="paramname">OfK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;OfK&gt;</span> for constructing the offset polygons. </td></tr>
+    <tr><td class="paramname">SsK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__builder__traits__2.html">Straight_skeleton_builder_traits_2</a>&lt;SsK&gt;</span> for constructing the straight skeleton.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If <span class="tt">SsK != OfK</span> the constructed straight skeleton is converted to <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;OfK&gt;</span>.</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">offset</span> is positive </dd>
+<dd>
+<span class="tt">poly</span> is weakly simple, counterclockwise polygon.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#gaee243d012e7f942b4d1365dc307546b8" title="returns a container with all the outer offset polygons at distance offset of the 2D polygon poly.">CGAL::create_exterior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="#gabe025331b6e803f2f942305123a02306" title="returns a container with all the inner offset polygons with holes at distance offset of the 2D polygo...">CGAL::create_interior_skeleton_and_offset_polygons_with_holes_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__2.html" title="The class Polygon_offset_builder_2 encapsulates the construction of inward offset contours of a 2D si...">Polygon_offset_builder_2</a></span> </dd></dl>
+
+</div>
+</div>
+<a id="gabe025331b6e803f2f942305123a02306" name="gabe025331b6e803f2f942305123a02306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabe025331b6e803f2f942305123a02306">◆ </a></span>create_interior_skeleton_and_offset_polygons_with_holes_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class OfKPolygon, class FT, class InKPolygon, class OfK, class SsK&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; CGAL::create_interior_skeleton_and_offset_polygons_with_holes_2 </td>
+          <td>(</td>
+          <td class="paramtype">FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InKPolygon &amp;</td>          <td class="paramname"><span class="paramname"><em>poly_with_holes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OfK</td>          <td class="paramname"><span class="paramname"><em>ofk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SsK</td>          <td class="paramname"><span class="paramname"><em>ssk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/create_offset_polygons_from_polygon_with_holes_2.h&gt;</code></p>
+
+<p>returns a container with all the inner offset polygons <em>with holes</em> at distance <span class="tt">offset</span> of the 2D polygon with holes <span class="tt">poly_with_holes</span>. </p>
+<p>This is equivalent to <span class="tt">arrange_offset_polygons_2(create_interior_skeleton_and_offset_polygons_2(offset, poly_with_holes, ofk, ssk))</span>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OfKPolygon</td><td>is a polygon without holes type determined by <span class="tt">OfK</span> and <span class="tt">InKPolygon</span>, see Section <a class="el" href="#SLSOffsetPolygonReturnType" title="Polygon Return Type">Polygon Return Type</a>. </td></tr>
+    <tr><td class="paramname">FT</td><td>must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> convertible to <span class="tt">OfK::FT</span> and <span class="tt">SsK::FT</span>. </td></tr>
+    <tr><td class="paramname">InKPolygon</td><td>must be a model of <span class="tt"><a class="elRef" href="../Manual/classSequenceContainer.html">SequenceContainer</a></span> with value type <span class="tt">InK::Point_2</span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt;InK&gt;</span>) or a model of <span class="tt"><a class="elRef" href="../Polygon/classGeneralPolygonWithHoles__2.html">GeneralPolygonWithHoles_2</a></span> (e.g. <span class="tt"><a class="elRef" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;InK&gt;</span>). </td></tr>
+    <tr><td class="paramname">OfK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;OfK&gt;</span> for constructing the offset polygons. </td></tr>
+    <tr><td class="paramname">SsK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__builder__traits__2.html">Straight_skeleton_builder_traits_2</a>&lt;SsK&gt;</span> for constructing the straight skeleton.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If <span class="tt">SsK != OfK</span> the constructed straight skeleton is converted to <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;OfK&gt;</span>.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#ga4baa6cdc2cc19c341be875742387254b" title="returns a container with all the inner offset polygons at distance offset of a 2D polygon with holes.">CGAL::create_interior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="#ga7627d015c03abaea59b144576afebf70" title="returns a container with all the outer offset polygons with holes at distance offset of the 2D polygo...">CGAL::create_exterior_skeleton_and_offset_polygons_with_holes_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__2.html" title="The class Polygon_offset_builder_2 encapsulates the construction of inward offset contours of a 2D si...">Polygon_offset_builder_2</a></span> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Straight_skeleton_2_2Create_skeleton_and_offset_polygons_with_holes_2_8cpp-example.html#a3">Straight_skeleton_2/Create_skeleton_and_offset_polygons_with_holes_2.cpp</a>, and <a class="el" href="Straight_skeleton_2_2Show_offset_polygon_8cpp-example.html#a2">Straight_skeleton_2/Show_offset_polygon.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga36fe6fd001343f6cd0a3e8b06d1c325c" name="ga36fe6fd001343f6cd0a3e8b06d1c325c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga36fe6fd001343f6cd0a3e8b06d1c325c">◆ </a></span>create_offset_polygons_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OfKPolygon, typename FT, typename StraightSkeleton, typename OfK&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; OfKPolygon &gt; &gt; CGAL::create_offset_polygons_2 </td>
+          <td>(</td>
+          <td class="paramtype">FT</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const StraightSkeleton &amp;</td>          <td class="paramname"><span class="paramname"><em>ss</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OfK</td>          <td class="paramname"><span class="paramname"><em>k</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">Exact_predicates_inexact_constructions_kernel</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/create_offset_polygons_2.h&gt;</code></p>
+
+<p>returns a container with the offset polygons at distance <span class="tt">offset</span> obtained from the straight skeleton <span class="tt">ss</span>. </p>
+<p>If <span class="tt">ss</span> is the interior skeleton of a polygon with holes, the offset polygons will be generated in its interior. If <span class="tt">ss</span> is the outer skeleton of a polygon with holes, the offset polygons will be generated in its exterior.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OfKPolygon</td><td>is a polygon without holes type determined from <span class="tt">OfK</span>, see Section <a class="el" href="#SLSOffsetPolygonReturnType" title="Polygon Return Type">Polygon Return Type</a>. </td></tr>
+    <tr><td class="paramname">FT</td><td>must be a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span> convertible to <span class="tt">OfK::FT</span>. </td></tr>
+    <tr><td class="paramname">StraightSkeleton</td><td>is an object of type <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;SsK&gt;</span>. </td></tr>
+    <tr><td class="paramname">OfK</td><td>must be a model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span>. It is used to instantiate <span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__traits__2.html">Polygon_offset_builder_traits_2</a>&lt;OfK&gt;</span> for constructing the offset polygons.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If <span class="tt">SsK != OfK</span> the constructed straight skeleton is converted to <span class="tt"><a class="el" href="classCGAL_1_1Straight__skeleton__2.html" title="The class Straight_skeleton_2 provides a model for the StraightSkeleton_2 concept which is the class ...">CGAL::Straight_skeleton_2</a>&lt;OfK&gt;</span>.</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">offset</span> is positive. </dd>
+<dd>
+<span class="tt">ss</span> is a valid straight skeleton.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="#ga4baa6cdc2cc19c341be875742387254b" title="returns a container with all the inner offset polygons at distance offset of a 2D polygon with holes.">CGAL::create_interior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="#gaee243d012e7f942b4d1365dc307546b8" title="returns a container with all the outer offset polygons at distance offset of the 2D polygon poly.">CGAL::create_exterior_skeleton_and_offset_polygons_2()</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1Polygon__offset__builder__2.html" title="The class Polygon_offset_builder_2 encapsulates the construction of inward offset contours of a 2D si...">Polygon_offset_builder_2</a></span> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Straight_skeleton_2_2Create_offset_polygons_2_8cpp-example.html#a4">Straight_skeleton_2/Create_offset_polygons_2.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

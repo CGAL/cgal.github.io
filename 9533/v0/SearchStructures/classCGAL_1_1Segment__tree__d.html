@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/SearchStructures/classCGAL_1_1Segment__tree__d.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1.3 - dD Range and Segment Trees: CGAL::Segment_tree_d&lt; Data, Window, Traits &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1.3 - dD Range and Segment Trees
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classCGAL_1_1Segment__tree__d.html','','classCGAL_1_1Segment__tree__d-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Segment__tree__d-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Segment_tree_d&lt; Data, Window, Traits &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgSearchStructuresRef.html">Reference Manual</a> » <a class="el" href="group__PkgSearchStructuresSearchStructure.html">Search Structures</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Segment_tree_d.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, typename <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, typename Traits&gt;<br>
+class CGAL::Segment_tree_d&lt; Data, Window, Traits &gt;</div><p>A \( d\)-dimensional segment tree stores \( d\)-dimensional intervals and can be used to find all intervals that enclose, partially overlap, or contain a query interval, which may be a point. </p>
+<p><b>Implementation</b><br>
+</p>
+<p>A \( d\)-dimensional segment tree is constructed in \(O(n\log n^d)\) time. An inverse range query is performed in time \(O(k+{\log}^d n )\), where \( k\) is the number of reported intervals. The tree uses \(O(n\log n^d)\) storage. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a5f0dc11923b170e96314b0c7835e96a5" id="r_a5f0dc11923b170e96314b0c7835e96a5"><td class="memItemLeft"><a id="a5f0dc11923b170e96314b0c7835e96a5" name="a5f0dc11923b170e96314b0c7835e96a5"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Data</b></td></tr>
+<tr class="memdesc:a5f0dc11923b170e96314b0c7835e96a5"><td class="mdescLeft"> </td><td class="mdescRight">container <span class="tt"><a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5" title="container Data.">Data</a></span>. <br></td></tr>
+<tr class="memitem:af436f372b004ecb8906009a5d596539f" id="r_af436f372b004ecb8906009a5d596539f"><td class="memItemLeft"><a id="af436f372b004ecb8906009a5d596539f" name="af436f372b004ecb8906009a5d596539f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Window</b></td></tr>
+<tr class="memdesc:af436f372b004ecb8906009a5d596539f"><td class="mdescLeft"> </td><td class="mdescRight">container <span class="tt"><a class="el" href="#af436f372b004ecb8906009a5d596539f" title="container Window.">Window</a></span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr class="memitem:ab9b86d98dcdd9177ed073411b4effe76" id="r_ab9b86d98dcdd9177ed073411b4effe76"><td class="memItemLeft"><a class="el" href="classCGAL_1_1Segment__tree__d.html">Segment_tree_d</a>&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, Traits &gt; </td><td class="memItemRight"><a class="el" href="#ab9b86d98dcdd9177ed073411b4effe76">s</a> (Tree_base&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a> &gt; sublayer_tree)</td></tr>
+<tr class="memdesc:ab9b86d98dcdd9177ed073411b4effe76"><td class="mdescLeft"> </td><td class="mdescRight">A segment tree is defined, such that the subtree of each vertex is of the same type prototype <span class="tt">sublayer_tree</span> is.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr class="memitem:a29800de28275bacb2ca02b79eb336fc1" id="r_a29800de28275bacb2ca02b79eb336fc1"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a29800de28275bacb2ca02b79eb336fc1">make_tree</a> (In_it first, In_it last)</td></tr>
+<tr class="memdesc:a29800de28275bacb2ca02b79eb336fc1"><td class="mdescLeft"> </td><td class="mdescRight">The tree is constructed according to the data items in the sequence between the element pointed by iterator <span class="tt">first</span> and iterator <span class="tt">last</span>.  <br></td></tr>
+<tr class="memitem:ab918c59400398bb8c17a3f4f832e5b37" id="r_ab918c59400398bb8c17a3f4f832e5b37"><td class="memItemLeft"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><a class="el" href="#ab918c59400398bb8c17a3f4f832e5b37">window_query</a> (<a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a> win, <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> result)</td></tr>
+<tr class="memdesc:ab918c59400398bb8c17a3f4f832e5b37"><td class="mdescLeft"> </td><td class="mdescRight"><span class="tt">win</span> \( =[a_1,b_1),\ldots, [a_d,b_d)\), \( a_i,b_i\in T_i\), \( 1\le i\le d\).  <br></td></tr>
+<tr class="memitem:a3e1409f32a09139b795c9346a6c4a7e0" id="r_a3e1409f32a09139b795c9346a6c4a7e0"><td class="memItemLeft"><a id="a3e1409f32a09139b795c9346a6c4a7e0" name="a3e1409f32a09139b795c9346a6c4a7e0"></a>
+<a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memItemRight"><b>enclosing_query</b> (<a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a> win, <a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> result)</td></tr>
+<tr class="memdesc:a3e1409f32a09139b795c9346a6c4a7e0"><td class="mdescLeft"> </td><td class="mdescRight">All elements that enclose the associated \( d\)-dimensional interval of <span class="tt">win</span> are placed in the associated sequence container of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> and returns an output iterator that points to the last location the function wrote to. <br></td></tr>
+<tr class="memitem:a62d19ce1de0bce5377088f2c4151299c" id="r_a62d19ce1de0bce5377088f2c4151299c"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a62d19ce1de0bce5377088f2c4151299c">is_valid</a> ()</td></tr>
+<tr class="memdesc:a62d19ce1de0bce5377088f2c4151299c"><td class="mdescLeft"> </td><td class="mdescRight">The tree structure is checked.  <br></td></tr>
+<tr class="memitem:a2793f9ed0e15405b31b93f97c4d94c1b" id="r_a2793f9ed0e15405b31b93f97c4d94c1b"><td class="memItemLeft"><a id="a2793f9ed0e15405b31b93f97c4d94c1b" name="a2793f9ed0e15405b31b93f97c4d94c1b"></a>
+bool </td><td class="memItemRight"><b>is_inside</b> (<a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a> win, <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a> object)</td></tr>
+<tr class="memdesc:a2793f9ed0e15405b31b93f97c4d94c1b"><td class="mdescLeft"> </td><td class="mdescRight">returns <span class="tt">true</span>, if the interval of <span class="tt">object</span> is contained in the interval of <span class="tt">win</span>, <span class="tt">false</span> otherwise. <br></td></tr>
+<tr class="memitem:a825d6d941f3525becbe1e131ab0d354a" id="r_a825d6d941f3525becbe1e131ab0d354a"><td class="memItemLeft"><a id="a825d6d941f3525becbe1e131ab0d354a" name="a825d6d941f3525becbe1e131ab0d354a"></a>
+bool </td><td class="memItemRight"><b>is_anchor</b> ()</td></tr>
+<tr class="memdesc:a825d6d941f3525becbe1e131ab0d354a"><td class="mdescLeft"> </td><td class="mdescRight">returns false. <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a62d19ce1de0bce5377088f2c4151299c" name="a62d19ce1de0bce5377088f2c4151299c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62d19ce1de0bce5377088f2c4151299c">◆ </a></span>is_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, typename <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Segment__tree__d.html">CGAL::Segment_tree_d</a>&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, Traits &gt;::is_valid </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The tree structure is checked. </p>
+<p>For each vertex either the sublayer tree is a tree anchor, or it stores a (possibly empty) list of data items. In the first case, the sublayer tree of the vertex is checked on being valid. In the second case, each data item is checked whether it contains the associated interval of the vertex and does not contain the associated interval of the parent vertex or not. <span class="tt">true</span> is returned if the tree structure is valid, <span class="tt">false</span> otherwise. </p>
+
+</div>
+</div>
+<a id="a29800de28275bacb2ca02b79eb336fc1" name="a29800de28275bacb2ca02b79eb336fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29800de28275bacb2ca02b79eb336fc1">◆ </a></span>make_tree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, typename <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Segment__tree__d.html">CGAL::Segment_tree_d</a>&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, Traits &gt;::make_tree </td>
+          <td>(</td>
+          <td class="paramtype">In_it</td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">In_it</td>          <td class="paramname"><span class="paramname"><em>last</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The tree is constructed according to the data items in the sequence between the element pointed by iterator <span class="tt">first</span> and iterator <span class="tt">last</span>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>This function can only be called once. If it is the first call the tree is build and <span class="tt">true</span> is returned. Otherwise, nothing is done but a <span class="tt"><a class="elRef" href="../Manual/namespaceCGAL.html">CGAL</a> warning</span> is given and <span class="tt">false</span> returned. </dd></dl>
+
+</div>
+</div>
+<a id="ab9b86d98dcdd9177ed073411b4effe76" name="ab9b86d98dcdd9177ed073411b4effe76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9b86d98dcdd9177ed073411b4effe76">◆ </a></span>s()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, typename <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Segment__tree__d.html">Segment_tree_d</a>&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, Traits &gt; <a class="el" href="classCGAL_1_1Segment__tree__d.html">CGAL::Segment_tree_d</a>&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, Traits &gt;::s </td>
+          <td>(</td>
+          <td class="paramtype">Tree_base&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sublayer_tree</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A segment tree is defined, such that the subtree of each vertex is of the same type prototype <span class="tt">sublayer_tree</span> is. </p>
+<p>We assume that the dimension of the tree is \( d\). This means, that <span class="tt">sublayer_tree</span> is a prototype of a \( d-1\)-dimensional tree. All data items of the \( d\)-dimensional segment tree have container type <span class="tt"><a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5" title="container Data.">Data</a></span>. The query window of the tree has container type <span class="tt"><a class="el" href="#af436f372b004ecb8906009a5d596539f" title="container Window.">Window</a></span>. <span class="tt">Traits</span> provides access to the corresponding data slots of container <span class="tt"><a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5" title="container Data.">Data</a></span> and <span class="tt"><a class="el" href="#af436f372b004ecb8906009a5d596539f" title="container Window.">Window</a></span> for the \( d\)-th dimension. The traits class <span class="tt">Traits</span> must at least provide all functions and type definitions described, for example, in the reference page for <span class="tt"><a class="el" href="classCGAL_1_1tree__point__traits.html" title="tree_point_traits is a template class that provides an interface to data items.">tree_point_traits</a></span>. The template class described there is fully generic and should fulfill the most requirements one can have. In order to generate a one-dimensional segment tree instantiate <span class="tt"><a class="el" href="classCGAL_1_1Tree__anchor.html" title="Tree_anchor is also derived from Tree_base.">Tree_anchor</a>&lt;<a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5" title="container Data.">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f" title="container Window.">Window</a>&gt; sublayer_tree</span> with the same template parameters <span class="tt"><a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5" title="container Data.">Data</a></span> and <span class="tt"><a class="el" href="#af436f372b004ecb8906009a5d596539f" title="container Window.">Window</a></span> <span class="tt"><a class="el" href="classCGAL_1_1Segment__tree__d.html" title="A -dimensional segment tree stores -dimensional intervals and can be used to find all intervals that ...">Segment_tree_d</a></span> is defined. In order to construct a two-dimensional segment tree, create <span class="tt"><a class="el" href="classCGAL_1_1Segment__tree__d.html" title="A -dimensional segment tree stores -dimensional intervals and can be used to find all intervals that ...">Segment_tree_d</a></span> with a one-dimensional <span class="tt"><a class="el" href="classCGAL_1_1Segment__tree__d.html" title="A -dimensional segment tree stores -dimensional intervals and can be used to find all intervals that ...">Segment_tree_d</a></span> with the corresponding <span class="tt">Traits</span> of the first dimension.</p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">Traits::Data==<a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5" title="container Data.">Data</a></span> and <span class="tt">Traits::Window==<a class="el" href="#af436f372b004ecb8906009a5d596539f" title="container Window.">Window</a>.</span> </dd></dl>
+
+</div>
+</div>
+<a id="ab918c59400398bb8c17a3f4f832e5b37" name="ab918c59400398bb8c17a3f4f832e5b37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab918c59400398bb8c17a3f4f832e5b37">◆ </a></span>window_query()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, typename <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="classCGAL_1_1Segment__tree__d.html">CGAL::Segment_tree_d</a>&lt; <a class="el" href="#a5f0dc11923b170e96314b0c7835e96a5">Data</a>, <a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a>, Traits &gt;::window_query </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#af436f372b004ecb8906009a5d596539f">Window</a></td>          <td class="paramname"><span class="paramname"><em>win</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><span class="tt">win</span> \( =[a_1,b_1),\ldots, [a_d,b_d)\), \( a_i,b_i\in T_i\), \( 1\le i\le d\). </p>
+<p>All elements that intersect the associated \( d\)-dimensional interval of <span class="tt">win</span> are placed in the associated sequence container of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> and returns an output iterator that points to the last location the function wrote to. In order to perform an inverse range query, a range query of \( \epsilon\) width has to be performed. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a href="classCGAL_1_1Segment__tree__d.html">Segment_tree_d</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

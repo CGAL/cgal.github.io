@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Triangulation_on_hyperbolic_surface_2/index.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 2D Triangulations on Hyperbolic Surfaces: User Manual</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 2D Triangulations on Hyperbolic Surfaces
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div><div class="header">
+  <div class="headertitle"><div class="title">User Manual </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="Chapter_Hyperbolic_Surface_Triangulations"></a> </p> <div id="autotoc" class="toc"></div>  <dl class="section author"><dt>Authors</dt><dd>Vincent Despré, Loïc Dubois, Camille Lanuel, Marc Pouget and Monique Teillaud</dd></dl>
+<center> <img src="header.svg" alt="" style="pointer-events: none; max-width:80%; width:80%;" class="inline"> </center><p>This package introduces a data structure and algorithms for triangulations and Delaunay triangulation of closed orientable hyperbolic surfaces. A triangulation is represented by an enriched <a class="elRef" href="../Combinatorial_map/classCGAL_1_1Combinatorial__map.html">CGAL::Combinatorial_map</a> with complex number attributes on edges. <span style="color:red">Additionally, a Delaunay triangulation has anchor attributes, representing lifts of triangles, on faces.</span> Such triangulations can be constructed from a surface given by a convex fundamental domain (see Section <a class="el" href="index.html#Section_Hyperbolic_Surface_Triangulations_domains">Fundamental Domains and Triangulations</a>). A method is offered that randomly generates such domains for surfaces of genus two. On the other hand, the package works for any genus surface that may be provided by the user either as a fundamental domain or as an already computed triangulation. For triangulations, functionalities are offered such as the Delaunay flip algorithm and the construction of a portion of the lift of the triangulation in the Poincaré disk model of the hyperbolic plane. <span style="color:red">For Delaunay triangulations, additional functionalities include point location, point insertion, and the computation of an \( \varepsilon \)-net of the hyperbolic surface.</span></p>
+<p>For the case of the Bolza surface, which is the most symmetric surface of genus two, we refer the user to the specific package <a class="elRef" href="../Periodic_4_hyperbolic_triangulation_2/index.html#Chapter_2D_Periodic_Hyperbolic_Triangulations">2D Periodic Hyperbolic Triangulations</a>.</p>
+<h1><a class="anchor" id="Section_Hyperbolic_Surface_Triangulations_Background"></a>
+Hyperbolic Surfaces</h1>
+<p>We assume some familiarity with basic notions from covering space theory and from the theory of hyperbolic surfaces. See for instance <a class="el" href="citelist.html#CITEREF_cgal:b-gdg-83">[2]</a><a class="el" href="citelist.html#CITEREF_cgal:b-gscrs-92">[3]</a>. The <em>Poincaré disk</em> \( \mathbb{D} \) is a model of the hyperbolic plane whose point set is the open unit disk of the complex plane \( \mathbb{C} \). In this package, every hyperbolic surface \( S \) is closed (compact and without boundary) and orientable. The Poincaré disk \( \mathbb{D} \) is a universal covering space for \( S \), whose projection map \( \pi: \mathbb{D} \to S \) is a local isometry. For a point \( x \in S \), the infinite set \( \pi^{-1}(x) \) consists of lifts of \( x \), denoted \( \widetilde x \). This notion extends to paths and triangulations of S that can be lifted in \( \mathbb{D} \).</p>
+<h2><a class="anchor" id="Section_Hyperbolic_Surface_Triangulations_domains"></a>
+Fundamental Domains and Triangulations</h2>
+<p>Let \( S \) be a hyperbolic surface. For representing \( S \), we cut it into topologically simple pieces. For a graph \( G \) embedded on \( S \), a face is a connected component of \( S \setminus G \). A graph \( G \) embedded on \( S \) defines a <em>cellular decomposition</em> of \( S \) if every face is a topological disk. In this document, every edge of a graph \( G \) embedded on \( S \) is a geodesic on \( S \). We consider two types of cellular decompositions of \( S \): </p><ul>
+<li>
+Decompositions with only one face, and </li>
+<li>
+Triangulations. </li>
+</ul>
+<p>A decomposition of \( S \) that have only one face is a classical representation of the surface. Cutting \( S \) open along the edges of \( G \) results in a hyperbolic polygon \( P \) that is a <em>fundamental domain</em> for \( S \). Each edge of \( G \) is split into a pair of edges in \( P \). Every hyperbolic surface admits a fundamental domain \( P \) that is <em>convex</em>, meaning that the interior angles of \( P \) do not exceed \( \pi \).</p>
+<p>A decomposition defined by the graph \( G \) is a <em>triangulation</em> of \( S \) if every face of \( G \) is a triangle: it is bounded by three edges of \( G \). Observe that this definition allows for triangulations with only one vertex. A triangulation of \( S \) can be obtained from a convex fundamental domain \( P \) of \( S \) by triangulating the interior of \( P \), and by gluing back the boundary edges that are paired in \( P \). The assumption that \( P \) is convex ensures that the interior of \( P \) can be triangulated naively by insertion of any maximal set of pairwise interior disjoint arcs of \( P \).</p>
+<h2><a class="anchor" id="Section_Hyperbolic_Surface_Triangulations_generation"></a>
+Generation of Convex Fundamental Domains</h2>
+<p>In order to perform fast and exact computations with a fundamental domain, every vertex must be a complex number whose type supports fast and exact computations. Under this constraint, it is still a research problem to generate domains of surfaces of genus greater than two. In genus two, this package generates fundamental domains whose vertices belong to \( \mathbb{Q} + i \mathbb{Q} \) (their real and imaginary parts are rational numbers). The exact generation process can be found in <a class="el" href="citelist.html#CITEREF_despre2022experimental">[5]</a>, together with a proof that the surfaces that can be generated in this way are dense in the space of hyperbolic surfaces genus two.</p>
+<h1><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_Representation"></a>
+Representation</h1>
+<h2><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_DS_Domains"></a>
+Data Structure for Domains</h2>
+<p>We represent every fundamental domain as a polygon in the Poincaré disk, given by the list of its vertices in counterclockwise order and by the list of its side pairings. This package can generate a random convex fundamental domain \( P \) of a surface of genus two, with eight vertices \( z_0, \dots, z_7 \in \mathbb{C} \). The vertices and the sides are in counterclockwise order, the side between \( z_0 \) and \( z_1 \) is \( A \), the side between \( z_4 \) and \( z_5 \) is \( \overline{A} \) and so on as on <a class="el" href="index.html#fig__THS2-octagon">Figure 46.1</a>. The side pairings are \( A \) with \(\overline{A} \) , \( B \) with \( \overline{B} \) , \( C \) with \( \overline{C} \) and \( D \) with \( \overline{D} \).</p>
+<p>These octagons are symmetric, i.e. \( z_i = -z_{i+4} \) for every \( i \), where indices are modulo eight. Such octagons are described in <a class="el" href="citelist.html#CITEREF_aigon2005hyperbolic">[1]</a>.</p>
+<p><a class="anchor" id="fig__THS2-octagon"></a></p><center> <img src="octagon.svg" alt="" style="pointer-events: none; max-width:30%; width:30%; display: inline-block;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__THS2-octagon">Figure 46.1</a> Fundamental convex polygonal domain of a genus two surface. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_DS_Triangulations"></a>
+Data Structure for Triangulations</h2>
+<p>Our representation is edge-based instead of the usual CGAL::TriangulationDataStructure_2 used for instance in the package <a class="elRef" href="../Periodic_4_hyperbolic_triangulation_2/index.html#Chapter_2D_Periodic_Hyperbolic_Triangulations">2D Periodic Hyperbolic Triangulations</a>. This edge-based representation is more intrinsic to the surface and can handle non-simplicial triangulations, for instance a triangulation with only one vertex. We represent a triangulation \( T \) of a hyperbolic surface by an instance of <a class="elRef" href="../Combinatorial_map/classCGAL_1_1Combinatorial__map.html">CGAL::Combinatorial_map</a> whose edges have complex number attributes that are cross ratios (defined shortly in the following). While the triangulation \( T \) is unambiguously determined by the combinatorial map and its cross ratios, the internal representation of \( T \) contains an additional data: the anchor, to be able to lift the triangulation in the Poincaré disk \( \mathbb{D} \). The anchor is a lift \( \widetilde t \) in \( \mathbb{D} \) of a triangle of \( T \). The anchor is represented by the three vertices \( \widetilde v_0, \widetilde v_1, \widetilde v_2 \) of \( \widetilde t \) in \( \mathbb{D} \), and by the dart in the combinatorial map of \( T \) corresponding to the oriented edge \( v_0v_1 \). A lift function is provided that computes a lift of each triangle of \( T \) in the Poincaré disk \( \mathbb{D} \), it starts from the anchor and then recursively constructs lifts of neighboring triangles using the cross ratios. See <a class="el" href="citelist.html#CITEREF_despre2022experimental">[5]</a> for details.</p>
+<p>The attribute of an edge \( e \) of \( T \) is the complex number \( R_T(e) \in \mathbb{C} \) called the <em>cross ratio</em> of \( e \) in \( T \), defined as follows. Consider the lift \( \widetilde T \) of \( T \) in the Poincaré disk \( \mathbb{D} \). In \( \widetilde T \), let \( \widetilde e \) be a lift of \( e \), see <a class="el" href="index.html#fig__THS2-crossratio">Figure 46.2</a>. Orient \( \widetilde e \) arbitrarily, and let \( z_0 \in \mathbb{D} \) and \( z_2 \in \mathbb{D} \) be respectively the source and target vertices of \( \widetilde e \). In \( \widetilde T \), consider the triangle on the right of \( \widetilde e \), and let \( z_1 \in \mathbb{D} \) be the vertex distinct from \( z_0 \) and \( z_2 \) of this triangle. Similarly, consider the triangle on the left of \( \widetilde e \), and let \( z_3 \in \mathbb{D} \) be the vertex distinct from \( z_0 \) and \( z_2 \) of this triangle. Then \( R_T(e) = (z_3-z_1)(z_2-z_0) / ((z_3-z_0)(z_2-z_1)) \). This definition does not depend on the choice of the lift \( \widetilde e \), nor on the orientation of \( \widetilde e \). See <a class="el" href="citelist.html#CITEREF_despre2022experimental">[5]</a> for details.</p>
+<p><a class="anchor" id="fig__THS2-crossratio"></a></p><center> <img src="crossratio.svg" alt="" style="pointer-events: none; max-width:20%; width:20%; display: inline-block;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__THS2-crossratio">Figure 46.2</a> Computation of the cross ratio of an edge. </p> </div> <p> <br>
+</p>
+<h2><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_DS_Delaunay_Triangulations"></a>
+Data Structure for Delaunay Triangulations</h2>
+<div style="color:red"> The data structure is enriched for Delaunay triangulations in order to be more convenient and more time efficient for the \( \varepsilon \)-net algorithm or other algorithms that often have to access lifts of triangles in \( \mathbb{D} \). In order to have constant time access to a lift of any triangle, an anchor is associated with <em>each</em> face of the triangulation. Note that the anchors associated with adjacent triangles do not necessarily correspond to adjacent lifts in \( \mathbb{D} \). This implies that, when working with a lift of a triangle, if an operation requires the third vertex of an adjacent lift, its coordinates must first be computed using the cross-ratio of their common edge. </div><h2><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_Delaunay"></a>
+Delaunay Flip Algorithm</h2>
+<p>Let \( T \) be a triangulation of a hyperbolic surface. An edge \( e \) of \( T \) satisfies the <em>Delaunay criterion</em> if the imaginary part of its cross ratio \(R_T(e)\) is non-positive. This definition is equivalent to the usual formulation for the triangulation lifted in \( \mathbb{D} \): there exists a disk containing \( \widetilde e \) and that does not contain any other vertices of \( \widetilde T \) in its interior. Then \( T \) is a <em>Delaunay triangulation</em> if every edge of \( T \) satisfies the Delaunay criterion. If an edge \(e \) of \( T \) does not satisfy the Delaunay criterion, then \(e \) is called Delaunay flippable, and then the two triangles incident to \( e \) form a strictly convex quadrilateral, so \( e \) can be deleted from \( T \) and replaced by the other diagonal of the quadrilateral. This operation is called a Delaunay <em>flip</em>. When a flip occurs, the cross ratios of the involved edges are modified via simple formulas. The <em>Delaunay flip algorithm</em> flips edges that do not satisfy the Delaunay until no more edges violate the criterion, with no preference on the order of the flips. This algorithm terminates, and outputs a Delaunay triangulation of \( S \) <a class="el" href="citelist.html#CITEREF_despre2020flipping">[4]</a>.</p>
+<h1><a class="anchor" id="Section_Hyperbolic_Surface_Triangulations_Epsilon_Nets"></a>
+\f$ \varepsilon \f$-nets</h1>
+<p><span style="color:red">NEW SECTION</span></p>
+<h2><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_Epsilon_Net_Definition"></a>
+Definition</h2>
+<p>The notion of \( \varepsilon \)-net formalizes the idea of a "well-distributed" sampling of a metic space, in our case, a hyperbolic surface.</p>
+<p>Let \( (X, d) \) be a metric space and \( \varepsilon &gt; 0 \). A subset \( P \subset X \) is:</p>
+<ul>
+<li>an \( \varepsilon \)-covering if \( d(x, P) \leq \varepsilon \) for all \( x \in X \), that is, the closed balls of radius \( \varepsilon \) centered at the points of \( P \) cover \( X \);</li>
+<li>an \( \varepsilon \)-packing if \( d(p, q) \geq \varepsilon \) for all \( p \neq q \in P \), that is, the open balls of radius \( \varepsilon/2 \) centered at the points of \( P \) are pairwise disjoint;</li>
+<li>an \( \varepsilon \)-net if it is both an \( \varepsilon \)-covering and an \( \varepsilon \)-packing.</li>
+</ul>
+<p>The <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html" title="represents a Delaunay triangulation of a closed orientable hyperbolic surface.">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a></code> class contains the <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html#a04898272dafaaf106806d3a5076f480d">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::epsilon_net()</a></code> method that tries to compute an \( \varepsilon \)-net of a hyperbolic surface, starting from an \( \varepsilon \)-packing (usually, a Delaunay triangulation with a single vertex). The construction might not result in an \( \varepsilon \)-net (see next section), but the method returns a Boolean indicating whether the result is a certified \( \varepsilon \)-net.</p>
+<p>If the result is not a certified \( \varepsilon \)-net, the <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html#a65831b530531f7329bf60e8615766558">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::is_epsilon_covering()</a></code> and <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html#a994940864bed9def17fb7bb201d26f12">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::is_epsilon_packing()</a></code> methods can be used to diagnose which property fails. Additionally, the <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html#aa2632b7de3a1274d25dcffcd35504857">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::shortest_non_loop_edge()</a></code> can be used to know the distance between the closest pair of points.</p>
+<h2><a class="anchor" id="Subsection_Hyperbolic_Surface_Triangulations_Epsilon_Net_Numbers"></a>
+Number Type</h2>
+<p>The algorithm is a Delaunay refinement algorithm that inserts the circumcenter of triangles whose circumradius is larger than \( \varepsilon \) until there is none. To ensure robustness and efficiency, this method should be used with a rational number type, such as <code><a class="elRef" href="../Number_types/group__nt__cgal.html#ga0849ff44771b19582218ebdfa5614f64">CGAL::Exact_rational</a></code> or <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">CGAL::Gmpq</a></code>.</p>
+<p>To avoid cascading square roots, each coordinate of a circumcenter is rounded to the number type provided by the user. There are two cases:</p>
+<ul>
+<li>When the number type is <em>not</em> <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">CGAL::Gmpq</a></code>, each coordinate is rounded to a double precision number using the <code><a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double()</a></code> function, and is then converted to the number type chosen by the user.</li>
+<li>When the number type is <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">CGAL::Gmpq</a></code>, each coordinates is rounded to a fixed precision floating-point number <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpfr.html">CGAL::Gmpfr</a></code>. The precision of the <code><a class="elRef" href="../Number_types/classCGAL_1_1Gmpfr.html">CGAL::Gmpfr</a></code> numbers involved is \( p\times 53 \), where \( p \) is an integer given to the <code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html#a04898272dafaaf106806d3a5076f480d">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::epsilon_net()</a></code> method and 53 is the precision of a <code>double</code>. When \( p = 1 \), it is thus equivalent to using the <code><a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double()</a></code> approximation.</li>
+</ul>
+<p>The algorithm does not check whether the construction is correct on the go. Instead, it only checks the correctness at the end. This is why it can happen that the result is not a certified \( \varepsilon \)-net. The rounding method using the <code><a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double()</a></code> approximation usually works for hyperbolic surfaces of genus 2 or 3 with a lage systole, but a higher precision is required to obtain a valid \( \varepsilon \)-net on surfaces of higher genus.</p>
+<h1><a class="anchor" id="Section_Hyperbolic_Surface_Triangulations_Software_Design"></a>
+Software Design</h1>
+<p>The concept <code><a class="el" href="classComplexNumber.html" title="Describes a complex number type over a FieldNumberType for its real and imaginary parts.">ComplexNumber</a></code> describes a complex number type modeled by <code><a class="el" href="classCGAL_1_1Complex__number.html">CGAL::Complex_number</a></code>. Complex numbers are used to encode the cross ratios, for the coefficients of isometries and implicitly to work with points in the Poincaré disk. Most classes of the package are templated by the concept <code><a class="el" href="classHyperbolicSurfaceTraits__2.html" title="This traits class must have a type for complex numbers.">HyperbolicSurfaceTraits_2</a></code>. It is a refinement of <code><a class="elRef" href="../Hyperbolic_triangulation_2/classHyperbolicDelaunayTriangulationTraits__2.html">HyperbolicDelaunayTriangulationTraits_2</a></code> and is modeled by <code><a class="el" href="classCGAL_1_1Hyperbolic__surface__traits__2.html">CGAL::Hyperbolic_surface_traits_2</a></code>. It defines the geometric objects (points, segments...) forming the lifted triangulation in the Poincaré disk.</p>
+<p>The package offers <span style="color:red">four</span> main classes:</p><ul>
+<li><code><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html" title="represents a triangulation of a closed orientable hyperbolic surface.">CGAL::Triangulation_on_hyperbolic_surface_2</a></code> represents a triangulation of a hyperbolic surface. It offers functions for the generation of the triangulation from a convex fundamental domain, the Delaunay flip algorithm and the construction of a portion of the lift of the triangulation in the Poincaré disk.</li>
+<li><span style="color:red"><code><a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html" title="represents a Delaunay triangulation of a closed orientable hyperbolic surface.">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a></code> represents a Delaunay triangulation of a closed orientable hyperbolic surface. It offers functions for the generation of the Delaunay triangulation from a convex fundamental domain, the insertion of a point in the Delaunay triangulation, two point location algorithms and the \( \varepsilon \)-net algorithm.</span></li>
+<li><code><a class="el" href="classCGAL_1_1Hyperbolic__fundamental__domain__2.html" title="represents a fundamental domain of a closed orientable hyperbolic surface.">CGAL::Hyperbolic_fundamental_domain_2</a></code> represents a convex fundamental domain of a hyperbolic surface.</li>
+<li><code><a class="el" href="classCGAL_1_1Hyperbolic__fundamental__domain__factory__2.html" title="Factory class, whose only purpose is to construct random fundamental domains of closed orientable hyp...">CGAL::Hyperbolic_fundamental_domain_factory_2</a></code> generates random convex fundamental domains of surfaces of genus two.</li>
+</ul>
+<p>The secondary class <code><a class="el" href="classCGAL_1_1Hyperbolic__isometry__2.html" title="represents an isometry in the Poincaré disk model.">CGAL::Hyperbolic_isometry_2</a></code> defines isometries in the Poincaré disk together with operations to work with them.</p>
+<h1><a class="anchor" id="Visualization"></a>
+Visualization</h1>
+<div style="color:red">changé titre (Visualization of a Triangulation -&gt; Visualization)</div> <div style="color:red">This package contains several demos (found in the folder Triangulation_on_hyperbolic_surface_2/demo), which displays triangulations.</div><p>The function <code><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a132743e563b709b2f6fb91bd911d0551" title="lifts the triangulation in the hyperbolic plane.">CGAL::Triangulation_on_hyperbolic_surface_2::lift()</a></code> computes the lift of each triangle in the hyperbolic plane, enabling its visualization (see <a class="el" href="index.html#fig__THS2-demo-output">Figure 46.3</a>).</p>
+<p><a class="anchor" id="fig__THS2-demo-output"></a></p><center> <img src="demo-output.png" alt="" style="max-width:25%; width:25%; display: inline-block;" class="inline"> </center>  <div class="cgal_figure_caption"> <p> <a class="el" href="index.html#fig__THS2-demo-output">Figure 46.3</a> Lift, in the Poincaré disk, of a Delaunay triangulation of a genus two hyperbolic surface with one vertex (from Triangulation_on_hyperbolic_surface_2_demo.cpp). </p> </div> <p> <br>
+</p>
+<div style="color:red"> <a class="anchor" id="fig__DTHS2-demo-output"></a><center> <img src="123_01.svg" alt="" style="pointer-events: none; max-width:25%; width:25%; display: inline-block;" class="inline"> </center>  <div class="cgal_figure_caption">  <a class="el" href="index.html#fig__DTHS2-demo-output">Figure 46.4</a> Lift, in the Poincaré disk, of the Delaunay triangulation of a 0.1-net of a genus two hyperbolic surface with seed 123 (from Delaunay_triangulation_on_hyperbolic_surface_2_demo.cpp).  </div>  <br>
+ </div><div style="color:red">Additionally, the <code><a class="el" href="group__PkgHyperbolicSurfaceTriangulation2DirichletDomain.html#gacfe4cf3a9545cd199edc79480893fc53">CGAL::Dirichlet_vertices()</a></code> function can be used to display a Dirichlet domain.</div><div style="color:red"> <a class="anchor" id="fig__HDD2-demo-output"></a><center> <img src="dirichlet.svg" alt="" style="pointer-events: none; max-width:25%; width:25%; display: inline-block;" class="inline"> </center>  <div class="cgal_figure_caption">  <a class="el" href="index.html#fig__HDD2-demo-output">Figure 46.5</a> Lift, in the Poincaré disk, of a Dirichlet domain of a genus two surface (from Hyperbolic_Dirichlet_domain_2_demo.cpp).  </div>  <br>
+ </div><h1><a class="anchor" id="Section_Hyperbolic_Surface_Triangulations_Example"></a>
+Example</h1>
+<p>The example below generates a convex fundamental domain of a surface of genus two, triangulates the domain, applies the Delaunay flip algorithm to the resulting triangulation, saves and prints the Delaunay triangulation. <br>
+<b>File</b> <a class="el" href="Triangulation_on_hyperbolic_surface_2_2Triangulation_on_hyperbolic_surface_2_8cpp-example.html">Triangulation_on_hyperbolic_surface_2/Triangulation_on_hyperbolic_surface_2.cpp</a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="../Number_types/Exact__rational_8h.html">CGAL/Exact_rational.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Hyperbolic_Delaunay_triangulation_traits_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Hyperbolic_surface_traits_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Hyperbolic_fundamental_domain_factory_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Triangulation_on_hyperbolic_surface_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Triangulation_on_hyperbolic_surface_2_IO.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Manual/classunspecified__type.html">CGAL::Exact_rational</a>                                         Rational;</div>
+<div class="line"><span class="keyword">typedef</span> CGAL::Simple_cartesian&lt;Rational&gt;                             Kernel;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Hyperbolic_triangulation_2/classCGAL_1_1Hyperbolic__Delaunay__triangulation__traits__2.html">CGAL::Hyperbolic_Delaunay_triangulation_traits_2&lt;Kernel&gt;</a>     ParentTraits;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Hyperbolic__surface__traits__2.html">CGAL::Hyperbolic_surface_traits_2&lt;ParentTraits&gt;</a>              Traits;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Hyperbolic__fundamental__domain__2.html">CGAL::Hyperbolic_fundamental_domain_2&lt;Traits&gt;</a>                Domain;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Hyperbolic__fundamental__domain__factory__2.html">CGAL::Hyperbolic_fundamental_domain_factory_2&lt;Traits&gt;</a>        Factory;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2&lt;Traits&gt;</a>          Triangulation;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">  <span class="comment">// Generates the domain:</span></div>
+<div class="line">  Factory factory = Factory();</div>
+<div class="line">  Domain domain = factory.make_hyperbolic_fundamental_domain_g2(time(NULL)); <span class="comment">// get a random seed with time(NULL)</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Triangulates the domain:</span></div>
+<div class="line">  Triangulation triangulation = Triangulation(domain);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Applies the Delaunay flip algorithm to the triangulation:</span></div>
+<div class="line">  triangulation.make_Delaunay();</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"delaunay"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Saves the triangulation:</span></div>
+<div class="line">  std::ofstream  output_file = std::ofstream (<span class="stringliteral">"OutputTriangulation.txt"</span>);</div>
+<div class="line">  output_file &lt;&lt; triangulation;</div>
+<div class="line">  output_file.close();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Prints the triangulation:</span></div>
+<div class="line">  std::cout &lt;&lt; triangulation &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aExact__rational_8h_html"><div class="ttname"><a href="../Number_types/Exact__rational_8h.html">Exact_rational.h</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Hyperbolic__Delaunay__triangulation__traits__2_html"><div class="ttname"><a href="../Hyperbolic_triangulation_2/classCGAL_1_1Hyperbolic__Delaunay__triangulation__traits__2.html">CGAL::Hyperbolic_Delaunay_triangulation_traits_2</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Hyperbolic__fundamental__domain__2_html"><div class="ttname"><a href="classCGAL_1_1Hyperbolic__fundamental__domain__2.html">CGAL::Hyperbolic_fundamental_domain_2</a></div><div class="ttdoc">represents a fundamental domain of a closed orientable hyperbolic surface.</div><div class="ttdef"><b>Definition:</b> Hyperbolic_fundamental_domain_2.h:18</div></div>
+<div class="ttc" id="aclassCGAL_1_1Hyperbolic__fundamental__domain__factory__2_html"><div class="ttname"><a href="classCGAL_1_1Hyperbolic__fundamental__domain__factory__2.html">CGAL::Hyperbolic_fundamental_domain_factory_2</a></div><div class="ttdoc">Factory class, whose only purpose is to construct random fundamental domains of closed orientable hyp...</div><div class="ttdef"><b>Definition:</b> Hyperbolic_fundamental_domain_factory_2.h:16</div></div>
+<div class="ttc" id="aclassCGAL_1_1Hyperbolic__surface__traits__2_html"><div class="ttname"><a href="classCGAL_1_1Hyperbolic__surface__traits__2.html">CGAL::Hyperbolic_surface_traits_2</a></div><div class="ttdef"><b>Definition:</b> Hyperbolic_surface_traits_2.h:11</div></div>
+<div class="ttc" id="aclassCGAL_1_1Triangulation__on__hyperbolic__surface__2_html"><div class="ttname"><a href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2</a></div><div class="ttdoc">represents a triangulation of a closed orientable hyperbolic surface.</div><div class="ttdef"><b>Definition:</b> Triangulation_on_hyperbolic_surface_2.h:37</div></div>
+<div class="ttc" id="aclassunspecified__type_html"><div class="ttname"><a href="../Manual/classunspecified__type.html">unspecified_type</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="Section_Hyperbolic_Surface_Implementation_History"></a>
+Design and Implementation History</h1>
+<p>This package implements the Delaunay flip algorithm described in the hyperbolic setting by Vincent Despré, Jean-Marc Schlenker and Monique Teillaud in <a class="el" href="citelist.html#CITEREF_despre2020flipping">[4]</a> using the data structure for representing triangulations presented in <a class="el" href="citelist.html#CITEREF_despre2022experimental">[5]</a>). It also implements the generation of domains described by Vincent Despré, Loïc Dubois, Benedikt Kolbe and Monique Teillaud in <a class="el" href="citelist.html#CITEREF_despre2022experimental">[5]</a>, based on results of Aline Aigon-Dupuy, Peter Buser, Michel Cibils, Alfred F Künzle and Frank Steiner <a class="el" href="citelist.html#CITEREF_aigon2005hyperbolic">[1]</a>. <span style="color:red">It also implements the \( \varepsilon \)-net algorithm presented by Vincent Despré, Camille Lanuel, Marc Pouget and Monique Teillaud in <a class="el" href="citelist.html#CITEREF_cgal:dlpt-naihs-25">[6]</a>. TODO: citer thèse plutôt ?</span> The code and the documentation of the package were written by Loïc Dubois <span style="color:red">and Camille Lanuel</span>, under regular discussions with Vincent Despré, Marc Pouget and Monique Teillaud. The authors acknowledge support from the grants <a href="https://sos.loria.fr/">SoS</a>, <a href="https://perso.math.u-pem.fr/sabourau.stephane/min-max/min-max.html">MIN-MAX</a> <span style="color:red">and <a href="https://homepages.loria.fr/VDespre/Abysm/">Abysm</a></span> of the French National Research Agency ANR. </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+</html>
