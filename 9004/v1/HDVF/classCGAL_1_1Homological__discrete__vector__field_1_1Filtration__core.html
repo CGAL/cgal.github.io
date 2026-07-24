@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: CGAL::Homological_discrete_vector_field::Filtration_core&lt; ChainComplex, Degree &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core-members.html">List of all members</a> |
+<a href="#nested-classes">Classes</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pro-types">Protected Types</a> |
+<a href="#pro-methods">Protected Member Functions</a> |
+<a href="#pro-attribs">Protected Attributes</a> |
+<a href="#friends">Friends</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Homological_discrete_vector_field::Filtration_core&lt; ChainComplex, Degree &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/HDVF/Filtration_core.h&gt;</code></p>
+
+<p>Inherited by <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__lower__star.html">CGAL::Homological_discrete_vector_field::Filtration_lower_star&lt; ChainComplex, Degree &gt;</a>.</p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename ChainComplex, typename Degree&gt;<br>
+class CGAL::Homological_discrete_vector_field::Filtration_core&lt; ChainComplex, Degree &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html" title="The class Filtration_core implements data structures and methods required by the Filtration concept.">Filtration_core</a></code> implements data structures and methods required by the <code><a class="el" href="classFiltration.html" title="The concept Filtration describes the requirements for persistent filtrations associated to persistent...">Filtration</a></code> concept. </p>
+<p>By definition, a filtration over a chain complex <code>K</code> is a sequence of sub complexes \(\{K_t\,;\, t\in[d_1, \ldots, d_N]\}\), where \(d_i\) are scalars, such that:</p>
+<ul>
+<li>\(\forall d\leqslant d'\), \(K_d\subseteq K_{d'}\).</li>
+<li>\(|K_{d_{i+1}}| = |K_{d_{i}}|+1\).<ul>
+<li>As a consequence, any cell \(\sigma\in K\), is "added" at a given <em>time</em> \(i\) and the corresponding \(d_i\) is called its <em>degree</em> (denoted by \(\mathrm{deg}(\sigma)\)).</li>
+</ul>
+</li>
+<li>\(K_{d_1}\) is an empty complex.</li>
+<li>\(K_{d_N} = K\).</li>
+<li>For any cell \(\sigma\in K\), if \(\tau\) is a proper face of \(\sigma\), then \(\mathrm{deg}(\tau)\leqslant \mathrm{deg}(\sigma)\).</li>
+</ul>
+<p>In consequence, a filtration associated to a complex <code>K</code>:</p><ul>
+<li>maps each cell to a scalar called its degree</li>
+<li>orders the cells of <code>K</code> (each cell has a unique index along the filtration called <em>time</em> along the filtration) such that:<ul>
+<li>the index of a cell is larger that the indices of its faces,</li>
+<li>the degree map is increasing along the filtration.</li>
+</ul>
+</li>
+</ul>
+<p>The class <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html" title="The class Filtration_core implements data structures and methods required by the Filtration concept.">Filtration_core</a></code> provides elementary constructors and methods used in derived filtrations.</p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="classFiltration.html" title="The concept Filtration describes the requirements for persistent filtrations associated to persistent...">Filtration</a></code> </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">ChainComplex</td><td>a model of the <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code> concept (type of the underlying chain complex). </td></tr>
+    <tr><td class="paramname">Degree</td><td>the scalar type of degrees (a model of the <code><a class="elRef" href="../Algebraic_foundations/classRealEmbeddable.html">RealEmbeddable</a></code> concept). </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1Filtration__iter__value.html">Filtration_iter_value</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">Type of value returned by the iterator.  <a href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1Filtration__iter__value.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1iterator.html">iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> over a filtration.  <a href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1iterator.html#details">More...</a><br></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a2a1d192c9c40872bab2a4c599fb9d80a"><td class="memItemLeft" align="right" valign="top"><a id="a2a1d192c9c40872bab2a4c599fb9d80a" name="a2a1d192c9c40872bab2a4c599fb9d80a"></a>
+typedef ChainComplex::Coefficient_ring </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a2a1d192c9c40872bab2a4c599fb9d80a"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients used to compute homology. <br></td></tr>
+<tr class="separator:a2a1d192c9c40872bab2a4c599fb9d80a"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab679f1e98b81e73f4819fdacfd5d008c"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#ab679f1e98b81e73f4819fdacfd5d008c">Filtration_core</a> (const ChainComplex &amp;K)</td></tr>
+<tr class="memdesc:ab679f1e98b81e73f4819fdacfd5d008c"><td class="mdescLeft"> </td><td class="mdescRight">Constructor of an empty filtration with an underlying chain complex.  <br></td></tr>
+<tr class="separator:ab679f1e98b81e73f4819fdacfd5d008c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a43bb0f04a869fec579d1b9dbae75a947"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a43bb0f04a869fec579d1b9dbae75a947">Filtration_core</a> (const ChainComplex &amp;K, const std::vector&lt; <a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a535ba6105c9178d2de0c057002ea31b1">Cell</a> &gt; &amp;filtration, const std::vector&lt; Degree &gt; &amp;deg)</td></tr>
+<tr class="memdesc:a43bb0f04a869fec579d1b9dbae75a947"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from a vector of cells (ordering of cells) and an associated vector of degrees.  <br></td></tr>
+<tr class="separator:a43bb0f04a869fec579d1b9dbae75a947"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a93ae083db5dd6f423aedff1035cd1bd8"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a93ae083db5dd6f423aedff1035cd1bd8">Filtration_core</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">Filtration_core</a> &amp;f)</td></tr>
+<tr class="memdesc:a93ae083db5dd6f423aedff1035cd1bd8"><td class="mdescLeft"> </td><td class="mdescRight">Constructor by copy.  <br></td></tr>
+<tr class="separator:a93ae083db5dd6f423aedff1035cd1bd8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a130377e9cc47117f2f4bd73597ce30b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1iterator.html">iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a130377e9cc47117f2f4bd73597ce30b5">begin</a> ()</td></tr>
+<tr class="memdesc:a130377e9cc47117f2f4bd73597ce30b5"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of the filtration.  <br></td></tr>
+<tr class="separator:a130377e9cc47117f2f4bd73597ce30b5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a26de389c9b34edb4746f6a1d37988268"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1iterator.html">iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a26de389c9b34edb4746f6a1d37988268">end</a> ()</td></tr>
+<tr class="memdesc:a26de389c9b34edb4746f6a1d37988268"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> past-the-end of the filtration.  <br></td></tr>
+<tr class="separator:a26de389c9b34edb4746f6a1d37988268"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a34d43688f581225d455ea5dc29588c4b"><td class="memItemLeft" align="right" valign="top"><a id="a34d43688f581225d455ea5dc29588c4b" name="a34d43688f581225d455ea5dc29588c4b"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><b>size</b> () const</td></tr>
+<tr class="memdesc:a34d43688f581225d455ea5dc29588c4b"><td class="mdescLeft"> </td><td class="mdescRight">Gets the filtration size. <br></td></tr>
+<tr class="separator:a34d43688f581225d455ea5dc29588c4b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a80457ae18c63d2fdd2c4dacb4043faa6"><td class="memItemLeft" align="right" valign="top"><a id="a80457ae18c63d2fdd2c4dacb4043faa6" name="a80457ae18c63d2fdd2c4dacb4043faa6"></a>
+<a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a535ba6105c9178d2de0c057002ea31b1">Cell</a> </td><td class="memItemRight" valign="bottom"><b>cell_index_dimension</b> (std::size_t i) const</td></tr>
+<tr class="memdesc:a80457ae18c63d2fdd2c4dacb4043faa6"><td class="mdescLeft"> </td><td class="mdescRight">Gets the cell (that is cell index and dimension) at the index <code>i</code> of the filtration. <br></td></tr>
+<tr class="separator:a80457ae18c63d2fdd2c4dacb4043faa6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2676d3ff26856433461b59caf1fd74b9"><td class="memItemLeft" align="right" valign="top"><a id="a2676d3ff26856433461b59caf1fd74b9" name="a2676d3ff26856433461b59caf1fd74b9"></a>
+Degree </td><td class="memItemRight" valign="bottom"><b>degree</b> (std::size_t i) const</td></tr>
+<tr class="memdesc:a2676d3ff26856433461b59caf1fd74b9"><td class="mdescLeft"> </td><td class="mdescRight">Gets the degree of the <code>i</code>th element of the filtration. <br></td></tr>
+<tr class="separator:a2676d3ff26856433461b59caf1fd74b9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa4381efbb28e0a114e31e3a97224b861"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; std::size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#aa4381efbb28e0a114e31e3a97224b861">export_filtration</a> () const</td></tr>
+<tr class="memdesc:aa4381efbb28e0a114e31e3a97224b861"><td class="mdescLeft"> </td><td class="mdescRight">Exports the filtration time indices.  <br></td></tr>
+<tr class="separator:aa4381efbb28e0a114e31e3a97224b861"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a920a65090680884e821c12f06875553d"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a920a65090680884e821c12f06875553d">is_valid</a> () const</td></tr>
+<tr class="memdesc:a920a65090680884e821c12f06875553d"><td class="mdescLeft"> </td><td class="mdescRight">Checks if a filtration is valid.  <br></td></tr>
+<tr class="separator:a920a65090680884e821c12f06875553d"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a852204195cf30792788fe0b2c8bca55b"><td class="memItemLeft" align="right" valign="top"><a id="a852204195cf30792788fe0b2c8bca55b" name="a852204195cf30792788fe0b2c8bca55b"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a2a1d192c9c40872bab2a4c599fb9d80a">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_matrix</b></td></tr>
+<tr class="memdesc:a852204195cf30792788fe0b2c8bca55b"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major sparse matrices. <br></td></tr>
+<tr class="separator:a852204195cf30792788fe0b2c8bca55b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a002662154b4e6d2bf9d96eef2294df6e"><td class="memItemLeft" align="right" valign="top"><a id="a002662154b4e6d2bf9d96eef2294df6e" name="a002662154b4e6d2bf9d96eef2294df6e"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html">CGAL::OSM::Sparse_matrix</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a2a1d192c9c40872bab2a4c599fb9d80a">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_matrix</b></td></tr>
+<tr class="memdesc:a002662154b4e6d2bf9d96eef2294df6e"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major sparse matrices. <br></td></tr>
+<tr class="separator:a002662154b4e6d2bf9d96eef2294df6e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a010ca7060a606e3281b17cdc55feb99b"><td class="memItemLeft" align="right" valign="top"><a id="a010ca7060a606e3281b17cdc55feb99b" name="a010ca7060a606e3281b17cdc55feb99b"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a2a1d192c9c40872bab2a4c599fb9d80a">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_chain</b></td></tr>
+<tr class="memdesc:a010ca7060a606e3281b17cdc55feb99b"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major chains. <br></td></tr>
+<tr class="separator:a010ca7060a606e3281b17cdc55feb99b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8b146e713e460409aa761428f981e2e7"><td class="memItemLeft" align="right" valign="top"><a id="a8b146e713e460409aa761428f981e2e7" name="a8b146e713e460409aa761428f981e2e7"></a>
+typedef <a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">CGAL::OSM::Sparse_chain</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html#a2a1d192c9c40872bab2a4c599fb9d80a">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_chain</b></td></tr>
+<tr class="memdesc:a8b146e713e460409aa761428f981e2e7"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major chains. <br></td></tr>
+<tr class="separator:a8b146e713e460409aa761428f981e2e7"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ac32aaa4b4d33cdb261a4be65cc743a67"><td class="memItemLeft" align="right" valign="top"><a id="ac32aaa4b4d33cdb261a4be65cc743a67" name="ac32aaa4b4d33cdb261a4be65cc743a67"></a>
+void </td><td class="memItemRight" valign="bottom"><b>build_filtration_structure</b> ()</td></tr>
+<tr class="separator:ac32aaa4b4d33cdb261a4be65cc743a67"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:adf445405d656dd5250d304945dab468c"><td class="memItemLeft" align="right" valign="top"><a id="adf445405d656dd5250d304945dab468c" name="adf445405d656dd5250d304945dab468c"></a>
+const ChainComplex &amp; </td><td class="memItemRight" valign="bottom"><b>_K</b></td></tr>
+<tr class="memdesc:adf445405d656dd5250d304945dab468c"><td class="mdescLeft"> </td><td class="mdescRight">Constant reference to the underlying chain complex. <br></td></tr>
+<tr class="separator:adf445405d656dd5250d304945dab468c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab86b84a346da2a9efa9660869f2b4f93"><td class="memItemLeft" align="right" valign="top"><a id="ab86b84a346da2a9efa9660869f2b4f93" name="ab86b84a346da2a9efa9660869f2b4f93"></a>
+std::vector&lt; <a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a535ba6105c9178d2de0c057002ea31b1">Cell</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_filtration</b></td></tr>
+<tr class="memdesc:ab86b84a346da2a9efa9660869f2b4f93"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classVector.html">Vector</a> of cells of the filtration (full ordering of cells). <br></td></tr>
+<tr class="separator:ab86b84a346da2a9efa9660869f2b4f93"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1d9d922a4c957d18d65434c8ef4aad6c"><td class="memItemLeft" align="right" valign="top"><a id="a1d9d922a4c957d18d65434c8ef4aad6c" name="a1d9d922a4c957d18d65434c8ef4aad6c"></a>
+std::vector&lt; Degree &gt; </td><td class="memItemRight" valign="bottom"><b>_deg</b></td></tr>
+<tr class="memdesc:a1d9d922a4c957d18d65434c8ef4aad6c"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classVector.html">Vector</a> of degrees of cells along the filtration. <br></td></tr>
+<tr class="separator:a1d9d922a4c957d18d65434c8ef4aad6c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9b9c972920b2e2a346b89884d395cda3"><td class="memItemLeft" align="right" valign="top"><a id="a9b9c972920b2e2a346b89884d395cda3" name="a9b9c972920b2e2a346b89884d395cda3"></a>
+std::map&lt; <a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a535ba6105c9178d2de0c057002ea31b1">Cell</a>, std::size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_cell_to_t</b></td></tr>
+<tr class="memdesc:a9b9c972920b2e2a346b89884d395cda3"><td class="mdescLeft"> </td><td class="mdescRight">Map from cells to their index in the filtration. <br></td></tr>
+<tr class="separator:a9b9c972920b2e2a346b89884d395cda3"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a7e5db5988cb046d42c48cd6b220b6900"><td class="memTemplParams" colspan="2"><a id="a7e5db5988cb046d42c48cd6b220b6900" name="a7e5db5988cb046d42c48cd6b220b6900"></a>
+template&lt;typename ComplexT , typename DegT , typename FiltrT &gt; </td></tr>
+<tr class="memitem:a7e5db5988cb046d42c48cd6b220b6900"><td class="memTemplItemLeft" align="right" valign="top">class </td><td class="memTemplItemRight" valign="bottom"><b>Hdvf_persistence</b></td></tr>
+<tr class="separator:a7e5db5988cb046d42c48cd6b220b6900"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a81603ebbd3a70bcb3746b802a8f2955f"><td class="memItemLeft" align="right" valign="top"><a id="a81603ebbd3a70bcb3746b802a8f2955f" name="a81603ebbd3a70bcb3746b802a8f2955f"></a>
+std::ostream &amp; </td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">Filtration_core</a> &amp;f)</td></tr>
+<tr class="memdesc:a81603ebbd3a70bcb3746b802a8f2955f"><td class="mdescLeft"> </td><td class="mdescRight">Overload of the <code>&lt;&lt;</code>operator for filtrations. <br></td></tr>
+<tr class="separator:a81603ebbd3a70bcb3746b802a8f2955f"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab679f1e98b81e73f4819fdacfd5d008c" name="ab679f1e98b81e73f4819fdacfd5d008c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab679f1e98b81e73f4819fdacfd5d008c">◆ </a></span>Filtration_core() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::Filtration_core </td>
+          <td>(</td>
+          <td class="paramtype">const ChainComplex &amp; </td>
+          <td class="paramname"><em>K</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor of an empty filtration with an underlying chain complex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">K</td><td>A chain complex (a model of <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code>), the underlying chain complex of the filtration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a43bb0f04a869fec579d1b9dbae75a947" name="a43bb0f04a869fec579d1b9dbae75a947"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43bb0f04a869fec579d1b9dbae75a947">◆ </a></span>Filtration_core() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::Filtration_core </td>
+          <td>(</td>
+          <td class="paramtype">const ChainComplex &amp; </td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html#a535ba6105c9178d2de0c057002ea31b1">Cell</a> &gt; &amp; </td>
+          <td class="paramname"><em>filtration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Degree &gt; &amp; </td>
+          <td class="paramname"><em>deg</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor from a vector of cells (ordering of cells) and an associated vector of degrees. </p>
+<p>The constructor check that the filtration is valid (a cell is introduced in the filtration after its faces and the degree vector is increasing) and throw an exception if not. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">K</td><td>A chain complex (a model of <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code>), the underlying chain complex of the filtration. </td></tr>
+    <tr><td class="paramname">filtration</td><td>An ordering of the cells of <code>K</code> encoded as a vector of its cells. </td></tr>
+    <tr><td class="paramname">deg</td><td>The (increasing) vector of cell degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a93ae083db5dd6f423aedff1035cd1bd8" name="a93ae083db5dd6f423aedff1035cd1bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ae083db5dd6f423aedff1035cd1bd8">◆ </a></span>Filtration_core() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::Filtration_core </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">Filtration_core</a>&lt; ChainComplex, Degree &gt; &amp; </td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor by copy. </p>
+<p>Builds a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html" title="The class Filtration_core implements data structures and methods required by the Filtration concept.">Filtration_core</a></code> by copy from another.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>An initial <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html" title="The class Filtration_core implements data structures and methods required by the Filtration concept.">Filtration_core</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a130377e9cc47117f2f4bd73597ce30b5" name="a130377e9cc47117f2f4bd73597ce30b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a130377e9cc47117f2f4bd73597ce30b5">◆ </a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1iterator.html">iterator</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of the filtration. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the beginning of the filtration. </dd></dl>
+
+</div>
+</div>
+<a id="a26de389c9b34edb4746f6a1d37988268" name="a26de389c9b34edb4746f6a1d37988268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26de389c9b34edb4746f6a1d37988268">◆ </a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core_1_1iterator.html">iterator</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> past-the-end of the filtration. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator past-the-end of the filtration. </dd></dl>
+
+</div>
+</div>
+<a id="aa4381efbb28e0a114e31e3a97224b861" name="aa4381efbb28e0a114e31e3a97224b861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4381efbb28e0a114e31e3a97224b861">◆ </a></span>export_filtration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; std::size_t &gt; &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::export_filtration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exports the filtration time indices. </p>
+<p>The method exports the time index of every cells in each dimension.</p>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing, for each dimension, the vector of labels by cell index. </dd></dl>
+
+</div>
+</div>
+<a id="a920a65090680884e821c12f06875553d" name="a920a65090680884e821c12f06875553d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a920a65090680884e821c12f06875553d">◆ </a></span>is_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ChainComplex , typename Degree &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">CGAL::Homological_discrete_vector_field::Filtration_core</a>&lt; ChainComplex, Degree &gt;::is_valid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a filtration is valid. </p>
+<p>Checks that cells are ordered in increasing degrees and all cells have indices larger than their faces. </p><dl class="section return"><dt>Returns</dt><dd><code>true</code> if the filtration is valid, <code>false</code> otherwise </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">Homological_discrete_vector_field</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Filtration__core.html">Filtration_core</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

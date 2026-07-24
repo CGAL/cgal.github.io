@@ -1,0 +1,45 @@
+var group__PkgPartition2Ref =
+[
+    [ "Concepts", "group__PkgPartition2Concepts.html", "group__PkgPartition2Concepts" ],
+    [ "Function Object Concepts", "group__PkgPartition2FunctionObjectConcepts.html", "group__PkgPartition2FunctionObjectConcepts" ],
+    [ "Function Object Classes", "group__PkgPartition2FunctionObjectClasses.html", "group__PkgPartition2FunctionObjectClasses" ],
+    [ "CGAL::Partition_is_valid_traits_2&lt; Traits, PolygonIsValid &gt;", "classCGAL_1_1Partition__is__valid__traits__2.html", [
+      [ "Is_valid", "classCGAL_1_1Partition__is__valid__traits__2.html#a9947aa904c7706030e4055b4bab0262f", null ],
+      [ "Left_turn_2", "classCGAL_1_1Partition__is__valid__traits__2.html#acc50293c55f26ad7e01d181891e93f64", null ],
+      [ "Less_xy_2", "classCGAL_1_1Partition__is__valid__traits__2.html#a49c425ef478cfcc40b87f82d7b67c1ee", null ],
+      [ "Orientation_2", "classCGAL_1_1Partition__is__valid__traits__2.html#a2c8a8e47314f54708796410c1c153cbb", null ],
+      [ "Point_2", "classCGAL_1_1Partition__is__valid__traits__2.html#acb47b6a47154360476dc92a1845399d8", null ],
+      [ "Polygon_2", "classCGAL_1_1Partition__is__valid__traits__2.html#ab282e350f2b15cc34aeb1ffbb1fa8877", null ],
+      [ "is_valid_object", "classCGAL_1_1Partition__is__valid__traits__2.html#a65083fa4372ad4ff27e6d9c7816ad959", null ]
+    ] ],
+    [ "CGAL::Partition_traits_2&lt; R, PointPropertyMap, Container_ &gt;", "classCGAL_1_1Partition__traits__2.html", [
+      [ "Are_strictly_ordered_along_line_2", "classCGAL_1_1Partition__traits__2.html#ab9f9c28df3d754fe9fc868a1f155df57", null ],
+      [ "Collinear_are_ordered_along_line_2", "classCGAL_1_1Partition__traits__2.html#af8b52c2953738c5d2dc8d108a8a09385", null ],
+      [ "Compare_x_2", "classCGAL_1_1Partition__traits__2.html#a85d5ed385652f649a2edd543717bb578", null ],
+      [ "Compare_y_2", "classCGAL_1_1Partition__traits__2.html#a2b2bdfe07292ba9611964fc80d6ed6c0", null ],
+      [ "Container", "classCGAL_1_1Partition__traits__2.html#ac248f8b957d5507875eaea4be6bafa62", null ],
+      [ "FT", "classCGAL_1_1Partition__traits__2.html#aff5f0f456485c5898d916f3c6cbcd881", null ],
+      [ "Is_convex_2", "classCGAL_1_1Partition__traits__2.html#a768811bb3b38722ebd81e74f300c65ca", null ],
+      [ "Is_y_monotone_2", "classCGAL_1_1Partition__traits__2.html#a26916c121c67a12859ec4b620707c470", null ],
+      [ "Left_turn_2", "classCGAL_1_1Partition__traits__2.html#ac998e090ac72ccce7bafe2c6ae1adde8", null ],
+      [ "Less_xy_2", "classCGAL_1_1Partition__traits__2.html#a5cd9ee75ef42fa908cc48c1fdb7649a2", null ],
+      [ "Less_yx_2", "classCGAL_1_1Partition__traits__2.html#a0bbf18f52f2e52741fab2d0d62357c2b", null ],
+      [ "Orientation_2", "classCGAL_1_1Partition__traits__2.html#a66c777c4c11d3cb0071a508ef4858ded", null ],
+      [ "Point_2", "classCGAL_1_1Partition__traits__2.html#ab660eaaa7619e980cf014bd04c1be29a", null ],
+      [ "Polygon_2", "classCGAL_1_1Partition__traits__2.html#a1b4c3bba10ce180fcf4a91293056284a", null ],
+      [ "Self", "classCGAL_1_1Partition__traits__2.html#a57ba3feb22de6a933464a3cd0a6ff115", null ],
+      [ "Partition_traits_2", "classCGAL_1_1Partition__traits__2.html#a45f96270238162da4893f1eb20798e23", null ],
+      [ "Partition_traits_2", "classCGAL_1_1Partition__traits__2.html#a484bb93085d08cb0ab99ae3dfa747cd9", null ],
+      [ "Partition_traits_2", "classCGAL_1_1Partition__traits__2.html#acd7c899bed7d6d83e4ed68b5db84794b", null ],
+      [ "Partition_traits_2", "classCGAL_1_1Partition__traits__2.html#a8d3dc130c5be71874aac2b787e63db61", null ],
+      [ "pred_object_type_object", "classCGAL_1_1Partition__traits__2.html#a134ab8d768aed1758f8f05999fcd9475", null ]
+    ] ],
+    [ "CGAL::approx_convex_partition_2", "group__PkgPartition2Ref.html#gab9cf8c2b097fd562da09dd23d0c74edf", null ],
+    [ "CGAL::convex_partition_is_valid_2", "group__PkgPartition2Ref.html#ga9d234240af69b14694923824fc8fca12", null ],
+    [ "CGAL::greene_approx_convex_partition_2", "group__PkgPartition2Ref.html#ga68139e1ee98dffa8f72cb295881f4647", null ],
+    [ "CGAL::is_y_monotone_2", "group__PkgPartition2Ref.html#gae795b8beb8626322c448706e20a8ac9b", null ],
+    [ "CGAL::optimal_convex_partition_2", "group__PkgPartition2Ref.html#ga3ca9fb1f363f9f792bfbbeca65ad5cc5", null ],
+    [ "CGAL::partition_is_valid_2", "group__PkgPartition2Ref.html#gaa4c7b5c06a64608fca50ddb2af49d498", null ],
+    [ "CGAL::y_monotone_partition_2", "group__PkgPartition2Ref.html#ga35cdd9f604522c2ce4ca97d928a41f38", null ],
+    [ "CGAL::y_monotone_partition_is_valid_2", "group__PkgPartition2Ref.html#gaaf27de7c6e366901d744e6bc32e2a8a1", null ]
+];

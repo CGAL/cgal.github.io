@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Arrangement_on_surface_2/classOverlayTraits.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 2D Arrangements: OverlayTraits Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 2D Arrangements
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classOverlayTraits.html','','classOverlayTraits-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classOverlayTraits-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">OverlayTraits Concept Reference<div class="ingroups"><a class="el" href="group__PkgArrangementOnSurface2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgArrangementOnSurface2Concepts.html">Concepts</a> » <a class="el" href="group__PkgArrangementOnSurface2ConceptsTraits.html">Geometry Traits Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>A model for the <span class="tt"><a class="el" href="classOverlayTraits.html" title="A model for the OverlayTraits should be able to operate on records (namely, vertices,...">OverlayTraits</a></span> should be able to operate on records (namely, vertices, halfedges and faces) of two input DCEL classes, named <span class="tt">Dcel_A</span> and <span class="tt">Dcel_B</span>, and construct the records of an output DCEL class, referred to as <span class="tt">Dcel_R</span>. </p>
+  <p>Models for the concept are used by the global <span class="tt">overlay()</span> function to maintain the auxiliary data stored with the DCEL records of the resulting overlaid arrangement, based on the contents of the input records.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Arr__default__overlay__traits.html" title="An instance of Arr_default_overlay_traits should be used for overlaying two arrangements of type Arra...">CGAL::Arr_default_overlay_traits</a>&lt;Arrangement&gt;</span> </dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Arr__face__overlay__traits.html" title="An instance of Arr_face_overlay_traits should be used for overlaying two arrangements of types Arr_A ...">CGAL::Arr_face_overlay_traits</a>&lt;Arr1,Arr2,ResArr,OvlFaceData&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt">overlay</span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:ad782600fc0df8c4aacf54f6480b84a09" id="r_ad782600fc0df8c4aacf54f6480b84a09"><td class="memItemLeft"><a id="ad782600fc0df8c4aacf54f6480b84a09" name="ad782600fc0df8c4aacf54f6480b84a09"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle_A</b></td></tr>
+<tr class="memdesc:ad782600fc0df8c4aacf54f6480b84a09"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle a vertex in <span class="tt">Dcel_A</span>. <br></td></tr>
+<tr class="memitem:a58c151ed0c5542811462a7359d4d8929" id="r_a58c151ed0c5542811462a7359d4d8929"><td class="memItemLeft"><a id="a58c151ed0c5542811462a7359d4d8929" name="a58c151ed0c5542811462a7359d4d8929"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Halfedge_handle_A</b></td></tr>
+<tr class="memdesc:a58c151ed0c5542811462a7359d4d8929"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a halfedge in <span class="tt">Dcel_A</span>. <br></td></tr>
+<tr class="memitem:aeee0b388653d8434bb884f0a9a0f5d52" id="r_aeee0b388653d8434bb884f0a9a0f5d52"><td class="memItemLeft"><a id="aeee0b388653d8434bb884f0a9a0f5d52" name="aeee0b388653d8434bb884f0a9a0f5d52"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Face_handle_A</b></td></tr>
+<tr class="memdesc:aeee0b388653d8434bb884f0a9a0f5d52"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a face <span class="tt">Dcel_A</span>. <br></td></tr>
+<tr class="memitem:ac27339bc53bf8c6a47ad32a17017f277" id="r_ac27339bc53bf8c6a47ad32a17017f277"><td class="memItemLeft"><a id="ac27339bc53bf8c6a47ad32a17017f277" name="ac27339bc53bf8c6a47ad32a17017f277"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle_B</b></td></tr>
+<tr class="memdesc:ac27339bc53bf8c6a47ad32a17017f277"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a vertex in <span class="tt">Dcel_B</span>. <br></td></tr>
+<tr class="memitem:a803eb93b3216ea31da9b1dfbfd37b146" id="r_a803eb93b3216ea31da9b1dfbfd37b146"><td class="memItemLeft"><a id="a803eb93b3216ea31da9b1dfbfd37b146" name="a803eb93b3216ea31da9b1dfbfd37b146"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Halfedge_handle_B</b></td></tr>
+<tr class="memdesc:a803eb93b3216ea31da9b1dfbfd37b146"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a halfedge in <span class="tt">Dcel_B</span>. <br></td></tr>
+<tr class="memitem:affeba6407709a51771b9b66de1551e94" id="r_affeba6407709a51771b9b66de1551e94"><td class="memItemLeft"><a id="affeba6407709a51771b9b66de1551e94" name="affeba6407709a51771b9b66de1551e94"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Face_handle_B</b></td></tr>
+<tr class="memdesc:affeba6407709a51771b9b66de1551e94"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a face in <span class="tt">Dcel_B</span>. <br></td></tr>
+<tr class="memitem:a3f6c75f24389d54d52f17d0cd56fe90d" id="r_a3f6c75f24389d54d52f17d0cd56fe90d"><td class="memItemLeft"><a id="a3f6c75f24389d54d52f17d0cd56fe90d" name="a3f6c75f24389d54d52f17d0cd56fe90d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle_R</b></td></tr>
+<tr class="memdesc:a3f6c75f24389d54d52f17d0cd56fe90d"><td class="mdescLeft"> </td><td class="mdescRight">a handle to a vertex in <span class="tt">Dcel_R</span>. <br></td></tr>
+<tr class="memitem:a63585712d7a760305afe0d87e0262c2d" id="r_a63585712d7a760305afe0d87e0262c2d"><td class="memItemLeft"><a id="a63585712d7a760305afe0d87e0262c2d" name="a63585712d7a760305afe0d87e0262c2d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Halfedge_handle_R</b></td></tr>
+<tr class="memdesc:a63585712d7a760305afe0d87e0262c2d"><td class="mdescLeft"> </td><td class="mdescRight">a handle to a halfedge in <span class="tt">Dcel_R</span>. <br></td></tr>
+<tr class="memitem:a8ab679f5e84bb2ee44f02fdb781ac309" id="r_a8ab679f5e84bb2ee44f02fdb781ac309"><td class="memItemLeft"><a id="a8ab679f5e84bb2ee44f02fdb781ac309" name="a8ab679f5e84bb2ee44f02fdb781ac309"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Face_handle_R</b></td></tr>
+<tr class="memdesc:a8ab679f5e84bb2ee44f02fdb781ac309"><td class="mdescLeft"> </td><td class="mdescRight">a handle to a faces in <span class="tt">Dcel_R</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Vertex Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>Whenever a vertex in the overlaid arrangement is created, one of the following functions is called in order to attach the appropriate auxiliary data to this vertex: </p>
+</td></tr>
+<tr class="memitem:a5ef8fae2ed96a3eaba06e342748e5bf8" id="r_a5ef8fae2ed96a3eaba06e342748e5bf8"><td class="memItemLeft"><a id="a5ef8fae2ed96a3eaba06e342748e5bf8" name="a5ef8fae2ed96a3eaba06e342748e5bf8"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#ad782600fc0df8c4aacf54f6480b84a09">Vertex_handle_A</a> v1, <a class="el" href="#ac27339bc53bf8c6a47ad32a17017f277">Vertex_handle_B</a> v2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a5ef8fae2ed96a3eaba06e342748e5bf8"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the coinciding vertices <span class="tt">v1</span> and <span class="tt">v2</span>. <br></td></tr>
+<tr class="memitem:a5aaefabe33cd4145b7c02187a2d8f6ee" id="r_a5aaefabe33cd4145b7c02187a2d8f6ee"><td class="memItemLeft"><a id="a5aaefabe33cd4145b7c02187a2d8f6ee" name="a5aaefabe33cd4145b7c02187a2d8f6ee"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#ad782600fc0df8c4aacf54f6480b84a09">Vertex_handle_A</a> v1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a5aaefabe33cd4145b7c02187a2d8f6ee"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v1</span> that lies on the halfedge <span class="tt">e2</span>. <br></td></tr>
+<tr class="memitem:a0dbfc0eac4dff0a40792b880f4f1a63e" id="r_a0dbfc0eac4dff0a40792b880f4f1a63e"><td class="memItemLeft"><a id="a0dbfc0eac4dff0a40792b880f4f1a63e" name="a0dbfc0eac4dff0a40792b880f4f1a63e"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#ad782600fc0df8c4aacf54f6480b84a09">Vertex_handle_A</a> v1, <a class="el" href="#affeba6407709a51771b9b66de1551e94">Face_handle_B</a> f2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a0dbfc0eac4dff0a40792b880f4f1a63e"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v1</span> that lies inside the face <span class="tt">f2</span>. <br></td></tr>
+<tr class="memitem:a12f5097a5ab31a376c03800fdfcab230" id="r_a12f5097a5ab31a376c03800fdfcab230"><td class="memItemLeft"><a id="a12f5097a5ab31a376c03800fdfcab230" name="a12f5097a5ab31a376c03800fdfcab230"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#ac27339bc53bf8c6a47ad32a17017f277">Vertex_handle_B</a> v2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a12f5097a5ab31a376c03800fdfcab230"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v2</span> that lies on the halfedge <span class="tt">e1</span>. <br></td></tr>
+<tr class="memitem:a705bf7b793678034901590c822085e77" id="r_a705bf7b793678034901590c822085e77"><td class="memItemLeft"><a id="a705bf7b793678034901590c822085e77" name="a705bf7b793678034901590c822085e77"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#aeee0b388653d8434bb884f0a9a0f5d52">Face_handle_A</a> f1, <a class="el" href="#ac27339bc53bf8c6a47ad32a17017f277">Vertex_handle_B</a> v2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a705bf7b793678034901590c822085e77"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v2</span> that lies inside the face <span class="tt">f1</span>. <br></td></tr>
+<tr class="memitem:a7649d9673ee0c156b0e65971896bd6a0" id="r_a7649d9673ee0c156b0e65971896bd6a0"><td class="memItemLeft"><a id="a7649d9673ee0c156b0e65971896bd6a0" name="a7649d9673ee0c156b0e65971896bd6a0"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a7649d9673ee0c156b0e65971896bd6a0"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the intersection of the halfedges <span class="tt">e1</span> and <span class="tt">e2</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Edge Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>Whenever an edge in the overlaid arrangement is created, one of the following functions is called in order to attach the appropriate auxiliary data to this vertex.</p>
+<p>Note that an edge is created after both its end-vertices are created, (and the corresponding <span class="tt"><a class="el" href="#a5ef8fae2ed96a3eaba06e342748e5bf8" title="constructs the vertex v induced by the coinciding vertices v1 and v2.">create_vertex()</a></span> methods were invoked). In all cases, the edge is represented by a halfedge <span class="tt">e</span> directed in lexicographic decreasing order (from right to left). The <span class="tt"><a class="el" href="#acb9a785e6b3fcbfe56865a29e386f293" title="constructs the halfedge e induced by an overlap between the halfedges e1 and e2.">create_edge()</a></span> method should attach auxiliary data to the twin halfedge (namely to <span class="tt">e-&gt;twin()</span>) as well: </p>
+</td></tr>
+<tr class="memitem:acb9a785e6b3fcbfe56865a29e386f293" id="r_acb9a785e6b3fcbfe56865a29e386f293"><td class="memItemLeft"><a id="acb9a785e6b3fcbfe56865a29e386f293" name="acb9a785e6b3fcbfe56865a29e386f293"></a>
+void </td><td class="memItemRight"><b>create_edge</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a63585712d7a760305afe0d87e0262c2d">Halfedge_handle_R</a> e) const</td></tr>
+<tr class="memdesc:acb9a785e6b3fcbfe56865a29e386f293"><td class="mdescLeft"> </td><td class="mdescRight">constructs the halfedge <span class="tt">e</span> induced by an overlap between the halfedges <span class="tt">e1</span> and <span class="tt">e2</span>. <br></td></tr>
+<tr class="memitem:adc189873a894858dea0bc00205d5afd9" id="r_adc189873a894858dea0bc00205d5afd9"><td class="memItemLeft"><a id="adc189873a894858dea0bc00205d5afd9" name="adc189873a894858dea0bc00205d5afd9"></a>
+void </td><td class="memItemRight"><b>create_edge</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#affeba6407709a51771b9b66de1551e94">Face_handle_B</a> f2, <a class="el" href="#a63585712d7a760305afe0d87e0262c2d">Halfedge_handle_R</a> e) const</td></tr>
+<tr class="memdesc:adc189873a894858dea0bc00205d5afd9"><td class="mdescLeft"> </td><td class="mdescRight">constructs the halfedge <span class="tt">e</span> induced by the halfedge <span class="tt">e1</span> that lies inside the face <span class="tt">f2</span>. <br></td></tr>
+<tr class="memitem:a737cb07aaff0e5110e4cb67639f077a3" id="r_a737cb07aaff0e5110e4cb67639f077a3"><td class="memItemLeft"><a id="a737cb07aaff0e5110e4cb67639f077a3" name="a737cb07aaff0e5110e4cb67639f077a3"></a>
+void </td><td class="memItemRight"><b>create_edge</b> (<a class="el" href="#aeee0b388653d8434bb884f0a9a0f5d52">Face_handle_A</a> f1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a63585712d7a760305afe0d87e0262c2d">Halfedge_handle_R</a> e) const</td></tr>
+<tr class="memdesc:a737cb07aaff0e5110e4cb67639f077a3"><td class="mdescLeft"> </td><td class="mdescRight">constructs the halfedge <span class="tt">e</span> induced by the halfedge <span class="tt">e2</span> that lies inside the face <span class="tt">f1</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Face Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following function is invoked whenever a new face is created.</p>
+<p>It is guaranteed that all halfedges along the face boundary have already been created and have their auxiliary data fields attached to them: </p>
+</td></tr>
+<tr class="memitem:aa82bd32fb442d15f2504eac06b9b0482" id="r_aa82bd32fb442d15f2504eac06b9b0482"><td class="memItemLeft"><a id="aa82bd32fb442d15f2504eac06b9b0482" name="aa82bd32fb442d15f2504eac06b9b0482"></a>
+void </td><td class="memItemRight"><b>create_face</b> (<a class="el" href="#aeee0b388653d8434bb884f0a9a0f5d52">Face_handle_A</a> f1, <a class="el" href="#affeba6407709a51771b9b66de1551e94">Face_handle_B</a> f2, <a class="el" href="#a8ab679f5e84bb2ee44f02fdb781ac309">Face_handle_R</a> f) const</td></tr>
+<tr class="memdesc:aa82bd32fb442d15f2504eac06b9b0482"><td class="mdescLeft"> </td><td class="mdescRight">constructs the face <span class="tt">f</span> induced by the an overlap between the faces <span class="tt">f1</span> and <span class="tt">f2</span>. <br></td></tr>
+</table>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classOverlayTraits.html">OverlayTraits</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/OverlayTraits.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>A model for the <span class="tt"><a class="el" href="classOverlayTraits.html" title="A model for the OverlayTraits should be able to operate on records (namely, vertices,...">OverlayTraits</a></span> should be able to operate on records (namely, vertices, halfedges and faces) of two input DCEL classes, named <span class="tt">Dcel_A</span> and <span class="tt">Dcel_B</span>, and construct the records of an output DCEL class, referred to as <span class="tt">Dcel_R</span>. </p>
+  <p>Models for the concept are used by the global <span class="tt">overlay()</span> function to maintain the auxiliary data stored with the DCEL records of the resulting overlaid arrangement, based on the contents of the input records.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Arr__default__overlay__traits.html" title="An instance of Arr_default_overlay_traits should be used for overlaying two arrangements of type Arra...">CGAL::Arr_default_overlay_traits</a>&lt;Arrangement&gt;</span> </dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Arr__face__overlay__traits.html" title="An instance of Arr_face_overlay_traits should be used for overlaying two arrangements of types Arr_A ...">CGAL::Arr_face_overlay_traits</a>&lt;Arr1,Arr2,ResArr,OvlFaceData&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt">overlay</span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:ad782600fc0df8c4aacf54f6480b84a09" id="r_ad782600fc0df8c4aacf54f6480b84a09"><td class="memItemLeft"><a id="ad782600fc0df8c4aacf54f6480b84a09" name="ad782600fc0df8c4aacf54f6480b84a09"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle_A</b></td></tr>
+<tr class="memdesc:ad782600fc0df8c4aacf54f6480b84a09"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle a vertex in <span class="tt">Dcel_A</span>. <br></td></tr>
+<tr class="memitem:a58c151ed0c5542811462a7359d4d8929" id="r_a58c151ed0c5542811462a7359d4d8929"><td class="memItemLeft"><a id="a58c151ed0c5542811462a7359d4d8929" name="a58c151ed0c5542811462a7359d4d8929"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Halfedge_handle_A</b></td></tr>
+<tr class="memdesc:a58c151ed0c5542811462a7359d4d8929"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a halfedge in <span class="tt">Dcel_A</span>. <br></td></tr>
+<tr class="memitem:aeee0b388653d8434bb884f0a9a0f5d52" id="r_aeee0b388653d8434bb884f0a9a0f5d52"><td class="memItemLeft"><a id="aeee0b388653d8434bb884f0a9a0f5d52" name="aeee0b388653d8434bb884f0a9a0f5d52"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Face_handle_A</b></td></tr>
+<tr class="memdesc:aeee0b388653d8434bb884f0a9a0f5d52"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a face <span class="tt">Dcel_A</span>. <br></td></tr>
+<tr class="memitem:ac27339bc53bf8c6a47ad32a17017f277" id="r_ac27339bc53bf8c6a47ad32a17017f277"><td class="memItemLeft"><a id="ac27339bc53bf8c6a47ad32a17017f277" name="ac27339bc53bf8c6a47ad32a17017f277"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle_B</b></td></tr>
+<tr class="memdesc:ac27339bc53bf8c6a47ad32a17017f277"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a vertex in <span class="tt">Dcel_B</span>. <br></td></tr>
+<tr class="memitem:a803eb93b3216ea31da9b1dfbfd37b146" id="r_a803eb93b3216ea31da9b1dfbfd37b146"><td class="memItemLeft"><a id="a803eb93b3216ea31da9b1dfbfd37b146" name="a803eb93b3216ea31da9b1dfbfd37b146"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Halfedge_handle_B</b></td></tr>
+<tr class="memdesc:a803eb93b3216ea31da9b1dfbfd37b146"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a halfedge in <span class="tt">Dcel_B</span>. <br></td></tr>
+<tr class="memitem:affeba6407709a51771b9b66de1551e94" id="r_affeba6407709a51771b9b66de1551e94"><td class="memItemLeft"><a id="affeba6407709a51771b9b66de1551e94" name="affeba6407709a51771b9b66de1551e94"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Face_handle_B</b></td></tr>
+<tr class="memdesc:affeba6407709a51771b9b66de1551e94"><td class="mdescLeft"> </td><td class="mdescRight">a constant handle to a face in <span class="tt">Dcel_B</span>. <br></td></tr>
+<tr class="memitem:a3f6c75f24389d54d52f17d0cd56fe90d" id="r_a3f6c75f24389d54d52f17d0cd56fe90d"><td class="memItemLeft"><a id="a3f6c75f24389d54d52f17d0cd56fe90d" name="a3f6c75f24389d54d52f17d0cd56fe90d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle_R</b></td></tr>
+<tr class="memdesc:a3f6c75f24389d54d52f17d0cd56fe90d"><td class="mdescLeft"> </td><td class="mdescRight">a handle to a vertex in <span class="tt">Dcel_R</span>. <br></td></tr>
+<tr class="memitem:a63585712d7a760305afe0d87e0262c2d" id="r_a63585712d7a760305afe0d87e0262c2d"><td class="memItemLeft"><a id="a63585712d7a760305afe0d87e0262c2d" name="a63585712d7a760305afe0d87e0262c2d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Halfedge_handle_R</b></td></tr>
+<tr class="memdesc:a63585712d7a760305afe0d87e0262c2d"><td class="mdescLeft"> </td><td class="mdescRight">a handle to a halfedge in <span class="tt">Dcel_R</span>. <br></td></tr>
+<tr class="memitem:a8ab679f5e84bb2ee44f02fdb781ac309" id="r_a8ab679f5e84bb2ee44f02fdb781ac309"><td class="memItemLeft"><a id="a8ab679f5e84bb2ee44f02fdb781ac309" name="a8ab679f5e84bb2ee44f02fdb781ac309"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Face_handle_R</b></td></tr>
+<tr class="memdesc:a8ab679f5e84bb2ee44f02fdb781ac309"><td class="mdescLeft"> </td><td class="mdescRight">a handle to a faces in <span class="tt">Dcel_R</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Vertex Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>Whenever a vertex in the overlaid arrangement is created, one of the following functions is called in order to attach the appropriate auxiliary data to this vertex: </p>
+</td></tr>
+<tr class="memitem:a5ef8fae2ed96a3eaba06e342748e5bf8" id="r_a5ef8fae2ed96a3eaba06e342748e5bf8"><td class="memItemLeft"><a id="a5ef8fae2ed96a3eaba06e342748e5bf8" name="a5ef8fae2ed96a3eaba06e342748e5bf8"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#ad782600fc0df8c4aacf54f6480b84a09">Vertex_handle_A</a> v1, <a class="el" href="#ac27339bc53bf8c6a47ad32a17017f277">Vertex_handle_B</a> v2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a5ef8fae2ed96a3eaba06e342748e5bf8"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the coinciding vertices <span class="tt">v1</span> and <span class="tt">v2</span>. <br></td></tr>
+<tr class="memitem:a5aaefabe33cd4145b7c02187a2d8f6ee" id="r_a5aaefabe33cd4145b7c02187a2d8f6ee"><td class="memItemLeft"><a id="a5aaefabe33cd4145b7c02187a2d8f6ee" name="a5aaefabe33cd4145b7c02187a2d8f6ee"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#ad782600fc0df8c4aacf54f6480b84a09">Vertex_handle_A</a> v1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a5aaefabe33cd4145b7c02187a2d8f6ee"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v1</span> that lies on the halfedge <span class="tt">e2</span>. <br></td></tr>
+<tr class="memitem:a0dbfc0eac4dff0a40792b880f4f1a63e" id="r_a0dbfc0eac4dff0a40792b880f4f1a63e"><td class="memItemLeft"><a id="a0dbfc0eac4dff0a40792b880f4f1a63e" name="a0dbfc0eac4dff0a40792b880f4f1a63e"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#ad782600fc0df8c4aacf54f6480b84a09">Vertex_handle_A</a> v1, <a class="el" href="#affeba6407709a51771b9b66de1551e94">Face_handle_B</a> f2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a0dbfc0eac4dff0a40792b880f4f1a63e"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v1</span> that lies inside the face <span class="tt">f2</span>. <br></td></tr>
+<tr class="memitem:a12f5097a5ab31a376c03800fdfcab230" id="r_a12f5097a5ab31a376c03800fdfcab230"><td class="memItemLeft"><a id="a12f5097a5ab31a376c03800fdfcab230" name="a12f5097a5ab31a376c03800fdfcab230"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#ac27339bc53bf8c6a47ad32a17017f277">Vertex_handle_B</a> v2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a12f5097a5ab31a376c03800fdfcab230"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v2</span> that lies on the halfedge <span class="tt">e1</span>. <br></td></tr>
+<tr class="memitem:a705bf7b793678034901590c822085e77" id="r_a705bf7b793678034901590c822085e77"><td class="memItemLeft"><a id="a705bf7b793678034901590c822085e77" name="a705bf7b793678034901590c822085e77"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#aeee0b388653d8434bb884f0a9a0f5d52">Face_handle_A</a> f1, <a class="el" href="#ac27339bc53bf8c6a47ad32a17017f277">Vertex_handle_B</a> v2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a705bf7b793678034901590c822085e77"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the vertex <span class="tt">v2</span> that lies inside the face <span class="tt">f1</span>. <br></td></tr>
+<tr class="memitem:a7649d9673ee0c156b0e65971896bd6a0" id="r_a7649d9673ee0c156b0e65971896bd6a0"><td class="memItemLeft"><a id="a7649d9673ee0c156b0e65971896bd6a0" name="a7649d9673ee0c156b0e65971896bd6a0"></a>
+void </td><td class="memItemRight"><b>create_vertex</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a3f6c75f24389d54d52f17d0cd56fe90d">Vertex_handle_R</a> v) const</td></tr>
+<tr class="memdesc:a7649d9673ee0c156b0e65971896bd6a0"><td class="mdescLeft"> </td><td class="mdescRight">constructs the vertex <span class="tt">v</span> induced by the intersection of the halfedges <span class="tt">e1</span> and <span class="tt">e2</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Edge Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>Whenever an edge in the overlaid arrangement is created, one of the following functions is called in order to attach the appropriate auxiliary data to this vertex.</p>
+<p>Note that an edge is created after both its end-vertices are created, (and the corresponding <span class="tt"><a class="el" href="#a5ef8fae2ed96a3eaba06e342748e5bf8" title="constructs the vertex v induced by the coinciding vertices v1 and v2.">create_vertex()</a></span> methods were invoked). In all cases, the edge is represented by a halfedge <span class="tt">e</span> directed in lexicographic decreasing order (from right to left). The <span class="tt"><a class="el" href="#acb9a785e6b3fcbfe56865a29e386f293" title="constructs the halfedge e induced by an overlap between the halfedges e1 and e2.">create_edge()</a></span> method should attach auxiliary data to the twin halfedge (namely to <span class="tt">e-&gt;twin()</span>) as well: </p>
+</td></tr>
+<tr class="memitem:acb9a785e6b3fcbfe56865a29e386f293" id="r_acb9a785e6b3fcbfe56865a29e386f293"><td class="memItemLeft"><a id="acb9a785e6b3fcbfe56865a29e386f293" name="acb9a785e6b3fcbfe56865a29e386f293"></a>
+void </td><td class="memItemRight"><b>create_edge</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a63585712d7a760305afe0d87e0262c2d">Halfedge_handle_R</a> e) const</td></tr>
+<tr class="memdesc:acb9a785e6b3fcbfe56865a29e386f293"><td class="mdescLeft"> </td><td class="mdescRight">constructs the halfedge <span class="tt">e</span> induced by an overlap between the halfedges <span class="tt">e1</span> and <span class="tt">e2</span>. <br></td></tr>
+<tr class="memitem:adc189873a894858dea0bc00205d5afd9" id="r_adc189873a894858dea0bc00205d5afd9"><td class="memItemLeft"><a id="adc189873a894858dea0bc00205d5afd9" name="adc189873a894858dea0bc00205d5afd9"></a>
+void </td><td class="memItemRight"><b>create_edge</b> (<a class="el" href="#a58c151ed0c5542811462a7359d4d8929">Halfedge_handle_A</a> e1, <a class="el" href="#affeba6407709a51771b9b66de1551e94">Face_handle_B</a> f2, <a class="el" href="#a63585712d7a760305afe0d87e0262c2d">Halfedge_handle_R</a> e) const</td></tr>
+<tr class="memdesc:adc189873a894858dea0bc00205d5afd9"><td class="mdescLeft"> </td><td class="mdescRight">constructs the halfedge <span class="tt">e</span> induced by the halfedge <span class="tt">e1</span> that lies inside the face <span class="tt">f2</span>. <br></td></tr>
+<tr class="memitem:a737cb07aaff0e5110e4cb67639f077a3" id="r_a737cb07aaff0e5110e4cb67639f077a3"><td class="memItemLeft"><a id="a737cb07aaff0e5110e4cb67639f077a3" name="a737cb07aaff0e5110e4cb67639f077a3"></a>
+void </td><td class="memItemRight"><b>create_edge</b> (<a class="el" href="#aeee0b388653d8434bb884f0a9a0f5d52">Face_handle_A</a> f1, <a class="el" href="#a803eb93b3216ea31da9b1dfbfd37b146">Halfedge_handle_B</a> e2, <a class="el" href="#a63585712d7a760305afe0d87e0262c2d">Halfedge_handle_R</a> e) const</td></tr>
+<tr class="memdesc:a737cb07aaff0e5110e4cb67639f077a3"><td class="mdescLeft"> </td><td class="mdescRight">constructs the halfedge <span class="tt">e</span> induced by the halfedge <span class="tt">e2</span> that lies inside the face <span class="tt">f1</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Face Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following function is invoked whenever a new face is created.</p>
+<p>It is guaranteed that all halfedges along the face boundary have already been created and have their auxiliary data fields attached to them: </p>
+</td></tr>
+<tr class="memitem:aa82bd32fb442d15f2504eac06b9b0482" id="r_aa82bd32fb442d15f2504eac06b9b0482"><td class="memItemLeft"><a id="aa82bd32fb442d15f2504eac06b9b0482" name="aa82bd32fb442d15f2504eac06b9b0482"></a>
+void </td><td class="memItemRight"><b>create_face</b> (<a class="el" href="#aeee0b388653d8434bb884f0a9a0f5d52">Face_handle_A</a> f1, <a class="el" href="#affeba6407709a51771b9b66de1551e94">Face_handle_B</a> f2, <a class="el" href="#a8ab679f5e84bb2ee44f02fdb781ac309">Face_handle_R</a> f) const</td></tr>
+<tr class="memdesc:aa82bd32fb442d15f2504eac06b9b0482"><td class="mdescLeft"> </td><td class="mdescRight">constructs the face <span class="tt">f</span> induced by the an overlap between the faces <span class="tt">f1</span> and <span class="tt">f2</span>. <br></td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classOverlayTraits.html">OverlayTraits</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

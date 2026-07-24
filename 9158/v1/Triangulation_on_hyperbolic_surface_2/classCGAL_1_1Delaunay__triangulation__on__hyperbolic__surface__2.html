@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Triangulation_on_hyperbolic_surface_2/classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 2D Triangulations on Hyperbolic Surfaces: CGAL::Delaunay_triangulation_on_hyperbolic_surface_2&lt; Traits &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 2D Triangulations on Hyperbolic Surfaces
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html','','classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2&lt; Traits &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHyperbolicSurfaceTriangulation2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgHyperbolicSurfaceTriangulation2MainClasses.html">Main Classes</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Delaunay_triangulation_on_hyperbolic_surface_2.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html">CGAL::Triangulation_on_hyperbolic_surface_2&lt; Traits, Delaunay_triangulation_attributes&lt; Traits &gt; &gt;</a>.</p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class Traits&gt;<br>
+class CGAL::Delaunay_triangulation_on_hyperbolic_surface_2&lt; Traits &gt;</div><p>represents a Delaunay triangulation of a closed orientable hyperbolic surface. </p>
+<p>The class provides functions such as the generation of the Delaunay triangulation from a convex fundamental domain, the location of a point in the lifted triangulation, the insertion of a point in the Delaunay triangulation, and the \( \varepsilon \)-net algorithm.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>must be a model of <span class="tt"><a class="el" href="classHyperbolicSurfaceDelaunayTraits__2.html">HyperbolicSurfaceDelaunayTraits_2</a></span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html" title="represents a triangulation of a closed orientable hyperbolic surface.">Triangulation_on_hyperbolic_surface_2</a>&lt;Traits, Attributes&gt;</span> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Triangulation_on_hyperbolic_surface_2_2Delaunay_triangulation_on_hyperbolic_surface_2_8cpp-example.html#_a6">Triangulation_on_hyperbolic_surface_2/Delaunay_triangulation_on_hyperbolic_surface_2.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Enums</h2></td></tr>
+<tr class="memitem:a826d940fe35898cd3ea6fc44ade1666d" id="r_a826d940fe35898cd3ea6fc44ade1666d"><td class="memItemLeft">enum  </td><td class="memItemRight"><a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d">Locate_type</a> { <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666dae2483649586d9fe42bf3b1272da19df5">VERTEX</a> = 0
+, <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666da2de82db239fe0d2d463013ba1f854490">EDGE</a>
+, <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666da50dbbdde07f852cdf1a2c987134e6770">FACE</a>
+, <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666dae39b4cd60ed2a9069ed4413d8fda79f5">OUTSIDE</a>
+ }</td></tr>
+<tr class="memdesc:a826d940fe35898cd3ea6fc44ade1666d"><td class="mdescLeft"> </td><td class="mdescRight">The enumeration <span class="tt"><a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d" title="The enumeration Locate_type is defined to specify which case occurs when locating a point in the lift...">Locate_type</a></span> is defined to specify which case occurs when locating a point in the lifted triangulation.  <a href="#a826d940fe35898cd3ea6fc44ade1666d">More...</a><br></td></tr>
+<tr class="memitem:a67840009dad4d63bd4d50555839726a3" id="r_a67840009dad4d63bd4d50555839726a3"><td class="memItemLeft">enum  </td><td class="memItemRight"><a class="el" href="#a67840009dad4d63bd4d50555839726a3">Locate_walk</a> { <a class="el" href="#a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0">STRAIGHT</a> = 0
+, <a class="el" href="#a67840009dad4d63bd4d50555839726a3aee1bb72d06b912e47f82e596c68a0f60">VISIBILITY</a>
+ }</td></tr>
+<tr class="memdesc:a67840009dad4d63bd4d50555839726a3"><td class="mdescLeft"> </td><td class="mdescRight">The enumeration <span class="tt"><a class="el" href="#a67840009dad4d63bd4d50555839726a3" title="The enumeration Locate_walk is defined to specify which walk algorithm is used when locating a point ...">Locate_walk</a></span> is defined to specify which walk algorithm is used when locating a point in the lifted triangulation.  <a href="#a67840009dad4d63bd4d50555839726a3">More...</a><br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a3c0a7fce3d21fbb4057ffbfc63e89c90" id="r_a3c0a7fce3d21fbb4057ffbfc63e89c90"><td class="memItemLeft"><a id="a3c0a7fce3d21fbb4057ffbfc63e89c90" name="a3c0a7fce3d21fbb4057ffbfc63e89c90"></a>
+typedef <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a8e2604ddfbb60373c2de979b14553c71">Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, <a class="el" href="structCGAL_1_1Delaunay__triangulation__attributes.html">Delaunay_triangulation_attributes</a>&lt; Traits &gt; &gt; </td><td class="memItemRight"><b>Base</b></td></tr>
+<tr class="memitem:a4a4d519ad42c4dc8d62e052a0256f965" id="r_a4a4d519ad42c4dc8d62e052a0256f965"><td class="memItemLeft"><a id="a4a4d519ad42c4dc8d62e052a0256f965" name="a4a4d519ad42c4dc8d62e052a0256f965"></a>
+typedef <a class="elRef" href="../Combinatorial_map/classCGAL_1_1Combinatorial__map.html">Combinatorial_map</a>&lt; 2, <a class="el" href="structCGAL_1_1Delaunay__triangulation__attributes.html">Delaunay_triangulation_attributes</a>&lt; Traits &gt; &gt; </td><td class="memItemRight"><b>CMap</b></td></tr>
+<tr class="memdesc:a4a4d519ad42c4dc8d62e052a0256f965"><td class="mdescLeft"> </td><td class="mdescRight">Type of combinatorial map whose edges are decorated with complex numbers and faces are decorated with anchors. <br></td></tr>
+<tr class="memitem:af9e5458d3f2665cf403f445778c32878" id="r_af9e5458d3f2665cf403f445778c32878"><td class="memItemLeft"><a id="af9e5458d3f2665cf403f445778c32878" name="af9e5458d3f2665cf403f445778c32878"></a>
+typedef <a class="el" href="classCGAL_1_1Triangulation__on__hyperbolic__surface__2.html#a8e2604ddfbb60373c2de979b14553c71">Triangulation_on_hyperbolic_surface_2</a>&lt; Traits, <a class="el" href="structCGAL_1_1Delaunay__triangulation__attributes.html">Delaunay_triangulation_attributes</a>&lt; Traits &gt; &gt;::Anchor </td><td class="memItemRight"><b>Anchor</b></td></tr>
+<tr class="memitem:a5cf7ffa3c2cd18dde3249a15ba6bd694" id="r_a5cf7ffa3c2cd18dde3249a15ba6bd694"><td class="memItemLeft"><a id="a5cf7ffa3c2cd18dde3249a15ba6bd694" name="a5cf7ffa3c2cd18dde3249a15ba6bd694"></a>
+typedef Traits::FT </td><td class="memItemRight"><b>Number</b></td></tr>
+<tr class="memdesc:a5cf7ffa3c2cd18dde3249a15ba6bd694"><td class="mdescLeft"> </td><td class="mdescRight">must be compatible with the method <span class="tt"><a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double()</a></span> and must support a cosh function to compute the hyperbolic cosine. <br></td></tr>
+<tr class="memitem:aa10a6e6a74013087da9c3693dd9f7600" id="r_aa10a6e6a74013087da9c3693dd9f7600"><td class="memItemLeft"><a id="aa10a6e6a74013087da9c3693dd9f7600" name="aa10a6e6a74013087da9c3693dd9f7600"></a>
+typedef Traits::Complex </td><td class="memItemRight"><b>Complex_number</b></td></tr>
+<tr class="memitem:aae52a01db51dd2c9de7b5dea5e7cc50c" id="r_aae52a01db51dd2c9de7b5dea5e7cc50c"><td class="memItemLeft"><a id="aae52a01db51dd2c9de7b5dea5e7cc50c" name="aae52a01db51dd2c9de7b5dea5e7cc50c"></a>
+typedef Traits::Hyperbolic_point_2 </td><td class="memItemRight"><b>Point</b></td></tr>
+<tr class="memdesc:aae52a01db51dd2c9de7b5dea5e7cc50c"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c" title="Point in the Poincaré disk.">Point</a> in the Poincaré disk. <br></td></tr>
+<tr class="memitem:a99a02555d379a2820b8fdf91e8582ac2" id="r_a99a02555d379a2820b8fdf91e8582ac2"><td class="memItemLeft"><a id="a99a02555d379a2820b8fdf91e8582ac2" name="a99a02555d379a2820b8fdf91e8582ac2"></a>
+typedef CMap::Dart_descriptor </td><td class="memItemRight"><b>Dart_descriptor</b></td></tr>
+<tr class="memdesc:a99a02555d379a2820b8fdf91e8582ac2"><td class="mdescLeft"> </td><td class="mdescRight">Types borrowed from the combinatorial map. <br></td></tr>
+<tr class="memitem:a8133dabed35c9df374f27f2285fe0cd5" id="r_a8133dabed35c9df374f27f2285fe0cd5"><td class="memItemLeft"><a id="a8133dabed35c9df374f27f2285fe0cd5" name="a8133dabed35c9df374f27f2285fe0cd5"></a>
+typedef CMap::Dart_const_descriptor </td><td class="memItemRight"><b>Dart_const_descriptor</b></td></tr>
+<tr class="memitem:a5a8c65de84aec682b62cf147715bdd8d" id="r_a5a8c65de84aec682b62cf147715bdd8d"><td class="memItemLeft"><a id="a5a8c65de84aec682b62cf147715bdd8d" name="a5a8c65de84aec682b62cf147715bdd8d"></a>
+typedef CMap::template One_dart_per_cell_range&lt; 0 &gt; </td><td class="memItemRight"><b>Vertex_range</b></td></tr>
+<tr class="memitem:a9c4a56cb43ac2547cd05f56456904029" id="r_a9c4a56cb43ac2547cd05f56456904029"><td class="memItemLeft"><a id="a9c4a56cb43ac2547cd05f56456904029" name="a9c4a56cb43ac2547cd05f56456904029"></a>
+typedef CMap::template One_dart_per_cell_range&lt; 1 &gt; </td><td class="memItemRight"><b>Edge_range</b></td></tr>
+<tr class="memitem:a59047579602303498a5cea0c223421b1" id="r_a59047579602303498a5cea0c223421b1"><td class="memItemLeft"><a id="a59047579602303498a5cea0c223421b1" name="a59047579602303498a5cea0c223421b1"></a>
+typedef CMap::template One_dart_per_cell_range&lt; 2 &gt; </td><td class="memItemRight"><b>Face_range</b></td></tr>
+<tr class="memitem:a51de44c382ebd49749e9c6374d7232d5" id="r_a51de44c382ebd49749e9c6374d7232d5"><td class="memItemLeft"><a id="a51de44c382ebd49749e9c6374d7232d5" name="a51de44c382ebd49749e9c6374d7232d5"></a>
+typedef CMap::template One_dart_per_cell_const_range&lt; 1 &gt; </td><td class="memItemRight"><b>Edge_const_range</b></td></tr>
+<tr class="memitem:a13c18ce14c50deb9befe049668341a07" id="r_a13c18ce14c50deb9befe049668341a07"><td class="memItemLeft"><a id="a13c18ce14c50deb9befe049668341a07" name="a13c18ce14c50deb9befe049668341a07"></a>
+typedef CMap::template One_dart_per_cell_const_range&lt; 2 &gt; </td><td class="memItemRight"><b>Face_const_range</b></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The main Delaunay class can be constructed from a general triangulation or a hyperbolic fundamental domain.</p>
+<p>It constructs the Delaunay triangulation and sets an <a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> for each face. </p>
+</td></tr>
+<tr class="memitem:a17edb29f4b3026ad7e63da89d14ca77e" id="r_a17edb29f4b3026ad7e63da89d14ca77e"><td class="memItemLeft"><a id="a17edb29f4b3026ad7e63da89d14ca77e" name="a17edb29f4b3026ad7e63da89d14ca77e"></a>
+ </td><td class="memItemRight"><b>Delaunay_triangulation_on_hyperbolic_surface_2</b> (Traits &amp;gt)</td></tr>
+<tr class="memitem:a720eff68ac3385317a00ed6dc7951be0" id="r_a720eff68ac3385317a00ed6dc7951be0"><td class="memItemLeft"><a id="a720eff68ac3385317a00ed6dc7951be0" name="a720eff68ac3385317a00ed6dc7951be0"></a>
+ </td><td class="memItemRight"><b>Delaunay_triangulation_on_hyperbolic_surface_2</b> (Traits &amp;gt, <a class="el" href="classCGAL_1_1Hyperbolic__fundamental__domain__2.html">Hyperbolic_fundamental_domain_2</a>&lt; Traits &gt; const &amp;domain)</td></tr>
+<tr class="memitem:af16eac21de710401bb7270164f7a04d8" id="r_af16eac21de710401bb7270164f7a04d8"><td class="memItemLeft"><a id="af16eac21de710401bb7270164f7a04d8" name="af16eac21de710401bb7270164f7a04d8"></a>
+ </td><td class="memItemRight"><b>Delaunay_triangulation_on_hyperbolic_surface_2</b> (Traits &amp;gt, <a class="el" href="#a3c0a7fce3d21fbb4057ffbfc63e89c90">Base</a> &amp;triangulation)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Access Functions</h2></td></tr>
+<tr class="memitem:ab3db4570dae5574bc6a23ab8bbf373ca" id="r_ab3db4570dae5574bc6a23ab8bbf373ca"><td class="memItemLeft"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> &amp; </td><td class="memItemRight"><a class="el" href="#ab3db4570dae5574bc6a23ab8bbf373ca">anchor</a> (<a class="el" href="#a99a02555d379a2820b8fdf91e8582ac2">Dart_descriptor</a> const dart)</td></tr>
+<tr class="memitem:a13d6e7c5883eea9e52884dd8cb05d994" id="r_a13d6e7c5883eea9e52884dd8cb05d994"><td class="memItemLeft"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp; </td><td class="memItemRight"><a class="el" href="#a13d6e7c5883eea9e52884dd8cb05d994">anchor</a> (<a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> const dart) const</td></tr>
+<tr class="memitem:a7fa6f11b797033a11d42953b134727b9" id="r_a7fa6f11b797033a11d42953b134727b9"><td class="memItemLeft"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> &amp; </td><td class="memItemRight"><a class="el" href="#a7fa6f11b797033a11d42953b134727b9">anchor</a> ()</td></tr>
+<tr class="memitem:a00c631aca0a4657b58cf9298da4b0217" id="r_a00c631aca0a4657b58cf9298da4b0217"><td class="memItemLeft"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp; </td><td class="memItemRight"><a class="el" href="#a00c631aca0a4657b58cf9298da4b0217">anchor</a> () const</td></tr>
+<tr class="memitem:abf045c4a91d647abca56806d6111e2fd" id="r_abf045c4a91d647abca56806d6111e2fd"><td class="memItemLeft">unsigned </td><td class="memItemRight"><a class="el" href="#abf045c4a91d647abca56806d6111e2fd">index_in_anchor</a> (<a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> const dart) const</td></tr>
+<tr class="memitem:a018d1bb4acb1743bc889dea2f0fa9df3" id="r_a018d1bb4acb1743bc889dea2f0fa9df3"><td class="memItemLeft"><a class="el" href="#a99a02555d379a2820b8fdf91e8582ac2">Dart_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a018d1bb4acb1743bc889dea2f0fa9df3">ith_dart</a> (unsigned i, <a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp;anch)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Validity</h2></td></tr>
+<tr class="memitem:a6bce8d6aca88caebabc9cea277400d15" id="r_a6bce8d6aca88caebabc9cea277400d15"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a6bce8d6aca88caebabc9cea277400d15">is_valid</a> () const</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Point location and insertion</h2></td></tr>
+<tr class="memitem:a4da11414d16bab6e8d8c008125107b54" id="r_a4da11414d16bab6e8d8c008125107b54"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a4da11414d16bab6e8d8c008125107b54">relative_locate</a> (<a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;query, <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d">Locate_type</a> &amp;lt, unsigned &amp;li, <a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp;anch) const</td></tr>
+<tr class="memdesc:a4da11414d16bab6e8d8c008125107b54"><td class="mdescLeft"> </td><td class="mdescRight">Computes the locate type <span class="tt">lt</span> of <span class="tt">query</span> relative to the anchor that indicates whether <span class="tt">query</span> lies on a vertex, an edge, inside or outside the lifted triangle described by the given anchor.  <br></td></tr>
+<tr class="memitem:a1987e70471c379613012b70e09de5c43" id="r_a1987e70471c379613012b70e09de5c43"><td class="memItemLeft"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> </td><td class="memItemRight"><a class="el" href="#a1987e70471c379613012b70e09de5c43">locate</a> (<a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;query, <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d">Locate_type</a> &amp;lt, unsigned &amp;li, unsigned &amp;ld, <a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp;hint, <a class="el" href="#a67840009dad4d63bd4d50555839726a3">Locate_walk</a> walk=<a class="el" href="#a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0">STRAIGHT</a>)</td></tr>
+<tr class="memitem:a39a4e17bd99aeb22d8095d179b0358b0" id="r_a39a4e17bd99aeb22d8095d179b0358b0"><td class="memItemLeft"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> </td><td class="memItemRight"><a class="el" href="#a39a4e17bd99aeb22d8095d179b0358b0">locate</a> (<a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;query, <a class="el" href="#a67840009dad4d63bd4d50555839726a3">Locate_walk</a> walk=<a class="el" href="#a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0">STRAIGHT</a>)</td></tr>
+<tr class="memitem:a125f3d2f6ca0bd8cf1e3ac4b8ac5b547" id="r_a125f3d2f6ca0bd8cf1e3ac4b8ac5b547"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a125f3d2f6ca0bd8cf1e3ac4b8ac5b547">insert</a> (<a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;p, <a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> &amp;hint)</td></tr>
+<tr class="memdesc:a125f3d2f6ca0bd8cf1e3ac4b8ac5b547"><td class="mdescLeft"> </td><td class="mdescRight">Inserts <span class="tt">p</span> in the Delaunay triangulation after having located it, starting from <span class="tt">hint</span>.  <br></td></tr>
+<tr class="memitem:af4b88f272a1768785254407ac85da894" id="r_af4b88f272a1768785254407ac85da894"><td class="memItemLeft"><a id="af4b88f272a1768785254407ac85da894" name="af4b88f272a1768785254407ac85da894"></a>
+void </td><td class="memItemRight"><b>insert</b> (<a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;p)</td></tr>
+<tr class="memdesc:af4b88f272a1768785254407ac85da894"><td class="mdescLeft"> </td><td class="mdescRight">Inserts <span class="tt">p</span> in the Delaunay triangulation. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+epsilon-net</h2></td></tr>
+<tr class="memitem:a7b05489d8dfcacc5a2b39eb0c5cf33f6" id="r_a7b05489d8dfcacc5a2b39eb0c5cf33f6"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a7b05489d8dfcacc5a2b39eb0c5cf33f6">construct_epsilon_net</a> (double const epsilon)</td></tr>
+<tr class="memitem:a65831b530531f7329bf60e8615766558" id="r_a65831b530531f7329bf60e8615766558"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a65831b530531f7329bf60e8615766558">is_epsilon_covering</a> (const double epsilon) const</td></tr>
+<tr class="memitem:a994940864bed9def17fb7bb201d26f12" id="r_a994940864bed9def17fb7bb201d26f12"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a994940864bed9def17fb7bb201d26f12">is_epsilon_packing</a> (const double epsilon) const</td></tr>
+<tr class="memitem:ad4a71fa4819a162c2e116f4a871c63d7" id="r_ad4a71fa4819a162c2e116f4a871c63d7"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#ad4a71fa4819a162c2e116f4a871c63d7">is_epsilon_net</a> (const double epsilon) const</td></tr>
+<tr class="memitem:a398a468126f29295557bfbb17d82cba1" id="r_a398a468126f29295557bfbb17d82cba1"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#a398a468126f29295557bfbb17d82cba1">packing_value</a> () const</td></tr>
+<tr class="memitem:ac4614a87a92d4faf2eb2bc7ddd55f316" id="r_ac4614a87a92d4faf2eb2bc7ddd55f316"><td class="memItemLeft">double </td><td class="memItemRight"><a class="el" href="#ac4614a87a92d4faf2eb2bc7ddd55f316">covering_value</a> () const</td></tr>
+<tr class="memitem:aa2ade1d34635f2cfe7ce828a0b8a2a81" id="r_aa2ade1d34635f2cfe7ce828a0b8a2a81"><td class="memItemLeft"><a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#aa2ade1d34635f2cfe7ce828a0b8a2a81">shortest_loop_edge</a> () const</td></tr>
+<tr class="memitem:a9cd1cc8ab46f7b6a47947035b279a5a3" id="r_a9cd1cc8ab46f7b6a47947035b279a5a3"><td class="memItemLeft"><a id="a9cd1cc8ab46f7b6a47947035b279a5a3" name="a9cd1cc8ab46f7b6a47947035b279a5a3"></a>
+void </td><td class="memItemRight"><b>set_circumcenter_approximation_precision</b> (unsigned p)</td></tr>
+<tr class="memdesc:a9cd1cc8ab46f7b6a47947035b279a5a3"><td class="mdescLeft"> </td><td class="mdescRight">Sets <span class="tt">p</span> such that when FT is <a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">Gmpq</a>, the precision for the function <span class="tt">HyperbolicSurfaceDelaunayTraitsClass::Construct_approximate_hyperbolic_circumcenter_2</span> is <span class="tt">p</span> x 53 bits, where 53 is the precision of a double. <br></td></tr>
+<tr class="memitem:a81e6e05f300d4be99505e1df8f7ca29d" id="r_a81e6e05f300d4be99505e1df8f7ca29d"><td class="memItemLeft">unsigned </td><td class="memItemRight"><a class="el" href="#a81e6e05f300d4be99505e1df8f7ca29d">get_circumcenter_approximation_precision</a> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Other functions</h2></td></tr>
+<tr class="memitem:a97d006404f039477cc59107b1b7492a3" id="r_a97d006404f039477cc59107b1b7492a3"><td class="memItemLeft"><a class="el" href="#a5cf7ffa3c2cd18dde3249a15ba6bd694">Number</a> </td><td class="memItemRight"><a class="el" href="#a97d006404f039477cc59107b1b7492a3">dart_cosh_length</a> (<a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> dart) const</td></tr>
+</table>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
+<a id="a826d940fe35898cd3ea6fc44ade1666d" name="a826d940fe35898cd3ea6fc44ade1666d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826d940fe35898cd3ea6fc44ade1666d">◆ </a></span>Locate_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::Locate_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The enumeration <span class="tt"><a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d" title="The enumeration Locate_type is defined to specify which case occurs when locating a point in the lift...">Locate_type</a></span> is defined to specify which case occurs when locating a point in the lifted triangulation. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a826d940fe35898cd3ea6fc44ade1666dae2483649586d9fe42bf3b1272da19df5" name="a826d940fe35898cd3ea6fc44ade1666dae2483649586d9fe42bf3b1272da19df5"></a>VERTEX </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a826d940fe35898cd3ea6fc44ade1666da2de82db239fe0d2d463013ba1f854490" name="a826d940fe35898cd3ea6fc44ade1666da2de82db239fe0d2d463013ba1f854490"></a>EDGE </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a826d940fe35898cd3ea6fc44ade1666da50dbbdde07f852cdf1a2c987134e6770" name="a826d940fe35898cd3ea6fc44ade1666da50dbbdde07f852cdf1a2c987134e6770"></a>FACE </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a826d940fe35898cd3ea6fc44ade1666dae39b4cd60ed2a9069ed4413d8fda79f5" name="a826d940fe35898cd3ea6fc44ade1666dae39b4cd60ed2a9069ed4413d8fda79f5"></a>OUTSIDE </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a67840009dad4d63bd4d50555839726a3" name="a67840009dad4d63bd4d50555839726a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67840009dad4d63bd4d50555839726a3">◆ </a></span>Locate_walk</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a67840009dad4d63bd4d50555839726a3">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2::Locate_walk</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The enumeration <span class="tt"><a class="el" href="#a67840009dad4d63bd4d50555839726a3" title="The enumeration Locate_walk is defined to specify which walk algorithm is used when locating a point ...">Locate_walk</a></span> is defined to specify which walk algorithm is used when locating a point in the lifted triangulation. </p>
+<p>The straight walk visits all triangles along the geodesic segment pq. The algorithm starts by rotating around p to find a triangle incident to p that has an edge intersecting the geodesic segment pq. The visibility walk consists, for each visited triangle not containing q, of moving to a neighbor through an edge e if q and the third vertex of the visited triangle are on different sides of the geodesic line supporting e. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0" name="a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0"></a>STRAIGHT </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a67840009dad4d63bd4d50555839726a3aee1bb72d06b912e47f82e596c68a0f60" name="a67840009dad4d63bd4d50555839726a3aee1bb72d06b912e47f82e596c68a0f60"></a>VISIBILITY </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a7fa6f11b797033a11d42953b134727b9" name="a7fa6f11b797033a11d42953b134727b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fa6f11b797033a11d42953b134727b9">◆ </a></span>anchor() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> &amp; <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::anchor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>an anchor of the triangulation. </dd></dl>
+
+</div>
+</div>
+<a id="a00c631aca0a4657b58cf9298da4b0217" name="a00c631aca0a4657b58cf9298da4b0217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00c631aca0a4657b58cf9298da4b0217">◆ </a></span>anchor() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const  &amp; <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::anchor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>an anchor of the triangulation. </dd></dl>
+
+</div>
+</div>
+<a id="a13d6e7c5883eea9e52884dd8cb05d994" name="a13d6e7c5883eea9e52884dd8cb05d994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13d6e7c5883eea9e52884dd8cb05d994">◆ </a></span>anchor() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const  &amp; <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::anchor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> const</td>          <td class="paramname"><span class="paramname"><em>dart</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the anchor associated with the given dart. </dd></dl>
+
+</div>
+</div>
+<a id="ab3db4570dae5574bc6a23ab8bbf373ca" name="ab3db4570dae5574bc6a23ab8bbf373ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3db4570dae5574bc6a23ab8bbf373ca">◆ </a></span>anchor() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> &amp; <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::anchor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99a02555d379a2820b8fdf91e8582ac2">Dart_descriptor</a> const</td>          <td class="paramname"><span class="paramname"><em>dart</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the anchor associated with the given dart. </dd></dl>
+
+</div>
+</div>
+<a id="a7b05489d8dfcacc5a2b39eb0c5cf33f6" name="a7b05489d8dfcacc5a2b39eb0c5cf33f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b05489d8dfcacc5a2b39eb0c5cf33f6">◆ </a></span>construct_epsilon_net()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::construct_epsilon_net </td>
+          <td>(</td>
+          <td class="paramtype">double const</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a Boolean that indicates whether the vertices of the Delaunay triangulation form a certified <span class="tt">epsilon</span>-net of the surface.</dd></dl>
+<p>Tries to compute an <span class="tt">epsilon</span>-net of the surface.</p>
+<p>When <span class="tt"><a class="el" href="#a5cf7ffa3c2cd18dde3249a15ba6bd694" title="must be compatible with the method CGAL::to_double() and must support a cosh function to compute the ...">Number</a></span> is <span class="tt"><a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">CGAL::Gmpq</a></span>, the function <span class="tt"><a class="el" href="#a9cd1cc8ab46f7b6a47947035b279a5a3" title="Sets p such that when FT is Gmpq, the precision for the function HyperbolicSurfaceDelaunayTraitsClass...">set_circumcenter_approximation_precision</a></span> enables to choose the approximation precision for the insertion of circumcenters. If another number type is used, the approximation uses the function <a class="elRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double()</a> and there are no general guarantees whatsoever.</p>
+<p>Note that a Delaunay triangulation with a single vertex is always an espsilon-packing for any non-negative epsilon.</p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>is_epsilon_packing(epsilon)</code> </dd></dl>
+
+</div>
+</div>
+<a id="ac4614a87a92d4faf2eb2bc7ddd55f316" name="ac4614a87a92d4faf2eb2bc7ddd55f316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4614a87a92d4faf2eb2bc7ddd55f316">◆ </a></span>covering_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::covering_value </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the optimal covering value up to double precision. </dd></dl>
+
+</div>
+</div>
+<a id="a97d006404f039477cc59107b1b7492a3" name="a97d006404f039477cc59107b1b7492a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97d006404f039477cc59107b1b7492a3">◆ </a></span>dart_cosh_length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5cf7ffa3c2cd18dde3249a15ba6bd694">Number</a> <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::dart_cosh_length </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>dart</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the hyperbolic cosine of the length of the edge associated to a dart. </dd></dl>
+
+</div>
+</div>
+<a id="a81e6e05f300d4be99505e1df8f7ca29d" name="a81e6e05f300d4be99505e1df8f7ca29d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e6e05f300d4be99505e1df8f7ca29d">◆ </a></span>get_circumcenter_approximation_precision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::get_circumcenter_approximation_precision </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">p</span> such that when FT is <a class="elRef" href="../Number_types/classCGAL_1_1Gmpq.html">Gmpq</a>, the precision for the function <span class="tt">HyperbolicSurfaceDelaunayTraitsClass::Construct_approximate_hyperbolic_circumcenter_2</span> is <span class="tt">p</span> x 53 bits, where 53 is the precision of a double. </dd></dl>
+
+</div>
+</div>
+<a id="abf045c4a91d647abca56806d6111e2fd" name="abf045c4a91d647abca56806d6111e2fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf045c4a91d647abca56806d6111e2fd">◆ </a></span>index_in_anchor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::index_in_anchor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> const</td>          <td class="paramname"><span class="paramname"><em>dart</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the index of the given dart in its face. The index is <span class="tt">0</span> if <span class="tt">dart</span> is the dart of its associated anchor. </dd></dl>
+
+</div>
+</div>
+<a id="a125f3d2f6ca0bd8cf1e3ac4b8ac5b547" name="a125f3d2f6ca0bd8cf1e3ac4b8ac5b547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a125f3d2f6ca0bd8cf1e3ac4b8ac5b547">◆ </a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::insert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>hint</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserts <span class="tt">p</span> in the Delaunay triangulation after having located it, starting from <span class="tt">hint</span>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code><a class="el" href="#a6bce8d6aca88caebabc9cea277400d15">is_valid()</a></code> and <code>norm(<a class="el" href="classCGAL_1_1Complex__number.html">Complex_number</a>(p.x(), p.y())) &lt; <a class="el" href="#a5cf7ffa3c2cd18dde3249a15ba6bd694" title="must be compatible with the method CGAL::to_double() and must support a cosh function to compute the ...">Number(1)</a></code> </dd></dl>
+
+</div>
+</div>
+<a id="a65831b530531f7329bf60e8615766558" name="a65831b530531f7329bf60e8615766558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65831b530531f7329bf60e8615766558">◆ </a></span>is_epsilon_covering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::is_epsilon_covering </td>
+          <td>(</td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a Boolean that indicates whether the vertices of the Delaunay triangulation form a certified <span class="tt">epsilon</span>-covering of the surface. </dd></dl>
+
+</div>
+</div>
+<a id="ad4a71fa4819a162c2e116f4a871c63d7" name="ad4a71fa4819a162c2e116f4a871c63d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4a71fa4819a162c2e116f4a871c63d7">◆ </a></span>is_epsilon_net()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::is_epsilon_net </td>
+          <td>(</td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a Boolean that indicates whether the vertices of the Delaunay triangulation form a certified <span class="tt">epsilon</span>-net of the surface. </dd></dl>
+
+</div>
+</div>
+<a id="a994940864bed9def17fb7bb201d26f12" name="a994940864bed9def17fb7bb201d26f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a994940864bed9def17fb7bb201d26f12">◆ </a></span>is_epsilon_packing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::is_epsilon_packing </td>
+          <td>(</td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a Boolean that indicates whether the vertices of the Delaunay triangulation form a certified <span class="tt">epsilon</span>-packing of the surface. </dd></dl>
+
+</div>
+</div>
+<a id="a6bce8d6aca88caebabc9cea277400d15" name="a6bce8d6aca88caebabc9cea277400d15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bce8d6aca88caebabc9cea277400d15">◆ </a></span>is_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::is_valid </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a Boolean that indicates whether the triangulation is a valid Delaunay triangulation. </dd></dl>
+
+</div>
+</div>
+<a id="a018d1bb4acb1743bc889dea2f0fa9df3" name="a018d1bb4acb1743bc889dea2f0fa9df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018d1bb4acb1743bc889dea2f0fa9df3">◆ </a></span>ith_dart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a99a02555d379a2820b8fdf91e8582ac2">Dart_descriptor</a> <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::ith_dart </td>
+          <td>(</td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>anch</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the <span class="tt">i</span>-th dart of the face associated with <span class="tt">anch</span>, where <span class="tt">anch.dart</span> is the <span class="tt">0</span>-th dart of the face. </dd></dl>
+
+</div>
+</div>
+<a id="a1987e70471c379613012b70e09de5c43" name="a1987e70471c379613012b70e09de5c43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1987e70471c379613012b70e09de5c43">◆ </a></span>locate() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::locate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d">Locate_type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>li</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>ld</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>hint</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a67840009dad4d63bd4d50555839726a3">Locate_walk</a></td>          <td class="paramname"><span class="paramname"><em>walk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0">STRAIGHT</a></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the anchor representing the lift of the triangle in which <span class="tt">query</span> lies.</dd></dl>
+<p>Locates <span class="tt">query</span> in the Delaunay triangulation. The enumeration <span class="tt">walk</span> indicates which walk algorithm is used when locating a point in the lifted triangulation. The point location algorithm starts from <span class="tt">hint</span> and <span class="tt">ld</span> is set to the number of triangles traversed by the walk used for the point location algorithm. The variable <span class="tt">lt</span> indicates the location of <span class="tt">query</span> with respect to the lifted triangle described by the returned anchor, <span class="tt">li</span> is an index precising its location as described in the method <span class="tt"><a class="el" href="#a4da11414d16bab6e8d8c008125107b54" title="Computes the locate type lt of query relative to the anchor that indicates whether query lies on a ve...">relative_locate()</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a4da11414d16bab6e8d8c008125107b54" title="Computes the locate type lt of query relative to the anchor that indicates whether query lies on a ve...">relative_locate()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a39a4e17bd99aeb22d8095d179b0358b0" name="a39a4e17bd99aeb22d8095d179b0358b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39a4e17bd99aeb22d8095d179b0358b0">◆ </a></span>locate() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::locate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a67840009dad4d63bd4d50555839726a3">Locate_walk</a></td>          <td class="paramname"><span class="paramname"><em>walk</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a67840009dad4d63bd4d50555839726a3a28102760b9b93e5287e191d7b61b04c0">STRAIGHT</a></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the anchor representing the lift of the triangle in which <span class="tt">query</span> lies.</dd></dl>
+<p>Locates <span class="tt">query</span> in the Delaunay triangulation.</p>
+<p>The enumeration <span class="tt">walk</span> indicates which walk algorithm is used when locating a point in the lifted triangulation. </p>
+
+</div>
+</div>
+<a id="a398a468126f29295557bfbb17d82cba1" name="a398a468126f29295557bfbb17d82cba1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a398a468126f29295557bfbb17d82cba1">◆ </a></span>packing_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::packing_value </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the optimal packing value up to double precision. Returns inf (+infinity) if all edges are loops. </dd></dl>
+
+</div>
+</div>
+<a id="a4da11414d16bab6e8d8c008125107b54" name="a4da11414d16bab6e8d8c008125107b54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da11414d16bab6e8d8c008125107b54">◆ </a></span>relative_locate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::relative_locate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aae52a01db51dd2c9de7b5dea5e7cc50c">Point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a826d940fe35898cd3ea6fc44ade1666d">Locate_type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>li</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#af9e5458d3f2665cf403f445778c32878">Anchor</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>anch</em></span> ) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the locate type <span class="tt">lt</span> of <span class="tt">query</span> relative to the anchor that indicates whether <span class="tt">query</span> lies on a vertex, an edge, inside or outside the lifted triangle described by the given anchor. </p>
+<p>If <span class="tt">query</span> lies on a vertex or an edge, the index <span class="tt">li</span> is set to the index of the vertex or edge on which <span class="tt">query</span> lies.</p>
+<p>If <span class="tt">query</span> lies inside the triangle, <span class="tt">li</span> is set to <span class="tt">-1</span>.</p>
+<p>If <span class="tt">query</span> lies outside the triangle, <span class="tt">li</span> is set to the index of the first edge such that <span class="tt">query</span> and the third point of the triangle lie on different sides. </p>
+
+</div>
+</div>
+<a id="aa2ade1d34635f2cfe7ce828a0b8a2a81" name="aa2ade1d34635f2cfe7ce828a0b8a2a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ade1d34635f2cfe7ce828a0b8a2a81">◆ </a></span>shortest_loop_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8133dabed35c9df374f27f2285fe0cd5">Dart_const_descriptor</a> <a class="el" href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">CGAL::Delaunay_triangulation_on_hyperbolic_surface_2</a>&lt; Traits &gt;::shortest_loop_edge </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>a shortest loop edge of the triangulation if any, otherwise returns a null pointer. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a href="classCGAL_1_1Delaunay__triangulation__on__hyperbolic__surface__2.html">Delaunay_triangulation_on_hyperbolic_surface_2</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

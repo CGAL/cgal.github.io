@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Solver_interface/classLinearProgramTraits.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - CGAL and Solvers: LinearProgramTraits Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - CGAL and Solvers
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classLinearProgramTraits.html','','classLinearProgramTraits-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classLinearProgramTraits-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">LinearProgramTraits Concept Reference<div class="ingroups"><a class="el" href="group__PkgSolverInterfaceRef.html">Reference Manual</a> » <a class="el" href="group__PkgSolverInterfaceConcepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>A concept that describes the set of methods used to define and solve a linear programming (<span class="tt">lp</span>) problem of the general form: </p>
+<center>    <p class="formulaDsp">
+\begin{eqnarray*}&amp; \mbox{minimize} &amp; \mathbf{q}^{T}\mathbf{x} + r \\
+&amp; \mbox{subject to} &amp; \mathbf{l} \leq A\mathbf{x} \leq \mathbf{u}
+\end{eqnarray*}
+</p>
+ </center><p> in \( n \) real variables \( \mathbf{x} = (x_0, \ldots, x_{n-1}) \) and \( m \) constraints.</p>
+<p>Here, </p><ul>
+<li>
+\( \mathbf{q} \) is an \( n \)-dimensional vector (the linear objective function), </li>
+<li>
+\( r \) is a constant, </li>
+<li>
+\( A \) is an \( m\times n\) matrix (the constraint matrix), </li>
+<li>
+\( \mathbf{l} \) is an \( m \)-dimensional vector of lower constraint bounds, where \( l_i \in \mathbb{R} \cup \{-\infty\} \) for all \( i \), </li>
+<li>
+\( \mathbf{u} \) is an \( m \)-dimensional vector of upper constraint bounds, where \( u_i \in \mathbb{R} \cup \{+\infty\} \) for all \( i \). </li>
+</ul>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Memory</h2></td></tr>
+<tr class="memitem:accef729ae72f8da10886029b7cd1697a" id="r_accef729ae72f8da10886029b7cd1697a"><td class="memItemLeft"><a id="accef729ae72f8da10886029b7cd1697a" name="accef729ae72f8da10886029b7cd1697a"></a>
+void </td><td class="memItemRight"><b>resize</b> (const std::size_t n, const std::size_t m)</td></tr>
+<tr class="memdesc:accef729ae72f8da10886029b7cd1697a"><td class="mdescLeft"> </td><td class="mdescRight">Allocates memory for <span class="tt">n</span> variables and <span class="tt">m</span> constraints in <span class="tt">lp</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Initialization</h2></td></tr>
+<tr class="memitem:a620b499fe65942d7af2fc146728bc81a" id="r_a620b499fe65942d7af2fc146728bc81a"><td class="memItemLeft"><a id="a620b499fe65942d7af2fc146728bc81a" name="a620b499fe65942d7af2fc146728bc81a"></a>
+void </td><td class="memItemRight"><b>set_q</b> (const std::size_t i, const FT value)</td></tr>
+<tr class="memdesc:a620b499fe65942d7af2fc146728bc81a"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">qi</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:a010dca85dc0d546fb438c20085361f42" id="r_a010dca85dc0d546fb438c20085361f42"><td class="memItemLeft"><a id="a010dca85dc0d546fb438c20085361f42" name="a010dca85dc0d546fb438c20085361f42"></a>
+void </td><td class="memItemRight"><b>set_r</b> (const FT value)</td></tr>
+<tr class="memdesc:a010dca85dc0d546fb438c20085361f42"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">r</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:a129a7b1e39b59a685d64bbc55577b5c4" id="r_a129a7b1e39b59a685d64bbc55577b5c4"><td class="memItemLeft"><a id="a129a7b1e39b59a685d64bbc55577b5c4" name="a129a7b1e39b59a685d64bbc55577b5c4"></a>
+void </td><td class="memItemRight"><b>set_A</b> (const std::size_t i, const std::size_t j, const FT value)</td></tr>
+<tr class="memdesc:a129a7b1e39b59a685d64bbc55577b5c4"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">Aij</span> in the row <span class="tt">i</span> and column <span class="tt">j</span> of the constraint matrix <span class="tt">A</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:af46ba51f69792bbbb31557e0627ab653" id="r_af46ba51f69792bbbb31557e0627ab653"><td class="memItemLeft"><a id="af46ba51f69792bbbb31557e0627ab653" name="af46ba51f69792bbbb31557e0627ab653"></a>
+void </td><td class="memItemRight"><b>set_l</b> (const std::size_t i, const FT value)</td></tr>
+<tr class="memdesc:af46ba51f69792bbbb31557e0627ab653"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">li</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:ac2320dbe320a60415c50c47dab1101e5" id="r_ac2320dbe320a60415c50c47dab1101e5"><td class="memItemLeft"><a id="ac2320dbe320a60415c50c47dab1101e5" name="ac2320dbe320a60415c50c47dab1101e5"></a>
+void </td><td class="memItemRight"><b>set_u</b> (const std::size_t i, const FT value)</td></tr>
+<tr class="memdesc:ac2320dbe320a60415c50c47dab1101e5"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">ui</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Solution</h2></td></tr>
+<tr class="memitem:aeffdc52a0c512bf0120a9e4be8be9304" id="r_aeffdc52a0c512bf0120a9e4be8be9304"><td class="memTemplParams" colspan="2">template&lt;typename OutIterator&gt; </td></tr>
+<tr class="memitem:aeffdc52a0c512bf0120a9e4be8be9304 template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#aeffdc52a0c512bf0120a9e4be8be9304">solve</a> (OutIterator solution)</td></tr>
+<tr class="memdesc:aeffdc52a0c512bf0120a9e4be8be9304"><td class="mdescLeft"> </td><td class="mdescRight">solves the linear program.  <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="aeffdc52a0c512bf0120a9e4be8be9304" name="aeffdc52a0c512bf0120a9e4be8be9304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeffdc52a0c512bf0120a9e4be8be9304">◆ </a></span>solve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OutIterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LinearProgramTraits::solve </td>
+          <td>(</td>
+          <td class="paramtype">OutIterator</td>          <td class="paramname"><span class="paramname"><em>solution</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>solves the linear program. </p>
+<p>Number of values in <span class="tt">solution</span> equals to the number <span class="tt">n</span> of values in the vector <span class="tt">x</span>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OutIterator</td><td>a model of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> that accepts values of type <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">solution</td><td>an output iterator with the solution</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a status of the computation <span class="tt">success == true</span> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classLinearProgramTraits.html">LinearProgramTraits</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/LinearProgramTraits.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>A concept that describes the set of methods used to define and solve a linear programming (<span class="tt">lp</span>) problem of the general form: </p>
+<center>    <p class="formulaDsp">
+\begin{eqnarray*}&amp; \mbox{minimize} &amp; \mathbf{q}^{T}\mathbf{x} + r \\
+&amp; \mbox{subject to} &amp; \mathbf{l} \leq A\mathbf{x} \leq \mathbf{u}
+\end{eqnarray*}
+</p>
+ </center><p> in \( n \) real variables \( \mathbf{x} = (x_0, \ldots, x_{n-1}) \) and \( m \) constraints.</p>
+<p>Here, </p><ul>
+<li>
+\( \mathbf{q} \) is an \( n \)-dimensional vector (the linear objective function), </li>
+<li>
+\( r \) is a constant, </li>
+<li>
+\( A \) is an \( m\times n\) matrix (the constraint matrix), </li>
+<li>
+\( \mathbf{l} \) is an \( m \)-dimensional vector of lower constraint bounds, where \( l_i \in \mathbb{R} \cup \{-\infty\} \) for all \( i \), </li>
+<li>
+\( \mathbf{u} \) is an \( m \)-dimensional vector of upper constraint bounds, where \( u_i \in \mathbb{R} \cup \{+\infty\} \) for all \( i \). </li>
+</ul>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Memory</h2></td></tr>
+<tr class="memitem:accef729ae72f8da10886029b7cd1697a" id="r_accef729ae72f8da10886029b7cd1697a"><td class="memItemLeft"><a id="accef729ae72f8da10886029b7cd1697a" name="accef729ae72f8da10886029b7cd1697a"></a>
+void </td><td class="memItemRight"><b>resize</b> (const std::size_t n, const std::size_t m)</td></tr>
+<tr class="memdesc:accef729ae72f8da10886029b7cd1697a"><td class="mdescLeft"> </td><td class="mdescRight">Allocates memory for <span class="tt">n</span> variables and <span class="tt">m</span> constraints in <span class="tt">lp</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Initialization</h2></td></tr>
+<tr class="memitem:a620b499fe65942d7af2fc146728bc81a" id="r_a620b499fe65942d7af2fc146728bc81a"><td class="memItemLeft"><a id="a620b499fe65942d7af2fc146728bc81a" name="a620b499fe65942d7af2fc146728bc81a"></a>
+void </td><td class="memItemRight"><b>set_q</b> (const std::size_t i, const FT value)</td></tr>
+<tr class="memdesc:a620b499fe65942d7af2fc146728bc81a"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">qi</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:a010dca85dc0d546fb438c20085361f42" id="r_a010dca85dc0d546fb438c20085361f42"><td class="memItemLeft"><a id="a010dca85dc0d546fb438c20085361f42" name="a010dca85dc0d546fb438c20085361f42"></a>
+void </td><td class="memItemRight"><b>set_r</b> (const FT value)</td></tr>
+<tr class="memdesc:a010dca85dc0d546fb438c20085361f42"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">r</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:a129a7b1e39b59a685d64bbc55577b5c4" id="r_a129a7b1e39b59a685d64bbc55577b5c4"><td class="memItemLeft"><a id="a129a7b1e39b59a685d64bbc55577b5c4" name="a129a7b1e39b59a685d64bbc55577b5c4"></a>
+void </td><td class="memItemRight"><b>set_A</b> (const std::size_t i, const std::size_t j, const FT value)</td></tr>
+<tr class="memdesc:a129a7b1e39b59a685d64bbc55577b5c4"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">Aij</span> in the row <span class="tt">i</span> and column <span class="tt">j</span> of the constraint matrix <span class="tt">A</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:af46ba51f69792bbbb31557e0627ab653" id="r_af46ba51f69792bbbb31557e0627ab653"><td class="memItemLeft"><a id="af46ba51f69792bbbb31557e0627ab653" name="af46ba51f69792bbbb31557e0627ab653"></a>
+void </td><td class="memItemRight"><b>set_l</b> (const std::size_t i, const FT value)</td></tr>
+<tr class="memdesc:af46ba51f69792bbbb31557e0627ab653"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">li</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+<tr class="memitem:ac2320dbe320a60415c50c47dab1101e5" id="r_ac2320dbe320a60415c50c47dab1101e5"><td class="memItemLeft"><a id="ac2320dbe320a60415c50c47dab1101e5" name="ac2320dbe320a60415c50c47dab1101e5"></a>
+void </td><td class="memItemRight"><b>set_u</b> (const std::size_t i, const FT value)</td></tr>
+<tr class="memdesc:ac2320dbe320a60415c50c47dab1101e5"><td class="mdescLeft"> </td><td class="mdescRight">Sets the entry <span class="tt">ui</span> of <span class="tt">lp</span> to <span class="tt">value</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Solution</h2></td></tr>
+<tr class="memitem:aeffdc52a0c512bf0120a9e4be8be9304" id="r_aeffdc52a0c512bf0120a9e4be8be9304"><td class="memTemplParams" colspan="2">template&lt;typename OutIterator&gt; </td></tr>
+<tr class="memitem:aeffdc52a0c512bf0120a9e4be8be9304 template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#aeffdc52a0c512bf0120a9e4be8be9304">solve</a> (OutIterator solution)</td></tr>
+<tr class="memdesc:aeffdc52a0c512bf0120a9e4be8be9304"><td class="mdescLeft"> </td><td class="mdescRight">solves the linear program.  <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="aeffdc52a0c512bf0120a9e4be8be9304" name="aeffdc52a0c512bf0120a9e4be8be9304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeffdc52a0c512bf0120a9e4be8be9304">◆ </a></span>solve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OutIterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LinearProgramTraits::solve </td>
+          <td>(</td>
+          <td class="paramtype">OutIterator</td>          <td class="paramname"><span class="paramname"><em>solution</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>solves the linear program. </p>
+<p>Number of values in <span class="tt">solution</span> equals to the number <span class="tt">n</span> of values in the vector <span class="tt">x</span>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OutIterator</td><td>a model of <span class="tt"><a class="elRef" href="../Manual/classOutputIterator.html">OutputIterator</a></span> that accepts values of type <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">solution</td><td>an output iterator with the solution</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a status of the computation <span class="tt">success == true</span> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classLinearProgramTraits.html">LinearProgramTraits</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
