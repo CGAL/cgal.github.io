@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Convex_hull_d/classCGAL_1_1Delaunay__d.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - dD Convex Hulls and Delaunay Triangulations: CGAL::Delaunay_d&lt; R, Lifted_R &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - dD Convex Hulls and Delaunay Triangulations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classCGAL_1_1Delaunay__d.html','','classCGAL_1_1Delaunay__d-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Delaunay__d-members.html">List of all members</a> |
+<a href="#related">Related Symbols</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Delaunay_d&lt; R, Lifted_R &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgConvexHullDRef.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Delaunay_d.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p><a class="el" href="classCGAL_1_1Convex__hull__d.html">CGAL::Convex_hull_d&lt; Lifted_R &gt;</a>.</p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt;<br>
+class CGAL::Delaunay_d&lt; R, Lifted_R &gt;</div><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000005">Deprecated</a></b></dt><dd>This package is deprecated since the version 4.6 of CGAL. The package <a class="elRef" href="../Manual/packages.html#PkgTriangulations" title="dD Triangulations">dD Triangulations</a> should be used instead.</dd></dl>
+<p>An instance <span class="tt">DT</span> of type <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;</span> is the nearest and furthest site Delaunay triangulation of a set <span class="tt">S</span> of points in some <span class="tt">d</span>-dimensional space. We call <span class="tt">S</span> the underlying point set and <span class="tt">d</span> or <span class="tt">dim</span> the dimension of the underlying space. We use <span class="tt">dcur</span> to denote the affine dimension of <span class="tt">S</span>. The data type supports incremental construction of Delaunay triangulations and various kind of query operations (in particular, nearest and furthest neighbor queries and range queries with spheres and simplices).</p>
+<p>A Delaunay triangulation is a simplicial complex. All simplices in the Delaunay triangulation have dimension <span class="tt">dcur</span>. In the nearest site Delaunay triangulation the circumsphere of any simplex in the triangulation contains no point of \( S\) in its interior. In the furthest site Delaunay triangulation the circumsphere of any simplex contains no point of \( S\) in its exterior. If the points in \( S\) are co-circular then any triangulation of \( S\) is a nearest as well as a furthest site Delaunay triangulation of \( S\). If the points in \( S\) are not co-circular then no simplex can be a simplex of both triangulations. Accordingly, we view <span class="tt">DT</span> as either one or two collection(s) of simplices. If the points in \( S\) are co-circular there is just one collection: the set of simplices of some triangulation. If the points in \( S\) are not co-circular there are two collections. One collection consists of the simplices of a nearest site Delaunay triangulation and the other collection consists of the simplices of a furthest site Delaunay triangulation.</p>
+<p>For each simplex of maximal dimension there is a handle of type <span class="tt"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1" title="handles to the simplices of the complex.">Simplex_handle</a></span> and for each vertex of the triangulation there is a handle of type <span class="tt"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23" title="handles to vertices of the complex.">Vertex_handle</a></span>. Each simplex has <span class="tt">1 + dcur</span> vertices indexed from <span class="tt">0</span> to <span class="tt">dcur</span>. For any simplex <span class="tt">s</span> and any index <span class="tt">i</span>, <span class="tt">DT.vertex_of(s,i)</span> returns the <span class="tt">i</span>-th vertex of <span class="tt">s</span>. There may or may not be a simplex <span class="tt">t</span> opposite to the vertex of <span class="tt">s</span> with index <span class="tt">i</span>. The function <span class="tt">DT.opposite_simplex(s,i)</span> returns <span class="tt">t</span> if it exists and returns <span class="tt"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1" title="handles to the simplices of the complex.">Simplex_handle()</a></span> otherwise. If <span class="tt">t</span> exists then <span class="tt">s</span> and <span class="tt">t</span> share <span class="tt">dcur</span> vertices, namely all but the vertex with index <span class="tt">i</span> of <span class="tt">s</span> and the vertex with index <span class="tt">DT.index_of_vertex_in_opposite_simplex(s,i)</span> of <span class="tt">t</span>. Assume that <span class="tt">t = DT.opposite_simplex(s,i)</span> exists and let <span class="tt">
+j = DT.index_of_vertex_in_opposite_simplex(s,i)</span>. Then <span class="tt">s = DT.opposite_simplex(t,j)</span> and <span class="tt">i = DT.index_of_vertex_in_opposite_simplex(t,j)</span>. In general, a vertex belongs to many simplices.</p>
+<p>Any simplex of <span class="tt">DT</span> belongs either to the nearest or to the furthest site Delaunay triangulation or both. The test <span class="tt">DT.simplex_of_nearest(dt_simplex s)</span> returns true if <span class="tt">s</span> belongs to the nearest site triangulation and the test <span class="tt">DT.simplex_of_furthest(dt_simplex s)</span> returns true if <span class="tt">s</span> belongs to the furthest site triangulation.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">R</td><td>must be a model of the concept <span class="tt"><a class="el" href="classDelaunayTraits__d.html">DelaunayTraits_d</a></span>. </td></tr>
+    <tr><td class="paramname">Lifted_R</td><td>must be a model of the concept <span class="tt"><a class="el" href="classDelaunayLiftedTraits__d.html">DelaunayLiftedTraits_d</a></span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Implementation</b><br>
+</p>
+<p>The data type is derived from <span class="tt"><a class="el" href="classCGAL_1_1Convex__hull__d.html">Convex_hull_d</a></span> via the lifting map. For a point <span class="tt">x</span> in <span class="tt">d</span>-dimensional space let <span class="tt">lift(x)</span> be its lifting to the unit paraboloid of revolution. There is an intimate relationship between the Delaunay triangulation of a point set \( S\) and the convex hull of <span class="tt">lift(S)</span>: The nearest site Delaunay triangulation is the projection of the lower hull and the furthest site Delaunay triangulation is the upper hull. For implementation details we refer the reader to the implementation report available from the CGAL server.</p>
+<p>The space requirement is the same as for convex hulls. The time requirement for an insert is the time to insert the lifted point into the convex hull of the lifted points.</p>
+<p><b>Example</b><br>
+</p>
+<p>The abstract data type <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a></span> has a default instantiation by means of the <span class="tt">d</span>-dimensional geometric kernel.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Homogeneous_d.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/leda_integer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Delaunay_d.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> leda_integer RT;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_classRef" href="../Kernel_d/classCGAL_1_1Homogeneous__d.html">CGAL::Homogeneous_d&lt;RT&gt;</a> <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_class" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d&lt;Kernel&gt;</a> <a class="code hl_function" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_typedef" href="#a59805d514204eaca34479cdc1c27a203">Delaunay_d::Point_d</a> Point;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_typedef" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Delaunay_d::Simplex_handle</a> <a class="code hl_typedef" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a>;</div>
+<div class="line"><span class="keyword">typedef</span> <a class="code hl_typedef" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Delaunay_d::Vertex_handle</a> <a class="code hl_typedef" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line"><a class="code hl_function" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a> T(2);</div>
+<div class="line"><a class="code hl_typedef" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> v1 = T.insert(<a class="code hl_typedef" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a>(2,11));</div>
+<div class="line">...</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Delaunay__d_html"><div class="ttname"><a href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a></div><div class="ttdef"><b>Definition</b> Delaunay_d.h:141</div></div>
+<div class="ttc" id="aclassCGAL_1_1Delaunay__d_html_a309e3ace0cf19f06e48ab5e9964f8e23"><div class="ttname"><a href="#a309e3ace0cf19f06e48ab5e9964f8e23">CGAL::Delaunay_d::Vertex_handle</a></div><div class="ttdeci">unspecified_type Vertex_handle</div><div class="ttdoc">handles to vertices of the complex.</div><div class="ttdef"><b>Definition</b> Delaunay_d.h:159</div></div>
+<div class="ttc" id="aclassCGAL_1_1Delaunay__d_html_a59805d514204eaca34479cdc1c27a203"><div class="ttname"><a href="#a59805d514204eaca34479cdc1c27a203">CGAL::Delaunay_d::Point_d</a></div><div class="ttdeci">unspecified_type Point_d</div><div class="ttdoc">the point type</div><div class="ttdef"><b>Definition</b> Delaunay_d.h:165</div></div>
+<div class="ttc" id="aclassCGAL_1_1Delaunay__d_html_a5fa8cd020307ee39468c82c05d3ccbf1"><div class="ttname"><a href="#a5fa8cd020307ee39468c82c05d3ccbf1">CGAL::Delaunay_d::Simplex_handle</a></div><div class="ttdeci">unspecified_type Simplex_handle</div><div class="ttdoc">handles to the simplices of the complex.</div><div class="ttdef"><b>Definition</b> Delaunay_d.h:153</div></div>
+<div class="ttc" id="aclassCGAL_1_1Delaunay__d_html_adf659cdb8b93e273cb0ef7cf8b0f89f2"><div class="ttname"><a href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">CGAL::Delaunay_d::Delaunay_d</a></div><div class="ttdeci">Delaunay_d(int d, R k1=R(), Lifted_R k2=Lifted_R())</div><div class="ttdoc">creates an instance DT of type Delaunay_d.</div></div>
+<div class="ttc" id="aclassCGAL_1_1Homogeneous__d_html"><div class="ttname"><a href="../Kernel_d/classCGAL_1_1Homogeneous__d.html">CGAL::Homogeneous_d</a></div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+</div><!-- fragment --><p><b>Traits Requirements</b><br>
+</p>
+<p><span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;</span> requires the following types from the kernel traits <span class="tt">Lifted_R</span>:</p>
+<ul>
+<li><span class="tt">RT</span></li>
+<li><span class="tt"><a class="elRef" href="../Kernel_d/classCGAL_1_1Point__d.html">Point_d</a></span></li>
+<li><span class="tt"><a class="elRef" href="../Kernel_d/classCGAL_1_1Vector__d.html">Vector_d</a></span></li>
+<li><span class="tt"><a class="elRef" href="../Kernel_d/classCGAL_1_1Ray__d.html">Ray_d</a></span></li>
+<li><span class="tt"><a class="elRef" href="../Kernel_d/classCGAL_1_1Hyperplane__d.html">Hyperplane_d</a></span></li>
+</ul>
+<p>and uses the following function objects from the kernel traits:</p>
+<ul>
+<li><span class="tt">Construct_hyperplane_d</span></li>
+<li><span class="tt">Construct_vector_d</span></li>
+<li><span class="tt">Vector_to_point_d</span> / <span class="tt">Point_to_vector_d</span></li>
+<li><span class="tt">Orientation_d</span></li>
+<li><span class="tt">Orthogonal_vector_d</span></li>
+<li><span class="tt">Oriented_side_d</span> / <span class="tt">Has_on_positive_side_d</span></li>
+<li><span class="tt">Affinely_independent_d</span></li>
+<li><span class="tt">Contained_in_simplex_d</span></li>
+<li><span class="tt">Contained_in_affine_hull_d</span></li>
+<li><span class="tt">Intersect_d</span></li>
+<li><span class="tt">Lift_to_paraboloid_d</span> / <span class="tt">Project_along_d_axis_d</span></li>
+<li><span class="tt">Component_accessor_d</span></li>
+</ul>
+<p><span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;</span> requires the following types from the kernel traits <span class="tt"><a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a></span>:</p>
+<ul>
+<li><span class="tt">FT</span></li>
+<li><span class="tt"><a class="elRef" href="../Kernel_d/classCGAL_1_1Point__d.html">Point_d</a></span></li>
+<li><span class="tt"><a class="elRef" href="../Kernel_d/classCGAL_1_1Sphere__d.html">Sphere_d</a></span></li>
+<li><span class="tt">Construct_sphere_d</span></li>
+<li><span class="tt">Squared_distance_d</span></li>
+<li><span class="tt">Point_of_sphere_d</span></li>
+<li><span class="tt">Affinely_independent_d</span></li>
+<li><span class="tt">Contained_in_simplex_d</span> </li>
+</ul>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-related" class="groupheader"><a id="related" name="related"></a>
+Related Symbols</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member symbols.) </p>
+</td></tr>
+<tr class="memitem:a917b305a8711350260956ddf285c7c68" id="r_a917b305a8711350260956ddf285c7c68"><td class="memTemplParams" colspan="2">template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </td></tr>
+<tr class="memitem:a917b305a8711350260956ddf285c7c68 template"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a917b305a8711350260956ddf285c7c68">d2_map</a> (const <a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt; &amp;D, GRAPH&lt; typename <a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;<a class="el" href="#a59805d514204eaca34479cdc1c27a203">::Point_d</a>, int &gt; &amp;DTG, typename <a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">::Delaunay_voronoi_kind</a> k=<a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">::NEAREST</a>)</td></tr>
+<tr class="memdesc:a917b305a8711350260956ddf285c7c68"><td class="mdescLeft"> </td><td class="mdescRight">constructs a LEDA graph representation of the nearest (<span class="tt">kind = <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">NEAREST</a></span> or the furthest (<span class="tt">kind = <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a5e182c331d7e094d3e664f9633bd30ce">FURTHEST</a></span>) site Delaunay triangulation.  <br></td></tr>
+<tr class="inherit_header related_classCGAL_1_1Convex__hull__d"><td colspan="2" onclick="javascript:dynsection.toggleInherit('related_classCGAL_1_1Convex__hull__d')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Related Symbols inherited from <a class="el" href="classCGAL_1_1Convex__hull__d.html">CGAL::Convex_hull_d&lt; Lifted_R &gt;</a></td></tr>
+<tr class="memitem:a018db48a7f7d92111ae03d0d18bf3ece inherit related_classCGAL_1_1Convex__hull__d" id="r_a018db48a7f7d92111ae03d0d18bf3ece"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="classCGAL_1_1Convex__hull__d.html#a018db48a7f7d92111ae03d0d18bf3ece">convex_hull_d_to_polyhedron_3</a> (const <a class="el" href="classCGAL_1_1Convex__hull__d.html#a9cf97c124cbf52bab38257eab95252e2">Convex_hull_d</a>&lt; Lifted_R &gt; &amp;C, Polyhedron_3&lt; T, HDS &gt; &amp;P)</td></tr>
+<tr class="memitem:a133ccb5b098057a96e6f75317c81c4c9 inherit related_classCGAL_1_1Convex__hull__d" id="r_a133ccb5b098057a96e6f75317c81c4c9"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="classCGAL_1_1Convex__hull__d.html#a133ccb5b098057a96e6f75317c81c4c9">d3_surface_map</a> (const <a class="el" href="classCGAL_1_1Convex__hull__d.html#a9cf97c124cbf52bab38257eab95252e2">Convex_hull_d</a>&lt; Lifted_R &gt; &amp;C, GRAPH&lt; typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#a9cf97c124cbf52bab38257eab95252e2">Convex_hull_d</a>&lt; Lifted_R &gt;<a class="el" href="classCGAL_1_1Convex__hull__d.html#aa3c47872ae5aa3fa0221564b6ea0178a">::Point_d</a>, int &gt; &amp;G)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a5dda4e3061b66c31d4597d0eaf5c1666" id="r_a5dda4e3061b66c31d4597d0eaf5c1666"><td class="memItemLeft">enum  </td><td class="memItemRight"><a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">Delaunay_voronoi_kind</a> { <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">NEAREST</a>
+, <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a5e182c331d7e094d3e664f9633bd30ce">FURTHEST</a>
+ }</td></tr>
+<tr class="memdesc:a5dda4e3061b66c31d4597d0eaf5c1666"><td class="mdescLeft"> </td><td class="mdescRight">interface flags  <a href="#a5dda4e3061b66c31d4597d0eaf5c1666">More...</a><br></td></tr>
+<tr class="memitem:a5fa8cd020307ee39468c82c05d3ccbf1" id="r_a5fa8cd020307ee39468c82c05d3ccbf1"><td class="memItemLeft"><a id="a5fa8cd020307ee39468c82c05d3ccbf1" name="a5fa8cd020307ee39468c82c05d3ccbf1"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Simplex_handle</b></td></tr>
+<tr class="memdesc:a5fa8cd020307ee39468c82c05d3ccbf1"><td class="mdescLeft"> </td><td class="mdescRight">handles to the simplices of the complex. <br></td></tr>
+<tr class="memitem:a309e3ace0cf19f06e48ab5e9964f8e23" id="r_a309e3ace0cf19f06e48ab5e9964f8e23"><td class="memItemLeft"><a id="a309e3ace0cf19f06e48ab5e9964f8e23" name="a309e3ace0cf19f06e48ab5e9964f8e23"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_handle</b></td></tr>
+<tr class="memdesc:a309e3ace0cf19f06e48ab5e9964f8e23"><td class="mdescLeft"> </td><td class="mdescRight">handles to vertices of the complex. <br></td></tr>
+<tr class="memitem:a59805d514204eaca34479cdc1c27a203" id="r_a59805d514204eaca34479cdc1c27a203"><td class="memItemLeft"><a id="a59805d514204eaca34479cdc1c27a203" name="a59805d514204eaca34479cdc1c27a203"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_d</b></td></tr>
+<tr class="memdesc:a59805d514204eaca34479cdc1c27a203"><td class="mdescLeft"> </td><td class="mdescRight">the point type <br></td></tr>
+<tr class="memitem:acd142965a96043e73b5701ab8dc82b75" id="r_acd142965a96043e73b5701ab8dc82b75"><td class="memItemLeft"><a id="acd142965a96043e73b5701ab8dc82b75" name="acd142965a96043e73b5701ab8dc82b75"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Sphere_d</b></td></tr>
+<tr class="memdesc:acd142965a96043e73b5701ab8dc82b75"><td class="mdescLeft"> </td><td class="mdescRight">the sphere type <br></td></tr>
+<tr class="memitem:af09ece85020a4c88f4fbb2ec6522c10d" id="r_af09ece85020a4c88f4fbb2ec6522c10d"><td class="memItemLeft"><a id="af09ece85020a4c88f4fbb2ec6522c10d" name="af09ece85020a4c88f4fbb2ec6522c10d"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_const_iterator</b></td></tr>
+<tr class="memdesc:af09ece85020a4c88f4fbb2ec6522c10d"><td class="mdescLeft"> </td><td class="mdescRight">the iterator for points. <br></td></tr>
+<tr class="memitem:af8ab3b8d42dc687eae121d842d52bc22" id="r_af8ab3b8d42dc687eae121d842d52bc22"><td class="memItemLeft"><a id="af8ab3b8d42dc687eae121d842d52bc22" name="af8ab3b8d42dc687eae121d842d52bc22"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_iterator</b></td></tr>
+<tr class="memdesc:af8ab3b8d42dc687eae121d842d52bc22"><td class="mdescLeft"> </td><td class="mdescRight">the iterator for vertices. <br></td></tr>
+<tr class="memitem:a769e8d92370dd36ecb168b5a19913fd8" id="r_a769e8d92370dd36ecb168b5a19913fd8"><td class="memItemLeft"><a id="a769e8d92370dd36ecb168b5a19913fd8" name="a769e8d92370dd36ecb168b5a19913fd8"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Simplex_iterator</b></td></tr>
+<tr class="memdesc:a769e8d92370dd36ecb168b5a19913fd8"><td class="mdescLeft"> </td><td class="mdescRight">the iterator for simplices. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The data type <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a></span> offers neither copy constructor nor assignment operator. </p>
+</td></tr>
+<tr class="memitem:adf659cdb8b93e273cb0ef7cf8b0f89f2" id="r_adf659cdb8b93e273cb0ef7cf8b0f89f2"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a> (int d, <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a> k1=<a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>(), Lifted_R k2=Lifted_R())</td></tr>
+<tr class="memdesc:adf659cdb8b93e273cb0ef7cf8b0f89f2"><td class="mdescLeft"> </td><td class="mdescRight">creates an instance <span class="tt">DT</span> of type <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a></span>.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>All operations below that take a point <span class="tt">x</span> as an argument have the common precondition that <span class="tt">x.dimension() == DT.dimension()</span>. </p>
+</td></tr>
+<tr class="memitem:ace10f40e491d9002d93b73ef7c5f1745" id="r_ace10f40e491d9002d93b73ef7c5f1745"><td class="memItemLeft"><a id="ace10f40e491d9002d93b73ef7c5f1745" name="ace10f40e491d9002d93b73ef7c5f1745"></a>
+int </td><td class="memItemRight"><b>dimension</b> ()</td></tr>
+<tr class="memdesc:ace10f40e491d9002d93b73ef7c5f1745"><td class="mdescLeft"> </td><td class="mdescRight">returns the dimension of ambient space. <br></td></tr>
+<tr class="memitem:a33cc6f8d1da25970f3c937fc562cdfca" id="r_a33cc6f8d1da25970f3c937fc562cdfca"><td class="memItemLeft"><a id="a33cc6f8d1da25970f3c937fc562cdfca" name="a33cc6f8d1da25970f3c937fc562cdfca"></a>
+int </td><td class="memItemRight"><b>current_dimension</b> ()</td></tr>
+<tr class="memdesc:a33cc6f8d1da25970f3c937fc562cdfca"><td class="mdescLeft"> </td><td class="mdescRight">returns the affine dimension of the current point set, i.e., <span class="tt">-1</span> is \( S\) is empty, <span class="tt">0</span> if \( S\) consists of a single point, <span class="tt">1</span> if all points of \( S\) lie on a common line, etc. <br></td></tr>
+<tr class="memitem:a0d192a088406d5067dd9f8d90ab7e6e2" id="r_a0d192a088406d5067dd9f8d90ab7e6e2"><td class="memItemLeft"><a id="a0d192a088406d5067dd9f8d90ab7e6e2" name="a0d192a088406d5067dd9f8d90ab7e6e2"></a>
+bool </td><td class="memItemRight"><b>is_simplex_of_nearest</b> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s)</td></tr>
+<tr class="memdesc:a0d192a088406d5067dd9f8d90ab7e6e2"><td class="mdescLeft"> </td><td class="mdescRight">returns true if <span class="tt">s</span> is a simplex of the nearest site triangulation. <br></td></tr>
+<tr class="memitem:a5528a2fd1491f33e9b9cb7b493c9e78c" id="r_a5528a2fd1491f33e9b9cb7b493c9e78c"><td class="memItemLeft"><a id="a5528a2fd1491f33e9b9cb7b493c9e78c" name="a5528a2fd1491f33e9b9cb7b493c9e78c"></a>
+bool </td><td class="memItemRight"><b>is_simplex_of_furthest</b> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s)</td></tr>
+<tr class="memdesc:a5528a2fd1491f33e9b9cb7b493c9e78c"><td class="mdescLeft"> </td><td class="mdescRight">returns true if <span class="tt">s</span> is a simplex of the furthest site triangulation. <br></td></tr>
+<tr class="memitem:af5015464122863700d42281bfa654045" id="r_af5015464122863700d42281bfa654045"><td class="memItemLeft"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> </td><td class="memItemRight"><a class="el" href="#af5015464122863700d42281bfa654045">vertex_of_simplex</a> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s, int i)</td></tr>
+<tr class="memdesc:af5015464122863700d42281bfa654045"><td class="mdescLeft"> </td><td class="mdescRight">returns the vertex associated with the <span class="tt">i</span>-th node of <span class="tt">s</span>.  <br></td></tr>
+<tr class="memitem:a470bb7bae2ea5724b41a18c90811a0c3" id="r_a470bb7bae2ea5724b41a18c90811a0c3"><td class="memItemLeft"><a id="a470bb7bae2ea5724b41a18c90811a0c3" name="a470bb7bae2ea5724b41a18c90811a0c3"></a>
+<a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> </td><td class="memItemRight"><b>associated_point</b> (<a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> v)</td></tr>
+<tr class="memdesc:a470bb7bae2ea5724b41a18c90811a0c3"><td class="mdescLeft"> </td><td class="mdescRight">returns the point associated with vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:ac30b6588a55ebb260083877a7c9f0fb3" id="r_ac30b6588a55ebb260083877a7c9f0fb3"><td class="memItemLeft"><a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> </td><td class="memItemRight"><a class="el" href="#ac30b6588a55ebb260083877a7c9f0fb3">point_of_simplex</a> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s, int i)</td></tr>
+<tr class="memdesc:ac30b6588a55ebb260083877a7c9f0fb3"><td class="mdescLeft"> </td><td class="mdescRight">returns the point associated with the <span class="tt">i</span>-th vertex of <span class="tt">s</span>.  <br></td></tr>
+<tr class="memitem:afce4afb10a9d592ee6db2499dd96a8ec" id="r_afce4afb10a9d592ee6db2499dd96a8ec"><td class="memItemLeft"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> </td><td class="memItemRight"><a class="el" href="#afce4afb10a9d592ee6db2499dd96a8ec">opposite_simplex</a> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s, int i)</td></tr>
+<tr class="memdesc:afce4afb10a9d592ee6db2499dd96a8ec"><td class="mdescLeft"> </td><td class="mdescRight">returns the simplex opposite to the <span class="tt">i</span>-th vertex of <span class="tt">s</span> (<span class="tt"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1" title="handles to the simplices of the complex.">Simplex_handle()</a></span> if there is no such simplex).  <br></td></tr>
+<tr class="memitem:ab306f0f66c117cb21fac2a22293ef0fc" id="r_ab306f0f66c117cb21fac2a22293ef0fc"><td class="memItemLeft">int </td><td class="memItemRight"><a class="el" href="#ab306f0f66c117cb21fac2a22293ef0fc">index_of_vertex_in_opposite_simplex</a> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s, int i)</td></tr>
+<tr class="memdesc:ab306f0f66c117cb21fac2a22293ef0fc"><td class="mdescLeft"> </td><td class="mdescRight">returns the index of the vertex opposite to the <span class="tt">i</span>-th vertex of <span class="tt">s</span>.  <br></td></tr>
+<tr class="memitem:ac64181ae2b2913a7948f5917376fe84b" id="r_ac64181ae2b2913a7948f5917376fe84b"><td class="memItemLeft"><a id="ac64181ae2b2913a7948f5917376fe84b" name="ac64181ae2b2913a7948f5917376fe84b"></a>
+<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> </td><td class="memItemRight"><b>simplex</b> (<a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> v)</td></tr>
+<tr class="memdesc:ac64181ae2b2913a7948f5917376fe84b"><td class="mdescLeft"> </td><td class="mdescRight">returns a simplex of the nearest site triangulation incident to <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:a1cdb14f6002dda9096096da2f560bc4a" id="r_a1cdb14f6002dda9096096da2f560bc4a"><td class="memItemLeft"><a id="a1cdb14f6002dda9096096da2f560bc4a" name="a1cdb14f6002dda9096096da2f560bc4a"></a>
+int </td><td class="memItemRight"><b>index</b> (<a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> v)</td></tr>
+<tr class="memdesc:a1cdb14f6002dda9096096da2f560bc4a"><td class="mdescLeft"> </td><td class="mdescRight">returns the index of <span class="tt">v</span> in <span class="tt">DT.simplex(v)</span>. <br></td></tr>
+<tr class="memitem:adaa30b96ee2f44eddb0ebdcab73d26f0" id="r_adaa30b96ee2f44eddb0ebdcab73d26f0"><td class="memItemLeft"><a id="adaa30b96ee2f44eddb0ebdcab73d26f0" name="adaa30b96ee2f44eddb0ebdcab73d26f0"></a>
+bool </td><td class="memItemRight"><b>contains</b> (<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> s, const <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &amp;x)</td></tr>
+<tr class="memdesc:adaa30b96ee2f44eddb0ebdcab73d26f0"><td class="mdescLeft"> </td><td class="mdescRight">returns true if <span class="tt">x</span> is contained in the closure of simplex <span class="tt">s</span>. <br></td></tr>
+<tr class="memitem:aae361eba82654a38b5ee0f4d4433b23c" id="r_aae361eba82654a38b5ee0f4d4433b23c"><td class="memItemLeft"><a id="aae361eba82654a38b5ee0f4d4433b23c" name="aae361eba82654a38b5ee0f4d4433b23c"></a>
+bool </td><td class="memItemRight"><b>empty</b> ()</td></tr>
+<tr class="memdesc:aae361eba82654a38b5ee0f4d4433b23c"><td class="mdescLeft"> </td><td class="mdescRight">decides whether <span class="tt">DT</span> is empty. <br></td></tr>
+<tr class="memitem:a798861780e09fffe9e9d87d1e021a93e" id="r_a798861780e09fffe9e9d87d1e021a93e"><td class="memItemLeft"><a id="a798861780e09fffe9e9d87d1e021a93e" name="a798861780e09fffe9e9d87d1e021a93e"></a>
+void </td><td class="memItemRight"><b>clear</b> ()</td></tr>
+<tr class="memdesc:a798861780e09fffe9e9d87d1e021a93e"><td class="mdescLeft"> </td><td class="mdescRight">re-initializes <span class="tt">DT</span> to the empty Delaunay triangulation. <br></td></tr>
+<tr class="memitem:a55e9d7f2ca0f09ca068505f9c5162cb8" id="r_a55e9d7f2ca0f09ca068505f9c5162cb8"><td class="memItemLeft"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> </td><td class="memItemRight"><a class="el" href="#a55e9d7f2ca0f09ca068505f9c5162cb8">insert</a> (const <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &amp;x)</td></tr>
+<tr class="memdesc:a55e9d7f2ca0f09ca068505f9c5162cb8"><td class="mdescLeft"> </td><td class="mdescRight">inserts point <span class="tt">x</span> into <span class="tt">DT</span> and returns the corresponding <span class="tt"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23" title="handles to vertices of the complex.">Vertex_handle</a></span>.  <br></td></tr>
+<tr class="memitem:a3abb3f4148fcb85b0dcbb3ef6a6de9c9" id="r_a3abb3f4148fcb85b0dcbb3ef6a6de9c9"><td class="memItemLeft"><a id="a3abb3f4148fcb85b0dcbb3ef6a6de9c9" name="a3abb3f4148fcb85b0dcbb3ef6a6de9c9"></a>
+<a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> </td><td class="memItemRight"><b>locate</b> (const <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &amp;x)</td></tr>
+<tr class="memdesc:a3abb3f4148fcb85b0dcbb3ef6a6de9c9"><td class="mdescLeft"> </td><td class="mdescRight">returns a simplex of the nearest site triangulation containing <span class="tt">x</span> in its closure (returns <span class="tt"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1" title="handles to the simplices of the complex.">Simplex_handle()</a></span> if <span class="tt">x</span> lies outside the convex hull of \( S\)). <br></td></tr>
+<tr class="memitem:aeaa2bf7fccbc63b08a8d161c6665643c" id="r_aeaa2bf7fccbc63b08a8d161c6665643c"><td class="memItemLeft"><a id="aeaa2bf7fccbc63b08a8d161c6665643c" name="aeaa2bf7fccbc63b08a8d161c6665643c"></a>
+<a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> </td><td class="memItemRight"><b>lookup</b> (const <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &amp;x)</td></tr>
+<tr class="memdesc:aeaa2bf7fccbc63b08a8d161c6665643c"><td class="mdescLeft"> </td><td class="mdescRight">if <span class="tt">DT</span> contains a vertex <span class="tt">v</span> with <span class="tt">associated_point(v) = x</span> the result is <span class="tt">v</span> otherwise the result is <span class="tt"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23" title="handles to vertices of the complex.">Vertex_handle()</a></span>. <br></td></tr>
+<tr class="memitem:aa5d8057ce00b93a1b497161ec6f38db0" id="r_aa5d8057ce00b93a1b497161ec6f38db0"><td class="memItemLeft"><a id="aa5d8057ce00b93a1b497161ec6f38db0" name="aa5d8057ce00b93a1b497161ec6f38db0"></a>
+<a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> </td><td class="memItemRight"><b>nearest_neighbor</b> (const <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &amp;x)</td></tr>
+<tr class="memdesc:aa5d8057ce00b93a1b497161ec6f38db0"><td class="mdescLeft"> </td><td class="mdescRight">computes a vertex <span class="tt">v</span> of <span class="tt">DT</span> that is closest to <span class="tt">x</span>, i.e., <span class="tt">dist(x,associated_point(v)) = min{dist(x, associated_point(u) | u</span> \(\in S\) <span class="tt">}</span>. <br></td></tr>
+<tr class="memitem:a9394ceb2580f1453d5b14af9743b3877" id="r_a9394ceb2580f1453d5b14af9743b3877"><td class="memItemLeft"><a id="a9394ceb2580f1453d5b14af9743b3877" name="a9394ceb2580f1453d5b14af9743b3877"></a>
+std::list&lt; <a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> &gt; </td><td class="memItemRight"><b>range_search</b> (const <a class="el" href="#acd142965a96043e73b5701ab8dc82b75">Sphere_d</a> &amp;C)</td></tr>
+<tr class="memdesc:a9394ceb2580f1453d5b14af9743b3877"><td class="mdescLeft"> </td><td class="mdescRight">returns the list of all vertices contained in the closure of sphere \( C\). <br></td></tr>
+<tr class="memitem:a838b12b333490a7cae4ffd61fe97777c" id="r_a838b12b333490a7cae4ffd61fe97777c"><td class="memItemLeft">std::list&lt; <a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> &gt; </td><td class="memItemRight"><a class="el" href="#a838b12b333490a7cae4ffd61fe97777c">range_search</a> (const std::vector&lt; <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &gt; &amp;A)</td></tr>
+<tr class="memdesc:a838b12b333490a7cae4ffd61fe97777c"><td class="mdescLeft"> </td><td class="mdescRight">returns the list of all vertices contained in the closure of the simplex whose corners are given by <span class="tt">A</span>.  <br></td></tr>
+<tr class="memitem:a7d01fa631b9a4b2a6fa57dc22cf793af" id="r_a7d01fa631b9a4b2a6fa57dc22cf793af"><td class="memItemLeft"><a id="a7d01fa631b9a4b2a6fa57dc22cf793af" name="a7d01fa631b9a4b2a6fa57dc22cf793af"></a>
+std::list&lt; <a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> &gt; </td><td class="memItemRight"><b>all_simplices</b> (<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">Delaunay_voronoi_kind</a> k=<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">NEAREST</a>)</td></tr>
+<tr class="memdesc:a7d01fa631b9a4b2a6fa57dc22cf793af"><td class="mdescLeft"> </td><td class="mdescRight">returns a list of all simplices of either the nearest or the furthest site Delaunay triangulation of <span class="tt">S</span>. <br></td></tr>
+<tr class="memitem:a8ed40746396dd38e9e5f8609f0df746f" id="r_a8ed40746396dd38e9e5f8609f0df746f"><td class="memItemLeft"><a id="a8ed40746396dd38e9e5f8609f0df746f" name="a8ed40746396dd38e9e5f8609f0df746f"></a>
+std::list&lt; <a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> &gt; </td><td class="memItemRight"><b>all_vertices</b> (<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">Delaunay_voronoi_kind</a> k=<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">NEAREST</a>)</td></tr>
+<tr class="memdesc:a8ed40746396dd38e9e5f8609f0df746f"><td class="mdescLeft"> </td><td class="mdescRight">returns a list of all vertices of either the nearest or the furthest site Delaunay triangulation of <span class="tt">S</span>. <br></td></tr>
+<tr class="memitem:abcef51f9da4170452853a38ad206a868" id="r_abcef51f9da4170452853a38ad206a868"><td class="memItemLeft"><a id="abcef51f9da4170452853a38ad206a868" name="abcef51f9da4170452853a38ad206a868"></a>
+std::list&lt; <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &gt; </td><td class="memItemRight"><b>all_points</b> ()</td></tr>
+<tr class="memdesc:abcef51f9da4170452853a38ad206a868"><td class="mdescLeft"> </td><td class="mdescRight">returns \( S\). <br></td></tr>
+<tr class="memitem:ae82c713e685cdb8c0d840121a4972ebd" id="r_ae82c713e685cdb8c0d840121a4972ebd"><td class="memItemLeft"><a id="ae82c713e685cdb8c0d840121a4972ebd" name="ae82c713e685cdb8c0d840121a4972ebd"></a>
+<a class="el" href="#af09ece85020a4c88f4fbb2ec6522c10d">Point_const_iterator</a> </td><td class="memItemRight"><b>points_begin</b> ()</td></tr>
+<tr class="memdesc:ae82c713e685cdb8c0d840121a4972ebd"><td class="mdescLeft"> </td><td class="mdescRight">returns the start iterator for points in <span class="tt">DT</span>. <br></td></tr>
+<tr class="memitem:acc7e31bc8f740f0a4a07cec7e486e062" id="r_acc7e31bc8f740f0a4a07cec7e486e062"><td class="memItemLeft"><a id="acc7e31bc8f740f0a4a07cec7e486e062" name="acc7e31bc8f740f0a4a07cec7e486e062"></a>
+<a class="el" href="#af09ece85020a4c88f4fbb2ec6522c10d">Point_const_iterator</a> </td><td class="memItemRight"><b>points_end</b> ()</td></tr>
+<tr class="memdesc:acc7e31bc8f740f0a4a07cec7e486e062"><td class="mdescLeft"> </td><td class="mdescRight">returns the past the end iterator for points in <span class="tt">DT</span>. <br></td></tr>
+<tr class="memitem:ae76bcc9b7bcedf116d912e62830394f3" id="r_ae76bcc9b7bcedf116d912e62830394f3"><td class="memItemLeft"><a id="ae76bcc9b7bcedf116d912e62830394f3" name="ae76bcc9b7bcedf116d912e62830394f3"></a>
+<a class="el" href="#a769e8d92370dd36ecb168b5a19913fd8">Simplex_iterator</a> </td><td class="memItemRight"><b>simplices_begin</b> (<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">Delaunay_voronoi_kind</a> k=<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">NEAREST</a>)</td></tr>
+<tr class="memdesc:ae76bcc9b7bcedf116d912e62830394f3"><td class="mdescLeft"> </td><td class="mdescRight">returns the start iterator for simplices of <span class="tt">DT</span>. <br></td></tr>
+<tr class="memitem:a5935944d263cf23fe4f46853371f1be1" id="r_a5935944d263cf23fe4f46853371f1be1"><td class="memItemLeft"><a id="a5935944d263cf23fe4f46853371f1be1" name="a5935944d263cf23fe4f46853371f1be1"></a>
+<a class="el" href="#a769e8d92370dd36ecb168b5a19913fd8">Simplex_iterator</a> </td><td class="memItemRight"><b>simplices_end</b> ()</td></tr>
+<tr class="memdesc:a5935944d263cf23fe4f46853371f1be1"><td class="mdescLeft"> </td><td class="mdescRight">returns the past the end iterator for simplices of <span class="tt">DT</span>. <br></td></tr>
+</table>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
+<a id="a5dda4e3061b66c31d4597d0eaf5c1666" name="a5dda4e3061b66c31d4597d0eaf5c1666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dda4e3061b66c31d4597d0eaf5c1666">◆ </a></span>Delaunay_voronoi_kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">CGAL::Delaunay_d::Delaunay_voronoi_kind</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface flags </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478" name="a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478"></a>NEAREST </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5dda4e3061b66c31d4597d0eaf5c1666a5e182c331d7e094d3e664f9633bd30ce" name="a5dda4e3061b66c31d4597d0eaf5c1666a5e182c331d7e094d3e664f9633bd30ce"></a>FURTHEST </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="adf659cdb8b93e273cb0ef7cf8b0f89f2" name="adf659cdb8b93e273cb0ef7cf8b0f89f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">◆ </a></span>Delaunay_d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::Delaunay_d </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a></td>          <td class="paramname"><span class="paramname"><em>k1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Lifted_R</td>          <td class="paramname"><span class="paramname"><em>k2</em></span><span class="paramdefsep"> = </span><span class="paramdefval">Lifted_R()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates an instance <span class="tt">DT</span> of type <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a></span>. </p>
+<p>The dimension of the underlying space is <span class="tt">d</span> and <span class="tt">S</span> is initialized to the empty point set. The traits class <span class="tt"><a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a></span> specifies the models of all types and the implementations of all geometric primitives used by the Delaunay class. The traits class <span class="tt">Lifted_R</span> specifies the models of all types and the implementations of all geometric primitives used by the base class of <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;</span>. The second template parameter defaults to the first: <span class="tt"><a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a>&lt;<a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>&gt; = <a class="el" href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a>&lt;<a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R = <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a> &gt;</span>. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab306f0f66c117cb21fac2a22293ef0fc" name="ab306f0f66c117cb21fac2a22293ef0fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab306f0f66c117cb21fac2a22293ef0fc">◆ </a></span>index_of_vertex_in_opposite_simplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::index_of_vertex_in_opposite_simplex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the index of the vertex opposite to the <span class="tt">i</span>-th vertex of <span class="tt">s</span>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">0 &lt;= i &lt;= dcur</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a55e9d7f2ca0f09ca068505f9c5162cb8" name="a55e9d7f2ca0f09ca068505f9c5162cb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55e9d7f2ca0f09ca068505f9c5162cb8">◆ </a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> <a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::insert </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>inserts point <span class="tt">x</span> into <span class="tt">DT</span> and returns the corresponding <span class="tt"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23" title="handles to vertices of the complex.">Vertex_handle</a></span>. </p>
+<p>More precisely, if there is already a vertex <span class="tt">v</span> in <span class="tt">DT</span> positioned at <span class="tt">x</span> (i.e., <span class="tt">associated_point(v)</span> is equal to <span class="tt">x</span>) then <span class="tt">associated_point(v)</span> is changed to <span class="tt">x</span> (i.e., <span class="tt">associated_point(v)</span> is made identical to <span class="tt">x</span>) and if there is no such vertex then a new vertex <span class="tt">v</span> with <span class="tt">associated_point(v) = x</span> is added to <span class="tt">DT</span>. In either case, <span class="tt">v</span> is returned. </p>
+
+</div>
+</div>
+<a id="afce4afb10a9d592ee6db2499dd96a8ec" name="afce4afb10a9d592ee6db2499dd96a8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afce4afb10a9d592ee6db2499dd96a8ec">◆ </a></span>opposite_simplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a> <a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::opposite_simplex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the simplex opposite to the <span class="tt">i</span>-th vertex of <span class="tt">s</span> (<span class="tt"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1" title="handles to the simplices of the complex.">Simplex_handle()</a></span> if there is no such simplex). </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">0 &lt;= i &lt;= dcur</span>. </dd></dl>
+
+</div>
+</div>
+<a id="ac30b6588a55ebb260083877a7c9f0fb3" name="ac30b6588a55ebb260083877a7c9f0fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac30b6588a55ebb260083877a7c9f0fb3">◆ </a></span>point_of_simplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> <a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::point_of_simplex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the point associated with the <span class="tt">i</span>-th vertex of <span class="tt">s</span>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">0 &lt;= i &lt;= dcur</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a838b12b333490a7cae4ffd61fe97777c" name="a838b12b333490a7cae4ffd61fe97777c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a838b12b333490a7cae4ffd61fe97777c">◆ </a></span>range_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt; <a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> &gt; <a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::range_search </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="#a59805d514204eaca34479cdc1c27a203">Point_d</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>A</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the list of all vertices contained in the closure of the simplex whose corners are given by <span class="tt">A</span>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">A</span> must consist of <span class="tt">d+1</span> affinely independent points in base space. </dd></dl>
+
+</div>
+</div>
+<a id="af5015464122863700d42281bfa654045" name="af5015464122863700d42281bfa654045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5015464122863700d42281bfa654045">◆ </a></span>vertex_of_simplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a309e3ace0cf19f06e48ab5e9964f8e23">Vertex_handle</a> <a class="el" href="classCGAL_1_1Delaunay__d.html">CGAL::Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;::vertex_of_simplex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a5fa8cd020307ee39468c82c05d3ccbf1">Simplex_handle</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the vertex associated with the <span class="tt">i</span>-th node of <span class="tt">s</span>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">0 &lt;= i &lt;= dcur</span>. </dd></dl>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a917b305a8711350260956ddf285c7c68" name="a917b305a8711350260956ddf285c7c68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a917b305a8711350260956ddf285c7c68">◆ </a></span>d2_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+<div class="memtemplate">
+template&lt;typename <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, typename Lifted_R&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void d2_map </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>D</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GRAPH&lt; typename <a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;<a class="el" href="#a59805d514204eaca34479cdc1c27a203">::Point_d</a>, int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>DTG</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename <a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666">::Delaunay_voronoi_kind</a></td>          <td class="paramname"><span class="paramname"><em>k</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#adf659cdb8b93e273cb0ef7cf8b0f89f2">Delaunay_d</a>&lt; <a class="el" href="classCGAL_1_1Convex__hull__d.html#afc2f767cef8142f3147f33b09912bcf9">R</a>, Lifted_R &gt;<a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">::NEAREST</a></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel related">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructs a LEDA graph representation of the nearest (<span class="tt">kind = <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a25753c9936ef7fdc2569b25c3e07b478">NEAREST</a></span> or the furthest (<span class="tt">kind = <a class="el" href="#a5dda4e3061b66c31d4597d0eaf5c1666a5e182c331d7e094d3e664f9633bd30ce">FURTHEST</a></span>) site Delaunay triangulation. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">dim() == 2</span>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a href="classCGAL_1_1Delaunay__d.html">Delaunay_d</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
