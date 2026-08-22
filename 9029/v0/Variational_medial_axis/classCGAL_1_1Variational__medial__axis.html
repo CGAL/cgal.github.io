@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Variational_medial_axis/classCGAL_1_1Variational__medial__axis.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.1 - Dynamic Skeletonization Via Variational Medial Axis Sampling: CGAL::Variational_medial_axis&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.1 - Dynamic Skeletonization Via Variational Medial Axis Sampling
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Variational__medial__axis.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Variational__medial__axis-members.html">List of all members</a> |
+<a href="#pub-methods">Public Member Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Variational_medial_axis&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgVMASRef.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/variational_medial_axis_sampling.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename TriangleMesh_, typename ConcurrencyTag_ = Sequential_tag, typename AccelerationType_ = KD_tree_tag, typename GeomTraits_ = Default, typename VertexPointMap_ = Default&gt;<br>
+class CGAL::Variational_medial_axis&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;</div><p>Algorithm class for extracting a variational medial skeleton from a triangulated surface mesh. </p>
+<p>This class takes as input a triangulated surface mesh and iteratively samples the medial axis by optimizing the placement of medial spheres. The result is a non-manifold triangle mesh that captures the medial structure of the shape, consisting of both curve segments (1D) and triangle face patches (2D), derived from the adjacency of clusters associated with each medial sphere.</p>
+<p>The process terminates when either the desired number of spheres is reached, or a maximum number of iterations is exceeded.</p>
+<dl class="section note"><dt>Note</dt><dd>This method is designed to generate coarse approximations of the medial axis. The number of spheres that can be reliably generated depends on the density of the input surface sampling. For best results, we recommend keeping the total number of medial spheres under nb_samples/100. In addition, the user can explicitly request cluster merging or splitting operations to locally simplify or refine the skeleton structure.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh_</td><td>a model of <code><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></code></td></tr>
+    <tr><td class="paramname">ConcurrencyTag_</td><td>a tag indicating whether the algorithm should run sequentially or in parallel. This determines the execution mode at compile time. <b>Default:</b> <code><a class="elRef" href="../STL_Extension/structCGAL_1_1Sequential__tag.html">CGAL::Sequential_tag</a></code><br>
+ <b>Valid values:</b> <code><a class="elRef" href="../STL_Extension/structCGAL_1_1Sequential__tag.html">CGAL::Sequential_tag</a></code>, <code><a class="elRef" href="../STL_Extension/structCGAL_1_1Parallel__tag.html">CGAL::Parallel_tag</a></code>, <code><a class="elRef" href="../STL_Extension/structCGAL_1_1Parallel__if__available__tag.html">CGAL::Parallel_if_available_tag</a></code></td></tr>
+    <tr><td class="paramname">AccelerationType_</td><td>a tag indicating whether the algorithm should use Kd-tree or BVH as acceleration structure. <b>Default:</b> <code><a class="elRef" href="../STL_Extension/structCGAL_1_1KD__tree__tag.html">CGAL::KD_tree_tag</a></code><br>
+ <b>Valid values:</b> <code><a class="elRef" href="../STL_Extension/structCGAL_1_1KD__tree__tag.html">CGAL::KD_tree_tag</a></code>, <code><a class="elRef" href="../STL_Extension/structCGAL_1_1BVH__tag.html">CGAL::BVH_tag</a></code>,</td></tr>
+    <tr><td class="paramname">GeomTraits_</td><td>a model of <code><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></code><br>
+ <b>Default:</b> <div class="fragment"><div class="line"><a class="code hl_structRef" href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a>&lt;</div>
+<div class="line">  boost::property_traits&lt;</div>
+<div class="line">     boost::property_map&lt;TriangleMesh_, CGAL::vertex_point_t&gt;::type</div>
+<div class="line">   &gt;::value_type</div>
+<div class="line"> &gt;<a class="code hl_classRef" href="../Kernel_23/classKernel.html">::Kernel</a></div>
+<div class="ttc" id="aclassKernel_html"><div class="ttname"><a href="../Kernel_23/classKernel.html">Kernel</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Kernel__traits_html"><div class="ttname"><a href="../Kernel_23/structCGAL_1_1Kernel__traits.html">CGAL::Kernel_traits</a></div></div>
+</div><!-- fragment --></td></tr>
+    <tr><td class="paramname">VertexPointMap_</td><td>a model of <code><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></code> with <code>boost::graph_traits&lt;TriangleMesh_&gt;::vertex_descriptor</code> as key and <code>GeomTraits_::Point_3</code> as value type.<br>
+ <b>Default:</b> <div class="fragment"><div class="line">boost::property_map&lt;TriangleMesh_, CGAL::vertex_point_t&gt;::const_type.</div>
+</div><!-- fragment --> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Variational_medial_axis_2vmas_class_interface_example_8cpp-example.html#_a3">Variational_medial_axis/vmas_class_interface_example.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a798286eaf544df9a3b786be5500f3ef5"><td class="memTemplParams" colspan="2">template&lt;class NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:a798286eaf544df9a3b786be5500f3ef5"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a798286eaf544df9a3b786be5500f3ef5">compute_variational_medial_axis_sampling</a> (const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:a798286eaf544df9a3b786be5500f3ef5"><td class="mdescLeft"> </td><td class="mdescRight">computes a static skeleton based on the Variational Medial Axis Sampling method.  <br></td></tr>
+<tr class="separator:a798286eaf544df9a3b786be5500f3ef5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9143e5462c33781b5cc7ca08cd58d8ae"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a9143e5462c33781b5cc7ca08cd58d8ae">update_single_step</a> (bool enable_split=false)</td></tr>
+<tr class="memdesc:a9143e5462c33781b5cc7ca08cd58d8ae"><td class="mdescLeft"> </td><td class="mdescRight">updates the medial spheres by performing a single step of the algorithm.  <br></td></tr>
+<tr class="separator:a9143e5462c33781b5cc7ca08cd58d8ae"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaddcf932ae6992a5c4afe2551bc62e74"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#aaddcf932ae6992a5c4afe2551bc62e74">update</a> (std::size_t nb_iteration)</td></tr>
+<tr class="memdesc:aaddcf932ae6992a5c4afe2551bc62e74"><td class="mdescLeft"> </td><td class="mdescRight">performs a specified number of algorithm iterations.  <br></td></tr>
+<tr class="separator:aaddcf932ae6992a5c4afe2551bc62e74"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0b77d98fa6d07bd49bebb32db3e63a0d"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a0b77d98fa6d07bd49bebb32db3e63a0d">add_spheres</a> (int nb_sphere)</td></tr>
+<tr class="memdesc:a0b77d98fa6d07bd49bebb32db3e63a0d"><td class="mdescLeft"> </td><td class="mdescRight">adds spheres by iteratively splitting existing spheres.  <br></td></tr>
+<tr class="separator:a0b77d98fa6d07bd49bebb32db3e63a0d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ace5c3c59b595a6e3b1399b6dbbda51eb"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#ace5c3c59b595a6e3b1399b6dbbda51eb">add_sphere_by_id</a> (Sphere_ID sphere_id, int nb_iteration=10)</td></tr>
+<tr class="memdesc:ace5c3c59b595a6e3b1399b6dbbda51eb"><td class="mdescLeft"> </td><td class="mdescRight">adds a new sphere by splitting sphere with the id <code>sphere_id</code>.  <br></td></tr>
+<tr class="separator:ace5c3c59b595a6e3b1399b6dbbda51eb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a930b3ab8f5ab1a1bf1fab4c8ef472193"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a930b3ab8f5ab1a1bf1fab4c8ef472193">remove_sphere_by_id</a> (Sphere_ID sphere_id, int nb_iteration=10)</td></tr>
+<tr class="memdesc:a930b3ab8f5ab1a1bf1fab4c8ef472193"><td class="mdescLeft"> </td><td class="mdescRight">removes a sphere by its sphere_id.  <br></td></tr>
+<tr class="separator:a930b3ab8f5ab1a1bf1fab4c8ef472193"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9863abe6ff4394168e9c486844bb3df5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Medial__Skeleton.html">Medial_Skeleton</a>&lt; TriangleMesh_ &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a9863abe6ff4394168e9c486844bb3df5">export_skeleton</a> () const</td></tr>
+<tr class="memdesc:a9863abe6ff4394168e9c486844bb3df5"><td class="mdescLeft"> </td><td class="mdescRight">exports the medial skeleton as a <code><a class="el" href="classCGAL_1_1Medial__Skeleton.html" title="Class representing the medial skeleton of a shape.">Medial_Skeleton</a></code> object.  <br></td></tr>
+<tr class="separator:a9863abe6ff4394168e9c486844bb3df5"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Constructor</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The constructor of a vmas object.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tmesh</td><td>The input triangle mesh without borders. </td></tr>
+    <tr><td class="paramname">gt</td><td>The geometric traits class used for geometric computations. </td></tr>
+    <tr><td class="paramname">np</td><td>An optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a>, listed below:</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>number_of_spheres</b> </button> <div class="content"><ul>
+<li>
+The desired number of medial spheres in the resulting skeleton. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>100 </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_samples</b> </button> <div class="content"><ul>
+<li>
+The number of samples on the surface mesh to use for the optimization process. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>max(20000, number_of_spheres * 100) </li>
+<li>
+<b>Extra: </b>The number of samples should be significantly larger than the number of spheres.(x100 at least) </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>max_iteration_number</b> </button> <div class="content"><ul>
+<li>
+The maximum number of iterations for the optimization process. </li>
+<li>
+<b>Type: </b>int </li>
+<li>
+<b>Default: </b>1000 </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>lambda</b> </button> <div class="content"><ul>
+<li>
+A weight balancing the two energy terms (SQEM and Euclidean). Smaller values encourage the skeleton to extend deeper into local geometric features of the shape. </li>
+<li>
+<b>Type: </b>FT </li>
+<li>
+<b>Default: </b>FT(0.2) </li>
+<li>
+<b>Extra: </b>The range of this parameter is (0,1]. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>random_seed</b> </button> <div class="content"><ul>
+<li>
+The random seed to sample points on the triangle mesh surface. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Extra: </b>Fix the random seed so that the result can be reproduced </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <code>pmesh</code> </li>
+<li>
+<b>Type: </b>a class model of <code><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></code> with <code>boost::graph_traits&lt;PolygonMesh&gt;::vertex_descriptor</code> as key type and <code>Point_3</code> as value type </li>
+<li>
+<b>Default: </b><code>boost::get(CGAL::vertex_point, pmesh)</code> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>verbose</b> </button> <div class="content"><ul>
+<li>
+If true, the algorithm will print detailed information about its progress. </li>
+<li>
+<b>Type: </b>bool </li>
+<li>
+<b>Default: </b>false </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+</td></tr>
+<tr class="memitem:ab30f2f3995e9a74a5cec5a5a7862bb31"><td class="memTemplParams" colspan="2"><a id="ab30f2f3995e9a74a5cec5a5a7862bb31" name="ab30f2f3995e9a74a5cec5a5a7862bb31"></a>
+template&lt;class NamedParameters  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ab30f2f3995e9a74a5cec5a5a7862bb31"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><b>Variational_medial_axis</b> (const TriangleMesh_ &amp;tmesh, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const GT &amp;gt=GT())</td></tr>
+<tr class="separator:ab30f2f3995e9a74a5cec5a5a7862bb31"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Parameters</h2></td></tr>
+<tr class="memitem:a612181a1e4140aa4b106c9bac1fbe0c0"><td class="memItemLeft" align="right" valign="top">FT </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a612181a1e4140aa4b106c9bac1fbe0c0">lambda_param</a> () const</td></tr>
+<tr class="memdesc:a612181a1e4140aa4b106c9bac1fbe0c0"><td class="mdescLeft"> </td><td class="mdescRight">gets the Lambda parameter for the algorithm.  <br></td></tr>
+<tr class="separator:a612181a1e4140aa4b106c9bac1fbe0c0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab59dfaab97a882aebba23d4341dd48bf"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#ab59dfaab97a882aebba23d4341dd48bf">set_lambda</a> (FT lambda)</td></tr>
+<tr class="memdesc:ab59dfaab97a882aebba23d4341dd48bf"><td class="mdescLeft"> </td><td class="mdescRight">sets function for <code><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a612181a1e4140aa4b106c9bac1fbe0c0" title="gets the Lambda parameter for the algorithm.">lambda_param()</a></code>.  <br></td></tr>
+<tr class="separator:ab59dfaab97a882aebba23d4341dd48bf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac393ef47e0b866b8b56b00dc13f8b0fa"><td class="memItemLeft" align="right" valign="top"><a id="ac393ef47e0b866b8b56b00dc13f8b0fa" name="ac393ef47e0b866b8b56b00dc13f8b0fa"></a>
+int </td><td class="memItemRight" valign="bottom"><b>number_of_spheres</b> () const</td></tr>
+<tr class="memdesc:ac393ef47e0b866b8b56b00dc13f8b0fa"><td class="mdescLeft"> </td><td class="mdescRight">Get the desired number of spheres for the algorithm. <br></td></tr>
+<tr class="separator:ac393ef47e0b866b8b56b00dc13f8b0fa"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a40b9838cec6cefd2273be14b52f79c54"><td class="memItemLeft" align="right" valign="top"><a id="a40b9838cec6cefd2273be14b52f79c54" name="a40b9838cec6cefd2273be14b52f79c54"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_number_of_spheres</b> (int num)</td></tr>
+<tr class="memdesc:a40b9838cec6cefd2273be14b52f79c54"><td class="mdescLeft"> </td><td class="mdescRight">sets the expected number of spheres. <br></td></tr>
+<tr class="separator:a40b9838cec6cefd2273be14b52f79c54"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abad1817b2f13d8ea314c2b250863a063"><td class="memItemLeft" align="right" valign="top">int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Variational__medial__axis.html#abad1817b2f13d8ea314c2b250863a063">max_iteration</a> () const</td></tr>
+<tr class="memdesc:abad1817b2f13d8ea314c2b250863a063"><td class="mdescLeft"> </td><td class="mdescRight">gets the maximum number of iterations for the algorithm.  <br></td></tr>
+<tr class="separator:abad1817b2f13d8ea314c2b250863a063"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aabe5347779a9f7d306fb49a0d5f6481d"><td class="memItemLeft" align="right" valign="top"><a id="aabe5347779a9f7d306fb49a0d5f6481d" name="aabe5347779a9f7d306fb49a0d5f6481d"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_max_iteration</b> (int max_iter)</td></tr>
+<tr class="memdesc:aabe5347779a9f7d306fb49a0d5f6481d"><td class="mdescLeft"> </td><td class="mdescRight">sets the maximum number of iterations. <br></td></tr>
+<tr class="separator:aabe5347779a9f7d306fb49a0d5f6481d"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ace5c3c59b595a6e3b1399b6dbbda51eb" name="ace5c3c59b595a6e3b1399b6dbbda51eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace5c3c59b595a6e3b1399b6dbbda51eb">◆ </a></span>add_sphere_by_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::add_sphere_by_id </td>
+          <td>(</td>
+          <td class="paramtype">Sphere_ID </td>
+          <td class="paramname"><em>sphere_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>nb_iteration</em> = <code>10</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>adds a new sphere by splitting sphere with the id <code>sphere_id</code>. </p>
+<p>This function is aimed to be called during interactive sessions, where the use can specify a sphere to split and add a new sphere based on the split vertex. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sphere_id</td><td>The ID of the sphere to split. </td></tr>
+    <tr><td class="paramname">nb_iteration</td><td>Number of optimization iterations to perform after adding the sphere (default: 10). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0b77d98fa6d07bd49bebb32db3e63a0d" name="a0b77d98fa6d07bd49bebb32db3e63a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b77d98fa6d07bd49bebb32db3e63a0d">◆ </a></span>add_spheres()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::add_spheres </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>nb_sphere</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>adds spheres by iteratively splitting existing spheres. </p>
+<p>This function attempts to add the specified number of spheres by running the algorithm with sphere splitting enabled until either the target number is reached or maximum iterations are exceeded.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nb_sphere</td><td>Number of spheres to add</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>nb_sphere must be positive </dd>
+<dd>
+At least one sphere must already exist </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if spheres were added successfully, false otherwise. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Variational_medial_axis_2vmas_class_interface_example_8cpp-example.html#a5">Variational_medial_axis/vmas_class_interface_example.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a798286eaf544df9a3b786be5500f3ef5" name="a798286eaf544df9a3b786be5500f3ef5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a798286eaf544df9a3b786be5500f3ef5">◆ </a></span>compute_variational_medial_axis_sampling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+<div class="memtemplate">
+template&lt;class NamedParameters  = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::compute_variational_medial_axis_sampling </td>
+          <td>(</td>
+          <td class="paramtype">const NamedParameters &amp; </td>
+          <td class="paramname"><em>np</em> = <code><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>computes a static skeleton based on the Variational Medial Axis Sampling method. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">np</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html">Named Parameters</a>, listed below:</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>number_of_spheres</b> </button> <div class="content"><ul>
+<li>
+The desired number of medial spheres in the resulting skeleton. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>100 </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>number_of_samples</b> </button> <div class="content"><ul>
+<li>
+The number of samples on the surface mesh to use for the optimization process. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Default: </b>max(20000, number_of_spheres * 100) </li>
+<li>
+<b>Extra: </b>The number of samples should be significantly larger than the number of spheres.(x100 at least) </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>max_iteration_number</b> </button> <div class="content"><ul>
+<li>
+The maximum number of iterations for the optimization process. </li>
+<li>
+<b>Type: </b>int </li>
+<li>
+<b>Default: </b>1000 </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>lambda</b> </button> <div class="content"><ul>
+<li>
+A weight balancing the two energy terms (SQEM and Euclidean). Smaller values encourage the skeleton to extend deeper into local geometric features of the shape. </li>
+<li>
+<b>Type: </b>FT </li>
+<li>
+<b>Default: </b>FT(0.2) </li>
+<li>
+<b>Extra: </b>The range of this parameter is (0,1]. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>random_seed</b> </button> <div class="content"><ul>
+<li>
+The random seed to sample points on the triangle mesh surface. </li>
+<li>
+<b>Type: </b>unsigned int </li>
+<li>
+<b>Extra: </b>Fix the random seed so that the result can be reproduced </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>verbose</b> </button> <div class="content"><ul>
+<li>
+If true, the algorithm will print detailed information about its progress on the standard output. </li>
+<li>
+<b>Type: </b>bool </li>
+<li>
+<b>Default: </b>false </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Variational_medial_axis_2vmas_class_interface_example_8cpp-example.html#a4">Variational_medial_axis/vmas_class_interface_example.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a9863abe6ff4394168e9c486844bb3df5" name="a9863abe6ff4394168e9c486844bb3df5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9863abe6ff4394168e9c486844bb3df5">◆ </a></span>export_skeleton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Medial__Skeleton.html">Medial_Skeleton</a>&lt; TriangleMesh_ &gt; <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::export_skeleton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>exports the medial skeleton as a <code><a class="el" href="classCGAL_1_1Medial__Skeleton.html" title="Class representing the medial skeleton of a shape.">Medial_Skeleton</a></code> object. </p>
+<p>This function builds a <code><a class="el" href="classCGAL_1_1Medial__Skeleton.html" title="Class representing the medial skeleton of a shape.">Medial_Skeleton</a></code> from the current state of the medial sphere mesh. It extracts the vertices, edges, and faces from the medial sphere mesh and constructs the medial skeleton accordingly.</p>
+<dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="classCGAL_1_1Medial__Skeleton.html" title="Class representing the medial skeleton of a shape.">Medial_Skeleton</a></code> object containing the medial skeleton data. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Variational_medial_axis_2vmas_class_interface_example_8cpp-example.html#a7">Variational_medial_axis/vmas_class_interface_example.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a612181a1e4140aa4b106c9bac1fbe0c0" name="a612181a1e4140aa4b106c9bac1fbe0c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612181a1e4140aa4b106c9bac1fbe0c0">◆ </a></span>lambda_param()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">FT <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::lambda_param </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gets the Lambda parameter for the algorithm. </p>
+<p>This parameter controls the balance between the SQEM and Euclidean energy terms. Smaller values encourage the skeleton to extend deeper into local geometric features of the shape. </p>
+
+</div>
+</div>
+<a id="abad1817b2f13d8ea314c2b250863a063" name="abad1817b2f13d8ea314c2b250863a063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abad1817b2f13d8ea314c2b250863a063">◆ </a></span>max_iteration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::max_iteration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gets the maximum number of iterations for the algorithm. </p>
+<p>In case the algorithm does not converge, it will stop after this number of iterations. </p>
+
+</div>
+</div>
+<a id="a930b3ab8f5ab1a1bf1fab4c8ef472193" name="a930b3ab8f5ab1a1bf1fab4c8ef472193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a930b3ab8f5ab1a1bf1fab4c8ef472193">◆ </a></span>remove_sphere_by_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::remove_sphere_by_id </td>
+          <td>(</td>
+          <td class="paramtype">Sphere_ID </td>
+          <td class="paramname"><em>sphere_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>nb_iteration</em> = <code>10</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>removes a sphere by its sphere_id. </p>
+<p>This function is aimed to be called during interactive sessions, where the user can specify a sphere to remove. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sphere_id</td><td>The ID of the sphere to remove. </td></tr>
+    <tr><td class="paramname">nb_iteration</td><td>Number of optimization iterations to perform after removing the sphere (default: 10). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab59dfaab97a882aebba23d4341dd48bf" name="ab59dfaab97a882aebba23d4341dd48bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab59dfaab97a882aebba23d4341dd48bf">◆ </a></span>set_lambda()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::set_lambda </td>
+          <td>(</td>
+          <td class="paramtype">FT </td>
+          <td class="paramname"><em>lambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets function for <code><a class="el" href="classCGAL_1_1Variational__medial__axis.html#a612181a1e4140aa4b106c9bac1fbe0c0" title="gets the Lambda parameter for the algorithm.">lambda_param()</a></code>. </p>
+<p>Note: The lambda must be strictly positive; if set to zero, it will default to 0.2. </p>
+
+</div>
+</div>
+<a id="aaddcf932ae6992a5c4afe2551bc62e74" name="aaddcf932ae6992a5c4afe2551bc62e74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaddcf932ae6992a5c4afe2551bc62e74">◆ </a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::update </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t </td>
+          <td class="paramname"><em>nb_iteration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>performs a specified number of algorithm iterations. </p>
+<p>This function allows manual control over the algorithm execution, performing only position optimization without sphere splitting.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nb_iteration</td><td>Number of iterations to perform </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Variational_medial_axis_2vmas_class_interface_example_8cpp-example.html#a6">Variational_medial_axis/vmas_class_interface_example.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a9143e5462c33781b5cc7ca08cd58d8ae" name="a9143e5462c33781b5cc7ca08cd58d8ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9143e5462c33781b5cc7ca08cd58d8ae">◆ </a></span>update_single_step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TriangleMesh_ , typename ConcurrencyTag_  = Sequential_tag, typename AccelerationType_  = KD_tree_tag, typename GeomTraits_  = Default, typename VertexPointMap_  = Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Variational__medial__axis.html">CGAL::Variational_medial_axis</a>&lt; TriangleMesh_, ConcurrencyTag_, AccelerationType_, GeomTraits_, VertexPointMap_ &gt;::update_single_step </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>enable_split</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>updates the medial spheres by performing a single step of the algorithm. </p>
+<p>This function performs one iteration of the algorithm, updating sphere positions and computing errors. It can optionally enable sphere splitting based on convergence criteria.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable_split</td><td>If true, allows sphere splitting based on convergence criteria. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the algorithm has converged, false otherwise. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="classCGAL_1_1Variational__medial__axis.html">Variational_medial_axis</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

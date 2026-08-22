@@ -1,0 +1,743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/AABB_tree/classAABBGeomTraits__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Fast Intersection and Distance Computation (AABB Tree): AABBGeomTraits_3 Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Fast Intersection and Distance Computation (AABB Tree)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classAABBGeomTraits__3.html','','classAABBGeomTraits__3-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classAABBGeomTraits__3-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">AABBGeomTraits_3 Concept Reference<div class="ingroups"><a class="el" href="group__PkgAABBTreeRef.html">Reference Manual</a> » <a class="el" href="group__PkgAABBTreeConcepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classAABBGeomTraits__3.html" title="The concept AABBGeomTraits_3 defines the requirements for the first template parameter of the class C...">AABBGeomTraits_3</a></span> defines the requirements for the first template parameter of the class <span class="tt"><a class="el" href="classCGAL_1_1AABB__traits__3.html" title="This traits class handles any type of 3D geometric primitives provided that the proper intersection t...">CGAL::AABB_traits_3</a>&lt;<a class="el" href="classAABBGeomTraits__3.html" title="The concept AABBGeomTraits_3 defines the requirements for the first template parameter of the class C...">AABBGeomTraits_3</a>, <a class="el" href="classAABBPrimitive.html" title="The concept AABBPrimitive describes the requirements for the primitives stored in the AABB tree data ...">AABBPrimitive</a>&gt;</span>. It provides predicates and constructors to detect and compute intersections between query objects and the primitives stored in the AABB tree. In addition, it contains predicates and constructors to compute distances between a point query and the primitives stored in the AABB tree. </p>
+  <dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Spatial_searching/classSearchGeomTraits__3.html">SearchGeomTraits_3</a></code> </dd>
+</dl>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd>All models of the concept <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classCGAL_1_1AABB__traits__3.html" title="This traits class handles any type of 3D geometric primitives provided that the proper intersection t...">CGAL::AABB_traits_3</a>&lt;<a class="el" href="classAABBGeomTraits__3.html" title="The concept AABBGeomTraits_3 defines the requirements for the first template parameter of the class C...">AABBGeomTraits_3</a>,<a class="el" href="classAABBPrimitive.html" title="The concept AABBPrimitive describes the requirements for the primitives stored in the AABB tree data ...">AABBPrimitive</a>&gt;</span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1AABB__tree.html" title="Static data structure for efficient intersection and distance computations in 2D and 3D.">CGAL::AABB_tree</a>&lt;<a class="el" href="classAABBTraits.html" title="The concept AABBTraits provides the geometric primitive types and methods for the class CGAL::AABB_tr...">AABBTraits</a>&gt;</span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classAABBPrimitive.html" title="The concept AABBPrimitive describes the requirements for the primitives stored in the AABB tree data ...">AABBPrimitive</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:ab193ff39adc61561992959f736448529" id="r_ab193ff39adc61561992959f736448529"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab193ff39adc61561992959f736448529">Do_intersect_3</a></td></tr>
+<tr class="memdesc:ab193ff39adc61561992959f736448529"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to detect intersections between two geometric objects.  <br></td></tr>
+<tr class="memitem:aafbe54e0f0bc1c235afc5b8b49f02e0c" id="r_aafbe54e0f0bc1c235afc5b8b49f02e0c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">Intersect_3</a></td></tr>
+<tr class="memdesc:aafbe54e0f0bc1c235afc5b8b49f02e0c"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to construct the intersection between two geometric objects.  <br></td></tr>
+<tr class="memitem:a2515ec65f014c715e49665795a5a8ba7" id="r_a2515ec65f014c715e49665795a5a8ba7"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a2515ec65f014c715e49665795a5a8ba7">Construct_sphere_3</a></td></tr>
+<tr class="memdesc:a2515ec65f014c715e49665795a5a8ba7"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to construct the sphere specified by its center and squared radius.  <br></td></tr>
+<tr class="memitem:ada62178b4d1f6cec6ff8dc513377f44d" id="r_ada62178b4d1f6cec6ff8dc513377f44d"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ada62178b4d1f6cec6ff8dc513377f44d">Construct_projected_point_3</a></td></tr>
+<tr class="memdesc:ada62178b4d1f6cec6ff8dc513377f44d"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compute the point on a geometric primitive which is closest from a query point.  <br></td></tr>
+<tr class="memitem:a3cf9e2e5a42e49c1f5bb9cf879b2c235" id="r_a3cf9e2e5a42e49c1f5bb9cf879b2c235"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">Compare_distance_3</a></td></tr>
+<tr class="memdesc:a3cf9e2e5a42e49c1f5bb9cf879b2c235"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the distance of two points wrt a third one.  <br></td></tr>
+<tr class="memitem:ab9f0782b01f8a4324dce63ca71f8cc7c" id="r_ab9f0782b01f8a4324dce63ca71f8cc7c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab9f0782b01f8a4324dce63ca71f8cc7c">Compute_squared_distance_3</a></td></tr>
+<tr class="memdesc:ab9f0782b01f8a4324dce63ca71f8cc7c"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compute the squared distance between two points.  <br></td></tr>
+<tr class="memitem:ad68a0d17c85e2973914978022d372ac0" id="r_ad68a0d17c85e2973914978022d372ac0"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ad68a0d17c85e2973914978022d372ac0">Less_x_3</a></td></tr>
+<tr class="memdesc:ad68a0d17c85e2973914978022d372ac0"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the x-coordinates of two points.  <br></td></tr>
+<tr class="memitem:a6f4f640815bcbaec41c25654c847aed3" id="r_a6f4f640815bcbaec41c25654c847aed3"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a6f4f640815bcbaec41c25654c847aed3">Less_y_3</a></td></tr>
+<tr class="memdesc:a6f4f640815bcbaec41c25654c847aed3"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the y-coordinates of two points.  <br></td></tr>
+<tr class="memitem:ab52fd1b5aba4627d8391af9d1d0f13f8" id="r_ab52fd1b5aba4627d8391af9d1d0f13f8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8">Less_z_3</a></td></tr>
+<tr class="memdesc:ab52fd1b5aba4627d8391af9d1d0f13f8"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the z-coordinates of two points.  <br></td></tr>
+<tr class="memitem:aa644b785334626d4c7d6e42b157eba2f" id="r_aa644b785334626d4c7d6e42b157eba2f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa644b785334626d4c7d6e42b157eba2f">Equal_3</a></td></tr>
+<tr class="memdesc:aa644b785334626d4c7d6e42b157eba2f"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare two points.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr class="memitem:aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7" id="r_aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7"><td class="memItemLeft"><a id="aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7" name="aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7"></a>
+<a class="el" href="#ab193ff39adc61561992959f736448529">Do_intersect_3</a> </td><td class="memItemRight"><b>do_intersect_3_object</b> ()</td></tr>
+<tr class="memdesc:aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7"><td class="mdescLeft"> </td><td class="mdescRight">returns the intersection detection predicate. <br></td></tr>
+<tr class="memitem:a586d0282312c3b49c937e222f0085018" id="r_a586d0282312c3b49c937e222f0085018"><td class="memItemLeft"><a id="a586d0282312c3b49c937e222f0085018" name="a586d0282312c3b49c937e222f0085018"></a>
+<a class="el" href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">Intersect_3</a> </td><td class="memItemRight"><b>intersect_3_object</b> ()</td></tr>
+<tr class="memdesc:a586d0282312c3b49c937e222f0085018"><td class="mdescLeft"> </td><td class="mdescRight">returns the intersection constructor. <br></td></tr>
+<tr class="memitem:a560d181363718c72590c95bd1c2ea48e" id="r_a560d181363718c72590c95bd1c2ea48e"><td class="memItemLeft"><a id="a560d181363718c72590c95bd1c2ea48e" name="a560d181363718c72590c95bd1c2ea48e"></a>
+<a class="el" href="#a2515ec65f014c715e49665795a5a8ba7">Construct_sphere_3</a> </td><td class="memItemRight"><b>construct_sphere_3_object</b> ()</td></tr>
+<tr class="memdesc:a560d181363718c72590c95bd1c2ea48e"><td class="mdescLeft"> </td><td class="mdescRight">returns the sphere constructor. <br></td></tr>
+<tr class="memitem:af692ef123f5132781d4d4110166fff88" id="r_af692ef123f5132781d4d4110166fff88"><td class="memItemLeft"><a id="af692ef123f5132781d4d4110166fff88" name="af692ef123f5132781d4d4110166fff88"></a>
+<a class="el" href="#ada62178b4d1f6cec6ff8dc513377f44d">Construct_projected_point_3</a> </td><td class="memItemRight"><b>construct_projected_point_3_object</b> ()</td></tr>
+<tr class="memdesc:af692ef123f5132781d4d4110166fff88"><td class="mdescLeft"> </td><td class="mdescRight">returns the closest point constructor. <br></td></tr>
+<tr class="memitem:ac5c374cffbbdacb66989853d37c090ea" id="r_ac5c374cffbbdacb66989853d37c090ea"><td class="memItemLeft"><a id="ac5c374cffbbdacb66989853d37c090ea" name="ac5c374cffbbdacb66989853d37c090ea"></a>
+<a class="el" href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">Compare_distance_3</a> </td><td class="memItemRight"><b>compare_distance_3_object</b> ()</td></tr>
+<tr class="memdesc:ac5c374cffbbdacb66989853d37c090ea"><td class="mdescLeft"> </td><td class="mdescRight">returns the compare distance predicate. <br></td></tr>
+<tr class="memitem:a56b2ac619d405bb45f902d1c7d59cb2c" id="r_a56b2ac619d405bb45f902d1c7d59cb2c"><td class="memItemLeft"><a id="a56b2ac619d405bb45f902d1c7d59cb2c" name="a56b2ac619d405bb45f902d1c7d59cb2c"></a>
+<a class="el" href="#ab9f0782b01f8a4324dce63ca71f8cc7c">Compute_squared_distance_3</a> </td><td class="memItemRight"><b>compute_squared_distance_3_object</b> ()</td></tr>
+<tr class="memdesc:a56b2ac619d405bb45f902d1c7d59cb2c"><td class="mdescLeft"> </td><td class="mdescRight">returns the squared distance functor. <br></td></tr>
+<tr class="memitem:a0f4593598f9150dbc38be616c57e952e" id="r_a0f4593598f9150dbc38be616c57e952e"><td class="memItemLeft"><a id="a0f4593598f9150dbc38be616c57e952e" name="a0f4593598f9150dbc38be616c57e952e"></a>
+<a class="el" href="#ad68a0d17c85e2973914978022d372ac0">Less_x_3</a> </td><td class="memItemRight"><b>less_x_3_object</b> ()</td></tr>
+<tr class="memdesc:a0f4593598f9150dbc38be616c57e952e"><td class="mdescLeft"> </td><td class="mdescRight">returns the <span class="tt"><a class="el" href="#ad68a0d17c85e2973914978022d372ac0" title="A functor object to compare the x-coordinates of two points.">Less_x_3</a></span> predicate. <br></td></tr>
+<tr class="memitem:ae6f047509ae0f00e99796b4681991c3e" id="r_ae6f047509ae0f00e99796b4681991c3e"><td class="memItemLeft"><a id="ae6f047509ae0f00e99796b4681991c3e" name="ae6f047509ae0f00e99796b4681991c3e"></a>
+<a class="el" href="#a6f4f640815bcbaec41c25654c847aed3">Less_y_3</a> </td><td class="memItemRight"><b>less_y_3_object</b> ()</td></tr>
+<tr class="memdesc:ae6f047509ae0f00e99796b4681991c3e"><td class="mdescLeft"> </td><td class="mdescRight">returns the <span class="tt"><a class="el" href="#a6f4f640815bcbaec41c25654c847aed3" title="A functor object to compare the y-coordinates of two points.">Less_y_3</a></span> predicate. <br></td></tr>
+<tr class="memitem:aa1d8de43e8a6422bc024be54d14fab14" id="r_aa1d8de43e8a6422bc024be54d14fab14"><td class="memItemLeft"><a id="aa1d8de43e8a6422bc024be54d14fab14" name="aa1d8de43e8a6422bc024be54d14fab14"></a>
+<a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8">Less_z_3</a> </td><td class="memItemRight"><b>less_z_3_object</b> ()</td></tr>
+<tr class="memdesc:aa1d8de43e8a6422bc024be54d14fab14"><td class="mdescLeft"> </td><td class="mdescRight">returns the <span class="tt"><a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8" title="A functor object to compare the z-coordinates of two points.">Less_z_3</a></span> predicate. <br></td></tr>
+<tr class="memitem:a139efd8478e1228bed72e21af8965bd1" id="r_a139efd8478e1228bed72e21af8965bd1"><td class="memItemLeft"><a id="a139efd8478e1228bed72e21af8965bd1" name="a139efd8478e1228bed72e21af8965bd1"></a>
+<a class="el" href="#aa644b785334626d4c7d6e42b157eba2f">Equal_3</a> </td><td class="memItemRight"><b>equal_3_object</b> ()</td></tr>
+<tr class="memdesc:a139efd8478e1228bed72e21af8965bd1"><td class="mdescLeft"> </td><td class="mdescRight">returns the equal predicate. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a3cf9e2e5a42e49c1f5bb9cf879b2c235" name="a3cf9e2e5a42e49c1f5bb9cf879b2c235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">◆ </a></span>Compare_distance_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">AABBGeomTraits_3::Compare_distance_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the distance of two points wrt a third one. </p>
+<p>Provides the operator:</p>
+<p><span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga84351c7e66be00efccd4ab1a61070469">CGAL::Comparison_result</a> operator()(const Point_3&amp; p1, const Point_3&amp; p2, const Point_3&amp; p3)</span>,</p>
+<p>which compares the distance between <span class="tt">p1</span> and <span class="tt">p2</span>, to the distance between <span class="tt">p1</span> and <span class="tt">p3</span>. </p>
+
+</div>
+</div>
+<a id="ab9f0782b01f8a4324dce63ca71f8cc7c" name="ab9f0782b01f8a4324dce63ca71f8cc7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f0782b01f8a4324dce63ca71f8cc7c">◆ </a></span>Compute_squared_distance_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab9f0782b01f8a4324dce63ca71f8cc7c">AABBGeomTraits_3::Compute_squared_distance_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compute the squared distance between two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">FT operator()(const Point_3&amp; p, const Point_3&amp; q),</span></p>
+<p>which returns the squared distance between <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ada62178b4d1f6cec6ff8dc513377f44d" name="ada62178b4d1f6cec6ff8dc513377f44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada62178b4d1f6cec6ff8dc513377f44d">◆ </a></span>Construct_projected_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ada62178b4d1f6cec6ff8dc513377f44d">AABBGeomTraits_3::Construct_projected_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compute the point on a geometric primitive which is closest from a query point. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">Point_3 operator()(const Primitive::Datum&amp; d, const Point_3&amp; p)</span>,</p>
+<p>which returns the point on <span class="tt">d</span> that is closest to <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="a2515ec65f014c715e49665795a5a8ba7" name="a2515ec65f014c715e49665795a5a8ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2515ec65f014c715e49665795a5a8ba7">◆ </a></span>Construct_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a2515ec65f014c715e49665795a5a8ba7">AABBGeomTraits_3::Construct_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to construct the sphere specified by its center and squared radius. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">Sphere_3 operator()(const Point_3&amp; p, const FT &amp; sr)</span>,</p>
+<p>which returns the sphere centered at <span class="tt">p</span> with <span class="tt">sr</span> as squared radius. </p>
+
+</div>
+</div>
+<a id="ab193ff39adc61561992959f736448529" name="ab193ff39adc61561992959f736448529"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab193ff39adc61561992959f736448529">◆ </a></span>Do_intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab193ff39adc61561992959f736448529">AABBGeomTraits_3::Do_intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to detect intersections between two geometric objects. </p>
+<p>Provides the following operators:</p>
+<p><span class="tt">bool operator()(const Query&amp; q, const Bbox_3&amp; b)</span>,</p>
+<p><span class="tt">bool operator()(const Query&amp; q, const Primitive::Datum&amp; d)</span>,</p>
+<p><span class="tt">bool operator()(const Sphere_3&amp; s, const Bbox_3&amp; b)</span>.</p>
+<p>The operator returns <span class="tt">true</span> iff there is an intersection. </p>
+
+</div>
+</div>
+<a id="aa644b785334626d4c7d6e42b157eba2f" name="aa644b785334626d4c7d6e42b157eba2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa644b785334626d4c7d6e42b157eba2f">◆ </a></span>Equal_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa644b785334626d4c7d6e42b157eba2f">AABBGeomTraits_3::Equal_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span> is equal to <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="aafbe54e0f0bc1c235afc5b8b49f02e0c" name="aafbe54e0f0bc1c235afc5b8b49f02e0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">◆ </a></span>Intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">AABBGeomTraits_3::Intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to construct the intersection between two geometric objects. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">return_type operator()(const Query&amp; q, const Primitive::Datum&amp; d)</span>,</p>
+<p>which computes the intersection between <span class="tt">q</span> and <span class="tt">d</span>. The type of the returned object must be a <span class="tt">std::optional</span> of a <span class="tt">std::variant</span> of the possible intersection types. </p>
+
+</div>
+</div>
+<a id="ad68a0d17c85e2973914978022d372ac0" name="ad68a0d17c85e2973914978022d372ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68a0d17c85e2973914978022d372ac0">◆ </a></span>Less_x_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ad68a0d17c85e2973914978022d372ac0">AABBGeomTraits_3::Less_x_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the x-coordinates of two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff the x-coordinate of <span class="tt">p</span> is smaller than the x-coordinate of <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="a6f4f640815bcbaec41c25654c847aed3" name="a6f4f640815bcbaec41c25654c847aed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f4f640815bcbaec41c25654c847aed3">◆ </a></span>Less_y_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a6f4f640815bcbaec41c25654c847aed3">AABBGeomTraits_3::Less_y_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the y-coordinates of two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff the y-coordinate of <span class="tt">p</span> is smaller than the y-coordinate of <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ab52fd1b5aba4627d8391af9d1d0f13f8" name="ab52fd1b5aba4627d8391af9d1d0f13f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52fd1b5aba4627d8391af9d1d0f13f8">◆ </a></span>Less_z_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8">AABBGeomTraits_3::Less_z_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the z-coordinates of two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff the z-coordinate of <span class="tt">p</span> is smaller than the z-coordinate of <span class="tt">q</span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classAABBGeomTraits__3.html">AABBGeomTraits_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/AABBGeomTraits_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classAABBGeomTraits__3.html" title="The concept AABBGeomTraits_3 defines the requirements for the first template parameter of the class C...">AABBGeomTraits_3</a></span> defines the requirements for the first template parameter of the class <span class="tt"><a class="el" href="classCGAL_1_1AABB__traits__3.html" title="This traits class handles any type of 3D geometric primitives provided that the proper intersection t...">CGAL::AABB_traits_3</a>&lt;<a class="el" href="classAABBGeomTraits__3.html" title="The concept AABBGeomTraits_3 defines the requirements for the first template parameter of the class C...">AABBGeomTraits_3</a>, <a class="el" href="classAABBPrimitive.html" title="The concept AABBPrimitive describes the requirements for the primitives stored in the AABB tree data ...">AABBPrimitive</a>&gt;</span>. It provides predicates and constructors to detect and compute intersections between query objects and the primitives stored in the AABB tree. In addition, it contains predicates and constructors to compute distances between a point query and the primitives stored in the AABB tree. </p>
+  <dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Spatial_searching/classSearchGeomTraits__3.html">SearchGeomTraits_3</a></code> </dd>
+</dl>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd>All models of the concept <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classCGAL_1_1AABB__traits__3.html" title="This traits class handles any type of 3D geometric primitives provided that the proper intersection t...">CGAL::AABB_traits_3</a>&lt;<a class="el" href="classAABBGeomTraits__3.html" title="The concept AABBGeomTraits_3 defines the requirements for the first template parameter of the class C...">AABBGeomTraits_3</a>,<a class="el" href="classAABBPrimitive.html" title="The concept AABBPrimitive describes the requirements for the primitives stored in the AABB tree data ...">AABBPrimitive</a>&gt;</span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classCGAL_1_1AABB__tree.html" title="Static data structure for efficient intersection and distance computations in 2D and 3D.">CGAL::AABB_tree</a>&lt;<a class="el" href="classAABBTraits.html" title="The concept AABBTraits provides the geometric primitive types and methods for the class CGAL::AABB_tr...">AABBTraits</a>&gt;</span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classAABBPrimitive.html" title="The concept AABBPrimitive describes the requirements for the primitives stored in the AABB tree data ...">AABBPrimitive</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:ab193ff39adc61561992959f736448529" id="r_ab193ff39adc61561992959f736448529"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab193ff39adc61561992959f736448529">Do_intersect_3</a></td></tr>
+<tr class="memdesc:ab193ff39adc61561992959f736448529"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to detect intersections between two geometric objects.  <br></td></tr>
+<tr class="memitem:aafbe54e0f0bc1c235afc5b8b49f02e0c" id="r_aafbe54e0f0bc1c235afc5b8b49f02e0c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">Intersect_3</a></td></tr>
+<tr class="memdesc:aafbe54e0f0bc1c235afc5b8b49f02e0c"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to construct the intersection between two geometric objects.  <br></td></tr>
+<tr class="memitem:a2515ec65f014c715e49665795a5a8ba7" id="r_a2515ec65f014c715e49665795a5a8ba7"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a2515ec65f014c715e49665795a5a8ba7">Construct_sphere_3</a></td></tr>
+<tr class="memdesc:a2515ec65f014c715e49665795a5a8ba7"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to construct the sphere specified by its center and squared radius.  <br></td></tr>
+<tr class="memitem:ada62178b4d1f6cec6ff8dc513377f44d" id="r_ada62178b4d1f6cec6ff8dc513377f44d"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ada62178b4d1f6cec6ff8dc513377f44d">Construct_projected_point_3</a></td></tr>
+<tr class="memdesc:ada62178b4d1f6cec6ff8dc513377f44d"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compute the point on a geometric primitive which is closest from a query point.  <br></td></tr>
+<tr class="memitem:a3cf9e2e5a42e49c1f5bb9cf879b2c235" id="r_a3cf9e2e5a42e49c1f5bb9cf879b2c235"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">Compare_distance_3</a></td></tr>
+<tr class="memdesc:a3cf9e2e5a42e49c1f5bb9cf879b2c235"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the distance of two points wrt a third one.  <br></td></tr>
+<tr class="memitem:ab9f0782b01f8a4324dce63ca71f8cc7c" id="r_ab9f0782b01f8a4324dce63ca71f8cc7c"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab9f0782b01f8a4324dce63ca71f8cc7c">Compute_squared_distance_3</a></td></tr>
+<tr class="memdesc:ab9f0782b01f8a4324dce63ca71f8cc7c"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compute the squared distance between two points.  <br></td></tr>
+<tr class="memitem:ad68a0d17c85e2973914978022d372ac0" id="r_ad68a0d17c85e2973914978022d372ac0"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ad68a0d17c85e2973914978022d372ac0">Less_x_3</a></td></tr>
+<tr class="memdesc:ad68a0d17c85e2973914978022d372ac0"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the x-coordinates of two points.  <br></td></tr>
+<tr class="memitem:a6f4f640815bcbaec41c25654c847aed3" id="r_a6f4f640815bcbaec41c25654c847aed3"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a6f4f640815bcbaec41c25654c847aed3">Less_y_3</a></td></tr>
+<tr class="memdesc:a6f4f640815bcbaec41c25654c847aed3"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the y-coordinates of two points.  <br></td></tr>
+<tr class="memitem:ab52fd1b5aba4627d8391af9d1d0f13f8" id="r_ab52fd1b5aba4627d8391af9d1d0f13f8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8">Less_z_3</a></td></tr>
+<tr class="memdesc:ab52fd1b5aba4627d8391af9d1d0f13f8"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare the z-coordinates of two points.  <br></td></tr>
+<tr class="memitem:aa644b785334626d4c7d6e42b157eba2f" id="r_aa644b785334626d4c7d6e42b157eba2f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa644b785334626d4c7d6e42b157eba2f">Equal_3</a></td></tr>
+<tr class="memdesc:aa644b785334626d4c7d6e42b157eba2f"><td class="mdescLeft"> </td><td class="mdescRight">A functor object to compare two points.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr class="memitem:aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7" id="r_aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7"><td class="memItemLeft"><a id="aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7" name="aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7"></a>
+<a class="el" href="#ab193ff39adc61561992959f736448529">Do_intersect_3</a> </td><td class="memItemRight"><b>do_intersect_3_object</b> ()</td></tr>
+<tr class="memdesc:aa2f0e1fb3bb4dc8b52bba8ab5e24aaa7"><td class="mdescLeft"> </td><td class="mdescRight">returns the intersection detection predicate. <br></td></tr>
+<tr class="memitem:a586d0282312c3b49c937e222f0085018" id="r_a586d0282312c3b49c937e222f0085018"><td class="memItemLeft"><a id="a586d0282312c3b49c937e222f0085018" name="a586d0282312c3b49c937e222f0085018"></a>
+<a class="el" href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">Intersect_3</a> </td><td class="memItemRight"><b>intersect_3_object</b> ()</td></tr>
+<tr class="memdesc:a586d0282312c3b49c937e222f0085018"><td class="mdescLeft"> </td><td class="mdescRight">returns the intersection constructor. <br></td></tr>
+<tr class="memitem:a560d181363718c72590c95bd1c2ea48e" id="r_a560d181363718c72590c95bd1c2ea48e"><td class="memItemLeft"><a id="a560d181363718c72590c95bd1c2ea48e" name="a560d181363718c72590c95bd1c2ea48e"></a>
+<a class="el" href="#a2515ec65f014c715e49665795a5a8ba7">Construct_sphere_3</a> </td><td class="memItemRight"><b>construct_sphere_3_object</b> ()</td></tr>
+<tr class="memdesc:a560d181363718c72590c95bd1c2ea48e"><td class="mdescLeft"> </td><td class="mdescRight">returns the sphere constructor. <br></td></tr>
+<tr class="memitem:af692ef123f5132781d4d4110166fff88" id="r_af692ef123f5132781d4d4110166fff88"><td class="memItemLeft"><a id="af692ef123f5132781d4d4110166fff88" name="af692ef123f5132781d4d4110166fff88"></a>
+<a class="el" href="#ada62178b4d1f6cec6ff8dc513377f44d">Construct_projected_point_3</a> </td><td class="memItemRight"><b>construct_projected_point_3_object</b> ()</td></tr>
+<tr class="memdesc:af692ef123f5132781d4d4110166fff88"><td class="mdescLeft"> </td><td class="mdescRight">returns the closest point constructor. <br></td></tr>
+<tr class="memitem:ac5c374cffbbdacb66989853d37c090ea" id="r_ac5c374cffbbdacb66989853d37c090ea"><td class="memItemLeft"><a id="ac5c374cffbbdacb66989853d37c090ea" name="ac5c374cffbbdacb66989853d37c090ea"></a>
+<a class="el" href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">Compare_distance_3</a> </td><td class="memItemRight"><b>compare_distance_3_object</b> ()</td></tr>
+<tr class="memdesc:ac5c374cffbbdacb66989853d37c090ea"><td class="mdescLeft"> </td><td class="mdescRight">returns the compare distance predicate. <br></td></tr>
+<tr class="memitem:a56b2ac619d405bb45f902d1c7d59cb2c" id="r_a56b2ac619d405bb45f902d1c7d59cb2c"><td class="memItemLeft"><a id="a56b2ac619d405bb45f902d1c7d59cb2c" name="a56b2ac619d405bb45f902d1c7d59cb2c"></a>
+<a class="el" href="#ab9f0782b01f8a4324dce63ca71f8cc7c">Compute_squared_distance_3</a> </td><td class="memItemRight"><b>compute_squared_distance_3_object</b> ()</td></tr>
+<tr class="memdesc:a56b2ac619d405bb45f902d1c7d59cb2c"><td class="mdescLeft"> </td><td class="mdescRight">returns the squared distance functor. <br></td></tr>
+<tr class="memitem:a0f4593598f9150dbc38be616c57e952e" id="r_a0f4593598f9150dbc38be616c57e952e"><td class="memItemLeft"><a id="a0f4593598f9150dbc38be616c57e952e" name="a0f4593598f9150dbc38be616c57e952e"></a>
+<a class="el" href="#ad68a0d17c85e2973914978022d372ac0">Less_x_3</a> </td><td class="memItemRight"><b>less_x_3_object</b> ()</td></tr>
+<tr class="memdesc:a0f4593598f9150dbc38be616c57e952e"><td class="mdescLeft"> </td><td class="mdescRight">returns the <span class="tt"><a class="el" href="#ad68a0d17c85e2973914978022d372ac0" title="A functor object to compare the x-coordinates of two points.">Less_x_3</a></span> predicate. <br></td></tr>
+<tr class="memitem:ae6f047509ae0f00e99796b4681991c3e" id="r_ae6f047509ae0f00e99796b4681991c3e"><td class="memItemLeft"><a id="ae6f047509ae0f00e99796b4681991c3e" name="ae6f047509ae0f00e99796b4681991c3e"></a>
+<a class="el" href="#a6f4f640815bcbaec41c25654c847aed3">Less_y_3</a> </td><td class="memItemRight"><b>less_y_3_object</b> ()</td></tr>
+<tr class="memdesc:ae6f047509ae0f00e99796b4681991c3e"><td class="mdescLeft"> </td><td class="mdescRight">returns the <span class="tt"><a class="el" href="#a6f4f640815bcbaec41c25654c847aed3" title="A functor object to compare the y-coordinates of two points.">Less_y_3</a></span> predicate. <br></td></tr>
+<tr class="memitem:aa1d8de43e8a6422bc024be54d14fab14" id="r_aa1d8de43e8a6422bc024be54d14fab14"><td class="memItemLeft"><a id="aa1d8de43e8a6422bc024be54d14fab14" name="aa1d8de43e8a6422bc024be54d14fab14"></a>
+<a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8">Less_z_3</a> </td><td class="memItemRight"><b>less_z_3_object</b> ()</td></tr>
+<tr class="memdesc:aa1d8de43e8a6422bc024be54d14fab14"><td class="mdescLeft"> </td><td class="mdescRight">returns the <span class="tt"><a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8" title="A functor object to compare the z-coordinates of two points.">Less_z_3</a></span> predicate. <br></td></tr>
+<tr class="memitem:a139efd8478e1228bed72e21af8965bd1" id="r_a139efd8478e1228bed72e21af8965bd1"><td class="memItemLeft"><a id="a139efd8478e1228bed72e21af8965bd1" name="a139efd8478e1228bed72e21af8965bd1"></a>
+<a class="el" href="#aa644b785334626d4c7d6e42b157eba2f">Equal_3</a> </td><td class="memItemRight"><b>equal_3_object</b> ()</td></tr>
+<tr class="memdesc:a139efd8478e1228bed72e21af8965bd1"><td class="mdescLeft"> </td><td class="mdescRight">returns the equal predicate. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a3cf9e2e5a42e49c1f5bb9cf879b2c235" name="a3cf9e2e5a42e49c1f5bb9cf879b2c235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">◆ </a></span>Compare_distance_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3cf9e2e5a42e49c1f5bb9cf879b2c235">AABBGeomTraits_3::Compare_distance_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the distance of two points wrt a third one. </p>
+<p>Provides the operator:</p>
+<p><span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga84351c7e66be00efccd4ab1a61070469">CGAL::Comparison_result</a> operator()(const Point_3&amp; p1, const Point_3&amp; p2, const Point_3&amp; p3)</span>,</p>
+<p>which compares the distance between <span class="tt">p1</span> and <span class="tt">p2</span>, to the distance between <span class="tt">p1</span> and <span class="tt">p3</span>. </p>
+
+</div>
+</div>
+<a id="ab9f0782b01f8a4324dce63ca71f8cc7c" name="ab9f0782b01f8a4324dce63ca71f8cc7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f0782b01f8a4324dce63ca71f8cc7c">◆ </a></span>Compute_squared_distance_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab9f0782b01f8a4324dce63ca71f8cc7c">AABBGeomTraits_3::Compute_squared_distance_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compute the squared distance between two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">FT operator()(const Point_3&amp; p, const Point_3&amp; q),</span></p>
+<p>which returns the squared distance between <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ada62178b4d1f6cec6ff8dc513377f44d" name="ada62178b4d1f6cec6ff8dc513377f44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada62178b4d1f6cec6ff8dc513377f44d">◆ </a></span>Construct_projected_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ada62178b4d1f6cec6ff8dc513377f44d">AABBGeomTraits_3::Construct_projected_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compute the point on a geometric primitive which is closest from a query point. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">Point_3 operator()(const Primitive::Datum&amp; d, const Point_3&amp; p)</span>,</p>
+<p>which returns the point on <span class="tt">d</span> that is closest to <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="a2515ec65f014c715e49665795a5a8ba7" name="a2515ec65f014c715e49665795a5a8ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2515ec65f014c715e49665795a5a8ba7">◆ </a></span>Construct_sphere_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a2515ec65f014c715e49665795a5a8ba7">AABBGeomTraits_3::Construct_sphere_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to construct the sphere specified by its center and squared radius. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">Sphere_3 operator()(const Point_3&amp; p, const FT &amp; sr)</span>,</p>
+<p>which returns the sphere centered at <span class="tt">p</span> with <span class="tt">sr</span> as squared radius. </p>
+
+</div>
+</div>
+<a id="ab193ff39adc61561992959f736448529" name="ab193ff39adc61561992959f736448529"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab193ff39adc61561992959f736448529">◆ </a></span>Do_intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab193ff39adc61561992959f736448529">AABBGeomTraits_3::Do_intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to detect intersections between two geometric objects. </p>
+<p>Provides the following operators:</p>
+<p><span class="tt">bool operator()(const Query&amp; q, const Bbox_3&amp; b)</span>,</p>
+<p><span class="tt">bool operator()(const Query&amp; q, const Primitive::Datum&amp; d)</span>,</p>
+<p><span class="tt">bool operator()(const Sphere_3&amp; s, const Bbox_3&amp; b)</span>.</p>
+<p>The operator returns <span class="tt">true</span> iff there is an intersection. </p>
+
+</div>
+</div>
+<a id="aa644b785334626d4c7d6e42b157eba2f" name="aa644b785334626d4c7d6e42b157eba2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa644b785334626d4c7d6e42b157eba2f">◆ </a></span>Equal_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa644b785334626d4c7d6e42b157eba2f">AABBGeomTraits_3::Equal_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span> is equal to <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="aafbe54e0f0bc1c235afc5b8b49f02e0c" name="aafbe54e0f0bc1c235afc5b8b49f02e0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">◆ </a></span>Intersect_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aafbe54e0f0bc1c235afc5b8b49f02e0c">AABBGeomTraits_3::Intersect_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to construct the intersection between two geometric objects. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">return_type operator()(const Query&amp; q, const Primitive::Datum&amp; d)</span>,</p>
+<p>which computes the intersection between <span class="tt">q</span> and <span class="tt">d</span>. The type of the returned object must be a <span class="tt">std::optional</span> of a <span class="tt">std::variant</span> of the possible intersection types. </p>
+
+</div>
+</div>
+<a id="ad68a0d17c85e2973914978022d372ac0" name="ad68a0d17c85e2973914978022d372ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68a0d17c85e2973914978022d372ac0">◆ </a></span>Less_x_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ad68a0d17c85e2973914978022d372ac0">AABBGeomTraits_3::Less_x_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the x-coordinates of two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff the x-coordinate of <span class="tt">p</span> is smaller than the x-coordinate of <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="a6f4f640815bcbaec41c25654c847aed3" name="a6f4f640815bcbaec41c25654c847aed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f4f640815bcbaec41c25654c847aed3">◆ </a></span>Less_y_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a6f4f640815bcbaec41c25654c847aed3">AABBGeomTraits_3::Less_y_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the y-coordinates of two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff the y-coordinate of <span class="tt">p</span> is smaller than the y-coordinate of <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ab52fd1b5aba4627d8391af9d1d0f13f8" name="ab52fd1b5aba4627d8391af9d1d0f13f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52fd1b5aba4627d8391af9d1d0f13f8">◆ </a></span>Less_z_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab52fd1b5aba4627d8391af9d1d0f13f8">AABBGeomTraits_3::Less_z_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A functor object to compare the z-coordinates of two points. </p>
+<p>Provides the operator:</p>
+<p><span class="tt">bool operator()(const Point_3&amp; p, const Point_3&amp; q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff the z-coordinate of <span class="tt">p</span> is smaller than the z-coordinate of <span class="tt">q</span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classAABBGeomTraits__3.html">AABBGeomTraits_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
