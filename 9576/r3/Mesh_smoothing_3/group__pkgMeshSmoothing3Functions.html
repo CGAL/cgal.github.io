@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Mesh_smoothing_3/group__pkgMeshSmoothing3Functions.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 3D Mesh Volume Smoothing: Functions</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 3D Mesh Volume Smoothing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('group__pkgMeshSmoothing3Functions.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> |
+<a href="#enum-members">Enumerations</a> |
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Functions <div class="ingroups"><a class="el" href="group__PkgMeshSmoothing3Ref.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader"> </h2>
+<div class="textblock"></div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:CGAL_3A_3AMesh_5Fsmoothing_5F3_3A_3ASmoothing_5Fstatus" id="r_CGAL_3A_3AMesh_5Fsmoothing_5F3_3A_3ASmoothing_5Fstatus"><td class="memItemLeft">struct  </td><td class="memItemRight"><a class="el" href="structCGAL_1_1Mesh__smoothing__3_1_1Smoothing__status.html">CGAL::Mesh_smoothing_3::Smoothing_status</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">Status of the mesh smoothing process.  <a href="structCGAL_1_1Mesh__smoothing__3_1_1Smoothing__status.html#details">More...</a><br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga4117be82c7f8a1d6f9ca7aa44c58c2fc" id="r_ga4117be82c7f8a1d6f9ca7aa44c58c2fc"><td class="memItemLeft">enum class  </td><td class="memItemRight"><a class="el" href="#ga4117be82c7f8a1d6f9ca7aa44c58c2fc">CGAL::Mesh_smoothing_3::Smoothing_return_code</a> { <br>
+  <a class="el" href="#gga4117be82c7f8a1d6f9ca7aa44c58c2fca9dbae8f041ad10f927eadf87ec930f9b">Smoothing_return_code::ALL_VERTICES_FROZEN</a>
+, <a class="el" href="#gga4117be82c7f8a1d6f9ca7aa44c58c2fcaf6f76090a79ea4cdefcb79a66367c57d">Smoothing_return_code::CONVERGENCE_REACHED</a>
+, <a class="el" href="#gga4117be82c7f8a1d6f9ca7aa44c58c2fca5afaf45bc4c02208d502d9c0c26d8287">Smoothing_return_code::MAX_ITERATIONS_REACHED</a>
+, <a class="el" href="#gga4117be82c7f8a1d6f9ca7aa44c58c2fca45dcfb20ad93383f193205f339843514">Smoothing_return_code::MAX_NUMBER_OF_METRIC_EVALUATIONS_REACHED</a>
+, <br>
+  <a class="el" href="#gga4117be82c7f8a1d6f9ca7aa44c58c2fcae3568e8a8fd0c82cfaf5111383504f10">Smoothing_return_code::TIME_LIMIT_REACHED</a>
+, <a class="el" href="#gga4117be82c7f8a1d6f9ca7aa44c58c2fca1a848d581c73fde29f9c6c6f73df9449">Smoothing_return_code::USER_ABORT</a>
+<br>
+ }</td></tr>
+<tr class="memdesc:ga4117be82c7f8a1d6f9ca7aa44c58c2fc"><td class="mdescLeft"> </td><td class="mdescRight">Return code of the mesh smoothing.  <a href="#ga4117be82c7f8a1d6f9ca7aa44c58c2fc">More...</a><br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga9098912c1e9a1917a98011489d6193ba" id="r_ga9098912c1e9a1917a98011489d6193ba"><td class="memTemplParams" colspan="2">template&lt;typename C3t3, typename CTS, typename NamedParameters = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga9098912c1e9a1917a98011489d6193ba template"><td class="memItemLeft"><a class="el" href="structCGAL_1_1Mesh__smoothing__3_1_1Smoothing__status.html">Mesh_smoothing_3::Smoothing_status</a> </td><td class="memItemRight"><a class="el" href="#ga9098912c1e9a1917a98011489d6193ba">CGAL::boundary_aware_mesh_smoothing</a> (C3t3 &amp;c3t3, CTS const &amp;cts, NamedParameters const &amp;np=parameters::default_values())</td></tr>
+<tr class="memdesc:ga9098912c1e9a1917a98011489d6193ba"><td class="mdescLeft"> </td><td class="mdescRight">Smooth a tetrahedral mesh while preserving the boundary and curve features.  <br></td></tr>
+</table>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga4117be82c7f8a1d6f9ca7aa44c58c2fc" name="ga4117be82c7f8a1d6f9ca7aa44c58c2fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4117be82c7f8a1d6f9ca7aa44c58c2fc">◆ </a></span>Smoothing_return_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga4117be82c7f8a1d6f9ca7aa44c58c2fc">CGAL::Mesh_smoothing_3::Smoothing_return_code</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Mesh_smoothing_3/Smoothing_status.h&gt;</code></p>
+
+<p>Return code of the mesh smoothing. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga4117be82c7f8a1d6f9ca7aa44c58c2fca9dbae8f041ad10f927eadf87ec930f9b" name="gga4117be82c7f8a1d6f9ca7aa44c58c2fca9dbae8f041ad10f927eadf87ec930f9b"></a>ALL_VERTICES_FROZEN </td><td class="fielddoc"><p>All vertices are frozen. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4117be82c7f8a1d6f9ca7aa44c58c2fcaf6f76090a79ea4cdefcb79a66367c57d" name="gga4117be82c7f8a1d6f9ca7aa44c58c2fcaf6f76090a79ea4cdefcb79a66367c57d"></a>CONVERGENCE_REACHED </td><td class="fielddoc"><p>Convergence reached. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4117be82c7f8a1d6f9ca7aa44c58c2fca5afaf45bc4c02208d502d9c0c26d8287" name="gga4117be82c7f8a1d6f9ca7aa44c58c2fca5afaf45bc4c02208d502d9c0c26d8287"></a>MAX_ITERATIONS_REACHED </td><td class="fielddoc"><p>Maximum number of iterations reached. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4117be82c7f8a1d6f9ca7aa44c58c2fca45dcfb20ad93383f193205f339843514" name="gga4117be82c7f8a1d6f9ca7aa44c58c2fca45dcfb20ad93383f193205f339843514"></a>MAX_NUMBER_OF_METRIC_EVALUATIONS_REACHED </td><td class="fielddoc"><p>Maximum number of metric evaluations reached. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4117be82c7f8a1d6f9ca7aa44c58c2fcae3568e8a8fd0c82cfaf5111383504f10" name="gga4117be82c7f8a1d6f9ca7aa44c58c2fcae3568e8a8fd0c82cfaf5111383504f10"></a>TIME_LIMIT_REACHED </td><td class="fielddoc"><p>Time limit reached. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4117be82c7f8a1d6f9ca7aa44c58c2fca1a848d581c73fde29f9c6c6f73df9449" name="gga4117be82c7f8a1d6f9ca7aa44c58c2fca1a848d581c73fde29f9c6c6f73df9449"></a>USER_ABORT </td><td class="fielddoc"><p>Smoothing was aborted by the user. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ga9098912c1e9a1917a98011489d6193ba" name="ga9098912c1e9a1917a98011489d6193ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9098912c1e9a1917a98011489d6193ba">◆ </a></span>boundary_aware_mesh_smoothing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C3t3, typename CTS, typename NamedParameters = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCGAL_1_1Mesh__smoothing__3_1_1Smoothing__status.html">Mesh_smoothing_3::Smoothing_status</a> CGAL::boundary_aware_mesh_smoothing </td>
+          <td>(</td>
+          <td class="paramtype">C3t3 &amp;</td>          <td class="paramname"><span class="paramname"><em>c3t3</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CTS const &amp;</td>          <td class="paramname"><span class="paramname"><em>cts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NamedParameters const &amp;</td>          <td class="paramname"><span class="paramname"><em>np</em></span><span class="paramdefsep"> = </span><span class="paramdefval">parameters::default_values()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Mesh_smoothing_3/boundary_aware_mesh_smoothing.h&gt;</code></p>
+
+<p>Smooth a tetrahedral mesh while preserving the boundary and curve features. </p>
+<p>This function takes as input a <span class="tt"><a class="elRef" href="../SMDS_3/classCGAL_1_1Mesh__complex__3__in__triangulation__3.html">Mesh_complex_3_in_triangulation_3</a></span> and will iteratively move its vertices to improve the quality of the tetrahedra while preserving (softly) the boundary and curve features through projection queries. Vertices will stay close to their original entity (surface patch or curve). Corners are locked on their original position. The algorithm will recover curvature discontinuities (sharp features) in a patch, and is capable of recovering inverted tetrahedra in the mesh. An input mesh with only positively oriented elements is guaranteed to remain so during the smoothing procedure.</p>
+<dl class="section warning"><dt>Warning</dt><dd>This function updates vertex positions without modifying connectivity, and therefore does not preserve Delaunay properties.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">C3t3</td><td>model of <span class="tt"><a class="elRef" href="../SMDS_3/classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a></span> </td></tr>
+    <tr><td class="paramname">CTS</td><td>model of <span class="tt"><a class="el" href="classConstructTangentSpace.html" title="The concept ConstructTangentSpace describes projection of mesh facets on target surfaces and mesh edg...">ConstructTangentSpace</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c3t3</td><td>tetrahedral mesh to smooth. </td></tr>
+    <tr><td class="paramname">cts</td><td>support to re-project faces and edges on their respective patches and curves. </td></tr>
+    <tr><td class="paramname">np</td><td>optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>number_of_iterations</b> </button> <div class="content"><ul>
+<li>
+Maximum nb of iterations of the smoothing algorithm . Algorithm will stop before if it reaches convergence. Untangling usually requires more iterations (up to thousands) for hard cases.  </li>
+<li>
+<b>Type: </b><span class="tt">unsigned int</span> </li>
+<li>
+<b>Default: </b><span class="tt">100</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>verbose</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span>, the function prints information about the smoothing process to the standard output. </li>
+<li>
+<b>Type: </b><span class="tt">bool</span> </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>maximum_running_time</b> </button> <div class="content"><ul>
+<li>
+Maximum allowed time for the smoothing process in seconds. </li>
+<li>
+<b>Type: </b><span class="tt">double</span> </li>
+<li>
+<b>Default: </b><span class="tt">0.</span> </li>
+<li>
+<b>Extra: </b>Pre-processing will not be stopped. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>max_number_of_evaluations</b> </button> <div class="content"><ul>
+<li>
+Maximum number of quality metric evaluations for smoothing. </li>
+<li>
+<b>Type: </b><span class="tt">unsigned int</span> </li>
+<li>
+<b>Default: </b><span class="tt">0</span> </li>
+<li>
+<b>Extra: </b>Strongly correlated to running time but will scale linearly with mesh size. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>vertex_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each vertex of the triangulation in the <span class="tt">c3t3</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">C3t3::Vertex_handle</span> as key type and <span class="tt">bool</span> as value type. It must be default constructible. </li>
+<li>
+<b>Default: </b>a default property map where no vertex is constrained </li>
+<li>
+<b>Extra: </b>A constrained vertex will not be moved by smoothing. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of the triangulation in the <span class="tt">c3t3</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">std::pair&lt;C3t3::Vertex_handle, C3t3::Vertex_handle&gt;</span> as key type and <span class="tt">bool</span> as value type. It must be default constructible. </li>
+<li>
+<b>Default: </b>a default property map where no edge is constrained </li>
+<li>
+<b>Extra: </b>Vertices of a constrained edge will not be moved by the smoothing. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>facet_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each facet of the triangulation in the <span class="tt">c3t3</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">C3t3::Facet</span> as key type and <span class="tt">bool</span> as value type. It must be default constructible. </li>
+<li>
+<b>Default: </b>a default property map where no facet is constrained </li>
+<li>
+<b>Extra: </b>Vertices of a constrained facet will not be moved by smoothing. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <span class="tt"><a class="el" href="structCGAL_1_1Mesh__smoothing__3_1_1Smoothing__status.html" title="Status of the mesh smoothing process.">Mesh_smoothing_3::Smoothing_status</a></span> object containing information about the smoothing process and convergence. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Mesh_smoothing_3_2c3t3_smooth_8cpp-example.html#a6">Mesh_smoothing_3/c3t3_smooth.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>
