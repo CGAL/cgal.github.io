@@ -1,0 +1,4 @@
+var classCGAL_1_1Mesh__smoothing__3_1_1Polyhedral__mesh__domain__with__features__projector =
+[
+    [ "Polyhedral_mesh_domain_with_features_projector", "classCGAL_1_1Mesh__smoothing__3_1_1Polyhedral__mesh__domain__with__features__projector.html#af4dc00a284b25318be773c8bf4894799", null ]
+];

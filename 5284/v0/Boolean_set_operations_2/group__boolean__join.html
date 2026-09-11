@@ -1,0 +1,1841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Boolean_set_operations_2/group__boolean__join.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.4 - 2D Regularized Boolean Set-Operations: Union Functions</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.4 - 2D Regularized Boolean Set-Operations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('group__boolean__join.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Union Functions<div class="ingroups"><a class="el" href="group__PkgBooleanSetOperations2Ref.html">2D Regularized Boolean Set-Operations Reference</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p><a class="anchor" id="ref_bso_union"></a> There are several overloaded function templates called <code><a class="el" href="group__boolean__join.html#gaa855b87511bd4d5a326c21a87f33137e" title="computes the union of two polygons. ">join()</a></code> that compute the <em>union</em> of two polygons.</p>
+<p>A function template in this group has one of the following signatures: </p><table cellpadding="3" border="0">
+<tr>
+<td align="right"><b>1.1.</b></td><td><code>bool join(const Type1&amp; pgn1, const Type2&amp; pgn2, Type3&amp; res, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>1.2.</b></td><td><code>bool join(const Type1&amp; pgn1, const Type2&amp; pgn2, Type3&amp; res);</code> </td></tr>
+<tr>
+<td align="right"><b>2.</b></td><td><code>bool join(const Type1&amp; pgn1, const Type2&amp; pgn2, Type3&amp; res, const GpsTraits&amp; traits);</code> </td></tr>
+</table>
+<p>There are also function templates that accept one or two ranges of input polygons: </p><table cellpadding="3" border="0">
+<tr>
+<td align="right"><b>3.1.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> join(<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>3.2.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__join.html#ga9ce6d93e91f21ba1c8ef0dab63e31967" title="Given a range of polygons (resp. ">join(InputIterator begin, InputIterator end, OutputIterator oi)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>4.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__join.html#ga0d50dd316b6ae2323dbf4af4ea8dfd05" title="Given a range of polygons (resp. ">join(InputIterator begin, InputIterator end, OutputIterator oi, const GpsTraits&amp; traits)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>5.1.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> join(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>5.2.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__join.html#ga60b6bd425ca671ccdcb48ae8d3ba08e4" title="Given a range of polygons (resp. ">join(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, OutputIterator oi)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>6.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__join.html#ga5f5f4025f3f65433aaeedb2e79699ac5" title="Given a range of polygons (resp. ">join(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, OutputIterator oi, const GpsTraits&amp; traits)</a>;</code> </td></tr>
+</table>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the input polygons are treated as cyclic sequences of single ( \(x\)-monotone) segments or as cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygons bounded by polylines before the operation is actually performed. Then, the resulting general polygon with holes is converted back to a standard polygon. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, the input polygons are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information.</td></tr>
+  </table>
+  </dd>
+</dl>
+<ul>
+<li>The types <code>Type1</code> and <code>Type2</code> of the parameters and of <code>InputIterator1::value_type</code> and <code>InputIterator2::value_type</code> must be convertible to the types specified in a row in the table below, respectively. The 3rd column specifies the corresponding dereference type of the output iterator.</li>
+<li>The types that apply to signatures (<b>1.1.</b>) and (<b>5.1.</b>) above are restricted to those listed in rows <b>1–4</b> in the table below.</li>
+<li>The types that apply to signatures (<b>1.2.</b>) and (<b>5.2.</b>) above are restricted to those listed in rows <b>5–8</b> in the table below.</li>
+<li>The type of <code>InputIterator::value_type</code> in (<b>3.1.</b>) above must be convertible to either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code>.</li>
+<li>The type of <code>InputIterator::value_type</code> in (<b>3.2.</b>) above must be convertible to either <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>.</li>
+</ul>
+<div align="left"> <table cellpadding="3" border="1">
+<tr>
+<th> </th><th><code>Type1</code> </th><th><code>Type2</code> </th><th><code>Type3</code> </th></tr>
+<tr>
+<td><b>1</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>2</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>3</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>4</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>5</b></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>6</b></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>7</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>8</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+</table>
+</div><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1,pgn2</td><td>the input polygons. </td></tr>
+    <tr><td class="paramname">(end,begin)</td><td>a range of input polygons. </td></tr>
+    <tr><td class="paramname">(end1,begin1)</td><td>the first range of input polygons. </td></tr>
+    <tr><td class="paramname">(end2,begin2)</td><td>the second range of input polygons. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. </td></tr>
+    <tr><td class="paramname">traits</td><td>an optional traits object.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__boolean__complement.html"><code>CGAL::Regularized_boolean_operations_2::complement()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__do__intersect.html"><code>CGAL::Regularized_boolean_operations_2::do_intersect()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__intersection.html"><code>CGAL::Regularized_boolean_operations_2::intersection()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__difference.html"><code>CGAL::Regularized_boolean_operations_2::difference()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__symmetric__difference.html"><code>CGAL::Regularized_boolean_operations_2::symmetric_difference()</code> </a> </dd></dl>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members" id="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gaa855b87511bd4d5a326c21a87f33137e"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:gaa855b87511bd4d5a326c21a87f33137e"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gaa855b87511bd4d5a326c21a87f33137e">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:gaa855b87511bd4d5a326c21a87f33137e"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#gaa855b87511bd4d5a326c21a87f33137e">More...</a><br /></td></tr>
+<tr class="separator:gaa855b87511bd4d5a326c21a87f33137e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gafc29e295a307a591dc9eecc8cc0363c8"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gafc29e295a307a591dc9eecc8cc0363c8"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gafc29e295a307a591dc9eecc8cc0363c8">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gafc29e295a307a591dc9eecc8cc0363c8"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#gafc29e295a307a591dc9eecc8cc0363c8">More...</a><br /></td></tr>
+<tr class="separator:gafc29e295a307a591dc9eecc8cc0363c8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga675ac472e724c236758ffe44882d1836"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:ga675ac472e724c236758ffe44882d1836"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga675ac472e724c236758ffe44882d1836">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:ga675ac472e724c236758ffe44882d1836"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#ga675ac472e724c236758ffe44882d1836">More...</a><br /></td></tr>
+<tr class="separator:ga675ac472e724c236758ffe44882d1836"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga810ab124b3c651e2e196c656b0086adf"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga810ab124b3c651e2e196c656b0086adf"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga810ab124b3c651e2e196c656b0086adf">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga810ab124b3c651e2e196c656b0086adf"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#ga810ab124b3c651e2e196c656b0086adf">More...</a><br /></td></tr>
+<tr class="separator:ga810ab124b3c651e2e196c656b0086adf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae6c7590da031269d78924532048333ec"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:gae6c7590da031269d78924532048333ec"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gae6c7590da031269d78924532048333ec">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:gae6c7590da031269d78924532048333ec"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#gae6c7590da031269d78924532048333ec">More...</a><br /></td></tr>
+<tr class="separator:gae6c7590da031269d78924532048333ec"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga1640ee615984f20be533a90f6dbb10b3"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga1640ee615984f20be533a90f6dbb10b3"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga1640ee615984f20be533a90f6dbb10b3">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga1640ee615984f20be533a90f6dbb10b3"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#ga1640ee615984f20be533a90f6dbb10b3">More...</a><br /></td></tr>
+<tr class="separator:ga1640ee615984f20be533a90f6dbb10b3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaeb9858d17b80b46426186ee08fce0986"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container &gt; </td></tr>
+<tr class="memitem:gaeb9858d17b80b46426186ee08fce0986"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gaeb9858d17b80b46426186ee08fce0986">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:gaeb9858d17b80b46426186ee08fce0986"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons with holes.  <a href="group__boolean__join.html#gaeb9858d17b80b46426186ee08fce0986">More...</a><br /></td></tr>
+<tr class="separator:gaeb9858d17b80b46426186ee08fce0986"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf8c53697e5bda2daee5a0b99ea3b979f"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gaf8c53697e5bda2daee5a0b99ea3b979f"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gaf8c53697e5bda2daee5a0b99ea3b979f">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gaf8c53697e5bda2daee5a0b99ea3b979f"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons with holes.  <a href="group__boolean__join.html#gaf8c53697e5bda2daee5a0b99ea3b979f">More...</a><br /></td></tr>
+<tr class="separator:gaf8c53697e5bda2daee5a0b99ea3b979f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga46ba00f0a04ab1ba9f0024dcbce01845"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits &gt; </td></tr>
+<tr class="memitem:ga46ba00f0a04ab1ba9f0024dcbce01845"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga46ba00f0a04ab1ba9f0024dcbce01845">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:ga46ba00f0a04ab1ba9f0024dcbce01845"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons.  <a href="group__boolean__join.html#ga46ba00f0a04ab1ba9f0024dcbce01845">More...</a><br /></td></tr>
+<tr class="separator:ga46ba00f0a04ab1ba9f0024dcbce01845"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga14e67e81ba9907fcb43bb3f53e835ce2"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits &gt; </td></tr>
+<tr class="memitem:ga14e67e81ba9907fcb43bb3f53e835ce2"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga14e67e81ba9907fcb43bb3f53e835ce2">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:ga14e67e81ba9907fcb43bb3f53e835ce2"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons.  <a href="group__boolean__join.html#ga14e67e81ba9907fcb43bb3f53e835ce2">More...</a><br /></td></tr>
+<tr class="separator:ga14e67e81ba9907fcb43bb3f53e835ce2"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaf5a4dd20a25982d9b62bdf5d30f79580"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits &gt; </td></tr>
+<tr class="memitem:gaf5a4dd20a25982d9b62bdf5d30f79580"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gaf5a4dd20a25982d9b62bdf5d30f79580">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;res)</td></tr>
+<tr class="memdesc:gaf5a4dd20a25982d9b62bdf5d30f79580"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons.  <a href="group__boolean__join.html#gaf5a4dd20a25982d9b62bdf5d30f79580">More...</a><br /></td></tr>
+<tr class="separator:gaf5a4dd20a25982d9b62bdf5d30f79580"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga920309323127459dd0a61e47f7e4ccb1"><td class="memTemplParams" colspan="2">template&lt;typename Polygon &gt; </td></tr>
+<tr class="memitem:ga920309323127459dd0a61e47f7e4ccb1"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga920309323127459dd0a61e47f7e4ccb1">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;res)</td></tr>
+<tr class="memdesc:ga920309323127459dd0a61e47f7e4ccb1"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons with holes.  <a href="group__boolean__join.html#ga920309323127459dd0a61e47f7e4ccb1">More...</a><br /></td></tr>
+<tr class="separator:ga920309323127459dd0a61e47f7e4ccb1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga9ce6d93e91f21ba1c8ef0dab63e31967"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga9ce6d93e91f21ba1c8ef0dab63e31967"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga9ce6d93e91f21ba1c8ef0dab63e31967">CGAL::Regularized_boolean_set_operations_2::join</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga9ce6d93e91f21ba1c8ef0dab63e31967"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__join.html#ga9ce6d93e91f21ba1c8ef0dab63e31967">More...</a><br /></td></tr>
+<tr class="separator:ga9ce6d93e91f21ba1c8ef0dab63e31967"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga765c1d87c9e3dfb00e7bd701e58f504d"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga765c1d87c9e3dfb00e7bd701e58f504d"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga765c1d87c9e3dfb00e7bd701e58f504d">CGAL::Regularized_boolean_set_operations_2::join</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga765c1d87c9e3dfb00e7bd701e58f504d"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__join.html#ga765c1d87c9e3dfb00e7bd701e58f504d">More...</a><br /></td></tr>
+<tr class="separator:ga765c1d87c9e3dfb00e7bd701e58f504d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga60b6bd425ca671ccdcb48ae8d3ba08e4"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga60b6bd425ca671ccdcb48ae8d3ba08e4"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga60b6bd425ca671ccdcb48ae8d3ba08e4">CGAL::Regularized_boolean_set_operations_2::join</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga60b6bd425ca671ccdcb48ae8d3ba08e4"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__join.html#ga60b6bd425ca671ccdcb48ae8d3ba08e4">More...</a><br /></td></tr>
+<tr class="separator:ga60b6bd425ca671ccdcb48ae8d3ba08e4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga6c160b9d869a9e15a68534e62e873509"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga6c160b9d869a9e15a68534e62e873509"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga6c160b9d869a9e15a68534e62e873509">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga6c160b9d869a9e15a68534e62e873509"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#ga6c160b9d869a9e15a68534e62e873509">More...</a><br /></td></tr>
+<tr class="separator:ga6c160b9d869a9e15a68534e62e873509"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga0b4bc1635edfff3292d9369a455b36de"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga0b4bc1635edfff3292d9369a455b36de"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga0b4bc1635edfff3292d9369a455b36de">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga0b4bc1635edfff3292d9369a455b36de"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#ga0b4bc1635edfff3292d9369a455b36de">More...</a><br /></td></tr>
+<tr class="separator:ga0b4bc1635edfff3292d9369a455b36de"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga19bfe9760b91254d00bce3c8e594ccf5"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga19bfe9760b91254d00bce3c8e594ccf5"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga19bfe9760b91254d00bce3c8e594ccf5">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga19bfe9760b91254d00bce3c8e594ccf5"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons.  <a href="group__boolean__join.html#ga19bfe9760b91254d00bce3c8e594ccf5">More...</a><br /></td></tr>
+<tr class="separator:ga19bfe9760b91254d00bce3c8e594ccf5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gac53d5d865add3172e587b781992b3d82"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gac53d5d865add3172e587b781992b3d82"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gac53d5d865add3172e587b781992b3d82">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gac53d5d865add3172e587b781992b3d82"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two polygons with holes.  <a href="group__boolean__join.html#gac53d5d865add3172e587b781992b3d82">More...</a><br /></td></tr>
+<tr class="separator:gac53d5d865add3172e587b781992b3d82"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae4c87fc32065a90f7115f652d2b6a4e3"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gae4c87fc32065a90f7115f652d2b6a4e3"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gae4c87fc32065a90f7115f652d2b6a4e3">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gae4c87fc32065a90f7115f652d2b6a4e3"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons.  <a href="group__boolean__join.html#gae4c87fc32065a90f7115f652d2b6a4e3">More...</a><br /></td></tr>
+<tr class="separator:gae4c87fc32065a90f7115f652d2b6a4e3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2da6a9d94746de548317b5ca0751ae7e"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga2da6a9d94746de548317b5ca0751ae7e"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga2da6a9d94746de548317b5ca0751ae7e">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga2da6a9d94746de548317b5ca0751ae7e"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons.  <a href="group__boolean__join.html#ga2da6a9d94746de548317b5ca0751ae7e">More...</a><br /></td></tr>
+<tr class="separator:ga2da6a9d94746de548317b5ca0751ae7e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad1fee208b3b24a4fc5806c8dfbb4de9c"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gad1fee208b3b24a4fc5806c8dfbb4de9c"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#gad1fee208b3b24a4fc5806c8dfbb4de9c">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gad1fee208b3b24a4fc5806c8dfbb4de9c"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons.  <a href="group__boolean__join.html#gad1fee208b3b24a4fc5806c8dfbb4de9c">More...</a><br /></td></tr>
+<tr class="separator:gad1fee208b3b24a4fc5806c8dfbb4de9c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga6e2e1d8abbcf2ed88fe1b346cbbb27b6"><td class="memTemplParams" colspan="2">template&lt;typename Polygon , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga6e2e1d8abbcf2ed88fe1b346cbbb27b6"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga6e2e1d8abbcf2ed88fe1b346cbbb27b6">CGAL::Regularized_boolean_set_operations_2::join</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;res, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga6e2e1d8abbcf2ed88fe1b346cbbb27b6"><td class="mdescLeft"> </td><td class="mdescRight">computes the union of two general polygons with holes.  <a href="group__boolean__join.html#ga6e2e1d8abbcf2ed88fe1b346cbbb27b6">More...</a><br /></td></tr>
+<tr class="separator:ga6e2e1d8abbcf2ed88fe1b346cbbb27b6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga0d50dd316b6ae2323dbf4af4ea8dfd05"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga0d50dd316b6ae2323dbf4af4ea8dfd05"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga0d50dd316b6ae2323dbf4af4ea8dfd05">CGAL::Regularized_boolean_set_operations_2::join</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga0d50dd316b6ae2323dbf4af4ea8dfd05"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__join.html#ga0d50dd316b6ae2323dbf4af4ea8dfd05">More...</a><br /></td></tr>
+<tr class="separator:ga0d50dd316b6ae2323dbf4af4ea8dfd05"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga5f5f4025f3f65433aaeedb2e79699ac5"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga5f5f4025f3f65433aaeedb2e79699ac5"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga5f5f4025f3f65433aaeedb2e79699ac5">CGAL::Regularized_boolean_set_operations_2::join</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga5f5f4025f3f65433aaeedb2e79699ac5"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__join.html#ga5f5f4025f3f65433aaeedb2e79699ac5">More...</a><br /></td></tr>
+<tr class="separator:ga5f5f4025f3f65433aaeedb2e79699ac5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga1dab128c0909609b21f52d191992ba23"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , class OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga1dab128c0909609b21f52d191992ba23"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__join.html#ga1dab128c0909609b21f52d191992ba23">CGAL::Regularized_boolean_set_operations_2::join</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga1dab128c0909609b21f52d191992ba23"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__join.html#ga1dab128c0909609b21f52d191992ba23">More...</a><br /></td></tr>
+<tr class="separator:ga1dab128c0909609b21f52d191992ba23"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gaa855b87511bd4d5a326c21a87f33137e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa855b87511bd4d5a326c21a87f33137e">◆ </a></span>join() <span class="overload">[1/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="Boolean_set_operations_2_2set_union_8cpp-example.html#a5">Boolean_set_operations_2/set_union.cpp</a>, and <a class="el" href="Boolean_set_operations_2_2simple_join_intersect_8cpp-example.html#a4">Boolean_set_operations_2/simple_join_intersect.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="gafc29e295a307a591dc9eecc8cc0363c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafc29e295a307a591dc9eecc8cc0363c8">◆ </a></span>join() <span class="overload">[2/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted into a general polygons bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="ga675ac472e724c236758ffe44882d1836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga675ac472e724c236758ffe44882d1836">◆ </a></span>join() <span class="overload">[3/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="ga810ab124b3c651e2e196c656b0086adf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga810ab124b3c651e2e196c656b0086adf">◆ </a></span>join() <span class="overload">[4/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted into a general polygon and a general polygon with holes, respectively, bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="gae6c7590da031269d78924532048333ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae6c7590da031269d78924532048333ec">◆ </a></span>join() <span class="overload">[5/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="ga1640ee615984f20be533a90f6dbb10b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1640ee615984f20be533a90f6dbb10b3">◆ </a></span>join() <span class="overload">[6/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted into a general polygon with holes and a general polygon, respectively, bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="gaeb9858d17b80b46426186ee08fce0986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeb9858d17b80b46426186ee08fce0986">◆ </a></span>join() <span class="overload">[7/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons with holes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="gaf8c53697e5bda2daee5a0b99ea3b979f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf8c53697e5bda2daee5a0b99ea3b979f">◆ </a></span>join() <span class="overload">[8/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons with holes. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted into general polygons with holes, bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="ga46ba00f0a04ab1ba9f0024dcbce01845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga46ba00f0a04ab1ba9f0024dcbce01845">◆ </a></span>join() <span class="overload">[9/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga14e67e81ba9907fcb43bb3f53e835ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga14e67e81ba9907fcb43bb3f53e835ce2">◆ </a></span>join() <span class="overload">[10/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gaf5a4dd20a25982d9b62bdf5d30f79580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf5a4dd20a25982d9b62bdf5d30f79580">◆ </a></span>join() <span class="overload">[11/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga920309323127459dd0a61e47f7e4ccb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga920309323127459dd0a61e47f7e4ccb1">◆ </a></span>join() <span class="overload">[12/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Polygon &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>res</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons with holes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+
+</div>
+</div>
+<a id="ga9ce6d93e91f21ba1c8ef0dab63e31967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9ce6d93e91f21ba1c8ef0dab63e31967">◆ </a></span>join() <span class="overload">[13/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) or a range of polygons with holes (resp. general polygons with holes) computes the union of all polygons in the range and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga765c1d87c9e3dfb00e7bd701e58f504d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga765c1d87c9e3dfb00e7bd701e58f504d">◆ </a></span>join() <span class="overload">[14/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) or a range of polygons with holes (resp. general polygons with holes) computes the union of all polygons in the range and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the polygons in the input range are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted into general polygon with holes , bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga60b6bd425ca671ccdcb48ae8d3ba08e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga60b6bd425ca671ccdcb48ae8d3ba08e4">◆ </a></span>join() <span class="overload">[15/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) computes the union of all polygons in the two ranges and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga6c160b9d869a9e15a68534e62e873509"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6c160b9d869a9e15a68534e62e873509">◆ </a></span>join() <span class="overload">[16/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga0b4bc1635edfff3292d9369a455b36de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0b4bc1635edfff3292d9369a455b36de">◆ </a></span>join() <span class="overload">[17/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga19bfe9760b91254d00bce3c8e594ccf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga19bfe9760b91254d00bce3c8e594ccf5">◆ </a></span>join() <span class="overload">[18/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gac53d5d865add3172e587b781992b3d82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac53d5d865add3172e587b781992b3d82">◆ </a></span>join() <span class="overload">[19/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two polygons with holes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gae4c87fc32065a90f7115f652d2b6a4e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae4c87fc32065a90f7115f652d2b6a4e3">◆ </a></span>join() <span class="overload">[20/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd>
+<dd>
+<code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga2da6a9d94746de548317b5ca0751ae7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2da6a9d94746de548317b5ca0751ae7e">◆ </a></span>join() <span class="overload">[21/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd>
+<dd>
+<code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gad1fee208b3b24a4fc5806c8dfbb4de9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad1fee208b3b24a4fc5806c8dfbb4de9c">◆ </a></span>join() <span class="overload">[22/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd>
+<dd>
+<code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga6e2e1d8abbcf2ed88fe1b346cbbb27b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6e2e1d8abbcf2ed88fe1b346cbbb27b6">◆ </a></span>join() <span class="overload">[23/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Polygon , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>computes the union of two general polygons with holes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">res</td><td>the resulting union of <code>pgn1</code> and <code>pgn2</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the two input polygons overlap. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga0d50dd316b6ae2323dbf4af4ea8dfd05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0d50dd316b6ae2323dbf4af4ea8dfd05">◆ </a></span>join() <span class="overload">[24/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) or a range of polygons with holes (resp. general polygons with holes) computes the union of all polygons in the range and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga5f5f4025f3f65433aaeedb2e79699ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5f5f4025f3f65433aaeedb2e79699ac5">◆ </a></span>join() <span class="overload">[25/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) computes the union of all polygons in the two ranges and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga1dab128c0909609b21f52d191992ba23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1dab128c0909609b21f52d191992ba23">◆ </a></span>join() <span class="overload">[26/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , class OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::join </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/join.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) computes the union of all polygons in the two ranges and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the polygons in the input ranges are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted into general polygon with holes , bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>GpsTraits</code> must be a model of the concept <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Dec 3 2021 15:10:37 for CGAL 5.4 - 2D Regularized Boolean Set-Operations by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

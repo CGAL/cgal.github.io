@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Constrained_triangulation_3/classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 3D Constrained Triangulations: CGAL::Conforming_constrained_Delaunay_triangulation_3&lt; Traits, Tr &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 3D Constrained Triangulations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Conforming_constrained_Delaunay_triangulation_3&lt; Traits, Tr &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgConstrainedTriangulation3Ref.html">Reference Manual</a> » <a class="el" href="group__PkgConstrainedTriangulation3Classes.html">Classes and Class Templates</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Conforming_constrained_Delaunay_triangulation_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Traits, typename Tr = CGAL::Default&gt;<br>
+class CGAL::Conforming_constrained_Delaunay_triangulation_3&lt; Traits, Tr &gt;</div><p>This class template represents a 3D conforming constrained Delaunay triangulation. </p>
+<p>It contains a data member of type <code>Tr</code> and provides additional functionality for handling polygonal constraints during the triangulation process.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>is the geometric traits class and must be a model of <code><a class="el" href="classConformingConstrainedDelaunayTriangulationTraits__3.html" title="The concept ConformingConstrainedDelaunayTriangulationTraits_3 specifies the requirements for the geo...">ConformingConstrainedDelaunayTriangulationTraits_3</a></code>. </td></tr>
+    <tr><td class="paramname">Tr</td><td>is the underlying triangulation class. It must be <code><a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">CGAL::Default</a></code> or an instance of the <code><a class="elRef" href="../Triangulation_3/classCGAL_1_1Triangulation__3.html">CGAL::Triangulation_3</a></code> class template with the same <code>Traits</code> template parameter. Its <code>Vertex</code> type must be a model of <code><a class="el" href="classConformingConstrainedDelaunayTriangulationVertexBase__3.html" title="The concept ConformingConstrainedDelaunayTriangulationVertexBase_3 refines the concept TriangulationV...">ConformingConstrainedDelaunayTriangulationVertexBase_3</a></code>, and its <code>Cell</code> type must be a model of <code><a class="el" href="classConformingConstrainedDelaunayTriangulationCellBase__3.html" title="The concept ConformingConstrainedDelaunayTriangulationCellBase_3 refines the concept TriangulationCel...">ConformingConstrainedDelaunayTriangulationCellBase_3</a></code>. <br>
+ The default value is <code><a class="elRef" href="../Triangulation_3/classCGAL_1_1Triangulation__3.html">Triangulation_3</a>&lt;Traits, TDS&gt;</code> where <code>TDS</code> is <code><a class="elRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">Triangulation_data_structure_3</a>&lt;<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html" title="Vertex base class for the 3D conforming constrained Delaunay triangulation.">Conforming_constrained_Delaunay_triangulation_vertex_base_3</a>&lt;Traits&gt;, <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html" title="Cell base class for the 3D conforming constrained Delaunay triangulation.">Conforming_constrained_Delaunay_triangulation_cell_base_3</a>&lt;Traits&gt;&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="Constrained_triangulation_3_2ccdt_3_after_autorefinement_8cpp-example.html#_a5">Constrained_triangulation_3/ccdt_3_after_autorefinement.cpp</a>, <a class="el" href="Constrained_triangulation_3_2ccdt_3_preprocessing_8cpp-example.html#_a7">Constrained_triangulation_3/ccdt_3_preprocessing.cpp</a>, and <a class="el" href="Constrained_triangulation_3_2remesh_constrained_Delaunay_triangulation_3_8cpp-example.html#_a7">Constrained_triangulation_3/remesh_constrained_Delaunay_triangulation_3.cpp</a>.</dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a4a143b431231aeb87e817a2dd45a9809"><td class="memItemLeft" align="right" valign="top"><a id="a4a143b431231aeb87e817a2dd45a9809" name="a4a143b431231aeb87e817a2dd45a9809"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Triangulation</b> = typename <a class="elRef" href="../STL_Extension/structCGAL_1_1Default_1_1Get.html">CGAL::Default::Get</a>&lt; Tr, <a class="elRef" href="../Triangulation_3/classCGAL_1_1Triangulation__3.html">Triangulation_3</a>&lt; Traits, <a class="elRef" href="../TDS_3/classCGAL_1_1Triangulation__data__structure__3.html">Triangulation_data_structure_3</a>&lt; <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__vertex__base__3.html">Conforming_constrained_Delaunay_triangulation_vertex_base_3</a>&lt; Traits &gt;, <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__cell__base__3.html">Conforming_constrained_Delaunay_triangulation_cell_base_3</a>&lt; Traits &gt; &gt; &gt; &gt;::type</td></tr>
+<tr class="memdesc:a4a143b431231aeb87e817a2dd45a9809"><td class="mdescLeft"> </td><td class="mdescRight">The internal triangulation type. <br></td></tr>
+<tr class="separator:a4a143b431231aeb87e817a2dd45a9809"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae0390f11446380e6c0cde35e99f9765a"><td class="memItemLeft" align="right" valign="top"><a id="ae0390f11446380e6c0cde35e99f9765a" name="ae0390f11446380e6c0cde35e99f9765a"></a>
+using </td><td class="memItemRight" valign="bottom"><b>Vertex_handle</b> = typename Triangulation::Vertex_handle</td></tr>
+<tr class="separator:ae0390f11446380e6c0cde35e99f9765a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a10d9d08d8be22674aa29b1ec91c24d62"><td class="memItemLeft" align="right" valign="top"><a id="a10d9d08d8be22674aa29b1ec91c24d62" name="a10d9d08d8be22674aa29b1ec91c24d62"></a>
+using </td><td class="memItemRight" valign="bottom"><b>size_type</b> = typename Triangulation::size_type</td></tr>
+<tr class="separator:a10d9d08d8be22674aa29b1ec91c24d62"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a288f2e0f4822ecdf50843045114683e1"><td class="memItemLeft" align="right" valign="top">using </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1">Constrained_facets_iterator</a> = <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td></tr>
+<tr class="memdesc:a288f2e0f4822ecdf50843045114683e1"><td class="mdescLeft"> </td><td class="mdescRight">A bidirectional iterator for visiting all constrained facets of the triangulation.  <br></td></tr>
+<tr class="separator:a288f2e0f4822ecdf50843045114683e1"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abe4ae57d6a2f208292dd505f5f29a933"><td class="memItemLeft" align="right" valign="top">using </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#abe4ae57d6a2f208292dd505f5f29a933">Constrained_facets_range</a> = <a class="elRef" href="../STL_Extension/classCGAL_1_1Iterator__range.html">CGAL::Iterator_range</a>&lt; <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1">Constrained_facets_iterator</a> &gt;</td></tr>
+<tr class="memdesc:abe4ae57d6a2f208292dd505f5f29a933"><td class="mdescLeft"> </td><td class="mdescRight">defines a range type for iterating over the constrained facets.  <br></td></tr>
+<tr class="separator:abe4ae57d6a2f208292dd505f5f29a933"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Constructors</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><code><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html" title="This class template represents a 3D conforming constrained Delaunay triangulation.">Conforming_constrained_Delaunay_triangulation_3</a></code> can be constructed from either a polygon soup or a polygon mesh.</p>
+<h2>Input Data </h2>
+<p>The input data requirements are described in the documentation of the <a class="el" href="group__PkgConstrainedTriangulation3FunctionsPolygonSoupOrMesh.html#make_conforming_constrained_Delaunay_triangulation_3_input_data">function templates</a>. </p>
+</td></tr>
+<tr class="memitem:ab7d07b9682487aef4d5000e07742f565"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ab7d07b9682487aef4d5000e07742f565">Conforming_constrained_Delaunay_triangulation_3</a> ()</td></tr>
+<tr class="memdesc:ab7d07b9682487aef4d5000e07742f565"><td class="mdescLeft"> </td><td class="mdescRight">Default constructor.  <br></td></tr>
+<tr class="separator:ab7d07b9682487aef4d5000e07742f565"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae56ed0176140a16df12dae9b09b9aabf"><td class="memTemplParams" colspan="2"><a id="ae56ed0176140a16df12dae9b09b9aabf" name="ae56ed0176140a16df12dae9b09b9aabf"></a>
+template&lt;typename PolygonMesh , typename NamedParameters  = CGAL::parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ae56ed0176140a16df12dae9b09b9aabf"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><b>Conforming_constrained_Delaunay_triangulation_3</b> (const PolygonMesh &amp;mesh, const NamedParameters &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ae56ed0176140a16df12dae9b09b9aabf"><td class="mdescLeft"> </td><td class="mdescRight">creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon mesh, following the same API and requirements as the function template <a class="el" href="group__PkgConstrainedTriangulation3FunctionsPolygonSoupOrMesh.html#gaf6c5b49383aa7a8652f9cd50bf171ed8">make_conforming_constrained_Delaunay_triangulation_3()</a>. <br></td></tr>
+<tr class="separator:ae56ed0176140a16df12dae9b09b9aabf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9d5cb14dee450ab637342d5c54fa6fe1"><td class="memTemplParams" colspan="2"><a id="a9d5cb14dee450ab637342d5c54fa6fe1" name="a9d5cb14dee450ab637342d5c54fa6fe1"></a>
+template&lt;typename PointRange , typename PolygonRange , typename NamedParams  = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:a9d5cb14dee450ab637342d5c54fa6fe1"><td class="memTemplItemLeft" align="right" valign="top"> </td><td class="memTemplItemRight" valign="bottom"><b>Conforming_constrained_Delaunay_triangulation_3</b> (const PointRange &amp;points, const PolygonRange &amp;polygons, const NamedParams &amp;np=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:a9d5cb14dee450ab637342d5c54fa6fe1"><td class="mdescLeft"> </td><td class="mdescRight">creates a 3D constrained Delaunay triangulation conforming to the faces of a polygon soup, following the same API and requirements as the function template <a class="el" href="group__PkgConstrainedTriangulation3FunctionsPolygonSoupOrMesh.html#gadf8d2593ea11fdd58a57bbb7a7cc3fd3">make_conforming_constrained_Delaunay_triangulation_3()</a>. <br></td></tr>
+<tr class="separator:a9d5cb14dee450ab637342d5c54fa6fe1"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Accessors for the Underlying Triangulation</h2></td></tr>
+<tr class="memitem:a08d77a56e1182fef9c2c544f21665934"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a4a143b431231aeb87e817a2dd45a9809">Triangulation</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a08d77a56e1182fef9c2c544f21665934">triangulation</a> () const &amp;</td></tr>
+<tr class="memdesc:a08d77a56e1182fef9c2c544f21665934"><td class="mdescLeft"> </td><td class="mdescRight">returns a const reference to the underlying triangulation.  <br></td></tr>
+<tr class="separator:a08d77a56e1182fef9c2c544f21665934"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a36c8c85f76660425c1c7d6b7a1be5344"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a4a143b431231aeb87e817a2dd45a9809">Triangulation</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a36c8c85f76660425c1c7d6b7a1be5344">triangulation</a> () &amp;&amp;</td></tr>
+<tr class="memdesc:a36c8c85f76660425c1c7d6b7a1be5344"><td class="mdescLeft"> </td><td class="mdescRight">moves and returns the underlying triangulation, then clears the object.  <br></td></tr>
+<tr class="separator:a36c8c85f76660425c1c7d6b7a1be5344"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Accessors for Constrained Facets</h2></td></tr>
+<tr class="memitem:a407afc28283d2d908a2bf16a121c304a"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a407afc28283d2d908a2bf16a121c304a">is_facet_constrained</a> (const typename Triangulation::Facet &amp;f) const</td></tr>
+<tr class="memdesc:a407afc28283d2d908a2bf16a121c304a"><td class="mdescLeft"> </td><td class="mdescRight">returns whether a facet is constrained or not.  <br></td></tr>
+<tr class="separator:a407afc28283d2d908a2bf16a121c304a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9d741464a33356825db195526f3e152e"><td class="memItemLeft" align="right" valign="top"><a id="a9d741464a33356825db195526f3e152e" name="a9d741464a33356825db195526f3e152e"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_facet_constrained</b> (typename Triangulation::Cell_handle ch, int index) const</td></tr>
+<tr class="memdesc:a9d741464a33356825db195526f3e152e"><td class="mdescLeft"> </td><td class="mdescRight">same as <code>is_facet_constrained(f)</code> with <code>f</code> being <code>Triangulation::Facet(ch, index)</code>. <br></td></tr>
+<tr class="separator:a9d741464a33356825db195526f3e152e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a13e0e821810248c4245a2d253fd1d939"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgConstrainedTriangulation3Classes.html#ga4401482a77f80fc4dde7ecfe518cb992">CDT_3_signed_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a13e0e821810248c4245a2d253fd1d939">face_constraint_index</a> (typename Triangulation::Cell_handle ch, int i) const</td></tr>
+<tr class="memdesc:a13e0e821810248c4245a2d253fd1d939"><td class="mdescLeft"> </td><td class="mdescRight">same as <code>face_constraint_index(f)</code> with <code>f</code> being <code>Triangulation::Facet(ch, index)</code>.  <br></td></tr>
+<tr class="separator:a13e0e821810248c4245a2d253fd1d939"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad7aeab1a7764681f1be723edd9dd2cec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__PkgConstrainedTriangulation3Classes.html#ga4401482a77f80fc4dde7ecfe518cb992">CDT_3_signed_index</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ad7aeab1a7764681f1be723edd9dd2cec">face_constraint_index</a> (const typename Triangulation::Facet &amp;f) const</td></tr>
+<tr class="memdesc:ad7aeab1a7764681f1be723edd9dd2cec"><td class="mdescLeft"> </td><td class="mdescRight">returns the index of the constraint that constrains the facet <code>f</code>  <br></td></tr>
+<tr class="separator:ad7aeab1a7764681f1be723edd9dd2cec"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a20439a4463d805e178fb69149ee1f752"><td class="memItemLeft" align="right" valign="top"><a id="a20439a4463d805e178fb69149ee1f752" name="a20439a4463d805e178fb69149ee1f752"></a>
+Triangulation::size_type </td><td class="memItemRight" valign="bottom"><b>number_of_constrained_facets</b> () const</td></tr>
+<tr class="memdesc:a20439a4463d805e178fb69149ee1f752"><td class="mdescLeft"> </td><td class="mdescRight">returns the number of constrained facets in the triangulation. <br></td></tr>
+<tr class="separator:a20439a4463d805e178fb69149ee1f752"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a089fe970fe597899f55b819998b210ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1">Constrained_facets_iterator</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a089fe970fe597899f55b819998b210ea">constrained_facets_begin</a> () const</td></tr>
+<tr class="memdesc:a089fe970fe597899f55b819998b210ea"><td class="mdescLeft"> </td><td class="mdescRight">returns an iterator to the start of the sequence of constrained facets.  <br></td></tr>
+<tr class="separator:a089fe970fe597899f55b819998b210ea"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a152b1f2c8e72b43af595f6715763490f"><td class="memItemLeft" align="right" valign="top"><a id="a152b1f2c8e72b43af595f6715763490f" name="a152b1f2c8e72b43af595f6715763490f"></a>
+<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1">Constrained_facets_iterator</a> </td><td class="memItemRight" valign="bottom"><b>constrained_facets_end</b> () const</td></tr>
+<tr class="memdesc:a152b1f2c8e72b43af595f6715763490f"><td class="mdescLeft"> </td><td class="mdescRight">returns the past-the-end iterator of the sequence of constrained facets. <br></td></tr>
+<tr class="separator:a152b1f2c8e72b43af595f6715763490f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad3a624e6773025731d91b9b461e945bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#abe4ae57d6a2f208292dd505f5f29a933">Constrained_facets_range</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#ad3a624e6773025731d91b9b461e945bf">constrained_facets</a> () const</td></tr>
+<tr class="memdesc:ad3a624e6773025731d91b9b461e945bf"><td class="mdescLeft"> </td><td class="mdescRight">returns a range of the constrained facets.  <br></td></tr>
+<tr class="separator:ad3a624e6773025731d91b9b461e945bf"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Checking</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>These methods are mainly a debugging help for the users of advanced features. </p>
+</td></tr>
+<tr class="memitem:a06a4ff444583dfa1e7e972d372cec702"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a06a4ff444583dfa1e7e972d372cec702">is_valid</a> (bool verbose=false) const</td></tr>
+<tr class="memdesc:a06a4ff444583dfa1e7e972d372cec702"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the triangulation is valid.  <br></td></tr>
+<tr class="separator:a06a4ff444583dfa1e7e972d372cec702"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a288f2e0f4822ecdf50843045114683e1" name="a288f2e0f4822ecdf50843045114683e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a288f2e0f4822ecdf50843045114683e1">◆ </a></span>Constrained_facets_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::Constrained_facets_iterator =  <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A bidirectional iterator for visiting all constrained facets of the triangulation. </p>
+<p>The value type of this iterator is <code>Triangulation::Facet</code>. </p>
+
+</div>
+</div>
+<a id="abe4ae57d6a2f208292dd505f5f29a933" name="abe4ae57d6a2f208292dd505f5f29a933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe4ae57d6a2f208292dd505f5f29a933">◆ </a></span>Constrained_facets_range</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::Constrained_facets_range =  <a class="elRef" href="../STL_Extension/classCGAL_1_1Iterator__range.html">CGAL::Iterator_range</a>&lt;<a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1">Constrained_facets_iterator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>defines a range type for iterating over the constrained facets. </p>
+<p>This type is used to iterate through all facets that are constrained. Its iterator type is <code>Constrained_facets_iterator</code>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab7d07b9682487aef4d5000e07742f565" name="ab7d07b9682487aef4d5000e07742f565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7d07b9682487aef4d5000e07742f565">◆ </a></span>Conforming_constrained_Delaunay_triangulation_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::Conforming_constrained_Delaunay_triangulation_3 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>This constructor initializes an empty <code><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html" title="This class template represents a 3D conforming constrained Delaunay triangulation.">Conforming_constrained_Delaunay_triangulation_3</a></code> object. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad3a624e6773025731d91b9b461e945bf" name="ad3a624e6773025731d91b9b461e945bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3a624e6773025731d91b9b461e945bf">◆ </a></span>constrained_facets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#abe4ae57d6a2f208292dd505f5f29a933">Constrained_facets_range</a> <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::constrained_facets </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a range of the constrained facets. </p>
+<p>Its iterator type is <code>Constrained_facets_iterator</code> </p>
+
+</div>
+</div>
+<a id="a089fe970fe597899f55b819998b210ea" name="a089fe970fe597899f55b819998b210ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a089fe970fe597899f55b819998b210ea">◆ </a></span>constrained_facets_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a288f2e0f4822ecdf50843045114683e1">Constrained_facets_iterator</a> <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::constrained_facets_begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns an iterator to the start of the sequence of constrained facets. </p>
+<p>This function provides an iterator to the first facet that is constrained within the triangulation. The sequence of constrained facets is in an arbitrary order. </p>
+
+</div>
+</div>
+<a id="ad7aeab1a7764681f1be723edd9dd2cec" name="ad7aeab1a7764681f1be723edd9dd2cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7aeab1a7764681f1be723edd9dd2cec">◆ </a></span>face_constraint_index() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgConstrainedTriangulation3Classes.html#ga4401482a77f80fc4dde7ecfe518cb992">CDT_3_signed_index</a> <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::face_constraint_index </td>
+          <td>(</td>
+          <td class="paramtype">const typename Triangulation::Facet &amp; </td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the index of the constraint that constrains the facet <code>f</code> </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>is_facet_constrained(f)</code> </dd></dl>
+
+</div>
+</div>
+<a id="a13e0e821810248c4245a2d253fd1d939" name="a13e0e821810248c4245a2d253fd1d939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13e0e821810248c4245a2d253fd1d939">◆ </a></span>face_constraint_index() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__PkgConstrainedTriangulation3Classes.html#ga4401482a77f80fc4dde7ecfe518cb992">CDT_3_signed_index</a> <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::face_constraint_index </td>
+          <td>(</td>
+          <td class="paramtype">typename Triangulation::Cell_handle </td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>same as <code>face_constraint_index(f)</code> with <code>f</code> being <code>Triangulation::Facet(ch, index)</code>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>is_facet_constrained(f)</code> </dd></dl>
+
+</div>
+</div>
+<a id="a407afc28283d2d908a2bf16a121c304a" name="a407afc28283d2d908a2bf16a121c304a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407afc28283d2d908a2bf16a121c304a">◆ </a></span>is_facet_constrained()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::is_facet_constrained </td>
+          <td>(</td>
+          <td class="paramtype">const typename Triangulation::Facet &amp; </td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns whether a facet is constrained or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>is a facet of the triangulation, of type <a class="elRef" href="../TDS_3/classTriangulationDataStructure__3.html#ad6a20b45e66dfb690bfcdb8438e9fcae"><code>Triangulation::Facet</code></a>, as defined by its triangulation data structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a06a4ff444583dfa1e7e972d372cec702" name="a06a4ff444583dfa1e7e972d372cec702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06a4ff444583dfa1e7e972d372cec702">◆ </a></span>is_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::is_valid </td>
+          <td>(</td>
+          <td class="paramtype">bool </td>
+          <td class="paramname"><em>verbose</em> = <code>false</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns whether the triangulation is valid. </p>
+<p>When <code>verbose</code> is set to <code>true</code>, messages describing the first invalidity encountered are printed. </p>
+
+</div>
+</div>
+<a id="a36c8c85f76660425c1c7d6b7a1be5344" name="a36c8c85f76660425c1c7d6b7a1be5344"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36c8c85f76660425c1c7d6b7a1be5344">◆ </a></span>triangulation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a4a143b431231aeb87e817a2dd45a9809">Triangulation</a> <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::triangulation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>moves and returns the underlying triangulation, then clears the object. </p>
+<p>This function allows the underlying triangulation to be moved out of this object.</p>
+<p>Example usage: </p><div class="fragment"><div class="line">  <span class="keyword">auto</span> tr = std::move(ccdt).triangulation();</div>
+<div class="line">  <span class="comment">// Now `tr` is a valid `CGAL::Triangulation_3` object that can be used for further processing.</span></div>
+<div class="line">  <span class="comment">// and the triangulation of `ccdt` is empty.</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in the triangulation `tr`: "</span></div>
+<div class="line">            &lt;&lt; tr.number_of_vertices() &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in `ccdt`: "</span></div>
+<div class="line">            &lt;&lt; ccdt.triangulation().number_of_vertices() &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line">  assert(ccdt.triangulation().number_of_vertices() == 0);</div>
+</div><!-- fragment --><p>After calling this function, <code>ccdt</code> will be empty and <code>tr</code> will be move-constructed from the underlying triangulation, avoiding any copy.</p>
+<dl class="section note"><dt>Note</dt><dd>This function is available only when the object is an rvalue. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>After this function is called, the object is in a state equivalent to that of a default-constructed object. </dd></dl>
+
+</div>
+</div>
+<a id="a08d77a56e1182fef9c2c544f21665934" name="a08d77a56e1182fef9c2c544f21665934"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08d77a56e1182fef9c2c544f21665934">◆ </a></span>triangulation() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits , typename Tr  = CGAL::Default&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html#a4a143b431231aeb87e817a2dd45a9809">Triangulation</a> &amp; <a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">CGAL::Conforming_constrained_Delaunay_triangulation_3</a>&lt; Traits, Tr &gt;::triangulation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns a const reference to the underlying triangulation. </p>
+<p>This allows the use of all non-modifying functions of the base triangulation. See the other overload for a way to move the triangulation out of this object and then modify it.</p>
+<p>Example usage: </p><div class="fragment"><div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Number of vertices in the CDT: "</span></div>
+<div class="line">            &lt;&lt; ccdt.triangulation().number_of_vertices() &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+</div><!-- fragment --> 
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="classCGAL_1_1Conforming__constrained__Delaunay__triangulation__3.html">Conforming_constrained_Delaunay_triangulation_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

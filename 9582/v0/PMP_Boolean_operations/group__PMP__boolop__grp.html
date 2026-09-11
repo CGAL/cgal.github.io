@@ -1,0 +1,1042 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/PMP_Boolean_operations/group__PMP__boolop__grp.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - Boolean Operations on Meshes: Boolean Operations</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - Boolean Operations on Meshes
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('group__PMP__boolop__grp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">Enumerations</a> |
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Boolean Operations <div class="ingroups"><a class="el" href="group__PkgPMPBooleanOperationsRef.html">Reference Manual</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader"> </h2>
+<div class="textblock"><p>Functions to compute triangulated the union, difference, and intersection of meshes. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga3be2ae4b7de3a1d9288f7febfc27eb9a" id="r_ga3be2ae4b7de3a1d9288f7febfc27eb9a"><td class="memItemLeft"><a id="ga3be2ae4b7de3a1d9288f7febfc27eb9a" name="ga3be2ae4b7de3a1d9288f7febfc27eb9a"></a>enum  </td><td class="memItemRight"><a class="el" href="#ga3be2ae4b7de3a1d9288f7febfc27eb9a">CGAL::Polygon_mesh_processing::Corefinement::Boolean_operation_type</a> { <br>
+  <b>UNION</b> = 0
+, <b>INTERSECTION</b> =1
+, <b>TM1_MINUS_TM2</b> =2
+, <b>TM2_MINUS_TM1</b> =3
+, <br>
+  <b>NONE</b>
+, <b>UNION</b> = 0
+, <b>INTERSECTION</b> =1
+, <b>TM1_MINUS_TM2</b> =2
+, <br>
+  <b>TM2_MINUS_TM1</b> =3
+, <b>NONE</b>
+<br>
+ }</td></tr>
+<tr class="memdesc:ga3be2ae4b7de3a1d9288f7febfc27eb9a"><td class="mdescLeft"> </td><td class="mdescRight">Integer identifiers to refer to a particular Boolean operation in the function <span class="tt"><a class="el" href="#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gaafa5e46c35c3fef461a47d73b4566961" id="r_gaafa5e46c35c3fef461a47d73b4566961"><td class="memTemplParams" colspan="2">template&lt;class TriangleMesh, class NPIn1 = parameters::Default_named_parameters, class NPIn2 = parameters::Default_named_parameters, class NPOut0 = parameters::Default_named_parameters, class NPOut1 = parameters::Default_named_parameters, class NPOut2 = parameters::Default_named_parameters, class NPOut3 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:gaafa5e46c35c3fef461a47d73b4566961 template"><td class="memItemLeft">std::array&lt; bool, 4 &gt; </td><td class="memItemRight"><a class="el" href="#gaafa5e46c35c3fef461a47d73b4566961">CGAL::Polygon_mesh_processing::corefine_and_compute_boolean_operations</a> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, const std::array&lt; std::optional&lt; TriangleMesh * &gt;, 4 &gt; &amp;output, const NPIn1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NPIn2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const std::tuple&lt; NPOut0, NPOut1, NPOut2, NPOut3 &gt; &amp;nps_out=std::tuple&lt; NPOut0, NPOut1, NPOut2, NPOut3 &gt;())</td></tr>
+<tr class="memdesc:gaafa5e46c35c3fef461a47d73b4566961"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and for each triangle mesh <span class="tt">tm_out</span> passed as an optional in <span class="tt">output</span> different from <span class="tt">std::nullopt</span>, the triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the result of a particular Boolean operation between the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span> will be put in the corresponding triangle mesh.  <br></td></tr>
+<tr class="memitem:ga95f618914f8d54d840065204b029492f" id="r_ga95f618914f8d54d840065204b029492f"><td class="memTemplParams" colspan="2">template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters, class NamedParametersOut = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga95f618914f8d54d840065204b029492f template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#ga95f618914f8d54d840065204b029492f">CGAL::Polygon_mesh_processing::corefine_and_compute_union</a> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, TriangleMesh &amp;tm_out, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParametersOut &amp;np_out=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga95f618914f8d54d840065204b029492f"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and puts in <span class="tt">tm_out</span> a triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the union of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span>.  <br></td></tr>
+<tr class="memitem:ga3ff96d36cad8f37efcdada916c46fbbe" id="r_ga3ff96d36cad8f37efcdada916c46fbbe"><td class="memTemplParams" colspan="2">template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters, class NamedParametersOut = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga3ff96d36cad8f37efcdada916c46fbbe template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#ga3ff96d36cad8f37efcdada916c46fbbe">CGAL::Polygon_mesh_processing::corefine_and_compute_intersection</a> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, TriangleMesh &amp;tm_out, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParametersOut &amp;np_out=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga3ff96d36cad8f37efcdada916c46fbbe"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and puts in <span class="tt">tm_out</span> a triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the intersection of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span>.  <br></td></tr>
+<tr class="memitem:ga02fa6ed9116a759ecfb87063392f5455" id="r_ga02fa6ed9116a759ecfb87063392f5455"><td class="memTemplParams" colspan="2">template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters, class NamedParametersOut = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga02fa6ed9116a759ecfb87063392f5455 template"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#ga02fa6ed9116a759ecfb87063392f5455">CGAL::Polygon_mesh_processing::corefine_and_compute_difference</a> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, TriangleMesh &amp;tm_out, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParametersOut &amp;np_out=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga02fa6ed9116a759ecfb87063392f5455"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and puts in <span class="tt">tm_out</span> a triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the volume bounded by <span class="tt">tm1</span> minus the volume bounded by <span class="tt">tm2</span>.  <br></td></tr>
+<tr class="memitem:ga54baccf4fbd1b1ada67465ec1d4bddc1" id="r_ga54baccf4fbd1b1ada67465ec1d4bddc1"><td class="memTemplParams" colspan="2">template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </td></tr>
+<tr class="memitem:ga54baccf4fbd1b1ada67465ec1d4bddc1 template"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#ga54baccf4fbd1b1ada67465ec1d4bddc1">CGAL::Polygon_mesh_processing::corefine</a> (TriangleMesh &amp;tm1, TriangleMesh &amp;tm2, const NamedParameters1 &amp;np1=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>(), const NamedParameters2 &amp;np2=<a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>())</td></tr>
+<tr class="memdesc:ga54baccf4fbd1b1ada67465ec1d4bddc1"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span>.  <br></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ga54baccf4fbd1b1ada67465ec1d4bddc1" name="ga54baccf4fbd1b1ada67465ec1d4bddc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga54baccf4fbd1b1ada67465ec1d4bddc1">◆ </a></span>corefine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void CGAL::Polygon_mesh_processing::corefine </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/corefinement.h&gt;</code></p>
+
+<p><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span>. </p>
+<p>For each input triangulated surface mesh, if a constrained edge is provided, intersection edges will be marked as constrained. If an edge that was marked as constrained is split, its sub-edges will be marked as constrained as well.</p>
+<dl class="section pre"><dt>Precondition</dt><dd><a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm2)</span> </a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of <span class="tt"><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></span>, <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span>, and <span class="tt"><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParameters2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>first input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm2</td><td>second input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm1 (tm2))</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+<li>
+<b>Default: </b>a constant property map returning <span class="tt">false</span> for any edge </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>visitor</b> </button> <div class="content"><ul>
+<li>
+a visitor used to track the creation of new faces </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></span> </li>
+<li>
+<b>Default: </b><span class="tt"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">Corefinement::Default_visitor</a>&lt;TriangleMesh&gt;</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>throw_on_self_intersection</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> the set of triangles close to the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be checked for self-intersections and <span class="tt">Corefinement::Self_intersection_exception</span> will be thrown if at least one self-intersection is found. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>do_not_modify</b> </button> <div class="content"><ul>
+<li>
+if <span class="tt">true</span>, the corresponding mesh will not be updated. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b>If this parameter is set to <span class="tt">true</span> for both meshes nothing will be done. If this option is set to <span class="tt">true</span> for one mesh, the other mesh is no longer required to be without self-intersection. </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="PMP_Boolean_operations_2corefinement_SM_8cpp-example.html#a4">PMP_Boolean_operations/corefinement_SM.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="gaafa5e46c35c3fef461a47d73b4566961" name="gaafa5e46c35c3fef461a47d73b4566961"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaafa5e46c35c3fef461a47d73b4566961">◆ </a></span>corefine_and_compute_boolean_operations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh, class NPIn1 = parameters::Default_named_parameters, class NPIn2 = parameters::Default_named_parameters, class NPOut0 = parameters::Default_named_parameters, class NPOut1 = parameters::Default_named_parameters, class NPOut2 = parameters::Default_named_parameters, class NPOut3 = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; bool, 4 &gt; CGAL::Polygon_mesh_processing::corefine_and_compute_boolean_operations </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::array&lt; std::optional&lt; TriangleMesh * &gt;, 4 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NPIn1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NPIn2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::tuple&lt; NPOut0, NPOut1, NPOut2, NPOut3 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nps_out</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::tuple&lt;NPOut0,NPOut1,NPOut2,NPOut3&gt;()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/corefinement.h&gt;</code></p>
+
+<p><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and for each triangle mesh <span class="tt">tm_out</span> passed as an optional in <span class="tt">output</span> different from <span class="tt">std::nullopt</span>, the triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the result of a particular Boolean operation between the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span> will be put in the corresponding triangle mesh. </p>
+<p>The positions of the meshes in the array <span class="tt">output</span> are specific to the Boolean operation to compute and <span class="tt"><a class="el" href="#ga3be2ae4b7de3a1d9288f7febfc27eb9a" title="Integer identifiers to refer to a particular Boolean operation in the function corefine_and_compute_b...">Corefinement::Boolean_operation_type</a></span> encodes and describes the ordering. Constructing the default array means that no Boolean operation will be done. Overwriting a default value will trigger the corresponding operation. In such a case, the address to a valid surface mesh must be provided. The optional named parameters for all output meshes are provided as a <span class="tt">tuple</span> and follow the same order as the array <span class="tt">output</span>. A call to <span class="tt"><a class="el" href="#gaafa5e46c35c3fef461a47d73b4566961" title="corefines  tm1 and tm2 and for each triangle mesh tm_out passed as an optional in output different fr...">corefine_and_compute_boolean_operations()</a></span> with optional named parameters passed for output meshes should be done using <span class="tt">make_tuple()</span> as the types of named parameters are unspecified.</p>
+<p>If <span class="tt">tm1</span> and/or <span class="tt">tm2</span> are part of the output surface meshes, they will be updated to contain the output (in-place operation), in any other case, the corresponding result will be inserted into the mesh without clearing it first. </p><dl class="section pre"><dt>Precondition</dt><dd><a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm2)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm2)</span> </a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of <span class="tt"><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></span>, <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span>, and <span class="tt"><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></span> </td></tr>
+    <tr><td class="paramname">NPIn1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NPIn2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NPOut0</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> for computing the union of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span> </td></tr>
+    <tr><td class="paramname">NPOut1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> for computing the intersection of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span> </td></tr>
+    <tr><td class="paramname">NPOut2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> for computing the difference of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span> </td></tr>
+    <tr><td class="paramname">NPOut3</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> for computing the difference of the volumes bounded by <span class="tt">tm2</span> and <span class="tt">tm1</span></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>first input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm2</td><td>second input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">output</td><td>an array of output surface meshes </td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm1 (tm2))</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+<li>
+<b>Default: </b>a constant property map returning <span class="tt">false</span> for any edge </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>face_index_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating to each face of <span class="tt">tm1</span> (<span class="tt">tm2</span>) a unique index between <span class="tt">0</span> and <span class="tt">num_faces(tm1) - 1</span> (<span class="tt">num_faces(tm2) - 1</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::face_descriptor</span> as key type and <span class="tt">std::size_t</span> as value type </li>
+<li>
+<b>Default: </b>an automatically indexed internal map </li>
+<li>
+<b>Extra: </b>If the property map is writable, the indices of the faces of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be set after the corefinement is done. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>visitor</b> </button> <div class="content"><ul>
+<li>
+a visitor used to track the creation of new faces </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></span> </li>
+<li>
+<b>Default: </b><span class="tt"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">Corefinement::Default_visitor</a>&lt;TriangleMesh&gt;</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>throw_on_self_intersection</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span>, the set of triangles close to the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be checked for self-intersections and <span class="tt">Corefinement::Self_intersection_exception</span> will be thrown if at least one self-intersection is found. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nps_out</td><td>an optional tuple of sequences of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> each among the ones listed below (<span class="tt">tm_out</span> being used to refer to the output surface mesh in <span class="tt">output</span> corresponding to a given named parameter sequence)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm_out</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm_out)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm_out</span>. An edge of <span class="tt">tm_out</span> is constrained if it is on the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span>, or if the edge corresponds to a constrained edge in <span class="tt">tm1</span> or <span class="tt">tm2</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classWritablePropertyMap.html">WritablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an array filled as follows: for each operation computed, the position in the array will contain <span class="tt">true</span> iff the output surface mesh is manifold, and it is put in the surface mesh at the same position as in <span class="tt">output</span>. Note that if an output surface mesh also was an input mesh but the output operation was generating a non-manifold mesh, the surface mesh will only be corefined. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="PMP_Boolean_operations_2corefinement_mesh_union_and_intersection_8cpp-example.html#a4">PMP_Boolean_operations/corefinement_mesh_union_and_intersection.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga02fa6ed9116a759ecfb87063392f5455" name="ga02fa6ed9116a759ecfb87063392f5455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga02fa6ed9116a759ecfb87063392f5455">◆ </a></span>corefine_and_compute_difference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters, class NamedParametersOut = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Polygon_mesh_processing::corefine_and_compute_difference </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm_out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParametersOut &amp;</td>          <td class="paramname"><span class="paramname"><em>np_out</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/corefinement.h&gt;</code></p>
+
+<p><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and puts in <span class="tt">tm_out</span> a triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the volume bounded by <span class="tt">tm1</span> minus the volume bounded by <span class="tt">tm2</span>. </p>
+<p>If <span class="tt">tm_out</span> is one of the input surface meshes, it will be updated to contain the output (in-place operation), otherwise the result will be inserted into <span class="tt">tm_out</span> without clearing it first. </p><dl class="section pre"><dt>Precondition</dt><dd><a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm2)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm2)</span> </a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of <span class="tt"><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></span>, <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span>, and <span class="tt"><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParameters2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParametersOut</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>first input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm2</td><td>second input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm_out</td><td>output surface mesh </td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm1 (tm2))</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+<li>
+<b>Default: </b>a constant property map returning <span class="tt">false</span> for any edge </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>face_index_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating to each face of <span class="tt">tm1</span> (<span class="tt">tm2</span>) a unique index between <span class="tt">0</span> and <span class="tt">num_faces(tm1) - 1</span> (<span class="tt">num_faces(tm2) - 1</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::face_descriptor</span> as key type and <span class="tt">std::size_t</span> as value type </li>
+<li>
+<b>Default: </b>an automatically indexed internal map </li>
+<li>
+<b>Extra: </b>If the property map is writable, the indices of the faces of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be set after the corefinement is done. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>visitor</b> </button> <div class="content"><ul>
+<li>
+a visitor used to track the creation of new faces </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></span> </li>
+<li>
+<b>Default: </b><span class="tt"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">Corefinement::Default_visitor</a>&lt;TriangleMesh&gt;</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>throw_on_self_intersection</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> the set of triangles close to the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be checked for self-intersections and <span class="tt">Corefinement::Self_intersection_exception</span> will be thrown if at least one self-intersection is found. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">np_out</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm_out</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm_out)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm_out</span>. An edge of <span class="tt">tm_out</span> is constrained if it is on the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span>, or if the edge corresponds to a constrained edge in <span class="tt">tm1</span> or <span class="tt">tm2</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classWritablePropertyMap.html">WritablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if the output surface mesh is manifold and is put into <span class="tt">tm_out</span>. If <span class="tt">false</span> is returned and if <span class="tt">tm_out</span> is one of the input surface meshes, then <span class="tt">tm_out</span> is only corefined.    </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="PMP_Boolean_operations_2corefinement_difference_remeshed_8cpp-example.html#a4">PMP_Boolean_operations/corefinement_difference_remeshed.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga3ff96d36cad8f37efcdada916c46fbbe" name="ga3ff96d36cad8f37efcdada916c46fbbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3ff96d36cad8f37efcdada916c46fbbe">◆ </a></span>corefine_and_compute_intersection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters, class NamedParametersOut = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Polygon_mesh_processing::corefine_and_compute_intersection </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm_out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParametersOut &amp;</td>          <td class="paramname"><span class="paramname"><em>np_out</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/corefinement.h&gt;</code></p>
+
+<p><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and puts in <span class="tt">tm_out</span> a triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the intersection of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span>. </p>
+<p>If <span class="tt">tm_out</span> is one of the input surface meshes, it will be updated to contain the output (in-place operation), otherwise the result will be inserted into <span class="tt">tm_out</span> without clearing it first. </p><dl class="section pre"><dt>Precondition</dt><dd><a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm2)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm2)</span> </a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of <span class="tt"><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></span>, <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span>, and <span class="tt"><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParameters2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParametersOut</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>first input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm2</td><td>second input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm_out</td><td>output surface mesh </td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm1 (tm2))</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+<li>
+<b>Default: </b>a constant property map returning <span class="tt">false</span> for any edge </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>face_index_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating to each face of <span class="tt">tm1</span> (<span class="tt">tm2</span>) a unique index between <span class="tt">0</span> and <span class="tt">num_faces(tm1) - 1</span> (<span class="tt">num_faces(tm2) - 1</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::face_descriptor</span> as key type and <span class="tt">std::size_t</span> as value type </li>
+<li>
+<b>Default: </b>an automatically indexed internal map </li>
+<li>
+<b>Extra: </b>If the property map is writable, the indices of the faces of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be set after the corefinement is done. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>visitor</b> </button> <div class="content"><ul>
+<li>
+a visitor used to track the creation of new faces </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></span> </li>
+<li>
+<b>Default: </b><span class="tt"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">Corefinement::Default_visitor</a>&lt;TriangleMesh&gt;</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>throw_on_self_intersection</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> the set of triangles close to the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be checked for self-intersections and <span class="tt">Corefinement::Self_intersection_exception</span> will be thrown if at least one self-intersection is found. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">np_out</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm_out</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm_out)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm_out</span>. An edge of <span class="tt">tm_out</span> is constrained if it is on the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span>, or if the edge corresponds to a constrained edge in <span class="tt">tm1</span> or <span class="tt">tm2</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classWritablePropertyMap.html">WritablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if the output surface mesh is manifold and is put into <span class="tt">tm_out</span>. If <span class="tt">false</span> is returned and if <span class="tt">tm_out</span> is one of the input surface meshes, then <span class="tt">tm_out</span> is only corefined.    </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="PMP_Boolean_operations_2corefinement_consecutive_bool_op_8cpp-example.html#_a6">PMP_Boolean_operations/corefinement_consecutive_bool_op.cpp</a>, and <a class="el" href="PMP_Boolean_operations_2corefinement_mesh_non_manifold_intersection_8cpp-example.html#a5">PMP_Boolean_operations/corefinement_mesh_non_manifold_intersection.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="ga95f618914f8d54d840065204b029492f" name="ga95f618914f8d54d840065204b029492f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga95f618914f8d54d840065204b029492f">◆ </a></span>corefine_and_compute_union()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TriangleMesh, class NamedParameters1 = parameters::Default_named_parameters, class NamedParameters2 = parameters::Default_named_parameters, class NamedParametersOut = parameters::Default_named_parameters&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::Polygon_mesh_processing::corefine_and_compute_union </td>
+          <td>(</td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TriangleMesh &amp;</td>          <td class="paramname"><span class="paramname"><em>tm_out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters1 &amp;</td>          <td class="paramname"><span class="paramname"><em>np1</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParameters2 &amp;</td>          <td class="paramname"><span class="paramname"><em>np2</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const NamedParametersOut &amp;</td>          <td class="paramname"><span class="paramname"><em>np_out</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="elRef" href="../STL_Extension/group__PkgSTLExtensionRef.html#gaac7f54fe7abb7321d8d755683eaafaf2">parameters::default_values</a>()</span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Polygon_mesh_processing/corefinement.h&gt;</code></p>
+
+<p><a class="el" href="index.html#coref_def_subsec">corefines </a> <span class="tt">tm1</span> and <span class="tt">tm2</span> and puts in <span class="tt">tm_out</span> a triangulated surface mesh <a class="el" href="index.html#coref_def_subsec">bounding </a> the union of the volumes bounded by <span class="tt">tm1</span> and <span class="tt">tm2</span>. </p>
+<p>If <span class="tt">tm_out</span> is one of the input surface meshes, it will be updated to contain the output (in-place operation), otherwise the result will be inserted into <span class="tt">tm_out</span> without clearing it first. </p><dl class="section pre"><dt>Precondition</dt><dd><a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../Polygon_mesh_processing/group__PMP__intersection__grp.html#ga10428990783d0fc500bb1be8e5d10a42"><span class="tt">!CGAL::Polygon_mesh_processing::does_self_intersect(tm2)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm1)</span> </a> </dd>
+<dd>
+<a class="elRef" href="../PMP_Mesh_repair/group__PMP__orientation__grp.html#ga2fab7b3c952c86de66de2fef9fe83d74"><span class="tt">CGAL::Polygon_mesh_processing::does_bound_a_volume(tm2)</span> </a></dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TriangleMesh</td><td>a model of <span class="tt"><a class="elRef" href="../BGL/classHalfedgeListGraph.html">HalfedgeListGraph</a></span>, <span class="tt"><a class="elRef" href="../BGL/classFaceListGraph.html">FaceListGraph</a></span>, and <span class="tt"><a class="elRef" href="../BGL/classMutableFaceGraph.html">MutableFaceGraph</a></span> </td></tr>
+    <tr><td class="paramname">NamedParameters1</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParameters2</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> </td></tr>
+    <tr><td class="paramname">NamedParametersOut</td><td>a sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm1</td><td>first input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm2</td><td>second input triangulated surface mesh </td></tr>
+    <tr><td class="paramname">tm_out</td><td>output surface mesh </td></tr>
+    <tr><td class="paramname">np1</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below </td></tr>
+    <tr><td class="paramname">np2</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm1 (tm2))</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm1</span> (<span class="tt">tm2</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+<li>
+<b>Default: </b>a constant property map returning <span class="tt">false</span> for any edge </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>face_index_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating to each face of <span class="tt">tm1</span> (<span class="tt">tm2</span>) a unique index between <span class="tt">0</span> and <span class="tt">num_faces(tm1) - 1</span> (<span class="tt">num_faces(tm2) - 1</span>) </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadablePropertyMap.html">ReadablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::face_descriptor</span> as key type and <span class="tt">std::size_t</span> as value type </li>
+<li>
+<b>Default: </b>an automatically indexed internal map </li>
+<li>
+<b>Extra: </b>If the property map is writable, the indices of the faces of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be set after the corefinement is done. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>visitor</b> </button> <div class="content"><ul>
+<li>
+a visitor used to track the creation of new faces </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="el" href="classPMPCorefinementVisitor.html" title="The concept PMPCorefinementVisitor defines the requirements for the visitor used in corefinement-rela...">PMPCorefinementVisitor</a></span> </li>
+<li>
+<b>Default: </b><span class="tt"><a class="el" href="structCGAL_1_1Polygon__mesh__processing_1_1Corefinement_1_1Default__visitor.html">Corefinement::Default_visitor</a>&lt;TriangleMesh&gt;</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>throw_on_self_intersection</b> </button> <div class="content"><ul>
+<li>
+If <span class="tt">true</span> the set of triangles close to the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span> will be checked for self-intersections and <span class="tt">Corefinement::Self_intersection_exception</span> will be thrown if at least one self-intersection is found. </li>
+<li>
+<b>Type: </b>Boolean </li>
+<li>
+<b>Default: </b><span class="tt">false</span> </li>
+<li>
+<b>Extra: </b><span class="tt">np1</span> only </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">np_out</td><td>an optional sequence of <a class="elRef" href="../BGL/group__bgl__namedparameters.html" title="Named Parameters">Named Parameters</a> among the ones listed below</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params">
+<dt>Optional Named Parameters</dt>
+<dd><table class="params">
+<tr>
+<td> <button class="collapsible"> <b>vertex_point_map</b> </button> <div class="content"><ul>
+<li>
+a property map associating points to the vertices of <span class="tt">tm_out</span> </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classReadWritePropertyMap.html">ReadWritePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::vertex_descriptor</span> as key type and <span class="tt">Point_3</span> as value type </li>
+<li>
+<b>Default: </b><span class="tt">boost::get(CGAL::vertex_point, tm_out)</span> </li>
+<li>
+<b>Extra: </b>If this parameter is omitted, an internal property map for <span class="tt"><a class="elRef" href="../BGL/group__PkgBGLProperties.html#ga247337f62916ade681347fa6f07251e1">CGAL::vertex_point_t</a></span> must be available in <span class="tt">TriangleMesh</span>. </li>
+</ul>
+ </div>  </td><td></td></tr>
+<tr>
+<td> <button class="collapsible"> <b>edge_is_constrained_map</b> </button> <div class="content"><ul>
+<li>
+a property map containing the constrained-or-not status of each edge of <span class="tt">tm_out</span>. An edge of <span class="tt">tm_out</span> is constrained if it is on the intersection of <span class="tt">tm1</span> and <span class="tt">tm2</span>, or if the edge corresponds to a constrained edge in <span class="tt">tm1</span> or <span class="tt">tm2</span>. </li>
+<li>
+<b>Type: </b>a class model of <span class="tt"><a class="elRef" href="../Manual/classWritablePropertyMap.html">WritablePropertyMap</a></span> with <span class="tt">boost::graph_traits&lt;TriangleMesh&gt;::edge_descriptor</span> as key type and <span class="tt">bool</span> as value type </li>
+</ul>
+ </div>  </td><td></td></tr>
+</table>
+</dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if the output surface mesh is manifold and is put into <span class="tt">tm_out</span>. If <span class="tt">false</span> is returned and if <span class="tt">tm_out</span> is one of the input surface meshes, then <span class="tt">tm_out</span> is only corefined. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="PMP_Boolean_operations_2corefinement_OM_union_8cpp-example.html#a5">PMP_Boolean_operations/corefinement_OM_union.cpp</a>, <a class="el" href="PMP_Boolean_operations_2corefinement_consecutive_bool_op_8cpp-example.html#_a7">PMP_Boolean_operations/corefinement_consecutive_bool_op.cpp</a>, <a class="el" href="PMP_Boolean_operations_2corefinement_mesh_union_8cpp-example.html#a4">PMP_Boolean_operations/corefinement_mesh_union.cpp</a>, and <a class="el" href="PMP_Boolean_operations_2corefinement_mesh_union_progress_8cpp-example.html#a5">PMP_Boolean_operations/corefinement_mesh_union_progress.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

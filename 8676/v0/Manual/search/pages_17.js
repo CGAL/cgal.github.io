@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['umbilics_20on_20triangulated_20surface_20meshes_0',['Approximation of Ridges and Umbilics on Triangulated Surface Meshes',['../packages.html#PkgRidges3',1,'']]],
+  ['union_20find_20modifiers_1',['Profiling tools, Hash Map, Union-find, Modifiers',['../packages.html#Miscellany',1,'']]],
+  ['unix_20linux_20macos_2',['Using CGAL on Unix (Linux, macOS, ...)',['../usage.html',1,'general_intro']]],
+  ['upgrading_20code_20using_20boost_20parameters_20to_20cgal_20named_20function_20parameters_3',['Upgrading Code using Boost Parameters to CGAL Named Function Parameters',['../../STL_Extension/FromBoostNPtoCGALNP.html',1,'']]],
+  ['usage_4',['Header-only Usage',['../usage.html#section_headeronly',1,'']]],
+  ['use_5',['Ease of Use',['../devman_intro.html#Developer_manualEaseofUse',1,'']]],
+  ['use_6',['Which algorithm should I use?',['../tuto_reconstruction.html#TutorialsReconstruction_algorithms',1,'']]],
+  ['use_20cgal_20with_20cmake_7',['How to use CGAL with CMake',['../devman_create_and_use_a_cmakelist.html',1,'general_intro']]],
+  ['used_20only_20when_20building_20programs_20such_20as_20demos_20or_20examples_8',['Variables Used Only When Building Programs (Such as Demos or Examples)',['../configurationvariables.html#installation_variables_building',1,'']]],
+  ['using_20a_20package_20manager_9',['Using a Package Manager',['../usage.html#secusingpkgman',1,'']]],
+  ['using_20a_20precompiled_20demo_10',['Trying CGAL algorithms using a Precompiled Demo',['../windows.html#sec-win-demo',1,'']]],
+  ['using_20boost_11',['Using Boost',['../devman_portability.html#secboost_support',1,'']]],
+  ['using_20boost_20parameters_20to_20cgal_20named_20function_20parameters_12',['Upgrading Code using Boost Parameters to CGAL Named Function Parameters',['../../STL_Extension/FromBoostNPtoCGALNP.html',1,'']]],
+  ['using_20cgal_13',['Using CGAL',['../windows.html#subsect-installer-my-code',1,'Configuring and Compiling My Code Using CGAL'],['../windows.html#subsect-vpckg-my-code',1,'Configuring and Compiling Your Code Using CGAL'],['../devman_create_cgal_CMakeLists.html',1,'Creating a CMake Script for a Program Using CGAL']]],
+  ['using_20cgal_14',['using CGAL',['../installation.html#installation_buildprogram',1,'Building a Program using CGAL'],['../usage.html#usage_introduction',1,'Quick Start: Compiling a Program using CGAL']]],
+  ['using_20cgal_20on_20unix_20linux_20macos_15',['Using CGAL on Unix (Linux, macOS, ...)',['../usage.html',1,'general_intro']]],
+  ['using_20cgal_20on_20windows_20with_20visual_20c_16',['Using CGAL on Windows (with Visual C++)',['../windows.html',1,'general_intro']]],
+  ['using_20cgal_20source_20archive_17',['Using CGAL Source Archive',['../usage.html#secusingwebsite',1,'']]],
+  ['using_20cgal_5fassume_18',['Suppress warnings using CGAL_assume.',['../devman_checks.html#secchecks_cgal_assume',1,'']]],
+  ['using_20checks_19',['Using checks',['../devman_checks.html#secchecks_using',1,'']]],
+  ['using_20handle_20rep_20',['Using Handle &amp;amp; Rep',['../devman_reference_counting.html#Developer_manualUsingHandleRep',1,'']]],
+  ['using_20qt6_21',['Minimal Example Using Qt6',['../devman_create_and_use_a_cmakelist.html#secexample',1,'']]],
+  ['using_20templated_20handles_22',['Using templated handles',['../devman_reference_counting.html#Developer_manualUsingtemplatedhandles',1,'']]],
+  ['using_20the_20allocator_23',['Using the allocator',['../devman_memory_management.html#secusing_memory_allocator',1,'']]],
+  ['using_20the_20version_20number_20and_20configuration_20macros_20and_20flags_24',['Using the version-number and configuration macros and flags',['../devman_portability.html#secusing_version_macros',1,'']]]
+];
