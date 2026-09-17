@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Mesh_smoothing_3/Mesh_smoothing_3_2hybrid_domain_feature_recovery_8cpp-example.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 3D Mesh Volume Smoothing: Mesh_smoothing_3/hybrid_domain_feature_recovery.cpp</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 3D Mesh Volume Smoothing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('Mesh_smoothing_3_2hybrid_domain_feature_recovery_8cpp-example.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">Mesh_smoothing_3/hybrid_domain_feature_recovery.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Mesh_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Mesh_complex_3_in_triangulation_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Mesh_criteria_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Labeled_mesh_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedron_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polyhedral_mesh_domain_3.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/make_mesh_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Mesh_smoothing_3/boundary_aware_mesh_smoothing.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Mesh_smoothing_3/projectors.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/centroid.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Kernel/global_functions_3.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/File_medit.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Kernel</span></div>
+<div class="line"><span class="keyword">using </span>K = <a id="_a0" name="_a0"></a><a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Implicit domain</span></div>
+<div class="line"><span class="keyword">using </span>Implicit_domain = <a id="_a1" name="_a1"></a><a class="code hl_classRef" href="../Mesh_3/classCGAL_1_1Labeled__mesh__domain__3.html">CGAL::Labeled_mesh_domain_3&lt;K&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Polyhedral domain</span></div>
+<div class="line"><span class="keyword">using </span>Polyhedron = CGAL::Polyhedron_3&lt;K&gt;;</div>
+<div class="line"><span class="keyword">using </span>Polyhedron_domain = <a id="_a2" name="_a2"></a><a class="code hl_classRef" href="../Mesh_3/classCGAL_1_1Polyhedral__mesh__domain__3.html">CGAL::Polyhedral_mesh_domain_3&lt;Polyhedron, K&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Polyhedron_projector = <a id="_a3" name="_a3"></a><a class="code hl_class" href="classCGAL_1_1Mesh__smoothing__3_1_1Polyhedral__mesh__domain__projector.html">CGAL::Mesh_smoothing_3::Polyhedral_mesh_domain_projector&lt;Polyhedron_domain&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>Hybrid_domain</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">const</span> Implicit_domain&amp; implicit_domain;</div>
+<div class="line">    <span class="keyword">const</span> Polyhedron_domain&amp; polyhedron_domain;</div>
+<div class="line">    Polyhedron_projector polyhedron_projector;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    Hybrid_domain(<span class="keyword">const</span> Implicit_domain&amp; implicit_domain,</div>
+<div class="line">                  <span class="keyword">const</span> Polyhedron_domain&amp; polyhedron_domain)</div>
+<div class="line">        : implicit_domain(implicit_domain)</div>
+<div class="line">        , polyhedron_domain(polyhedron_domain)</div>
+<div class="line">        , polyhedron_projector(polyhedron_domain)</div>
+<div class="line">    {}</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Types required by MeshDomain_3</span></div>
+<div class="line">    <span class="keyword">using </span>Surface_patch_index = int;</div>
+<div class="line">    <span class="keyword">using </span>Subdomain_index = int;</div>
+<div class="line">    <span class="keyword">using </span>Index = int;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">using </span>R = K;</div>
+<div class="line">    <span class="keyword">using </span>Point_3 = K::Point_3;</div>
+<div class="line">    <span class="keyword">using </span>Vector_3 = K::Vector_3;</div>
+<div class="line">    <span class="keyword">using </span>FT = K::FT;</div>
+<div class="line">    <span class="keyword">using </span>Intersection = std::tuple&lt;Point_3, Index, int&gt;;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Type required by ConstructTangentSpace</span></div>
+<div class="line">    <span class="keyword">using </span>Tangent_space = <a id="_a4" name="_a4"></a><a class="code hl_struct" href="structCGAL_1_1Mesh__smoothing__3_1_1Tangent__space.html">CGAL::Mesh_smoothing_3::Tangent_space&lt;K&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">    <a id="_a5" name="_a5"></a><a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a> bbox()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> implicit_domain.bbox() + polyhedron_domain.bbox();</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">struct </span>Construct_initial_points</div>
+<div class="line">    {</div>
+<div class="line">        Construct_initial_points(<span class="keyword">const</span> Hybrid_domain&amp; domain)</div>
+<div class="line">            : r_domain_(domain)</div>
+<div class="line">        {}</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">template</span>&lt;<span class="keyword">class</span> OutputIterator&gt;</div>
+<div class="line">        <a id="_a6" name="_a6"></a><a class="code hl_classRef" href="../Manual/classOutputIterator.html">OutputIterator</a> operator()(<a class="code hl_classRef" href="../Manual/classOutputIterator.html">OutputIterator</a> pts, <span class="keyword">const</span> <span class="keywordtype">int</span> n = 20)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">        </span>{</div>
+<div class="line">            <span class="keyword">using </span>Implicit_Index = Implicit_domain::Index;</div>
+<div class="line">            std::vector&lt;std::pair&lt;Point_3, Implicit_Index&gt; &gt; implicit_points_vector;</div>
+<div class="line"> </div>
+<div class="line">            Implicit_domain::Construct_initial_points cstr_implicit_initial_points =</div>
+<div class="line">                r_domain_.implicit_domain.construct_initial_points_object();</div>
+<div class="line"> </div>
+<div class="line">            cstr_implicit_initial_points(</div>
+<div class="line">                std::back_inserter(implicit_points_vector), n / 2);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p : implicit_points_vector)</div>
+<div class="line">                *pts++ = std::make_pair(p.first, 2);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keyword">using </span>Polyhedron_Index = Polyhedron_domain::Index;</div>
+<div class="line">            std::vector&lt;std::pair&lt;Point_3, Polyhedron_Index&gt; &gt; polyhedron_points_vector;</div>
+<div class="line"> </div>
+<div class="line">            Polyhedron_domain::Construct_initial_points cstr_polyhedron_initial_points =</div>
+<div class="line">                r_domain_.polyhedron_domain.construct_initial_points_object();</div>
+<div class="line"> </div>
+<div class="line">            cstr_polyhedron_initial_points(</div>
+<div class="line">                std::back_inserter(polyhedron_points_vector), n / 2);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p : polyhedron_points_vector)</div>
+<div class="line">                *pts++ = std::make_pair(p.first, 1);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">return</span> pts;</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span>:</div>
+<div class="line">        <span class="keyword">const</span> Hybrid_domain&amp; r_domain_;</div>
+<div class="line">    };</div>
+<div class="line"> </div>
+<div class="line">    Construct_initial_points construct_initial_points_object()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> Construct_initial_points(*<span class="keyword">this</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">struct </span>Is_in_domain</div>
+<div class="line">    {</div>
+<div class="line">        Is_in_domain(<span class="keyword">const</span> Hybrid_domain&amp; domain)</div>
+<div class="line">            : r_domain_(domain)</div>
+<div class="line">        {}</div>
+<div class="line"> </div>
+<div class="line">        std::optional&lt;Subdomain_index&gt; operator()(<span class="keyword">const</span> Point_3&amp; p)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">        </span>{</div>
+<div class="line">            <span class="keyword">const</span> std::optional&lt;Subdomain_index&gt; subdomain_index =</div>
+<div class="line">                r_domain_.implicit_domain.is_in_domain_object()(p);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">if</span>(subdomain_index)</div>
+<div class="line">                <span class="keywordflow">return</span> 2;</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">return</span> r_domain_.polyhedron_domain.is_in_domain_object()(p);</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span>:</div>
+<div class="line">        <span class="keyword">const</span> Hybrid_domain&amp; r_domain_;</div>
+<div class="line">    };</div>
+<div class="line"> </div>
+<div class="line">    Is_in_domain is_in_domain_object()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> Is_in_domain(*<span class="keyword">this</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">struct </span>Construct_intersection</div>
+<div class="line">    {</div>
+<div class="line">        Construct_intersection(<span class="keyword">const</span> Hybrid_domain&amp; domain)</div>
+<div class="line">            : r_domain_(domain)</div>
+<div class="line">        {}</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Query&gt;</div>
+<div class="line">        Intersection operator()(<span class="keyword">const</span> Query&amp; query)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">        </span>{</div>
+<div class="line">            <span class="keyword">using </span>boost::get;</div>
+<div class="line"> </div>
+<div class="line">            <span class="keyword">const</span> Implicit_domain::Intersection implicit_inter =</div>
+<div class="line">                r_domain_.implicit_domain.construct_intersection_object()(query);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">if</span>(get&lt;2&gt;(implicit_inter) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> Intersection(get&lt;0&gt;(implicit_inter), 2, get&lt;2&gt;(implicit_inter));</div>
+<div class="line"> </div>
+<div class="line">            <span class="keyword">const</span> Polyhedron_domain::Intersection polyhedron_inter =</div>
+<div class="line">                r_domain_.polyhedron_domain.construct_intersection_object()(query);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">if</span>(get&lt;2&gt;(polyhedron_inter) != 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">const</span> Point_3 inter_point = get&lt;0&gt;(polyhedron_inter);</div>
+<div class="line"> </div>
+<div class="line">                <span class="keywordflow">if</span>(!r_domain_.implicit_domain.is_in_domain_object()(inter_point))</div>
+<div class="line">                    <span class="keywordflow">return</span> Intersection(inter_point, 1, get&lt;2&gt;(polyhedron_inter));</div>
+<div class="line">            }</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">return</span> Intersection();</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span>:</div>
+<div class="line">        <span class="keyword">const</span> Hybrid_domain&amp; r_domain_;</div>
+<div class="line">    };</div>
+<div class="line"> </div>
+<div class="line">    Construct_intersection construct_intersection_object()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> Construct_intersection(*<span class="keyword">this</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Index index_from_surface_patch_index(<span class="keyword">const</span> Surface_patch_index&amp; index)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> index;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Index index_from_subdomain_index(<span class="keyword">const</span> Subdomain_index&amp; index)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> index;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Surface_patch_index surface_patch_index(<span class="keyword">const</span> Index&amp; index)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> index;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Subdomain_index subdomain_index(<span class="keyword">const</span> Index&amp; index)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> index;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Patch_face&gt;</div>
+<div class="line">    Tangent_space</div>
+<div class="line">    patch_face_projection_plane(<span class="keyword">const</span> Patch_face&amp; patch_face,</div>
+<div class="line">                                <span class="keyword">const</span> std::vector&lt;Point_3&gt;&amp; face_points)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keyword">const</span> Point_3 face_center =</div>
+<div class="line">            <a id="a7" name="a7"></a><a class="code hl_functionRef" href="../Kernel_23/group__centroid__grp.html#ga3ba0496a839f97ee6cd506baff51dfe4">CGAL::centroid</a>(face_points.begin(), face_points.end());</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Patch 1 is the polyhedral domain.</span></div>
+<div class="line">        <span class="keywordflow">if</span>(patch_face.first == 1)</div>
+<div class="line">            <span class="keywordflow">return</span> polyhedron_projector.patch_face_projection_plane(patch_face, face_points);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Patch 2 is the implicit sphere:</span></div>
+<div class="line">        <span class="comment">// ||p - (1,1,1)||^2 - 1 = 0.</span></div>
+<div class="line">        CGAL_assertion(patch_face.first == 2);</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">const</span> Point_3 sphere_center(1., 1., 1.);</div>
+<div class="line">        <span class="keyword">const</span> Vector_3 radial = face_center - sphere_center;</div>
+<div class="line"> </div>
+<div class="line">        CGAL_assertion(radial.squared_length() != FT(0));</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">const</span> FT length = CGAL::sqrt(radial.squared_length());</div>
+<div class="line">        <span class="keyword">const</span> Vector_3 normal = radial / length;</div>
+<div class="line">        <span class="keyword">const</span> Point_3 projected = sphere_center + normal;</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">return</span> Tangent_space{projected, normal};</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Curve_edge&gt;</div>
+<div class="line">    Tangent_space</div>
+<div class="line">    curve_edge_projection_line(<span class="keyword">const</span> Curve_edge&amp; curve_edge,</div>
+<div class="line">                               <span class="keyword">const</span> std::array&lt;Point_3, 2&gt;&amp; edge_points)<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">    </span>{</div>
+<div class="line">        <span class="keywordflow">return</span> polyhedron_projector.curve_edge_projection_line(curve_edge, edge_points);</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Domain = Hybrid_domain;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Triangulation</span></div>
+<div class="line"><span class="keyword">using </span>Tr = <a id="_a8" name="_a8"></a><a class="code hl_typedefRef" href="../Mesh_3/structCGAL_1_1Mesh__triangulation__3.html#aacde3b6321609039e777e11c49ada1dc">CGAL::Mesh_triangulation_3&lt;Domain, K&gt;::type</a>;</div>
+<div class="line"><span class="keyword">using </span>C3t3 = <a id="_a9" name="_a9"></a><a class="code hl_classRef" href="../SMDS_3/classCGAL_1_1Mesh__complex__3__in__triangulation__3.html">CGAL::Mesh_complex_3_in_triangulation_3&lt;Tr&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Criteria</span></div>
+<div class="line"><span class="keyword">using </span>Mesh_criteria = <a id="_a10" name="_a10"></a><a class="code hl_classRef" href="../Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL::Mesh_criteria_3&lt;Tr&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Facet_criteria = Mesh_criteria::Facet_criteria;</div>
+<div class="line"><span class="keyword">using </span>Cell_criteria = Mesh_criteria::Cell_criteria;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>Point = K::Point_3;</div>
+<div class="line"><span class="keyword">using </span>FT = K::FT;</div>
+<div class="line"> </div>
+<div class="line">FT sphere_centered_at_111(<span class="keyword">const</span> Point&amp; p)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">const</span> FT dx = p.x() - 1;</div>
+<div class="line">    <span class="keyword">const</span> FT dy = p.y() - 1;</div>
+<div class="line">    <span class="keyword">const</span> FT dz = p.z() - 1;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> dx * dx + dy * dy + dz * dz - 1;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>params = <a class="code hl_namespaceRef" href="../Mesh_3/group__PkgMesh3Parameters.html">CGAL::parameters</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">const</span> std::string fname = <a id="a11" name="a11"></a><a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/cube.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">    Polyhedron polyhedron;</div>
+<div class="line">    std::ifstream input(fname);</div>
+<div class="line">    input &gt;&gt; polyhedron;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span>(input.bad())</div>
+<div class="line">    {</div>
+<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">"Error: Cannot read file "</span> &lt;&lt; fname &lt;&lt; std::endl;</div>
+<div class="line">        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Polyhedron_domain polyhedron_domain(polyhedron);</div>
+<div class="line"> </div>
+<div class="line">    Implicit_domain sphere_domain =</div>
+<div class="line">        Implicit_domain::create_implicit_mesh_domain(</div>
+<div class="line">            sphere_centered_at_111,</div>
+<div class="line">            K::Sphere_3(K::Point_3(1, 1, 1), K::FT(2)));</div>
+<div class="line"> </div>
+<div class="line">    Domain domain(sphere_domain, polyhedron_domain);</div>
+<div class="line"> </div>
+<div class="line">    Facet_criteria facet_criteria(30, 0.08, 0.025);</div>
+<div class="line">    Cell_criteria cell_criteria(2, 0.1);</div>
+<div class="line">    Mesh_criteria criteria(facet_criteria, cell_criteria);</div>
+<div class="line"> </div>
+<div class="line">    C3t3 c3t3 =</div>
+<div class="line">        <a id="a12" name="a12"></a><a class="code hl_functionRef" href="../Mesh_3/group__PkgMesh3Functions.html#gac8599a0c967075f740bf8e2e92c4770e">CGAL::make_mesh_3&lt;C3t3&gt;</a>(</div>
+<div class="line">            domain,</div>
+<div class="line">            criteria,</div>
+<div class="line">            params::no_perturb().<a class="code hl_functionRef" href="../Mesh_3/group__PkgMesh3Parameters.html#gab24d8652fbb6ae045e989769c5bc69f0">no_exude</a>());</div>
+<div class="line"> </div>
+<div class="line">    dump_c3t3(c3t3, <span class="stringliteral">"hybrid_initial"</span>);</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> result =</div>
+<div class="line">        <a id="a13" name="a13"></a><a class="code hl_function" href="group__pkgMeshSmoothing3Functions.html#ga9098912c1e9a1917a98011489d6193ba">CGAL::boundary_aware_mesh_smoothing</a>(</div>
+<div class="line">            c3t3,</div>
+<div class="line">            domain,</div>
+<div class="line">            CGAL::parameters::verbose(<span class="keyword">true</span>));</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Number of inverted elements: "</span></div>
+<div class="line">              &lt;&lt; result.nb_invalid_elements &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Number of vertex updates: "</span></div>
+<div class="line">              &lt;&lt; result.nb_vertex_updates &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Number of metric evaluations: "</span></div>
+<div class="line">              &lt;&lt; result.nb_metric_evaluations &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"Smoothing time: "</span></div>
+<div class="line">              &lt;&lt; result.total_time &lt;&lt; <span class="stringliteral">" s."</span> &lt;&lt; <span class="charliteral">'\n'</span>;</div>
+<div class="line"> </div>
+<div class="line">    dump_c3t3(c3t3, <span class="stringliteral">"hybrid_smoothed"</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Bbox__3_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Bbox__3.html">CGAL::Bbox_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Labeled__mesh__domain__3_html"><div class="ttname"><a href="../Mesh_3/classCGAL_1_1Labeled__mesh__domain__3.html">CGAL::Labeled_mesh_domain_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Mesh__complex__3__in__triangulation__3_html"><div class="ttname"><a href="../SMDS_3/classCGAL_1_1Mesh__complex__3__in__triangulation__3.html">CGAL::Mesh_complex_3_in_triangulation_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Mesh__criteria__3_html"><div class="ttname"><a href="../Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL::Mesh_criteria_3</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Mesh__smoothing__3_1_1Polyhedral__mesh__domain__projector_html"><div class="ttname"><a href="classCGAL_1_1Mesh__smoothing__3_1_1Polyhedral__mesh__domain__projector.html">CGAL::Mesh_smoothing_3::Polyhedral_mesh_domain_projector</a></div><div class="ttdoc">provides projection functions onto the surface of a polyhedral mesh domain.</div><div class="ttdef"><b>Definition</b> projectors.h:233</div></div>
+<div class="ttc" id="aclassCGAL_1_1Polyhedral__mesh__domain__3_html"><div class="ttname"><a href="../Mesh_3/classCGAL_1_1Polyhedral__mesh__domain__3.html">CGAL::Polyhedral_mesh_domain_3</a></div></div>
+<div class="ttc" id="aclassOutputIterator_html"><div class="ttname"><a href="../Manual/classOutputIterator.html">OutputIterator</a></div></div>
+<div class="ttc" id="agroup__PkgMesh3Functions_html_gac8599a0c967075f740bf8e2e92c4770e"><div class="ttname"><a href="../Mesh_3/group__PkgMesh3Functions.html#gac8599a0c967075f740bf8e2e92c4770e">CGAL::make_mesh_3</a></div><div class="ttdeci">C3T3 make_mesh_3(const MeshDomain &amp;domain, const MeshCriteria &amp;criteria, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgMesh3Parameters_html"><div class="ttname"><a href="../Mesh_3/group__PkgMesh3Parameters.html">CGAL::parameters</a></div></div>
+<div class="ttc" id="agroup__PkgMesh3Parameters_html_gab24d8652fbb6ae045e989769c5bc69f0"><div class="ttname"><a href="../Mesh_3/group__PkgMesh3Parameters.html#gab24d8652fbb6ae045e989769c5bc69f0">CGAL::parameters::no_exude</a></div><div class="ttdeci">unspecified_type no_exude()</div></div>
+<div class="ttc" id="agroup__centroid__grp_html_ga3ba0496a839f97ee6cd506baff51dfe4"><div class="ttname"><a href="../Kernel_23/group__centroid__grp.html#ga3ba0496a839f97ee6cd506baff51dfe4">CGAL::centroid</a></div><div class="ttdeci">CGAL::Point_2&lt; Kernel &gt; centroid(const CGAL::Point_2&lt; Kernel &gt; &amp;p, const CGAL::Point_2&lt; Kernel &gt; &amp;q, const CGAL::Point_2&lt; Kernel &gt; &amp;r)</div></div>
+<div class="ttc" id="agroup__pkgMeshSmoothing3Functions_html_ga9098912c1e9a1917a98011489d6193ba"><div class="ttname"><a href="group__pkgMeshSmoothing3Functions.html#ga9098912c1e9a1917a98011489d6193ba">CGAL::boundary_aware_mesh_smoothing</a></div><div class="ttdeci">Mesh_smoothing_3::Smoothing_status boundary_aware_mesh_smoothing(C3t3 &amp;c3t3, CTS const &amp;cts, NamedParameters const &amp;np=parameters::default_values())</div><div class="ttdoc">smooths a tetrahedral mesh while preserving the boundary and curve features.</div><div class="ttdef"><b>Definition</b> boundary_aware_mesh_smoothing.h:108</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+<div class="ttc" id="astructCGAL_1_1Mesh__smoothing__3_1_1Tangent__space_html"><div class="ttname"><a href="structCGAL_1_1Mesh__smoothing__3_1_1Tangent__space.html">CGAL::Mesh_smoothing_3::Tangent_space</a></div><div class="ttdoc">&lt;/div&gt;</div><div class="ttdef"><b>Definition</b> projectors.h:57</div></div>
+<div class="ttc" id="astructCGAL_1_1Mesh__triangulation__3_html_aacde3b6321609039e777e11c49ada1dc"><div class="ttname"><a href="../Mesh_3/structCGAL_1_1Mesh__triangulation__3.html#aacde3b6321609039e777e11c49ada1dc">CGAL::Mesh_triangulation_3::type</a></div><div class="ttdeci">unspecified_type type</div></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

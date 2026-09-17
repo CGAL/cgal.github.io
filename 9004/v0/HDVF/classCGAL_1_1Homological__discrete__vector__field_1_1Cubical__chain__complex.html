@@ -1,0 +1,1102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: CGAL::Homological_discrete_vector_field::Cubical_chain_complex&lt; CoefficientRing, Traits, SparseMatrixStruct &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a> |
+<a href="#pub-static-methods">Static Public Member Functions</a> |
+<a href="#pro-methods">Protected Member Functions</a> |
+<a href="#pro-attribs">Protected Attributes</a> |
+<a href="#friends">Friends</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Homological_discrete_vector_field::Cubical_chain_complex&lt; CoefficientRing, Traits, SparseMatrixStruct &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/HDVF/Cubical_chain_complex.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename CoefficientRing, typename Traits, typename SparseMatrixStruct = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt;<br>
+class CGAL::Homological_discrete_vector_field::Cubical_chain_complex&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;</div><p>The class <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html" title="The class Cubical_chain_complex represents (topological) chain complexes associated to cubical comple...">Cubical_chain_complex</a></code> represents (topological) chain complexes associated to cubical complexes. </p>
+<h1><a class="anchor" id="Description"></a>
+Description</h1>
+<p>A cubical complex is a set of "square" cells such that: all the faces of a given cell also belong to the complex and any two cells intersect exactly along a common face.</p>
+<p><img src="cubical_complex.png" alt="" align="center" width="20%/" class="inline"></p>
+<p>A cell in a cubical complex of dimension q is the cartesian product of \(q\) intervals \([n_1,n_1+\delta_1]\times [n_q,n_q+\delta_q] \) with \(n_i\in \mathbb N \) and \(\delta_i = 0,1\). The dimension of such a cell is \(\sum_{i=1}^q \delta_i\). A 0-cell is thus a vertex, a 1-cell contains one non zero delta (edge along one of the axes), a 2-cell contains two non zero deltas (square along two of the axes), while a 3-cell is a cube...</p>
+<p>For instance, \(v = [2,2]\times[1,1]\times[0,0]\), \(e = [0,1]\times[1,1]\times[0,0]\) and \(f = [2,3]\times[0,1]\times[1,1]\).</p>
+<p>Given a cubical complex of dimension \(q\) included in \([0,B_1]\times\cdots \times[0,B_q]\), Khalimsky coordinates associate to each cell of the complex a unique coordinate in \([0,2B_1]\times\cdots \times[0,2B_q]\):  </p><p class="formulaDsp">
+\[
+\begin{array}{rcl}
+\sigma &amp; \mapsto &amp; \mathrm{khal}(\sigma) \\
+[n_1,n_1+\delta_1]\times\cdots \times [n_q,n_q+\delta_q] &amp; \,\to\, &amp; (2n_1+\delta_1,\ldots,2n_1+\delta_1) \\
+\end{array}\]
+</p>
+<p> we set \(N_i = 2B_i+1\) the size of the Khalimsky bounding box along the \(i\)th axis.</p>
+<p>The dimension of a cell is the given by the number of odd coordinates. In our previous example, \(B_1=3, B_2=2, B_3=1\), hence \(N_1=7, N_2=5, N_3=3\) and we get the following Khalimsky coordinates: \(\mathrm{khal}(v) = (4,2,0)\), \(\mathrm{khal}(e) = (1,2,0)\) and \(\mathrm{khal}(f) = (5,1,2)\).</p>
+<p>The boundary map of the complex is computed by the constructor of the class using the standard formula with Khalimsky coordinates. Given a cell \(\sigma\) with \(\mathrm{khal}(\sigma) = (x_1,\ldots,x_q)\) </p><p class="formulaDsp">
+\[ \partial(x_1,\ldots,x_q) = \sum_{\substack{i=0\\x_i\text{ odd}}}^q (-1)^{j(i)} \left( (x_1,\ldots,x_i+1,\ldots, x_q) - (x_1,\ldots,x_i-1,\ldots, x_q)\right)\]
+</p>
+<p> where \(j(i)\) is the number of odd coordinates between \(x_1\) and \(x_i\).</p>
+<p>Let us also point out that besides Khalimsky coordinates, cells are indexed along each dimension, thus each cell is uniquely determined by its dimension and its index in this dimension (called "base index").</p>
+<h1><a class="anchor" id="SecHdvfImplementation"></a>
+Implementation Details</h1>
+<p>As described above, Khalimsky coordinates provide a convenient tool to identify cells of any dimension. Hence a complex of dimension \(q\) can be encoded by a Boolean matrix of size \(N_1\times\cdots\times N_q\) (with previous notations). For convenience, this matrix is vectorized and thus the complex is stored in a Boolean vector (denoted by <code>_cells</code>) of size \(N_1\times \cdots \times N_q\).</p>
+<p>Cells of any dimension are thus repesented by a given element of this Boolean vector and the corresponding index is called their <em>Boolean index</em>.</p>
+<p>As stated above, besides this Boolean representation, topological computations require to identify the bases of cells in any dimension (bases of the free chain groups). Hence, a cell of dimension \(d\) is also identified by its index in the basis of \(d\)-dimensional cells. This index is called its <em>basis index</em>. The vector <code>_bool2base</code> stores, for each dimension, the map between Boolean and base indices, while the <code>_base2bool</code> stores, for each dimension, the permutation between base and Boolean indices.</p>
+<p><img src="cubical_implementation.png" alt="" align="center" width="50%/" class="inline"></p>
+<dl>
+<dt>Is model of</dt>
+<dd><code><a class="el" href="classGeometricChainComplex.html" title="The concept GeometricChainComplex refines the concept AbstractChainComplex and describes the requirem...">GeometricChainComplex</a></code> </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CoefficientRing</td><td>a model of the <code><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></code> concept. </td></tr>
+    <tr><td class="paramname">Traits</td><td>a geometric traits class model of the <code><a class="el" href="classHDVFTraits.html" title="The concept HDVFTraits describes the requirements for geometric traits classes used in this package.">HDVFTraits</a></code> concept. </td></tr>
+    <tr><td class="paramname">SparseMatrixStruct</td><td>an instantiation of the <code>Sparse_matrix</code> structure providing templates of sparse chains and sparse matrices built over a given model of <code><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a18a523a5edabf0232d6425a7551f48ad"><td class="memItemLeft" align="right" valign="top">enum  </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ad">Cubical_complex_primal_dual</a> { <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ada73abd1458d88c1a009c3b9b1ffd4d853">PRIMAL</a>
+, <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48adab3ba72688c7a0f37839e74a2249e00db">DUAL</a>
+ }</td></tr>
+<tr class="memdesc:a18a523a5edabf0232d6425a7551f48ad"><td class="mdescLeft"> </td><td class="mdescRight">Type used to encode primal or dual construction.  <a href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ad">More...</a><br></td></tr>
+<tr class="separator:a18a523a5edabf0232d6425a7551f48ad"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3c5421ad32b1485c49a5fbe0f464cc78"><td class="memItemLeft" align="right" valign="top"><a id="a3c5421ad32b1485c49a5fbe0f464cc78" name="a3c5421ad32b1485c49a5fbe0f464cc78"></a>
+typedef CoefficientRing </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a3c5421ad32b1485c49a5fbe0f464cc78"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients used to compute homology. <br></td></tr>
+<tr class="separator:a3c5421ad32b1485c49a5fbe0f464cc78"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad62eb9d5aef3862e1e1cdbc2aaae0da8"><td class="memItemLeft" align="right" valign="top"><a id="ad62eb9d5aef3862e1e1cdbc2aaae0da8" name="ad62eb9d5aef3862e1e1cdbc2aaae0da8"></a>
+typedef SparseMatrixStruct </td><td class="memItemRight" valign="bottom"><b>Sparse_matrix_struct</b></td></tr>
+<tr class="memdesc:ad62eb9d5aef3862e1e1cdbc2aaae0da8"><td class="mdescLeft"> </td><td class="mdescRight">Type of sparse matrix structure used to compute homology. <br></td></tr>
+<tr class="separator:ad62eb9d5aef3862e1e1cdbc2aaae0da8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aace79986e00132bd8b61b4df27a1904e"><td class="memTemplParams" colspan="2"><a id="aace79986e00132bd8b61b4df27a1904e" name="aace79986e00132bd8b61b4df27a1904e"></a>
+template&lt;typename _CT , int _SF&gt; </td></tr>
+<tr class="memitem:aace79986e00132bd8b61b4df27a1904e"><td class="memTemplItemLeft" align="right" valign="top">using </td><td class="memTemplItemRight" valign="bottom"><b>Sparse_chain_type</b> = typename SparseMatrixStruct::template <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#aace79986e00132bd8b61b4df27a1904e">Sparse_chain_type</a>&lt; _CT, _SF &gt;</td></tr>
+<tr class="memdesc:aace79986e00132bd8b61b4df27a1904e"><td class="mdescLeft"> </td><td class="mdescRight">Type of sparse chain used to compute homology. <br></td></tr>
+<tr class="separator:aace79986e00132bd8b61b4df27a1904e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab6ff2315982b19c95ab55037d9dbdee3"><td class="memTemplParams" colspan="2"><a id="ab6ff2315982b19c95ab55037d9dbdee3" name="ab6ff2315982b19c95ab55037d9dbdee3"></a>
+template&lt;typename _CT , int _SF&gt; </td></tr>
+<tr class="memitem:ab6ff2315982b19c95ab55037d9dbdee3"><td class="memTemplItemLeft" align="right" valign="top">using </td><td class="memTemplItemRight" valign="bottom"><b>Sparse_matrix_type</b> = typename SparseMatrixStruct::template <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ab6ff2315982b19c95ab55037d9dbdee3">Sparse_matrix_type</a>&lt; _CT, _SF &gt;</td></tr>
+<tr class="memdesc:ab6ff2315982b19c95ab55037d9dbdee3"><td class="mdescLeft"> </td><td class="mdescRight">Type of sparse matrix used to compute homology. <br></td></tr>
+<tr class="separator:ab6ff2315982b19c95ab55037d9dbdee3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a814582fc648c05b857e9f697abcec7aa"><td class="memItemLeft" align="right" valign="top"><a id="a814582fc648c05b857e9f697abcec7aa" name="a814582fc648c05b857e9f697abcec7aa"></a>
+typedef Traits::Point </td><td class="memItemRight" valign="bottom"><b>Point</b></td></tr>
+<tr class="memdesc:a814582fc648c05b857e9f697abcec7aa"><td class="mdescLeft"> </td><td class="mdescRight">Type of vertex coordinates. <br></td></tr>
+<tr class="separator:a814582fc648c05b857e9f697abcec7aa"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aeac6837c8e98f7229caf45d6bb04b5d3"><td class="memItemLeft" align="right" valign="top"><a id="aeac6837c8e98f7229caf45d6bb04b5d3" name="aeac6837c8e98f7229caf45d6bb04b5d3"></a>
+typedef Traits::Point3 </td><td class="memItemRight" valign="bottom"><b>Point3</b></td></tr>
+<tr class="memdesc:aeac6837c8e98f7229caf45d6bb04b5d3"><td class="mdescLeft"> </td><td class="mdescRight">Type of vtk export vertex coordinates. <br></td></tr>
+<tr class="separator:aeac6837c8e98f7229caf45d6bb04b5d3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6bc1093d1d18d94eeeb9ca1b08751fb5"><td class="memItemLeft" align="right" valign="top"><a id="a6bc1093d1d18d94eeeb9ca1b08751fb5" name="a6bc1093d1d18d94eeeb9ca1b08751fb5"></a>
+typedef <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#aace79986e00132bd8b61b4df27a1904e">Sparse_chain_type</a>&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a3c5421ad32b1485c49a5fbe0f464cc78">Coefficient_ring</a>, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_chain</b></td></tr>
+<tr class="memdesc:a6bc1093d1d18d94eeeb9ca1b08751fb5"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major chains. <br></td></tr>
+<tr class="separator:a6bc1093d1d18d94eeeb9ca1b08751fb5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:af4fc868529cc0baaab7342f914cf3b78"><td class="memItemLeft" align="right" valign="top"><a id="af4fc868529cc0baaab7342f914cf3b78" name="af4fc868529cc0baaab7342f914cf3b78"></a>
+typedef <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#aace79986e00132bd8b61b4df27a1904e">Sparse_chain_type</a>&lt; CoefficientRing, <a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946">CGAL::OSM::ROW</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Row_chain</b></td></tr>
+<tr class="memdesc:af4fc868529cc0baaab7342f914cf3b78"><td class="mdescLeft"> </td><td class="mdescRight">Type of row-major chains. <br></td></tr>
+<tr class="separator:af4fc868529cc0baaab7342f914cf3b78"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a44fea382d30264d81351345cfa328c1b"><td class="memItemLeft" align="right" valign="top"><a id="a44fea382d30264d81351345cfa328c1b" name="a44fea382d30264d81351345cfa328c1b"></a>
+typedef <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ab6ff2315982b19c95ab55037d9dbdee3">Sparse_matrix_type</a>&lt; CoefficientRing, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">CGAL::OSM::COLUMN</a> &gt; </td><td class="memItemRight" valign="bottom"><b>Column_matrix</b></td></tr>
+<tr class="memdesc:a44fea382d30264d81351345cfa328c1b"><td class="mdescLeft"> </td><td class="mdescRight">Type of column-major sparse matrices. <br></td></tr>
+<tr class="separator:a44fea382d30264d81351345cfa328c1b"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a59a9419b7b32483ea6f8d52906107065"><td class="memItemLeft" align="right" valign="top"><a id="a59a9419b7b32483ea6f8d52906107065" name="a59a9419b7b32483ea6f8d52906107065"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Cubical_chain_complex</b> ()</td></tr>
+<tr class="memdesc:a59a9419b7b32483ea6f8d52906107065"><td class="mdescLeft"> </td><td class="mdescRight">Default constructor (empty cubical complex). <br></td></tr>
+<tr class="separator:a59a9419b7b32483ea6f8d52906107065"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6fa2bbf4c1fe9ab3047c58b171b2c4ef"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6fa2bbf4c1fe9ab3047c58b171b2c4ef">Cubical_chain_complex</a> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html">Cub_object_io</a>&lt; Traits &gt; &amp;cub, <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ad">Cubical_complex_primal_dual</a> type)</td></tr>
+<tr class="memdesc:a6fa2bbf4c1fe9ab3047c58b171b2c4ef"><td class="mdescLeft"> </td><td class="mdescRight">Constructor from a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html" title="The class Cub_object_io is an intermediate IO class, used to load binary volumes and produce cubical ...">Cub_object_io</a></code> (builds <code>PRIMAL</code> or <code>DUAL</code> associated complex depending on <code>type</code>).  <br></td></tr>
+<tr class="separator:a6fa2bbf4c1fe9ab3047c58b171b2c4ef"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a50ebd66211da6ca1e18025614b300db9"><td class="memItemLeft" align="right" valign="top"><a id="a50ebd66211da6ca1e18025614b300db9" name="a50ebd66211da6ca1e18025614b300db9"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_valid_cell_dimension</b> (int q) const</td></tr>
+<tr class="memdesc:a50ebd66211da6ca1e18025614b300db9"><td class="mdescLeft"> </td><td class="mdescRight">Checks if <code>q</code> belongs to the range of dimensions of cells in the complex. <br></td></tr>
+<tr class="separator:a50ebd66211da6ca1e18025614b300db9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a654c98655ef1c7e739fcba0e77a2c7ea"><td class="memItemLeft" align="right" valign="top"><a id="a654c98655ef1c7e739fcba0e77a2c7ea" name="a654c98655ef1c7e739fcba0e77a2c7ea"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_valid_cell</b> (size_t <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a324b936d2437b119c98b9d578818c784">id</a>, int q) const</td></tr>
+<tr class="memdesc:a654c98655ef1c7e739fcba0e77a2c7ea"><td class="mdescLeft"> </td><td class="mdescRight">Checks if a cell of "basis" index <code>i</code> and dimension <code>q</code> belongs to the range of dimensions of cells in the complex. <br></td></tr>
+<tr class="separator:a654c98655ef1c7e739fcba0e77a2c7ea"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9fd770c81fd837ac6d81488cb8f4cb05"><td class="memItemLeft" align="right" valign="top"><a id="a9fd770c81fd837ac6d81488cb8f4cb05" name="a9fd770c81fd837ac6d81488cb8f4cb05"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_valid_cell</b> (const std::vector&lt; size_t &gt; &amp;cell) const</td></tr>
+<tr class="memdesc:a9fd770c81fd837ac6d81488cb8f4cb05"><td class="mdescLeft"> </td><td class="mdescRight">Checks if a cell given in Khalimsky coordinates has the right dimension. <br></td></tr>
+<tr class="separator:a9fd770c81fd837ac6d81488cb8f4cb05"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aeed6855831f1b3c4af1d122ebc04e120"><td class="memItemLeft" align="right" valign="top"><a id="aeed6855831f1b3c4af1d122ebc04e120" name="aeed6855831f1b3c4af1d122ebc04e120"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>is_valid_cell</b> (size_t i) const</td></tr>
+<tr class="memdesc:aeed6855831f1b3c4af1d122ebc04e120"><td class="mdescLeft"> </td><td class="mdescRight">Checks if an index belongs to the range of the Boolean vector encoding the complex. <br></td></tr>
+<tr class="separator:aeed6855831f1b3c4af1d122ebc04e120"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5af7d84056fbb1b33d37346bea76189c"><td class="memItemLeft" align="right" valign="top"><a id="a5af7d84056fbb1b33d37346bea76189c" name="a5af7d84056fbb1b33d37346bea76189c"></a>
+<a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a> &amp; </td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a> &amp;complex)</td></tr>
+<tr class="memdesc:a5af7d84056fbb1b33d37346bea76189c"><td class="mdescLeft"> </td><td class="mdescRight">Assignment. <br></td></tr>
+<tr class="separator:a5af7d84056fbb1b33d37346bea76189c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8cbb2e099b05c8a6c6810a8c14ae0689"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6bc1093d1d18d94eeeb9ca1b08751fb5">Column_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a8cbb2e099b05c8a6c6810a8c14ae0689">d</a> (size_t id_cell, int q) const</td></tr>
+<tr class="memdesc:a8cbb2e099b05c8a6c6810a8c14ae0689"><td class="mdescLeft"> </td><td class="mdescRight">Returns the boundary of the cell id_cell in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:a8cbb2e099b05c8a6c6810a8c14ae0689"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9c6bfa3edc516db2638a727962ad7dfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#af4fc868529cc0baaab7342f914cf3b78">Row_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a9c6bfa3edc516db2638a727962ad7dfb">cod</a> (size_t id_cell, int q) const</td></tr>
+<tr class="memdesc:a9c6bfa3edc516db2638a727962ad7dfb"><td class="mdescLeft"> </td><td class="mdescRight">Returns the co-boundary of the cell id_cell in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:a9c6bfa3edc516db2638a727962ad7dfb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a93f5ce1e41c94662251b2dc0c842626d"><td class="memItemLeft" align="right" valign="top">size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a93f5ce1e41c94662251b2dc0c842626d">number_of_cells</a> (int q) const</td></tr>
+<tr class="memdesc:a93f5ce1e41c94662251b2dc0c842626d"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of cells in a given dimension.  <br></td></tr>
+<tr class="separator:a93f5ce1e41c94662251b2dc0c842626d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae919c99ecba366f470b21cfd75d7da3d"><td class="memItemLeft" align="right" valign="top">int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ae919c99ecba366f470b21cfd75d7da3d">dimension</a> () const</td></tr>
+<tr class="memdesc:ae919c99ecba366f470b21cfd75d7da3d"><td class="mdescLeft"> </td><td class="mdescRight">Returns the dimension of the complex.  <br></td></tr>
+<tr class="separator:ae919c99ecba366f470b21cfd75d7da3d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac43873aa9fa75696fbffb59e9dce946f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ac43873aa9fa75696fbffb59e9dce946f">size_bb</a> () const</td></tr>
+<tr class="memdesc:ac43873aa9fa75696fbffb59e9dce946f"><td class="mdescLeft"> </td><td class="mdescRight">Get the size of the Khalimsky bounding box.  <br></td></tr>
+<tr class="separator:ac43873aa9fa75696fbffb59e9dce946f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2e635d00379434a1b5c89a5d0db0d2e7"><td class="memItemLeft" align="right" valign="top">size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a2e635d00379434a1b5c89a5d0db0d2e7">size</a> () const</td></tr>
+<tr class="memdesc:a2e635d00379434a1b5c89a5d0db0d2e7"><td class="mdescLeft"> </td><td class="mdescRight">Returns the total size of the complex.  <br></td></tr>
+<tr class="separator:a2e635d00379434a1b5c89a5d0db0d2e7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac13fafdb0216a997e712027a9d2ada9e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ac13fafdb0216a997e712027a9d2ada9e">index_to_cell</a> (size_t i, int q) const</td></tr>
+<tr class="memdesc:ac13fafdb0216a997e712027a9d2ada9e"><td class="mdescLeft"> </td><td class="mdescRight">Returns Khalimsky coordinates of the cell of "basis index" i in dimension q.  <br></td></tr>
+<tr class="separator:ac13fafdb0216a997e712027a9d2ada9e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3903abb9aa33c51aa6fbd41e23bf6417"><td class="memItemLeft" align="right" valign="top">size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a3903abb9aa33c51aa6fbd41e23bf6417">cell_to_index</a> (std::vector&lt; size_t &gt; cell) const</td></tr>
+<tr class="memdesc:a3903abb9aa33c51aa6fbd41e23bf6417"><td class="mdescLeft"> </td><td class="mdescRight">Returns the "basis index" of a cell given by its Khalimsky coordinates.  <br></td></tr>
+<tr class="separator:a3903abb9aa33c51aa6fbd41e23bf6417"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aac8b5498a80b382ad0f99071621855e0"><td class="memItemLeft" align="right" valign="top">int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#aac8b5498a80b382ad0f99071621855e0">dimension</a> (const std::vector&lt; size_t &gt; &amp;cell) const</td></tr>
+<tr class="memdesc:aac8b5498a80b382ad0f99071621855e0"><td class="mdescLeft"> </td><td class="mdescRight">Returns the dimension of a cell (given in Khalimsky coordinates).  <br></td></tr>
+<tr class="separator:aac8b5498a80b382ad0f99071621855e0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0ed2fe3aec07c5c56bbd222de843a941"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a0ed2fe3aec07c5c56bbd222de843a941">bindex_to_cell</a> (size_t i) const</td></tr>
+<tr class="memdesc:a0ed2fe3aec07c5c56bbd222de843a941"><td class="mdescLeft"> </td><td class="mdescRight">Returns Khalimsky coordinates of the cell of Boolean index i.  <br></td></tr>
+<tr class="separator:a0ed2fe3aec07c5c56bbd222de843a941"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7e9a98f58a447a17f5477bdea41a4e24"><td class="memItemLeft" align="right" valign="top">size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a7e9a98f58a447a17f5477bdea41a4e24">cell_to_bindex</a> (std::vector&lt; size_t &gt; cell) const</td></tr>
+<tr class="memdesc:a7e9a98f58a447a17f5477bdea41a4e24"><td class="mdescLeft"> </td><td class="mdescRight">Returns the Boolean index of a cell given by its Khalimsky coordinates.  <br></td></tr>
+<tr class="separator:a7e9a98f58a447a17f5477bdea41a4e24"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a92b64eda552af9d2e6078dcccd94973a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a44fea382d30264d81351345cfa328c1b">Column_matrix</a> &gt; &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a92b64eda552af9d2e6078dcccd94973a">boundary_matrices</a> () const</td></tr>
+<tr class="memdesc:a92b64eda552af9d2e6078dcccd94973a"><td class="mdescLeft"> </td><td class="mdescRight">Returns a constant reference to the vector of boundary matrices (along each dimension).  <br></td></tr>
+<tr class="separator:a92b64eda552af9d2e6078dcccd94973a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aedcd31fdfbd9abd399532c0e89f03ccc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a44fea382d30264d81351345cfa328c1b">Column_matrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#aedcd31fdfbd9abd399532c0e89f03ccc">boundary_matrix</a> (int q) const</td></tr>
+<tr class="memdesc:aedcd31fdfbd9abd399532c0e89f03ccc"><td class="mdescLeft"> </td><td class="mdescRight">Returns a copy of the dim-th boundary matrix (ie. column-major matrix of \(\partial_q\)).  <br></td></tr>
+<tr class="separator:aedcd31fdfbd9abd399532c0e89f03ccc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6436c6eb20fc2e6c243ba0113533622c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6436c6eb20fc2e6c243ba0113533622c">bottom_faces</a> (size_t id_cell, int q) const</td></tr>
+<tr class="memdesc:a6436c6eb20fc2e6c243ba0113533622c"><td class="mdescLeft"> </td><td class="mdescRight">Returns dimension 0 cell indices included in the cell with index <code>id_cell</code> of dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:a6436c6eb20fc2e6c243ba0113533622c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a44511da7464cd79144c78955f5075d72"><td class="memTemplParams" colspan="2">template&lt;typename CoefficientT , int ChainTypeF&gt; </td></tr>
+<tr class="memitem:a44511da7464cd79144c78955f5075d72"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6bc1093d1d18d94eeeb9ca1b08751fb5">Column_chain</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a44511da7464cd79144c78955f5075d72">cofaces_chain</a> (<a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CoefficientT, ChainTypeF &gt; chain, int q) const</td></tr>
+<tr class="memdesc:a44511da7464cd79144c78955f5075d72"><td class="mdescLeft"> </td><td class="mdescRight">Returns the cofaces of a given chain in dimension <code>q</code>.  <br></td></tr>
+<tr class="separator:a44511da7464cd79144c78955f5075d72"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a324b936d2437b119c98b9d578818c784"><td class="memItemLeft" align="right" valign="top">size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a324b936d2437b119c98b9d578818c784">id</a> () const</td></tr>
+<tr class="memdesc:a324b936d2437b119c98b9d578818c784"><td class="mdescLeft"> </td><td class="mdescRight">Gets (unique) object Id.  <br></td></tr>
+<tr class="separator:a324b936d2437b119c98b9d578818c784"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abf047b3b6e8811c6a25f6c0742db1d5d"><td class="memItemLeft" align="right" valign="top"><a id="abf047b3b6e8811c6a25f6c0742db1d5d" name="abf047b3b6e8811c6a25f6c0742db1d5d"></a>
+<a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a814582fc648c05b857e9f697abcec7aa">Point</a> </td><td class="memItemRight" valign="bottom"><b>point</b> (size_t i) const</td></tr>
+<tr class="memdesc:abf047b3b6e8811c6a25f6c0742db1d5d"><td class="mdescLeft"> </td><td class="mdescRight">Gets the coordinates of the ith vertex. <br></td></tr>
+<tr class="separator:abf047b3b6e8811c6a25f6c0742db1d5d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a64ddc5c1e75b9ce572957a964a5a96e3"><td class="memItemLeft" align="right" valign="top"><a id="a64ddc5c1e75b9ce572957a964a5a96e3" name="a64ddc5c1e75b9ce572957a964a5a96e3"></a>
+const std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a814582fc648c05b857e9f697abcec7aa">Point</a> &gt; &amp; </td><td class="memItemRight" valign="bottom"><b>points</b> () const</td></tr>
+<tr class="memdesc:a64ddc5c1e75b9ce572957a964a5a96e3"><td class="mdescLeft"> </td><td class="mdescRight">Gets the vector of vertex coordinates <br>
+ <br></td></tr>
+<tr class="separator:a64ddc5c1e75b9ce572957a964a5a96e3"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:affd87db620c68bfb4f0e8eb771f0ce82"><td class="memTemplParams" colspan="2"><a id="affd87db620c68bfb4f0e8eb771f0ce82" name="affd87db620c68bfb4f0e8eb771f0ce82"></a>
+template&lt;typename LabelType  = int&gt; </td></tr>
+<tr class="memitem:affd87db620c68bfb4f0e8eb771f0ce82"><td class="memTemplItemLeft" align="right" valign="top">static void </td><td class="memTemplItemRight" valign="bottom"><b>chain_complex_to_vtk</b> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt; &amp;K, const std::string &amp;filename, const std::vector&lt; std::vector&lt; LabelType &gt; &gt; *labels=NULL, std::string label_type_name="int")</td></tr>
+<tr class="memdesc:affd87db620c68bfb4f0e8eb771f0ce82"><td class="mdescLeft"> </td><td class="mdescRight">END Methods of the <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html" title="The class Cubical_chain_complex represents (topological) chain complexes associated to cubical comple...">Cubical_chain_complex</a> concept. <br></td></tr>
+<tr class="separator:affd87db620c68bfb4f0e8eb771f0ce82"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad0451d046032955a7111b4df67bbf7d4"><td class="memItemLeft" align="right" valign="top"><a id="ad0451d046032955a7111b4df67bbf7d4" name="ad0451d046032955a7111b4df67bbf7d4"></a>
+static void </td><td class="memItemRight" valign="bottom"><b>chain_to_vtk</b> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt; &amp;K, const std::string &amp;filename, const typename <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::template <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#aace79986e00132bd8b61b4df27a1904e">Sparse_chain_type</a>&lt; CoefficientRing, <a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e">OSM::COLUMN</a> &gt; &amp;chain, int q, size_t cellId=-1)</td></tr>
+<tr class="separator:ad0451d046032955a7111b4df67bbf7d4"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a4c0712b5d9ae1b59de3dda89a8300607"><td class="memItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a4c0712b5d9ae1b59de3dda89a8300607">print_complex</a> (std::ostream &amp;out=std::cout) const</td></tr>
+<tr class="memdesc:a4c0712b5d9ae1b59de3dda89a8300607"><td class="mdescLeft"> </td><td class="mdescRight">Prints informations on the complex.  <br></td></tr>
+<tr class="separator:a4c0712b5d9ae1b59de3dda89a8300607"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1a381c7fe51f21e68bdda6e7675616eb"><td class="memItemLeft" align="right" valign="top"><a id="a1a381c7fe51f21e68bdda6e7675616eb" name="a1a381c7fe51f21e68bdda6e7675616eb"></a>
+<a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a814582fc648c05b857e9f697abcec7aa">Point</a> </td><td class="memItemRight" valign="bottom"><b>compute_point</b> (size_t i) const</td></tr>
+<tr class="separator:a1a381c7fe51f21e68bdda6e7675616eb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa3825600d38272770d27a514807586ae"><td class="memItemLeft" align="right" valign="top"><a id="aa3825600d38272770d27a514807586ae" name="aa3825600d38272770d27a514807586ae"></a>
+void </td><td class="memItemRight" valign="bottom"><b>compute_points</b> ()</td></tr>
+<tr class="separator:aa3825600d38272770d27a514807586ae"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2223433e429408e5fa4cf9d62a975b9c"><td class="memItemLeft" align="right" valign="top"><a id="a2223433e429408e5fa4cf9d62a975b9c" name="a2223433e429408e5fa4cf9d62a975b9c"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>get_P</b> () const</td></tr>
+<tr class="separator:a2223433e429408e5fa4cf9d62a975b9c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a5584139fe820e4f012a94c082a86c2d5"><td class="memItemLeft" align="right" valign="top"><a id="a5584139fe820e4f012a94c082a86c2d5" name="a5584139fe820e4f012a94c082a86c2d5"></a>
+std::vector&lt; bool &gt; </td><td class="memItemRight" valign="bottom"><b>get_cells</b> () const</td></tr>
+<tr class="separator:a5584139fe820e4f012a94c082a86c2d5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4f93c6c5f926b2cf7be5d993103f4c86"><td class="memItemLeft" align="right" valign="top"><a id="a4f93c6c5f926b2cf7be5d993103f4c86" name="a4f93c6c5f926b2cf7be5d993103f4c86"></a>
+std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>get_base2bool</b> () const</td></tr>
+<tr class="separator:a4f93c6c5f926b2cf7be5d993103f4c86"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1d3a1982deb877ee5e333d3cf7ef85dd"><td class="memItemLeft" align="right" valign="top"><a id="a1d3a1982deb877ee5e333d3cf7ef85dd" name="a1d3a1982deb877ee5e333d3cf7ef85dd"></a>
+std::vector&lt; std::map&lt; size_t, size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>get_bool2base</b> () const</td></tr>
+<tr class="separator:a1d3a1982deb877ee5e333d3cf7ef85dd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa2756c4f9f4aa90dfeeb43781f987d71"><td class="memItemLeft" align="right" valign="top"><a id="aa2756c4f9f4aa90dfeeb43781f987d71" name="aa2756c4f9f4aa90dfeeb43781f987d71"></a>
+<a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6bc1093d1d18d94eeeb9ca1b08751fb5">Column_chain</a> </td><td class="memItemRight" valign="bottom"><b>boundary_cell</b> (size_t index_base, int dim) const</td></tr>
+<tr class="separator:aa2756c4f9f4aa90dfeeb43781f987d71"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a15a0e9484d12c9d8d745ce4ddb430e5e"><td class="memItemLeft" align="right" valign="top"><a id="a15a0e9484d12c9d8d745ce4ddb430e5e" name="a15a0e9484d12c9d8d745ce4ddb430e5e"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>khal_to_verts</b> (std::vector&lt; size_t &gt; c) const</td></tr>
+<tr class="separator:a15a0e9484d12c9d8d745ce4ddb430e5e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9ae3cc4307802ddf64f745fe57c67937"><td class="memItemLeft" align="right" valign="top"><a id="a9ae3cc4307802ddf64f745fe57c67937" name="a9ae3cc4307802ddf64f745fe57c67937"></a>
+void </td><td class="memItemRight" valign="bottom"><b>initialize_cells</b> (const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html">Cub_object_io</a>&lt; Traits &gt; &amp;cub, <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ad">Cubical_complex_primal_dual</a> type)</td></tr>
+<tr class="separator:a9ae3cc4307802ddf64f745fe57c67937"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8ec0b7373ba2d7041bd5412ef9e53dcd"><td class="memItemLeft" align="right" valign="top"><a id="a8ec0b7373ba2d7041bd5412ef9e53dcd" name="a8ec0b7373ba2d7041bd5412ef9e53dcd"></a>
+int </td><td class="memItemRight" valign="bottom"><b>dimension</b> (size_t cell_index) const</td></tr>
+<tr class="separator:a8ec0b7373ba2d7041bd5412ef9e53dcd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1409e8a91601d3f76d52c117a4183aa6"><td class="memItemLeft" align="right" valign="top"><a id="a1409e8a91601d3f76d52c117a4183aa6" name="a1409e8a91601d3f76d52c117a4183aa6"></a>
+void </td><td class="memItemRight" valign="bottom"><b>compute_d</b> (int q)</td></tr>
+<tr class="separator:a1409e8a91601d3f76d52c117a4183aa6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa750d340cf1254fa26e89e2b40ae46ed"><td class="memItemLeft" align="right" valign="top"><a id="aa750d340cf1254fa26e89e2b40ae46ed" name="aa750d340cf1254fa26e89e2b40ae46ed"></a>
+void </td><td class="memItemRight" valign="bottom"><b>insert_cell</b> (size_t cell)</td></tr>
+<tr class="separator:aa750d340cf1254fa26e89e2b40ae46ed"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6361009249f854b84bed1753b2bd5c64"><td class="memItemLeft" align="right" valign="top"><a id="a6361009249f854b84bed1753b2bd5c64" name="a6361009249f854b84bed1753b2bd5c64"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>compute_boundaries</b> (size_t cell) const</td></tr>
+<tr class="separator:a6361009249f854b84bed1753b2bd5c64"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aad710f6e091be0b3dfafe9152b7d36a4"><td class="memItemLeft" align="right" valign="top"><a id="aad710f6e091be0b3dfafe9152b7d36a4" name="aad710f6e091be0b3dfafe9152b7d36a4"></a>
+int </td><td class="memItemRight" valign="bottom"><b>_dim</b></td></tr>
+<tr class="separator:aad710f6e091be0b3dfafe9152b7d36a4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a437a3e56ffa810695d86bb876b410609"><td class="memItemLeft" align="right" valign="top"><a id="a437a3e56ffa810695d86bb876b410609" name="a437a3e56ffa810695d86bb876b410609"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_size_bb</b></td></tr>
+<tr class="separator:a437a3e56ffa810695d86bb876b410609"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a214a5f34caaa9b0c2246e81ea262f042"><td class="memItemLeft" align="right" valign="top"><a id="a214a5f34caaa9b0c2246e81ea262f042" name="a214a5f34caaa9b0c2246e81ea262f042"></a>
+std::vector&lt; size_t &gt; </td><td class="memItemRight" valign="bottom"><b>_P</b></td></tr>
+<tr class="separator:a214a5f34caaa9b0c2246e81ea262f042"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0074c4ab7a51591e1d4a73d18929c3ad"><td class="memItemLeft" align="right" valign="top"><a id="a0074c4ab7a51591e1d4a73d18929c3ad" name="a0074c4ab7a51591e1d4a73d18929c3ad"></a>
+std::vector&lt; bool &gt; </td><td class="memItemRight" valign="bottom"><b>_cells</b></td></tr>
+<tr class="separator:a0074c4ab7a51591e1d4a73d18929c3ad"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac488ca76a75f1205e9e0974c904c8cdb"><td class="memItemLeft" align="right" valign="top"><a id="ac488ca76a75f1205e9e0974c904c8cdb" name="ac488ca76a75f1205e9e0974c904c8cdb"></a>
+std::vector&lt; std::vector&lt; size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_base2bool</b></td></tr>
+<tr class="separator:ac488ca76a75f1205e9e0974c904c8cdb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3e479ebedce5243b5bc97aef968851a3"><td class="memItemLeft" align="right" valign="top"><a id="a3e479ebedce5243b5bc97aef968851a3" name="a3e479ebedce5243b5bc97aef968851a3"></a>
+std::vector&lt; std::map&lt; size_t, size_t &gt; &gt; </td><td class="memItemRight" valign="bottom"><b>_bool2base</b></td></tr>
+<tr class="separator:a3e479ebedce5243b5bc97aef968851a3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae013f886432698449b5f240ca1752def"><td class="memItemLeft" align="right" valign="top"><a id="ae013f886432698449b5f240ca1752def" name="ae013f886432698449b5f240ca1752def"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a44fea382d30264d81351345cfa328c1b">Column_matrix</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_d</b></td></tr>
+<tr class="separator:ae013f886432698449b5f240ca1752def"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa8f5be76b7c40dfcebf2eeac47593af7"><td class="memItemLeft" align="right" valign="top"><a id="aa8f5be76b7c40dfcebf2eeac47593af7" name="aa8f5be76b7c40dfcebf2eeac47593af7"></a>
+std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a814582fc648c05b857e9f697abcec7aa">Point</a> &gt; </td><td class="memItemRight" valign="bottom"><b>_points</b></td></tr>
+<tr class="separator:aa8f5be76b7c40dfcebf2eeac47593af7"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ab0bd477f0082415c8a6f8b57f0cabd8b"><td class="memTemplParams" colspan="2">template&lt;typename _CT , typename _Traits , typename _SMS &gt; </td></tr>
+<tr class="memitem:ab0bd477f0082415c8a6f8b57f0cabd8b"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp; </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ab0bd477f0082415c8a6f8b57f0cabd8b">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a>&lt; _CT, _Traits, _SMS &gt; &amp;complex)</td></tr>
+<tr class="memdesc:ab0bd477f0082415c8a6f8b57f0cabd8b"><td class="mdescLeft"> </td><td class="mdescRight">Prints informations on the complex.  <br></td></tr>
+<tr class="separator:ab0bd477f0082415c8a6f8b57f0cabd8b"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a18a523a5edabf0232d6425a7551f48ad" name="a18a523a5edabf0232d6425a7551f48ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18a523a5edabf0232d6425a7551f48ad">◆ </a></span>Cubical_complex_primal_dual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ad">CGAL::Homological_discrete_vector_field::Cubical_chain_complex::Cubical_complex_primal_dual</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type used to encode primal or dual construction. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a18a523a5edabf0232d6425a7551f48ada73abd1458d88c1a009c3b9b1ffd4d853" name="a18a523a5edabf0232d6425a7551f48ada73abd1458d88c1a009c3b9b1ffd4d853"></a>PRIMAL </td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a18a523a5edabf0232d6425a7551f48adab3ba72688c7a0f37839e74a2249e00db" name="a18a523a5edabf0232d6425a7551f48adab3ba72688c7a0f37839e74a2249e00db"></a>DUAL </td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6fa2bbf4c1fe9ab3047c58b171b2c4ef" name="a6fa2bbf4c1fe9ab3047c58b171b2c4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa2bbf4c1fe9ab3047c58b171b2c4ef">◆ </a></span>Cubical_chain_complex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::Cubical_chain_complex </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html">Cub_object_io</a>&lt; Traits &gt; &amp; </td>
+          <td class="paramname"><em>cub</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a18a523a5edabf0232d6425a7551f48ad">Cubical_complex_primal_dual</a> </td>
+          <td class="paramname"><em>type</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor from a <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html" title="The class Cub_object_io is an intermediate IO class, used to load binary volumes and produce cubical ...">Cub_object_io</a></code> (builds <code>PRIMAL</code> or <code>DUAL</code> associated complex depending on <code>type</code>). </p>
+<p>Builds the cubical complex associated to a a set of cells (vertices, edges, squares, cubes...), ie. performs the down closure of cells and set the boundary matrices in any dimension. Given a set of cells:</p>
+<ul>
+<li>if the <code>type</code> is PRIMAL, the constructor builds the associated complex as such (see below middle), which comes to encode \(3^q-1\) connectivity (with \(q\) the dimension of the complex)</li>
+<li>if the <code>type</code> is DUAL and the <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html" title="The class Cub_object_io is an intermediate IO class, used to load binary volumes and produce cubical ...">Cub_object_io</a> contains only cells of maximal dimension (ie. binary object), the constructor build the dual associated complex (see below right), which comes to encode \(2q\) connectivity (with \(q\) the dimension of the complex)</li>
+</ul>
+<p><img src="primal_dual.png" alt="" align="center" width="20%/" class="inline"></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cub</td><td>A <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html" title="The class Cub_object_io is an intermediate IO class, used to load binary volumes and produce cubical ...">Cub_object_io</a> containing a set of "cubical" cells. </td></tr>
+    <tr><td class="paramname">type</td><td>Type of construction used (PRIMAL or DUAL). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0ed2fe3aec07c5c56bbd222de843a941" name="a0ed2fe3aec07c5c56bbd222de843a941"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ed2fe3aec07c5c56bbd222de843a941">◆ </a></span>bindex_to_cell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::bindex_to_cell </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns Khalimsky coordinates of the cell of Boolean index i. </p>
+<p>In <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html" title="The class Cubical_chain_complex represents (topological) chain complexes associated to cubical comple...">Cubical_chain_complex</a></code>, a cells of dimenson <code>q</code>, besides its index in the basis of \(q\)-cells, has an index in the vectorisation of the Khalimsky representation, called its "Boolean index" (see above).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The "Boolean" index of a cell. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Khalimsky coordinates of the cell. </dd></dl>
+
+</div>
+</div>
+<a id="a6436c6eb20fc2e6c243ba0113533622c" name="a6436c6eb20fc2e6c243ba0113533622c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6436c6eb20fc2e6c243ba0113533622c">◆ </a></span>bottom_faces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::bottom_faces </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>id_cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns dimension 0 cell indices included in the cell with index <code>id_cell</code> of dimension <code>q</code>. </p>
+<p>Returns the dimension 0 vertex indices included in the cell with index <code>id_cell</code> of dimension <code>q</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id_cell</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of the cell. </td></tr>
+    <tr><td class="paramname">q</td><td>Dimension of the cell.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of 0-cell indices. </dd></dl>
+
+</div>
+</div>
+<a id="a92b64eda552af9d2e6078dcccd94973a" name="a92b64eda552af9d2e6078dcccd94973a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92b64eda552af9d2e6078dcccd94973a">◆ </a></span>boundary_matrices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a44fea382d30264d81351345cfa328c1b">Column_matrix</a> &gt; &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::boundary_matrices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a constant reference to the vector of boundary matrices (along each dimension). </p>
+<p>Returns a constant reference to the vector of boundary matrices along each dimension. The q-th element of this vector is a column-major sparse matrix containing the boundaries of q-cells (ie. rows encode q-1 cells and columns q cells).</p>
+<dl class="section return"><dt>Returns</dt><dd>Returns a constant reference to the vector of column-major boundary matrices along each dimension. </dd></dl>
+
+</div>
+</div>
+<a id="aedcd31fdfbd9abd399532c0e89f03ccc" name="aedcd31fdfbd9abd399532c0e89f03ccc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedcd31fdfbd9abd399532c0e89f03ccc">◆ </a></span>boundary_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a44fea382d30264d81351345cfa328c1b">Column_matrix</a> &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::boundary_matrix </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a copy of the dim-th boundary matrix (ie. column-major matrix of \(\partial_q\)). </p>
+<p>It is a column-major sparse matrix containing the boundaries of dim-cells (ie. rows encode q-1 cells and columns q cells).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Dimension of the boundary matrix (ie. columns will contain the boundary of dimension q cells).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A column-major sparse matrix containing the matrix of the boundary operator of dimension <code>q</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a7e9a98f58a447a17f5477bdea41a4e24" name="a7e9a98f58a447a17f5477bdea41a4e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e9a98f58a447a17f5477bdea41a4e24">◆ </a></span>cell_to_bindex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::cell_to_bindex </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; size_t &gt; </td>
+          <td class="paramname"><em>cell</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the Boolean index of a cell given by its Khalimsky coordinates. </p>
+<p>In <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html" title="The class Cubical_chain_complex represents (topological) chain complexes associated to cubical comple...">Cubical_chain_complex</a></code>, a cells of dimenson <code>q</code>, besides its index in the basis of \(q\)-cells, has an index in the vectorisation of the Khalimsky representation, called its "Boolean index" (see above).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Khalimsky coordinates of a cell. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The "Boolean" index of the cell. </dd></dl>
+
+</div>
+</div>
+<a id="a3903abb9aa33c51aa6fbd41e23bf6417" name="a3903abb9aa33c51aa6fbd41e23bf6417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3903abb9aa33c51aa6fbd41e23bf6417">◆ </a></span>cell_to_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::cell_to_index </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; size_t &gt; </td>
+          <td class="paramname"><em>cell</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the "basis index" of a cell given by its Khalimsky coordinates. </p>
+<p>In <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code>, cells of dimenson <code>q</code> are identified by their index in the basis of \(q\)-cells together with their dimension. In the context of cubical complexes, this index is called "basis index" (to distinguish from its "Boolean index", see above).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Khalimsky coordinates of a cell (of dimension \(q\)). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The "basis index" of the cell among \(q\)-cells. </dd></dl>
+
+</div>
+</div>
+<a id="a9c6bfa3edc516db2638a727962ad7dfb" name="a9c6bfa3edc516db2638a727962ad7dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6bfa3edc516db2638a727962ad7dfb">◆ </a></span>cod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#af4fc868529cc0baaab7342f914cf3b78">Row_chain</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::cod </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>id_cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the co-boundary of the cell id_cell in dimension <code>q</code>. </p>
+<p>Returns a row-major chain containing the co-boundary of the cell <code>id_cell</code> in dimension <code>q</code> (so actually a row of the boundary matrix). If <code>q</code> is out the range of dimensions of the complex cells, returns a null matrix.</p>
+<dl class="section warning"><dt>Warning</dt><dd>As the boundary matrix is stored column-major, this entails crossing the full matrix to extract the row coefficients (O(number of non empty columns))</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id_cell</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of the cell. </td></tr>
+    <tr><td class="paramname">q</td><td>Dimension of the cell.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The row-major chain containing the co-boundary of the cell <code>id_cell</code> in dimension <code>q</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a44511da7464cd79144c78955f5075d72" name="a44511da7464cd79144c78955f5075d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44511da7464cd79144c78955f5075d72">◆ </a></span>cofaces_chain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+<div class="memtemplate">
+template&lt;typename CoefficientT , int ChainTypeF&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6bc1093d1d18d94eeeb9ca1b08751fb5">Column_chain</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::cofaces_chain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html">OSM::Sparse_chain</a>&lt; CoefficientT, ChainTypeF &gt; </td>
+          <td class="paramname"><em>chain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the cofaces of a given chain in dimension <code>q</code>. </p>
+<p>The resulting chain lies in dimension <code>q+1</code> and is null if this dimension exceeds the dimension of the complex. </p>
+
+</div>
+</div>
+<a id="a8cbb2e099b05c8a6c6810a8c14ae0689" name="a8cbb2e099b05c8a6c6810a8c14ae0689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cbb2e099b05c8a6c6810a8c14ae0689">◆ </a></span>d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#a6bc1093d1d18d94eeeb9ca1b08751fb5">Column_chain</a> <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::d </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>id_cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the boundary of the cell id_cell in dimension <code>q</code>. </p>
+<p>Returns a copy of the column-major chain stored in the boundary matrix of dimension q: boundary of the cell <code>id_cell</code> in dimension <code>q</code>. If <code>q</code> is out the range of dimensions of the complex cells, returns a null matrix.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id_cell</td><td><a class="elRef" href="../STL_Extension/classIndex.html">Index</a> of the cell. </td></tr>
+    <tr><td class="paramname">q</td><td>Dimension of the cell.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The column-major chain containing the boundary of the cell <code>id_cell</code> in dimension <code>q</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ae919c99ecba366f470b21cfd75d7da3d" name="ae919c99ecba366f470b21cfd75d7da3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae919c99ecba366f470b21cfd75d7da3d">◆ </a></span>dimension() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::dimension </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the dimension of the complex. </p>
+<p>Returns the dimension of the cubical complex.</p>
+<dl class="section return"><dt>Returns</dt><dd>The dimension of the complex.. </dd></dl>
+
+</div>
+</div>
+<a id="aac8b5498a80b382ad0f99071621855e0" name="aac8b5498a80b382ad0f99071621855e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac8b5498a80b382ad0f99071621855e0">◆ </a></span>dimension() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::dimension </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp; </td>
+          <td class="paramname"><em>cell</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the dimension of a cell (given in Khalimsky coordinates). </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Cell_of_invalid_dimension</td><td>Raises a `std::invalid_argument` if the dimension of Khalimsky coordinates of the `cell` differs from the dimension of the complex. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a324b936d2437b119c98b9d578818c784" name="a324b936d2437b119c98b9d578818c784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324b936d2437b119c98b9d578818c784">◆ </a></span>id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets (unique) object Id. </p>
+<p>For comparison of constant references to the complex. </p>
+
+</div>
+</div>
+<a id="ac13fafdb0216a997e712027a9d2ada9e" name="ac13fafdb0216a997e712027a9d2ada9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac13fafdb0216a997e712027a9d2ada9e">◆ </a></span>index_to_cell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::index_to_cell </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns Khalimsky coordinates of the cell of "basis index" i in dimension q. </p>
+<p>In <code><a class="el" href="classAbstractChainComplex.html" title="The concept AbstractChainComplex describes the requirements for (topological) chain complexes associa...">AbstractChainComplex</a></code>, cells of dimenson <code>q</code> are identified by their index in the basis of \(q\)-cells together with their dimension. In the context of cubical complexes, this index is called "basis index" (to distinguish from its "Boolean index", see above).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>"basis index" of a cell. </td></tr>
+    <tr><td class="paramname">q</td><td>dimension of the cell. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Khalimsky coordinates of the cell. </dd></dl>
+
+</div>
+</div>
+<a id="a93f5ce1e41c94662251b2dc0c842626d" name="a93f5ce1e41c94662251b2dc0c842626d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f5ce1e41c94662251b2dc0c842626d">◆ </a></span>number_of_cells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::number_of_cells </td>
+          <td>(</td>
+          <td class="paramtype">int </td>
+          <td class="paramname"><em>q</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of cells in a given dimension. </p>
+<p>If <code>q</code> is out the range of dimensions of the complex cells, returns 0.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Dimension along which the number of cells is returned.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of cells in dimension q. </dd></dl>
+
+</div>
+</div>
+<a id="a4c0712b5d9ae1b59de3dda89a8300607" name="a4c0712b5d9ae1b59de3dda89a8300607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c0712b5d9ae1b59de3dda89a8300607">◆ </a></span>print_complex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::print_complex </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em> = <code>std::cout</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints informations on the complex. </p>
+<p>Displays the number of cells in each dimension and the boundary matrix in each dimension. </p>
+
+</div>
+</div>
+<a id="a2e635d00379434a1b5c89a5d0db0d2e7" name="a2e635d00379434a1b5c89a5d0db0d2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e635d00379434a1b5c89a5d0db0d2e7">◆ </a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the total size of the complex. </p>
+<p>Khalimsky coordinates in dimension <code>q</code> are bounded above by <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ac43873aa9fa75696fbffb59e9dce946f" title="Get the size of the Khalimsky bounding box.">size_bb()</a>.at(q)</code>; the total memory size of the complex is the product of these sizes. </p>
+
+</div>
+</div>
+<a id="ac43873aa9fa75696fbffb59e9dce946f" name="ac43873aa9fa75696fbffb59e9dce946f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac43873aa9fa75696fbffb59e9dce946f">◆ </a></span>size_bb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">CGAL::Homological_discrete_vector_field::Cubical_chain_complex</a>&lt; CoefficientRing, Traits, SparseMatrixStruct &gt;::size_bb </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the size of the Khalimsky bounding box. </p>
+<p>The Khalimsky coordinate of a cell <code>c</code> in dimension <code>q</code> is strictly lesser than <code><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html#ac43873aa9fa75696fbffb59e9dce946f" title="Get the size of the Khalimsky bounding box.">size_bb()</a>.at(q)</code>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ab0bd477f0082415c8a6f8b57f0cabd8b" name="ab0bd477f0082415c8a6f8b57f0cabd8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0bd477f0082415c8a6f8b57f0cabd8b">◆ </a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CoefficientRing , typename Traits , typename SparseMatrixStruct  = OSM::Sparse_matrix&lt;OSM::Sparse_chain&gt;&gt; </div>
+<div class="memtemplate">
+template&lt;typename _CT , typename _Traits , typename _SMS &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a>&lt; _CT, _Traits, _SMS &gt; &amp; </td>
+          <td class="paramname"><em>complex</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints informations on the complex. </p>
+<p>Displays the number of cells in each dimension and the boundary matrix in each dimension. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a class="el" href="namespaceCGAL_1_1Homological__discrete__vector__field.html">Homological_discrete_vector_field</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Homological__discrete__vector__field_1_1Cubical__chain__complex.html">Cubical_chain_complex</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
