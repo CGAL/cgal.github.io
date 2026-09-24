@@ -1,0 +1,25 @@
+var classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh =
+[
+    [ "Cell_descriptor", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a388bc8f62544f0d202f40d424b3f15b5", null ],
+    [ "Point_3", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a11272d7320506c07a69f928f08c78436", null ],
+    [ "Shape", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a3065ec776d6b777edfc444812b30c97c", null ],
+    [ "Vertex_descriptor", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#af9733acd6f21ab3a04e677feaa2ed0a8", null ],
+    [ "assemble", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#ad4156e086f36617a46e961dbedb0db1c", null ],
+    [ "cell_range", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a897652863ba98fb91975c1de0dc9845d", null ],
+    [ "cell_reference_shape", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#aa7bc1d78dcfde5c9afc0be9810d7eb21", null ],
+    [ "cell_vertices", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#ae701a80ce6323a3abe97bb10877cd081", null ],
+    [ "get_cell_vertex", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a036735f9a819b6ebe3e611df636cc7dc", null ],
+    [ "get_element_local_vert", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a62063c2945ef01fe4e522363e8ecf9a8", null ],
+    [ "get_element_ref_shape", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a721b5aa4a0e1ddaa4f2e5bbe79782332", null ],
+    [ "get_element_shape", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a822ae2eea04d6683ebcebff070264b43", null ],
+    [ "get_nb_inner_tetrahedra", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a8547fc5505162c890c3d5fadb06d7050", null ],
+    [ "get_ref_vertex_coordinates", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#ae419cefe6eefc70744e111547cdc67a7", null ],
+    [ "input_cell_range", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#abbfac9813a44a516637c58a8d9da15ca", null ],
+    [ "nb_cells", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a2d003d7c035ebb72388fb80fb703b0d1", null ],
+    [ "nb_vertices", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a2f92dabf6df11230bfe6672e8d3bad2d", null ],
+    [ "set_vertex_coordinates", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a170e8248251580de199e4dc693d705fe", null ],
+    [ "vertex_coordinates", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a58f55899532c9e63f28a7336a40f95f2", null ],
+    [ "_element_shape", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#afaaf174561f61eaee3c5837b9d1470ad", null ],
+    [ "has_reference_mesh", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#a074fc62c8c9175a805167b484e75ef4e", null ],
+    [ "optimization_tet_2_input_element", "classCGAL_1_1Mesh__smoothing__3_1_1helper__structures_1_1Mixed__element__mesh.html#acc59e0581fcbc03a1b0de6a1f3dea21f", null ]
+];

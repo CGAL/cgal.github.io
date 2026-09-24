@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Mesh_smoothing_3/classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 3D Mesh Smoothing: CGAL::Mesh_smoothing_3::Mesh_smoother&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 3D Mesh Smoothing
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html','','classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother-members.html">List of all members</a> |
+<a href="#pub-types">Public Types</a> |
+<a href="#pub-methods">Public Member Functions</a>  </div>
+  <div class="headertitle"><div class="title">CGAL::Mesh_smoothing_3::Mesh_smoother&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgMeshSmoothing3Ref.html">Reference Manual</a> » <a class="el" href="group__pkgMeshSmoothing3Classes.html">Classes</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Mesh_smoothing_3/Mesh_smoothing_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt;<br>
+class CGAL::Mesh_smoothing_3::Mesh_smoother&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;</div><p>smooth a tetrahedral mesh with optional constraints on the boundary and along a curve network </p>
+<p>The class <span class="tt"><a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html" title="smooth a tetrahedral mesh with optional constraints on the boundary and along a curve network">Mesh_smoother</a></span> provides an interface to optimize a tetrahedral mesh with an energy, while allowing the user to specify soft-constraints on the boundary and along a curve network. This class is designed for linking with various mesh representations. For usage with CGAL common mesh representations, refer to <span class="tt"><a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1C3t3__smoother.html" title="smooth a c3t3 mesh structure">C3t3_smoother</a></span>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TetrahedralMesh</td><td>encodes the volumetric mesh and must be a model of <span class="tt"><a class="el" href="classMeshDataStructure.html" title="The concept MeshDataStructure describes the way the tetrahedral mesh will be accessed and modified.">MeshDataStructure</a></span>.</td></tr>
+    <tr><td class="paramname">BoundaryMesh</td><td>represents a set of selected polygons with points from Tetrahedral mesh that will be used to define surface constraints on <span class="tt">TetrahedralMesh</span>. It must be a model of <span class="tt"><a class="el" href="classSurfaceDataStructure.html" title="The concept SurfaceDataStructure describes the way the surface mesh will be accessed.">SurfaceDataStructure</a></span>.</td></tr>
+    <tr><td class="paramname">EdgeNetwork</td><td>represents a set of selected segments with points from Tetrahedral mesh that will be used to add curve constraints on <span class="tt">TetrahedralMesh</span>. It must be a model of <span class="tt"><a class="el" href="classPolylinesDataStructure.html" title="The concept PolylinesDataStructure describes the way the curves on the mesh will be accessed.">PolylinesDataStructure</a></span>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1C3t3__smoother.html" title="smooth a c3t3 mesh structure">CGAL::Mesh_smoothing_3::C3t3_smoother</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a31e21ba72bf3a91f153f70ec0e81039f" id="r_a31e21ba72bf3a91f153f70ec0e81039f"><td class="memItemLeft"><a id="a31e21ba72bf3a91f153f70ec0e81039f" name="a31e21ba72bf3a91f153f70ec0e81039f"></a>
+using </td><td class="memItemRight"><b>Vertex_descriptor</b> = typename TetrahedralMesh::Vertex_descriptor</td></tr>
+<tr class="memitem:a6f52dd35a58d897534389dd30f517f3b" id="r_a6f52dd35a58d897534389dd30f517f3b"><td class="memItemLeft"><a id="a6f52dd35a58d897534389dd30f517f3b" name="a6f52dd35a58d897534389dd30f517f3b"></a>
+using </td><td class="memItemRight"><b>Cell_descriptor</b> = typename TetrahedralMesh::Cell_descriptor</td></tr>
+<tr class="memitem:a25c525616ebb39c9685f4cb63f6a18c3" id="r_a25c525616ebb39c9685f4cb63f6a18c3"><td class="memItemLeft"><a id="a25c525616ebb39c9685f4cb63f6a18c3" name="a25c525616ebb39c9685f4cb63f6a18c3"></a>
+using </td><td class="memItemRight"><b>Point_3</b> = typename TetrahedralMesh::Point_3</td></tr>
+<tr class="memitem:a089a20c6d057680254ee4901ac10e9a0" id="r_a089a20c6d057680254ee4901ac10e9a0"><td class="memItemLeft"><a id="a089a20c6d057680254ee4901ac10e9a0" name="a089a20c6d057680254ee4901ac10e9a0"></a>
+using </td><td class="memItemRight"><b>Normal_3</b> = typename BoundaryMesh::Normal_3</td></tr>
+<tr class="memitem:ac524b7b497e9a2086665301f049dade0" id="r_ac524b7b497e9a2086665301f049dade0"><td class="memItemLeft"><a id="ac524b7b497e9a2086665301f049dade0" name="ac524b7b497e9a2086665301f049dade0"></a>
+using </td><td class="memItemRight"><b>Surface_patch_index</b> = typename BoundaryMesh::Surface_patch_index</td></tr>
+<tr class="memitem:ab8a60b5f67b38756cf75175106a8f591" id="r_ab8a60b5f67b38756cf75175106a8f591"><td class="memItemLeft"><a id="ab8a60b5f67b38756cf75175106a8f591" name="ab8a60b5f67b38756cf75175106a8f591"></a>
+using </td><td class="memItemRight"><b>Curve_index</b> = typename EdgeNetwork::Curve_index</td></tr>
+<tr class="memitem:a0915dfa7dafe6aaa1caab4452887a380" id="r_a0915dfa7dafe6aaa1caab4452887a380"><td class="memTemplParams" colspan="2"><a id="a0915dfa7dafe6aaa1caab4452887a380" name="a0915dfa7dafe6aaa1caab4452887a380"></a>
+template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a0915dfa7dafe6aaa1caab4452887a380 template"><td class="memItemLeft">using </td><td class="memItemRight"><b>Vertex_descriptor_map</b> = std::unordered_map&lt;<a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a>, T&gt;</td></tr>
+<tr class="memitem:a767346b5a86e9096ba0e5df3e313e582" id="r_a767346b5a86e9096ba0e5df3e313e582"><td class="memTemplParams" colspan="2"><a id="a767346b5a86e9096ba0e5df3e313e582" name="a767346b5a86e9096ba0e5df3e313e582"></a>
+template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a767346b5a86e9096ba0e5df3e313e582 template"><td class="memItemLeft">using </td><td class="memItemRight"><b>Cell_descriptor_map</b> = std::unordered_map&lt;<a class="el" href="#a6f52dd35a58d897534389dd30f517f3b">Cell_descriptor</a>, T&gt;</td></tr>
+<tr class="memitem:aa6a825676f9b91acd30b3a8492661a93" id="r_aa6a825676f9b91acd30b3a8492661a93"><td class="memItemLeft"><a id="aa6a825676f9b91acd30b3a8492661a93" name="aa6a825676f9b91acd30b3a8492661a93"></a>
+using </td><td class="memItemRight"><b>Tetrahedral_mesh_smoother</b> = Mesh_smoothing_3_internal::Tetrahedral_mesh_smoother&lt;<a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a>, <a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a>&gt;</td></tr>
+<tr class="memitem:a9043d97382a81c1d5133b5a699534029" id="r_a9043d97382a81c1d5133b5a699534029"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a> = std::tuple&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, <a class="el" href="#a089a20c6d057680254ee4901ac10e9a0">Normal_3</a>, double&gt;</td></tr>
+<tr class="memdesc:a9043d97382a81c1d5133b5a699534029"><td class="mdescLeft"> </td><td class="mdescRight"><a class="el" href="#a9043d97382a81c1d5133b5a699534029" title="Plane type to which the boundary polygons should align.">Plane</a> type to which the boundary polygons should align.  <br></td></tr>
+<tr class="memitem:a4219e44823b582d4cb2e48f2b8eea28e" id="r_a4219e44823b582d4cb2e48f2b8eea28e"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a4219e44823b582d4cb2e48f2b8eea28e">Boundary_point_query</a> = std::function&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a> (<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a> const &amp;coord, <a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a> surface_id, double radius)&gt;</td></tr>
+<tr class="memdesc:a4219e44823b582d4cb2e48f2b8eea28e"><td class="mdescLeft"> </td><td class="mdescRight">Projection function.  <br></td></tr>
+<tr class="memitem:a1eb1e31172a7fabae8445d4bc42eb890" id="r_a1eb1e31172a7fabae8445d4bc42eb890"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a1eb1e31172a7fabae8445d4bc42eb890">Boundary_polygon_query</a> = std::function&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a> (std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;polygon, <a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a> surface_id)&gt;</td></tr>
+<tr class="memdesc:a1eb1e31172a7fabae8445d4bc42eb890"><td class="mdescLeft"> </td><td class="mdescRight">Projection function.  <br></td></tr>
+<tr class="memitem:a757228d49f3c3d6d86aff753b92c8efe" id="r_a757228d49f3c3d6d86aff753b92c8efe"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a757228d49f3c3d6d86aff753b92c8efe">Boundary_point_batch_query</a> = std::function&lt;void (std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;coords, std::vector&lt;<a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a>&gt; &amp;surface_ids, std::vector&lt;double&gt; &amp;radii, std::vector&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a>&gt; &amp;results)&gt;</td></tr>
+<tr class="memdesc:a757228d49f3c3d6d86aff753b92c8efe"><td class="mdescLeft"> </td><td class="mdescRight">Batch projection function.  <br></td></tr>
+<tr class="memitem:a6ae40a83d5cb3a013199a4ec39467bb1" id="r_a6ae40a83d5cb3a013199a4ec39467bb1"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a6ae40a83d5cb3a013199a4ec39467bb1">Boundary_polygon_batch_query</a> = std::function&lt;void (std::vector&lt;std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt;&gt; const &amp;polygons, std::vector&lt;<a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a>&gt; &amp;surface_id, std::vector&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a>&gt; &amp;results)&gt;</td></tr>
+<tr class="memdesc:a6ae40a83d5cb3a013199a4ec39467bb1"><td class="mdescLeft"> </td><td class="mdescRight">Batch projection function.  <br></td></tr>
+<tr class="memitem:a738a01bb974927e75bde5ddbed308def" id="r_a738a01bb974927e75bde5ddbed308def"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a> = std::tuple&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, <a class="el" href="#a089a20c6d057680254ee4901ac10e9a0">Normal_3</a>, double&gt;</td></tr>
+<tr class="memdesc:a738a01bb974927e75bde5ddbed308def"><td class="mdescLeft"> </td><td class="mdescRight">Tangent vector and point to which the curve segment should align.  <br></td></tr>
+<tr class="memitem:a62afc6aeec02663727e10336c9c499a5" id="r_a62afc6aeec02663727e10336c9c499a5"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a62afc6aeec02663727e10336c9c499a5">Curve_point_query</a> = std::function&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a> (<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a> const &amp;coord, <a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a> curve_id, double radius)&gt;</td></tr>
+<tr class="memdesc:a62afc6aeec02663727e10336c9c499a5"><td class="mdescLeft"> </td><td class="mdescRight">Projection function.  <br></td></tr>
+<tr class="memitem:a25cc595b0995ca9418d4b84e723a5834" id="r_a25cc595b0995ca9418d4b84e723a5834"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a25cc595b0995ca9418d4b84e723a5834">Curve_segment_query</a> = std::function&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a> (std::array&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, 2&gt; const &amp;edge, <a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a> curve_id)&gt;</td></tr>
+<tr class="memdesc:a25cc595b0995ca9418d4b84e723a5834"><td class="mdescLeft"> </td><td class="mdescRight">Projection function.  <br></td></tr>
+<tr class="memitem:a5b33f0f8c1288c7117e4c7f1827dad7f" id="r_a5b33f0f8c1288c7117e4c7f1827dad7f"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#a5b33f0f8c1288c7117e4c7f1827dad7f">Curve_point_batch_query</a> = std::function&lt;void (std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;coord, std::vector&lt;<a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a>&gt; &amp;curve_ids, std::vector&lt;double&gt; &amp;radius, std::vector&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a>&gt; &amp;results)&gt;</td></tr>
+<tr class="memdesc:a5b33f0f8c1288c7117e4c7f1827dad7f"><td class="mdescLeft"> </td><td class="mdescRight">Batch projection function.  <br></td></tr>
+<tr class="memitem:acd78679c67b4ee989a2e378288784d9a" id="r_acd78679c67b4ee989a2e378288784d9a"><td class="memItemLeft">using </td><td class="memItemRight"><a class="el" href="#acd78679c67b4ee989a2e378288784d9a">Curve_segment_batch_query</a> = std::function&lt;void (std::vector&lt;std::array&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, 2&gt;&gt; const &amp;edges, std::vector&lt;<a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a>&gt; &amp;curve_ids, std::vector&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a>&gt; &amp;results)&gt;</td></tr>
+<tr class="memdesc:acd78679c67b4ee989a2e378288784d9a"><td class="mdescLeft"> </td><td class="mdescRight">Batch projection function.  <br></td></tr>
+<tr class="memitem:a3c333ea8ab7c0f6e32d702723a3cb306" id="r_a3c333ea8ab7c0f6e32d702723a3cb306"><td class="memItemLeft"><a id="a3c333ea8ab7c0f6e32d702723a3cb306" name="a3c333ea8ab7c0f6e32d702723a3cb306"></a>
+using </td><td class="memItemRight"><b>Point_target_sizing_query</b> = std::function&lt;double (<a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a> vertex, <a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a> const &amp;coord)&gt;</td></tr>
+<tr class="memitem:a2c84c68d14fa3f931e5b02128d016eb7" id="r_a2c84c68d14fa3f931e5b02128d016eb7"><td class="memItemLeft"><a id="a2c84c68d14fa3f931e5b02128d016eb7" name="a2c84c68d14fa3f931e5b02128d016eb7"></a>
+using </td><td class="memItemRight"><b>Point_target_sizing_batch_query</b> = std::function&lt;void (std::vector&lt;<a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a>&gt; const &amp;vertices, std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;coords, std::vector&lt;double&gt; &amp;sizings)&gt;</td></tr>
+<tr class="memitem:aa8b9d9e83df60f5baf649570a4a82ab7" id="r_aa8b9d9e83df60f5baf649570a4a82ab7"><td class="memItemLeft"><a id="aa8b9d9e83df60f5baf649570a4a82ab7" name="aa8b9d9e83df60f5baf649570a4a82ab7"></a>
+using </td><td class="memItemRight"><b>Update_validator</b> = std::function&lt;bool (<a class="el" href="#a0915dfa7dafe6aaa1caab4452887a380">Vertex_descriptor_map</a>&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;coords)&gt;</td></tr>
+<tr class="memitem:a5323bcaff7700e58567dec558d9fb425" id="r_a5323bcaff7700e58567dec558d9fb425"><td class="memItemLeft"><a id="a5323bcaff7700e58567dec558d9fb425" name="a5323bcaff7700e58567dec558d9fb425"></a>
+using </td><td class="memItemRight"><b>Iteration_status</b> = Tetrahedral_mesh_smoother::Iteration_status</td></tr>
+<tr class="memitem:a3707bb8f12e2f89ba30fbcfbc998756e" id="r_a3707bb8f12e2f89ba30fbcfbc998756e"><td class="memItemLeft"><a id="a3707bb8f12e2f89ba30fbcfbc998756e" name="a3707bb8f12e2f89ba30fbcfbc998756e"></a>
+using </td><td class="memItemRight"><b>Vertex_status</b> = Tetrahedral_mesh_smoother::Vertex_status</td></tr>
+<tr class="memitem:a7da3d3ee96fd14b228703e02c450d61a" id="r_a7da3d3ee96fd14b228703e02c450d61a"><td class="memItemLeft"><a id="a7da3d3ee96fd14b228703e02c450d61a" name="a7da3d3ee96fd14b228703e02c450d61a"></a>
+using </td><td class="memItemRight"><b>Cell_status</b> = Tetrahedral_mesh_smoother::Tetrahedron_status</td></tr>
+<tr class="memitem:a482af97843a96fd62da9cb9a3a8069f1" id="r_a482af97843a96fd62da9cb9a3a8069f1"><td class="memItemLeft"><a id="a482af97843a96fd62da9cb9a3a8069f1" name="a482af97843a96fd62da9cb9a3a8069f1"></a>
+using </td><td class="memItemRight"><b>Callback_function</b></td></tr>
+<tr class="memitem:ab1cf2c1670ada479d1f57aec7fb03750" id="r_ab1cf2c1670ada479d1f57aec7fb03750"><td class="memItemLeft"><a id="ab1cf2c1670ada479d1f57aec7fb03750" name="ab1cf2c1670ada479d1f57aec7fb03750"></a>
+using </td><td class="memItemRight"><b>Callback_setting</b> = Tetrahedral_mesh_smoother::DEBUG_CALLBACK_SETTING</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9ceee105a66c0d5ab47fc93b8945cf42" id="r_a9ceee105a66c0d5ab47fc93b8945cf42"><td class="memItemLeft"><a id="a9ceee105a66c0d5ab47fc93b8945cf42" name="a9ceee105a66c0d5ab47fc93b8945cf42"></a>
+ </td><td class="memItemRight"><b>Mesh_smoother</b> (TetrahedralMesh &amp;mesh, BoundaryMesh const &amp;boundary=BoundaryMesh(), EdgeNetwork const &amp;edge_network=EdgeNetwork())</td></tr>
+<tr class="memdesc:a9ceee105a66c0d5ab47fc93b8945cf42"><td class="mdescLeft"> </td><td class="mdescRight">Constructor of the class, it does not perform any operation. <br></td></tr>
+<tr class="memitem:a0af711fa66e4e9a9ff30cf797f3ea9f8" id="r_a0af711fa66e4e9a9ff30cf797f3ea9f8"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a0af711fa66e4e9a9ff30cf797f3ea9f8">set_locked_boundary</a> (bool locked=true)</td></tr>
+<tr class="memdesc:a0af711fa66e4e9a9ff30cf797f3ea9f8"><td class="mdescLeft"> </td><td class="mdescRight">Locks (or unlock) all vertices contained in the input BoundaryMesh.  <br></td></tr>
+<tr class="memitem:a4b728368b72c73a4329b5bd12bbd3de3" id="r_a4b728368b72c73a4329b5bd12bbd3de3"><td class="memItemLeft"><a id="a4b728368b72c73a4329b5bd12bbd3de3" name="a4b728368b72c73a4329b5bd12bbd3de3"></a>
+void </td><td class="memItemRight"><b>set_verbose</b> (bool verbose=true)</td></tr>
+<tr class="memitem:ada6c6e2dcddc2aa6490f359df73f5c8b" id="r_ada6c6e2dcddc2aa6490f359df73f5c8b"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#ada6c6e2dcddc2aa6490f359df73f5c8b">set_max_number_of_iteration</a> (unsigned number_of_iterations)</td></tr>
+<tr class="memdesc:ada6c6e2dcddc2aa6490f359df73f5c8b"><td class="mdescLeft"> </td><td class="mdescRight">Max number of high level iterations done by the smoother.  <br></td></tr>
+<tr class="memitem:a2f1f65b8701ddb718f0261b61e3f1406" id="r_a2f1f65b8701ddb718f0261b61e3f1406"><td class="memItemLeft"><a id="a2f1f65b8701ddb718f0261b61e3f1406" name="a2f1f65b8701ddb718f0261b61e3f1406"></a>
+void </td><td class="memItemRight"><b>set_vertex_lock</b> (<a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a> vertex, bool locked=true)</td></tr>
+<tr class="memdesc:a2f1f65b8701ddb718f0261b61e3f1406"><td class="mdescLeft"> </td><td class="mdescRight">Hard-constraining a certain vertex to its current coordinates. <br></td></tr>
+<tr class="memitem:aefdd4cb779ae6ddadbbcc79264547d7f" id="r_aefdd4cb779ae6ddadbbcc79264547d7f"><td class="memItemLeft"><a id="aefdd4cb779ae6ddadbbcc79264547d7f" name="aefdd4cb779ae6ddadbbcc79264547d7f"></a>
+void </td><td class="memItemRight"><b>set_vertex_dim_lock</b> (<a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a> vertex, unsigned dimension, bool locked=true)</td></tr>
+<tr class="memdesc:aefdd4cb779ae6ddadbbcc79264547d7f"><td class="mdescLeft"> </td><td class="mdescRight">Hard-constraining only 1 dimension for the given vertex. <br></td></tr>
+<tr class="memitem:a4cff65df5d81e91600547dd49f509d43" id="r_a4cff65df5d81e91600547dd49f509d43"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a4cff65df5d81e91600547dd49f509d43">set_vertices_dim_locks</a> (<a class="el" href="#a0915dfa7dafe6aaa1caab4452887a380">Vertex_descriptor_map</a>&lt; std::array&lt; bool, 3 &gt; &gt; const &amp;vertex_dimension_locks)</td></tr>
+<tr class="memdesc:a4cff65df5d81e91600547dd49f509d43"><td class="mdescLeft"> </td><td class="mdescRight">Setting all of the locked vertices at once.  <br></td></tr>
+<tr class="memitem:a24bbf28d0bffacfd5a59926b0d70a3bb" id="r_a24bbf28d0bffacfd5a59926b0d70a3bb"><td class="memTemplParams" colspan="2"><a id="a24bbf28d0bffacfd5a59926b0d70a3bb" name="a24bbf28d0bffacfd5a59926b0d70a3bb"></a>
+template&lt;typename <a class="elRef" href="../Manual/classContainer.html">Container</a>&gt; </td></tr>
+<tr class="memitem:a24bbf28d0bffacfd5a59926b0d70a3bb template"><td class="memItemLeft">void </td><td class="memItemRight"><b>set_locked_vertices</b> (<a class="elRef" href="../Manual/classContainer.html">Container</a> const &amp;vertices)</td></tr>
+<tr class="memdesc:a24bbf28d0bffacfd5a59926b0d70a3bb"><td class="mdescLeft"> </td><td class="mdescRight">Helper function to set locked vertices from a container. <br></td></tr>
+<tr class="memitem:ab1d55974c7bc3d6be8c37788769482a8" id="r_ab1d55974c7bc3d6be8c37788769482a8"><td class="memItemLeft"><a id="ab1d55974c7bc3d6be8c37788769482a8" name="ab1d55974c7bc3d6be8c37788769482a8"></a>
+void </td><td class="memItemRight"><b>clear_locks</b> ()</td></tr>
+<tr class="memdesc:ab1d55974c7bc3d6be8c37788769482a8"><td class="mdescLeft"> </td><td class="mdescRight">Remove all previously set locks. <br></td></tr>
+<tr class="memitem:a29188a3c1e26a9ad61b1b47df4fbbdf9" id="r_a29188a3c1e26a9ad61b1b47df4fbbdf9"><td class="memItemLeft"><a id="a29188a3c1e26a9ad61b1b47df4fbbdf9" name="a29188a3c1e26a9ad61b1b47df4fbbdf9"></a>
+void </td><td class="memItemRight"><b>set_boundary_query</b> (<a class="el" href="#a4219e44823b582d4cb2e48f2b8eea28e">Boundary_point_query</a> boundary_query)</td></tr>
+<tr class="memdesc:a29188a3c1e26a9ad61b1b47df4fbbdf9"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for surface as a <span class="tt"><a class="el" href="#a4219e44823b582d4cb2e48f2b8eea28e" title="Projection function.">Boundary_point_query</a></span> <br></td></tr>
+<tr class="memitem:a3b365af1284571df489183fc678da3aa" id="r_a3b365af1284571df489183fc678da3aa"><td class="memItemLeft"><a id="a3b365af1284571df489183fc678da3aa" name="a3b365af1284571df489183fc678da3aa"></a>
+void </td><td class="memItemRight"><b>set_boundary_query</b> (<a class="el" href="#a1eb1e31172a7fabae8445d4bc42eb890">Boundary_polygon_query</a> boundary_query)</td></tr>
+<tr class="memdesc:a3b365af1284571df489183fc678da3aa"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for surface as a <span class="tt"><a class="el" href="#a1eb1e31172a7fabae8445d4bc42eb890" title="Projection function.">Boundary_polygon_query</a></span> <br></td></tr>
+<tr class="memitem:ac338fee1e54d01165ff5fa2cc7dd6bd9" id="r_ac338fee1e54d01165ff5fa2cc7dd6bd9"><td class="memItemLeft"><a id="ac338fee1e54d01165ff5fa2cc7dd6bd9" name="ac338fee1e54d01165ff5fa2cc7dd6bd9"></a>
+void </td><td class="memItemRight"><b>set_boundary_query</b> (<a class="el" href="#a757228d49f3c3d6d86aff753b92c8efe">Boundary_point_batch_query</a> boundary_query)</td></tr>
+<tr class="memdesc:ac338fee1e54d01165ff5fa2cc7dd6bd9"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for surface as a <span class="tt"><a class="el" href="#a757228d49f3c3d6d86aff753b92c8efe" title="Batch projection function.">Boundary_point_batch_query</a></span> <br></td></tr>
+<tr class="memitem:a5f1713d34eef8a543b1b4cc5393389af" id="r_a5f1713d34eef8a543b1b4cc5393389af"><td class="memItemLeft"><a id="a5f1713d34eef8a543b1b4cc5393389af" name="a5f1713d34eef8a543b1b4cc5393389af"></a>
+void </td><td class="memItemRight"><b>set_boundary_query</b> (<a class="el" href="#a6ae40a83d5cb3a013199a4ec39467bb1">Boundary_polygon_batch_query</a> boundary_query)</td></tr>
+<tr class="memdesc:a5f1713d34eef8a543b1b4cc5393389af"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for surface as a <span class="tt"><a class="el" href="#a6ae40a83d5cb3a013199a4ec39467bb1" title="Batch projection function.">Boundary_polygon_batch_query</a></span> <br></td></tr>
+<tr class="memitem:a540c500cb0b95b95cfec97dfb12dda7f" id="r_a540c500cb0b95b95cfec97dfb12dda7f"><td class="memItemLeft"><a id="a540c500cb0b95b95cfec97dfb12dda7f" name="a540c500cb0b95b95cfec97dfb12dda7f"></a>
+void </td><td class="memItemRight"><b>set_curves_query</b> (<a class="el" href="#a62afc6aeec02663727e10336c9c499a5">Curve_point_query</a> curve_query)</td></tr>
+<tr class="memdesc:a540c500cb0b95b95cfec97dfb12dda7f"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for curves as a <span class="tt"><a class="el" href="#a62afc6aeec02663727e10336c9c499a5" title="Projection function.">Curve_point_query</a></span> <br></td></tr>
+<tr class="memitem:a21851fc03021184661a1083364b8307f" id="r_a21851fc03021184661a1083364b8307f"><td class="memItemLeft"><a id="a21851fc03021184661a1083364b8307f" name="a21851fc03021184661a1083364b8307f"></a>
+void </td><td class="memItemRight"><b>set_curves_query</b> (<a class="el" href="#a25cc595b0995ca9418d4b84e723a5834">Curve_segment_query</a> curve_query)</td></tr>
+<tr class="memdesc:a21851fc03021184661a1083364b8307f"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for curves as a <span class="tt"><a class="el" href="#a25cc595b0995ca9418d4b84e723a5834" title="Projection function.">Curve_segment_query</a></span> <br></td></tr>
+<tr class="memitem:af4d8089fb49caee64fc00b3b23ff2709" id="r_af4d8089fb49caee64fc00b3b23ff2709"><td class="memItemLeft"><a id="af4d8089fb49caee64fc00b3b23ff2709" name="af4d8089fb49caee64fc00b3b23ff2709"></a>
+void </td><td class="memItemRight"><b>set_curves_query</b> (<a class="el" href="#a5b33f0f8c1288c7117e4c7f1827dad7f">Curve_point_batch_query</a> curve_query)</td></tr>
+<tr class="memdesc:af4d8089fb49caee64fc00b3b23ff2709"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for curves as a <span class="tt"><a class="el" href="#a5b33f0f8c1288c7117e4c7f1827dad7f" title="Batch projection function.">Curve_point_batch_query</a></span> <br></td></tr>
+<tr class="memitem:a1bbc198a160e515578eb0313b93036d9" id="r_a1bbc198a160e515578eb0313b93036d9"><td class="memItemLeft"><a id="a1bbc198a160e515578eb0313b93036d9" name="a1bbc198a160e515578eb0313b93036d9"></a>
+void </td><td class="memItemRight"><b>set_curves_query</b> (<a class="el" href="#acd78679c67b4ee989a2e378288784d9a">Curve_segment_batch_query</a> curve_query)</td></tr>
+<tr class="memdesc:a1bbc198a160e515578eb0313b93036d9"><td class="mdescLeft"> </td><td class="mdescRight">set constraint query for curves as a <span class="tt"><a class="el" href="#acd78679c67b4ee989a2e378288784d9a" title="Batch projection function.">Curve_segment_batch_query</a></span> <br></td></tr>
+<tr class="memitem:ac3e6ce3adedb63eaaff44638bffc6028" id="r_ac3e6ce3adedb63eaaff44638bffc6028"><td class="memItemLeft"><a id="ac3e6ce3adedb63eaaff44638bffc6028" name="ac3e6ce3adedb63eaaff44638bffc6028"></a>
+void </td><td class="memItemRight"><b>set_vertex_target_position</b> (<a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a> v, <a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a> const &amp;target_positions, double weight=1.0)</td></tr>
+<tr class="memdesc:ac3e6ce3adedb63eaaff44638bffc6028"><td class="mdescLeft"> </td><td class="mdescRight">set soft constraint for a given vertex <br></td></tr>
+<tr class="memitem:a60c5cace7bc2349e3a26b7b278557556" id="r_a60c5cace7bc2349e3a26b7b278557556"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a60c5cace7bc2349e3a26b7b278557556">set_vertex_target_positions</a> (std::vector&lt; std::tuple&lt; <a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a>, <a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, double &gt; &gt; const &amp;target_positions)</td></tr>
+<tr class="memdesc:a60c5cace7bc2349e3a26b7b278557556"><td class="mdescLeft"> </td><td class="mdescRight">set the list of soft constraints for vertices.  <br></td></tr>
+<tr class="memitem:a632f73ab15d17dbac8e6be49d973c623" id="r_a632f73ab15d17dbac8e6be49d973c623"><td class="memTemplParams" colspan="2"><a id="a632f73ab15d17dbac8e6be49d973c623" name="a632f73ab15d17dbac8e6be49d973c623"></a>
+template&lt;typename <a class="elRef" href="../Manual/classContainer.html">Container</a>&gt; </td></tr>
+<tr class="memitem:a632f73ab15d17dbac8e6be49d973c623 template"><td class="memItemLeft">void </td><td class="memItemRight"><b>set_vertex_target_positions</b> (<a class="elRef" href="../Manual/classContainer.html">Container</a> const &amp;target_positions)</td></tr>
+<tr class="memdesc:a632f73ab15d17dbac8e6be49d973c623"><td class="mdescLeft"> </td><td class="mdescRight">set soft constraints from a container of [vertex, coord] pairs. <br></td></tr>
+<tr class="memitem:aaccc873b174dc10894f21bcc4b72e27a" id="r_aaccc873b174dc10894f21bcc4b72e27a"><td class="memItemLeft"><a id="aaccc873b174dc10894f21bcc4b72e27a" name="aaccc873b174dc10894f21bcc4b72e27a"></a>
+void </td><td class="memItemRight"><b>clear_vertex_target_positions</b> ()</td></tr>
+<tr class="memdesc:aaccc873b174dc10894f21bcc4b72e27a"><td class="mdescLeft"> </td><td class="mdescRight">Clear previously set vertex soft constraints. <br></td></tr>
+<tr class="memitem:ae8cdca39021844afe2d91a15b594ffb3" id="r_ae8cdca39021844afe2d91a15b594ffb3"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#ae8cdca39021844afe2d91a15b594ffb3">set_boundary_weight</a> (double weight)</td></tr>
+<tr class="memdesc:ae8cdca39021844afe2d91a15b594ffb3"><td class="mdescLeft"> </td><td class="mdescRight">Set the weight on the boundary term of the energy.  <br></td></tr>
+<tr class="memitem:af9304578968f8c98b97af551ff8f2664" id="r_af9304578968f8c98b97af551ff8f2664"><td class="memItemLeft"><a id="af9304578968f8c98b97af551ff8f2664" name="af9304578968f8c98b97af551ff8f2664"></a>
+void </td><td class="memItemRight"><b>set_boundary_weight</b> (<a class="el" href="namespaceCGAL_1_1Mesh__smoothing__3_1_1Parameters.html#a77b7d75db3ba1097801e7d6c324a5922">Parameters::BOUNDARY_WEIGHTING_MODE</a> mode)</td></tr>
+<tr class="memdesc:af9304578968f8c98b97af551ff8f2664"><td class="mdescLeft"> </td><td class="mdescRight">Set boundary with pre-set recommended parameters. <br></td></tr>
+<tr class="memitem:a996e6351e106b96e5feb02b2daecb30a" id="r_a996e6351e106b96e5feb02b2daecb30a"><td class="memItemLeft"><a id="a996e6351e106b96e5feb02b2daecb30a" name="a996e6351e106b96e5feb02b2daecb30a"></a>
+bool </td><td class="memItemRight"><b>run</b> ()</td></tr>
+<tr class="memdesc:a996e6351e106b96e5feb02b2daecb30a"><td class="mdescLeft"> </td><td class="mdescRight">Start the optimization procedure. <br></td></tr>
+<tr class="memitem:adddab72c0542b968b9b15e8b0a83678a" id="r_adddab72c0542b968b9b15e8b0a83678a"><td class="memItemLeft"><a id="adddab72c0542b968b9b15e8b0a83678a" name="adddab72c0542b968b9b15e8b0a83678a"></a>
+void </td><td class="memItemRight"><b>set_optimization_mode</b> (<a class="el" href="namespaceCGAL_1_1Mesh__smoothing__3_1_1Parameters.html#a9a0e8702a1a5df4ee0415786fd7e9da5">Parameters::OPTIMIZATION_MODE</a> mode)</td></tr>
+<tr class="memitem:a8b682be83b73b3240a0295140b669886" id="r_a8b682be83b73b3240a0295140b669886"><td class="memItemLeft"><a id="a8b682be83b73b3240a0295140b669886" name="a8b682be83b73b3240a0295140b669886"></a>
+void </td><td class="memItemRight"><b>set_minimum_valid_edge_size</b> (double edge_size)</td></tr>
+<tr class="memitem:a7d61263fc5c4b275c33bb65d25b9acd0" id="r_a7d61263fc5c4b275c33bb65d25b9acd0"><td class="memItemLeft"><a id="a7d61263fc5c4b275c33bb65d25b9acd0" name="a7d61263fc5c4b275c33bb65d25b9acd0"></a>
+unsigned </td><td class="memItemRight"><b>get_total_number_of_lbfgs_iterations</b> () const</td></tr>
+<tr class="memitem:a3a6c310cef8c09cb730c60a1eedf4ab7" id="r_a3a6c310cef8c09cb730c60a1eedf4ab7"><td class="memItemLeft"><a id="a3a6c310cef8c09cb730c60a1eedf4ab7" name="a3a6c310cef8c09cb730c60a1eedf4ab7"></a>
+void </td><td class="memItemRight"><b>set_vertex_target_sizing_query</b> (<a class="el" href="#a3c333ea8ab7c0f6e32d702723a3cb306">Point_target_sizing_query</a> query)</td></tr>
+<tr class="memitem:a82acad62de48ce5f36eb37c69dc34f47" id="r_a82acad62de48ce5f36eb37c69dc34f47"><td class="memItemLeft"><a id="a82acad62de48ce5f36eb37c69dc34f47" name="a82acad62de48ce5f36eb37c69dc34f47"></a>
+void </td><td class="memItemRight"><b>set_vertex_target_sizing_query</b> (<a class="el" href="#a2c84c68d14fa3f931e5b02128d016eb7">Point_target_sizing_batch_query</a> query)</td></tr>
+<tr class="memitem:a4eb3ce438937c524afd106ee721f7946" id="r_a4eb3ce438937c524afd106ee721f7946"><td class="memItemLeft"><a id="a4eb3ce438937c524afd106ee721f7946" name="a4eb3ce438937c524afd106ee721f7946"></a>
+void </td><td class="memItemRight"><b>set_predicates_mode</b> (<a class="el" href="namespaceCGAL_1_1Mesh__smoothing__3_1_1Parameters.html#a80bda07679deeb450d13f8ebae851579">Parameters::PREDICATES_MODE</a> mode)</td></tr>
+<tr class="memitem:ab1abb692e279345bfd48c55af1da326e" id="r_ab1abb692e279345bfd48c55af1da326e"><td class="memItemLeft"><a id="ab1abb692e279345bfd48c55af1da326e" name="ab1abb692e279345bfd48c55af1da326e"></a>
+std::pair&lt; unsigned, unsigned &gt; </td><td class="memItemRight"><b>get_nb_of_inverted_cells</b> (<a class="el" href="#a767346b5a86e9096ba0e5df3e313e582">Cell_descriptor_map</a>&lt; std::pair&lt; double, bool &gt; &gt; *cell_determinants=nullptr)</td></tr>
+<tr class="memitem:a2419c4ed70ae5de080f62b4929e92521" id="r_a2419c4ed70ae5de080f62b4929e92521"><td class="memItemLeft"><a id="a2419c4ed70ae5de080f62b4929e92521" name="a2419c4ed70ae5de080f62b4929e92521"></a>
+unsigned </td><td class="memItemRight"><b>get_number_of_invalid_steps_measured_by_predicates</b> () const</td></tr>
+<tr class="memitem:abdb8c146139fa4ac7e0674af606ba1ca" id="r_abdb8c146139fa4ac7e0674af606ba1ca"><td class="memItemLeft"><a id="abdb8c146139fa4ac7e0674af606ba1ca" name="abdb8c146139fa4ac7e0674af606ba1ca"></a>
+void </td><td class="memItemRight"><b>set_update_validator</b> (<a class="el" href="#aa8b9d9e83df60f5baf649570a4a82ab7">Update_validator</a> func)</td></tr>
+<tr class="memitem:affd34ce165ca44496e12c44487ca50d0" id="r_affd34ce165ca44496e12c44487ca50d0"><td class="memItemLeft"><a id="affd34ce165ca44496e12c44487ca50d0" name="affd34ce165ca44496e12c44487ca50d0"></a>
+void </td><td class="memItemRight"><b>set_callback_function</b> (<a class="el" href="#a482af97843a96fd62da9cb9a3a8069f1">Callback_function</a> callback_function, <a class="el" href="#ab1cf2c1670ada479d1f57aec7fb03750">Callback_setting</a> setting=Callback_setting::OUTER_ITER)</td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a757228d49f3c3d6d86aff753b92c8efe" name="a757228d49f3c3d6d86aff753b92c8efe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a757228d49f3c3d6d86aff753b92c8efe">◆ </a></span>Boundary_point_batch_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Boundary_point_batch_query = std::function&lt;void (std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;coords, std::vector&lt;<a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a>&gt; &amp;surface_ids, std::vector&lt;double&gt; &amp;radii, std::vector&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a>&gt; &amp;results)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Batch projection function. </p>
+<p>Equivalent of <span class="tt"><a class="el" href="#a4219e44823b582d4cb2e48f2b8eea28e" title="Projection function.">Boundary_point_query</a></span>. Will be called in more systemic manner, so will produce slower results. Use if single calls are slower, or to avoid thread-safe requirements.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">coords</td><td>vector with center of each polygon </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">surface_ids</td><td>vector with patch ids of each polygon as defined in <span class="tt">BoundaryMesh</span> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">radii</td><td>vector with indicator of the average edge length for each polygon </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">results</td><td>vector with target plane for each polygon </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4219e44823b582d4cb2e48f2b8eea28e" name="a4219e44823b582d4cb2e48f2b8eea28e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4219e44823b582d4cb2e48f2b8eea28e">◆ </a></span>Boundary_point_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Boundary_point_query = std::function&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a> (<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a> const &amp;coord, <a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a> surface_id, double radius)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Projection function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>center of polygon </td></tr>
+    <tr><td class="paramname">surface_id</td><td>patch id of the polygon as defined in <span class="tt">BoundaryMesh</span> </td></tr>
+    <tr><td class="paramname">radius</td><td>indicator of the average edge length of the polygon </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="#a9043d97382a81c1d5133b5a699534029" title="Plane type to which the boundary polygons should align.">Plane</a> to which the polygon should align (usually closest tangential plane of the target geometry)</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Must be thread safe – it will be called in an OpenMP context. </dd></dl>
+
+</div>
+</div>
+<a id="a6ae40a83d5cb3a013199a4ec39467bb1" name="a6ae40a83d5cb3a013199a4ec39467bb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae40a83d5cb3a013199a4ec39467bb1">◆ </a></span>Boundary_polygon_batch_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Boundary_polygon_batch_query = std::function&lt;void (std::vector&lt;std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt;&gt; const &amp;polygons, std::vector&lt;<a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a>&gt; &amp;surface_id, std::vector&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a>&gt; &amp;results)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Batch projection function. </p>
+<p>Equivalent of <span class="tt"><a class="el" href="#a1eb1e31172a7fabae8445d4bc42eb890" title="Projection function.">Boundary_polygon_query</a></span>. Will be called in more systemic manner, so will produce slower results. Use if single calls are slower, or to avoid thread-safe requirements.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">polygons</td><td>vector with a vector of points for each polygon </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">surface_ids</td><td>vector with patch ids of each polygon as defined in <span class="tt">BoundaryMesh</span> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">results</td><td>vector with target plane for each polygon </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1eb1e31172a7fabae8445d4bc42eb890" name="a1eb1e31172a7fabae8445d4bc42eb890"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb1e31172a7fabae8445d4bc42eb890">◆ </a></span>Boundary_polygon_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Boundary_polygon_query = std::function&lt;<a class="el" href="#a9043d97382a81c1d5133b5a699534029">Plane</a> (std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;polygon, <a class="el" href="#ac524b7b497e9a2086665301f049dade0">Surface_patch_index</a> surface_id)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Projection function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polygon</td><td>vector containing the current points of the polygon </td></tr>
+    <tr><td class="paramname">surface_id</td><td>patch id of the polygon as defined in <span class="tt">BoundaryMesh</span> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="#a9043d97382a81c1d5133b5a699534029" title="Plane type to which the boundary polygons should align.">Plane</a> to which the polygon should align (usually closest tangential plane of the target geometry)</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Must be thread safe – it will be called in an OpenMP context. </dd></dl>
+
+</div>
+</div>
+<a id="a5b33f0f8c1288c7117e4c7f1827dad7f" name="a5b33f0f8c1288c7117e4c7f1827dad7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b33f0f8c1288c7117e4c7f1827dad7f">◆ </a></span>Curve_point_batch_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Curve_point_batch_query = std::function&lt;void (std::vector&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>&gt; const &amp;coord, std::vector&lt;<a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a>&gt; &amp;curve_ids, std::vector&lt;double&gt; &amp;radius, std::vector&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a>&gt; &amp;results)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Batch projection function. </p>
+<p>Equivalent of <span class="tt"><a class="el" href="#a62afc6aeec02663727e10336c9c499a5" title="Projection function.">Curve_point_query</a></span>. Will be called in more systemic manner, so will produce slower results. Use if single calls are slower.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">coords</td><td>vector with center of each edge </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">curve_ids</td><td>vector with curve id of each edge as defined in <span class="tt">EdgeNetwork</span> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">radii</td><td>vector with edge length of each edge </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">results</td><td>vector with target curve tangent for each edge </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a62afc6aeec02663727e10336c9c499a5" name="a62afc6aeec02663727e10336c9c499a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62afc6aeec02663727e10336c9c499a5">◆ </a></span>Curve_point_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Curve_point_query = std::function&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a> (<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a> const &amp;coord, <a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a> curve_id, double radius)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Projection function. </p>
+<dl class="section note"><dt>Note</dt><dd>Thread safe is not required here – subject to change if specific cases require it.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>center of edge </td></tr>
+    <tr><td class="paramname">curve_id</td><td>id of the curve as defined in <span class="tt">EdgeNetwork</span> </td></tr>
+    <tr><td class="paramname">radius</td><td>edge length </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="#a738a01bb974927e75bde5ddbed308def" title="Tangent vector and point to which the curve segment should align.">Curve_tangent</a> to which the edge should align (usually closest tangential direction of the target geometry) </dd></dl>
+
+</div>
+</div>
+<a id="acd78679c67b4ee989a2e378288784d9a" name="acd78679c67b4ee989a2e378288784d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd78679c67b4ee989a2e378288784d9a">◆ </a></span>Curve_segment_batch_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Curve_segment_batch_query = std::function&lt;void (std::vector&lt;std::array&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, 2&gt;&gt; const &amp;edges, std::vector&lt;<a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a>&gt; &amp;curve_ids, std::vector&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a>&gt; &amp;results)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Batch projection function. </p>
+<p>Equivalent of <span class="tt"><a class="el" href="#a25cc595b0995ca9418d4b84e723a5834" title="Projection function.">Curve_segment_query</a></span>. Will be called in more systemic manner, so will produce slower results. Use if single calls are slower.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">edges</td><td>vector with couple of points for each edge </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">curve_ids</td><td>vector with curve ids of each edge as defined in <span class="tt">EdgeNetwork</span> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">results</td><td>vector with target curve tangent for each edge </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a25cc595b0995ca9418d4b84e723a5834" name="a25cc595b0995ca9418d4b84e723a5834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25cc595b0995ca9418d4b84e723a5834">◆ </a></span>Curve_segment_query</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Curve_segment_query = std::function&lt;<a class="el" href="#a738a01bb974927e75bde5ddbed308def">Curve_tangent</a> (std::array&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, 2&gt; const &amp;edge, <a class="el" href="#ab8a60b5f67b38756cf75175106a8f591">Curve_index</a> curve_id)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Projection function. </p>
+<dl class="section note"><dt>Note</dt><dd>Thread safe is not required here – subject to change if specific cases require it.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edge</td><td>array containing the two points of the edge </td></tr>
+    <tr><td class="paramname">curve_id</td><td>id of the curve as defined in <span class="tt">EdgeNetwork</span> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="#a738a01bb974927e75bde5ddbed308def" title="Tangent vector and point to which the curve segment should align.">Curve_tangent</a> to which the edge should align (usually closest tangential direction of the target geometry) </dd></dl>
+
+</div>
+</div>
+<a id="a738a01bb974927e75bde5ddbed308def" name="a738a01bb974927e75bde5ddbed308def"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a738a01bb974927e75bde5ddbed308def">◆ </a></span>Curve_tangent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Curve_tangent = std::tuple&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, <a class="el" href="#a089a20c6d057680254ee4901ac10e9a0">Normal_3</a>, double&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tangent vector and point to which the curve segment should align. </p>
+<p>Last parameter is a weight that is used to indicate the importance of the constraint. By default, use the value 1. </p>
+
+</div>
+</div>
+<a id="a9043d97382a81c1d5133b5a699534029" name="a9043d97382a81c1d5133b5a699534029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9043d97382a81c1d5133b5a699534029">◆ </a></span>Plane</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::Plane = std::tuple&lt;<a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, <a class="el" href="#a089a20c6d057680254ee4901ac10e9a0">Normal_3</a>, double&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="#a9043d97382a81c1d5133b5a699534029" title="Plane type to which the boundary polygons should align.">Plane</a> type to which the boundary polygons should align. </p>
+<p>the last parameter is a weight that is used to indicate the importance of the constraint. By default, use the value 1. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ae8cdca39021844afe2d91a15b594ffb3" name="ae8cdca39021844afe2d91a15b594ffb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8cdca39021844afe2d91a15b594ffb3">◆ </a></span>set_boundary_weight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::set_boundary_weight </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>weight</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the weight on the boundary term of the energy. </p>
+<p><a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a> is 1. 10 will strongly enforce the boundary matching, 1e-3 will only have a slight effect, favoring the inside meshing. Warning: large value can lead to convergence issues if the boundary is not initialized on its contraint. </p>
+
+</div>
+</div>
+<a id="a0af711fa66e4e9a9ff30cf797f3ea9f8" name="a0af711fa66e4e9a9ff30cf797f3ea9f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0af711fa66e4e9a9ff30cf797f3ea9f8">◆ </a></span>set_locked_boundary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::set_locked_boundary </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>locked</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Locks (or unlock) all vertices contained in the input BoundaryMesh. </p>
+<p>It is independent from the other locking functions, and unlocking will not interfere with manually set locks. Set by default as true if no <span class="tt"><a class="el" href="#a29188a3c1e26a9ad61b1b47df4fbbdf9" title="set constraint query for surface as a Boundary_point_query">set_boundary_query</a></span> is called. </p>
+
+</div>
+</div>
+<a id="ada6c6e2dcddc2aa6490f359df73f5c8b" name="ada6c6e2dcddc2aa6490f359df73f5c8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6c6e2dcddc2aa6490f359df73f5c8b">◆ </a></span>set_max_number_of_iteration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::set_max_number_of_iteration </td>
+          <td>(</td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>number_of_iterations</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Max number of high level iterations done by the smoother. </p>
+<p>Each iteration can be seen as equivalent to a Newton step. Untangling may require a high number of iterations to converge (100), simple mesh improvement will usually require less (from 1 to 10). <a class="elRef" href="../STL_Extension/structCGAL_1_1Default.html">Default</a> is 1000. </p>
+
+</div>
+</div>
+<a id="a60c5cace7bc2349e3a26b7b278557556" name="a60c5cace7bc2349e3a26b7b278557556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60c5cace7bc2349e3a26b7b278557556">◆ </a></span>set_vertex_target_positions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::set_vertex_target_positions </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::tuple&lt; <a class="el" href="#a31e21ba72bf3a91f153f70ec0e81039f">Vertex_descriptor</a>, <a class="el" href="#a25c525616ebb39c9685f4cb63f6a18c3">Point_3</a>, double &gt; &gt; const &amp;</td>          <td class="paramname"><span class="paramname"><em>target_positions</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the list of soft constraints for vertices. </p>
+<p>Note that it overrides previously set vertex constraints. </p>
+
+</div>
+</div>
+<a id="a4cff65df5d81e91600547dd49f509d43" name="a4cff65df5d81e91600547dd49f509d43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cff65df5d81e91600547dd49f509d43">◆ </a></span>set_vertices_dim_locks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TetrahedralMesh = default_structures::Empty_mesh, typename BoundaryMesh = default_structures::Empty_boundary&lt;typename TetrahedralMesh::Vertex_descriptor&gt;, typename EdgeNetwork = default_structures::Empty_edge_network&lt;typename TetrahedralMesh::Vertex_descriptor&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">CGAL::Mesh_smoothing_3::Mesh_smoother</a>&lt; TetrahedralMesh, BoundaryMesh, EdgeNetwork &gt;::set_vertices_dim_locks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0915dfa7dafe6aaa1caab4452887a380">Vertex_descriptor_map</a>&lt; std::array&lt; bool, 3 &gt; &gt; const &amp;</td>          <td class="paramname"><span class="paramname"><em>vertex_dimension_locks</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setting all of the locked vertices at once. </p>
+<p>Use this function to maximize performance when having tricky locks configuration. Note that this will override all previously add locks, except those from <span class="tt"><a class="el" href="#a0af711fa66e4e9a9ff30cf797f3ea9f8" title="Locks (or unlock) all vertices contained in the input BoundaryMesh.">set_locked_boundary</a></span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><a href="namespaceCGAL_1_1Mesh__smoothing__3.html">Mesh_smoothing_3</a></li><li class="navelem"><a href="classCGAL_1_1Mesh__smoothing__3_1_1Mesh__smoother.html">Mesh_smoother</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
