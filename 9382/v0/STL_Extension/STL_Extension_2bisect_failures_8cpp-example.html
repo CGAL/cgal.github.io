@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/STL_Extension/STL_Extension_2bisect_failures_8cpp-example.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - STL Extensions for CGAL: STL_Extension/bisect_failures.cpp</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - STL Extensions for CGAL
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('STL_Extension_2bisect_failures_8cpp-example.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">STL_Extension/bisect_failures.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="comment">// CGAL::bisect_failures requires the code to be compiled with assertions</span></div>
+<div class="line"><span class="comment">// enabled. That means NDEBUG and CGAL_NDEBUG should not be defined.</span></div>
+<div class="line"><span class="preprocessor">#if defined(NDEBUG)</span></div>
+<div class="line"><span class="preprocessor">#  undef NDEBUG</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor">#if defined(CGAL_NDEBUG)</span></div>
+<div class="line"><span class="preprocessor">#  undef CGAL_NDEBUG</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/config.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/bisect_failures.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/Euler_operations.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/graph_traits_Surface_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/clip.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a id="_a0" name="_a0"></a><a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>Point = <a id="_a1" name="_a1"></a><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>;</div>
+<div class="line"><span class="keyword">using </span>Mesh = <a id="_a2" name="_a2"></a><a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div>
+<div class="line">  <span class="keyword">const</span> std::string filename = (argc &gt; 1) ? argv[1] : <a id="a3" name="a3"></a><a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/non_manifold.off"</span>);</div>
+<div class="line"> </div>
+<div class="line">  Mesh mesh_a;</div>
+<div class="line">  <span class="keywordflow">if</span>(!<a id="a4" name="a4"></a><a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(filename, mesh_a)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: cannot read file "</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Loaded mesh with "</span> &lt;&lt; mesh_a.number_of_vertices() &lt;&lt; <span class="stringliteral">" vertices and "</span></div>
+<div class="line">            &lt;&lt; mesh_a.number_of_faces() &lt;&lt; <span class="stringliteral">" faces"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">const</span> std::string clip_name = (argc &gt; 2) ? argv[2] : <a class="code hl_functionRef" href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/cube.off"</span>);</div>
+<div class="line">  Mesh mesh_b;</div>
+<div class="line">  <span class="keywordflow">if</span>(!<a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a>(clip_name, mesh_b)) {</div>
+<div class="line">    std::cerr &lt;&lt; <span class="stringliteral">"Error: cannot read file "</span> &lt;&lt; clip_name &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Loaded clipping mesh mesh with "</span> &lt;&lt; mesh_b.number_of_vertices() &lt;&lt; <span class="stringliteral">" vertices and "</span></div>
+<div class="line">            &lt;&lt; mesh_b.number_of_faces() &lt;&lt; <span class="stringliteral">" faces"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Define the callbacks for bisect_failures</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> get_size = [](<span class="keyword">const</span> Mesh&amp; m) -&gt; std::size_t {</div>
+<div class="line">    <span class="keywordflow">return</span> m.number_of_faces();</div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> simplify = [](Mesh&amp; m, std::ptrdiff_t start, std::ptrdiff_t end) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keyword">auto</span> i = end - 1; i &gt;= start; --i) {</div>
+<div class="line">      <span class="keyword">const</span> <span class="keyword">auto</span> f = m.faces().begin() + i;</div>
+<div class="line">      <a id="a5" name="a5"></a><a class="code hl_functionRef" href="../BGL/group__PkgBGLEulerOperations.html#gacfae7ff8e782da55b941e4487e86c738">CGAL::Euler::remove_face</a>(halfedge(*f, m), m);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> m.is_valid();</div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> run = [&amp;mesh_b](Mesh&amp; mesh) -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">    <span class="keywordflow">return</span> CGAL::Polygon_mesh_processing::clip(mesh, mesh_b) ? EXIT_SUCCESS : EXIT_FAILURE;</div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> save = [](<span class="keyword">const</span> Mesh&amp; m, <a class="code hl_enumeration" href="group__PkgSTLExtensionUtilities.html#ga32f922cdc88ff8fc68a69ccea6ce48da">CGAL::Bisection_event</a> event) {</div>
+<div class="line">    std::string prefix;</div>
+<div class="line">    <span class="keywordflow">switch</span>(event) {</div>
+<div class="line">      <span class="keywordflow">case</span> <a id="a6" name="a6"></a><a class="code hl_enumvalue" href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daaf70760115840bb56998cedb84b8016c9">CGAL::BAD_DATA</a>:</div>
+<div class="line">        prefix = <span class="stringliteral">"bad_data"</span>;</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">case</span> <a id="a7" name="a7"></a><a class="code hl_enumvalue" href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daa5759093cbdb5bd8585dbc2a074181dca">CGAL::FINAL_BAD_DATA</a>:</div>
+<div class="line">        prefix = <span class="stringliteral">"final_bad_data"</span>;</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">case</span> <a id="a8" name="a8"></a><a class="code hl_enumvalue" href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daae1c7943d89ad7794cbb6ffe3f9c54723">CGAL::ERROR_DATA</a>:</div>
+<div class="line">        prefix = <span class="stringliteral">"error_data"</span>;</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">case</span> <a id="a9" name="a9"></a><a class="code hl_enumvalue" href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daae7f03e6d43a5ce469854a934c05c8b99">CGAL::CURRENT_DATA</a>:</div>
+<div class="line">        prefix = <span class="stringliteral">"current_data"</span>;</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">default</span>:</div>
+<div class="line">        CGAL_UNREACHABLE();</div>
+<div class="line">    }</div>
+<div class="line">    std::string out_filename = prefix + <span class="stringliteral">".off"</span>;</div>
+<div class="line">    <span class="keywordflow">if</span>(!<a id="a10" name="a10"></a><a class="code hl_functionRef" href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a>(out_filename, m)) {</div>
+<div class="line">      std::cerr &lt;&lt; <span class="stringliteral">"Warning: Could not save mesh to "</span> &lt;&lt; out_filename &lt;&lt; std::endl;</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">      std::cout &lt;&lt; <span class="stringliteral">"Saved mesh with "</span> &lt;&lt; m.number_of_faces()</div>
+<div class="line">                &lt;&lt; <span class="stringliteral">" faces to "</span> &lt;&lt; out_filename &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n=== Starting bisection to find smaller failing case ===\n"</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> result = <a id="a11" name="a11"></a><a class="code hl_function" href="group__PkgSTLExtensionUtilities.html#gad56d708faac9063d3de057394a6d8c52">CGAL::bisect_failures</a>(mesh_a, get_size, simplify, run, save);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span>(result == EXIT_SUCCESS) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"\nNo failure detected during bisection."</span> &lt;&lt; std::endl;</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"\nFailure detected during bisection. Result code: "</span> &lt;&lt; result &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
+<div class="ttc" id="agroup__PkgBGLEulerOperations_html_gacfae7ff8e782da55b941e4487e86c738"><div class="ttname"><a href="../BGL/group__PkgBGLEulerOperations.html#gacfae7ff8e782da55b941e4487e86c738">CGAL::Euler::remove_face</a></div><div class="ttdeci">void remove_face(typename boost::graph_traits&lt; Graph &gt;::halfedge_descriptor h, Graph &amp;g)</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_ga49f5b5e6fbfcbfaaac7604c88e10915c"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#ga49f5b5e6fbfcbfaaac7604c88e10915c">CGAL::IO::read_polygon_mesh</a></div><div class="ttdeci">bool read_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgBGLIOFct_html_gafa143949a33371dc6df8307be1ab8a66"><div class="ttname"><a href="../BGL/group__PkgBGLIOFct.html#gafa143949a33371dc6df8307be1ab8a66">CGAL::IO::write_polygon_mesh</a></div><div class="ttdeci">bool write_polygon_mesh(const std::string &amp;fname, Graph &amp;g, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgSTLExtensionUtilities_html_ga32f922cdc88ff8fc68a69ccea6ce48da"><div class="ttname"><a href="group__PkgSTLExtensionUtilities.html#ga32f922cdc88ff8fc68a69ccea6ce48da">CGAL::Bisection_event</a></div><div class="ttdeci">Bisection_event</div><div class="ttdoc">Enumeration of events during the bisection process.</div><div class="ttdef"><b>Definition:</b> bisect_failures.h:42</div></div>
+<div class="ttc" id="agroup__PkgSTLExtensionUtilities_html_gad56d708faac9063d3de057394a6d8c52"><div class="ttname"><a href="group__PkgSTLExtensionUtilities.html#gad56d708faac9063d3de057394a6d8c52">CGAL::bisect_failures</a></div><div class="ttdeci">int bisect_failures(const InputData &amp;data, GetSize get_size, Simplify simplify, Run run, Notify notify)</div><div class="ttdoc">bisects input data by iteratively simplifying it to identify a failing case, from which no further el...</div><div class="ttdef"><b>Definition:</b> bisect_failures.h:109</div></div>
+<div class="ttc" id="agroup__PkgSTLExtensionUtilities_html_gga32f922cdc88ff8fc68a69ccea6ce48daa5759093cbdb5bd8585dbc2a074181dca"><div class="ttname"><a href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daa5759093cbdb5bd8585dbc2a074181dca">CGAL::FINAL_BAD_DATA</a></div><div class="ttdeci">@ FINAL_BAD_DATA</div><div class="ttdoc">Minimal failing data that cannot be further simplified.</div><div class="ttdef"><b>Definition:</b> bisect_failures.h:46</div></div>
+<div class="ttc" id="agroup__PkgSTLExtensionUtilities_html_gga32f922cdc88ff8fc68a69ccea6ce48daae1c7943d89ad7794cbb6ffe3f9c54723"><div class="ttname"><a href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daae1c7943d89ad7794cbb6ffe3f9c54723">CGAL::ERROR_DATA</a></div><div class="ttdeci">@ ERROR_DATA</div><div class="ttdoc">Data that causes a different failure.</div><div class="ttdef"><b>Definition:</b> bisect_failures.h:45</div></div>
+<div class="ttc" id="agroup__PkgSTLExtensionUtilities_html_gga32f922cdc88ff8fc68a69ccea6ce48daae7f03e6d43a5ce469854a934c05c8b99"><div class="ttname"><a href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daae7f03e6d43a5ce469854a934c05c8b99">CGAL::CURRENT_DATA</a></div><div class="ttdeci">@ CURRENT_DATA</div><div class="ttdoc">Current data being tested.</div><div class="ttdef"><b>Definition:</b> bisect_failures.h:43</div></div>
+<div class="ttc" id="agroup__PkgSTLExtensionUtilities_html_gga32f922cdc88ff8fc68a69ccea6ce48daaf70760115840bb56998cedb84b8016c9"><div class="ttname"><a href="group__PkgSTLExtensionUtilities.html#gga32f922cdc88ff8fc68a69ccea6ce48daaf70760115840bb56998cedb84b8016c9">CGAL::BAD_DATA</a></div><div class="ttdeci">@ BAD_DATA</div><div class="ttdoc">Data that reproduces the original failure.</div><div class="ttdef"><b>Definition:</b> bisect_failures.h:44</div></div>
+<div class="ttc" id="anamespaceCGAL_html_acdae9a147ad2a3998cc21f88bc292dac"><div class="ttname"><a href="../Manual/namespaceCGAL.html#acdae9a147ad2a3998cc21f88bc292dac">CGAL::data_file_path</a></div><div class="ttdeci">std::string data_file_path(const std::string &amp;filename)</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

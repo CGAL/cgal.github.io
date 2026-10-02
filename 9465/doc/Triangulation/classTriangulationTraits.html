@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Triangulation/classTriangulationTraits.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - dD Triangulations: TriangulationTraits Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - dD Triangulations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classTriangulationTraits.html','','classTriangulationTraits-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classTriangulationTraits-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">TriangulationTraits Concept Reference<div class="ingroups"><a class="el" href="group__PkgTriangulationsRef.html">Reference Manual</a> » <a class="el" href="group__PkgTriangulationsConcepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>This concept describes the geometric types and predicates required to build a triangulation. It corresponds to the first template parameter of the class <span class="tt"><a class="el" href="classCGAL_1_1Triangulation.html" title="This class implements triangulations of point sets in dimension .">CGAL::Triangulation</a>&lt;TriangulationTraits_, TriangulationDataStructure_&gt;</span>. </p>
+  <dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Spatial_sorting/classSpatialSortingTraits__d.html">SpatialSortingTraits_d</a></code> </dd>
+</dl>
+<p>If a range of points is inserted, the traits must refine <span class="tt"><a class="elRef" href="../Spatial_sorting/classSpatialSortingTraits__d.html">SpatialSortingTraits_d</a></span>. The insertion is then optimized using spatial sorting. This is not required if the points are inserted one by one.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="elRef" href="../Kernel_d/structCGAL_1_1Epick__d.html">CGAL::Epick_d</a>&lt;Dim&gt;</span> </dd>
+<dt></dt>
+<dd><span class="tt"><a class="elRef" href="../Kernel_d/structCGAL_1_1Epeck__d.html">CGAL::Epeck_d</a>&lt;Dim&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classDelaunayTriangulationTraits.html" title="This concept describes the geometric types and predicates required to build a Delaunay triangulation....">DelaunayTriangulationTraits</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a333a19426aa60c3363af494782caa891" id="r_a333a19426aa60c3363af494782caa891"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a333a19426aa60c3363af494782caa891">Dimension</a></td></tr>
+<tr class="memdesc:a333a19426aa60c3363af494782caa891"><td class="mdescLeft"> </td><td class="mdescRight">A type representing the dimension of the predicates (but not necessarily the one of <span class="tt"><a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a></span>).  <br></td></tr>
+<tr class="memitem:afcb378257e144696a767152acfa5ccac" id="r_afcb378257e144696a767152acfa5ccac"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afcb378257e144696a767152acfa5ccac">Point_d</a></td></tr>
+<tr class="memdesc:afcb378257e144696a767152acfa5ccac"><td class="mdescLeft"> </td><td class="mdescRight">A type representing a point in Euclidean space.  <br></td></tr>
+<tr class="memitem:a12b37c3d97f0a024fba7ca8b46b68364" id="r_a12b37c3d97f0a024fba7ca8b46b68364"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364">Orientation_d</a></td></tr>
+<tr class="memdesc:a12b37c3d97f0a024fba7ca8b46b68364"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(ForwardIterator start, ForwardIterator end)</span>.  <br></td></tr>
+<tr class="memitem:a9eb79cae7da0befeb3b69550a78b01bf" id="r_a9eb79cae7da0befeb3b69550a78b01bf"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9eb79cae7da0befeb3b69550a78b01bf">Contained_in_affine_hull_d</a></td></tr>
+<tr class="memdesc:a9eb79cae7da0befeb3b69550a78b01bf"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; bool operator()(<a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> start, <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> end, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p)</span>.  <br></td></tr>
+<tr><td class="ititle" colspan="2"><p>In the \( D\)-dimensional oriented space, a \( k-1\) dimensional subspace (flat) defined by \( k\) points can be oriented in two different ways.</p>
+<p>Choosing the orientation of any simplex defined by \( k\) points in a flat fixes the orientation of the flat and therefore the orientation of all other simplices in this flat. To be able to orient lower dimensional flats, we use the following classes: </p>
+</td></tr>
+<tr class="memitem:afc5236686346da808714fda977c744e1" id="r_afc5236686346da808714fda977c744e1"><td class="memItemLeft"><a id="afc5236686346da808714fda977c744e1" name="afc5236686346da808714fda977c744e1"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Flat_orientation_d</b></td></tr>
+<tr class="memdesc:afc5236686346da808714fda977c744e1"><td class="mdescLeft"> </td><td class="mdescRight">A type representing an orientation of an affine subspace of dimension \( k\) strictly smaller than the dimension of the traits. <br></td></tr>
+<tr class="memitem:a023db16bead142cc628052dee2c9cd02" id="r_a023db16bead142cc628052dee2c9cd02"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a023db16bead142cc628052dee2c9cd02">Construct_flat_orientation_d</a></td></tr>
+<tr class="memdesc:a023db16bead142cc628052dee2c9cd02"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; <a class="el" href="#afc5236686346da808714fda977c744e1" title="A type representing an orientation of an affine subspace of dimension  strictly smaller than the dime...">Flat_orientation_d</a> operator()(ForwardIterator start, ForwardIterator end)</span>.  <br></td></tr>
+<tr class="memitem:acd06ad263131638a9b86846d232f7fdb" id="r_acd06ad263131638a9b86846d232f7fdb"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#acd06ad263131638a9b86846d232f7fdb">In_flat_orientation_d</a></td></tr>
+<tr class="memdesc:acd06ad263131638a9b86846d232f7fdb"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(Flat_orientation_d orient,ForwardIterator start, ForwardIterator end)</span>.  <br></td></tr>
+<tr class="memitem:a5f2ff44a211c3bc2ebfd84c49148d9a6" id="r_a5f2ff44a211c3bc2ebfd84c49148d9a6"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">Compare_lexicographically_d</a></td></tr>
+<tr class="memdesc:a5f2ff44a211c3bc2ebfd84c49148d9a6"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the operator <span class="tt">Comparison_result operator()(const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; q)</span>.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr class="memitem:ac2caab2dc763ad2b1afd8463709d45ee" id="r_ac2caab2dc763ad2b1afd8463709d45ee"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#ac2caab2dc763ad2b1afd8463709d45ee">TriangulationTraits</a> ()</td></tr>
+<tr class="memdesc:ac2caab2dc763ad2b1afd8463709d45ee"><td class="mdescLeft"> </td><td class="mdescRight">The default constructor (optional).  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following methods permit access to the traits class's predicates: </p>
+</td></tr>
+<tr class="memitem:a19f44a018311c2d5a75f8961aae29201" id="r_a19f44a018311c2d5a75f8961aae29201"><td class="memItemLeft"><a id="a19f44a018311c2d5a75f8961aae29201" name="a19f44a018311c2d5a75f8961aae29201"></a>
+<a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364">Orientation_d</a> </td><td class="memItemRight"><b>orientation_d_object</b> () const</td></tr>
+<tr class="memitem:a68a00f13269eb53dcfcd7ead33d6a489" id="r_a68a00f13269eb53dcfcd7ead33d6a489"><td class="memItemLeft"><a id="a68a00f13269eb53dcfcd7ead33d6a489" name="a68a00f13269eb53dcfcd7ead33d6a489"></a>
+<a class="el" href="#a9eb79cae7da0befeb3b69550a78b01bf">Contained_in_affine_hull_d</a> </td><td class="memItemRight"><b>contained_in_affine_hull_d_object</b> () const</td></tr>
+<tr class="memitem:a6be21878d41d55ea74c98e959ac197f4" id="r_a6be21878d41d55ea74c98e959ac197f4"><td class="memItemLeft"><a id="a6be21878d41d55ea74c98e959ac197f4" name="a6be21878d41d55ea74c98e959ac197f4"></a>
+<a class="el" href="#a023db16bead142cc628052dee2c9cd02">Construct_flat_orientation_d</a> </td><td class="memItemRight"><b>construct_flat_orientation_d_object</b> () const</td></tr>
+<tr class="memitem:a1501a1d1acef5dfe686d25b1f9cbe231" id="r_a1501a1d1acef5dfe686d25b1f9cbe231"><td class="memItemLeft"><a id="a1501a1d1acef5dfe686d25b1f9cbe231" name="a1501a1d1acef5dfe686d25b1f9cbe231"></a>
+<a class="el" href="#acd06ad263131638a9b86846d232f7fdb">In_flat_orientation_d</a> </td><td class="memItemRight"><b>in_flat_orientation_d_object</b> () const</td></tr>
+<tr class="memitem:a9b6dab1ff41ff2d8e9693a48ddceec1e" id="r_a9b6dab1ff41ff2d8e9693a48ddceec1e"><td class="memItemLeft"><a id="a9b6dab1ff41ff2d8e9693a48ddceec1e" name="a9b6dab1ff41ff2d8e9693a48ddceec1e"></a>
+<a class="el" href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">Compare_lexicographically_d</a> </td><td class="memItemRight"><b>compare_lexicographically_d_object</b> () const</td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a5f2ff44a211c3bc2ebfd84c49148d9a6" name="a5f2ff44a211c3bc2ebfd84c49148d9a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">◆ </a></span>Compare_lexicographically_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">TriangulationTraits::Compare_lexicographically_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the operator <span class="tt">Comparison_result operator()(const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; q)</span>. </p>
+<p>The operator returns <span class="tt">SMALLER</span> if <span class="tt">p</span> is lexicographically smaller than point <span class="tt">q</span>, <span class="tt">EQUAL</span> if both points are the same and <span class="tt">LARGER</span> otherwise. </p>
+
+</div>
+</div>
+<a id="a023db16bead142cc628052dee2c9cd02" name="a023db16bead142cc628052dee2c9cd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a023db16bead142cc628052dee2c9cd02">◆ </a></span>Construct_flat_orientation_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a023db16bead142cc628052dee2c9cd02">TriangulationTraits::Construct_flat_orientation_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; <a class="el" href="#afc5236686346da808714fda977c744e1" title="A type representing an orientation of an affine subspace of dimension  strictly smaller than the dime...">Flat_orientation_d</a> operator()(ForwardIterator start, ForwardIterator end)</span>. </p>
+<p>The flat spanned by the points in the range <span class="tt">R=[start, end)</span> can be oriented in two different ways, the operator returns an object that allow to orient that flat so that <span class="tt">R=[start, end)</span> defines a positive simplex. </p><dl class="section pre"><dt>Precondition</dt><dd>If <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;D&gt;</span>, then <span class="tt">std::distance(start,end)=D+1</span>. The points in range <span class="tt">[start,end)</span> must be affinely independent. \( 2\leq k\leq D\). </dd></dl>
+
+</div>
+</div>
+<a id="a9eb79cae7da0befeb3b69550a78b01bf" name="a9eb79cae7da0befeb3b69550a78b01bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eb79cae7da0befeb3b69550a78b01bf">◆ </a></span>Contained_in_affine_hull_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9eb79cae7da0befeb3b69550a78b01bf">TriangulationTraits::Contained_in_affine_hull_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; bool operator()(<a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> start, <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> end, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p)</span>. </p>
+<p>The operator returns <span class="tt">true</span> if and only if point <span class="tt">p</span> is contained in the affine space spanned by the points in the range <span class="tt">[start, end)</span>. That affine space is also called the <em>affine hull</em> of the points in the range. </p><dl class="section pre"><dt>Precondition</dt><dd>If <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;D&gt;</span>, then <span class="tt">std::distance(start,end)=D+1</span>. The points in the range must be affinely independent. Note that in the <a class="elRef" href="../Manual/namespaceCGAL.html">CGAL</a> kernels, this predicate works also with affinely dependent points. \( 2\leq k\leq D\). </dd></dl>
+
+</div>
+</div>
+<a id="a333a19426aa60c3363af494782caa891" name="a333a19426aa60c3363af494782caa891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333a19426aa60c3363af494782caa891">◆ </a></span>Dimension</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a333a19426aa60c3363af494782caa891">TriangulationTraits::Dimension</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type representing the dimension of the predicates (but not necessarily the one of <span class="tt"><a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a></span>). </p>
+<p>If \( n \) is the number of points required by the <span class="tt"><a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364" title="A predicate object that must provide the templated operator template&lt;typename ForwardIterator&gt; Orient...">Orientation_d</a></span> predicate, then <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span> \( = n - 1\). It can be static (<span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;int dim&gt;</span>) or dynamic (<span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dynamic__dimension__tag.html">CGAL::Dynamic_dimension_tag</a></span>). </p>
+
+</div>
+</div>
+<a id="acd06ad263131638a9b86846d232f7fdb" name="acd06ad263131638a9b86846d232f7fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd06ad263131638a9b86846d232f7fdb">◆ </a></span>In_flat_orientation_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#acd06ad263131638a9b86846d232f7fdb">TriangulationTraits::In_flat_orientation_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(Flat_orientation_d orient,ForwardIterator start, ForwardIterator end)</span>. </p>
+<p>The operator returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> or <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> depending on the orientation of the simplex defined by the points in the range <span class="tt">[start, end)</span>. The points are supposed to belong to the lower dimensional flat whose orientation is given by <span class="tt">orient</span>. </p><dl class="section pre"><dt>Precondition</dt><dd><span class="tt">std::distance(start,end)=k</span> where \( k\) is the number of points used to construct <span class="tt">orient</span>. \( 2\leq k\leq D\). </dd></dl>
+
+</div>
+</div>
+<a id="a12b37c3d97f0a024fba7ca8b46b68364" name="a12b37c3d97f0a024fba7ca8b46b68364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b37c3d97f0a024fba7ca8b46b68364">◆ </a></span>Orientation_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364">TriangulationTraits::Orientation_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(ForwardIterator start, ForwardIterator end)</span>. </p>
+<p>The operator returns the orientation of the simplex defined by the points in the range <span class="tt">[start, end)</span>; the value can be <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> or <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span>. </p><dl class="section pre"><dt>Precondition</dt><dd>If <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;D&gt;</span>, then <span class="tt">std::distance(start,end)=D+1</span>. </dd></dl>
+
+</div>
+</div>
+<a id="afcb378257e144696a767152acfa5ccac" name="afcb378257e144696a767152acfa5ccac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb378257e144696a767152acfa5ccac">◆ </a></span>Point_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afcb378257e144696a767152acfa5ccac">TriangulationTraits::Point_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type representing a point in Euclidean space. </p>
+<p>It must be <span class="tt"><a class="elRef" href="../Manual/classDefaultConstructible.html">DefaultConstructible</a></span>, <span class="tt"><a class="elRef" href="../Manual/classCopyConstructible.html">CopyConstructible</a></span> and <span class="tt"><a class="elRef" href="../Manual/classAssignable.html">Assignable</a></span>. </p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac2caab2dc763ad2b1afd8463709d45ee" name="ac2caab2dc763ad2b1afd8463709d45ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2caab2dc763ad2b1afd8463709d45ee">◆ </a></span>TriangulationTraits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TriangulationTraits::TriangulationTraits </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The default constructor (optional). </p>
+<p>This is not required when an instance of the traits is provided to the constructor of <span class="tt"><a class="el" href="classCGAL_1_1Triangulation.html" title="This class implements triangulations of point sets in dimension .">CGAL::Triangulation</a></span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classTriangulationTraits.html">TriangulationTraits</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/TriangulationTraits.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>This concept describes the geometric types and predicates required to build a triangulation. It corresponds to the first template parameter of the class <span class="tt"><a class="el" href="classCGAL_1_1Triangulation.html" title="This class implements triangulations of point sets in dimension .">CGAL::Triangulation</a>&lt;TriangulationTraits_, TriangulationDataStructure_&gt;</span>. </p>
+  <dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Spatial_sorting/classSpatialSortingTraits__d.html">SpatialSortingTraits_d</a></code> </dd>
+</dl>
+<p>If a range of points is inserted, the traits must refine <span class="tt"><a class="elRef" href="../Spatial_sorting/classSpatialSortingTraits__d.html">SpatialSortingTraits_d</a></span>. The insertion is then optimized using spatial sorting. This is not required if the points are inserted one by one.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="elRef" href="../Kernel_d/structCGAL_1_1Epick__d.html">CGAL::Epick_d</a>&lt;Dim&gt;</span> </dd>
+<dt></dt>
+<dd><span class="tt"><a class="elRef" href="../Kernel_d/structCGAL_1_1Epeck__d.html">CGAL::Epeck_d</a>&lt;Dim&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="el" href="classDelaunayTriangulationTraits.html" title="This concept describes the geometric types and predicates required to build a Delaunay triangulation....">DelaunayTriangulationTraits</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a333a19426aa60c3363af494782caa891" id="r_a333a19426aa60c3363af494782caa891"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a333a19426aa60c3363af494782caa891">Dimension</a></td></tr>
+<tr class="memdesc:a333a19426aa60c3363af494782caa891"><td class="mdescLeft"> </td><td class="mdescRight">A type representing the dimension of the predicates (but not necessarily the one of <span class="tt"><a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a></span>).  <br></td></tr>
+<tr class="memitem:afcb378257e144696a767152acfa5ccac" id="r_afcb378257e144696a767152acfa5ccac"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#afcb378257e144696a767152acfa5ccac">Point_d</a></td></tr>
+<tr class="memdesc:afcb378257e144696a767152acfa5ccac"><td class="mdescLeft"> </td><td class="mdescRight">A type representing a point in Euclidean space.  <br></td></tr>
+<tr class="memitem:a12b37c3d97f0a024fba7ca8b46b68364" id="r_a12b37c3d97f0a024fba7ca8b46b68364"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364">Orientation_d</a></td></tr>
+<tr class="memdesc:a12b37c3d97f0a024fba7ca8b46b68364"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(ForwardIterator start, ForwardIterator end)</span>.  <br></td></tr>
+<tr class="memitem:a9eb79cae7da0befeb3b69550a78b01bf" id="r_a9eb79cae7da0befeb3b69550a78b01bf"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9eb79cae7da0befeb3b69550a78b01bf">Contained_in_affine_hull_d</a></td></tr>
+<tr class="memdesc:a9eb79cae7da0befeb3b69550a78b01bf"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; bool operator()(<a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> start, <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> end, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p)</span>.  <br></td></tr>
+<tr><td class="ititle" colspan="2"><p>In the \( D\)-dimensional oriented space, a \( k-1\) dimensional subspace (flat) defined by \( k\) points can be oriented in two different ways.</p>
+<p>Choosing the orientation of any simplex defined by \( k\) points in a flat fixes the orientation of the flat and therefore the orientation of all other simplices in this flat. To be able to orient lower dimensional flats, we use the following classes: </p>
+</td></tr>
+<tr class="memitem:afc5236686346da808714fda977c744e1" id="r_afc5236686346da808714fda977c744e1"><td class="memItemLeft"><a id="afc5236686346da808714fda977c744e1" name="afc5236686346da808714fda977c744e1"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Flat_orientation_d</b></td></tr>
+<tr class="memdesc:afc5236686346da808714fda977c744e1"><td class="mdescLeft"> </td><td class="mdescRight">A type representing an orientation of an affine subspace of dimension \( k\) strictly smaller than the dimension of the traits. <br></td></tr>
+<tr class="memitem:a023db16bead142cc628052dee2c9cd02" id="r_a023db16bead142cc628052dee2c9cd02"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a023db16bead142cc628052dee2c9cd02">Construct_flat_orientation_d</a></td></tr>
+<tr class="memdesc:a023db16bead142cc628052dee2c9cd02"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; <a class="el" href="#afc5236686346da808714fda977c744e1" title="A type representing an orientation of an affine subspace of dimension  strictly smaller than the dime...">Flat_orientation_d</a> operator()(ForwardIterator start, ForwardIterator end)</span>.  <br></td></tr>
+<tr class="memitem:acd06ad263131638a9b86846d232f7fdb" id="r_acd06ad263131638a9b86846d232f7fdb"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#acd06ad263131638a9b86846d232f7fdb">In_flat_orientation_d</a></td></tr>
+<tr class="memdesc:acd06ad263131638a9b86846d232f7fdb"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(Flat_orientation_d orient,ForwardIterator start, ForwardIterator end)</span>.  <br></td></tr>
+<tr class="memitem:a5f2ff44a211c3bc2ebfd84c49148d9a6" id="r_a5f2ff44a211c3bc2ebfd84c49148d9a6"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">Compare_lexicographically_d</a></td></tr>
+<tr class="memdesc:a5f2ff44a211c3bc2ebfd84c49148d9a6"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the operator <span class="tt">Comparison_result operator()(const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; q)</span>.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr class="memitem:ac2caab2dc763ad2b1afd8463709d45ee" id="r_ac2caab2dc763ad2b1afd8463709d45ee"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#ac2caab2dc763ad2b1afd8463709d45ee">TriangulationTraits</a> ()</td></tr>
+<tr class="memdesc:ac2caab2dc763ad2b1afd8463709d45ee"><td class="mdescLeft"> </td><td class="mdescRight">The default constructor (optional).  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Operations</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The following methods permit access to the traits class's predicates: </p>
+</td></tr>
+<tr class="memitem:a19f44a018311c2d5a75f8961aae29201" id="r_a19f44a018311c2d5a75f8961aae29201"><td class="memItemLeft"><a id="a19f44a018311c2d5a75f8961aae29201" name="a19f44a018311c2d5a75f8961aae29201"></a>
+<a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364">Orientation_d</a> </td><td class="memItemRight"><b>orientation_d_object</b> () const</td></tr>
+<tr class="memitem:a68a00f13269eb53dcfcd7ead33d6a489" id="r_a68a00f13269eb53dcfcd7ead33d6a489"><td class="memItemLeft"><a id="a68a00f13269eb53dcfcd7ead33d6a489" name="a68a00f13269eb53dcfcd7ead33d6a489"></a>
+<a class="el" href="#a9eb79cae7da0befeb3b69550a78b01bf">Contained_in_affine_hull_d</a> </td><td class="memItemRight"><b>contained_in_affine_hull_d_object</b> () const</td></tr>
+<tr class="memitem:a6be21878d41d55ea74c98e959ac197f4" id="r_a6be21878d41d55ea74c98e959ac197f4"><td class="memItemLeft"><a id="a6be21878d41d55ea74c98e959ac197f4" name="a6be21878d41d55ea74c98e959ac197f4"></a>
+<a class="el" href="#a023db16bead142cc628052dee2c9cd02">Construct_flat_orientation_d</a> </td><td class="memItemRight"><b>construct_flat_orientation_d_object</b> () const</td></tr>
+<tr class="memitem:a1501a1d1acef5dfe686d25b1f9cbe231" id="r_a1501a1d1acef5dfe686d25b1f9cbe231"><td class="memItemLeft"><a id="a1501a1d1acef5dfe686d25b1f9cbe231" name="a1501a1d1acef5dfe686d25b1f9cbe231"></a>
+<a class="el" href="#acd06ad263131638a9b86846d232f7fdb">In_flat_orientation_d</a> </td><td class="memItemRight"><b>in_flat_orientation_d_object</b> () const</td></tr>
+<tr class="memitem:a9b6dab1ff41ff2d8e9693a48ddceec1e" id="r_a9b6dab1ff41ff2d8e9693a48ddceec1e"><td class="memItemLeft"><a id="a9b6dab1ff41ff2d8e9693a48ddceec1e" name="a9b6dab1ff41ff2d8e9693a48ddceec1e"></a>
+<a class="el" href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">Compare_lexicographically_d</a> </td><td class="memItemRight"><b>compare_lexicographically_d_object</b> () const</td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a5f2ff44a211c3bc2ebfd84c49148d9a6" name="a5f2ff44a211c3bc2ebfd84c49148d9a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">◆ </a></span>Compare_lexicographically_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5f2ff44a211c3bc2ebfd84c49148d9a6">TriangulationTraits::Compare_lexicographically_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the operator <span class="tt">Comparison_result operator()(const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; q)</span>. </p>
+<p>The operator returns <span class="tt">SMALLER</span> if <span class="tt">p</span> is lexicographically smaller than point <span class="tt">q</span>, <span class="tt">EQUAL</span> if both points are the same and <span class="tt">LARGER</span> otherwise. </p>
+
+</div>
+</div>
+<a id="a023db16bead142cc628052dee2c9cd02" name="a023db16bead142cc628052dee2c9cd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a023db16bead142cc628052dee2c9cd02">◆ </a></span>Construct_flat_orientation_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a023db16bead142cc628052dee2c9cd02">TriangulationTraits::Construct_flat_orientation_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; <a class="el" href="#afc5236686346da808714fda977c744e1" title="A type representing an orientation of an affine subspace of dimension  strictly smaller than the dime...">Flat_orientation_d</a> operator()(ForwardIterator start, ForwardIterator end)</span>. </p>
+<p>The flat spanned by the points in the range <span class="tt">R=[start, end)</span> can be oriented in two different ways, the operator returns an object that allow to orient that flat so that <span class="tt">R=[start, end)</span> defines a positive simplex. </p><dl class="section pre"><dt>Precondition</dt><dd>If <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;D&gt;</span>, then <span class="tt">std::distance(start,end)=D+1</span>. The points in range <span class="tt">[start,end)</span> must be affinely independent. \( 2\leq k\leq D\). </dd></dl>
+
+</div>
+</div>
+<a id="a9eb79cae7da0befeb3b69550a78b01bf" name="a9eb79cae7da0befeb3b69550a78b01bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eb79cae7da0befeb3b69550a78b01bf">◆ </a></span>Contained_in_affine_hull_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9eb79cae7da0befeb3b69550a78b01bf">TriangulationTraits::Contained_in_affine_hull_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; bool operator()(<a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> start, <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a> end, const <a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a> &amp; p)</span>. </p>
+<p>The operator returns <span class="tt">true</span> if and only if point <span class="tt">p</span> is contained in the affine space spanned by the points in the range <span class="tt">[start, end)</span>. That affine space is also called the <em>affine hull</em> of the points in the range. </p><dl class="section pre"><dt>Precondition</dt><dd>If <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;D&gt;</span>, then <span class="tt">std::distance(start,end)=D+1</span>. The points in the range must be affinely independent. Note that in the <a class="elRef" href="../Manual/namespaceCGAL.html">CGAL</a> kernels, this predicate works also with affinely dependent points. \( 2\leq k\leq D\). </dd></dl>
+
+</div>
+</div>
+<a id="a333a19426aa60c3363af494782caa891" name="a333a19426aa60c3363af494782caa891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333a19426aa60c3363af494782caa891">◆ </a></span>Dimension</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a333a19426aa60c3363af494782caa891">TriangulationTraits::Dimension</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type representing the dimension of the predicates (but not necessarily the one of <span class="tt"><a class="el" href="#afcb378257e144696a767152acfa5ccac" title="A type representing a point in Euclidean space.">Point_d</a></span>). </p>
+<p>If \( n \) is the number of points required by the <span class="tt"><a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364" title="A predicate object that must provide the templated operator template&lt;typename ForwardIterator&gt; Orient...">Orientation_d</a></span> predicate, then <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span> \( = n - 1\). It can be static (<span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;int dim&gt;</span>) or dynamic (<span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dynamic__dimension__tag.html">CGAL::Dynamic_dimension_tag</a></span>). </p>
+
+</div>
+</div>
+<a id="acd06ad263131638a9b86846d232f7fdb" name="acd06ad263131638a9b86846d232f7fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd06ad263131638a9b86846d232f7fdb">◆ </a></span>In_flat_orientation_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#acd06ad263131638a9b86846d232f7fdb">TriangulationTraits::In_flat_orientation_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(Flat_orientation_d orient,ForwardIterator start, ForwardIterator end)</span>. </p>
+<p>The operator returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> or <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span> depending on the orientation of the simplex defined by the points in the range <span class="tt">[start, end)</span>. The points are supposed to belong to the lower dimensional flat whose orientation is given by <span class="tt">orient</span>. </p><dl class="section pre"><dt>Precondition</dt><dd><span class="tt">std::distance(start,end)=k</span> where \( k\) is the number of points used to construct <span class="tt">orient</span>. \( 2\leq k\leq D\). </dd></dl>
+
+</div>
+</div>
+<a id="a12b37c3d97f0a024fba7ca8b46b68364" name="a12b37c3d97f0a024fba7ca8b46b68364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b37c3d97f0a024fba7ca8b46b68364">◆ </a></span>Orientation_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a12b37c3d97f0a024fba7ca8b46b68364">TriangulationTraits::Orientation_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the templated operator <span class="tt">template&lt;typename <a class="elRef" href="../Manual/classForwardIterator.html">ForwardIterator</a>&gt; Orientation operator()(ForwardIterator start, ForwardIterator end)</span>. </p>
+<p>The operator returns the orientation of the simplex defined by the points in the range <span class="tt">[start, end)</span>; the value can be <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a963eefff16725de743f4022f4e23fc0d">CGAL::POSITIVE</a></span>, <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#gga59bee58a806ccde81562ea315ff75525a3aef56502334293e3ad25e166d74bb2a">CGAL::NEGATIVE</a></span> or <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga56587f3c15032c9127a9fe81c038b0d7">CGAL::COPLANAR</a></span>. </p><dl class="section pre"><dt>Precondition</dt><dd>If <span class="tt"><a class="el" href="#a333a19426aa60c3363af494782caa891" title="A type representing the dimension of the predicates (but not necessarily the one of Point_d).">Dimension</a></span>=<span class="tt"><a class="elRef" href="../Kernel_23/structCGAL_1_1Dimension__tag.html">CGAL::Dimension_tag</a>&lt;D&gt;</span>, then <span class="tt">std::distance(start,end)=D+1</span>. </dd></dl>
+
+</div>
+</div>
+<a id="afcb378257e144696a767152acfa5ccac" name="afcb378257e144696a767152acfa5ccac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb378257e144696a767152acfa5ccac">◆ </a></span>Point_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#afcb378257e144696a767152acfa5ccac">TriangulationTraits::Point_d</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type representing a point in Euclidean space. </p>
+<p>It must be <span class="tt"><a class="elRef" href="../Manual/classDefaultConstructible.html">DefaultConstructible</a></span>, <span class="tt"><a class="elRef" href="../Manual/classCopyConstructible.html">CopyConstructible</a></span> and <span class="tt"><a class="elRef" href="../Manual/classAssignable.html">Assignable</a></span>. </p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac2caab2dc763ad2b1afd8463709d45ee" name="ac2caab2dc763ad2b1afd8463709d45ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2caab2dc763ad2b1afd8463709d45ee">◆ </a></span>TriangulationTraits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TriangulationTraits::TriangulationTraits </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The default constructor (optional). </p>
+<p>This is not required when an instance of the traits is provided to the constructor of <span class="tt"><a class="el" href="classCGAL_1_1Triangulation.html" title="This class implements triangulations of point sets in dimension .">CGAL::Triangulation</a></span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classTriangulationTraits.html">TriangulationTraits</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
