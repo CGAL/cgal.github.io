@@ -1,0 +1,941 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/SMDS_3/classMeshComplex__3InTriangulation__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 3D Simplicial Mesh Data Structures: MeshComplex_3InTriangulation_3 Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 3D Simplicial Mesh Data Structures
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classMeshComplex__3InTriangulation__3.html','','classMeshComplex__3InTriangulation__3-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classMeshComplex__3InTriangulation__3-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MeshComplex_3InTriangulation_3 Concept Reference<div class="ingroups"><a class="el" href="group__PkgSMDS3Ref.html">Reference Manual</a> » <a class="el" href="group__PkgSMDS3Concepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> describes a data structure to represent and maintain a 3D complex embedded in a 3D triangulation. More precisely, the concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> is a minimal version designed to represent 3D complexes that have only faces with dimension \( 2\) and \( 3\). Embedded 3D complexes with faces of dimension \( 0\), \( 1\), \( 2\) and \( 3\), are more conveniently represented by the refined concept <span class="tt"><a class="el" href="classMeshComplexWithFeatures__3InTriangulation__3.html" title="The concept MeshComplexWithFeatures_3InTriangulation_3 describes a data structure to represent and ma...">MeshComplexWithFeatures_3InTriangulation_3</a></span>. </p>
+  <p>The data structure includes a 3D triangulation which is itself a 3D complex. To distinguish the faces of the embedded 3D complex from the faces of the triangulation, we call the faces of the embedded complex respectively <em>subdomains</em> for 3D faces and <em>surface patches</em> for 2D faces, while the triangulations faces are called respectively cells, facets, edges, and vertices.</p>
+<p>Each subdomain of the embedded 3D complex is a union of triangulation cells. Cells that belong to some subdomain are said to belong to the embedded complex. Each surface patch is a union of triangulation facets. <a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3" title="The type of the embedding 3D triangulation.">Triangulation</a> facets that belong to some surface patch are called surface facets. The concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> handles the marking and retrieval of the cells of the triangulation belonging to the subdomains and of the facets of the triangulation belonging to the surface patches. The concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> also includes an index type for vertices of the triangulation and attaches an integer, called the <em>dimension</em> to each vertex. When used by the meshing algorithm, the index and the dimension of each vertex are used to store respectively the lowest dimensional face of the input complex including the vertex and the dimension of this face.</p>
+<p>In the 3D mesh generator, the concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> is used when the domain to be meshed has no feature with dimension \( 0\) and \( 1\). Such a data structure is used internally by the mesh generator to maintain the current approximation of each subdomain and each boundary surface patch. The data structure encodes the final mesh at the end of the meshing process.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Mesh__complex__3__in__triangulation__3.html" title="A data structure to represent and maintain a 3D complex embedded in a 3D triangulation.">CGAL::Mesh_complex_3_in_triangulation_3</a>&lt;Tr,CornerIndex,CurveIndex&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html">MeshDomain_3</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classMeshComplexWithFeatures__3InTriangulation__3.html" title="The concept MeshComplexWithFeatures_3InTriangulation_3 describes a data structure to represent and ma...">MeshComplexWithFeatures_3InTriangulation_3</a></span> </dd>
+<dd>
+<a class="elRef" href="../Mesh_3/group__PkgMesh3Functions.html#gac8599a0c967075f740bf8e2e92c4770e"><span class="tt">CGAL::make_mesh_3()</span></a> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:abca85bb2c4c3d7fe2f759d8234739af3" id="r_abca85bb2c4c3d7fe2f759d8234739af3"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">Triangulation</a></td></tr>
+<tr class="memdesc:abca85bb2c4c3d7fe2f759d8234739af3"><td class="mdescLeft"> </td><td class="mdescRight">The type of the embedding 3D triangulation.  <br></td></tr>
+<tr class="memitem:a1a536a1817829a10ebb1c411d53c11d5" id="r_a1a536a1817829a10ebb1c411d53c11d5"><td class="memItemLeft"><a id="a1a536a1817829a10ebb1c411d53c11d5" name="a1a536a1817829a10ebb1c411d53c11d5"></a>
+typedef Triangulation::Vertex_handle </td><td class="memItemRight"><b>Vertex_handle</b></td></tr>
+<tr class="memdesc:a1a536a1817829a10ebb1c411d53c11d5"><td class="mdescLeft"> </td><td class="mdescRight">Type <span class="tt"><a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5" title="Type Vertex_handle type of the triangulation.">Vertex_handle</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:aae326ff141eb5f8aedda42b2b41d60b8" id="r_aae326ff141eb5f8aedda42b2b41d60b8"><td class="memItemLeft"><a id="aae326ff141eb5f8aedda42b2b41d60b8" name="aae326ff141eb5f8aedda42b2b41d60b8"></a>
+typedef Triangulation::Cell_handle </td><td class="memItemRight"><b>Cell_handle</b></td></tr>
+<tr class="memdesc:aae326ff141eb5f8aedda42b2b41d60b8"><td class="mdescLeft"> </td><td class="mdescRight">The <span class="tt"><a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8" title="The Cell_handle type of the triangulation.">Cell_handle</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:a498d5d2f73e892cc6eeaa9fa21d4af89" id="r_a498d5d2f73e892cc6eeaa9fa21d4af89"><td class="memItemLeft"><a id="a498d5d2f73e892cc6eeaa9fa21d4af89" name="a498d5d2f73e892cc6eeaa9fa21d4af89"></a>
+typedef Triangulation::Facet </td><td class="memItemRight"><b>Facet</b></td></tr>
+<tr class="memdesc:a498d5d2f73e892cc6eeaa9fa21d4af89"><td class="mdescLeft"> </td><td class="mdescRight">The <span class="tt"><a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89" title="The Facet type of the triangulation.">Facet</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:ad8e3d02e82c4aa42f3d22873ff742707" id="r_ad8e3d02e82c4aa42f3d22873ff742707"><td class="memItemLeft"><a id="ad8e3d02e82c4aa42f3d22873ff742707" name="ad8e3d02e82c4aa42f3d22873ff742707"></a>
+typedef Triangulation::Edge </td><td class="memItemRight"><b>Edge</b></td></tr>
+<tr class="memdesc:ad8e3d02e82c4aa42f3d22873ff742707"><td class="mdescLeft"> </td><td class="mdescRight">The <span class="tt"><a class="el" href="#ad8e3d02e82c4aa42f3d22873ff742707" title="The Edge type of the triangulation.">Edge</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:ad8d2f6a82b82c6431c2d652cedd3ebc2" id="r_ad8d2f6a82b82c6431c2d652cedd3ebc2"><td class="memItemLeft"><a id="ad8d2f6a82b82c6431c2d652cedd3ebc2" name="ad8d2f6a82b82c6431c2d652cedd3ebc2"></a>
+typedef Triangulation::size_type </td><td class="memItemRight"><b>size_type</b></td></tr>
+<tr class="memdesc:ad8d2f6a82b82c6431c2d652cedd3ebc2"><td class="mdescLeft"> </td><td class="mdescRight">Size type (unsigned integral type). <br></td></tr>
+<tr class="memitem:a1bceed8d584301be78377e0e6f767692" id="r_a1bceed8d584301be78377e0e6f767692"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a></td></tr>
+<tr class="memdesc:a1bceed8d584301be78377e0e6f767692"><td class="mdescLeft"> </td><td class="mdescRight">A type for indices of subdomains.  <br></td></tr>
+<tr class="memitem:a7d88716e5a66eaab5bedc426c4201aa1" id="r_a7d88716e5a66eaab5bedc426c4201aa1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a></td></tr>
+<tr class="memdesc:a7d88716e5a66eaab5bedc426c4201aa1"><td class="mdescLeft"> </td><td class="mdescRight">A type for indices of surface patches.  <br></td></tr>
+<tr class="memitem:a5e59195afb9e855ba446701048af4d70" id="r_a5e59195afb9e855ba446701048af4d70"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5e59195afb9e855ba446701048af4d70">Index</a></td></tr>
+<tr class="memdesc:a5e59195afb9e855ba446701048af4d70"><td class="mdescLeft"> </td><td class="mdescRight">A type for indexing vertices that belong to some surface patches or subdomains.  <br></td></tr>
+<tr class="memitem:af70018f8d70c2b04900eb69af11366bb" id="r_af70018f8d70c2b04900eb69af11366bb"><td class="memItemLeft"><a id="af70018f8d70c2b04900eb69af11366bb" name="af70018f8d70c2b04900eb69af11366bb"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Cells_in_complex_iterator</b></td></tr>
+<tr class="memdesc:af70018f8d70c2b04900eb69af11366bb"><td class="mdescLeft"> </td><td class="mdescRight">An iterator type to visit the cells of the triangulation belonging to the 3D complex. <br></td></tr>
+<tr class="memitem:a9c04e51a773cabdbafdd490343f4191a" id="r_a9c04e51a773cabdbafdd490343f4191a"><td class="memItemLeft"><a id="a9c04e51a773cabdbafdd490343f4191a" name="a9c04e51a773cabdbafdd490343f4191a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Facets_in_complex_iterator</b></td></tr>
+<tr class="memdesc:a9c04e51a773cabdbafdd490343f4191a"><td class="mdescLeft"> </td><td class="mdescRight">An iterator type to visit the surface facets. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr class="memitem:a96508c9d53d3867c231dd896767763b4" id="r_a96508c9d53d3867c231dd896767763b4"><td class="memItemLeft"><a id="a96508c9d53d3867c231dd896767763b4" name="a96508c9d53d3867c231dd896767763b4"></a>
+ </td><td class="memItemRight"><b>MeshComplex_3InTriangulation_3</b> ()</td></tr>
+<tr class="memdesc:a96508c9d53d3867c231dd896767763b4"><td class="mdescLeft"> </td><td class="mdescRight">Builds an empty 3D complex. <br></td></tr>
+<tr class="memitem:a5eb090e19a0df418baec601a231bc977" id="r_a5eb090e19a0df418baec601a231bc977"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#a5eb090e19a0df418baec601a231bc977">MeshComplex_3InTriangulation_3</a> (const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a5eb090e19a0df418baec601a231bc977"><td class="mdescLeft"> </td><td class="mdescRight">Copy constructor.  <br></td></tr>
+<tr class="memitem:a6dc0adabc6fb7cacbfa746018211abfb" id="r_a6dc0adabc6fb7cacbfa746018211abfb"><td class="memItemLeft"><a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp; </td><td class="memItemRight"><a class="el" href="#a6dc0adabc6fb7cacbfa746018211abfb">operator=</a> (const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a6dc0adabc6fb7cacbfa746018211abfb"><td class="mdescLeft"> </td><td class="mdescRight">Assignment operator.  <br></td></tr>
+<tr class="memitem:a432b198a52e161652368be6c76bca9b0" id="r_a432b198a52e161652368be6c76bca9b0"><td class="memItemLeft"><a id="a432b198a52e161652368be6c76bca9b0" name="a432b198a52e161652368be6c76bca9b0"></a>
+void </td><td class="memItemRight"><b>swap</b> (<a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a432b198a52e161652368be6c76bca9b0"><td class="mdescLeft"> </td><td class="mdescRight">Swaps the 3D complex and <span class="tt">rhs</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Access Functions</h2></td></tr>
+<tr class="memitem:a4199e43216c95a0472b2a4db63038dc5" id="r_a4199e43216c95a0472b2a4db63038dc5"><td class="memItemLeft"><a id="a4199e43216c95a0472b2a4db63038dc5" name="a4199e43216c95a0472b2a4db63038dc5"></a>
+const <a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">Triangulation</a> &amp; </td><td class="memItemRight"><b>triangulation</b> () const</td></tr>
+<tr class="memdesc:a4199e43216c95a0472b2a4db63038dc5"><td class="mdescLeft"> </td><td class="mdescRight">Returns a const reference to the triangulation. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Non const access</h2></td></tr>
+<tr><td class="ititle" colspan="2"><dl class="section attention"><dt>Attention</dt><dd>The responsibility of keeping a valid C3T3 belongs to the user when using advanced operations allowing a direct manipulation of the triangulation. </dd></dl>
+</td></tr>
+<tr class="memitem:aefbc75202d94ed8a61029971c9e71729" id="r_aefbc75202d94ed8a61029971c9e71729"><td class="memItemLeft"><a id="aefbc75202d94ed8a61029971c9e71729" name="aefbc75202d94ed8a61029971c9e71729"></a>
+<a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">Triangulation</a> &amp; </td><td class="memItemRight"><b>triangulation</b> ()</td></tr>
+<tr class="memdesc:aefbc75202d94ed8a61029971c9e71729"><td class="mdescLeft"> </td><td class="mdescRight">Returns a reference to the triangulation. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Modifiers</h2></td></tr>
+<tr class="memitem:aafdc8be2d1a14a33783119f20cfb2fa9" id="r_aafdc8be2d1a14a33783119f20cfb2fa9"><td class="memItemLeft"><a id="aafdc8be2d1a14a33783119f20cfb2fa9" name="aafdc8be2d1a14a33783119f20cfb2fa9"></a>
+void </td><td class="memItemRight"><b>add_to_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, <a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:aafdc8be2d1a14a33783119f20cfb2fa9"><td class="mdescLeft"> </td><td class="mdescRight">Sets the cell <span class="tt">c</span> as a cell of the subdomain <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:aeb5fc555761c897cd7e4a528625aa4dd" id="r_aeb5fc555761c897cd7e4a528625aa4dd"><td class="memItemLeft"><a id="aeb5fc555761c897cd7e4a528625aa4dd" name="aeb5fc555761c897cd7e4a528625aa4dd"></a>
+void </td><td class="memItemRight"><b>add_to_complex</b> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f, <a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:aeb5fc555761c897cd7e4a528625aa4dd"><td class="mdescLeft"> </td><td class="mdescRight">Adds the facet <span class="tt">f</span> as a facet of the surface patch <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a906ed3ebc0ed5739e42fad1979992e37" id="r_a906ed3ebc0ed5739e42fad1979992e37"><td class="memItemLeft"><a id="a906ed3ebc0ed5739e42fad1979992e37" name="a906ed3ebc0ed5739e42fad1979992e37"></a>
+void </td><td class="memItemRight"><b>add_to_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i, <a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:a906ed3ebc0ed5739e42fad1979992e37"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+<tr class="memitem:a31cf457c4986e05db69bbe0abfff06ec" id="r_a31cf457c4986e05db69bbe0abfff06ec"><td class="memItemLeft"><a id="a31cf457c4986e05db69bbe0abfff06ec" name="a31cf457c4986e05db69bbe0abfff06ec"></a>
+void </td><td class="memItemRight"><b>remove_from_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c)</td></tr>
+<tr class="memdesc:a31cf457c4986e05db69bbe0abfff06ec"><td class="mdescLeft"> </td><td class="mdescRight">Removes cell <span class="tt">c</span> from the embedded complex. <br></td></tr>
+<tr class="memitem:a3d7d1d25c0505b20a5240896796951dd" id="r_a3d7d1d25c0505b20a5240896796951dd"><td class="memItemLeft"><a id="a3d7d1d25c0505b20a5240896796951dd" name="a3d7d1d25c0505b20a5240896796951dd"></a>
+void </td><td class="memItemRight"><b>remove_from_complex</b> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f)</td></tr>
+<tr class="memdesc:a3d7d1d25c0505b20a5240896796951dd"><td class="mdescLeft"> </td><td class="mdescRight">Removes facet <span class="tt">f</span> from the embedded complex. <br></td></tr>
+<tr class="memitem:a251049ce8eca002670952581db0838e1" id="r_a251049ce8eca002670952581db0838e1"><td class="memItemLeft"><a id="a251049ce8eca002670952581db0838e1" name="a251049ce8eca002670952581db0838e1"></a>
+void </td><td class="memItemRight"><b>remove_from_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i)</td></tr>
+<tr class="memdesc:a251049ce8eca002670952581db0838e1"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+<tr class="memitem:a9a095515975a66b246f16c5e89a60e9b" id="r_a9a095515975a66b246f16c5e89a60e9b"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a9a095515975a66b246f16c5e89a60e9b">set_dimension</a> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v, int dimension)</td></tr>
+<tr class="memdesc:a9a095515975a66b246f16c5e89a60e9b"><td class="mdescLeft"> </td><td class="mdescRight">Sets the <span class="tt">dimension</span> of vertex <span class="tt">v</span>.  <br></td></tr>
+<tr class="memitem:a65943e5053a54662c06efda0778408db" id="r_a65943e5053a54662c06efda0778408db"><td class="memItemLeft"><a id="a65943e5053a54662c06efda0778408db" name="a65943e5053a54662c06efda0778408db"></a>
+void </td><td class="memItemRight"><b>set_index</b> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v, <a class="el" href="#a5e59195afb9e855ba446701048af4d70">Index</a> index)</td></tr>
+<tr class="memdesc:a65943e5053a54662c06efda0778408db"><td class="mdescLeft"> </td><td class="mdescRight">Sets the index of a vertex. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Queries on the faces of the embedded complex</h2></td></tr>
+<tr class="memitem:acd85eb7ac89020dec0419418bea32a69" id="r_acd85eb7ac89020dec0419418bea32a69"><td class="memItemLeft"><a id="acd85eb7ac89020dec0419418bea32a69" name="acd85eb7ac89020dec0419418bea32a69"></a>
+<a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><b>number_of_cells</b> ()</td></tr>
+<tr class="memdesc:acd85eb7ac89020dec0419418bea32a69"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of cells that belong to the embedded complex. <br></td></tr>
+<tr class="memitem:a7812fb02f760e32665c1e32119ae8b6d" id="r_a7812fb02f760e32665c1e32119ae8b6d"><td class="memItemLeft"><a id="a7812fb02f760e32665c1e32119ae8b6d" name="a7812fb02f760e32665c1e32119ae8b6d"></a>
+<a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><b>number_of_cells</b> (<a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:a7812fb02f760e32665c1e32119ae8b6d"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of cells that belong to the subdomain of the embedded complex with index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a5b6755bfe8b729fff58572853cb870ea" id="r_a5b6755bfe8b729fff58572853cb870ea"><td class="memItemLeft"><a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><a class="el" href="#a5b6755bfe8b729fff58572853cb870ea">number_of_facets</a> ()</td></tr>
+<tr class="memdesc:a5b6755bfe8b729fff58572853cb870ea"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of facets that are surface facets, i.  <br></td></tr>
+<tr class="memitem:ae318ddeabca2535f9a96e86099a90eae" id="r_ae318ddeabca2535f9a96e86099a90eae"><td class="memItemLeft"><a id="ae318ddeabca2535f9a96e86099a90eae" name="ae318ddeabca2535f9a96e86099a90eae"></a>
+<a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><b>number_of_facets</b> (<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:ae318ddeabca2535f9a96e86099a90eae"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of facets that belong to the surface patch of the embedded complex with index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a7b58574d2c8adfd81fa3b4f6eab1bbb5" id="r_a7b58574d2c8adfd81fa3b4f6eab1bbb5"><td class="memItemLeft"><a id="a7b58574d2c8adfd81fa3b4f6eab1bbb5" name="a7b58574d2c8adfd81fa3b4f6eab1bbb5"></a>
+bool </td><td class="memItemRight"><b>is_in_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c)</td></tr>
+<tr class="memdesc:a7b58574d2c8adfd81fa3b4f6eab1bbb5"><td class="mdescLeft"> </td><td class="mdescRight">Returns <span class="tt">true</span> iff the cell <span class="tt">c</span> belongs to the 3D complex. <br></td></tr>
+<tr class="memitem:a34e31b26c5578ab03a212f21e3ad703b" id="r_a34e31b26c5578ab03a212f21e3ad703b"><td class="memItemLeft"><a id="a34e31b26c5578ab03a212f21e3ad703b" name="a34e31b26c5578ab03a212f21e3ad703b"></a>
+bool </td><td class="memItemRight"><b>is_in_complex</b> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f)</td></tr>
+<tr class="memdesc:a34e31b26c5578ab03a212f21e3ad703b"><td class="mdescLeft"> </td><td class="mdescRight">Returns <span class="tt">true</span> iff the facet <span class="tt">f</span> belongs to the boundary 2D complex. <br></td></tr>
+<tr class="memitem:a063cdf284d945f4c30413134703eb7dc" id="r_a063cdf284d945f4c30413134703eb7dc"><td class="memItemLeft"><a id="a063cdf284d945f4c30413134703eb7dc" name="a063cdf284d945f4c30413134703eb7dc"></a>
+bool </td><td class="memItemRight"><b>is_in_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i)</td></tr>
+<tr class="memdesc:a063cdf284d945f4c30413134703eb7dc"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Queries on the identifier of the face complex including triangulation cells, facets and vertices.</h2></td></tr>
+<tr class="memitem:abc072e73be6bf1d3143f741583b2306a" id="r_abc072e73be6bf1d3143f741583b2306a"><td class="memItemLeft"><a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> </td><td class="memItemRight"><a class="el" href="#abc072e73be6bf1d3143f741583b2306a">subdomain_index</a> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c)</td></tr>
+<tr class="memdesc:abc072e73be6bf1d3143f741583b2306a"><td class="mdescLeft"> </td><td class="mdescRight">Returns the index of the subdomain containing the cell <span class="tt">c</span>.  <br></td></tr>
+<tr class="memitem:aac18178ab53dfd2059981476b454cf13" id="r_aac18178ab53dfd2059981476b454cf13"><td class="memItemLeft"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> </td><td class="memItemRight"><a class="el" href="#aac18178ab53dfd2059981476b454cf13">surface_patch_index</a> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f)</td></tr>
+<tr class="memdesc:aac18178ab53dfd2059981476b454cf13"><td class="mdescLeft"> </td><td class="mdescRight">For a surface facet, returns the index of the surface patch containing the facet.  <br></td></tr>
+<tr class="memitem:af7a28b3df994b65af5be23cec8c1743e" id="r_af7a28b3df994b65af5be23cec8c1743e"><td class="memItemLeft"><a id="af7a28b3df994b65af5be23cec8c1743e" name="af7a28b3df994b65af5be23cec8c1743e"></a>
+<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> </td><td class="memItemRight"><b>surface_patch_index</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i)</td></tr>
+<tr class="memdesc:af7a28b3df994b65af5be23cec8c1743e"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+<tr class="memitem:aac63fcbaf4bfbd6d8d58ae1e8e1c673c" id="r_aac63fcbaf4bfbd6d8d58ae1e8e1c673c"><td class="memItemLeft"><a id="aac63fcbaf4bfbd6d8d58ae1e8e1c673c" name="aac63fcbaf4bfbd6d8d58ae1e8e1c673c"></a>
+int </td><td class="memItemRight"><b>in_dimension</b> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v) const</td></tr>
+<tr class="memdesc:aac63fcbaf4bfbd6d8d58ae1e8e1c673c"><td class="mdescLeft"> </td><td class="mdescRight">Returns the dimension of the vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:ac1f45651b6e0f5d8ccdffd1053fcc0d1" id="r_ac1f45651b6e0f5d8ccdffd1053fcc0d1"><td class="memItemLeft"><a id="ac1f45651b6e0f5d8ccdffd1053fcc0d1" name="ac1f45651b6e0f5d8ccdffd1053fcc0d1"></a>
+<a class="el" href="#a5e59195afb9e855ba446701048af4d70">Index</a> </td><td class="memItemRight"><b>index</b> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v) const</td></tr>
+<tr class="memdesc:ac1f45651b6e0f5d8ccdffd1053fcc0d1"><td class="mdescLeft"> </td><td class="mdescRight">Returns the index of the vertex <span class="tt">v</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Traversal of the complex</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The data structure provides iterators to visit the cells and facets of the complex.</p>
+<p>All those iterators are bidirectional and non mutable. </p>
+</td></tr>
+<tr class="memitem:a5df9f24d964889c0ce745391ad58dd00" id="r_a5df9f24d964889c0ce745391ad58dd00"><td class="memItemLeft"><a id="a5df9f24d964889c0ce745391ad58dd00" name="a5df9f24d964889c0ce745391ad58dd00"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_begin</b> ()</td></tr>
+<tr class="memdesc:a5df9f24d964889c0ce745391ad58dd00"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Cell_in_complex_iterator</span> to visit the cells of the triangulation contained in the embedded complex. <br></td></tr>
+<tr class="memitem:a70b6fbab13eacb0dc296cf9e4ed354d6" id="r_a70b6fbab13eacb0dc296cf9e4ed354d6"><td class="memItemLeft"><a id="a70b6fbab13eacb0dc296cf9e4ed354d6" name="a70b6fbab13eacb0dc296cf9e4ed354d6"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_end</b> ()</td></tr>
+<tr class="memdesc:a70b6fbab13eacb0dc296cf9e4ed354d6"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+<tr class="memitem:ad8c609d5bbc05c6c8116b388736dc9b4" id="r_ad8c609d5bbc05c6c8116b388736dc9b4"><td class="memItemLeft"><a id="ad8c609d5bbc05c6c8116b388736dc9b4" name="ad8c609d5bbc05c6c8116b388736dc9b4"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_begin</b> (<a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:ad8c609d5bbc05c6c8116b388736dc9b4"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Cell_in_complex_iterator</span> to visit the cells of the triangulation which belong to the approximation of subdomain of index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a78db13cd14880e12f1d62590123c7f15" id="r_a78db13cd14880e12f1d62590123c7f15"><td class="memItemLeft"><a id="a78db13cd14880e12f1d62590123c7f15" name="a78db13cd14880e12f1d62590123c7f15"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_end</b> (<a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:a78db13cd14880e12f1d62590123c7f15"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+<tr class="memitem:ad3e6508fc82806e1001957d35452cffc" id="r_ad3e6508fc82806e1001957d35452cffc"><td class="memItemLeft"><a id="ad3e6508fc82806e1001957d35452cffc" name="ad3e6508fc82806e1001957d35452cffc"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_begin</b> ()</td></tr>
+<tr class="memdesc:ad3e6508fc82806e1001957d35452cffc"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Facet_in_complex_iterator</span> to visit the facets in the surface patches of the embedded complexes. <br></td></tr>
+<tr class="memitem:aec58584f9b7bdae18f25f95864571b2f" id="r_aec58584f9b7bdae18f25f95864571b2f"><td class="memItemLeft"><a id="aec58584f9b7bdae18f25f95864571b2f" name="aec58584f9b7bdae18f25f95864571b2f"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_end</b> ()</td></tr>
+<tr class="memdesc:aec58584f9b7bdae18f25f95864571b2f"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+<tr class="memitem:ad61665db76c8e392130778aae745aec1" id="r_ad61665db76c8e392130778aae745aec1"><td class="memItemLeft"><a id="ad61665db76c8e392130778aae745aec1" name="ad61665db76c8e392130778aae745aec1"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_begin</b> (<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:ad61665db76c8e392130778aae745aec1"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Facet_in_complex_iterator</span> to visit the facets of the triangulation which belong to the approximation of surface patch of index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:ae77ad44d577a7525ad9f6763e48150f4" id="r_ae77ad44d577a7525ad9f6763e48150f4"><td class="memItemLeft"><a id="ae77ad44d577a7525ad9f6763e48150f4" name="ae77ad44d577a7525ad9f6763e48150f4"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_end</b> (<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:ae77ad44d577a7525ad9f6763e48150f4"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a5e59195afb9e855ba446701048af4d70" name="a5e59195afb9e855ba446701048af4d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e59195afb9e855ba446701048af4d70">◆ </a></span>Index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5e59195afb9e855ba446701048af4d70">MeshComplex_3InTriangulation_3::Index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type for indexing vertices that belong to some surface patches or subdomains. </p>
+<p>This type must match the type <span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html#a316834c2980ad726dd3497b138feaca4">MeshDomain_3::Index</a></span> when the concept is used for mesh generation. </p>
+
+</div>
+</div>
+<a id="a1bceed8d584301be78377e0e6f767692" name="a1bceed8d584301be78377e0e6f767692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bceed8d584301be78377e0e6f767692">◆ </a></span>Subdomain_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a1bceed8d584301be78377e0e6f767692">MeshComplex_3InTriangulation_3::Subdomain_index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type for indices of subdomains. </p>
+<p>This type must match the type <span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html#a30d50e8d38bee7db92b4ec0f813e8e53">MeshDomain_3::Subdomain_index</a></span> when the concept is used for mesh generation. </p>
+
+</div>
+</div>
+<a id="a7d88716e5a66eaab5bedc426c4201aa1" name="a7d88716e5a66eaab5bedc426c4201aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d88716e5a66eaab5bedc426c4201aa1">◆ </a></span>Surface_patch_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">MeshComplex_3InTriangulation_3::Surface_patch_index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type for indices of surface patches. </p>
+<p>This type must match the type <span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html#aca73a623abfca9f06942bfd11c7d01b8">MeshDomain_3::Surface_patch_index</a></span> when the concept is used for mesh generation. </p>
+
+</div>
+</div>
+<a id="abca85bb2c4c3d7fe2f759d8234739af3" name="abca85bb2c4c3d7fe2f759d8234739af3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca85bb2c4c3d7fe2f759d8234739af3">◆ </a></span>Triangulation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">MeshComplex_3InTriangulation_3::Triangulation</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of the embedding 3D triangulation. </p>
+<p>It is required to be the nested type <span class="tt"><a class="elRef" href="../Mesh_3/structCGAL_1_1Mesh__triangulation__3.html#aacde3b6321609039e777e11c49ada1dc">CGAL::Mesh_triangulation_3::type</a></span>, provided by the class <span class="tt"><a class="elRef" href="../Mesh_3/structCGAL_1_1Mesh__triangulation__3.html">CGAL::Mesh_triangulation_3</a>&lt;MD, GT, Concurrency_tag, Vertex_base, Cell_base&gt;</span> where the Vertex_base and Cell_base template parameters are respectively instantiated with models of the concepts <span class="tt"><a class="elRef" href="../Mesh_3/classMeshVertexBase__3.html">MeshVertexBase_3</a></span> and <span class="tt"><a class="elRef" href="../Mesh_3/classMeshCellBase__3.html">MeshCellBase_3</a></span>. The provided triangulation type is then a <span class="tt"><a class="elRef" href="../Triangulation_3/classCGAL_1_1Regular__triangulation__3.html">CGAL::Regular_triangulation_3</a></span> with Vertex_base and Cell_base for respectively vertex and cell base types. </p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5eb090e19a0df418baec601a231bc977" name="a5eb090e19a0df418baec601a231bc977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb090e19a0df418baec601a231bc977">◆ </a></span>MeshComplex_3InTriangulation_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeshComplex_3InTriangulation_3::MeshComplex_3InTriangulation_3 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<p>Embedded triangulation is duplicated. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a5b6755bfe8b729fff58572853cb870ea" name="a5b6755bfe8b729fff58572853cb870ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b6755bfe8b729fff58572853cb870ea">◆ </a></span>number_of_facets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> MeshComplex_3InTriangulation_3::number_of_facets </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of facets that are surface facets, i. </p>
+<p>e. belong to some surface patch of the embedded complex. </p>
+
+</div>
+</div>
+<a id="a6dc0adabc6fb7cacbfa746018211abfb" name="a6dc0adabc6fb7cacbfa746018211abfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dc0adabc6fb7cacbfa746018211abfb">◆ </a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp; MeshComplex_3InTriangulation_3::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignment operator. </p>
+<p>Embedded triangulation is duplicated, and the former triangulation of the 3D complex is deleted. </p>
+
+</div>
+</div>
+<a id="a9a095515975a66b246f16c5e89a60e9b" name="a9a095515975a66b246f16c5e89a60e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a095515975a66b246f16c5e89a60e9b">◆ </a></span>set_dimension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeshComplex_3InTriangulation_3::set_dimension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dimension</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the <span class="tt">dimension</span> of vertex <span class="tt">v</span>. </p>
+<p>The dimension is an integer attached to the vertex. When the concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> is used for mesh generation this integer is used to store the dimension of the lowest dimensional face of the input complex including the vertex. </p>
+
+</div>
+</div>
+<a id="abc072e73be6bf1d3143f741583b2306a" name="abc072e73be6bf1d3143f741583b2306a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc072e73be6bf1d3143f741583b2306a">◆ </a></span>subdomain_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> MeshComplex_3InTriangulation_3::subdomain_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the index of the subdomain containing the cell <span class="tt">c</span>. </p>
+<p>The default subdomain index is returned if the cell <span class="tt">c</span> does not belong to the embedded complex. </p>
+
+</div>
+</div>
+<a id="aac18178ab53dfd2059981476b454cf13" name="aac18178ab53dfd2059981476b454cf13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac18178ab53dfd2059981476b454cf13">◆ </a></span>surface_patch_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> MeshComplex_3InTriangulation_3::surface_patch_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>For a surface facet, returns the index of the surface patch containing the facet. </p>
+<p>The default <span class="tt"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1" title="A type for indices of surface patches.">Surface_patch_index</a></span> value is returned if the facet is not a surface facet. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/MeshComplex_3InTriangulation_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> describes a data structure to represent and maintain a 3D complex embedded in a 3D triangulation. More precisely, the concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> is a minimal version designed to represent 3D complexes that have only faces with dimension \( 2\) and \( 3\). Embedded 3D complexes with faces of dimension \( 0\), \( 1\), \( 2\) and \( 3\), are more conveniently represented by the refined concept <span class="tt"><a class="el" href="classMeshComplexWithFeatures__3InTriangulation__3.html" title="The concept MeshComplexWithFeatures_3InTriangulation_3 describes a data structure to represent and ma...">MeshComplexWithFeatures_3InTriangulation_3</a></span>. </p>
+  <p>The data structure includes a 3D triangulation which is itself a 3D complex. To distinguish the faces of the embedded 3D complex from the faces of the triangulation, we call the faces of the embedded complex respectively <em>subdomains</em> for 3D faces and <em>surface patches</em> for 2D faces, while the triangulations faces are called respectively cells, facets, edges, and vertices.</p>
+<p>Each subdomain of the embedded 3D complex is a union of triangulation cells. Cells that belong to some subdomain are said to belong to the embedded complex. Each surface patch is a union of triangulation facets. <a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3" title="The type of the embedding 3D triangulation.">Triangulation</a> facets that belong to some surface patch are called surface facets. The concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> handles the marking and retrieval of the cells of the triangulation belonging to the subdomains and of the facets of the triangulation belonging to the surface patches. The concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> also includes an index type for vertices of the triangulation and attaches an integer, called the <em>dimension</em> to each vertex. When used by the meshing algorithm, the index and the dimension of each vertex are used to store respectively the lowest dimensional face of the input complex including the vertex and the dimension of this face.</p>
+<p>In the 3D mesh generator, the concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> is used when the domain to be meshed has no feature with dimension \( 0\) and \( 1\). Such a data structure is used internally by the mesh generator to maintain the current approximation of each subdomain and each boundary surface patch. The data structure encodes the final mesh at the end of the meshing process.</p>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Mesh__complex__3__in__triangulation__3.html" title="A data structure to represent and maintain a 3D complex embedded in a 3D triangulation.">CGAL::Mesh_complex_3_in_triangulation_3</a>&lt;Tr,CornerIndex,CurveIndex&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html">MeshDomain_3</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classMeshComplexWithFeatures__3InTriangulation__3.html" title="The concept MeshComplexWithFeatures_3InTriangulation_3 describes a data structure to represent and ma...">MeshComplexWithFeatures_3InTriangulation_3</a></span> </dd>
+<dd>
+<a class="elRef" href="../Mesh_3/group__PkgMesh3Functions.html#gac8599a0c967075f740bf8e2e92c4770e"><span class="tt">CGAL::make_mesh_3()</span></a> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:abca85bb2c4c3d7fe2f759d8234739af3" id="r_abca85bb2c4c3d7fe2f759d8234739af3"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">Triangulation</a></td></tr>
+<tr class="memdesc:abca85bb2c4c3d7fe2f759d8234739af3"><td class="mdescLeft"> </td><td class="mdescRight">The type of the embedding 3D triangulation.  <br></td></tr>
+<tr class="memitem:a1a536a1817829a10ebb1c411d53c11d5" id="r_a1a536a1817829a10ebb1c411d53c11d5"><td class="memItemLeft"><a id="a1a536a1817829a10ebb1c411d53c11d5" name="a1a536a1817829a10ebb1c411d53c11d5"></a>
+typedef Triangulation::Vertex_handle </td><td class="memItemRight"><b>Vertex_handle</b></td></tr>
+<tr class="memdesc:a1a536a1817829a10ebb1c411d53c11d5"><td class="mdescLeft"> </td><td class="mdescRight">Type <span class="tt"><a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5" title="Type Vertex_handle type of the triangulation.">Vertex_handle</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:aae326ff141eb5f8aedda42b2b41d60b8" id="r_aae326ff141eb5f8aedda42b2b41d60b8"><td class="memItemLeft"><a id="aae326ff141eb5f8aedda42b2b41d60b8" name="aae326ff141eb5f8aedda42b2b41d60b8"></a>
+typedef Triangulation::Cell_handle </td><td class="memItemRight"><b>Cell_handle</b></td></tr>
+<tr class="memdesc:aae326ff141eb5f8aedda42b2b41d60b8"><td class="mdescLeft"> </td><td class="mdescRight">The <span class="tt"><a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8" title="The Cell_handle type of the triangulation.">Cell_handle</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:a498d5d2f73e892cc6eeaa9fa21d4af89" id="r_a498d5d2f73e892cc6eeaa9fa21d4af89"><td class="memItemLeft"><a id="a498d5d2f73e892cc6eeaa9fa21d4af89" name="a498d5d2f73e892cc6eeaa9fa21d4af89"></a>
+typedef Triangulation::Facet </td><td class="memItemRight"><b>Facet</b></td></tr>
+<tr class="memdesc:a498d5d2f73e892cc6eeaa9fa21d4af89"><td class="mdescLeft"> </td><td class="mdescRight">The <span class="tt"><a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89" title="The Facet type of the triangulation.">Facet</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:ad8e3d02e82c4aa42f3d22873ff742707" id="r_ad8e3d02e82c4aa42f3d22873ff742707"><td class="memItemLeft"><a id="ad8e3d02e82c4aa42f3d22873ff742707" name="ad8e3d02e82c4aa42f3d22873ff742707"></a>
+typedef Triangulation::Edge </td><td class="memItemRight"><b>Edge</b></td></tr>
+<tr class="memdesc:ad8e3d02e82c4aa42f3d22873ff742707"><td class="mdescLeft"> </td><td class="mdescRight">The <span class="tt"><a class="el" href="#ad8e3d02e82c4aa42f3d22873ff742707" title="The Edge type of the triangulation.">Edge</a></span> type of the triangulation. <br></td></tr>
+<tr class="memitem:ad8d2f6a82b82c6431c2d652cedd3ebc2" id="r_ad8d2f6a82b82c6431c2d652cedd3ebc2"><td class="memItemLeft"><a id="ad8d2f6a82b82c6431c2d652cedd3ebc2" name="ad8d2f6a82b82c6431c2d652cedd3ebc2"></a>
+typedef Triangulation::size_type </td><td class="memItemRight"><b>size_type</b></td></tr>
+<tr class="memdesc:ad8d2f6a82b82c6431c2d652cedd3ebc2"><td class="mdescLeft"> </td><td class="mdescRight">Size type (unsigned integral type). <br></td></tr>
+<tr class="memitem:a1bceed8d584301be78377e0e6f767692" id="r_a1bceed8d584301be78377e0e6f767692"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a></td></tr>
+<tr class="memdesc:a1bceed8d584301be78377e0e6f767692"><td class="mdescLeft"> </td><td class="mdescRight">A type for indices of subdomains.  <br></td></tr>
+<tr class="memitem:a7d88716e5a66eaab5bedc426c4201aa1" id="r_a7d88716e5a66eaab5bedc426c4201aa1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a></td></tr>
+<tr class="memdesc:a7d88716e5a66eaab5bedc426c4201aa1"><td class="mdescLeft"> </td><td class="mdescRight">A type for indices of surface patches.  <br></td></tr>
+<tr class="memitem:a5e59195afb9e855ba446701048af4d70" id="r_a5e59195afb9e855ba446701048af4d70"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5e59195afb9e855ba446701048af4d70">Index</a></td></tr>
+<tr class="memdesc:a5e59195afb9e855ba446701048af4d70"><td class="mdescLeft"> </td><td class="mdescRight">A type for indexing vertices that belong to some surface patches or subdomains.  <br></td></tr>
+<tr class="memitem:af70018f8d70c2b04900eb69af11366bb" id="r_af70018f8d70c2b04900eb69af11366bb"><td class="memItemLeft"><a id="af70018f8d70c2b04900eb69af11366bb" name="af70018f8d70c2b04900eb69af11366bb"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Cells_in_complex_iterator</b></td></tr>
+<tr class="memdesc:af70018f8d70c2b04900eb69af11366bb"><td class="mdescLeft"> </td><td class="mdescRight">An iterator type to visit the cells of the triangulation belonging to the 3D complex. <br></td></tr>
+<tr class="memitem:a9c04e51a773cabdbafdd490343f4191a" id="r_a9c04e51a773cabdbafdd490343f4191a"><td class="memItemLeft"><a id="a9c04e51a773cabdbafdd490343f4191a" name="a9c04e51a773cabdbafdd490343f4191a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Facets_in_complex_iterator</b></td></tr>
+<tr class="memdesc:a9c04e51a773cabdbafdd490343f4191a"><td class="mdescLeft"> </td><td class="mdescRight">An iterator type to visit the surface facets. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation</h2></td></tr>
+<tr class="memitem:a96508c9d53d3867c231dd896767763b4" id="r_a96508c9d53d3867c231dd896767763b4"><td class="memItemLeft"><a id="a96508c9d53d3867c231dd896767763b4" name="a96508c9d53d3867c231dd896767763b4"></a>
+ </td><td class="memItemRight"><b>MeshComplex_3InTriangulation_3</b> ()</td></tr>
+<tr class="memdesc:a96508c9d53d3867c231dd896767763b4"><td class="mdescLeft"> </td><td class="mdescRight">Builds an empty 3D complex. <br></td></tr>
+<tr class="memitem:a5eb090e19a0df418baec601a231bc977" id="r_a5eb090e19a0df418baec601a231bc977"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#a5eb090e19a0df418baec601a231bc977">MeshComplex_3InTriangulation_3</a> (const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a5eb090e19a0df418baec601a231bc977"><td class="mdescLeft"> </td><td class="mdescRight">Copy constructor.  <br></td></tr>
+<tr class="memitem:a6dc0adabc6fb7cacbfa746018211abfb" id="r_a6dc0adabc6fb7cacbfa746018211abfb"><td class="memItemLeft"><a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp; </td><td class="memItemRight"><a class="el" href="#a6dc0adabc6fb7cacbfa746018211abfb">operator=</a> (const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a6dc0adabc6fb7cacbfa746018211abfb"><td class="mdescLeft"> </td><td class="mdescRight">Assignment operator.  <br></td></tr>
+<tr class="memitem:a432b198a52e161652368be6c76bca9b0" id="r_a432b198a52e161652368be6c76bca9b0"><td class="memItemLeft"><a id="a432b198a52e161652368be6c76bca9b0" name="a432b198a52e161652368be6c76bca9b0"></a>
+void </td><td class="memItemRight"><b>swap</b> (<a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a432b198a52e161652368be6c76bca9b0"><td class="mdescLeft"> </td><td class="mdescRight">Swaps the 3D complex and <span class="tt">rhs</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Access Functions</h2></td></tr>
+<tr class="memitem:a4199e43216c95a0472b2a4db63038dc5" id="r_a4199e43216c95a0472b2a4db63038dc5"><td class="memItemLeft"><a id="a4199e43216c95a0472b2a4db63038dc5" name="a4199e43216c95a0472b2a4db63038dc5"></a>
+const <a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">Triangulation</a> &amp; </td><td class="memItemRight"><b>triangulation</b> () const</td></tr>
+<tr class="memdesc:a4199e43216c95a0472b2a4db63038dc5"><td class="mdescLeft"> </td><td class="mdescRight">Returns a const reference to the triangulation. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Non const access</h2></td></tr>
+<tr><td class="ititle" colspan="2"><dl class="section attention"><dt>Attention</dt><dd>The responsibility of keeping a valid C3T3 belongs to the user when using advanced operations allowing a direct manipulation of the triangulation. </dd></dl>
+</td></tr>
+<tr class="memitem:aefbc75202d94ed8a61029971c9e71729" id="r_aefbc75202d94ed8a61029971c9e71729"><td class="memItemLeft"><a id="aefbc75202d94ed8a61029971c9e71729" name="aefbc75202d94ed8a61029971c9e71729"></a>
+<a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">Triangulation</a> &amp; </td><td class="memItemRight"><b>triangulation</b> ()</td></tr>
+<tr class="memdesc:aefbc75202d94ed8a61029971c9e71729"><td class="mdescLeft"> </td><td class="mdescRight">Returns a reference to the triangulation. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Modifiers</h2></td></tr>
+<tr class="memitem:aafdc8be2d1a14a33783119f20cfb2fa9" id="r_aafdc8be2d1a14a33783119f20cfb2fa9"><td class="memItemLeft"><a id="aafdc8be2d1a14a33783119f20cfb2fa9" name="aafdc8be2d1a14a33783119f20cfb2fa9"></a>
+void </td><td class="memItemRight"><b>add_to_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, <a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:aafdc8be2d1a14a33783119f20cfb2fa9"><td class="mdescLeft"> </td><td class="mdescRight">Sets the cell <span class="tt">c</span> as a cell of the subdomain <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:aeb5fc555761c897cd7e4a528625aa4dd" id="r_aeb5fc555761c897cd7e4a528625aa4dd"><td class="memItemLeft"><a id="aeb5fc555761c897cd7e4a528625aa4dd" name="aeb5fc555761c897cd7e4a528625aa4dd"></a>
+void </td><td class="memItemRight"><b>add_to_complex</b> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f, <a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:aeb5fc555761c897cd7e4a528625aa4dd"><td class="mdescLeft"> </td><td class="mdescRight">Adds the facet <span class="tt">f</span> as a facet of the surface patch <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a906ed3ebc0ed5739e42fad1979992e37" id="r_a906ed3ebc0ed5739e42fad1979992e37"><td class="memItemLeft"><a id="a906ed3ebc0ed5739e42fad1979992e37" name="a906ed3ebc0ed5739e42fad1979992e37"></a>
+void </td><td class="memItemRight"><b>add_to_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i, <a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:a906ed3ebc0ed5739e42fad1979992e37"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+<tr class="memitem:a31cf457c4986e05db69bbe0abfff06ec" id="r_a31cf457c4986e05db69bbe0abfff06ec"><td class="memItemLeft"><a id="a31cf457c4986e05db69bbe0abfff06ec" name="a31cf457c4986e05db69bbe0abfff06ec"></a>
+void </td><td class="memItemRight"><b>remove_from_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c)</td></tr>
+<tr class="memdesc:a31cf457c4986e05db69bbe0abfff06ec"><td class="mdescLeft"> </td><td class="mdescRight">Removes cell <span class="tt">c</span> from the embedded complex. <br></td></tr>
+<tr class="memitem:a3d7d1d25c0505b20a5240896796951dd" id="r_a3d7d1d25c0505b20a5240896796951dd"><td class="memItemLeft"><a id="a3d7d1d25c0505b20a5240896796951dd" name="a3d7d1d25c0505b20a5240896796951dd"></a>
+void </td><td class="memItemRight"><b>remove_from_complex</b> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f)</td></tr>
+<tr class="memdesc:a3d7d1d25c0505b20a5240896796951dd"><td class="mdescLeft"> </td><td class="mdescRight">Removes facet <span class="tt">f</span> from the embedded complex. <br></td></tr>
+<tr class="memitem:a251049ce8eca002670952581db0838e1" id="r_a251049ce8eca002670952581db0838e1"><td class="memItemLeft"><a id="a251049ce8eca002670952581db0838e1" name="a251049ce8eca002670952581db0838e1"></a>
+void </td><td class="memItemRight"><b>remove_from_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i)</td></tr>
+<tr class="memdesc:a251049ce8eca002670952581db0838e1"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+<tr class="memitem:a9a095515975a66b246f16c5e89a60e9b" id="r_a9a095515975a66b246f16c5e89a60e9b"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a9a095515975a66b246f16c5e89a60e9b">set_dimension</a> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v, int dimension)</td></tr>
+<tr class="memdesc:a9a095515975a66b246f16c5e89a60e9b"><td class="mdescLeft"> </td><td class="mdescRight">Sets the <span class="tt">dimension</span> of vertex <span class="tt">v</span>.  <br></td></tr>
+<tr class="memitem:a65943e5053a54662c06efda0778408db" id="r_a65943e5053a54662c06efda0778408db"><td class="memItemLeft"><a id="a65943e5053a54662c06efda0778408db" name="a65943e5053a54662c06efda0778408db"></a>
+void </td><td class="memItemRight"><b>set_index</b> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v, <a class="el" href="#a5e59195afb9e855ba446701048af4d70">Index</a> index)</td></tr>
+<tr class="memdesc:a65943e5053a54662c06efda0778408db"><td class="mdescLeft"> </td><td class="mdescRight">Sets the index of a vertex. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Queries on the faces of the embedded complex</h2></td></tr>
+<tr class="memitem:acd85eb7ac89020dec0419418bea32a69" id="r_acd85eb7ac89020dec0419418bea32a69"><td class="memItemLeft"><a id="acd85eb7ac89020dec0419418bea32a69" name="acd85eb7ac89020dec0419418bea32a69"></a>
+<a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><b>number_of_cells</b> ()</td></tr>
+<tr class="memdesc:acd85eb7ac89020dec0419418bea32a69"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of cells that belong to the embedded complex. <br></td></tr>
+<tr class="memitem:a7812fb02f760e32665c1e32119ae8b6d" id="r_a7812fb02f760e32665c1e32119ae8b6d"><td class="memItemLeft"><a id="a7812fb02f760e32665c1e32119ae8b6d" name="a7812fb02f760e32665c1e32119ae8b6d"></a>
+<a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><b>number_of_cells</b> (<a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:a7812fb02f760e32665c1e32119ae8b6d"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of cells that belong to the subdomain of the embedded complex with index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a5b6755bfe8b729fff58572853cb870ea" id="r_a5b6755bfe8b729fff58572853cb870ea"><td class="memItemLeft"><a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><a class="el" href="#a5b6755bfe8b729fff58572853cb870ea">number_of_facets</a> ()</td></tr>
+<tr class="memdesc:a5b6755bfe8b729fff58572853cb870ea"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of facets that are surface facets, i.  <br></td></tr>
+<tr class="memitem:ae318ddeabca2535f9a96e86099a90eae" id="r_ae318ddeabca2535f9a96e86099a90eae"><td class="memItemLeft"><a id="ae318ddeabca2535f9a96e86099a90eae" name="ae318ddeabca2535f9a96e86099a90eae"></a>
+<a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> </td><td class="memItemRight"><b>number_of_facets</b> (<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:ae318ddeabca2535f9a96e86099a90eae"><td class="mdescLeft"> </td><td class="mdescRight">Returns the number of facets that belong to the surface patch of the embedded complex with index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a7b58574d2c8adfd81fa3b4f6eab1bbb5" id="r_a7b58574d2c8adfd81fa3b4f6eab1bbb5"><td class="memItemLeft"><a id="a7b58574d2c8adfd81fa3b4f6eab1bbb5" name="a7b58574d2c8adfd81fa3b4f6eab1bbb5"></a>
+bool </td><td class="memItemRight"><b>is_in_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c)</td></tr>
+<tr class="memdesc:a7b58574d2c8adfd81fa3b4f6eab1bbb5"><td class="mdescLeft"> </td><td class="mdescRight">Returns <span class="tt">true</span> iff the cell <span class="tt">c</span> belongs to the 3D complex. <br></td></tr>
+<tr class="memitem:a34e31b26c5578ab03a212f21e3ad703b" id="r_a34e31b26c5578ab03a212f21e3ad703b"><td class="memItemLeft"><a id="a34e31b26c5578ab03a212f21e3ad703b" name="a34e31b26c5578ab03a212f21e3ad703b"></a>
+bool </td><td class="memItemRight"><b>is_in_complex</b> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f)</td></tr>
+<tr class="memdesc:a34e31b26c5578ab03a212f21e3ad703b"><td class="mdescLeft"> </td><td class="mdescRight">Returns <span class="tt">true</span> iff the facet <span class="tt">f</span> belongs to the boundary 2D complex. <br></td></tr>
+<tr class="memitem:a063cdf284d945f4c30413134703eb7dc" id="r_a063cdf284d945f4c30413134703eb7dc"><td class="memItemLeft"><a id="a063cdf284d945f4c30413134703eb7dc" name="a063cdf284d945f4c30413134703eb7dc"></a>
+bool </td><td class="memItemRight"><b>is_in_complex</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i)</td></tr>
+<tr class="memdesc:a063cdf284d945f4c30413134703eb7dc"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Queries on the identifier of the face complex including triangulation cells, facets and vertices.</h2></td></tr>
+<tr class="memitem:abc072e73be6bf1d3143f741583b2306a" id="r_abc072e73be6bf1d3143f741583b2306a"><td class="memItemLeft"><a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> </td><td class="memItemRight"><a class="el" href="#abc072e73be6bf1d3143f741583b2306a">subdomain_index</a> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c)</td></tr>
+<tr class="memdesc:abc072e73be6bf1d3143f741583b2306a"><td class="mdescLeft"> </td><td class="mdescRight">Returns the index of the subdomain containing the cell <span class="tt">c</span>.  <br></td></tr>
+<tr class="memitem:aac18178ab53dfd2059981476b454cf13" id="r_aac18178ab53dfd2059981476b454cf13"><td class="memItemLeft"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> </td><td class="memItemRight"><a class="el" href="#aac18178ab53dfd2059981476b454cf13">surface_patch_index</a> (<a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a> f)</td></tr>
+<tr class="memdesc:aac18178ab53dfd2059981476b454cf13"><td class="mdescLeft"> </td><td class="mdescRight">For a surface facet, returns the index of the surface patch containing the facet.  <br></td></tr>
+<tr class="memitem:af7a28b3df994b65af5be23cec8c1743e" id="r_af7a28b3df994b65af5be23cec8c1743e"><td class="memItemLeft"><a id="af7a28b3df994b65af5be23cec8c1743e" name="af7a28b3df994b65af5be23cec8c1743e"></a>
+<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> </td><td class="memItemRight"><b>surface_patch_index</b> (<a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a> c, int i)</td></tr>
+<tr class="memdesc:af7a28b3df994b65af5be23cec8c1743e"><td class="mdescLeft"> </td><td class="mdescRight">Same as above with <span class="tt">f=(c,i)</span>. <br></td></tr>
+<tr class="memitem:aac63fcbaf4bfbd6d8d58ae1e8e1c673c" id="r_aac63fcbaf4bfbd6d8d58ae1e8e1c673c"><td class="memItemLeft"><a id="aac63fcbaf4bfbd6d8d58ae1e8e1c673c" name="aac63fcbaf4bfbd6d8d58ae1e8e1c673c"></a>
+int </td><td class="memItemRight"><b>in_dimension</b> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v) const</td></tr>
+<tr class="memdesc:aac63fcbaf4bfbd6d8d58ae1e8e1c673c"><td class="mdescLeft"> </td><td class="mdescRight">Returns the dimension of the vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:ac1f45651b6e0f5d8ccdffd1053fcc0d1" id="r_ac1f45651b6e0f5d8ccdffd1053fcc0d1"><td class="memItemLeft"><a id="ac1f45651b6e0f5d8ccdffd1053fcc0d1" name="ac1f45651b6e0f5d8ccdffd1053fcc0d1"></a>
+<a class="el" href="#a5e59195afb9e855ba446701048af4d70">Index</a> </td><td class="memItemRight"><b>index</b> (<a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a> v) const</td></tr>
+<tr class="memdesc:ac1f45651b6e0f5d8ccdffd1053fcc0d1"><td class="mdescLeft"> </td><td class="mdescRight">Returns the index of the vertex <span class="tt">v</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Traversal of the complex</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>The data structure provides iterators to visit the cells and facets of the complex.</p>
+<p>All those iterators are bidirectional and non mutable. </p>
+</td></tr>
+<tr class="memitem:a5df9f24d964889c0ce745391ad58dd00" id="r_a5df9f24d964889c0ce745391ad58dd00"><td class="memItemLeft"><a id="a5df9f24d964889c0ce745391ad58dd00" name="a5df9f24d964889c0ce745391ad58dd00"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_begin</b> ()</td></tr>
+<tr class="memdesc:a5df9f24d964889c0ce745391ad58dd00"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Cell_in_complex_iterator</span> to visit the cells of the triangulation contained in the embedded complex. <br></td></tr>
+<tr class="memitem:a70b6fbab13eacb0dc296cf9e4ed354d6" id="r_a70b6fbab13eacb0dc296cf9e4ed354d6"><td class="memItemLeft"><a id="a70b6fbab13eacb0dc296cf9e4ed354d6" name="a70b6fbab13eacb0dc296cf9e4ed354d6"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_end</b> ()</td></tr>
+<tr class="memdesc:a70b6fbab13eacb0dc296cf9e4ed354d6"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+<tr class="memitem:ad8c609d5bbc05c6c8116b388736dc9b4" id="r_ad8c609d5bbc05c6c8116b388736dc9b4"><td class="memItemLeft"><a id="ad8c609d5bbc05c6c8116b388736dc9b4" name="ad8c609d5bbc05c6c8116b388736dc9b4"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_begin</b> (<a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:ad8c609d5bbc05c6c8116b388736dc9b4"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Cell_in_complex_iterator</span> to visit the cells of the triangulation which belong to the approximation of subdomain of index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:a78db13cd14880e12f1d62590123c7f15" id="r_a78db13cd14880e12f1d62590123c7f15"><td class="memItemLeft"><a id="a78db13cd14880e12f1d62590123c7f15" name="a78db13cd14880e12f1d62590123c7f15"></a>
+<a class="el" href="#af70018f8d70c2b04900eb69af11366bb">Cells_in_complex_iterator</a> </td><td class="memItemRight"><b>cells_in_complex_end</b> (<a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> index)</td></tr>
+<tr class="memdesc:a78db13cd14880e12f1d62590123c7f15"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+<tr class="memitem:ad3e6508fc82806e1001957d35452cffc" id="r_ad3e6508fc82806e1001957d35452cffc"><td class="memItemLeft"><a id="ad3e6508fc82806e1001957d35452cffc" name="ad3e6508fc82806e1001957d35452cffc"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_begin</b> ()</td></tr>
+<tr class="memdesc:ad3e6508fc82806e1001957d35452cffc"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Facet_in_complex_iterator</span> to visit the facets in the surface patches of the embedded complexes. <br></td></tr>
+<tr class="memitem:aec58584f9b7bdae18f25f95864571b2f" id="r_aec58584f9b7bdae18f25f95864571b2f"><td class="memItemLeft"><a id="aec58584f9b7bdae18f25f95864571b2f" name="aec58584f9b7bdae18f25f95864571b2f"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_end</b> ()</td></tr>
+<tr class="memdesc:aec58584f9b7bdae18f25f95864571b2f"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+<tr class="memitem:ad61665db76c8e392130778aae745aec1" id="r_ad61665db76c8e392130778aae745aec1"><td class="memItemLeft"><a id="ad61665db76c8e392130778aae745aec1" name="ad61665db76c8e392130778aae745aec1"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_begin</b> (<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:ad61665db76c8e392130778aae745aec1"><td class="mdescLeft"> </td><td class="mdescRight">Returns a <span class="tt">Facet_in_complex_iterator</span> to visit the facets of the triangulation which belong to the approximation of surface patch of index <span class="tt"><a class="el" href="#ac1f45651b6e0f5d8ccdffd1053fcc0d1" title="Returns the index of the vertex v.">index</a></span>. <br></td></tr>
+<tr class="memitem:ae77ad44d577a7525ad9f6763e48150f4" id="r_ae77ad44d577a7525ad9f6763e48150f4"><td class="memItemLeft"><a id="ae77ad44d577a7525ad9f6763e48150f4" name="ae77ad44d577a7525ad9f6763e48150f4"></a>
+<a class="el" href="#a9c04e51a773cabdbafdd490343f4191a">Facets_in_complex_iterator</a> </td><td class="memItemRight"><b>facets_in_complex_end</b> (<a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> index)</td></tr>
+<tr class="memdesc:ae77ad44d577a7525ad9f6763e48150f4"><td class="mdescLeft"> </td><td class="mdescRight">Returns the past-the-end iterator for the above iterator. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="a5e59195afb9e855ba446701048af4d70" name="a5e59195afb9e855ba446701048af4d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e59195afb9e855ba446701048af4d70">◆ </a></span>Index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5e59195afb9e855ba446701048af4d70">MeshComplex_3InTriangulation_3::Index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type for indexing vertices that belong to some surface patches or subdomains. </p>
+<p>This type must match the type <span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html#a316834c2980ad726dd3497b138feaca4">MeshDomain_3::Index</a></span> when the concept is used for mesh generation. </p>
+
+</div>
+</div>
+<a id="a1bceed8d584301be78377e0e6f767692" name="a1bceed8d584301be78377e0e6f767692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bceed8d584301be78377e0e6f767692">◆ </a></span>Subdomain_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a1bceed8d584301be78377e0e6f767692">MeshComplex_3InTriangulation_3::Subdomain_index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type for indices of subdomains. </p>
+<p>This type must match the type <span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html#a30d50e8d38bee7db92b4ec0f813e8e53">MeshDomain_3::Subdomain_index</a></span> when the concept is used for mesh generation. </p>
+
+</div>
+</div>
+<a id="a7d88716e5a66eaab5bedc426c4201aa1" name="a7d88716e5a66eaab5bedc426c4201aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d88716e5a66eaab5bedc426c4201aa1">◆ </a></span>Surface_patch_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">MeshComplex_3InTriangulation_3::Surface_patch_index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A type for indices of surface patches. </p>
+<p>This type must match the type <span class="tt"><a class="elRef" href="../Mesh_3/classMeshDomain__3.html#aca73a623abfca9f06942bfd11c7d01b8">MeshDomain_3::Surface_patch_index</a></span> when the concept is used for mesh generation. </p>
+
+</div>
+</div>
+<a id="abca85bb2c4c3d7fe2f759d8234739af3" name="abca85bb2c4c3d7fe2f759d8234739af3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca85bb2c4c3d7fe2f759d8234739af3">◆ </a></span>Triangulation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#abca85bb2c4c3d7fe2f759d8234739af3">MeshComplex_3InTriangulation_3::Triangulation</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of the embedding 3D triangulation. </p>
+<p>It is required to be the nested type <span class="tt"><a class="elRef" href="../Mesh_3/structCGAL_1_1Mesh__triangulation__3.html#aacde3b6321609039e777e11c49ada1dc">CGAL::Mesh_triangulation_3::type</a></span>, provided by the class <span class="tt"><a class="elRef" href="../Mesh_3/structCGAL_1_1Mesh__triangulation__3.html">CGAL::Mesh_triangulation_3</a>&lt;MD, GT, Concurrency_tag, Vertex_base, Cell_base&gt;</span> where the Vertex_base and Cell_base template parameters are respectively instantiated with models of the concepts <span class="tt"><a class="elRef" href="../Mesh_3/classMeshVertexBase__3.html">MeshVertexBase_3</a></span> and <span class="tt"><a class="elRef" href="../Mesh_3/classMeshCellBase__3.html">MeshCellBase_3</a></span>. The provided triangulation type is then a <span class="tt"><a class="elRef" href="../Triangulation_3/classCGAL_1_1Regular__triangulation__3.html">CGAL::Regular_triangulation_3</a></span> with Vertex_base and Cell_base for respectively vertex and cell base types. </p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5eb090e19a0df418baec601a231bc977" name="a5eb090e19a0df418baec601a231bc977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb090e19a0df418baec601a231bc977">◆ </a></span>MeshComplex_3InTriangulation_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeshComplex_3InTriangulation_3::MeshComplex_3InTriangulation_3 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<p>Embedded triangulation is duplicated. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a5b6755bfe8b729fff58572853cb870ea" name="a5b6755bfe8b729fff58572853cb870ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b6755bfe8b729fff58572853cb870ea">◆ </a></span>number_of_facets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad8d2f6a82b82c6431c2d652cedd3ebc2">size_type</a> MeshComplex_3InTriangulation_3::number_of_facets </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of facets that are surface facets, i. </p>
+<p>e. belong to some surface patch of the embedded complex. </p>
+
+</div>
+</div>
+<a id="a6dc0adabc6fb7cacbfa746018211abfb" name="a6dc0adabc6fb7cacbfa746018211abfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dc0adabc6fb7cacbfa746018211abfb">◆ </a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp; MeshComplex_3InTriangulation_3::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignment operator. </p>
+<p>Embedded triangulation is duplicated, and the former triangulation of the 3D complex is deleted. </p>
+
+</div>
+</div>
+<a id="a9a095515975a66b246f16c5e89a60e9b" name="a9a095515975a66b246f16c5e89a60e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a095515975a66b246f16c5e89a60e9b">◆ </a></span>set_dimension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeshComplex_3InTriangulation_3::set_dimension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a1a536a1817829a10ebb1c411d53c11d5">Vertex_handle</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dimension</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the <span class="tt">dimension</span> of vertex <span class="tt">v</span>. </p>
+<p>The dimension is an integer attached to the vertex. When the concept <span class="tt"><a class="el" href="classMeshComplex__3InTriangulation__3.html" title="The concept MeshComplex_3InTriangulation_3 describes a data structure to represent and maintain a 3D ...">MeshComplex_3InTriangulation_3</a></span> is used for mesh generation this integer is used to store the dimension of the lowest dimensional face of the input complex including the vertex. </p>
+
+</div>
+</div>
+<a id="abc072e73be6bf1d3143f741583b2306a" name="abc072e73be6bf1d3143f741583b2306a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc072e73be6bf1d3143f741583b2306a">◆ </a></span>subdomain_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a1bceed8d584301be78377e0e6f767692">Subdomain_index</a> MeshComplex_3InTriangulation_3::subdomain_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aae326ff141eb5f8aedda42b2b41d60b8">Cell_handle</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the index of the subdomain containing the cell <span class="tt">c</span>. </p>
+<p>The default subdomain index is returned if the cell <span class="tt">c</span> does not belong to the embedded complex. </p>
+
+</div>
+</div>
+<a id="aac18178ab53dfd2059981476b454cf13" name="aac18178ab53dfd2059981476b454cf13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac18178ab53dfd2059981476b454cf13">◆ </a></span>surface_patch_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1">Surface_patch_index</a> MeshComplex_3InTriangulation_3::surface_patch_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a498d5d2f73e892cc6eeaa9fa21d4af89">Facet</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>For a surface facet, returns the index of the surface patch containing the facet. </p>
+<p>The default <span class="tt"><a class="el" href="#a7d88716e5a66eaab5bedc426c4201aa1" title="A type for indices of surface patches.">Surface_patch_index</a></span> value is returned if the facet is not a surface facet. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classMeshComplex__3InTriangulation__3.html">MeshComplex_3InTriangulation_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
