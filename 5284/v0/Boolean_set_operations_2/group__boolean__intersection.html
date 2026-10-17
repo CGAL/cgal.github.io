@@ -1,0 +1,1844 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Boolean_set_operations_2/group__boolean__intersection.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.4 - 2D Regularized Boolean Set-Operations: Intersection Functions</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.4 - 2D Regularized Boolean Set-Operations
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('group__boolean__intersection.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Intersection Functions<div class="ingroups"><a class="el" href="group__PkgBooleanSetOperations2Ref.html">2D Regularized Boolean Set-Operations Reference</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p><a class="anchor" id="ref_bso_intersection"></a> There are several overloaded function templates called <code><a class="el" href="group__boolean__intersection.html#ga226439e299d1572c61c8f389f2c50311" title="computes the intersection of two polygons and inserts the resulting polygons with holes into a contai...">intersection()</a></code> that compute the <em>intersection</em> of two or more polygons and insert the resulting polygons with holes into a container via an output iterator.</p>
+<p>A function template in this group that accepts two input polygons has one of the following signatures: </p><table cellpadding="3" border="0">
+<tr>
+<td align="right"><b>1.1.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> intersection(const Type1&amp; pgn1, const Type2&amp; pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>1.2.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> intersection(const Type1&amp; pgn1, const Type2&amp; pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi);</code> </td></tr>
+<tr>
+<td align="right"><b>2.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> intersection(const Type1&amp; pgn1, const Type2&amp; pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits&amp; traits);</code> </td></tr>
+</table>
+<p>There are also function templates that accept one or two ranges of input polygons: </p><table cellpadding="3" border="0">
+<tr>
+<td align="right"><b>3.1.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> intersection(<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>3.2.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__intersection.html#ga23c5cd4cd96af60ebbc303116ba1c904" title="Given a range of polygons (resp. ">intersection(InputIterator begin, InputIterator end, OutputIterator oi)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>4.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__intersection.html#ga0077ce0dac5be807aa6e1582c9ca6770" title="Given a range of polygons (resp. ">intersection(InputIterator begin, InputIterator end, OutputIterator oi, const GpsTraits&amp; traits)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>5.1.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> intersection(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines = <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true()</a>);</code> </td></tr>
+<tr>
+<td align="right"><b>5.2.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__intersection.html#gae9eeeeec7dcec1cbf5b43c065ad33ca7" title="Given a range of polygons (resp. ">intersection(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, OutputIterator oi)</a>;</code> </td></tr>
+<tr>
+<td align="right"><b>6.</b></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> <a class="el" href="group__boolean__intersection.html#ga8e1813f1c4bd975e1ca5f4e78012738d" title="Given a range of polygons (resp. ">intersection(InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, OutputIterator oi, const GpsTraits&amp; traits)</a>;</code> </td></tr>
+</table>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the input polygons are treated as cyclic sequences of single ( \(x\)-monotone) segments or as cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygons bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, the input polygons are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oi</td><td>the output iterator for the result.</td></tr>
+  </table>
+  </dd>
+</dl>
+<ul>
+<li>The types <code>Type1</code> and <code>Type2</code> of the parameters and of <code>InputIterator1::value_type</code> and <code>InputIterator2::value_type</code> must be convertible to the types specified in a row in the table below, respectively. The 3rd column specifies the corresponding dereference type of the output iterator.</li>
+<li>The types that apply to signatures (<b>1.1.</b>) and (<b>5.1.</b>) above are restricted to those listed in rows <b>1–4</b> in the table below.</li>
+<li>The types that apply to signatures (<b>1.2.</b>) and (<b>5.2.</b>) above are restricted to those listed in rows <b>5–8</b> in the table below.</li>
+<li>The type of <code>InputIterator::value_type</code> in (<b>3.1.</b>) above must be convertible to either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code>.</li>
+<li>The type of <code>InputIterator::value_type</code> in (<b>3.2.</b>) above must be convertible to either <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>.</li>
+</ul>
+<div align="left"> <table cellpadding="3" border="1">
+<tr>
+<th> </th><th><code>Type1</code> </th><th><code>Type2</code> </th><th>Dereference Type of <code>oi</code> </th></tr>
+<tr>
+<td><b>1</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>2</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>3</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>4</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>5</b></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>6</b></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>7</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td valign="center"><code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code> </td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+<tr>
+<td><b>8</b></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td valign="center"><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code></td><td><code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code> </td></tr>
+</table>
+</div><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1,pgn2</td><td>the input polygons. </td></tr>
+    <tr><td class="paramname">(end,begin)</td><td>a range of input polygons. </td></tr>
+    <tr><td class="paramname">(end1,begin1)</td><td>the first range of input polygons. </td></tr>
+    <tr><td class="paramname">(end2,begin2)</td><td>the second range of input polygons. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. </td></tr>
+    <tr><td class="paramname">traits</td><td>an optional traits object.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__boolean__complement.html"><code>CGAL::Regularized_boolean_operations_2::complement()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__do__intersect.html"><code>CGAL::Regularized_boolean_operations_2::do_intersect()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__join.html"><code>CGAL::Regularized_boolean_operations_2::join()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__difference.html"><code>CGAL::Regularized_boolean_operations_2::difference()</code> </a> </dd>
+<dd>
+<a class="el" href="group__boolean__symmetric__difference.html"><code>CGAL::Regularized_boolean_operations_2::symmetric_difference()</code> </a> </dd></dl>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members" id="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga226439e299d1572c61c8f389f2c50311"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga226439e299d1572c61c8f389f2c50311"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga226439e299d1572c61c8f389f2c50311">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga226439e299d1572c61c8f389f2c50311"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga226439e299d1572c61c8f389f2c50311">More...</a><br /></td></tr>
+<tr class="separator:ga226439e299d1572c61c8f389f2c50311"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8a6591119f8de88ff7703c89c5f8a5f7"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga8a6591119f8de88ff7703c89c5f8a5f7"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga8a6591119f8de88ff7703c89c5f8a5f7">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga8a6591119f8de88ff7703c89c5f8a5f7"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga8a6591119f8de88ff7703c89c5f8a5f7">More...</a><br /></td></tr>
+<tr class="separator:ga8a6591119f8de88ff7703c89c5f8a5f7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga097dce9338f05ed34019fb42631f7db3"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga097dce9338f05ed34019fb42631f7db3"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga097dce9338f05ed34019fb42631f7db3">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga097dce9338f05ed34019fb42631f7db3"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga097dce9338f05ed34019fb42631f7db3">More...</a><br /></td></tr>
+<tr class="separator:ga097dce9338f05ed34019fb42631f7db3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gabf01944f471f7e6bc67b2d6ec8c5c02e"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gabf01944f471f7e6bc67b2d6ec8c5c02e"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gabf01944f471f7e6bc67b2d6ec8c5c02e">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gabf01944f471f7e6bc67b2d6ec8c5c02e"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gabf01944f471f7e6bc67b2d6ec8c5c02e">More...</a><br /></td></tr>
+<tr class="separator:gabf01944f471f7e6bc67b2d6ec8c5c02e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gab93cc646d82054185a6c9c17dc32d979"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:gab93cc646d82054185a6c9c17dc32d979"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gab93cc646d82054185a6c9c17dc32d979">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:gab93cc646d82054185a6c9c17dc32d979"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gab93cc646d82054185a6c9c17dc32d979">More...</a><br /></td></tr>
+<tr class="separator:gab93cc646d82054185a6c9c17dc32d979"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaa3f3d6f4f018b6d602b0a556929d8cb7"><td class="memTemplParams" colspan="2">template&lt;ctypename Kernel, ctypename Container, ctypename OutputIterator, typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gaa3f3d6f4f018b6d602b0a556929d8cb7"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gaa3f3d6f4f018b6d602b0a556929d8cb7">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gaa3f3d6f4f018b6d602b0a556929d8cb7"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gaa3f3d6f4f018b6d602b0a556929d8cb7">More...</a><br /></td></tr>
+<tr class="separator:gaa3f3d6f4f018b6d602b0a556929d8cb7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2bbebaa9afb722393bb1f388431850ce"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga2bbebaa9afb722393bb1f388431850ce"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga2bbebaa9afb722393bb1f388431850ce">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga2bbebaa9afb722393bb1f388431850ce"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga2bbebaa9afb722393bb1f388431850ce">More...</a><br /></td></tr>
+<tr class="separator:ga2bbebaa9afb722393bb1f388431850ce"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad0fff4658d1a26c9430dd78cb7fefb03"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gad0fff4658d1a26c9430dd78cb7fefb03"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gad0fff4658d1a26c9430dd78cb7fefb03">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gad0fff4658d1a26c9430dd78cb7fefb03"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gad0fff4658d1a26c9430dd78cb7fefb03">More...</a><br /></td></tr>
+<tr class="separator:gad0fff4658d1a26c9430dd78cb7fefb03"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga62e2ab3e2ffca93516a14387519d22bf"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga62e2ab3e2ffca93516a14387519d22bf"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga62e2ab3e2ffca93516a14387519d22bf">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga62e2ab3e2ffca93516a14387519d22bf"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga62e2ab3e2ffca93516a14387519d22bf">More...</a><br /></td></tr>
+<tr class="separator:ga62e2ab3e2ffca93516a14387519d22bf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7710ec87d45e4bc555a131d8b8a0ae35"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga7710ec87d45e4bc555a131d8b8a0ae35"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga7710ec87d45e4bc555a131d8b8a0ae35">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga7710ec87d45e4bc555a131d8b8a0ae35"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga7710ec87d45e4bc555a131d8b8a0ae35">More...</a><br /></td></tr>
+<tr class="separator:ga7710ec87d45e4bc555a131d8b8a0ae35"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga9f20c9e9b50f8afcb5ab92876ca8a7fd"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga9f20c9e9b50f8afcb5ab92876ca8a7fd"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga9f20c9e9b50f8afcb5ab92876ca8a7fd">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga9f20c9e9b50f8afcb5ab92876ca8a7fd"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga9f20c9e9b50f8afcb5ab92876ca8a7fd">More...</a><br /></td></tr>
+<tr class="separator:ga9f20c9e9b50f8afcb5ab92876ca8a7fd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaafadb334e38702ff5673e851297f47af"><td class="memTemplParams" colspan="2">template&lt;typename Polygon , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:gaafadb334e38702ff5673e851297f47af"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gaafadb334e38702ff5673e851297f47af">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:gaafadb334e38702ff5673e851297f47af"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection of two general polygons with holes and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gaafadb334e38702ff5673e851297f47af">More...</a><br /></td></tr>
+<tr class="separator:gaafadb334e38702ff5673e851297f47af"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga23c5cd4cd96af60ebbc303116ba1c904"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:ga23c5cd4cd96af60ebbc303116ba1c904"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga23c5cd4cd96af60ebbc303116ba1c904">CGAL::Regularized_boolean_set_operations_2::intersection</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:ga23c5cd4cd96af60ebbc303116ba1c904"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__intersection.html#ga23c5cd4cd96af60ebbc303116ba1c904">More...</a><br /></td></tr>
+<tr class="separator:ga23c5cd4cd96af60ebbc303116ba1c904"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga4fbc5a1b2314f18311407b81396a886a"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:ga4fbc5a1b2314f18311407b81396a886a"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga4fbc5a1b2314f18311407b81396a886a">CGAL::Regularized_boolean_set_operations_2::intersection</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:ga4fbc5a1b2314f18311407b81396a886a"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__intersection.html#ga4fbc5a1b2314f18311407b81396a886a">More...</a><br /></td></tr>
+<tr class="separator:ga4fbc5a1b2314f18311407b81396a886a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gae9eeeeec7dcec1cbf5b43c065ad33ca7"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator &gt; </td></tr>
+<tr class="memitem:gae9eeeeec7dcec1cbf5b43c065ad33ca7"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gae9eeeeec7dcec1cbf5b43c065ad33ca7">CGAL::Regularized_boolean_set_operations_2::intersection</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi)</td></tr>
+<tr class="memdesc:gae9eeeeec7dcec1cbf5b43c065ad33ca7"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__intersection.html#gae9eeeeec7dcec1cbf5b43c065ad33ca7">More...</a><br /></td></tr>
+<tr class="separator:gae9eeeeec7dcec1cbf5b43c065ad33ca7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gab24f912d7f57811613f9123f3122a42b"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator , typename UsePolylines &gt; </td></tr>
+<tr class="memitem:gab24f912d7f57811613f9123f3122a42b"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gab24f912d7f57811613f9123f3122a42b">CGAL::Regularized_boolean_set_operations_2::intersection</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, UsePolylines=<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>())</td></tr>
+<tr class="memdesc:gab24f912d7f57811613f9123f3122a42b"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__intersection.html#gab24f912d7f57811613f9123f3122a42b">More...</a><br /></td></tr>
+<tr class="separator:gab24f912d7f57811613f9123f3122a42b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gabe841dc9a7ccd330161c91041a3255fd"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gabe841dc9a7ccd330161c91041a3255fd"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gabe841dc9a7ccd330161c91041a3255fd">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gabe841dc9a7ccd330161c91041a3255fd"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gabe841dc9a7ccd330161c91041a3255fd">More...</a><br /></td></tr>
+<tr class="separator:gabe841dc9a7ccd330161c91041a3255fd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga4bea931de91d9192c78ee3a36a41082c"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga4bea931de91d9192c78ee3a36a41082c"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga4bea931de91d9192c78ee3a36a41082c">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga4bea931de91d9192c78ee3a36a41082c"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga4bea931de91d9192c78ee3a36a41082c">More...</a><br /></td></tr>
+<tr class="separator:ga4bea931de91d9192c78ee3a36a41082c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga1305f601ed1f40a8bca5bd0e35bf6728"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga1305f601ed1f40a8bca5bd0e35bf6728"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga1305f601ed1f40a8bca5bd0e35bf6728">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga1305f601ed1f40a8bca5bd0e35bf6728"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two polygons and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga1305f601ed1f40a8bca5bd0e35bf6728">More...</a><br /></td></tr>
+<tr class="separator:ga1305f601ed1f40a8bca5bd0e35bf6728"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gab05b4023e78bdac3407596f34f204b92"><td class="memTemplParams" colspan="2">template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gab05b4023e78bdac3407596f34f204b92"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gab05b4023e78bdac3407596f34f204b92">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gab05b4023e78bdac3407596f34f204b92"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two polygons with holes and inserts the resulting polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gab05b4023e78bdac3407596f34f204b92">More...</a><br /></td></tr>
+<tr class="separator:gab05b4023e78bdac3407596f34f204b92"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga507f666cb6793d1edcbdb620fa6d45a0"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga507f666cb6793d1edcbdb620fa6d45a0"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga507f666cb6793d1edcbdb620fa6d45a0">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga507f666cb6793d1edcbdb620fa6d45a0"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga507f666cb6793d1edcbdb620fa6d45a0">More...</a><br /></td></tr>
+<tr class="separator:ga507f666cb6793d1edcbdb620fa6d45a0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gafdd00f0920307de78e98e53f62dd70b3"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:gafdd00f0920307de78e98e53f62dd70b3"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#gafdd00f0920307de78e98e53f62dd70b3">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn1, const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:gafdd00f0920307de78e98e53f62dd70b3"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#gafdd00f0920307de78e98e53f62dd70b3">More...</a><br /></td></tr>
+<tr class="separator:gafdd00f0920307de78e98e53f62dd70b3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga32c09c086f0db1c0a515c3dd6d56b5f6"><td class="memTemplParams" colspan="2">template&lt;typename ArrTraits , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga32c09c086f0db1c0a515c3dd6d56b5f6"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga32c09c086f0db1c0a515c3dd6d56b5f6">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga32c09c086f0db1c0a515c3dd6d56b5f6"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga32c09c086f0db1c0a515c3dd6d56b5f6">More...</a><br /></td></tr>
+<tr class="separator:ga32c09c086f0db1c0a515c3dd6d56b5f6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga7f3b10b3c52dc0c713faa7bf206ea803"><td class="memTemplParams" colspan="2">template&lt;typename Polygon , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga7f3b10b3c52dc0c713faa7bf206ea803"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga7f3b10b3c52dc0c713faa7bf206ea803">CGAL::Regularized_boolean_set_operations_2::intersection</a> (const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn1, const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp;pgn2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga7f3b10b3c52dc0c713faa7bf206ea803"><td class="mdescLeft"> </td><td class="mdescRight">computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator.  <a href="group__boolean__intersection.html#ga7f3b10b3c52dc0c713faa7bf206ea803">More...</a><br /></td></tr>
+<tr class="separator:ga7f3b10b3c52dc0c713faa7bf206ea803"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga0077ce0dac5be807aa6e1582c9ca6770"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga0077ce0dac5be807aa6e1582c9ca6770"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga0077ce0dac5be807aa6e1582c9ca6770">CGAL::Regularized_boolean_set_operations_2::intersection</a> (<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> begin, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> end, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga0077ce0dac5be807aa6e1582c9ca6770"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__intersection.html#ga0077ce0dac5be807aa6e1582c9ca6770">More...</a><br /></td></tr>
+<tr class="separator:ga0077ce0dac5be807aa6e1582c9ca6770"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga8e1813f1c4bd975e1ca5f4e78012738d"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator , typename GpsTraits &gt; </td></tr>
+<tr class="memitem:ga8e1813f1c4bd975e1ca5f4e78012738d"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__boolean__intersection.html#ga8e1813f1c4bd975e1ca5f4e78012738d">CGAL::Regularized_boolean_set_operations_2::intersection</a> (InputIterator1 begin1, InputIterator1 end1, InputIterator2 begin2, InputIterator2 end2, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> oi, const GpsTraits &amp;traits)</td></tr>
+<tr class="memdesc:ga8e1813f1c4bd975e1ca5f4e78012738d"><td class="mdescLeft"> </td><td class="mdescRight">Given a range of polygons (resp.  <a href="group__boolean__intersection.html#ga8e1813f1c4bd975e1ca5f4e78012738d">More...</a><br /></td></tr>
+<tr class="separator:ga8e1813f1c4bd975e1ca5f4e78012738d"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga226439e299d1572c61c8f389f2c50311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga226439e299d1572c61c8f389f2c50311">◆ </a></span>intersection() <span class="overload">[1/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga8a6591119f8de88ff7703c89c5f8a5f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8a6591119f8de88ff7703c89c5f8a5f7">◆ </a></span>intersection() <span class="overload">[2/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundary of <code>pgn</code> is treated as a cyclic sequence of single ( \(x\)-monotone) segments or as a cyclic sequence of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn</code> is converted to a general polygon bounded by polylines before the operation is actually performed. Then, the resulting general polygon with holes is converted back to a standard polygon. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn</code> is used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga097dce9338f05ed34019fb42631f7db3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga097dce9338f05ed34019fb42631f7db3">◆ </a></span>intersection() <span class="overload">[3/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gabf01944f471f7e6bc67b2d6ec8c5c02e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabf01944f471f7e6bc67b2d6ec8c5c02e">◆ </a></span>intersection() <span class="overload">[4/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn</code> is treated as cyclic sequences of single ( \(x\)-monotone) segments or as cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn</code> is converted to a general polygon with holes bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to a standard polygon with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn</code> is used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gab93cc646d82054185a6c9c17dc32d979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab93cc646d82054185a6c9c17dc32d979">◆ </a></span>intersection() <span class="overload">[5/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gaa3f3d6f4f018b6d602b0a556929d8cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa3f3d6f4f018b6d602b0a556929d8cb7">◆ </a></span>intersection() <span class="overload">[6/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;ctypename Kernel, ctypename Container, ctypename OutputIterator, typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted to a general polygons bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga2bbebaa9afb722393bb1f388431850ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2bbebaa9afb722393bb1f388431850ce">◆ </a></span>intersection() <span class="overload">[7/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gad0fff4658d1a26c9430dd78cb7fefb03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad0fff4658d1a26c9430dd78cb7fefb03">◆ </a></span>intersection() <span class="overload">[8/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of <code>pgn1</code> and <code>pgn2</code> are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, <code>pgn1</code> and <code>pgn2</code> are converted to a general polygon and a general polygon with holes, respectively, bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga62e2ab3e2ffca93516a14387519d22bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga62e2ab3e2ffca93516a14387519d22bf">◆ </a></span>intersection() <span class="overload">[9/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;<a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Arrangement_on_surface_2.tag:../Arrangement_on_surface_2/" href="../Arrangement_on_surface_2/namespaceArrTraits.html">ArrTraits</a>&gt;&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga7710ec87d45e4bc555a131d8b8a0ae35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7710ec87d45e4bc555a131d8b8a0ae35">◆ </a></span>intersection() <span class="overload">[10/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;<a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Arrangement_on_surface_2.tag:../Arrangement_on_surface_2/" href="../Arrangement_on_surface_2/namespaceArrTraits.html">ArrTraits</a>&gt;&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga9f20c9e9b50f8afcb5ab92876ca8a7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f20c9e9b50f8afcb5ab92876ca8a7fd">◆ </a></span>intersection() <span class="overload">[11/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;<a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Arrangement_on_surface_2.tag:../Arrangement_on_surface_2/" href="../Arrangement_on_surface_2/namespaceArrTraits.html">ArrTraits</a>&gt;&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gaafadb334e38702ff5673e851297f47af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaafadb334e38702ff5673e851297f47af">◆ </a></span>intersection() <span class="overload">[12/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Polygon , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection of two general polygons with holes and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;Polygon&gt;</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga23c5cd4cd96af60ebbc303116ba1c904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga23c5cd4cd96af60ebbc303116ba1c904">◆ </a></span>intersection() <span class="overload">[13/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) or a range of polygons with holes (resp. general polygons with holes) computes the intersection of all polygons in the range and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="ga4fbc5a1b2314f18311407b81396a886a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4fbc5a1b2314f18311407b81396a886a">◆ </a></span>intersection() <span class="overload">[14/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) or a range of polygons with holes (resp. general polygons with holes) computes the intersection of all polygons in the range and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the polygons in the input range are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygon with holes , bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gae9eeeeec7dcec1cbf5b43c065ad33ca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae9eeeeec7dcec1cbf5b43c065ad33ca7">◆ </a></span>intersection() <span class="overload">[15/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) computes the intersection of all polygons in the two ranges and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gab24f912d7f57811613f9123f3122a42b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab24f912d7f57811613f9123f3122a42b">◆ </a></span>intersection() <span class="overload">[16/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator , typename UsePolylines &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UsePolylines </td>
+          <td class="paramname"> = <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">Tag_true</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) computes the intersection of all polygons in the two ranges and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">UsePolylines</td><td>determines whether the boundaries of the polygons in the input ranges are treated as cyclic sequences of single ( \(x\)-monotone) segments or as a cyclic sequences of ( \(x\)-monotone) polylines. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#gab3e2296107b5d26c32c8183028a217f1">CGAL::Tag_true</a></code>, which is the default, the input polygons are converted to general polygon with holes , bounded by polylines before the operation is actually performed. Then, the resulting general polygons with holes are converted back to standard polygons with holes. If substituted with <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/group__PkgSTLExtensionUtilities.html#ga89d5ecf1540b2ec0a2bf5dd003e186d0">CGAL::Tag_false</a></code>, <code>pgn1</code> and <code>pgn2</code> are used as is. Refer to <a class="el" href="index.html#bso_ssectraits_sel">Traits Selection</a> for more information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+
+</div>
+</div>
+<a id="gabe841dc9a7ccd330161c91041a3255fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabe841dc9a7ccd330161c91041a3255fd">◆ </a></span>intersection() <span class="overload">[17/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga4bea931de91d9192c78ee3a36a41082c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4bea931de91d9192c78ee3a36a41082c">◆ </a></span>intersection() <span class="overload">[18/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga1305f601ed1f40a8bca5bd0e35bf6728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1305f601ed1f40a8bca5bd0e35bf6728">◆ </a></span>intersection() <span class="overload">[19/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two polygons and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gab05b4023e78bdac3407596f34f204b92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab05b4023e78bdac3407596f34f204b92">◆ </a></span>intersection() <span class="overload">[20/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Kernel , typename Container , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt; <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a> &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two polygons with holes and inserts the resulting polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Kernel_23.tag:../Kernel_23/" href="../Kernel_23/classKernel.html">Kernel</a>, <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classContainer.html">Container</a>&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga507f666cb6793d1edcbdb620fa6d45a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga507f666cb6793d1edcbdb620fa6d45a0">◆ </a></span>intersection() <span class="overload">[21/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;<a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Arrangement_on_surface_2.tag:../Arrangement_on_surface_2/" href="../Arrangement_on_surface_2/namespaceArrTraits.html">ArrTraits</a>&gt;&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd>
+<dd>
+GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="gafdd00f0920307de78e98e53f62dd70b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafdd00f0920307de78e98e53f62dd70b3">◆ </a></span>intersection() <span class="overload">[22/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;<a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Arrangement_on_surface_2.tag:../Arrangement_on_surface_2/" href="../Arrangement_on_surface_2/namespaceArrTraits.html">ArrTraits</a>&gt;&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd>
+<dd>
+GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga32c09c086f0db1c0a515c3dd6d56b5f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga32c09c086f0db1c0a515c3dd6d56b5f6">◆ </a></span>intersection() <span class="overload">[23/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ArrTraits , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; <a class="el" href="classCGAL_1_1General__polygon__2.html">General_polygon_2</a>&lt; ArrTraits &gt;&gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;<a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a>&lt;<a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Arrangement_on_surface_2.tag:../Arrangement_on_surface_2/" href="../Arrangement_on_surface_2/namespaceArrTraits.html">ArrTraits</a>&gt;&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>ArrTraits</code> must be a model of the concept <code><a class="el" href="classArrangementDirectionalXMonotoneTraits__2.html" title="This concept refines the basic arrangement -monotone traits concept. A model of this concept is able ...">ArrangementDirectionalXMonotoneTraits_2</a></code>. </dd>
+<dd>
+GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga7f3b10b3c52dc0c713faa7bf206ea803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7f3b10b3c52dc0c713faa7bf206ea803">◆ </a></span>intersection() <span class="overload">[24/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Polygon , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt; Polygon &gt; &amp; </td>
+          <td class="paramname"><em>pgn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>computes the intersection between two general polygons and inserts the resulting general polygons with holes into a container via an output iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pgn1</td><td>the 1st input polygon. </td></tr>
+    <tr><td class="paramname">pgn2</td><td>the 2nd input polygon. </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a>&lt;Polygon&gt;</code>. </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga0077ce0dac5be807aa6e1582c9ca6770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0077ce0dac5be807aa6e1582c9ca6770">◆ </a></span>intersection() <span class="overload">[25/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classInputIterator.html">InputIterator</a> </td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) or a range of polygons with holes (resp. general polygons with holes) computes the intersection of all polygons in the range and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the first iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end</td><td>the past-the-end iterator of the input range. Its value type is either <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>) or <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga8e1813f1c4bd975e1ca5f4e78012738d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8e1813f1c4bd975e1ca5f4e78012738d">◆ </a></span>intersection() <span class="overload">[26/26]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename InputIterator1 , typename InputIterator2 , typename OutputIterator , typename GpsTraits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> CGAL::Regularized_boolean_set_operations_2::intersection </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>begin1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator1 </td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>begin2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator2 </td>
+          <td class="paramname"><em>end2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Manual.tag:../Manual/" href="../Manual/classOutputIterator.html">OutputIterator</a> </td>
+          <td class="paramname"><em>oi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GpsTraits &amp; </td>
+          <td class="paramname"><em>traits</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Regularized_boolean_set_operations_2/intersection.h&gt;</code></p>
+
+<p>Given a range of polygons (resp. </p>
+<p>general polygons) and a range of polygons with holes (resp. general polygons with holes) computes the intersection between all polygons in the two ranges and inserts the resulting polygons with holes (resp. general polygons with holes) into a container via an output iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin1</td><td>the first iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">end1</td><td>the past-the-end iterator of the 1st input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__2.html">Polygon_2</a></code> (resp. <code><a class="el" href="classCGAL_1_1General__polygon__2.html" title="The class General_polygon_2 models the concept GeneralPolygon_2. ">General_polygon_2</a></code>). </td></tr>
+    <tr><td class="paramname">begin2</td><td>the first iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">end2</td><td>the past-the-end iterator of the 2nd input range. Its value type is <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1General__polygon__with__holes__2.html">General_polygon_with_holes_2</a></code>). </td></tr>
+    <tr><td class="paramname">oi</td><td>the output iterator for the result. Its dereference type must be convertible to <code><a class="elRef" doxygen="/home/runner/work/cgal/cgal/build_doc/doc_tags/Polygon.tag:../Polygon/" href="../Polygon/classCGAL_1_1Polygon__with__holes__2.html">Polygon_with_holes_2</a></code> (resp. <code>General_polygons_with_holes_2</code>). </td></tr>
+    <tr><td class="paramname">traits</td><td>a traits object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the past-the-end iterator of the output container. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>GpsTraits must be a model of <code><a class="el" href="classGeneralPolygonSetTraits__2.html" title="This concept defines the minimal set of geometric predicates needed to perform the Boolean-set operat...">GeneralPolygonSetTraits_2</a></code>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Dec 3 2021 15:10:37 for CGAL 5.4 - 2D Regularized Boolean Set-Operations by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

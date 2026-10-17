@@ -1,0 +1,833 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Arrangement_on_curve_1/classArrangementOnCurve__1.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 1D Arrangements: ArrangementOnCurve_1 Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 1D Arrangements
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classArrangementOnCurve__1.html','','classArrangementOnCurve__1-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classArrangementOnCurve__1-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">ArrangementOnCurve_1 Concept Reference<div class="ingroups"><a class="el" href="group__PkgArrangementOnCurve1Ref.html">Reference Manual</a> » <a class="el" href="group__PkgArrangementOnCurve1Concepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><dl>
+<dt>Has models</dt>
+<dd><dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Manual/classDefaultConstructible.html">DefaultConstructible</a></code> </dd>
+</dl>
+</dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Arrangement__on__curve__1_1_1Arrangement__on__curve__1.html">CGAL::Arrangement_on_curve_1::Arrangement_on_curve_1</a>&lt;GeometryTraits_1, TopologyTraits, BinarySearch&gt;</span> </dd>
+</dl>
+<p>A model of the concept <span class="tt"><a class="el" href="classArrangementOnCurve__1.html">ArrangementOnCurve_1</a></span> can be used to represent a 1D subdivision of a continuous geometric curve (a 1D "master curve" or line space) into alternating vertices and edges, collectively referred to as cells. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:af116c8e8737024bb4023579c956ae74a" id="r_af116c8e8737024bb4023579c956ae74a"><td class="memItemLeft"><a id="af116c8e8737024bb4023579c956ae74a" name="af116c8e8737024bb4023579c956ae74a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Size</b></td></tr>
+<tr class="memdesc:af116c8e8737024bb4023579c956ae74a"><td class="mdescLeft"> </td><td class="mdescRight">the size type (convertible to <span class="tt">size_t</span>). <br></td></tr>
+<tr class="memitem:a735d13a1aa45858b5718e1c9d5abcc8f" id="r_a735d13a1aa45858b5718e1c9d5abcc8f"><td class="memItemLeft"><a id="a735d13a1aa45858b5718e1c9d5abcc8f" name="a735d13a1aa45858b5718e1c9d5abcc8f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_1</b></td></tr>
+<tr class="memdesc:a735d13a1aa45858b5718e1c9d5abcc8f"><td class="mdescLeft"> </td><td class="mdescRight">The 1D arrangement point representation. <br></td></tr>
+<tr class="memitem:a50b556db4f7e50d7404f94b086233481" id="r_a50b556db4f7e50d7404f94b086233481"><td class="memItemLeft"><a id="a50b556db4f7e50d7404f94b086233481" name="a50b556db4f7e50d7404f94b086233481"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_descriptor</b></td></tr>
+<tr class="memdesc:a50b556db4f7e50d7404f94b086233481"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting a mutable vertex element. <br></td></tr>
+<tr class="memitem:a7b69ff9fa528bd88acdbfe9ac6281efd" id="r_a7b69ff9fa528bd88acdbfe9ac6281efd"><td class="memItemLeft"><a id="a7b69ff9fa528bd88acdbfe9ac6281efd" name="a7b69ff9fa528bd88acdbfe9ac6281efd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Edge_descriptor</b></td></tr>
+<tr class="memdesc:a7b69ff9fa528bd88acdbfe9ac6281efd"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting a mutable edge element. <br></td></tr>
+<tr class="memitem:a02b98a5f7811237f34a41664d1321cc9" id="r_a02b98a5f7811237f34a41664d1321cc9"><td class="memItemLeft"><a id="a02b98a5f7811237f34a41664d1321cc9" name="a02b98a5f7811237f34a41664d1321cc9"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_const_descriptor</b></td></tr>
+<tr class="memdesc:a02b98a5f7811237f34a41664d1321cc9"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting an immutable vertex element. <br></td></tr>
+<tr class="memitem:a2036890e0d0dab2d5f158b345543b5fd" id="r_a2036890e0d0dab2d5f158b345543b5fd"><td class="memItemLeft"><a id="a2036890e0d0dab2d5f158b345543b5fd" name="a2036890e0d0dab2d5f158b345543b5fd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Edge_const_descriptor</b></td></tr>
+<tr class="memdesc:a2036890e0d0dab2d5f158b345543b5fd"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting an immutable edge element. <br></td></tr>
+<tr class="memitem:ab147eb88c1bd31179b72f373e32adf44" id="r_ab147eb88c1bd31179b72f373e32adf44"><td class="memItemLeft">typedef std::variant&lt; <a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a>, <a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> &gt; </td><td class="memItemRight"><a class="el" href="#ab147eb88c1bd31179b72f373e32adf44">Location_result</a></td></tr>
+<tr class="memdesc:ab147eb88c1bd31179b72f373e32adf44"><td class="mdescLeft"> </td><td class="mdescRight">Represents a point localization result within the 1D curve structure.  <br></td></tr>
+<tr class="memitem:ad777a442208b6b9e7ac00cc06e863d43" id="r_ad777a442208b6b9e7ac00cc06e863d43"><td class="memItemLeft"><a id="ad777a442208b6b9e7ac00cc06e863d43" name="ad777a442208b6b9e7ac00cc06e863d43"></a>
+typedef std::variant&lt; <a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a>, <a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> &gt; </td><td class="memItemRight"><b>Const_location_result</b></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Accessors</h2></td></tr>
+<tr class="memitem:a8d1f933da8bf099c3d91d47acc30fffa" id="r_a8d1f933da8bf099c3d91d47acc30fffa"><td class="memItemLeft"><a id="a8d1f933da8bf099c3d91d47acc30fffa" name="a8d1f933da8bf099c3d91d47acc30fffa"></a>
+bool </td><td class="memItemRight"><b>empty</b> () const</td></tr>
+<tr class="memdesc:a8d1f933da8bf099c3d91d47acc30fffa"><td class="mdescLeft"> </td><td class="mdescRight">obtains <span class="tt">true</span> if the arrangement does not contains any vertices. <br></td></tr>
+<tr class="memitem:a8d8c08eafb9a716a51d5eea83bc1e89b" id="r_a8d8c08eafb9a716a51d5eea83bc1e89b"><td class="memItemLeft"><a id="a8d8c08eafb9a716a51d5eea83bc1e89b" name="a8d8c08eafb9a716a51d5eea83bc1e89b"></a>
+<a class="el" href="#af116c8e8737024bb4023579c956ae74a">Size</a> </td><td class="memItemRight"><b>number_of_vertices</b> () const</td></tr>
+<tr class="memdesc:a8d8c08eafb9a716a51d5eea83bc1e89b"><td class="mdescLeft"> </td><td class="mdescRight">obtains the total count of vertices resting along the line track. <br></td></tr>
+<tr class="memitem:a28eb7f6e4805f6911cd43b5e1ef207ee" id="r_a28eb7f6e4805f6911cd43b5e1ef207ee"><td class="memItemLeft"><a id="a28eb7f6e4805f6911cd43b5e1ef207ee" name="a28eb7f6e4805f6911cd43b5e1ef207ee"></a>
+<a class="el" href="#af116c8e8737024bb4023579c956ae74a">Size</a> </td><td class="memItemRight"><b>number_of_edges</b> () const</td></tr>
+<tr class="memdesc:a28eb7f6e4805f6911cd43b5e1ef207ee"><td class="mdescLeft"> </td><td class="mdescRight">obtains the total number of bounded and unbounded edge sections. <br></td></tr>
+<tr class="memitem:adbeb8899dd6db103685811b69cfe7de1" id="r_adbeb8899dd6db103685811b69cfe7de1"><td class="memItemLeft"><a id="adbeb8899dd6db103685811b69cfe7de1" name="adbeb8899dd6db103685811b69cfe7de1"></a>
+auto </td><td class="memItemRight"><b>vertices</b> () const</td></tr>
+<tr class="memdesc:adbeb8899dd6db103685811b69cfe7de1"><td class="mdescLeft"> </td><td class="mdescRight">obtains an iterator range tracking all constant vertex descriptors. <br></td></tr>
+<tr class="memitem:ae5b0eec25e0943e194028db24c892c8d" id="r_ae5b0eec25e0943e194028db24c892c8d"><td class="memItemLeft"><a id="ae5b0eec25e0943e194028db24c892c8d" name="ae5b0eec25e0943e194028db24c892c8d"></a>
+auto </td><td class="memItemRight"><b>edges</b> () const</td></tr>
+<tr class="memdesc:ae5b0eec25e0943e194028db24c892c8d"><td class="mdescLeft"> </td><td class="mdescRight">obtains an iterator range tracking all constant edge descriptors. <br></td></tr>
+<tr class="memitem:ac824ad4f962f774cdb88bb6b4ffa8289" id="r_ac824ad4f962f774cdb88bb6b4ffa8289"><td class="memItemLeft"><a id="ac824ad4f962f774cdb88bb6b4ffa8289" name="ac824ad4f962f774cdb88bb6b4ffa8289"></a>
+auto </td><td class="memItemRight"><b>vertex_point_map</b> () const</td></tr>
+<tr class="memdesc:ac824ad4f962f774cdb88bb6b4ffa8289"><td class="mdescLeft"> </td><td class="mdescRight">obtains an lvalue property map matching vertex descriptors to their coordinate positions. <br></td></tr>
+<tr class="memitem:a985fd552fbd29f052bc0064229f69d01" id="r_a985fd552fbd29f052bc0064229f69d01"><td class="memItemLeft"><a id="a985fd552fbd29f052bc0064229f69d01" name="a985fd552fbd29f052bc0064229f69d01"></a>
+auto </td><td class="memItemRight"><b>vertex_data_map</b> () const</td></tr>
+<tr class="memdesc:a985fd552fbd29f052bc0064229f69d01"><td class="mdescLeft"> </td><td class="mdescRight">obtains an lvalue property map matching vertex descriptors to their extended user attributes. <br></td></tr>
+<tr class="memitem:abc868bbd25128e3feb44d46d7b65d6a2" id="r_abc868bbd25128e3feb44d46d7b65d6a2"><td class="memItemLeft"><a id="abc868bbd25128e3feb44d46d7b65d6a2" name="abc868bbd25128e3feb44d46d7b65d6a2"></a>
+auto </td><td class="memItemRight"><b>edge_data_map</b> () const</td></tr>
+<tr class="memdesc:abc868bbd25128e3feb44d46d7b65d6a2"><td class="mdescLeft"> </td><td class="mdescRight">obtains an lvalue property map matching edge descriptors to their extended user attributes. <br></td></tr>
+<tr class="memitem:a14731d11aa40142d5fcdecb2bfea8e57" id="r_a14731d11aa40142d5fcdecb2bfea8e57"><td class="memItemLeft"><a id="a14731d11aa40142d5fcdecb2bfea8e57" name="a14731d11aa40142d5fcdecb2bfea8e57"></a>
+<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> </td><td class="memItemRight"><b>unbounded_left_edge</b> ()</td></tr>
+<tr class="memdesc:a14731d11aa40142d5fcdecb2bfea8e57"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the leftmost unbounded edge spanning \((-\infty, v_{first})\). <br></td></tr>
+<tr class="memitem:a3ea3eea3904f3a3430fdb30501578ea4" id="r_a3ea3eea3904f3a3430fdb30501578ea4"><td class="memItemLeft"><a id="a3ea3eea3904f3a3430fdb30501578ea4" name="a3ea3eea3904f3a3430fdb30501578ea4"></a>
+<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><b>unbounded_left_edge</b> () const</td></tr>
+<tr class="memdesc:a3ea3eea3904f3a3430fdb30501578ea4"><td class="mdescLeft"> </td><td class="mdescRight">obtains the constant descriptor of the leftmost unbounded edge. <br></td></tr>
+<tr class="memitem:a9e3779f2f3267d42951aac0e638e8606" id="r_a9e3779f2f3267d42951aac0e638e8606"><td class="memItemLeft"><a id="a9e3779f2f3267d42951aac0e638e8606" name="a9e3779f2f3267d42951aac0e638e8606"></a>
+<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> </td><td class="memItemRight"><b>unbounded_right_edge</b> ()</td></tr>
+<tr class="memdesc:a9e3779f2f3267d42951aac0e638e8606"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the rightmost unbounded edge spanning \((v_{last}, +\infty)\). <br></td></tr>
+<tr class="memitem:a8c43324db7deffa38adad322f4e8bef9" id="r_a8c43324db7deffa38adad322f4e8bef9"><td class="memItemLeft"><a id="a8c43324db7deffa38adad322f4e8bef9" name="a8c43324db7deffa38adad322f4e8bef9"></a>
+<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><b>unbounded_right_edge</b> () const</td></tr>
+<tr class="memdesc:a8c43324db7deffa38adad322f4e8bef9"><td class="mdescLeft"> </td><td class="mdescRight">obtains the constant descriptor of the rightmost unbounded edge. <br></td></tr>
+<tr class="memitem:a7813e3e983eeb70d34d7d22aff82ef4a" id="r_a7813e3e983eeb70d34d7d22aff82ef4a"><td class="memItemLeft"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a7813e3e983eeb70d34d7d22aff82ef4a">left_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a7813e3e983eeb70d34d7d22aff82ef4a"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the left vertex of an edge.  <br></td></tr>
+<tr class="memitem:a490b651a78abc38c12dc288240029eb1" id="r_a490b651a78abc38c12dc288240029eb1"><td class="memItemLeft"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a490b651a78abc38c12dc288240029eb1">right_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a490b651a78abc38c12dc288240029eb1"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the vertex of an edge.  <br></td></tr>
+<tr class="memitem:ad709731ef154105199ad9454ddbc1151" id="r_ad709731ef154105199ad9454ddbc1151"><td class="memItemLeft"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#ad709731ef154105199ad9454ddbc1151">left_edge</a> (<a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> v) const</td></tr>
+<tr class="memdesc:ad709731ef154105199ad9454ddbc1151"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of left edge of a vertex.  <br></td></tr>
+<tr class="memitem:a1c4ac07ef158f91c88e21f0506d9e8d4" id="r_a1c4ac07ef158f91c88e21f0506d9e8d4"><td class="memItemLeft"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a1c4ac07ef158f91c88e21f0506d9e8d4">right_edge</a> (<a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> v) const</td></tr>
+<tr class="memdesc:a1c4ac07ef158f91c88e21f0506d9e8d4"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of right edge of a vertex.  <br></td></tr>
+<tr class="memitem:a2a24f53f9c6583ef91b6aa75f95e2787" id="r_a2a24f53f9c6583ef91b6aa75f95e2787"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a2a24f53f9c6583ef91b6aa75f95e2787">has_left_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a2a24f53f9c6583ef91b6aa75f95e2787"><td class="mdescLeft"> </td><td class="mdescRight">determines whether an edge has a left vertex.  <br></td></tr>
+<tr class="memitem:a27501f7407509216ee1103bcd1a766af" id="r_a27501f7407509216ee1103bcd1a766af"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a27501f7407509216ee1103bcd1a766af">has_right_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a27501f7407509216ee1103bcd1a766af"><td class="mdescLeft"> </td><td class="mdescRight">determines whether an edge has a right vertex.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Modifiers</h2></td></tr>
+<tr class="memitem:a1b43c9bf99387b05501727f4cbf1c3f0" id="r_a1b43c9bf99387b05501727f4cbf1c3f0"><td class="memItemLeft"><a id="a1b43c9bf99387b05501727f4cbf1c3f0" name="a1b43c9bf99387b05501727f4cbf1c3f0"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>create_vertex</b> (const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a1b43c9bf99387b05501727f4cbf1c3f0"><td class="mdescLeft"> </td><td class="mdescRight">creates a new vertex, enforcing the rightmost ordering invariant when BinarySearch is active. <br></td></tr>
+<tr class="memitem:a1bfa3e5c70b23e9762214b092e92d604" id="r_a1bfa3e5c70b23e9762214b092e92d604"><td class="memItemLeft"><a id="a1bfa3e5c70b23e9762214b092e92d604" name="a1bfa3e5c70b23e9762214b092e92d604"></a>
+<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> </td><td class="memItemRight"><b>create_edge</b> ()</td></tr>
+<tr class="memdesc:a1bfa3e5c70b23e9762214b092e92d604"><td class="mdescLeft"> </td><td class="mdescRight">creates an new edge. <br></td></tr>
+<tr class="memitem:af75e6fb2edb0fa87743fd70b0398232c" id="r_af75e6fb2edb0fa87743fd70b0398232c"><td class="memItemLeft"><a id="af75e6fb2edb0fa87743fd70b0398232c" name="af75e6fb2edb0fa87743fd70b0398232c"></a>
+void </td><td class="memItemRight"><b>destroy_vertex</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v)</td></tr>
+<tr class="memdesc:af75e6fb2edb0fa87743fd70b0398232c"><td class="mdescLeft"> </td><td class="mdescRight">destroys a given vertex. <br></td></tr>
+<tr class="memitem:a9d51174a871103127d739a362e56c8df" id="r_a9d51174a871103127d739a362e56c8df"><td class="memItemLeft"><a id="a9d51174a871103127d739a362e56c8df" name="a9d51174a871103127d739a362e56c8df"></a>
+void </td><td class="memItemRight"><b>destroy_edge</b> (<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> e)</td></tr>
+<tr class="memdesc:a9d51174a871103127d739a362e56c8df"><td class="mdescLeft"> </td><td class="mdescRight">destroys a given edge. <br></td></tr>
+<tr class="memitem:a152b4080682ffa6f36bef3204aa1cbe1" id="r_a152b4080682ffa6f36bef3204aa1cbe1"><td class="memItemLeft"><a id="a152b4080682ffa6f36bef3204aa1cbe1" name="a152b4080682ffa6f36bef3204aa1cbe1"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>insert_empty</b> (const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memitem:a397fbe187cab6081ff116a5d271a57e2" id="r_a397fbe187cab6081ff116a5d271a57e2"><td class="memItemLeft"><a id="a397fbe187cab6081ff116a5d271a57e2" name="a397fbe187cab6081ff116a5d271a57e2"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>insert_before</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v, const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a397fbe187cab6081ff116a5d271a57e2"><td class="mdescLeft"> </td><td class="mdescRight">inserts a new point <span class="tt">p</span> strictly to the left of an existing vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:a43b7b6c98b5c7b871eb410175063ff90" id="r_a43b7b6c98b5c7b871eb410175063ff90"><td class="memItemLeft"><a id="a43b7b6c98b5c7b871eb410175063ff90" name="a43b7b6c98b5c7b871eb410175063ff90"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>insert_after</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v, const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a43b7b6c98b5c7b871eb410175063ff90"><td class="mdescLeft"> </td><td class="mdescRight">inserts a new point <span class="tt">p</span> strictly to the right of an existing vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:a27d218397a63f463475aa7249d08d371" id="r_a27d218397a63f463475aa7249d08d371"><td class="memItemLeft"><a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a27d218397a63f463475aa7249d08d371">split_edge</a> (<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> e, const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a27d218397a63f463475aa7249d08d371"><td class="mdescLeft"> </td><td class="mdescRight">splits the edge <span class="tt">e</span> by inserting a new point <span class="tt">p</span> inside it.  <br></td></tr>
+<tr class="memitem:a07bec844ca1f8dbfdb29373251a0724d" id="r_a07bec844ca1f8dbfdb29373251a0724d"><td class="memItemLeft"><a id="a07bec844ca1f8dbfdb29373251a0724d" name="a07bec844ca1f8dbfdb29373251a0724d"></a>
+void </td><td class="memItemRight"><b>remove</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v)</td></tr>
+<tr class="memdesc:a07bec844ca1f8dbfdb29373251a0724d"><td class="mdescLeft"> </td><td class="mdescRight">removes an active vertex node from the 1D track, cleanly merging its left and right segments into an individual unified edge. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="ab147eb88c1bd31179b72f373e32adf44" name="ab147eb88c1bd31179b72f373e32adf44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab147eb88c1bd31179b72f373e32adf44">◆ </a></span>Location_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::variant&lt;<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a>, <a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a>&gt; <a class="el" href="#ab147eb88c1bd31179b72f373e32adf44">ArrangementOnCurve_1::Location_result</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Represents a point localization result within the 1D curve structure. </p>
+<p>A coordinate query point must match a <span class="tt"><a class="el" href="#a50b556db4f7e50d7404f94b086233481" title="Descriptor targeting a mutable vertex element.">Vertex_descriptor</a></span> if it rests on an arrangement node, or an <span class="tt"><a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd" title="Descriptor targeting a mutable edge element.">Edge_descriptor</a></span> if it falls securely between two nodes or out inside an infinity frontier. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a2a24f53f9c6583ef91b6aa75f95e2787" name="a2a24f53f9c6583ef91b6aa75f95e2787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a24f53f9c6583ef91b6aa75f95e2787">◆ </a></span>has_left_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArrangementOnCurve_1::has_left_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>determines whether an edge has a left vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27501f7407509216ee1103bcd1a766af" name="a27501f7407509216ee1103bcd1a766af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27501f7407509216ee1103bcd1a766af">◆ </a></span>has_right_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArrangementOnCurve_1::has_right_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>determines whether an edge has a right vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad709731ef154105199ad9454ddbc1151" name="ad709731ef154105199ad9454ddbc1151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad709731ef154105199ad9454ddbc1151">◆ </a></span>left_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> ArrangementOnCurve_1::left_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of left edge of a vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>the vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">has_left_vertex(e)</span> evaluates to <span class="tt">true</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a7813e3e983eeb70d34d7d22aff82ef4a" name="a7813e3e983eeb70d34d7d22aff82ef4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7813e3e983eeb70d34d7d22aff82ef4a">◆ </a></span>left_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> ArrangementOnCurve_1::left_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of the left vertex of an edge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1c4ac07ef158f91c88e21f0506d9e8d4" name="a1c4ac07ef158f91c88e21f0506d9e8d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4ac07ef158f91c88e21f0506d9e8d4">◆ </a></span>right_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> ArrangementOnCurve_1::right_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of right edge of a vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>the vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">has_right_vertex(e)</span> evaluates to <span class="tt">true</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a490b651a78abc38c12dc288240029eb1" name="a490b651a78abc38c12dc288240029eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490b651a78abc38c12dc288240029eb1">◆ </a></span>right_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> ArrangementOnCurve_1::right_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of the vertex of an edge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27d218397a63f463475aa7249d08d371" name="a27d218397a63f463475aa7249d08d371"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27d218397a63f463475aa7249d08d371">◆ </a></span>split_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> ArrangementOnCurve_1::split_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>splits the edge <span class="tt">e</span> by inserting a new point <span class="tt">p</span> inside it. </p>
+<p><span class="tt">e</span> becomes the left sub-edge; a new edge becomes the right sub-edge. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classArrangementOnCurve__1.html">ArrangementOnCurve_1</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/ArrangementOnCurve_1.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><dl>
+<dt>Has models</dt>
+<dd><dl>
+<dt>Refines</dt>
+<dd><code><a class="elRef" href="../Manual/classDefaultConstructible.html">DefaultConstructible</a></code> </dd>
+</dl>
+</dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1Arrangement__on__curve__1_1_1Arrangement__on__curve__1.html">CGAL::Arrangement_on_curve_1::Arrangement_on_curve_1</a>&lt;GeometryTraits_1, TopologyTraits, BinarySearch&gt;</span> </dd>
+</dl>
+<p>A model of the concept <span class="tt"><a class="el" href="classArrangementOnCurve__1.html">ArrangementOnCurve_1</a></span> can be used to represent a 1D subdivision of a continuous geometric curve (a 1D "master curve" or line space) into alternating vertices and edges, collectively referred to as cells. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:af116c8e8737024bb4023579c956ae74a" id="r_af116c8e8737024bb4023579c956ae74a"><td class="memItemLeft"><a id="af116c8e8737024bb4023579c956ae74a" name="af116c8e8737024bb4023579c956ae74a"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Size</b></td></tr>
+<tr class="memdesc:af116c8e8737024bb4023579c956ae74a"><td class="mdescLeft"> </td><td class="mdescRight">the size type (convertible to <span class="tt">size_t</span>). <br></td></tr>
+<tr class="memitem:a735d13a1aa45858b5718e1c9d5abcc8f" id="r_a735d13a1aa45858b5718e1c9d5abcc8f"><td class="memItemLeft"><a id="a735d13a1aa45858b5718e1c9d5abcc8f" name="a735d13a1aa45858b5718e1c9d5abcc8f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_1</b></td></tr>
+<tr class="memdesc:a735d13a1aa45858b5718e1c9d5abcc8f"><td class="mdescLeft"> </td><td class="mdescRight">The 1D arrangement point representation. <br></td></tr>
+<tr class="memitem:a50b556db4f7e50d7404f94b086233481" id="r_a50b556db4f7e50d7404f94b086233481"><td class="memItemLeft"><a id="a50b556db4f7e50d7404f94b086233481" name="a50b556db4f7e50d7404f94b086233481"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_descriptor</b></td></tr>
+<tr class="memdesc:a50b556db4f7e50d7404f94b086233481"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting a mutable vertex element. <br></td></tr>
+<tr class="memitem:a7b69ff9fa528bd88acdbfe9ac6281efd" id="r_a7b69ff9fa528bd88acdbfe9ac6281efd"><td class="memItemLeft"><a id="a7b69ff9fa528bd88acdbfe9ac6281efd" name="a7b69ff9fa528bd88acdbfe9ac6281efd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Edge_descriptor</b></td></tr>
+<tr class="memdesc:a7b69ff9fa528bd88acdbfe9ac6281efd"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting a mutable edge element. <br></td></tr>
+<tr class="memitem:a02b98a5f7811237f34a41664d1321cc9" id="r_a02b98a5f7811237f34a41664d1321cc9"><td class="memItemLeft"><a id="a02b98a5f7811237f34a41664d1321cc9" name="a02b98a5f7811237f34a41664d1321cc9"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vertex_const_descriptor</b></td></tr>
+<tr class="memdesc:a02b98a5f7811237f34a41664d1321cc9"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting an immutable vertex element. <br></td></tr>
+<tr class="memitem:a2036890e0d0dab2d5f158b345543b5fd" id="r_a2036890e0d0dab2d5f158b345543b5fd"><td class="memItemLeft"><a id="a2036890e0d0dab2d5f158b345543b5fd" name="a2036890e0d0dab2d5f158b345543b5fd"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Edge_const_descriptor</b></td></tr>
+<tr class="memdesc:a2036890e0d0dab2d5f158b345543b5fd"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../STL_Extension/classDescriptor.html">Descriptor</a> targeting an immutable edge element. <br></td></tr>
+<tr class="memitem:ab147eb88c1bd31179b72f373e32adf44" id="r_ab147eb88c1bd31179b72f373e32adf44"><td class="memItemLeft">typedef std::variant&lt; <a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a>, <a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> &gt; </td><td class="memItemRight"><a class="el" href="#ab147eb88c1bd31179b72f373e32adf44">Location_result</a></td></tr>
+<tr class="memdesc:ab147eb88c1bd31179b72f373e32adf44"><td class="mdescLeft"> </td><td class="mdescRight">Represents a point localization result within the 1D curve structure.  <br></td></tr>
+<tr class="memitem:ad777a442208b6b9e7ac00cc06e863d43" id="r_ad777a442208b6b9e7ac00cc06e863d43"><td class="memItemLeft"><a id="ad777a442208b6b9e7ac00cc06e863d43" name="ad777a442208b6b9e7ac00cc06e863d43"></a>
+typedef std::variant&lt; <a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a>, <a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> &gt; </td><td class="memItemRight"><b>Const_location_result</b></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Accessors</h2></td></tr>
+<tr class="memitem:a8d1f933da8bf099c3d91d47acc30fffa" id="r_a8d1f933da8bf099c3d91d47acc30fffa"><td class="memItemLeft"><a id="a8d1f933da8bf099c3d91d47acc30fffa" name="a8d1f933da8bf099c3d91d47acc30fffa"></a>
+bool </td><td class="memItemRight"><b>empty</b> () const</td></tr>
+<tr class="memdesc:a8d1f933da8bf099c3d91d47acc30fffa"><td class="mdescLeft"> </td><td class="mdescRight">obtains <span class="tt">true</span> if the arrangement does not contains any vertices. <br></td></tr>
+<tr class="memitem:a8d8c08eafb9a716a51d5eea83bc1e89b" id="r_a8d8c08eafb9a716a51d5eea83bc1e89b"><td class="memItemLeft"><a id="a8d8c08eafb9a716a51d5eea83bc1e89b" name="a8d8c08eafb9a716a51d5eea83bc1e89b"></a>
+<a class="el" href="#af116c8e8737024bb4023579c956ae74a">Size</a> </td><td class="memItemRight"><b>number_of_vertices</b> () const</td></tr>
+<tr class="memdesc:a8d8c08eafb9a716a51d5eea83bc1e89b"><td class="mdescLeft"> </td><td class="mdescRight">obtains the total count of vertices resting along the line track. <br></td></tr>
+<tr class="memitem:a28eb7f6e4805f6911cd43b5e1ef207ee" id="r_a28eb7f6e4805f6911cd43b5e1ef207ee"><td class="memItemLeft"><a id="a28eb7f6e4805f6911cd43b5e1ef207ee" name="a28eb7f6e4805f6911cd43b5e1ef207ee"></a>
+<a class="el" href="#af116c8e8737024bb4023579c956ae74a">Size</a> </td><td class="memItemRight"><b>number_of_edges</b> () const</td></tr>
+<tr class="memdesc:a28eb7f6e4805f6911cd43b5e1ef207ee"><td class="mdescLeft"> </td><td class="mdescRight">obtains the total number of bounded and unbounded edge sections. <br></td></tr>
+<tr class="memitem:adbeb8899dd6db103685811b69cfe7de1" id="r_adbeb8899dd6db103685811b69cfe7de1"><td class="memItemLeft"><a id="adbeb8899dd6db103685811b69cfe7de1" name="adbeb8899dd6db103685811b69cfe7de1"></a>
+auto </td><td class="memItemRight"><b>vertices</b> () const</td></tr>
+<tr class="memdesc:adbeb8899dd6db103685811b69cfe7de1"><td class="mdescLeft"> </td><td class="mdescRight">obtains an iterator range tracking all constant vertex descriptors. <br></td></tr>
+<tr class="memitem:ae5b0eec25e0943e194028db24c892c8d" id="r_ae5b0eec25e0943e194028db24c892c8d"><td class="memItemLeft"><a id="ae5b0eec25e0943e194028db24c892c8d" name="ae5b0eec25e0943e194028db24c892c8d"></a>
+auto </td><td class="memItemRight"><b>edges</b> () const</td></tr>
+<tr class="memdesc:ae5b0eec25e0943e194028db24c892c8d"><td class="mdescLeft"> </td><td class="mdescRight">obtains an iterator range tracking all constant edge descriptors. <br></td></tr>
+<tr class="memitem:ac824ad4f962f774cdb88bb6b4ffa8289" id="r_ac824ad4f962f774cdb88bb6b4ffa8289"><td class="memItemLeft"><a id="ac824ad4f962f774cdb88bb6b4ffa8289" name="ac824ad4f962f774cdb88bb6b4ffa8289"></a>
+auto </td><td class="memItemRight"><b>vertex_point_map</b> () const</td></tr>
+<tr class="memdesc:ac824ad4f962f774cdb88bb6b4ffa8289"><td class="mdescLeft"> </td><td class="mdescRight">obtains an lvalue property map matching vertex descriptors to their coordinate positions. <br></td></tr>
+<tr class="memitem:a985fd552fbd29f052bc0064229f69d01" id="r_a985fd552fbd29f052bc0064229f69d01"><td class="memItemLeft"><a id="a985fd552fbd29f052bc0064229f69d01" name="a985fd552fbd29f052bc0064229f69d01"></a>
+auto </td><td class="memItemRight"><b>vertex_data_map</b> () const</td></tr>
+<tr class="memdesc:a985fd552fbd29f052bc0064229f69d01"><td class="mdescLeft"> </td><td class="mdescRight">obtains an lvalue property map matching vertex descriptors to their extended user attributes. <br></td></tr>
+<tr class="memitem:abc868bbd25128e3feb44d46d7b65d6a2" id="r_abc868bbd25128e3feb44d46d7b65d6a2"><td class="memItemLeft"><a id="abc868bbd25128e3feb44d46d7b65d6a2" name="abc868bbd25128e3feb44d46d7b65d6a2"></a>
+auto </td><td class="memItemRight"><b>edge_data_map</b> () const</td></tr>
+<tr class="memdesc:abc868bbd25128e3feb44d46d7b65d6a2"><td class="mdescLeft"> </td><td class="mdescRight">obtains an lvalue property map matching edge descriptors to their extended user attributes. <br></td></tr>
+<tr class="memitem:a14731d11aa40142d5fcdecb2bfea8e57" id="r_a14731d11aa40142d5fcdecb2bfea8e57"><td class="memItemLeft"><a id="a14731d11aa40142d5fcdecb2bfea8e57" name="a14731d11aa40142d5fcdecb2bfea8e57"></a>
+<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> </td><td class="memItemRight"><b>unbounded_left_edge</b> ()</td></tr>
+<tr class="memdesc:a14731d11aa40142d5fcdecb2bfea8e57"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the leftmost unbounded edge spanning \((-\infty, v_{first})\). <br></td></tr>
+<tr class="memitem:a3ea3eea3904f3a3430fdb30501578ea4" id="r_a3ea3eea3904f3a3430fdb30501578ea4"><td class="memItemLeft"><a id="a3ea3eea3904f3a3430fdb30501578ea4" name="a3ea3eea3904f3a3430fdb30501578ea4"></a>
+<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><b>unbounded_left_edge</b> () const</td></tr>
+<tr class="memdesc:a3ea3eea3904f3a3430fdb30501578ea4"><td class="mdescLeft"> </td><td class="mdescRight">obtains the constant descriptor of the leftmost unbounded edge. <br></td></tr>
+<tr class="memitem:a9e3779f2f3267d42951aac0e638e8606" id="r_a9e3779f2f3267d42951aac0e638e8606"><td class="memItemLeft"><a id="a9e3779f2f3267d42951aac0e638e8606" name="a9e3779f2f3267d42951aac0e638e8606"></a>
+<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> </td><td class="memItemRight"><b>unbounded_right_edge</b> ()</td></tr>
+<tr class="memdesc:a9e3779f2f3267d42951aac0e638e8606"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the rightmost unbounded edge spanning \((v_{last}, +\infty)\). <br></td></tr>
+<tr class="memitem:a8c43324db7deffa38adad322f4e8bef9" id="r_a8c43324db7deffa38adad322f4e8bef9"><td class="memItemLeft"><a id="a8c43324db7deffa38adad322f4e8bef9" name="a8c43324db7deffa38adad322f4e8bef9"></a>
+<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><b>unbounded_right_edge</b> () const</td></tr>
+<tr class="memdesc:a8c43324db7deffa38adad322f4e8bef9"><td class="mdescLeft"> </td><td class="mdescRight">obtains the constant descriptor of the rightmost unbounded edge. <br></td></tr>
+<tr class="memitem:a7813e3e983eeb70d34d7d22aff82ef4a" id="r_a7813e3e983eeb70d34d7d22aff82ef4a"><td class="memItemLeft"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a7813e3e983eeb70d34d7d22aff82ef4a">left_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a7813e3e983eeb70d34d7d22aff82ef4a"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the left vertex of an edge.  <br></td></tr>
+<tr class="memitem:a490b651a78abc38c12dc288240029eb1" id="r_a490b651a78abc38c12dc288240029eb1"><td class="memItemLeft"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a490b651a78abc38c12dc288240029eb1">right_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a490b651a78abc38c12dc288240029eb1"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of the vertex of an edge.  <br></td></tr>
+<tr class="memitem:ad709731ef154105199ad9454ddbc1151" id="r_ad709731ef154105199ad9454ddbc1151"><td class="memItemLeft"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#ad709731ef154105199ad9454ddbc1151">left_edge</a> (<a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> v) const</td></tr>
+<tr class="memdesc:ad709731ef154105199ad9454ddbc1151"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of left edge of a vertex.  <br></td></tr>
+<tr class="memitem:a1c4ac07ef158f91c88e21f0506d9e8d4" id="r_a1c4ac07ef158f91c88e21f0506d9e8d4"><td class="memItemLeft"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a1c4ac07ef158f91c88e21f0506d9e8d4">right_edge</a> (<a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> v) const</td></tr>
+<tr class="memdesc:a1c4ac07ef158f91c88e21f0506d9e8d4"><td class="mdescLeft"> </td><td class="mdescRight">obtains the descriptor of right edge of a vertex.  <br></td></tr>
+<tr class="memitem:a2a24f53f9c6583ef91b6aa75f95e2787" id="r_a2a24f53f9c6583ef91b6aa75f95e2787"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a2a24f53f9c6583ef91b6aa75f95e2787">has_left_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a2a24f53f9c6583ef91b6aa75f95e2787"><td class="mdescLeft"> </td><td class="mdescRight">determines whether an edge has a left vertex.  <br></td></tr>
+<tr class="memitem:a27501f7407509216ee1103bcd1a766af" id="r_a27501f7407509216ee1103bcd1a766af"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a27501f7407509216ee1103bcd1a766af">has_right_vertex</a> (<a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> e) const</td></tr>
+<tr class="memdesc:a27501f7407509216ee1103bcd1a766af"><td class="mdescLeft"> </td><td class="mdescRight">determines whether an edge has a right vertex.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Modifiers</h2></td></tr>
+<tr class="memitem:a1b43c9bf99387b05501727f4cbf1c3f0" id="r_a1b43c9bf99387b05501727f4cbf1c3f0"><td class="memItemLeft"><a id="a1b43c9bf99387b05501727f4cbf1c3f0" name="a1b43c9bf99387b05501727f4cbf1c3f0"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>create_vertex</b> (const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a1b43c9bf99387b05501727f4cbf1c3f0"><td class="mdescLeft"> </td><td class="mdescRight">creates a new vertex, enforcing the rightmost ordering invariant when BinarySearch is active. <br></td></tr>
+<tr class="memitem:a1bfa3e5c70b23e9762214b092e92d604" id="r_a1bfa3e5c70b23e9762214b092e92d604"><td class="memItemLeft"><a id="a1bfa3e5c70b23e9762214b092e92d604" name="a1bfa3e5c70b23e9762214b092e92d604"></a>
+<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> </td><td class="memItemRight"><b>create_edge</b> ()</td></tr>
+<tr class="memdesc:a1bfa3e5c70b23e9762214b092e92d604"><td class="mdescLeft"> </td><td class="mdescRight">creates an new edge. <br></td></tr>
+<tr class="memitem:af75e6fb2edb0fa87743fd70b0398232c" id="r_af75e6fb2edb0fa87743fd70b0398232c"><td class="memItemLeft"><a id="af75e6fb2edb0fa87743fd70b0398232c" name="af75e6fb2edb0fa87743fd70b0398232c"></a>
+void </td><td class="memItemRight"><b>destroy_vertex</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v)</td></tr>
+<tr class="memdesc:af75e6fb2edb0fa87743fd70b0398232c"><td class="mdescLeft"> </td><td class="mdescRight">destroys a given vertex. <br></td></tr>
+<tr class="memitem:a9d51174a871103127d739a362e56c8df" id="r_a9d51174a871103127d739a362e56c8df"><td class="memItemLeft"><a id="a9d51174a871103127d739a362e56c8df" name="a9d51174a871103127d739a362e56c8df"></a>
+void </td><td class="memItemRight"><b>destroy_edge</b> (<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> e)</td></tr>
+<tr class="memdesc:a9d51174a871103127d739a362e56c8df"><td class="mdescLeft"> </td><td class="mdescRight">destroys a given edge. <br></td></tr>
+<tr class="memitem:a152b4080682ffa6f36bef3204aa1cbe1" id="r_a152b4080682ffa6f36bef3204aa1cbe1"><td class="memItemLeft"><a id="a152b4080682ffa6f36bef3204aa1cbe1" name="a152b4080682ffa6f36bef3204aa1cbe1"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>insert_empty</b> (const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memitem:a397fbe187cab6081ff116a5d271a57e2" id="r_a397fbe187cab6081ff116a5d271a57e2"><td class="memItemLeft"><a id="a397fbe187cab6081ff116a5d271a57e2" name="a397fbe187cab6081ff116a5d271a57e2"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>insert_before</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v, const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a397fbe187cab6081ff116a5d271a57e2"><td class="mdescLeft"> </td><td class="mdescRight">inserts a new point <span class="tt">p</span> strictly to the left of an existing vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:a43b7b6c98b5c7b871eb410175063ff90" id="r_a43b7b6c98b5c7b871eb410175063ff90"><td class="memItemLeft"><a id="a43b7b6c98b5c7b871eb410175063ff90" name="a43b7b6c98b5c7b871eb410175063ff90"></a>
+<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><b>insert_after</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v, const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a43b7b6c98b5c7b871eb410175063ff90"><td class="mdescLeft"> </td><td class="mdescRight">inserts a new point <span class="tt">p</span> strictly to the right of an existing vertex <span class="tt">v</span>. <br></td></tr>
+<tr class="memitem:a27d218397a63f463475aa7249d08d371" id="r_a27d218397a63f463475aa7249d08d371"><td class="memItemLeft"><a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> </td><td class="memItemRight"><a class="el" href="#a27d218397a63f463475aa7249d08d371">split_edge</a> (<a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a> e, const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;p)</td></tr>
+<tr class="memdesc:a27d218397a63f463475aa7249d08d371"><td class="mdescLeft"> </td><td class="mdescRight">splits the edge <span class="tt">e</span> by inserting a new point <span class="tt">p</span> inside it.  <br></td></tr>
+<tr class="memitem:a07bec844ca1f8dbfdb29373251a0724d" id="r_a07bec844ca1f8dbfdb29373251a0724d"><td class="memItemLeft"><a id="a07bec844ca1f8dbfdb29373251a0724d" name="a07bec844ca1f8dbfdb29373251a0724d"></a>
+void </td><td class="memItemRight"><b>remove</b> (<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> v)</td></tr>
+<tr class="memdesc:a07bec844ca1f8dbfdb29373251a0724d"><td class="mdescLeft"> </td><td class="mdescRight">removes an active vertex node from the 1D track, cleanly merging its left and right segments into an individual unified edge. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="ab147eb88c1bd31179b72f373e32adf44" name="ab147eb88c1bd31179b72f373e32adf44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab147eb88c1bd31179b72f373e32adf44">◆ </a></span>Location_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::variant&lt;<a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a>, <a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a>&gt; <a class="el" href="#ab147eb88c1bd31179b72f373e32adf44">ArrangementOnCurve_1::Location_result</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Represents a point localization result within the 1D curve structure. </p>
+<p>A coordinate query point must match a <span class="tt"><a class="el" href="#a50b556db4f7e50d7404f94b086233481" title="Descriptor targeting a mutable vertex element.">Vertex_descriptor</a></span> if it rests on an arrangement node, or an <span class="tt"><a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd" title="Descriptor targeting a mutable edge element.">Edge_descriptor</a></span> if it falls securely between two nodes or out inside an infinity frontier. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a2a24f53f9c6583ef91b6aa75f95e2787" name="a2a24f53f9c6583ef91b6aa75f95e2787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a24f53f9c6583ef91b6aa75f95e2787">◆ </a></span>has_left_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArrangementOnCurve_1::has_left_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>determines whether an edge has a left vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27501f7407509216ee1103bcd1a766af" name="a27501f7407509216ee1103bcd1a766af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27501f7407509216ee1103bcd1a766af">◆ </a></span>has_right_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArrangementOnCurve_1::has_right_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>determines whether an edge has a right vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad709731ef154105199ad9454ddbc1151" name="ad709731ef154105199ad9454ddbc1151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad709731ef154105199ad9454ddbc1151">◆ </a></span>left_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> ArrangementOnCurve_1::left_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of left edge of a vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>the vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">has_left_vertex(e)</span> evaluates to <span class="tt">true</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a7813e3e983eeb70d34d7d22aff82ef4a" name="a7813e3e983eeb70d34d7d22aff82ef4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7813e3e983eeb70d34d7d22aff82ef4a">◆ </a></span>left_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> ArrangementOnCurve_1::left_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of the left vertex of an edge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1c4ac07ef158f91c88e21f0506d9e8d4" name="a1c4ac07ef158f91c88e21f0506d9e8d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4ac07ef158f91c88e21f0506d9e8d4">◆ </a></span>right_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a> ArrangementOnCurve_1::right_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of right edge of a vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>the vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd><span class="tt">has_right_vertex(e)</span> evaluates to <span class="tt">true</span>. </dd></dl>
+
+</div>
+</div>
+<a id="a490b651a78abc38c12dc288240029eb1" name="a490b651a78abc38c12dc288240029eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490b651a78abc38c12dc288240029eb1">◆ </a></span>right_vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a02b98a5f7811237f34a41664d1321cc9">Vertex_const_descriptor</a> ArrangementOnCurve_1::right_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2036890e0d0dab2d5f158b345543b5fd">Edge_const_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>obtains the descriptor of the vertex of an edge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27d218397a63f463475aa7249d08d371" name="a27d218397a63f463475aa7249d08d371"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27d218397a63f463475aa7249d08d371">◆ </a></span>split_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a50b556db4f7e50d7404f94b086233481">Vertex_descriptor</a> ArrangementOnCurve_1::split_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a7b69ff9fa528bd88acdbfe9ac6281efd">Edge_descriptor</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a735d13a1aa45858b5718e1c9d5abcc8f">Point_1</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>splits the edge <span class="tt">e</span> by inserting a new point <span class="tt">p</span> inside it. </p>
+<p><span class="tt">e</span> becomes the left sub-edge; a new edge becomes the right sub-edge. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classArrangementOnCurve__1.html">ArrangementOnCurve_1</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

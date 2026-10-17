@@ -1,0 +1,1287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Barycentric_coordinates_3/classBarycentricTraits__3.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 3D Generalized Barycentric Coordinates: BarycentricTraits_3 Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 3D Generalized Barycentric Coordinates
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classBarycentricTraits__3.html','','classBarycentricTraits__3-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classBarycentricTraits__3-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">BarycentricTraits_3 Concept Reference<div class="ingroups"><a class="el" href="group__PkgBarycentricCoordinates3Ref.html">3D Generalized Barycentric Coordinates Reference</a> » <a class="el" href="group__PkgBarycentricCoordinates3RefConcepts.html">Concepts</a></div>
+<!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>A concept that describes the set of requirements of the template parameter <span class="tt">GeomTraits</span> used to parameterize all classes and functions with 3D barycentric coordinates from the namespace <span class="tt"><a class="el" href="namespaceCGAL_1_1Barycentric__coordinates.html" title="The namespace Barycentric_coordinates contains implementations of all generalized barycentric coordin...">CGAL::Barycentric_coordinates</a></span>. The concept <span class="tt"><a class="el" href="classBarycentricTraits__3.html" title="A concept that describes the set of requirements of the template parameter GeomTraits used to paramet...">BarycentricTraits_3</a></span> extends the concept <span class="tt">BarycentricTraits_2</span> and adds the requirements for 3D objects. </p>
+  <dl class="generalizes"><dt><b><a class="el" href="generalizes.html#_generalizes000001">Generalizes</a></b></dt><dd><span class="tt">BarycentricTraits_2</span></dd></dl>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd>All models of the CGAL concept <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span> </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" id="r_a9bf9c5fe26ebe6d4423fe9c2d7fa30f4"><td class="memItemLeft"><a id="a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" name="a9bf9c5fe26ebe6d4423fe9c2d7fa30f4"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>FT</b></td></tr>
+<tr class="memdesc:a9bf9c5fe26ebe6d4423fe9c2d7fa30f4"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+3D Geometric Objects</h2></td></tr>
+<tr class="memitem:a343411efa84cce5969f3696bf7b603b6" id="r_a343411efa84cce5969f3696bf7b603b6"><td class="memItemLeft"><a id="a343411efa84cce5969f3696bf7b603b6" name="a343411efa84cce5969f3696bf7b603b6"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_3</b></td></tr>
+<tr class="memdesc:a343411efa84cce5969f3696bf7b603b6"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></span>. <br></td></tr>
+<tr class="memitem:aa627d15c31212eab2693d3a1abbdd236" id="r_aa627d15c31212eab2693d3a1abbdd236"><td class="memItemLeft"><a id="aa627d15c31212eab2693d3a1abbdd236" name="aa627d15c31212eab2693d3a1abbdd236"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vector_3</b></td></tr>
+<tr class="memdesc:aa627d15c31212eab2693d3a1abbdd236"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a></span>. <br></td></tr>
+<tr class="memitem:ab6aa5ec2fcaf3806379cdbefa82fac28" id="r_ab6aa5ec2fcaf3806379cdbefa82fac28"><td class="memItemLeft"><a id="ab6aa5ec2fcaf3806379cdbefa82fac28" name="ab6aa5ec2fcaf3806379cdbefa82fac28"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Plane_3</b></td></tr>
+<tr class="memdesc:ab6aa5ec2fcaf3806379cdbefa82fac28"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Plane__3.html">Kernel::Plane_3</a></span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+2D Geometric Objects</h2></td></tr>
+<tr class="memitem:a3cd137ba8f599dbb70b23f98832e3132" id="r_a3cd137ba8f599dbb70b23f98832e3132"><td class="memItemLeft"><a id="a3cd137ba8f599dbb70b23f98832e3132" name="a3cd137ba8f599dbb70b23f98832e3132"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_2</b></td></tr>
+<tr class="memdesc:a3cd137ba8f599dbb70b23f98832e3132"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Point__2.html">Kernel::Point_2</a></span>. <br></td></tr>
+<tr class="memitem:a23e460147af1e9876b3f1f42371067ac" id="r_a23e460147af1e9876b3f1f42371067ac"><td class="memItemLeft"><a id="a23e460147af1e9876b3f1f42371067ac" name="a23e460147af1e9876b3f1f42371067ac"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vector_2</b></td></tr>
+<tr class="memdesc:a23e460147af1e9876b3f1f42371067ac"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Vector__2.html">Kernel::Vector_2</a></span>. <br></td></tr>
+<tr class="memitem:aa36987d587723c7a39cd05e4db36db0f" id="r_aa36987d587723c7a39cd05e4db36db0f"><td class="memItemLeft"><a id="aa36987d587723c7a39cd05e4db36db0f" name="aa36987d587723c7a39cd05e4db36db0f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Triangle_2</b></td></tr>
+<tr class="memdesc:aa36987d587723c7a39cd05e4db36db0f"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Triangle__2.html">Kernel::Triangle_2</a></span>. <br></td></tr>
+<tr class="memitem:a6d67f49d3ae5f4c01a5cff1d37530474" id="r_a6d67f49d3ae5f4c01a5cff1d37530474"><td class="memItemLeft"><a id="a6d67f49d3ae5f4c01a5cff1d37530474" name="a6d67f49d3ae5f4c01a5cff1d37530474"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Iso_rectangle_2</b></td></tr>
+<tr class="memdesc:a6d67f49d3ae5f4c01a5cff1d37530474"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt">Kernel::Iso_rectangle_2</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+3D Generalized Constructions</h2></td></tr>
+<tr class="memitem:a0374b5ba6b5fdcb0b71787930753eafc" id="r_a0374b5ba6b5fdcb0b71787930753eafc"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0374b5ba6b5fdcb0b71787930753eafc">Compute_approximate_angle_3</a></td></tr>
+<tr class="memdesc:a0374b5ba6b5fdcb0b71787930753eafc"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0c269d3caca8048b522588e16d53026a" id="r_a0c269d3caca8048b522588e16d53026a"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0c269d3caca8048b522588e16d53026a">Compute_determinant_3</a></td></tr>
+<tr class="memdesc:a0c269d3caca8048b522588e16d53026a"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a1e14f55bea51ffdb0454d19b7cb1cde9" id="r_a1e14f55bea51ffdb0454d19b7cb1cde9"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a1e14f55bea51ffdb0454d19b7cb1cde9">Compute_scalar_product_3</a></td></tr>
+<tr class="memdesc:a1e14f55bea51ffdb0454d19b7cb1cde9"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ad77c1aea88f7e26e62eca634e86dd156" id="r_ad77c1aea88f7e26e62eca634e86dd156"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ad77c1aea88f7e26e62eca634e86dd156">Compute_squared_length_3</a></td></tr>
+<tr class="memdesc:ad77c1aea88f7e26e62eca634e86dd156"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a03655cbccb5f96bffa4a3c7ab157af9f" id="r_a03655cbccb5f96bffa4a3c7ab157af9f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a03655cbccb5f96bffa4a3c7ab157af9f">Compute_volume_3</a></td></tr>
+<tr class="memdesc:a03655cbccb5f96bffa4a3c7ab157af9f"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a2085a472cbf201ac12ab2b84cf34c6d7" id="r_a2085a472cbf201ac12ab2b84cf34c6d7"><td class="memItemLeft"><a id="a2085a472cbf201ac12ab2b84cf34c6d7" name="a2085a472cbf201ac12ab2b84cf34c6d7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Cartesian_const_iterator_3</b></td></tr>
+<tr class="memdesc:a2085a472cbf201ac12ab2b84cf34c6d7"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt">CartesianConstIterator_3</span>. <br></td></tr>
+<tr class="memitem:aa11c8852b81c8eab71f8ebad12bc59e8" id="r_aa11c8852b81c8eab71f8ebad12bc59e8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa11c8852b81c8eab71f8ebad12bc59e8">Construct_cartesian_const_iterator_3</a></td></tr>
+<tr class="memdesc:aa11c8852b81c8eab71f8ebad12bc59e8"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:af11379177e3cdc497684b0e1a0a8b1b5" id="r_af11379177e3cdc497684b0e1a0a8b1b5"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#af11379177e3cdc497684b0e1a0a8b1b5">Construct_cross_product_vector_3</a></td></tr>
+<tr class="memdesc:af11379177e3cdc497684b0e1a0a8b1b5"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a2500de003012e6dcb76c3d6188d3c645" id="r_a2500de003012e6dcb76c3d6188d3c645"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a2500de003012e6dcb76c3d6188d3c645">Construct_projected_xy_point_2</a></td></tr>
+<tr class="memdesc:a2500de003012e6dcb76c3d6188d3c645"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a9176d35e7d39ddf15950beb11c1e09d1" id="r_a9176d35e7d39ddf15950beb11c1e09d1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9176d35e7d39ddf15950beb11c1e09d1">Construct_plane_3</a></td></tr>
+<tr class="memdesc:a9176d35e7d39ddf15950beb11c1e09d1"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0ab47208bebb5c4f4bcd0a8fe8263a97" id="r_a0ab47208bebb5c4f4bcd0a8fe8263a97"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0ab47208bebb5c4f4bcd0a8fe8263a97">Construct_divided_vector_3</a></td></tr>
+<tr class="memdesc:a0ab47208bebb5c4f4bcd0a8fe8263a97"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ab37ba583baf17395df62a98bdb6c3235" id="r_ab37ba583baf17395df62a98bdb6c3235"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab37ba583baf17395df62a98bdb6c3235">Construct_point_3</a></td></tr>
+<tr class="memdesc:ab37ba583baf17395df62a98bdb6c3235"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a5f23357a6abc990f67b65f1fcbb8ac92" id="r_a5f23357a6abc990f67b65f1fcbb8ac92"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5f23357a6abc990f67b65f1fcbb8ac92">Construct_scaled_vector_3</a></td></tr>
+<tr class="memdesc:a5f23357a6abc990f67b65f1fcbb8ac92"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ab61c2a5d8fcd8f4b23b8a3091c64a521" id="r_ab61c2a5d8fcd8f4b23b8a3091c64a521"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab61c2a5d8fcd8f4b23b8a3091c64a521">Construct_vector_3</a></td></tr>
+<tr class="memdesc:ab61c2a5d8fcd8f4b23b8a3091c64a521"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+2D Generalized Constructions</h2></td></tr>
+<tr class="memitem:ac6a455642370947c9fd116dfd9ad565e" id="r_ac6a455642370947c9fd116dfd9ad565e"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac6a455642370947c9fd116dfd9ad565e">Compute_area_2</a></td></tr>
+<tr class="memdesc:ac6a455642370947c9fd116dfd9ad565e"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a8bc80fcdbc31160d123942fbc6f58725" id="r_a8bc80fcdbc31160d123942fbc6f58725"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a8bc80fcdbc31160d123942fbc6f58725">Compute_squared_distance_2</a></td></tr>
+<tr class="memdesc:a8bc80fcdbc31160d123942fbc6f58725"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a1448d7ba1d24c1775e9fe23edf6b1fba" id="r_a1448d7ba1d24c1775e9fe23edf6b1fba"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a1448d7ba1d24c1775e9fe23edf6b1fba">Compute_scalar_product_2</a></td></tr>
+<tr class="memdesc:a1448d7ba1d24c1775e9fe23edf6b1fba"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a5ed96ea5e35381d49a61c28266d38206" id="r_a5ed96ea5e35381d49a61c28266d38206"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5ed96ea5e35381d49a61c28266d38206">Construct_vector_2</a></td></tr>
+<tr class="memdesc:a5ed96ea5e35381d49a61c28266d38206"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+2D Generalized Predicates</h2></td></tr>
+<tr class="memitem:abae85c46709faa71eb91f1371521f2ff" id="r_abae85c46709faa71eb91f1371521f2ff"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#abae85c46709faa71eb91f1371521f2ff">Collinear_2</a></td></tr>
+<tr class="memdesc:abae85c46709faa71eb91f1371521f2ff"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:adeffab1026bac7942e2514ceb3d06ccf" id="r_adeffab1026bac7942e2514ceb3d06ccf"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#adeffab1026bac7942e2514ceb3d06ccf">Collinear_are_ordered_along_line_2</a></td></tr>
+<tr class="memdesc:adeffab1026bac7942e2514ceb3d06ccf"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:aca9739470a52a872c47565edb36fa7fd" id="r_aca9739470a52a872c47565edb36fa7fd"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aca9739470a52a872c47565edb36fa7fd">Compare_x_2</a></td></tr>
+<tr class="memdesc:aca9739470a52a872c47565edb36fa7fd"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a83382e261f6b5257006f24d036bd2002" id="r_a83382e261f6b5257006f24d036bd2002"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a83382e261f6b5257006f24d036bd2002">Compare_y_2</a></td></tr>
+<tr class="memdesc:a83382e261f6b5257006f24d036bd2002"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a37f9da70156a8d6fc0d6fbff4bc62c77" id="r_a37f9da70156a8d6fc0d6fbff4bc62c77"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a37f9da70156a8d6fc0d6fbff4bc62c77">Equal_2</a></td></tr>
+<tr class="memdesc:a37f9da70156a8d6fc0d6fbff4bc62c77"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ae9604540ecbe5567b8d5036c8ca1214f" id="r_ae9604540ecbe5567b8d5036c8ca1214f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ae9604540ecbe5567b8d5036c8ca1214f">Less_xy_2</a></td></tr>
+<tr class="memdesc:ae9604540ecbe5567b8d5036c8ca1214f"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a3f6113b63a36025171e0f12ed6a7bf5f" id="r_a3f6113b63a36025171e0f12ed6a7bf5f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3f6113b63a36025171e0f12ed6a7bf5f">Orientation_2</a></td></tr>
+<tr class="memdesc:a3f6113b63a36025171e0f12ed6a7bf5f"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a58550f3f696b87258fc81562a2171452" id="r_a58550f3f696b87258fc81562a2171452"><td class="memItemLeft"><a id="a58550f3f696b87258fc81562a2171452" name="a58550f3f696b87258fc81562a2171452"></a>
+<a class="el" href="#abae85c46709faa71eb91f1371521f2ff">Collinear_2</a> </td><td class="memItemRight"><b>collinear_2_object</b> ()</td></tr>
+<tr class="memdesc:a58550f3f696b87258fc81562a2171452"><td class="mdescLeft"> </td><td class="mdescRight">The following functions give access to the predicate and constructor objects. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="abae85c46709faa71eb91f1371521f2ff" name="abae85c46709faa71eb91f1371521f2ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae85c46709faa71eb91f1371521f2ff">◆ </a></span>Collinear_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#abae85c46709faa71eb91f1371521f2ff">BarycentricTraits_3::Collinear_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q, Point_2 r)</span></p>
+<p>that returns <span class="tt">true</span> if the points <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> are collinear and <span class="tt">false</span> otherwise. </p>
+
+</div>
+</div>
+<a id="adeffab1026bac7942e2514ceb3d06ccf" name="adeffab1026bac7942e2514ceb3d06ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeffab1026bac7942e2514ceb3d06ccf">◆ </a></span>Collinear_are_ordered_along_line_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#adeffab1026bac7942e2514ceb3d06ccf">BarycentricTraits_3::Collinear_are_ordered_along_line_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q, Point_2 r)</span></p>
+<p>that returns <span class="tt">true</span>, iff <span class="tt">q</span> lies between <span class="tt">p</span> and <span class="tt">r</span> and <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> satisfy the precondition that they are collinear. </p>
+
+</div>
+</div>
+<a id="aca9739470a52a872c47565edb36fa7fd" name="aca9739470a52a872c47565edb36fa7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca9739470a52a872c47565edb36fa7fd">◆ </a></span>Compare_x_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aca9739470a52a872c47565edb36fa7fd">BarycentricTraits_3::Compare_x_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">Comparison_result operator()(Point_2 p, Point_2 q)</span></p>
+<p>that returns <span class="tt">SMALLER, EQUAL</span> or <span class="tt">LARGER</span> according to the \( x\)-ordering of points <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="a83382e261f6b5257006f24d036bd2002" name="a83382e261f6b5257006f24d036bd2002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83382e261f6b5257006f24d036bd2002">◆ </a></span>Compare_y_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a83382e261f6b5257006f24d036bd2002">BarycentricTraits_3::Compare_y_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">Comparison_result operator()(Point_2 p, Point_2 q)</span></p>
+<p>that returns <span class="tt">SMALLER, EQUAL</span> or <span class="tt">LARGER</span> according to the \( y\)-ordering of points <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="a0374b5ba6b5fdcb0b71787930753eafc" name="a0374b5ba6b5fdcb0b71787930753eafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0374b5ba6b5fdcb0b71787930753eafc">◆ </a></span>Compute_approximate_angle_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0374b5ba6b5fdcb0b71787930753eafc">BarycentricTraits_3::Compute_approximate_angle_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Vector_3 u, Vector_3 v)</span></p>
+<p>that returns an approximation of the angle between <span class="tt">u</span> and <span class="tt">v</span>. The angle is given in degrees. </p>
+
+</div>
+</div>
+<a id="ac6a455642370947c9fd116dfd9ad565e" name="ac6a455642370947c9fd116dfd9ad565e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a455642370947c9fd116dfd9ad565e">◆ </a></span>Compute_area_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac6a455642370947c9fd116dfd9ad565e">BarycentricTraits_3::Compute_area_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Point_2 p0, Point_2 p1, Point_3 p2)</span></p>
+<p>that returns the signed area of the triangle defined by the three points <span class="tt">p0</span>, <span class="tt">p1</span>, and <span class="tt">p2</span>. </p>
+
+</div>
+</div>
+<a id="a0c269d3caca8048b522588e16d53026a" name="a0c269d3caca8048b522588e16d53026a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c269d3caca8048b522588e16d53026a">◆ </a></span>Compute_determinant_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0c269d3caca8048b522588e16d53026a">BarycentricTraits_3::Compute_determinant_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Vector_3 u, Vector_3 v, Vector_3 w)</span></p>
+<p>that returns the determinant of the three vectors <span class="tt">u</span>, <span class="tt">v</span> and <span class="tt">w</span>. </p>
+
+</div>
+</div>
+<a id="a1448d7ba1d24c1775e9fe23edf6b1fba" name="a1448d7ba1d24c1775e9fe23edf6b1fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1448d7ba1d24c1775e9fe23edf6b1fba">◆ </a></span>Compute_scalar_product_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a1448d7ba1d24c1775e9fe23edf6b1fba">BarycentricTraits_3::Compute_scalar_product_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator()(Vector_2 v, Vector_2 w)</span></p>
+<p>that returns the scalar product of the vectors <span class="tt">v</span> and <span class="tt">w</span>. </p>
+
+</div>
+</div>
+<a id="a1e14f55bea51ffdb0454d19b7cb1cde9" name="a1e14f55bea51ffdb0454d19b7cb1cde9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e14f55bea51ffdb0454d19b7cb1cde9">◆ </a></span>Compute_scalar_product_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a1e14f55bea51ffdb0454d19b7cb1cde9">BarycentricTraits_3::Compute_scalar_product_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Vector_3 v, Vector_3 w)</span></p>
+<p>that returns the scalar (inner) product of the two vectors <span class="tt">v</span> and <span class="tt">w</span>. </p>
+
+</div>
+</div>
+<a id="a8bc80fcdbc31160d123942fbc6f58725" name="a8bc80fcdbc31160d123942fbc6f58725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bc80fcdbc31160d123942fbc6f58725">◆ </a></span>Compute_squared_distance_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a8bc80fcdbc31160d123942fbc6f58725">BarycentricTraits_3::Compute_squared_distance_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator()(Point_2 p, Point_2 q),</span></p>
+<p>which returns the squared distance between <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ad77c1aea88f7e26e62eca634e86dd156" name="ad77c1aea88f7e26e62eca634e86dd156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad77c1aea88f7e26e62eca634e86dd156">◆ </a></span>Compute_squared_length_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ad77c1aea88f7e26e62eca634e86dd156">BarycentricTraits_3::Compute_squared_length_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator()(const <a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a>&amp; v)</span></p>
+<p>that returns the squared length of the vector <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="a03655cbccb5f96bffa4a3c7ab157af9f" name="a03655cbccb5f96bffa4a3c7ab157af9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03655cbccb5f96bffa4a3c7ab157af9f">◆ </a></span>Compute_volume_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a03655cbccb5f96bffa4a3c7ab157af9f">BarycentricTraits_3::Compute_volume_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Point_3 p0, Point_3 p1, Point_3 p2, Point_3 p3)</span></p>
+<p>that returns the signed volume of the tetrahedron defined by the four points <span class="tt">p0</span>, <span class="tt">p1</span>, <span class="tt">p2</span>, and <span class="tt">p3</span>. </p>
+
+</div>
+</div>
+<a id="aa11c8852b81c8eab71f8ebad12bc59e8" name="aa11c8852b81c8eab71f8ebad12bc59e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa11c8852b81c8eab71f8ebad12bc59e8">◆ </a></span>Construct_cartesian_const_iterator_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa11c8852b81c8eab71f8ebad12bc59e8">BarycentricTraits_3::Construct_cartesian_const_iterator_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a2085a472cbf201ac12ab2b84cf34c6d7" title="A model of CartesianConstIterator_3.">Cartesian_const_iterator_3</a> operator() (<a class="el" href="#a343411efa84cce5969f3696bf7b603b6" title="A model of Kernel::Point_3.">Point_3</a> p)</span></p>
+<p>returns an iterator on the zeroth Cartesian coordinate of p. </p>
+
+</div>
+</div>
+<a id="af11379177e3cdc497684b0e1a0a8b1b5" name="af11379177e3cdc497684b0e1a0a8b1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af11379177e3cdc497684b0e1a0a8b1b5">◆ </a></span>Construct_cross_product_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#af11379177e3cdc497684b0e1a0a8b1b5">BarycentricTraits_3::Construct_cross_product_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator(Vector_3 u, Vector_3 v)</span></p>
+<p>that returns the cross product between <span class="tt">u</span> and <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="a0ab47208bebb5c4f4bcd0a8fe8263a97" name="a0ab47208bebb5c4f4bcd0a8fe8263a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab47208bebb5c4f4bcd0a8fe8263a97">◆ </a></span>Construct_divided_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0ab47208bebb5c4f4bcd0a8fe8263a97">BarycentricTraits_3::Construct_divided_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator()(Vector_3 v, FT t)</span></p>
+<p>returning the vector <span class="tt">v / t</span>. </p>
+
+</div>
+</div>
+<a id="a9176d35e7d39ddf15950beb11c1e09d1" name="a9176d35e7d39ddf15950beb11c1e09d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9176d35e7d39ddf15950beb11c1e09d1">◆ </a></span>Construct_plane_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9176d35e7d39ddf15950beb11c1e09d1">BarycentricTraits_3::Construct_plane_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#ab6aa5ec2fcaf3806379cdbefa82fac28" title="A model of Kernel::Plane_3.">Plane_3</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p>which constructs a plane passing through <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> and oriented in a positive sense when seen from the positive side of the plane. </p>
+
+</div>
+</div>
+<a id="ab37ba583baf17395df62a98bdb6c3235" name="ab37ba583baf17395df62a98bdb6c3235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37ba583baf17395df62a98bdb6c3235">◆ </a></span>Construct_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab37ba583baf17395df62a98bdb6c3235">BarycentricTraits_3::Construct_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a343411efa84cce5969f3696bf7b603b6" title="A model of Kernel::Point_3.">Point_3</a> operator(FT x, FT y, FT z)</span></p>
+<p>that returns the point with coordinates <span class="tt">x</span>, <span class="tt">y</span> and <span class="tt">z</span>. </p>
+
+</div>
+</div>
+<a id="a2500de003012e6dcb76c3d6188d3c645" name="a2500de003012e6dcb76c3d6188d3c645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2500de003012e6dcb76c3d6188d3c645">◆ </a></span>Construct_projected_xy_point_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a2500de003012e6dcb76c3d6188d3c645">BarycentricTraits_3::Construct_projected_xy_point_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a3cd137ba8f599dbb70b23f98832e3132" title="A model of Kernel::Point_2.">Point_2</a> operator()(Plane_3 h, Point_3 p)</span>,</p>
+<p>which returns image point of the projection of <span class="tt">p</span> under an affine transformation, which maps <span class="tt">h</span> onto the <span class="tt">xy</span>-plane, with the <span class="tt">z</span>-coordinate removed. </p>
+
+</div>
+</div>
+<a id="a5f23357a6abc990f67b65f1fcbb8ac92" name="a5f23357a6abc990f67b65f1fcbb8ac92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f23357a6abc990f67b65f1fcbb8ac92">◆ </a></span>Construct_scaled_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5f23357a6abc990f67b65f1fcbb8ac92">BarycentricTraits_3::Construct_scaled_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator()(Vector_3 v, FT t)</span></p>
+<p>returning the vector <span class="tt">v * t</span>. </p>
+
+</div>
+</div>
+<a id="a5ed96ea5e35381d49a61c28266d38206" name="a5ed96ea5e35381d49a61c28266d38206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ed96ea5e35381d49a61c28266d38206">◆ </a></span>Construct_vector_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5ed96ea5e35381d49a61c28266d38206">BarycentricTraits_3::Construct_vector_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a23e460147af1e9876b3f1f42371067ac" title="A model of Kernel::Vector_2.">Vector_2</a> operator()(Point_2 a, Point_2 b)</span></p>
+<p>that computes the vector <span class="tt">b-a</span>. </p>
+
+</div>
+</div>
+<a id="ab61c2a5d8fcd8f4b23b8a3091c64a521" name="ab61c2a5d8fcd8f4b23b8a3091c64a521"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61c2a5d8fcd8f4b23b8a3091c64a521">◆ </a></span>Construct_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab61c2a5d8fcd8f4b23b8a3091c64a521">BarycentricTraits_3::Construct_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator(Point_3 p, Point_3 q)</span></p>
+<p>that returns the vector <span class="tt">q</span> - <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="a37f9da70156a8d6fc0d6fbff4bc62c77" name="a37f9da70156a8d6fc0d6fbff4bc62c77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37f9da70156a8d6fc0d6fbff4bc62c77">◆ </a></span>Equal_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a37f9da70156a8d6fc0d6fbff4bc62c77">BarycentricTraits_3::Equal_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span> is equal to <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ae9604540ecbe5567b8d5036c8ca1214f" name="ae9604540ecbe5567b8d5036c8ca1214f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9604540ecbe5567b8d5036c8ca1214f">◆ </a></span>Less_xy_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ae9604540ecbe5567b8d5036c8ca1214f">BarycentricTraits_3::Less_xy_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q)</span></p>
+<p>where <span class="tt">true</span> is returned iff \( p &lt;_{xy} q\). We have \( p&lt;_{xy}q\), iff \( p_x &lt; q_x\) or \( p_x = q_x\) and \( p_y &lt; q_y\), where \( p_x\) and \( p_y\) denote \( x\) and \( y\) coordinate of point \( p\), respectively. </p>
+
+</div>
+</div>
+<a id="a3f6113b63a36025171e0f12ed6a7bf5f" name="a3f6113b63a36025171e0f12ed6a7bf5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f6113b63a36025171e0f12ed6a7bf5f">◆ </a></span>Orientation_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3f6113b63a36025171e0f12ed6a7bf5f">BarycentricTraits_3::Orientation_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">Orientation operator()(Point_2 p, Point_2 q, Point_2 r)</span></p>
+<p>that returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga803e5969acd01d45aec5acaee6f82883">CGAL::LEFT_TURN</a></span> if <span class="tt">r</span> lies to the left of the oriented line <span class="tt">l</span> defined by <span class="tt">p</span> and <span class="tt">q</span>, returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga1f9d8cac74201e22d484b10384fe3bf9">CGAL::RIGHT_TURN</a></span> if <span class="tt">r</span> lies to the right of <span class="tt">l</span>, and returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga84f760a315c4f27cb4059db8a3a1159e">CGAL::COLLINEAR</a></span> if <span class="tt">r</span> lies on <span class="tt">l</span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- doc-content -->
+<!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classBarycentricTraits__3.html">BarycentricTraits_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;Concepts/BarycentricTraits_3.h&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>A concept that describes the set of requirements of the template parameter <span class="tt">GeomTraits</span> used to parameterize all classes and functions with 3D barycentric coordinates from the namespace <span class="tt"><a class="el" href="namespaceCGAL_1_1Barycentric__coordinates.html" title="The namespace Barycentric_coordinates contains implementations of all generalized barycentric coordin...">CGAL::Barycentric_coordinates</a></span>. The concept <span class="tt"><a class="el" href="classBarycentricTraits__3.html" title="A concept that describes the set of requirements of the template parameter GeomTraits used to paramet...">BarycentricTraits_3</a></span> extends the concept <span class="tt">BarycentricTraits_2</span> and adds the requirements for 3D objects. </p>
+  <dl class="generalizes"><dt><b><a class="el" href="generalizes.html#_generalizes000001">Generalizes</a></b></dt><dd><span class="tt">BarycentricTraits_2</span></dd></dl>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd>All models of the CGAL concept <span class="tt"><a class="elRef" href="../Kernel_23/classKernel.html">Kernel</a></span> </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" id="r_a9bf9c5fe26ebe6d4423fe9c2d7fa30f4"><td class="memItemLeft"><a id="a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" name="a9bf9c5fe26ebe6d4423fe9c2d7fa30f4"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>FT</b></td></tr>
+<tr class="memdesc:a9bf9c5fe26ebe6d4423fe9c2d7fa30f4"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classFieldNumberType.html">FieldNumberType</a></span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+3D Geometric Objects</h2></td></tr>
+<tr class="memitem:a343411efa84cce5969f3696bf7b603b6" id="r_a343411efa84cce5969f3696bf7b603b6"><td class="memItemLeft"><a id="a343411efa84cce5969f3696bf7b603b6" name="a343411efa84cce5969f3696bf7b603b6"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_3</b></td></tr>
+<tr class="memdesc:a343411efa84cce5969f3696bf7b603b6"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></span>. <br></td></tr>
+<tr class="memitem:aa627d15c31212eab2693d3a1abbdd236" id="r_aa627d15c31212eab2693d3a1abbdd236"><td class="memItemLeft"><a id="aa627d15c31212eab2693d3a1abbdd236" name="aa627d15c31212eab2693d3a1abbdd236"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vector_3</b></td></tr>
+<tr class="memdesc:aa627d15c31212eab2693d3a1abbdd236"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Vector__3.html">Kernel::Vector_3</a></span>. <br></td></tr>
+<tr class="memitem:ab6aa5ec2fcaf3806379cdbefa82fac28" id="r_ab6aa5ec2fcaf3806379cdbefa82fac28"><td class="memItemLeft"><a id="ab6aa5ec2fcaf3806379cdbefa82fac28" name="ab6aa5ec2fcaf3806379cdbefa82fac28"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Plane_3</b></td></tr>
+<tr class="memdesc:ab6aa5ec2fcaf3806379cdbefa82fac28"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Plane__3.html">Kernel::Plane_3</a></span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+2D Geometric Objects</h2></td></tr>
+<tr class="memitem:a3cd137ba8f599dbb70b23f98832e3132" id="r_a3cd137ba8f599dbb70b23f98832e3132"><td class="memItemLeft"><a id="a3cd137ba8f599dbb70b23f98832e3132" name="a3cd137ba8f599dbb70b23f98832e3132"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Point_2</b></td></tr>
+<tr class="memdesc:a3cd137ba8f599dbb70b23f98832e3132"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Point__2.html">Kernel::Point_2</a></span>. <br></td></tr>
+<tr class="memitem:a23e460147af1e9876b3f1f42371067ac" id="r_a23e460147af1e9876b3f1f42371067ac"><td class="memItemLeft"><a id="a23e460147af1e9876b3f1f42371067ac" name="a23e460147af1e9876b3f1f42371067ac"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Vector_2</b></td></tr>
+<tr class="memdesc:a23e460147af1e9876b3f1f42371067ac"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Vector__2.html">Kernel::Vector_2</a></span>. <br></td></tr>
+<tr class="memitem:aa36987d587723c7a39cd05e4db36db0f" id="r_aa36987d587723c7a39cd05e4db36db0f"><td class="memItemLeft"><a id="aa36987d587723c7a39cd05e4db36db0f" name="aa36987d587723c7a39cd05e4db36db0f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Triangle_2</b></td></tr>
+<tr class="memdesc:aa36987d587723c7a39cd05e4db36db0f"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt"><a class="elRef" href="../Kernel_23/classKernel_1_1Triangle__2.html">Kernel::Triangle_2</a></span>. <br></td></tr>
+<tr class="memitem:a6d67f49d3ae5f4c01a5cff1d37530474" id="r_a6d67f49d3ae5f4c01a5cff1d37530474"><td class="memItemLeft"><a id="a6d67f49d3ae5f4c01a5cff1d37530474" name="a6d67f49d3ae5f4c01a5cff1d37530474"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Iso_rectangle_2</b></td></tr>
+<tr class="memdesc:a6d67f49d3ae5f4c01a5cff1d37530474"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt">Kernel::Iso_rectangle_2</span>. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+3D Generalized Constructions</h2></td></tr>
+<tr class="memitem:a0374b5ba6b5fdcb0b71787930753eafc" id="r_a0374b5ba6b5fdcb0b71787930753eafc"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0374b5ba6b5fdcb0b71787930753eafc">Compute_approximate_angle_3</a></td></tr>
+<tr class="memdesc:a0374b5ba6b5fdcb0b71787930753eafc"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0c269d3caca8048b522588e16d53026a" id="r_a0c269d3caca8048b522588e16d53026a"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0c269d3caca8048b522588e16d53026a">Compute_determinant_3</a></td></tr>
+<tr class="memdesc:a0c269d3caca8048b522588e16d53026a"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a1e14f55bea51ffdb0454d19b7cb1cde9" id="r_a1e14f55bea51ffdb0454d19b7cb1cde9"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a1e14f55bea51ffdb0454d19b7cb1cde9">Compute_scalar_product_3</a></td></tr>
+<tr class="memdesc:a1e14f55bea51ffdb0454d19b7cb1cde9"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ad77c1aea88f7e26e62eca634e86dd156" id="r_ad77c1aea88f7e26e62eca634e86dd156"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ad77c1aea88f7e26e62eca634e86dd156">Compute_squared_length_3</a></td></tr>
+<tr class="memdesc:ad77c1aea88f7e26e62eca634e86dd156"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a03655cbccb5f96bffa4a3c7ab157af9f" id="r_a03655cbccb5f96bffa4a3c7ab157af9f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a03655cbccb5f96bffa4a3c7ab157af9f">Compute_volume_3</a></td></tr>
+<tr class="memdesc:a03655cbccb5f96bffa4a3c7ab157af9f"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a2085a472cbf201ac12ab2b84cf34c6d7" id="r_a2085a472cbf201ac12ab2b84cf34c6d7"><td class="memItemLeft"><a id="a2085a472cbf201ac12ab2b84cf34c6d7" name="a2085a472cbf201ac12ab2b84cf34c6d7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Cartesian_const_iterator_3</b></td></tr>
+<tr class="memdesc:a2085a472cbf201ac12ab2b84cf34c6d7"><td class="mdescLeft"> </td><td class="mdescRight">A model of <span class="tt">CartesianConstIterator_3</span>. <br></td></tr>
+<tr class="memitem:aa11c8852b81c8eab71f8ebad12bc59e8" id="r_aa11c8852b81c8eab71f8ebad12bc59e8"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aa11c8852b81c8eab71f8ebad12bc59e8">Construct_cartesian_const_iterator_3</a></td></tr>
+<tr class="memdesc:aa11c8852b81c8eab71f8ebad12bc59e8"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:af11379177e3cdc497684b0e1a0a8b1b5" id="r_af11379177e3cdc497684b0e1a0a8b1b5"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#af11379177e3cdc497684b0e1a0a8b1b5">Construct_cross_product_vector_3</a></td></tr>
+<tr class="memdesc:af11379177e3cdc497684b0e1a0a8b1b5"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a2500de003012e6dcb76c3d6188d3c645" id="r_a2500de003012e6dcb76c3d6188d3c645"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a2500de003012e6dcb76c3d6188d3c645">Construct_projected_xy_point_2</a></td></tr>
+<tr class="memdesc:a2500de003012e6dcb76c3d6188d3c645"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a9176d35e7d39ddf15950beb11c1e09d1" id="r_a9176d35e7d39ddf15950beb11c1e09d1"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a9176d35e7d39ddf15950beb11c1e09d1">Construct_plane_3</a></td></tr>
+<tr class="memdesc:a9176d35e7d39ddf15950beb11c1e09d1"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a0ab47208bebb5c4f4bcd0a8fe8263a97" id="r_a0ab47208bebb5c4f4bcd0a8fe8263a97"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a0ab47208bebb5c4f4bcd0a8fe8263a97">Construct_divided_vector_3</a></td></tr>
+<tr class="memdesc:a0ab47208bebb5c4f4bcd0a8fe8263a97"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ab37ba583baf17395df62a98bdb6c3235" id="r_ab37ba583baf17395df62a98bdb6c3235"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab37ba583baf17395df62a98bdb6c3235">Construct_point_3</a></td></tr>
+<tr class="memdesc:ab37ba583baf17395df62a98bdb6c3235"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a5f23357a6abc990f67b65f1fcbb8ac92" id="r_a5f23357a6abc990f67b65f1fcbb8ac92"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5f23357a6abc990f67b65f1fcbb8ac92">Construct_scaled_vector_3</a></td></tr>
+<tr class="memdesc:a5f23357a6abc990f67b65f1fcbb8ac92"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ab61c2a5d8fcd8f4b23b8a3091c64a521" id="r_ab61c2a5d8fcd8f4b23b8a3091c64a521"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ab61c2a5d8fcd8f4b23b8a3091c64a521">Construct_vector_3</a></td></tr>
+<tr class="memdesc:ab61c2a5d8fcd8f4b23b8a3091c64a521"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+2D Generalized Constructions</h2></td></tr>
+<tr class="memitem:ac6a455642370947c9fd116dfd9ad565e" id="r_ac6a455642370947c9fd116dfd9ad565e"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ac6a455642370947c9fd116dfd9ad565e">Compute_area_2</a></td></tr>
+<tr class="memdesc:ac6a455642370947c9fd116dfd9ad565e"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a8bc80fcdbc31160d123942fbc6f58725" id="r_a8bc80fcdbc31160d123942fbc6f58725"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a8bc80fcdbc31160d123942fbc6f58725">Compute_squared_distance_2</a></td></tr>
+<tr class="memdesc:a8bc80fcdbc31160d123942fbc6f58725"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a1448d7ba1d24c1775e9fe23edf6b1fba" id="r_a1448d7ba1d24c1775e9fe23edf6b1fba"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a1448d7ba1d24c1775e9fe23edf6b1fba">Compute_scalar_product_2</a></td></tr>
+<tr class="memdesc:a1448d7ba1d24c1775e9fe23edf6b1fba"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a5ed96ea5e35381d49a61c28266d38206" id="r_a5ed96ea5e35381d49a61c28266d38206"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a5ed96ea5e35381d49a61c28266d38206">Construct_vector_2</a></td></tr>
+<tr class="memdesc:a5ed96ea5e35381d49a61c28266d38206"><td class="mdescLeft"> </td><td class="mdescRight">A construction object that must provide the function operator:  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+2D Generalized Predicates</h2></td></tr>
+<tr class="memitem:abae85c46709faa71eb91f1371521f2ff" id="r_abae85c46709faa71eb91f1371521f2ff"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#abae85c46709faa71eb91f1371521f2ff">Collinear_2</a></td></tr>
+<tr class="memdesc:abae85c46709faa71eb91f1371521f2ff"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:adeffab1026bac7942e2514ceb3d06ccf" id="r_adeffab1026bac7942e2514ceb3d06ccf"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#adeffab1026bac7942e2514ceb3d06ccf">Collinear_are_ordered_along_line_2</a></td></tr>
+<tr class="memdesc:adeffab1026bac7942e2514ceb3d06ccf"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:aca9739470a52a872c47565edb36fa7fd" id="r_aca9739470a52a872c47565edb36fa7fd"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#aca9739470a52a872c47565edb36fa7fd">Compare_x_2</a></td></tr>
+<tr class="memdesc:aca9739470a52a872c47565edb36fa7fd"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a83382e261f6b5257006f24d036bd2002" id="r_a83382e261f6b5257006f24d036bd2002"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a83382e261f6b5257006f24d036bd2002">Compare_y_2</a></td></tr>
+<tr class="memdesc:a83382e261f6b5257006f24d036bd2002"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a37f9da70156a8d6fc0d6fbff4bc62c77" id="r_a37f9da70156a8d6fc0d6fbff4bc62c77"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a37f9da70156a8d6fc0d6fbff4bc62c77">Equal_2</a></td></tr>
+<tr class="memdesc:a37f9da70156a8d6fc0d6fbff4bc62c77"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:ae9604540ecbe5567b8d5036c8ca1214f" id="r_ae9604540ecbe5567b8d5036c8ca1214f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#ae9604540ecbe5567b8d5036c8ca1214f">Less_xy_2</a></td></tr>
+<tr class="memdesc:ae9604540ecbe5567b8d5036c8ca1214f"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a3f6113b63a36025171e0f12ed6a7bf5f" id="r_a3f6113b63a36025171e0f12ed6a7bf5f"><td class="memItemLeft">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><a class="el" href="#a3f6113b63a36025171e0f12ed6a7bf5f">Orientation_2</a></td></tr>
+<tr class="memdesc:a3f6113b63a36025171e0f12ed6a7bf5f"><td class="mdescLeft"> </td><td class="mdescRight">A predicate object that must provide the function operator:  <br></td></tr>
+<tr class="memitem:a58550f3f696b87258fc81562a2171452" id="r_a58550f3f696b87258fc81562a2171452"><td class="memItemLeft"><a id="a58550f3f696b87258fc81562a2171452" name="a58550f3f696b87258fc81562a2171452"></a>
+<a class="el" href="#abae85c46709faa71eb91f1371521f2ff">Collinear_2</a> </td><td class="memItemRight"><b>collinear_2_object</b> ()</td></tr>
+<tr class="memdesc:a58550f3f696b87258fc81562a2171452"><td class="mdescLeft"> </td><td class="mdescRight">The following functions give access to the predicate and constructor objects. <br></td></tr>
+</table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="abae85c46709faa71eb91f1371521f2ff" name="abae85c46709faa71eb91f1371521f2ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae85c46709faa71eb91f1371521f2ff">◆ </a></span>Collinear_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#abae85c46709faa71eb91f1371521f2ff">BarycentricTraits_3::Collinear_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q, Point_2 r)</span></p>
+<p>that returns <span class="tt">true</span> if the points <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> are collinear and <span class="tt">false</span> otherwise. </p>
+
+</div>
+</div>
+<a id="adeffab1026bac7942e2514ceb3d06ccf" name="adeffab1026bac7942e2514ceb3d06ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeffab1026bac7942e2514ceb3d06ccf">◆ </a></span>Collinear_are_ordered_along_line_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#adeffab1026bac7942e2514ceb3d06ccf">BarycentricTraits_3::Collinear_are_ordered_along_line_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q, Point_2 r)</span></p>
+<p>that returns <span class="tt">true</span>, iff <span class="tt">q</span> lies between <span class="tt">p</span> and <span class="tt">r</span> and <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> satisfy the precondition that they are collinear. </p>
+
+</div>
+</div>
+<a id="aca9739470a52a872c47565edb36fa7fd" name="aca9739470a52a872c47565edb36fa7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca9739470a52a872c47565edb36fa7fd">◆ </a></span>Compare_x_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aca9739470a52a872c47565edb36fa7fd">BarycentricTraits_3::Compare_x_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">Comparison_result operator()(Point_2 p, Point_2 q)</span></p>
+<p>that returns <span class="tt">SMALLER, EQUAL</span> or <span class="tt">LARGER</span> according to the \( x\)-ordering of points <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="a83382e261f6b5257006f24d036bd2002" name="a83382e261f6b5257006f24d036bd2002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83382e261f6b5257006f24d036bd2002">◆ </a></span>Compare_y_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a83382e261f6b5257006f24d036bd2002">BarycentricTraits_3::Compare_y_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">Comparison_result operator()(Point_2 p, Point_2 q)</span></p>
+<p>that returns <span class="tt">SMALLER, EQUAL</span> or <span class="tt">LARGER</span> according to the \( y\)-ordering of points <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="a0374b5ba6b5fdcb0b71787930753eafc" name="a0374b5ba6b5fdcb0b71787930753eafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0374b5ba6b5fdcb0b71787930753eafc">◆ </a></span>Compute_approximate_angle_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0374b5ba6b5fdcb0b71787930753eafc">BarycentricTraits_3::Compute_approximate_angle_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Vector_3 u, Vector_3 v)</span></p>
+<p>that returns an approximation of the angle between <span class="tt">u</span> and <span class="tt">v</span>. The angle is given in degrees. </p>
+
+</div>
+</div>
+<a id="ac6a455642370947c9fd116dfd9ad565e" name="ac6a455642370947c9fd116dfd9ad565e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a455642370947c9fd116dfd9ad565e">◆ </a></span>Compute_area_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ac6a455642370947c9fd116dfd9ad565e">BarycentricTraits_3::Compute_area_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Point_2 p0, Point_2 p1, Point_3 p2)</span></p>
+<p>that returns the signed area of the triangle defined by the three points <span class="tt">p0</span>, <span class="tt">p1</span>, and <span class="tt">p2</span>. </p>
+
+</div>
+</div>
+<a id="a0c269d3caca8048b522588e16d53026a" name="a0c269d3caca8048b522588e16d53026a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c269d3caca8048b522588e16d53026a">◆ </a></span>Compute_determinant_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0c269d3caca8048b522588e16d53026a">BarycentricTraits_3::Compute_determinant_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Vector_3 u, Vector_3 v, Vector_3 w)</span></p>
+<p>that returns the determinant of the three vectors <span class="tt">u</span>, <span class="tt">v</span> and <span class="tt">w</span>. </p>
+
+</div>
+</div>
+<a id="a1448d7ba1d24c1775e9fe23edf6b1fba" name="a1448d7ba1d24c1775e9fe23edf6b1fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1448d7ba1d24c1775e9fe23edf6b1fba">◆ </a></span>Compute_scalar_product_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a1448d7ba1d24c1775e9fe23edf6b1fba">BarycentricTraits_3::Compute_scalar_product_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator()(Vector_2 v, Vector_2 w)</span></p>
+<p>that returns the scalar product of the vectors <span class="tt">v</span> and <span class="tt">w</span>. </p>
+
+</div>
+</div>
+<a id="a1e14f55bea51ffdb0454d19b7cb1cde9" name="a1e14f55bea51ffdb0454d19b7cb1cde9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e14f55bea51ffdb0454d19b7cb1cde9">◆ </a></span>Compute_scalar_product_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a1e14f55bea51ffdb0454d19b7cb1cde9">BarycentricTraits_3::Compute_scalar_product_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Vector_3 v, Vector_3 w)</span></p>
+<p>that returns the scalar (inner) product of the two vectors <span class="tt">v</span> and <span class="tt">w</span>. </p>
+
+</div>
+</div>
+<a id="a8bc80fcdbc31160d123942fbc6f58725" name="a8bc80fcdbc31160d123942fbc6f58725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bc80fcdbc31160d123942fbc6f58725">◆ </a></span>Compute_squared_distance_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a8bc80fcdbc31160d123942fbc6f58725">BarycentricTraits_3::Compute_squared_distance_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator()(Point_2 p, Point_2 q),</span></p>
+<p>which returns the squared distance between <span class="tt">p</span> and <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ad77c1aea88f7e26e62eca634e86dd156" name="ad77c1aea88f7e26e62eca634e86dd156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad77c1aea88f7e26e62eca634e86dd156">◆ </a></span>Compute_squared_length_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ad77c1aea88f7e26e62eca634e86dd156">BarycentricTraits_3::Compute_squared_length_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator()(const <a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a>&amp; v)</span></p>
+<p>that returns the squared length of the vector <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="a03655cbccb5f96bffa4a3c7ab157af9f" name="a03655cbccb5f96bffa4a3c7ab157af9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03655cbccb5f96bffa4a3c7ab157af9f">◆ </a></span>Compute_volume_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a03655cbccb5f96bffa4a3c7ab157af9f">BarycentricTraits_3::Compute_volume_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a9bf9c5fe26ebe6d4423fe9c2d7fa30f4" title="A model of FieldNumberType.">FT</a> operator(Point_3 p0, Point_3 p1, Point_3 p2, Point_3 p3)</span></p>
+<p>that returns the signed volume of the tetrahedron defined by the four points <span class="tt">p0</span>, <span class="tt">p1</span>, <span class="tt">p2</span>, and <span class="tt">p3</span>. </p>
+
+</div>
+</div>
+<a id="aa11c8852b81c8eab71f8ebad12bc59e8" name="aa11c8852b81c8eab71f8ebad12bc59e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa11c8852b81c8eab71f8ebad12bc59e8">◆ </a></span>Construct_cartesian_const_iterator_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#aa11c8852b81c8eab71f8ebad12bc59e8">BarycentricTraits_3::Construct_cartesian_const_iterator_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a2085a472cbf201ac12ab2b84cf34c6d7" title="A model of CartesianConstIterator_3.">Cartesian_const_iterator_3</a> operator() (<a class="el" href="#a343411efa84cce5969f3696bf7b603b6" title="A model of Kernel::Point_3.">Point_3</a> p)</span></p>
+<p>returns an iterator on the zeroth Cartesian coordinate of p. </p>
+
+</div>
+</div>
+<a id="af11379177e3cdc497684b0e1a0a8b1b5" name="af11379177e3cdc497684b0e1a0a8b1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af11379177e3cdc497684b0e1a0a8b1b5">◆ </a></span>Construct_cross_product_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#af11379177e3cdc497684b0e1a0a8b1b5">BarycentricTraits_3::Construct_cross_product_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator(Vector_3 u, Vector_3 v)</span></p>
+<p>that returns the cross product between <span class="tt">u</span> and <span class="tt">v</span>. </p>
+
+</div>
+</div>
+<a id="a0ab47208bebb5c4f4bcd0a8fe8263a97" name="a0ab47208bebb5c4f4bcd0a8fe8263a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab47208bebb5c4f4bcd0a8fe8263a97">◆ </a></span>Construct_divided_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a0ab47208bebb5c4f4bcd0a8fe8263a97">BarycentricTraits_3::Construct_divided_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator()(Vector_3 v, FT t)</span></p>
+<p>returning the vector <span class="tt">v / t</span>. </p>
+
+</div>
+</div>
+<a id="a9176d35e7d39ddf15950beb11c1e09d1" name="a9176d35e7d39ddf15950beb11c1e09d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9176d35e7d39ddf15950beb11c1e09d1">◆ </a></span>Construct_plane_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a9176d35e7d39ddf15950beb11c1e09d1">BarycentricTraits_3::Construct_plane_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#ab6aa5ec2fcaf3806379cdbefa82fac28" title="A model of Kernel::Plane_3.">Plane_3</a> operator()(Point_3 p, Point_3 q, Point_3 r)</span>,</p>
+<p>which constructs a plane passing through <span class="tt">p</span>, <span class="tt">q</span>, and <span class="tt">r</span> and oriented in a positive sense when seen from the positive side of the plane. </p>
+
+</div>
+</div>
+<a id="ab37ba583baf17395df62a98bdb6c3235" name="ab37ba583baf17395df62a98bdb6c3235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37ba583baf17395df62a98bdb6c3235">◆ </a></span>Construct_point_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab37ba583baf17395df62a98bdb6c3235">BarycentricTraits_3::Construct_point_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a343411efa84cce5969f3696bf7b603b6" title="A model of Kernel::Point_3.">Point_3</a> operator(FT x, FT y, FT z)</span></p>
+<p>that returns the point with coordinates <span class="tt">x</span>, <span class="tt">y</span> and <span class="tt">z</span>. </p>
+
+</div>
+</div>
+<a id="a2500de003012e6dcb76c3d6188d3c645" name="a2500de003012e6dcb76c3d6188d3c645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2500de003012e6dcb76c3d6188d3c645">◆ </a></span>Construct_projected_xy_point_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a2500de003012e6dcb76c3d6188d3c645">BarycentricTraits_3::Construct_projected_xy_point_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a3cd137ba8f599dbb70b23f98832e3132" title="A model of Kernel::Point_2.">Point_2</a> operator()(Plane_3 h, Point_3 p)</span>,</p>
+<p>which returns image point of the projection of <span class="tt">p</span> under an affine transformation, which maps <span class="tt">h</span> onto the <span class="tt">xy</span>-plane, with the <span class="tt">z</span>-coordinate removed. </p>
+
+</div>
+</div>
+<a id="a5f23357a6abc990f67b65f1fcbb8ac92" name="a5f23357a6abc990f67b65f1fcbb8ac92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f23357a6abc990f67b65f1fcbb8ac92">◆ </a></span>Construct_scaled_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5f23357a6abc990f67b65f1fcbb8ac92">BarycentricTraits_3::Construct_scaled_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator()(Vector_3 v, FT t)</span></p>
+<p>returning the vector <span class="tt">v * t</span>. </p>
+
+</div>
+</div>
+<a id="a5ed96ea5e35381d49a61c28266d38206" name="a5ed96ea5e35381d49a61c28266d38206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ed96ea5e35381d49a61c28266d38206">◆ </a></span>Construct_vector_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a5ed96ea5e35381d49a61c28266d38206">BarycentricTraits_3::Construct_vector_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#a23e460147af1e9876b3f1f42371067ac" title="A model of Kernel::Vector_2.">Vector_2</a> operator()(Point_2 a, Point_2 b)</span></p>
+<p>that computes the vector <span class="tt">b-a</span>. </p>
+
+</div>
+</div>
+<a id="ab61c2a5d8fcd8f4b23b8a3091c64a521" name="ab61c2a5d8fcd8f4b23b8a3091c64a521"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61c2a5d8fcd8f4b23b8a3091c64a521">◆ </a></span>Construct_vector_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ab61c2a5d8fcd8f4b23b8a3091c64a521">BarycentricTraits_3::Construct_vector_3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A construction object that must provide the function operator: </p>
+<p><span class="tt"><a class="el" href="#aa627d15c31212eab2693d3a1abbdd236" title="A model of Kernel::Vector_3.">Vector_3</a> operator(Point_3 p, Point_3 q)</span></p>
+<p>that returns the vector <span class="tt">q</span> - <span class="tt">p</span>. </p>
+
+</div>
+</div>
+<a id="a37f9da70156a8d6fc0d6fbff4bc62c77" name="a37f9da70156a8d6fc0d6fbff4bc62c77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37f9da70156a8d6fc0d6fbff4bc62c77">◆ </a></span>Equal_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a37f9da70156a8d6fc0d6fbff4bc62c77">BarycentricTraits_3::Equal_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q)</span>,</p>
+<p>which returns <span class="tt">true</span> iff <span class="tt">p</span> is equal to <span class="tt">q</span>. </p>
+
+</div>
+</div>
+<a id="ae9604540ecbe5567b8d5036c8ca1214f" name="ae9604540ecbe5567b8d5036c8ca1214f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9604540ecbe5567b8d5036c8ca1214f">◆ </a></span>Less_xy_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#ae9604540ecbe5567b8d5036c8ca1214f">BarycentricTraits_3::Less_xy_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">bool operator()(Point_2 p, Point_2 q)</span></p>
+<p>where <span class="tt">true</span> is returned iff \( p &lt;_{xy} q\). We have \( p&lt;_{xy}q\), iff \( p_x &lt; q_x\) or \( p_x = q_x\) and \( p_y &lt; q_y\), where \( p_x\) and \( p_y\) denote \( x\) and \( y\) coordinate of point \( p\), respectively. </p>
+
+</div>
+</div>
+<a id="a3f6113b63a36025171e0f12ed6a7bf5f" name="a3f6113b63a36025171e0f12ed6a7bf5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f6113b63a36025171e0f12ed6a7bf5f">◆ </a></span>Orientation_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> <a class="el" href="#a3f6113b63a36025171e0f12ed6a7bf5f">BarycentricTraits_3::Orientation_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A predicate object that must provide the function operator: </p>
+<p><span class="tt">Orientation operator()(Point_2 p, Point_2 q, Point_2 r)</span></p>
+<p>that returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga803e5969acd01d45aec5acaee6f82883">CGAL::LEFT_TURN</a></span> if <span class="tt">r</span> lies to the left of the oriented line <span class="tt">l</span> defined by <span class="tt">p</span> and <span class="tt">q</span>, returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga1f9d8cac74201e22d484b10384fe3bf9">CGAL::RIGHT_TURN</a></span> if <span class="tt">r</span> lies to the right of <span class="tt">l</span>, and returns <span class="tt"><a class="elRef" href="../Kernel_23/group__kernel__enums.html#ga84f760a315c4f27cb4059db8a3a1159e">CGAL::COLLINEAR</a></span> if <span class="tt">r</span> lies on <span class="tt">l</span>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classBarycentricTraits__3.html">BarycentricTraits_3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
