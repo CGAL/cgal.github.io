@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Arrangement_on_curve_1/Arrangement_on_curve_1_2arr_on_circle_segment_8cpp-example.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3 - 1D Arrangements: Arrangement_on_curve_1/arr_on_circle_segment.cpp</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3 - 1D Arrangements
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('Arrangement_on_curve_1_2arr_on_circle_segment_8cpp-example.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">Arrangement_on_curve_1/arr_on_circle_segment.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="comment">// Constructing a 1D arrangement on the upper semicircle x^2 + y^2 = 25 using</span></div>
+<div class="line"><span class="comment">// CGAL::Arr_circle_segment_traits_2 as the underlying 2D geometry traits, and</span></div>
+<div class="line"><span class="comment">// drawing the corresponding 2D arrangement of the half circle.</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Exact_predicates_exact_constructions_kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arr_circle_segment_traits_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arrangement_2.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/draw_arrangement_2.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arrangement_on_curve_1/Arrangement_on_curve_1.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arrangement_on_curve_1/Unbounded_topology_traits.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arrangement_on_curve_1/insert.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arrangement_on_curve_1/locate.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Arrangement_on_curve_1/Geom_traits_2_adaptor_1.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Kernel: Arr_circle_segment_traits_2 requires the kernel's FT to be an</span></div>
+<div class="line"><span class="comment">// exact rational type so that circle centers and squared radii are exact.</span></div>
+<div class="line"><span class="keyword">using </span><a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a> = <a id="_a0" name="_a0"></a><a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">CGAL::Exact_predicates_exact_constructions_kernel</a>;</div>
+<div class="line"><span class="keyword">using </span>FT = Kernel::FT;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><span class="comment">// 2D traits for circular arcs and line segments.</span></div>
+<div class="line"><span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><span class="keyword">using </span>Geom_traits_2 = <a id="_a1" name="_a1"></a><a class="code hl_classRef" href="../Arrangement_on_surface_2/classCGAL_1_1Arr__circle__segment__traits__2.html">CGAL::Arr_circle_segment_traits_2&lt;Kernel&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>CoordNT = Geom_traits_2::CoordNT;</div>
+<div class="line"><span class="keyword">using </span><a id="_a2" name="_a2"></a><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a> = Geom_traits_2::Point_2;</div>
+<div class="line"><span class="keyword">using </span>Curve_2 = Geom_traits_2::Curve_2;</div>
+<div class="line"><span class="keyword">using </span>X_monotone_curve_2 = Geom_traits_2::X_monotone_curve_2;</div>
+<div class="line"><span class="keyword">using </span>Rat_point_2 = Geom_traits_2::Rational_point_2;</div>
+<div class="line"><span class="keyword">using </span><a id="_a3" name="_a3"></a><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Circle__2.html">Circle_2</a> = Geom_traits_2::Rational_circle_2;</div>
+<div class="line"><span class="keyword">using </span>Arrangement_2 = <a id="_a4" name="_a4"></a><a class="code hl_classRef" href="../Arrangement_on_surface_2/classCGAL_1_1Arrangement__2.html">CGAL::Arrangement_2&lt;Geom_traits_2&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 1D arrangement on the upper semicircular arc.</span></div>
+<div class="line"><span class="keyword">using </span>Geom_traits_1 = <a id="_a5" name="_a5"></a><a class="code hl_class" href="classCGAL_1_1Arrangement__on__curve__1_1_1Geom__traits__2__adaptor__1.html">CGAL::Arrangement_on_curve_1::Geom_traits_2_adaptor_1&lt;Geom_traits_2&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Point_1 = Geom_traits_1::Point_1;   <span class="comment">// same as Point_2 above</span></div>
+<div class="line"><span class="keyword">using </span>Topo_traits = <a id="_a6" name="_a6"></a><a class="code hl_class" href="classCGAL_1_1Arrangement__on__curve__1_1_1Unbounded__topology__traits.html">CGAL::Arrangement_on_curve_1::Unbounded_topology_traits&lt;Point_1, std::string, void&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>Arrangement_1 = <a id="_a7" name="_a7"></a><a class="code hl_class" href="classCGAL_1_1Arrangement__on__curve__1_1_1Arrangement__on__curve__1.html">CGAL::Arrangement_on_curve_1::Arrangement_on_curve_1&lt;Geom_traits_1, Topo_traits&gt;</a>;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> print_point(<span class="keyword">const</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a>&amp; p)</div>
+<div class="line">{ std::cout &lt;&lt; <span class="stringliteral">"("</span> &lt;&lt; <a id="a8" name="a8"></a><a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a>(p.x()) &lt;&lt; <span class="stringliteral">", "</span> &lt;&lt; <a class="code hl_functionRef" href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a>(p.y()) &lt;&lt; <span class="stringliteral">")"</span>; }</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* Helper: summarise a 2D arrangement.</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> print_arrangement_2(<span class="keyword">const</span> Arrangement_2&amp; arr) {</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"  Vertices: "</span> &lt;&lt; arr.number_of_vertices()</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"   Edges: "</span>   &lt;&lt; arr.number_of_edges()</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"   Faces: "</span>   &lt;&lt; arr.number_of_faces()  &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"  Vertex coordinates (approximate):\n"</span>;</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> vit = arr.vertices_begin(); vit != arr.vertices_end(); ++vit) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"    "</span>;</div>
+<div class="line">    print_point(vit-&gt;point());</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">  <span class="comment">/* Define the full circle x^2 + y^2 = 25 (center origin, radius 5, squared radius 25).</span></div>
+<div class="line"><span class="comment">   * The two points where the circle meets the x-axis have rational coordinates: L = (-5, 0) and R = (5, 0).</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  Rat_point_2 center(FT(0), FT(0));</div>
+<div class="line">  FT sqr_radius(25);</div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Circle__2.html">Circle_2</a> circle(center, sqr_radius, <a id="_a9" name="_a9"></a><a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga39fcfbab0b0f0ce9139ad1613e21d60d">CGAL::COUNTERCLOCKWISE</a>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// The endpoints (-5, 0) and (5, 0) have rational coordinates, so they</span></div>
+<div class="line">  <span class="comment">// can be constructed with the rational Point_2 constructor.</span></div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a> pt_left (FT(-5), FT(0));   <span class="comment">// left  x-axis crossing: (-5, 0)</span></div>
+<div class="line">  <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a> pt_right(FT( 5), FT(0));   <span class="comment">// right x-axis crossing: ( 5, 0)</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Upper semicircle: counterclockwise arc from (-5,0) to (5,0) along y &gt;= 0.</span></div>
+<div class="line">  X_monotone_curve_2 upper_arc(circle, pt_right, pt_left, <a class="code hl_variableRef" href="../Kernel_23/group__kernel__enums.html#ga39fcfbab0b0f0ce9139ad1613e21d60d">CGAL::COUNTERCLOCKWISE</a>);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Circle x^2 + y^2 = 25 (center origin, radius 5).\n"</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">"Master arc: upper semicircle from (-5,0) to (5,0), y &gt;= 0.\n\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Build the 2D arrangement of the full circle.</span></div>
+<div class="line"><span class="comment">   * The Curve_2(circle) constructor creates a full-circle curve that is</span></div>
+<div class="line"><span class="comment">   * not x-monotone; CGAL::insert() handles its decomposition internally.</span></div>
+<div class="line"><span class="comment">   * The result has 2 vertices (the x-axis crossings), 2 edges (the two</span></div>
+<div class="line"><span class="comment">   * semicircular arcs), and 2 faces (inside and outside the circle).</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  <span class="keyword">auto</span> traits_2_ptr = std::make_shared&lt;const Geom_traits_2&gt;();</div>
+<div class="line">  Arrangement_2 arr_2d(traits_2_ptr.get());</div>
+<div class="line">  <a id="a10" name="a10"></a><a class="code hl_functionRef" href="../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Insert.html#gab94ab51b036c862501bc06a8fa48e3f9">CGAL::insert</a>(arr_2d, upper_arc);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Build the 1D arrangement on the upper semicircular arc.</span></div>
+<div class="line">  Geom_traits_1 geom_traits_1(traits_2_ptr);</div>
+<div class="line">  Arrangement_1 arr_1d(std::make_shared&lt;const Geom_traits_1&gt;(geom_traits_1));</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Construct several points on the upper semicircle and insert them into the 1D arrangement.</span></div>
+<div class="line"><span class="comment">   *</span></div>
+<div class="line"><span class="comment">   * All interior sample points satisfy x^2 + y^2 = 25, y &gt; 0. Their x-coordinates are integers,</span></div>
+<div class="line"><span class="comment">   * so y = sqrt(25 - x^2).</span></div>
+<div class="line"><span class="comment">   * CoordNT = Sqrt_extension&lt;FT, FT, ...&gt; represents a0 + a1*sqrt(r):</span></div>
+<div class="line"><span class="comment">   *   x-coord: pure rational -&gt;  CoordNT(FT(ix), FT(0), FT(1))</span></div>
+<div class="line"><span class="comment">   *   y-coord: 0 + 1*sqrt(25-ix^2) -&gt; CoordNT(FT(0), FT(1), FT(25 - ix*ix))</span></div>
+<div class="line"><span class="comment">   * The two endpoints where y = 0 have rational coordinates, constructed directly with Point_2(FT, FT).</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  <span class="keyword">auto</span> make_upper_point = [](<span class="keywordtype">int</span> ix) -&gt; <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a> {</div>
+<div class="line">    FT root(25 - ix * ix);</div>
+<div class="line">    CoordNT cx(FT(ix), FT(0), FT(1));   <span class="comment">//  ix + 0*sqrt(...)  = ix</span></div>
+<div class="line">    CoordNT cy(FT(0),  FT(1), root);    <span class="comment">//  0  + 1*sqrt(root) = sqrt(25-ix^2)</span></div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a>(cx, cy);</div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">struct </span>Named_point { <span class="keywordtype">int</span> x; <span class="keywordtype">bool</span> endpoint; <span class="keyword">const</span> <span class="keywordtype">char</span>* label; };</div>
+<div class="line">  std::vector&lt;Named_point&gt; samples = {</div>
+<div class="line">    {  3, <span class="keyword">false</span>, <span class="stringliteral">"P(x=3)"</span>  },</div>
+<div class="line">    { -5, <span class="keyword">true</span>,  <span class="stringliteral">"P(x=-5)"</span> }, <span class="comment">// left  endpoint of the upper arc, y = 0</span></div>
+<div class="line">    {  0, <span class="keyword">false</span>, <span class="stringliteral">"P(x=0)"</span>  }, <span class="comment">// apex  of the upper arc, y = 5</span></div>
+<div class="line">    { -3, <span class="keyword">false</span>, <span class="stringliteral">"P(x=-3)"</span> },</div>
+<div class="line">    {  5, <span class="keyword">true</span>,  <span class="stringliteral">"P(x=5)"</span>  }, <span class="comment">// right endpoint of the upper arc, y = 0</span></div>
+<div class="line">    {  4, <span class="keyword">false</span>, <span class="stringliteral">"P(x=4)"</span>  },</div>
+<div class="line">    { -4, <span class="keyword">false</span>, <span class="stringliteral">"P(x=-4)"</span> },</div>
+<div class="line">  };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Inserting points on the upper semicircle (in this order):\n"</span>;</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; s : samples) std::cout &lt;&lt; <span class="stringliteral">"  "</span> &lt;&lt; s.label &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> v_data_map = arr_1d.vertex_data_map();</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; s : samples) {</div>
+<div class="line">    <span class="comment">// exact rational endpoint or algebraic interior point</span></div>
+<div class="line">    Point_1 p = s.endpoint ? <a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__2.html">Point_2</a>(FT(s.x), FT(0)) : make_upper_point(s.x);</div>
+<div class="line">    <span class="keyword">auto</span> v = <a id="a11" name="a11"></a><a class="code hl_function" href="group__PkgArrangementOnCurve1Funcs.html#ga5f01e163e65188f86cef9b90a489111b">CGAL::Arrangement_on_curve_1::insert</a>(arr_1d, p);</div>
+<div class="line">    <a id="a12" name="a12"></a><a class="code hl_functionRef" href="../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Funcs.html#gabfaca749e7d8c9547c143032a0e9df08">CGAL::insert_point</a>(arr_2d, p);</div>
+<div class="line">    put(v_data_map, v, std::string(s.label));</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Traverse the 1D arrangement in sorted (left-to-right) order by</span></div>
+<div class="line"><span class="comment">   *  walking the topological linked structure from the leftmost edge.</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Resulting 1D arrangement:\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"  Number of vertices: "</span> &lt;&lt; arr_1d.number_of_vertices() &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"  Number of edges:    "</span> &lt;&lt; arr_1d.number_of_edges()    &lt;&lt; <span class="stringliteral">"\n\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> v_pnt_map = arr_1d.vertex_point_map();</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Sorted vertex sequence (left to right by x-coordinate):\n"</span>;</div>
+<div class="line">  <span class="keyword">auto</span> e = arr_1d.unbounded_left_edge();</div>
+<div class="line">  <span class="keywordflow">while</span> (arr_1d.has_right_vertex(e)) {</div>
+<div class="line">    <span class="keyword">auto</span> v = arr_1d.right_vertex(e);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  "</span> &lt;&lt; get(v_data_map, v) &lt;&lt; <span class="stringliteral">"  ~  "</span>;</div>
+<div class="line">    print_point(get(v_pnt_map, v));</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">    e = arr_1d.right_edge(v);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\nEdge structure (left to right):\n"</span>;</div>
+<div class="line">  <span class="keywordtype">size_t</span> idx = 0;</div>
+<div class="line">  e = arr_1d.unbounded_left_edge();</div>
+<div class="line">  <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  Edge "</span> &lt;&lt; idx++ &lt;&lt; <span class="stringliteral">": "</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (arr_1d.has_left_vertex(e)) std::cout &lt;&lt; <span class="stringliteral">"["</span> &lt;&lt; get(v_data_map, arr_1d.left_vertex(e)) &lt;&lt; <span class="stringliteral">"]"</span>;</div>
+<div class="line">    <span class="keywordflow">else</span> std::cout &lt;&lt; <span class="stringliteral">"(arc start)"</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">" -- "</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (arr_1d.has_right_vertex(e)) std::cout &lt;&lt; <span class="stringliteral">"["</span> &lt;&lt; get(v_data_map, arr_1d.right_vertex(e)) &lt;&lt; <span class="stringliteral">"]"</span>;</div>
+<div class="line">    <span class="keywordflow">else</span> std::cout &lt;&lt; <span class="stringliteral">"(arc end)"</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">    <span class="keywordflow">if</span> (! arr_1d.has_right_vertex(e)) <span class="keywordflow">break</span>;</div>
+<div class="line">    e = arr_1d.right_edge(arr_1d.right_vertex(e));</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Locate a query point and report whether it coincides with a vertex.</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  Point_1 query = make_upper_point(0);   <span class="comment">// the apex (0, 5), already inserted</span></div>
+<div class="line">  <span class="keyword">auto</span> loc = <a id="a13" name="a13"></a><a class="code hl_function" href="group__PkgArrangementOnCurve1Funcs.html#ga74f9e57dc1d727f551208e14d52612a5">CGAL::Arrangement_on_curve_1::locate</a>(arr_1d, query);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\nLocating the apex point (x = 0, y = 5):\n"</span>;</div>
+<div class="line">  <span class="keywordflow">if</span> (loc.index() == 0) {</div>
+<div class="line">    <span class="keyword">auto</span> v = std::get&lt;0&gt;(loc);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  Found existing vertex: "</span> &lt;&lt; get(v_data_map, v) &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">else</span> {</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">"  Falls inside an edge (not on an existing vertex).\n"</span>;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"2D arrangement of the half circle:\n"</span>;</div>
+<div class="line">  print_arrangement_2(arr_2d);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  CGAL::Graphics_scene_options&lt;Arrangement_2, <span class="keyword">typename</span> Arrangement_2::Vertex_const_handle,</div>
+<div class="line">                               <span class="keyword">typename</span> Arrangement_2::Halfedge_const_handle,</div>
+<div class="line">                               <span class="keyword">typename</span> Arrangement_2::Face_const_handle&gt; gso;</div>
+<div class="line">  gso.ignore_all_vertices(<span class="keyword">false</span>);</div>
+<div class="line">  gso.colored_vertex = [](<span class="keyword">const</span> Arrangement_2&amp;, Arrangement_2::Vertex_const_handle) -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; };</div>
+<div class="line">  gso.vertex_color = [](<span class="keyword">const</span> Arrangement_2&amp;, Arrangement_2::Vertex_const_handle fh) -&gt; <a id="_a14" name="_a14"></a><a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a></div>
+<div class="line">  { <span class="keywordflow">return</span> <a class="code hl_classRef" href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a>(128, 0, 128); };</div>
+<div class="line">  gso.colored_face = [](<span class="keyword">const</span> Arrangement_2&amp;, Arrangement_2::Face_const_handle) -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; };</div>
+<div class="line">  <a id="a15" name="a15"></a><a class="code hl_functionRef" href="../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Draw.html#ga657040f27d1f07dc8ca1c3221433ba5e">CGAL::draw</a>(arr_2d, gso, <span class="stringliteral">"circle"</span>);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Arr__circle__segment__traits__2_html"><div class="ttname"><a href="../Arrangement_on_surface_2/classCGAL_1_1Arr__circle__segment__traits__2.html">CGAL::Arr_circle_segment_traits_2</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Arrangement__2_html"><div class="ttname"><a href="../Arrangement_on_surface_2/classCGAL_1_1Arrangement__2.html">CGAL::Arrangement_2</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Arrangement__on__curve__1_1_1Arrangement__on__curve__1_html"><div class="ttname"><a href="classCGAL_1_1Arrangement__on__curve__1_1_1Arrangement__on__curve__1.html">CGAL::Arrangement_on_curve_1::Arrangement_on_curve_1</a></div><div class="ttdef"><b>Definition</b> Arrangement_on_curve_1.h:30</div></div>
+<div class="ttc" id="aclassCGAL_1_1Arrangement__on__curve__1_1_1Geom__traits__2__adaptor__1_html"><div class="ttname"><a href="classCGAL_1_1Arrangement__on__curve__1_1_1Geom__traits__2__adaptor__1.html">CGAL::Arrangement_on_curve_1::Geom_traits_2_adaptor_1</a></div><div class="ttdoc">adapts any 2D geometry traits class of the 2D Arrangements package (i.e., any model of the Arrangemen...</div><div class="ttdef"><b>Definition</b> Geom_traits_2_adaptor_1.h:22</div></div>
+<div class="ttc" id="aclassCGAL_1_1Arrangement__on__curve__1_1_1Unbounded__topology__traits_html"><div class="ttname"><a href="classCGAL_1_1Arrangement__on__curve__1_1_1Unbounded__topology__traits.html">CGAL::Arrangement_on_curve_1::Unbounded_topology_traits</a></div><div class="ttdoc">The class template Unbounded_topology_traits provides a model of the AocTopologyTraits concept for 1D...</div><div class="ttdef"><b>Definition</b> Unbounded_topology_traits.h:38</div></div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__exact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__exact__constructions__kernel.html">CGAL::Exact_predicates_exact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1IO_1_1Color_html"><div class="ttname"><a href="../Stream_support/classCGAL_1_1IO_1_1Color.html">CGAL::IO::Color</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Circle__2_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Circle__2.html">Kernel::Circle_2</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Point__2_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__2.html">Kernel::Point_2</a></div></div>
+<div class="ttc" id="agroup__PkgAlgebraicFoundationsRef_html_ga1f1bcd74fce34fd532445590bbda5cd5"><div class="ttname"><a href="../Algebraic_foundations/group__PkgAlgebraicFoundationsRef.html#ga1f1bcd74fce34fd532445590bbda5cd5">CGAL::to_double</a></div><div class="ttdeci">double to_double(const NT &amp;x)</div></div>
+<div class="ttc" id="agroup__PkgArrangementOnCurve1Funcs_html_ga5f01e163e65188f86cef9b90a489111b"><div class="ttname"><a href="group__PkgArrangementOnCurve1Funcs.html#ga5f01e163e65188f86cef9b90a489111b">CGAL::Arrangement_on_curve_1::insert</a></div><div class="ttdeci">Arrangement_on_curve_1&lt; GeometryTraits, TopologyTraits, BinarySearch &gt;::Vertex_descriptor insert(Arrangement_on_curve_1&lt; GeometryTraits, TopologyTraits, BinarySearch &gt; &amp;arr, const typename GeometryTraits::Point_1 &amp;p)</div><div class="ttdoc">inserts a point into an arrangement.</div></div>
+<div class="ttc" id="agroup__PkgArrangementOnCurve1Funcs_html_ga74f9e57dc1d727f551208e14d52612a5"><div class="ttname"><a href="group__PkgArrangementOnCurve1Funcs.html#ga74f9e57dc1d727f551208e14d52612a5">CGAL::Arrangement_on_curve_1::locate</a></div><div class="ttdeci">Arrangement_on_curve_1&lt; GeometryTraits, TopologyTraits, BinarySearch &gt;::Const_location_result locate(Arrangement_on_curve_1&lt; GeometryTraits, TopologyTraits, BinarySearch &gt; &amp;arr, const typename GeometryTraits::Point_1 &amp;q)</div><div class="ttdoc">locates a query point in a given arrangement.</div></div>
+<div class="ttc" id="agroup__PkgArrangementOnSurface2Draw_html_ga657040f27d1f07dc8ca1c3221433ba5e"><div class="ttname"><a href="../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Draw.html#ga657040f27d1f07dc8ca1c3221433ba5e">CGAL::draw</a></div><div class="ttdeci">void draw(const Arrangement_on_surface_2&lt; GeometryTraits, TopologyTraits &gt; &amp;arr, const Bbox_2 &amp;bbox, const GSOptions &amp;gso, const char *title="2D Arrangement on Surface")</div></div>
+<div class="ttc" id="agroup__PkgArrangementOnSurface2Funcs_html_gabfaca749e7d8c9547c143032a0e9df08"><div class="ttname"><a href="../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Funcs.html#gabfaca749e7d8c9547c143032a0e9df08">CGAL::insert_point</a></div><div class="ttdeci">Arrangement_2&lt; Traits, Dcel &gt;::Vertex_handle insert_point(Arrangement_2&lt; Traits, Dcel &gt; &amp;arr, const typename Traits::Point_2 &amp;p, const PointLocation &amp;pl=walk_pl)</div></div>
+<div class="ttc" id="agroup__PkgArrangementOnSurface2Insert_html_gab94ab51b036c862501bc06a8fa48e3f9"><div class="ttname"><a href="../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Insert.html#gab94ab51b036c862501bc06a8fa48e3f9">CGAL::insert</a></div><div class="ttdeci">Arrangement_on_surface_with_history_2&lt; GeometryTraits, TopologyTraits &gt;::Curve_handle insert(Arrangement_on_surface_with_history_2&lt; GeometryTraits, TopologyTraits &gt; &amp;arr, const typename Traits::Curve_2 &amp;c, const PointLocation &amp;pl=walk_pl)</div></div>
+<div class="ttc" id="agroup__kernel__enums_html_ga39fcfbab0b0f0ce9139ad1613e21d60d"><div class="ttname"><a href="../Kernel_23/group__kernel__enums.html#ga39fcfbab0b0f0ce9139ad1613e21d60d">CGAL::COUNTERCLOCKWISE</a></div><div class="ttdeci">const CGAL::Orientation COUNTERCLOCKWISE</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>
