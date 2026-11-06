@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Arrangement_on_surface_2/classAosDcelHalfedge.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - 2D Arrangements: AosDcelHalfedge Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - 2D Arrangements
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classAosDcelHalfedge.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classAosDcelHalfedge-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">AosDcelHalfedge Concept Reference<div class="ingroups"><a class="el" href="group__PkgArrangementOnSurface2Ref.html">Reference Manual</a> » <a class="el" href="group__PkgArrangementOnSurface2Concepts.html">Concepts</a> » <a class="el" href="group__PkgArrangementOnSurface2ConceptsDCEL.html">DCEL Concepts</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><p>A halfedge record in a DCEL data structure. Two halfedges with opposite directions always form an edge (a halfedge pair). The halfedges form together chains, defining the boundaries of connected components, such that all halfedges along a chain have the same incident face. Note that the chain the halfedge belongs to may form the outer boundary of a bounded face (an outer CCB) or the boundary of a hole inside a face (an inner CCB). </p>
+<p>An edge is always associated with a curve, but the halfedge records only store a pointer to the associated curve, and the actual curve objects are stored elsewhere. Two opposite halfedges are always associated with the same curve.</p>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="classAosDcel.html" title="A doubly-connected edge-list (DCEL for short) data-structure. It consists of three containers of reco...">AosDcel</a></code> </dd>
+<dd>
+<code><a class="el" href="classAosDcelVertex.html" title="A vertex record in a DCEL data structure. A vertex is always associated with a point....">AosDcelVertex</a></code> </dd>
+<dd>
+<code><a class="el" href="classAosDcelFace.html" title="A face record in a DCEL data structure. A face represents a region, which may have outer and inner bo...">AosDcelFace</a></code> </dd>
+<dd>
+<code><a class="el" href="classAosDcelOuterCcb.html" title="A hole record in a DCEL data structure, which stores the face that contains the hole in its interior,...">AosDcelOuterCcb</a></code> </dd>
+<dd>
+<code><a class="el" href="classAosDcelInnerCcb.html" title="A hole record in a Dcel data structure, which stores the face that contains the hole in its interior,...">AosDcelInnerCcb</a></code> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr class="memitem:a5f7819a172fdcee7783b5803be0e3fd7"><td class="memItemLeft" align="right" valign="top"><a id="a5f7819a172fdcee7783b5803be0e3fd7" name="a5f7819a172fdcee7783b5803be0e3fd7"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Vertex</b></td></tr>
+<tr class="memdesc:a5f7819a172fdcee7783b5803be0e3fd7"><td class="mdescLeft"> </td><td class="mdescRight">the corresponding DCEL vertex type. <br></td></tr>
+<tr class="separator:a5f7819a172fdcee7783b5803be0e3fd7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a47fb670bab69ff079bbbb3160c10e930"><td class="memItemLeft" align="right" valign="top"><a id="a47fb670bab69ff079bbbb3160c10e930" name="a47fb670bab69ff079bbbb3160c10e930"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Face</b></td></tr>
+<tr class="memdesc:a47fb670bab69ff079bbbb3160c10e930"><td class="mdescLeft"> </td><td class="mdescRight">the corresponding DCEL face type. <br></td></tr>
+<tr class="separator:a47fb670bab69ff079bbbb3160c10e930"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae8269ea8e3a20a8763ea224591e98acf"><td class="memItemLeft" align="right" valign="top"><a id="ae8269ea8e3a20a8763ea224591e98acf" name="ae8269ea8e3a20a8763ea224591e98acf"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Hole</b></td></tr>
+<tr class="memdesc:ae8269ea8e3a20a8763ea224591e98acf"><td class="mdescLeft"> </td><td class="mdescRight">the corresponding DCEL hole type. <br></td></tr>
+<tr class="separator:ae8269ea8e3a20a8763ea224591e98acf"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a22209461ee2f47b697ec01a571ae0442"><td class="memItemLeft" align="right" valign="top"><a id="a22209461ee2f47b697ec01a571ae0442" name="a22209461ee2f47b697ec01a571ae0442"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>X_monotone_curve</b></td></tr>
+<tr class="memdesc:a22209461ee2f47b697ec01a571ae0442"><td class="mdescLeft"> </td><td class="mdescRight">the curve type associated with the edge. <br></td></tr>
+<tr class="separator:a22209461ee2f47b697ec01a571ae0442"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Creation</h2></td></tr>
+<tr class="memitem:af1e76918e91a9ec5073451f25a8661a3"><td class="memItemLeft" align="right" valign="top"><a id="af1e76918e91a9ec5073451f25a8661a3" name="af1e76918e91a9ec5073451f25a8661a3"></a>
+ </td><td class="memItemRight" valign="bottom"><b>Arr_dcel_halfedge</b> ()</td></tr>
+<tr class="memdesc:af1e76918e91a9ec5073451f25a8661a3"><td class="mdescLeft"> </td><td class="mdescRight">default constructor. <br></td></tr>
+<tr class="separator:af1e76918e91a9ec5073451f25a8661a3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aba4b242af07ba5d77b8ea6d3a9a149ed"><td class="memItemLeft" align="right" valign="top"><a id="aba4b242af07ba5d77b8ea6d3a9a149ed" name="aba4b242af07ba5d77b8ea6d3a9a149ed"></a>
+void </td><td class="memItemRight" valign="bottom"><b>assign</b> (const Self &amp;other)</td></tr>
+<tr class="memdesc:aba4b242af07ba5d77b8ea6d3a9a149ed"><td class="mdescLeft"> </td><td class="mdescRight">assigns <code>e</code> with the contents of the <code>other</code> halfedge. <br></td></tr>
+<tr class="separator:aba4b242af07ba5d77b8ea6d3a9a149ed"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Access Functions</h2></td></tr>
+<tr class="memitem:a0b8805ca20f78707cb4c43aa972ca858"><td class="memItemLeft" align="right" valign="top"><a id="a0b8805ca20f78707cb4c43aa972ca858" name="a0b8805ca20f78707cb4c43aa972ca858"></a>
+Arr_halfedge_direction </td><td class="memItemRight" valign="bottom"><b>direction</b> () const</td></tr>
+<tr class="memdesc:a0b8805ca20f78707cb4c43aa972ca858"><td class="mdescLeft"> </td><td class="mdescRight">returns <code>ARR_LEFT_TO_RIGHT</code> if <code>e</code>'s source vertex is lexicographically smaller than it target, and <code>ARR_RIGHT_TO_LEFT</code> if it is lexicographically larger than the target. <br></td></tr>
+<tr class="separator:a0b8805ca20f78707cb4c43aa972ca858"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2bd9c5ac436780557f3c4679d11c1d54"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classAosDcelHalfedge.html#a2bd9c5ac436780557f3c4679d11c1d54">is_on_hole</a> () const</td></tr>
+<tr class="memdesc:a2bd9c5ac436780557f3c4679d11c1d54"><td class="mdescLeft"> </td><td class="mdescRight">determines whether the <code>e</code> lies on an outer CCB of a bounded face, or on an inner CCB (a hole inside a face).  <br></td></tr>
+<tr class="separator:a2bd9c5ac436780557f3c4679d11c1d54"><td class="memSeparator" colspan="2"> </td></tr>
+<tr><td class="ititle" colspan="2"><p>All functions below also have <code>const</code> counterparts, returning non-mutable pointers or references: </p>
+</td></tr>
+<tr class="memitem:aee574ae23bef0a0fd3cc2f9908eb5e0b"><td class="memItemLeft" align="right" valign="top"><a id="aee574ae23bef0a0fd3cc2f9908eb5e0b" name="aee574ae23bef0a0fd3cc2f9908eb5e0b"></a>
+Halfedge * </td><td class="memItemRight" valign="bottom"><b>opposite</b> ()</td></tr>
+<tr class="memdesc:aee574ae23bef0a0fd3cc2f9908eb5e0b"><td class="mdescLeft"> </td><td class="mdescRight">returns the twin halfedge. <br></td></tr>
+<tr class="separator:aee574ae23bef0a0fd3cc2f9908eb5e0b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0dcd9c43d7ae1fbcef6e5e14625916f7"><td class="memItemLeft" align="right" valign="top"><a id="a0dcd9c43d7ae1fbcef6e5e14625916f7" name="a0dcd9c43d7ae1fbcef6e5e14625916f7"></a>
+Halfedge * </td><td class="memItemRight" valign="bottom"><b>prev</b> ()</td></tr>
+<tr class="memdesc:a0dcd9c43d7ae1fbcef6e5e14625916f7"><td class="mdescLeft"> </td><td class="mdescRight">returns the previous halfedge along the chain. <br></td></tr>
+<tr class="separator:a0dcd9c43d7ae1fbcef6e5e14625916f7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1f417692ef2edf059b5ffd536e063c20"><td class="memItemLeft" align="right" valign="top"><a id="a1f417692ef2edf059b5ffd536e063c20" name="a1f417692ef2edf059b5ffd536e063c20"></a>
+Halfedge * </td><td class="memItemRight" valign="bottom"><b>next</b> ()</td></tr>
+<tr class="memdesc:a1f417692ef2edf059b5ffd536e063c20"><td class="mdescLeft"> </td><td class="mdescRight">returns the next halfedge along the chain. <br></td></tr>
+<tr class="separator:a1f417692ef2edf059b5ffd536e063c20"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aab3cae74515d65535f499a712acc9a9a"><td class="memItemLeft" align="right" valign="top"><a id="aab3cae74515d65535f499a712acc9a9a" name="aab3cae74515d65535f499a712acc9a9a"></a>
+<a class="el" href="classAosDcelHalfedge.html#a5f7819a172fdcee7783b5803be0e3fd7">Vertex</a> * </td><td class="memItemRight" valign="bottom"><b>vertex</b> ()</td></tr>
+<tr class="memdesc:aab3cae74515d65535f499a712acc9a9a"><td class="mdescLeft"> </td><td class="mdescRight">returns the target vertex. <br></td></tr>
+<tr class="separator:aab3cae74515d65535f499a712acc9a9a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ade2d76a3613b7c1c43f9d06f44b5a5b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAosDcelHalfedge.html#a47fb670bab69ff079bbbb3160c10e930">Face</a> * </td><td class="memItemRight" valign="bottom"><a class="el" href="classAosDcelHalfedge.html#ade2d76a3613b7c1c43f9d06f44b5a5b8">face</a> ()</td></tr>
+<tr class="memdesc:ade2d76a3613b7c1c43f9d06f44b5a5b8"><td class="mdescLeft"> </td><td class="mdescRight">returns the incident face.  <br></td></tr>
+<tr class="separator:ade2d76a3613b7c1c43f9d06f44b5a5b8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a531384e29262af659dbcda3181133a2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAosDcelHalfedge.html#ae8269ea8e3a20a8763ea224591e98acf">Hole</a> * </td><td class="memItemRight" valign="bottom"><a class="el" href="classAosDcelHalfedge.html#a531384e29262af659dbcda3181133a2b">hole</a> ()</td></tr>
+<tr class="memdesc:a531384e29262af659dbcda3181133a2b"><td class="mdescLeft"> </td><td class="mdescRight">returns the hole (inner CCB) <code>e</code> belongs to.  <br></td></tr>
+<tr class="separator:a531384e29262af659dbcda3181133a2b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a458f845460c679c3dc22ecb05591bf6e"><td class="memItemLeft" align="right" valign="top"><a id="a458f845460c679c3dc22ecb05591bf6e" name="a458f845460c679c3dc22ecb05591bf6e"></a>
+bool </td><td class="memItemRight" valign="bottom"><b>has_null_curve</b> () const</td></tr>
+<tr class="memdesc:a458f845460c679c3dc22ecb05591bf6e"><td class="mdescLeft"> </td><td class="mdescRight">returns whether the vertex is not associated with a valid curve. <br></td></tr>
+<tr class="separator:a458f845460c679c3dc22ecb05591bf6e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad06939419ed3ae5fbf9320c6c51650e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAosDcelHalfedge.html#a22209461ee2f47b697ec01a571ae0442">X_monotone_curve</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classAosDcelHalfedge.html#ad06939419ed3ae5fbf9320c6c51650e1">curve</a> ()</td></tr>
+<tr class="memdesc:ad06939419ed3ae5fbf9320c6c51650e1"><td class="mdescLeft"> </td><td class="mdescRight">returns the associated curve.  <br></td></tr>
+<tr class="separator:ad06939419ed3ae5fbf9320c6c51650e1"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Modifiers</h2></td></tr>
+<tr class="memitem:a19f707fd3aeba9616cec1e0cc029b07b"><td class="memItemLeft" align="right" valign="top"><a id="a19f707fd3aeba9616cec1e0cc029b07b" name="a19f707fd3aeba9616cec1e0cc029b07b"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_opposite</b> (Halfedge *opp)</td></tr>
+<tr class="memdesc:a19f707fd3aeba9616cec1e0cc029b07b"><td class="mdescLeft"> </td><td class="mdescRight">sets the opposite halfedge. <br></td></tr>
+<tr class="separator:a19f707fd3aeba9616cec1e0cc029b07b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad6e39a19852d60896b0ac082988071dc"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classAosDcelHalfedge.html#ad6e39a19852d60896b0ac082988071dc">set_direction</a> (Arr_halfedge_direction dir)</td></tr>
+<tr class="memdesc:ad6e39a19852d60896b0ac082988071dc"><td class="mdescLeft"> </td><td class="mdescRight">sets the lexicographical order between <code>e</code>'s source and target vertices to be <code>dir</code>.  <br></td></tr>
+<tr class="separator:ad6e39a19852d60896b0ac082988071dc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1f1694456e9430ac19c5894e5c5761c6"><td class="memItemLeft" align="right" valign="top"><a id="a1f1694456e9430ac19c5894e5c5761c6" name="a1f1694456e9430ac19c5894e5c5761c6"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_prev</b> (Halfedge *<a class="el" href="classAosDcelHalfedge.html#a0dcd9c43d7ae1fbcef6e5e14625916f7">prev</a>)</td></tr>
+<tr class="memdesc:a1f1694456e9430ac19c5894e5c5761c6"><td class="mdescLeft"> </td><td class="mdescRight">sets the previous halfedge of <code>e</code> along the chain, and updates the cross-pointer <code>prev-&gt;<a class="el" href="classAosDcelHalfedge.html#a1f417692ef2edf059b5ffd536e063c20" title="returns the next halfedge along the chain.">next()</a></code>. <br></td></tr>
+<tr class="separator:a1f1694456e9430ac19c5894e5c5761c6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adf75bb35dcf1732d10b92fafdb9028d5"><td class="memItemLeft" align="right" valign="top"><a id="adf75bb35dcf1732d10b92fafdb9028d5" name="adf75bb35dcf1732d10b92fafdb9028d5"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_next</b> (Halfedge *<a class="el" href="classAosDcelHalfedge.html#a1f417692ef2edf059b5ffd536e063c20">next</a>)</td></tr>
+<tr class="memdesc:adf75bb35dcf1732d10b92fafdb9028d5"><td class="mdescLeft"> </td><td class="mdescRight">sets the next halfedge of <code>e</code> along the chain, and updates the cross-pointer <code>next-&gt;<a class="el" href="classAosDcelHalfedge.html#a0dcd9c43d7ae1fbcef6e5e14625916f7" title="returns the previous halfedge along the chain.">prev()</a></code>. <br></td></tr>
+<tr class="separator:adf75bb35dcf1732d10b92fafdb9028d5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7b11b6d66f83c42c0828736e9cca3ffd"><td class="memItemLeft" align="right" valign="top"><a id="a7b11b6d66f83c42c0828736e9cca3ffd" name="a7b11b6d66f83c42c0828736e9cca3ffd"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_vertex</b> (<a class="el" href="classAosDcelHalfedge.html#a5f7819a172fdcee7783b5803be0e3fd7">Vertex</a> *v)</td></tr>
+<tr class="memdesc:a7b11b6d66f83c42c0828736e9cca3ffd"><td class="mdescLeft"> </td><td class="mdescRight">sets the target vertex. <br></td></tr>
+<tr class="separator:a7b11b6d66f83c42c0828736e9cca3ffd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acbe36d11265507bf2a3e59a54a3905ba"><td class="memItemLeft" align="right" valign="top"><a id="acbe36d11265507bf2a3e59a54a3905ba" name="acbe36d11265507bf2a3e59a54a3905ba"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_face</b> (<a class="el" href="classAosDcelHalfedge.html#a47fb670bab69ff079bbbb3160c10e930">Face</a> *f)</td></tr>
+<tr class="memdesc:acbe36d11265507bf2a3e59a54a3905ba"><td class="mdescLeft"> </td><td class="mdescRight">sets the incident face, marking that <code>e</code> lies on the outer CCB of the face <code>f</code>. <br></td></tr>
+<tr class="separator:acbe36d11265507bf2a3e59a54a3905ba"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1cd2fa9d5fb4fc35078256b11a5184ff"><td class="memItemLeft" align="right" valign="top"><a id="a1cd2fa9d5fb4fc35078256b11a5184ff" name="a1cd2fa9d5fb4fc35078256b11a5184ff"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_hole</b> (<a class="el" href="classAosDcelHalfedge.html#ae8269ea8e3a20a8763ea224591e98acf">Hole</a> *ho)</td></tr>
+<tr class="memdesc:a1cd2fa9d5fb4fc35078256b11a5184ff"><td class="mdescLeft"> </td><td class="mdescRight">sets the incident hole, marking that <code>e</code> lies on an inner CCB. <br></td></tr>
+<tr class="separator:a1cd2fa9d5fb4fc35078256b11a5184ff"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3470063b49583644b1ee316602cac0d3"><td class="memItemLeft" align="right" valign="top"><a id="a3470063b49583644b1ee316602cac0d3" name="a3470063b49583644b1ee316602cac0d3"></a>
+void </td><td class="memItemRight" valign="bottom"><b>set_curve</b> (<a class="el" href="classAosDcelHalfedge.html#a22209461ee2f47b697ec01a571ae0442">X_monotone_curve</a> *c)</td></tr>
+<tr class="memdesc:a3470063b49583644b1ee316602cac0d3"><td class="mdescLeft"> </td><td class="mdescRight">sets the associated curve of <code>e</code> and its opposite halfedge. <br></td></tr>
+<tr class="separator:a3470063b49583644b1ee316602cac0d3"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad06939419ed3ae5fbf9320c6c51650e1" name="ad06939419ed3ae5fbf9320c6c51650e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad06939419ed3ae5fbf9320c6c51650e1">◆ </a></span>curve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAosDcelHalfedge.html#a22209461ee2f47b697ec01a571ae0442">X_monotone_curve</a> &amp; AosDcelHalfedge::curve </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the associated curve. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>e</code> is associated with a valid curve. </dd></dl>
+
+</div>
+</div>
+<a id="ade2d76a3613b7c1c43f9d06f44b5a5b8" name="ade2d76a3613b7c1c43f9d06f44b5a5b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade2d76a3613b7c1c43f9d06f44b5a5b8">◆ </a></span>face()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAosDcelHalfedge.html#a47fb670bab69ff079bbbb3160c10e930">Face</a> * AosDcelHalfedge::face </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the incident face. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>e</code> lies on the outer boundary of this face. </dd></dl>
+
+</div>
+</div>
+<a id="a531384e29262af659dbcda3181133a2b" name="a531384e29262af659dbcda3181133a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a531384e29262af659dbcda3181133a2b">◆ </a></span>hole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAosDcelHalfedge.html#ae8269ea8e3a20a8763ea224591e98acf">Hole</a> * AosDcelHalfedge::hole </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the hole (inner CCB) <code>e</code> belongs to. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>e</code> lies on a hole inside its incident face. </dd></dl>
+
+</div>
+</div>
+<a id="a2bd9c5ac436780557f3c4679d11c1d54" name="a2bd9c5ac436780557f3c4679d11c1d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd9c5ac436780557f3c4679d11c1d54">◆ </a></span>is_on_hole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AosDcelHalfedge::is_on_hole </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>determines whether the <code>e</code> lies on an outer CCB of a bounded face, or on an inner CCB (a hole inside a face). </p>
+<p>The function returns <code>true</code> if <code>e</code> lies on a hole. </p>
+
+</div>
+</div>
+<a id="ad6e39a19852d60896b0ac082988071dc" name="ad6e39a19852d60896b0ac082988071dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6e39a19852d60896b0ac082988071dc">◆ </a></span>set_direction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AosDcelHalfedge::set_direction </td>
+          <td>(</td>
+          <td class="paramtype">Arr_halfedge_direction </td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets the lexicographical order between <code>e</code>'s source and target vertices to be <code>dir</code>. </p>
+<p>The direction of the opposite halfedge is also set to the opposite direction. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classAosDcelHalfedge.html">AosDcelHalfedge</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

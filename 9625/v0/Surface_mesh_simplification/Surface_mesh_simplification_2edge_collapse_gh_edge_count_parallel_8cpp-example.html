@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Surface_mesh_simplification/Surface_mesh_simplification_2edge_collapse_gh_edge_count_parallel_8cpp-example.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3-dev - Triangulated Surface Mesh Simplification: Surface_mesh_simplification/edge_collapse_gh_edge_count_parallel.cpp</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3-dev - Triangulated Surface Mesh Simplification
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('Surface_mesh_simplification_2edge_collapse_gh_edge_count_parallel_8cpp-example.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">Surface_mesh_simplification/edge_collapse_gh_edge_count_parallel.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;CGAL/Simple_cartesian.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh_simplification/Policies/Edge_collapse/Edge_count_stop_predicate.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh_simplification/Policies/Edge_collapse/Bounded_normal_change_filter.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh_simplification/Policies/Edge_collapse/GarlandHeckbert_policies.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Surface_mesh_simplification/edge_collapse.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/boost/graph/Face_filtered_graph.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="../BGL/partition_8h.html">CGAL/boost/graph/partition.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Real_timer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/polygon_soup_to_polygon_mesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/stitch_borders.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;tbb/task_group.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a id="_a0" name="_a0"></a><a class="code hl_classRef" href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a>                 <a class="code hl_namespaceRef" href="../Kernel_23/namespaceKernel.html">Kernel</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> <a id="_a1" name="_a1"></a><a class="code hl_classRef" href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a>                                                     Point_3;</div>
+<div class="line"><span class="keyword">typedef</span> <a id="_a2" name="_a2"></a><a class="code hl_classRef" href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh&lt;Point_3&gt;</a>                                         Triangle_mesh;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>SMS = <a class="code hl_namespace" href="namespaceCGAL_1_1Surface__mesh__simplification.html">CGAL::Surface_mesh_simplification</a>;</div>
+<div class="line"><span class="keyword">namespace </span>PMP = <a class="code hl_namespaceRef" href="../Polygon_mesh_processing/structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html">CGAL::Polygon_mesh_processing</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> SMS::GarlandHeckbert_plane_and_line_policies&lt;Triangle_mesh, Kernel&gt; Plane_and_line;</div>
+<div class="line"><span class="keyword">typedef</span> Plane_and_line::Get_cost                                            GH_cost;</div>
+<div class="line"><span class="keyword">typedef</span> Plane_and_line::Get_placement                                       GH_placement;</div>
+<div class="line"><span class="keyword">typedef</span> SMS::Bounded_normal_change_filter&lt;&gt;                                 Filter;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>Border_is_constrained_edge_map{</div>
+<div class="line">  <span class="keyword">const</span> Triangle_mesh&amp; sm;</div>
+<div class="line">  <span class="keyword">typedef</span> Triangle_mesh::Edge_index key_type;</div>
+<div class="line">  <span class="keyword">typedef</span> <span class="keywordtype">bool</span> value_type;</div>
+<div class="line">  <span class="keyword">typedef</span> value_type reference;</div>
+<div class="line">  <span class="keyword">typedef</span> boost::readable_property_map_tag category;</div>
+<div class="line">  Border_is_constrained_edge_map(<span class="keyword">const</span> Triangle_mesh&amp; sm)</div>
+<div class="line">    : sm(sm)</div>
+<div class="line">  {}</div>
+<div class="line">  <span class="keyword">friend</span> <span class="keywordtype">bool</span> get(Border_is_constrained_edge_map m, <span class="keyword">const</span> key_type&amp; edge) {</div>
+<div class="line">    <span class="keywordflow">return</span>  <a id="a3" name="a3"></a><a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#gad93e429ad24efeaddeb836c437e719ab">CGAL::is_border</a>(edge, m.sm);</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>Simplify</div>
+<div class="line">{</div>
+<div class="line">  Triangle_mesh* tm_ptr;</div>
+<div class="line">  std::size_t thread_expected_nb_edges;</div>
+<div class="line"> </div>
+<div class="line">  Simplify()</div>
+<div class="line">    :tm_ptr(NULL), thread_expected_nb_edges(0)</div>
+<div class="line">  {}</div>
+<div class="line"> </div>
+<div class="line">  Simplify(Triangle_mesh&amp; tm, <span class="keywordtype">double</span> ratio)</div>
+<div class="line">    : tm_ptr(&amp;tm)</div>
+<div class="line">  {</div>
+<div class="line">    std::size_t nb_edges = num_edges(tm);</div>
+<div class="line">    thread_expected_nb_edges=nb_edges*ratio*1.01; <span class="comment">// we take more on purpose to let the last pass achieve expected nb</span></div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">void</span> operator()()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">  </span>{</div>
+<div class="line">    SMS::Edge_count_stop_predicate&lt;Triangle_mesh&gt; stop(thread_expected_nb_edges);</div>
+<div class="line"> </div>
+<div class="line">    Plane_and_line gh_policies(*tm_ptr);</div>
+<div class="line">    <span class="keyword">const</span> GH_cost&amp; gh_cost = gh_policies.get_cost();</div>
+<div class="line">    <span class="keyword">const</span> GH_placement&amp; gh_placement = gh_policies.get_placement();</div>
+<div class="line">    Filter filter;</div>
+<div class="line">    Border_is_constrained_edge_map eicm(*tm_ptr);</div>
+<div class="line"> </div>
+<div class="line">    SMS::edge_collapse(*tm_ptr, stop,</div>
+<div class="line">                       CGAL::parameters::get_cost(gh_cost)</div>
+<div class="line">                                        .edge_is_constrained_map(eicm)</div>
+<div class="line">                                        .filter(filter)</div>
+<div class="line">                                        .get_placement(gh_placement));</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">typedef</span> boost::graph_traits&lt;Triangle_mesh&gt;::face_descriptor face_descriptor;</div>
+<div class="line"> </div>
+<div class="line">  std::ifstream in((argc&gt;1) ? std::string(argv[1]) : <a id="_a4" name="_a4"></a><a class="code hl_functionRef" href="../Stream_support/group__PkgStreamSupportRef.html#gabf14a3c800abc7d91fb935b4f1b1663a">CGAL::data_file_path</a>(<span class="stringliteral">"meshes/refined_elephant.off"</span>));</div>
+<div class="line">  <span class="keywordtype">double</span> ratio = (argc &gt; 2) ? std::stod(argv[2]) : 0.2;</div>
+<div class="line">  <span class="keywordtype">int</span> number_of_parts = (argc&gt;3) ? std::atoi(argv[3]) : 8;</div>
+<div class="line"> </div>
+<div class="line">  Triangle_mesh tm;</div>
+<div class="line">  in &gt;&gt; tm;</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"Input: #V = "</span>&lt;&lt; num_vertices(tm) &lt;&lt; <span class="stringliteral">" #E = "</span>&lt;&lt; num_edges(tm)</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">" #F = "</span> &lt;&lt; num_faces(tm) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::size_t nb_in_edges=num_edges(tm);</div>
+<div class="line">  std::size_t expected_nb_edges=nb_in_edges*ratio;</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"expected # output edges "</span> &lt;&lt; expected_nb_edges &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// we give on purpose a higher target per thread to let the last pass achieve the expected number</span></div>
+<div class="line">  CGAL::Real_timer t;</div>
+<div class="line">  t.start();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Partition ID map</span></div>
+<div class="line">  Triangle_mesh::Property_map&lt;face_descriptor, std::size_t&gt; fpmap</div>
+<div class="line">    = tm.add_property_map&lt;face_descriptor, std::size_t&gt;(<span class="stringliteral">"f:partition"</span>).first;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Set some custom options for METIS</span></div>
+<div class="line">  idx_t options[METIS_NOPTIONS];</div>
+<div class="line">  METIS_SetDefaultOptions(options);</div>
+<div class="line">  options[METIS_OPTION_CONTIG] = 1; <span class="comment">// need to have contiguous subdomains</span></div>
+<div class="line">  options[METIS_OPTION_UFACTOR] = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a id="a5" name="a5"></a><a class="code hl_functionRef" href="../BGL/group__PkgBGLPartition.html#gad72efc6b61c92ee8704858dc0b7062e9">CGAL::METIS::partition_dual_graph</a>(tm, number_of_parts, CGAL::parameters::METIS_options(&amp;options)</div>
+<div class="line">                                    <span class="comment">// .vertex_index_map(get(boost::vertex_index,tm))</span></div>
+<div class="line">                                                                          .face_partition_id_map(fpmap));</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <a id="_a6" name="_a6"></a><a class="code hl_structRef" href="../BGL/structCGAL_1_1Face__filtered__graph.html">CGAL::Face_filtered_graph&lt;Triangle_mesh&gt;</a> fg(tm);</div>
+<div class="line">  std::vector&lt;Triangle_mesh&gt; meshes(number_of_parts);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt; number_of_parts; ++i)</div>
+<div class="line">  {</div>
+<div class="line">    fg.set_selected_faces(i, fpmap);</div>
+<div class="line">    <a id="a7" name="a7"></a><a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#ga2682fb7d5f4ff4eb65607ae4118e31bc">CGAL::copy_face_graph</a>(fg, meshes[i]);</div>
+<div class="line">  }</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Partition computed in "</span> &lt;&lt; t.time() &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  tbb::task_group tasks;</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>=0; <span class="keywordtype">id</span>&lt;number_of_parts; ++id)</div>
+<div class="line">  {</div>
+<div class="line">    tasks.run(Simplify(meshes[<span class="keywordtype">id</span>], ratio));</div>
+<div class="line">  }</div>
+<div class="line">  tasks.wait();</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">"Parallel decimation done in "</span> &lt;&lt; t.time() &lt;&lt; <span class="stringliteral">"\n"</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// reassemble the mesh</span></div>
+<div class="line">  Triangle_mesh final_mesh;</div>
+<div class="line">  Triangle_mesh::size_type nv = 0, nf = 0, ne = 0;</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt; number_of_parts; ++i)</div>
+<div class="line">  {</div>
+<div class="line">    meshes[i].collect_garbage();</div>
+<div class="line">    nv += num_vertices(meshes[i]);</div>
+<div class="line">    nf += num_faces(meshes[i]);</div>
+<div class="line">    ne += num_edges(meshes[i]);</div>
+<div class="line">  }</div>
+<div class="line">  final_mesh.reserve(nv, ne, nf);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt; number_of_parts; ++i)</div>
+<div class="line">  {</div>
+<div class="line">    <a class="code hl_functionRef" href="../BGL/group__PkgBGLHelperFct.html#ga2682fb7d5f4ff4eb65607ae4118e31bc">CGAL::copy_face_graph</a>(meshes[i], final_mesh);</div>
+<div class="line">  }</div>
+<div class="line">  PMP::stitch_borders(final_mesh);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// final pass (could be applied only on interface boundaries)</span></div>
+<div class="line">  SMS::Edge_count_stop_predicate&lt;Triangle_mesh&gt; stop(expected_nb_edges);</div>
+<div class="line"> </div>
+<div class="line">  Plane_and_line gh_policies(final_mesh);</div>
+<div class="line">  <span class="keyword">const</span> GH_cost&amp; gh_cost = gh_policies.get_cost();</div>
+<div class="line">  <span class="keyword">const</span> GH_placement&amp; gh_placement = gh_policies.get_placement();</div>
+<div class="line">  Filter filter;</div>
+<div class="line"> </div>
+<div class="line">  SMS::edge_collapse(final_mesh, stop,</div>
+<div class="line">                     CGAL::parameters::get_cost(gh_cost)</div>
+<div class="line">                                      .filter(filter)</div>
+<div class="line">                                      .get_placement(gh_placement));</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  final_mesh.collect_garbage();</div>
+<div class="line">  t.stop();</div>
+<div class="line"> </div>
+<div class="line">  std::cerr &lt;&lt; <span class="stringliteral">"  Total time: "</span> &lt;&lt; t.time() &lt;&lt; <span class="stringliteral">" sec.\n"</span></div>
+<div class="line">          &lt;&lt; <span class="stringliteral">"  Result: #V = "</span> &lt;&lt; num_vertices(final_mesh)</div>
+<div class="line">          &lt;&lt; <span class="stringliteral">" #E = "</span> &lt;&lt; num_edges(final_mesh)</div>
+<div class="line">          &lt;&lt; <span class="stringliteral">" #F = "</span> &lt;&lt; num_faces(final_mesh) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::ofstream(<span class="stringliteral">"decimated_mesh_parallel.off"</span>) &lt;&lt; std::setprecision(17) &lt;&lt; final_mesh;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassCGAL_1_1Exact__predicates__inexact__constructions__kernel_html"><div class="ttname"><a href="../Kernel_23/classCGAL_1_1Exact__predicates__inexact__constructions__kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel</a></div></div>
+<div class="ttc" id="aclassCGAL_1_1Surface__mesh_html"><div class="ttname"><a href="../Surface_mesh/classCGAL_1_1Surface__mesh.html">CGAL::Surface_mesh</a></div></div>
+<div class="ttc" id="aclassKernel_1_1Point__3_html"><div class="ttname"><a href="../Kernel_23/classKernel_1_1Point__3.html">Kernel::Point_3</a></div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_ga2682fb7d5f4ff4eb65607ae4118e31bc"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#ga2682fb7d5f4ff4eb65607ae4118e31bc">CGAL::copy_face_graph</a></div><div class="ttdeci">void copy_face_graph(const SourceMesh &amp;sm, TargetMesh &amp;tm, const NamedParameters1 &amp;np1=parameters::default_values(), const NamedParameters2 &amp;np2=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgBGLHelperFct_html_gad93e429ad24efeaddeb836c437e719ab"><div class="ttname"><a href="../BGL/group__PkgBGLHelperFct.html#gad93e429ad24efeaddeb836c437e719ab">CGAL::is_border</a></div><div class="ttdeci">bool is_border(typename boost::graph_traits&lt; FaceGraph &gt;::halfedge_descriptor hd, const FaceGraph &amp;g)</div></div>
+<div class="ttc" id="agroup__PkgBGLPartition_html_gad72efc6b61c92ee8704858dc0b7062e9"><div class="ttname"><a href="../BGL/group__PkgBGLPartition.html#gad72efc6b61c92ee8704858dc0b7062e9">CGAL::METIS::partition_dual_graph</a></div><div class="ttdeci">void partition_dual_graph(const TriangleMesh &amp;tm, int nparts, const NamedParameters &amp;np=parameters::default_values())</div></div>
+<div class="ttc" id="agroup__PkgStreamSupportRef_html_gabf14a3c800abc7d91fb935b4f1b1663a"><div class="ttname"><a href="../Stream_support/group__PkgStreamSupportRef.html#gabf14a3c800abc7d91fb935b4f1b1663a">CGAL::data_file_path</a></div><div class="ttdeci">std::filesystem::path data_file_path(const std::filesystem::path &amp;filename)</div></div>
+<div class="ttc" id="anamespaceCGAL_1_1Surface__mesh__simplification_html"><div class="ttname"><a href="namespaceCGAL_1_1Surface__mesh__simplification.html">CGAL::Surface_mesh_simplification</a></div><div class="ttdef"><b>Definition</b> edge_collapse.h:2</div></div>
+<div class="ttc" id="anamespaceKernel_html"><div class="ttname"><a href="../Kernel_23/namespaceKernel.html">Kernel</a></div></div>
+<div class="ttc" id="apartition_8h_html"><div class="ttname"><a href="../BGL/partition_8h.html">partition.h</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Face__filtered__graph_html"><div class="ttname"><a href="../BGL/structCGAL_1_1Face__filtered__graph.html">CGAL::Face_filtered_graph</a></div></div>
+<div class="ttc" id="astructCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions_html"><div class="ttname"><a href="../Polygon_mesh_processing/structCGAL_1_1Polygon__mesh__processing_1_1Principal__curvatures__and__directions.html">CGAL::Polygon_mesh_processing</a></div></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

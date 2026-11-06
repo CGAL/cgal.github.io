@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['tags_0',['Tags',['../../Circulator/group__PkgHandlesAndCirculatorsTags.html',1,'Compile Time Tags'],['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2Tags.html',1,'Tags']]],
+  ['tangent_20weight_1',['Tangent Weight',['../../Weights/group__PkgWeightsRefTangentWeights.html',1,'']]],
+  ['templates_2',['Classes and Class Templates',['../../Constrained_triangulation_3/group__PkgConstrainedTriangulation3Classes.html',1,'']]],
+  ['test_20functions_3',['Intersection Test Functions',['../../Convex_hull_3/group__PkgConvexHull3Intersections.html',1,'']]],
+  ['testing_20functions_4',['Polygon Intersection Testing Functions',['../../Boolean_set_operations_2/group__boolean__do__intersect.html',1,'']]],
+  ['testing_20functions_20cgal_3a_3ado_5fintersect_5',['Intersection Testing Functions - CGAL::do_intersect()',['../../Kernel_23/group__do__intersect__grp.html',1,'']]],
+  ['three_20point_20family_20weight_6',['Three Point Family Weight',['../../Weights/group__PkgWeightsRefThreePointFamilyWeights.html',1,'']]],
+  ['time_20tags_7',['Compile Time Tags',['../../Circulator/group__PkgHandlesAndCirculatorsTags.html',1,'']]],
+  ['tools_8',['Dimension Handling Tools',['../../Kernel_23/group__kernel__dimension.html',1,'']]],
+  ['top_20edges_9',['Top Edges',['../../Set_movable_separability_2/group__top__edges__grp.html',1,'']]],
+  ['topology_20traits_20concepts_10',['Topology Traits Concepts',['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2ConceptsTopologyTraits.html',1,'']]],
+  ['traits_11',['Traits',['../../Orthtree/group__PkgOrthtreeTraits.html',1,'']]],
+  ['traits_20classes_12',['Traits Classes',['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2TraitsClasses.html',1,'Geometry Traits Classes'],['../../Spatial_searching/group__SearchTraitsClasses.html',1,'Search Traits Classes'],['../../Convex_hull_2/group__PkgConvexHull2Traits.html',1,'Traits Classes'],['../../Convex_hull_3/group__PkgConvexHull3Traits.html',1,'Traits Classes'],['../../Frechet_distance/group__PkgFrechetDistanceTraits.html',1,'Traits Classes'],['../../Triangulation_2/group__PkgTriangulation2TraitsClasses.html',1,'Traits Classes'],['../../Periodic_2_triangulation_2/group__PkgPeriodic2Triangulation2TraitsClasses.html',1,'Traits Classes'],['../../Hyperbolic_triangulation_2/group__PkgHyperbolicTriangulation2TraitsClasses.html',1,'Traits Classes'],['../../Triangulation_on_hyperbolic_surface_2/group__PkgHyperbolicSurfaceTriangulation2TraitsClasses.html',1,'Traits Classes'],['../../Periodic_4_hyperbolic_triangulation_2/group__PkgPeriodic4HyperbolicTriangulation2TraitsClasses.html',1,'Traits Classes'],['../../Triangulation_3/group__PkgTriangulation3TraitsClasses.html',1,'Traits Classes'],['../../Periodic_3_triangulation_3/group__PkgPeriodic3Triangulation3TraitsClasses.html',1,'Traits Classes'],['../../Triangulation/group__PkgTriangulationsTraitsClasses.html',1,'Traits Classes'],['../../Surface_mesh_shortest_path/group__PkgSurfaceMeshShortestPathTraitsClasses.html',1,'Traits Classes'],['../../SearchStructures/group__PkgSearchStructuresTraitsClasses.html',1,'Traits Classes'],['../../Spatial_sorting/group__PkgSpatialSortingTraits.html',1,'Traits Classes']]],
+  ['traits_20concepts_13',['Traits Concepts',['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2ConceptsTraits.html',1,'Geometry Traits Concepts'],['../../Arrangement_on_surface_2/group__PkgArrangementOnSurface2ConceptsTopologyTraits.html',1,'Topology Traits Concepts']]],
+  ['translations_20classes_14',['Hyperbolic Translations Classes',['../../Periodic_4_hyperbolic_triangulation_2/group__PkgPeriodic4HyperbolicTriangulation2HyperbolicTranslationsClasses.html',1,'']]],
+  ['traversal_15',['Traversal',['../../BGL/group__PkgBGLTraversal.html',1,'Graph Traversal'],['../../Orthtree/group__PkgOrthtreeTraversal.html',1,'Traversal']]],
+  ['triangular_20region_20weight_16',['Triangular Region Weight',['../../Weights/group__PkgWeightsRefTriangularRegionWeights.html',1,'']]],
+  ['triangulation_17',['Triangulation',['../../Periodic_2_triangulation_2/group__PkgDrawPeriodic2Triangulation2.html',1,'Draw a 2D Periodic Triangulation'],['../../Constrained_triangulation_3/group__PkgDrawCDT__3.html',1,'Draw a 3D Constrained Triangulation']]],
+  ['triangulation_202_18',['Triangulation 2',['../../Triangulation_2/group__PkgDrawConstrainedTriangulation2.html',1,'Draw a Constrained Triangulation 2'],['../../Triangulation_2/group__PkgDrawTriangulation2.html',1,'Draw a Triangulation 2']]],
+  ['triangulation_203_19',['Triangulation 3',['../../Triangulation_3/group__PkgDrawTriangulation3.html',1,'Draw a Triangulation 3'],['../../Triangulation_3/group__PkgIOTriangulation3.html',1,'I/O for a Triangulation 3']]],
+  ['triangulation_20classes_20',['Triangulation Classes',['../../Triangulation_2/group__PkgTriangulation2TriangulationClasses.html',1,'Triangulation Classes'],['../../Triangulation_on_sphere_2/group__PkgTriangulationOnSphere2TriangulationClasses.html',1,'Triangulation Classes'],['../../Triangulation_3/group__PkgTriangulation3TriangulationClasses.html',1,'Triangulation Classes'],['../../Triangulation/group__PkgTriangulationsTriangulationClasses.html',1,'Triangulation Classes']]],
+  ['triangulation_5fdata_5fstructure_5f3_21',['I/O for a Triangulation_data_structure_3',['../../TDS_3/group__PkgIOTDS3.html',1,'']]],
+  ['triangulations_22',['Free Functions for Creating Conforming Constrained Delaunay Triangulations',['../../Constrained_triangulation_3/group__PkgConstrainedTriangulation3FunctionsPolygonSoupOrMesh.html',1,'']]],
+  ['types_23',['CGAL Number Types',['../../Number_types/group__nt__cgal.html',1,'']]],
+  ['types_24',['Built-in types',['../../Number_types/group__nt__builtin.html',1,'']]]
+];

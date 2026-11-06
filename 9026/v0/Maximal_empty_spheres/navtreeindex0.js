@@ -1,0 +1,19 @@
+var NAVTREEINDEX0 =
+{
+"Maximal_empty_spheres_2maximal_empty_spheres_3_8cpp-example.html":[2,0],
+"examples.html":[2],
+"group__PkgMaximalEmptySpheresConcepts.html":[1,0,0],
+"group__PkgMaximalEmptySpheresFunctions.html":[1,0,1],
+"group__PkgMaximalEmptySpheresFunctions.html#ga47c4b149e9d0b36eeb06bd1f21919f0f":[1,0,1,0],
+"group__PkgMaximalEmptySpheresMiscellaneous.html":[1,0,3],
+"group__PkgMaximalEmptySpheresRef.html":[1,0],
+"group__PkgMaximalEmptySpheresTraitsClasses.html":[1,0,2],
+"index.html":[],
+"index.html":[0],
+"index.html#sec_MES_Definitions":[0,0],
+"index.html#sec_MES_xamples":[0,1],
+"index.html#subsec_MES_FirstExample":[0,1,0],
+"index.html#subsec_MES_Implementation":[0,1,1],
+"modules.html":[1],
+"pages.html":[]
+};

@@ -1,0 +1,66 @@
+var group__PkgHDVFIOClasses =
+[
+    [ "CGAL::Homological_discrete_vector_field::Cub_object_io< Traits >", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html", [
+      [ "Cub_object_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a7cf71e43ebcf4f38fc1e1b2c0c370d9b", null ],
+      [ "Cub_object_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#ab546e109074fe65092aabbaf201521a7", null ],
+      [ "Cub_object_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#ab4151d09d159995fabeedcbf6df5a4a2", null ],
+      [ "add_cub", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a68976fe8125e9997a07ef5bae6f1314b", null ],
+      [ "clear_cubs", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a5535b98037ecb7937746daaa35802965", null ],
+      [ "frame", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a06a629311548af7a44f85013915a7913", null ],
+      [ "print_infos", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a5b7342602713036856e5e6c18a370c29", null ],
+      [ "read_cub", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a1f076701ec83ceb133c0edfef241497a", null ],
+      [ "read_pgm", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#abde0e4e3a45fe610d9fd3cf65d2385f2", null ],
+      [ "cubs", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a8f8ca994febd75faf3afb4279159d3f1", null ],
+      [ "dim", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a0bc4f7ea9cd26eed47f9e667b915c3c8", null ],
+      [ "khalimsky", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#a2dbac119d23f7d2c90ae8f9327cd689c", null ],
+      [ "N", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#ad0ba65651cc37c68e278db97b23a9491", null ],
+      [ "ncubs", "classCGAL_1_1Homological__discrete__vector__field_1_1Cub__object__io.html#ac16ca4ee3d893a07aa552cc29374a675", null ]
+    ] ],
+    [ "CGAL::Homological_discrete_vector_field::Mesh_object_io< Traits >", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html", [
+      [ "Bbox", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a3382f8ea13c6cd77c8778bdfc5198c43", null ],
+      [ "Point", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a713728f28567c46f78ff681c05e773d7", null ],
+      [ "Mesh_object_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#ae2dff4a529a5fc2a28a84bb5e837c191", null ],
+      [ "Mesh_object_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#afe73d96fd7a0d2da20a5b99603b6c310", null ],
+      [ "Mesh_object_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a0d104834993bb52b3022c007f56d98f6", null ],
+      [ "add_cell", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a0414847c6600d6c7d1a1ba079456a744", null ],
+      [ "add_node", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a290e584ea4f9c020d9d3d1040462b883", null ],
+      [ "bbox", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#ad9974b14366274e56346077ce4270dfb", null ],
+      [ "cells_of_dim", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a9b3a92e92d94e1d3c9d55fea8c022a1b", null ],
+      [ "centroid", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a1361bec9e34dc5570878d4fca9cadf96", null ],
+      [ "clear", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#ac3047f95003dd4c46d7b1b0c73714605", null ],
+      [ "clear_cells", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a94895611c8773fa71682256687d28e0a", null ],
+      [ "clear_nodes", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#ab7609a63942ef76e9ba56b5529c66101", null ],
+      [ "get_nodes", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#ad8b60a108997f5ec14df9e5dca1f0d90", null ],
+      [ "print_infos", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a41069d60665b0488072481c1fb8c368f", null ],
+      [ "push_back", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a0867fc7497efa141fd427e10d8c533bb", null ],
+      [ "radius", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a47e3a5199bf57d9ffc013f2b6e4649b8", null ],
+      [ "read_nodes_file", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a596c767b94f92b581b151dfaeec3fe67", null ],
+      [ "read_off", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a9d9b89b8fa04724fd03a4d538ec53460", null ],
+      [ "read_simp", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#aeed4641f984a57707ee535f1c92d9506", null ],
+      [ "write_off", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a408bcb3b940c794a1ef27d754a730187", null ],
+      [ "write_simp", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a4ff9e19ad679f373587df3d0f45b83b1", null ],
+      [ "write_to_vtk", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#af2af21b539e954d1baac3b7dd512d7a2", null ],
+      [ "operator<<", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a8dfc43ef2579023180458ea13c9cc70f", null ],
+      [ "cells", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a57eab1168e1d30261fc289b152da3bf5", null ],
+      [ "dim", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a8cd340d8796ff4c0a135d3c81a77ea5b", null ],
+      [ "ncells", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a7c1ebb56c1059c1f26629d730bf83fc7", null ],
+      [ "nedges", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#aab1cb16011566e6545856b932be57950", null ],
+      [ "nodes", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#a55eb23997ad36996d9add3a73d6dfab8", null ],
+      [ "nvertices", "classCGAL_1_1Homological__discrete__vector__field_1_1Mesh__object__io.html#ab7b3d6a0f4d6a19185af33766ff48862", null ]
+    ] ],
+    [ "CGAL::Homological_discrete_vector_field::Surface_mesh_io< TriangleMesh, Traits >", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html", [
+      [ "edge_descriptor", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html#ad7bd4abd06decf22c33ad15d6e1b8685", null ],
+      [ "face_descriptor", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html#a80d8064abf1e4b83a2c8ec65b3410cef", null ],
+      [ "halfedge_descriptor", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html#ac0145f1cee9ea01a5bc3464b812ca574", null ],
+      [ "Surface_mesh", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html#a79f7ca4fc891d8df1479296151f35f9a", null ],
+      [ "vertex_descriptor", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html#a90ad0d9e753c5b98068c3a2db0e7df46", null ],
+      [ "Surface_mesh_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Surface__mesh__io.html#ad6d1cf00e6196e97604d008adc79ccab", null ]
+    ] ],
+    [ "CGAL::Homological_discrete_vector_field::Triangulation_3_io< Triangulation3, Traits >", "classCGAL_1_1Homological__discrete__vector__field_1_1Triangulation__3__io.html", [
+      [ "cell_descriptor", "classCGAL_1_1Homological__discrete__vector__field_1_1Triangulation__3__io.html#ad48e7b12df55437545fe5bb2c72db430", null ],
+      [ "Point", "classCGAL_1_1Homological__discrete__vector__field_1_1Triangulation__3__io.html#a7f0a419904934b2e8e705c3f958e1ea9", null ],
+      [ "Triangulation_3", "classCGAL_1_1Homological__discrete__vector__field_1_1Triangulation__3__io.html#a1cc04d4cabc60eeda4dce582b59cce22", null ],
+      [ "vertex_descriptor", "classCGAL_1_1Homological__discrete__vector__field_1_1Triangulation__3__io.html#aac8ec43c492b556814710c3766346437", null ],
+      [ "Triangulation_3_io", "classCGAL_1_1Homological__discrete__vector__field_1_1Triangulation__3__io.html#a11dca8e39041f653ee5118d0eea5687d", null ]
+    ] ]
+];
