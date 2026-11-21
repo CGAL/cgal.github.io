@@ -1,0 +1,27 @@
+var classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality =
+[
+    [ "Base", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a096d2db5f3ad04a77ca523bc3a442304", null ],
+    [ "Chain_complex", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a0d4f00fa8ec9c6aee392b6c2dbb45757", null ],
+    [ "Coefficient_ring", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a13edcaacfd32669f0dbf5174fbc00acd", null ],
+    [ "Hdvf_duality", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ae2cbdc176778ed97941e750822486a32", null ],
+    [ "cohomology_chain", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a442a6e4deef6d4c61fd4993d4bf62bf7", null ],
+    [ "compute_pairing_hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a8cb240396654c2f4d09d98dd46a0ff9c", null ],
+    [ "compute_perfect_hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a324e0d2b71c4bf0492e81b174b5504d2", null ],
+    [ "compute_rand_pairing_hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#abd4de2a7630cafd04a04a25ef3a8cad0", null ],
+    [ "compute_rand_perfect_hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a7d8ad08a963be3ff145752ca62083519", null ],
+    [ "find_pair_A", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a73ccba80f2827e0e24e8861c6b972166", null ],
+    [ "find_pair_A", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a38b4835f131ded95ca51c0d6d9f9ae1f", null ],
+    [ "find_pairs_A", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a4b0db81c27f4365c4af0e42d9a52ac42", null ],
+    [ "find_pairs_A", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a9bbd235f5ff769b6e558de529a41f65c", null ],
+    [ "get_current_mask", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a31203685d1056c541e4b3d5894546a63", null ],
+    [ "homology_chain", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a74f6ac2495f84ea49e839fb1bcb717c6", null ],
+    [ "is_perfect_hdvf", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#abd22c8765d051f888d5b57305568e928", null ],
+    [ "print_bnd_pairing", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a97801b56bcc94ce90660ca5165b5f8d9", null ],
+    [ "psc_flag", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a9beb1534fbf4b94cd2a61066c7340a26", null ],
+    [ "psc_flag", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ae24e05f9efd1fc5f709314346e40d42b", null ],
+    [ "psc_labels", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a246cc977ba7ebe880174a5efe5e6be8c", null ],
+    [ "set_mask_K", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#a8bcf667eafbbeffa4aeb92c47b76aa5e", null ],
+    [ "set_mask_L_K", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ad39bb1beff18c421d58f845f49678b88", null ],
+    [ "write_reduction", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#ac38011a15ac123441925a7dc8d0d6cd4", null ],
+    [ "write_reduction_sub", "classCGAL_1_1Homological__discrete__vector__field_1_1Hdvf__duality.html#afffe9f5b2659af73c0b539c03c35af27", null ]
+];
