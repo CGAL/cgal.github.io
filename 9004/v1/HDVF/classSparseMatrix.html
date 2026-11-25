@@ -1,0 +1,1696 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classSparseMatrix.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.9.6">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.2 - Homological Discrete Vector Fields: SparseMatrix Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+      <span class="left">
+         <span id="MSearchSelect" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"> 
+        </span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+      </span>
+      <span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.svg" alt=""></a>
+      </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.2 - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.6 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classSparseMatrix.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classSparseMatrix-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">SparseMatrix Concept Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a> » <a class="el" href="group__PkgHDVFConcepts.html">Concepts</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <code><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></code> describes the requirements for sparse matrices optimized for topological computations. Traditionally, sparse matrices data structures encode non zero coefficients of (sparse) matrices in order to optimize either matrices memory footprint, or linear algebra operations (which usually comes to optimize iterators over non zero coefficients and access to coefficients). However, topological operations require slightly different features: </p>
+<p> - fast access to row or columns of matrices (which are actually the images under the application encoded by the matrix)</p><ul>
+<li>fast block operations (especially along row or columns)</li>
+</ul>
+<p>The <code><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></code> concept describes requirements for such sparse matrix. It relies on the model of <code><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></code> which encodes sparse row or column vectors. Matrices are either column major or row major (hence they either store column sparse chains or row sparse chains).</p>
+<p>The following constants, called <code>StorageFormat</code>, encode the major direction of both sparse chains and sparse matrices.</p><ul>
+<li><code><a class="el" href="namespaceCGAL_1_1OSM.html#ad9ab9bfb8789ccea94c4dd373662438e" title="StorageFormat for column chain.">CGAL::OSM::COLUMN</a></code> for column-major chains and matrices (which is the default),</li>
+<li><code><a class="el" href="namespaceCGAL_1_1OSM.html#ab835001b84f058fd076015653edae946" title="StorageFormat flag for row chain.">CGAL::OSM::ROW</a></code> for row-major chains and matrices.</li>
+</ul>
+<p>For instance, given the \(5\times 4\) matrix:  </p><p class="formulaDsp">
+\[
+ A = \left(\begin{array}{cccc}
+ 1 &amp; \cdot &amp; \cdot &amp; \cdot \\
+ -1 &amp; \cdot &amp; 2 &amp; \cdot\\
+ \cdot &amp; \cdot &amp; 1 &amp; \cdot \\
+ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \\
+ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \\
+ \end{array}\right)
+ \]
+</p>
+<p> where \(\cdot\) means \(0\).</p><ul>
+<li>A column-major representation of \(A\) is: \([0\mapsto c_0, 2\mapsto c_2]\) with the column-chains: \(c_0 = [0\mapsto 1, 1\mapsto -1]\) and \(c_2 = [1\mapsto 2, 2\mapsto 1]\).</li>
+<li>A row-major representation of \(A\) is: \([0\mapsto c_0, 1\mapsto c_1, 2\mapsto c_2]\) with the row-chains: \(c_0 = [0\mapsto 1]\) and \(c_1 = [0\mapsto -1, 2\mapsto 2]\) and \(c_2 = [2\mapsto 1]\).</li>
+</ul>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><code><a class="el" href="classCGAL_1_1OSM_1_1Sparse__matrix.html" title="The class Sparse_matrix implements the concept SparseMatrix, that is, sparse matrices optimized for t...">CGAL::OSM::Sparse_matrix</a>&lt;<a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a>, StorageFormat&gt;</code> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></code> </dd>
+<dd>
+<code><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></code> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr class="memitem:a588df459d24bb957f1cf713c191429af"><td class="memItemLeft" align="right" valign="top"><a id="a588df459d24bb957f1cf713c191429af" name="a588df459d24bb957f1cf713c191429af"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:a588df459d24bb957f1cf713c191429af"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients stored in the matrix (a model of <code><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></code>). <br></td></tr>
+<tr class="separator:a588df459d24bb957f1cf713c191429af"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae027648288cde1f9e90066fd291ac0d6"><td class="memItemLeft" align="right" valign="top"><a id="ae027648288cde1f9e90066fd291ac0d6" name="ae027648288cde1f9e90066fd291ac0d6"></a>
+typedef int </td><td class="memItemRight" valign="bottom"><b>Storage_format</b></td></tr>
+<tr class="memdesc:ae027648288cde1f9e90066fd291ac0d6"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Kernel_d/classMatrix.html">Matrix</a> and chain storage format (either <code>ROW</code> or <code>COLUMN</code>). <br></td></tr>
+<tr class="separator:ae027648288cde1f9e90066fd291ac0d6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6c12113ab2b8dde06e8cc9fd08012aeb"><td class="memItemLeft" align="right" valign="top"><a id="a6c12113ab2b8dde06e8cc9fd08012aeb" name="a6c12113ab2b8dde06e8cc9fd08012aeb"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Non_zero_chain_indices</b></td></tr>
+<tr class="memdesc:a6c12113ab2b8dde06e8cc9fd08012aeb"><td class="mdescLeft"> </td><td class="mdescRight">A data structure storing indices of non empty chains. <br></td></tr>
+<tr class="separator:a6c12113ab2b8dde06e8cc9fd08012aeb"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a012d9d609855f5563accab5b2b9d332f"><td class="memItemLeft" align="right" valign="top"><a id="a012d9d609855f5563accab5b2b9d332f" name="a012d9d609855f5563accab5b2b9d332f"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight" valign="bottom"><b>Matrix_chain</b></td></tr>
+<tr class="memdesc:a012d9d609855f5563accab5b2b9d332f"><td class="mdescLeft"> </td><td class="mdescRight">Type of the chains stored in the matrix. <br></td></tr>
+<tr class="separator:a012d9d609855f5563accab5b2b9d332f"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Creation, Filling</h2></td></tr>
+<tr class="memitem:ac010252479e500b34324cb10c9dd4e98"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#ac010252479e500b34324cb10c9dd4e98">SparseMatrix</a> ()</td></tr>
+<tr class="memdesc:ac010252479e500b34324cb10c9dd4e98"><td class="mdescLeft"> </td><td class="mdescRight">Creates an empty new sparse matrix object.  <br></td></tr>
+<tr class="separator:ac010252479e500b34324cb10c9dd4e98"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a161a93d616ce6181c5e60064e7b72c4e"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a161a93d616ce6181c5e60064e7b72c4e">SparseMatrix</a> (const size_t rowCount, const size_t columnCount)</td></tr>
+<tr class="memdesc:a161a93d616ce6181c5e60064e7b72c4e"><td class="mdescLeft"> </td><td class="mdescRight">Creates a new sparse matrix object with given rows/columns sizes.  <br></td></tr>
+<tr class="separator:a161a93d616ce6181c5e60064e7b72c4e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a7e7146582868a48c45490e651af92120"><td class="memItemLeft" align="right" valign="top"> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a7e7146582868a48c45490e651af92120">SparseMatrix</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;otherToCopy)</td></tr>
+<tr class="memdesc:a7e7146582868a48c45490e651af92120"><td class="mdescLeft"> </td><td class="mdescRight">Creates a new sparse matrix from another sparse matrix object (with possibly a different <code>StorageFormat</code>).  <br></td></tr>
+<tr class="separator:a7e7146582868a48c45490e651af92120"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2c6bde8456a05927720f9ff287a43bb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a2c6bde8456a05927720f9ff287a43bb7">operator=</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;_otherToCopy)</td></tr>
+<tr class="memdesc:a2c6bde8456a05927720f9ff287a43bb7"><td class="mdescLeft"> </td><td class="mdescRight">Assigns to other matrix.  <br></td></tr>
+<tr class="separator:a2c6bde8456a05927720f9ff287a43bb7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a76adfc9f772f123232405cc9ecb18fc6"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a76adfc9f772f123232405cc9ecb18fc6">nullify</a> ()</td></tr>
+<tr class="memdesc:a76adfc9f772f123232405cc9ecb18fc6"><td class="mdescLeft"> </td><td class="mdescRight">Cleans a sparse matrix (set all coefficients to zero).  <br></td></tr>
+<tr class="separator:a76adfc9f772f123232405cc9ecb18fc6"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Matrix informations and iterators</h2></td></tr>
+<tr class="memitem:a45b823a8147396bc9e9d8f5993340b45"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a45b823a8147396bc9e9d8f5993340b45">is_null</a> ()</td></tr>
+<tr class="memdesc:a45b823a8147396bc9e9d8f5993340b45"><td class="mdescLeft"> </td><td class="mdescRight">Tests if a sparse matrix is null.  <br></td></tr>
+<tr class="separator:a45b823a8147396bc9e9d8f5993340b45"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4c1e1a63d66bc8bde50b579c658df7c3"><td class="memItemLeft" align="right" valign="top">std::pair&lt; size_t, size_t &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a4c1e1a63d66bc8bde50b579c658df7c3">dimensions</a> () const</td></tr>
+<tr class="memdesc:a4c1e1a63d66bc8bde50b579c658df7c3"><td class="mdescLeft"> </td><td class="mdescRight">Gets the matrix size.  <br></td></tr>
+<tr class="separator:a4c1e1a63d66bc8bde50b579c658df7c3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afe6c47ee22257ce13ba18e916dbaae13"><td class="memItemLeft" align="right" valign="top">Non_zero_chain_indices::iterator </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#afe6c47ee22257ce13ba18e916dbaae13">begin</a> () const noexcept</td></tr>
+<tr class="memdesc:afe6c47ee22257ce13ba18e916dbaae13"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of the chain indices (visited by increasing indices).  <br></td></tr>
+<tr class="separator:afe6c47ee22257ce13ba18e916dbaae13"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8ed1574222aa67d64143b4e088401e71"><td class="memItemLeft" align="right" valign="top">Non_zero_chain_indices::iterator </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a8ed1574222aa67d64143b4e088401e71">end</a> () const noexcept</td></tr>
+<tr class="memdesc:a8ed1574222aa67d64143b4e088401e71"><td class="mdescLeft"> </td><td class="mdescRight">Past-the-end iterator of the chain indices (visited by increasing indices).  <br></td></tr>
+<tr class="separator:a8ed1574222aa67d64143b4e088401e71"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4ba152351acee1c63eec5157eed882ba"><td class="memItemLeft" align="right" valign="top">Non_zero_chain_indices::iterator </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a4ba152351acee1c63eec5157eed882ba">reverse_begin</a> () const noexcept</td></tr>
+<tr class="memdesc:a4ba152351acee1c63eec5157eed882ba"><td class="mdescLeft"> </td><td class="mdescRight">Reverse iterator to the beginning of the chain indices (visited by decreasing indices).  <br></td></tr>
+<tr class="separator:a4ba152351acee1c63eec5157eed882ba"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aba02a653d6436e515d215f60c198c626"><td class="memItemLeft" align="right" valign="top">Non_zero_chain_indices::iterator </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#aba02a653d6436e515d215f60c198c626">reverse_end</a> () const noexcept</td></tr>
+<tr class="memdesc:aba02a653d6436e515d215f60c198c626"><td class="mdescLeft"> </td><td class="mdescRight">Past-the-end reverse iterator of the chain indices (visited by decreasing indices).  <br></td></tr>
+<tr class="separator:aba02a653d6436e515d215f60c198c626"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Linear algebra operators</h2></td></tr>
+<tr class="memitem:acb4157b594c45e7ba3d3e1f221c1ac5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#acb4157b594c45e7ba3d3e1f221c1ac5a">operator-=</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;other)</td></tr>
+<tr class="memdesc:acb4157b594c45e7ba3d3e1f221c1ac5a"><td class="mdescLeft"> </td><td class="mdescRight">Subtracts a matrix and assign.  <br></td></tr>
+<tr class="separator:acb4157b594c45e7ba3d3e1f221c1ac5a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a97081b6f8171ed347f1134a85d07d457"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a97081b6f8171ed347f1134a85d07d457">operator*=</a> (const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> &amp;lambda)</td></tr>
+<tr class="memdesc:a97081b6f8171ed347f1134a85d07d457"><td class="mdescLeft"> </td><td class="mdescRight">Applies factor on each coefficient and assign.  <br></td></tr>
+<tr class="separator:a97081b6f8171ed347f1134a85d07d457"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adb2402dfc1467a42e6be3daad8088794"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#adb2402dfc1467a42e6be3daad8088794">transpose</a> ()</td></tr>
+<tr class="memdesc:adb2402dfc1467a42e6be3daad8088794"><td class="mdescLeft"> </td><td class="mdescRight">Transposes a matrix.  <br></td></tr>
+<tr class="separator:adb2402dfc1467a42e6be3daad8088794"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a890c849b03f92a2597f409263493a8e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a890c849b03f92a2597f409263493a8e0">operator+=</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;other)</td></tr>
+<tr class="memdesc:a890c849b03f92a2597f409263493a8e0"><td class="mdescLeft"> </td><td class="mdescRight">Adds a matrix and assign.  <br></td></tr>
+<tr class="separator:a890c849b03f92a2597f409263493a8e0"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a99a2a540f5e6bfb7fa7b20fbb30aba44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a99a2a540f5e6bfb7fa7b20fbb30aba44">operator+</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;first, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;second)</td></tr>
+<tr class="memdesc:a99a2a540f5e6bfb7fa7b20fbb30aba44"><td class="mdescLeft"> </td><td class="mdescRight">Adds two matrices together.  <br></td></tr>
+<tr class="separator:a99a2a540f5e6bfb7fa7b20fbb30aba44"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a823ce09d757af58643b471ece6c2b68d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a823ce09d757af58643b471ece6c2b68d">operator-</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;first, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;second)</td></tr>
+<tr class="memdesc:a823ce09d757af58643b471ece6c2b68d"><td class="mdescLeft"> </td><td class="mdescRight">Subtracts two matrices together.  <br></td></tr>
+<tr class="separator:a823ce09d757af58643b471ece6c2b68d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1654559b9351a9b7708995c89d2e61e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a1654559b9351a9b7708995c89d2e61e7">operator-</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix)</td></tr>
+<tr class="memdesc:a1654559b9351a9b7708995c89d2e61e7"><td class="mdescLeft"> </td><td class="mdescRight">Computes the negative of a matrix (unary operator).  <br></td></tr>
+<tr class="separator:a1654559b9351a9b7708995c89d2e61e7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa3c19268d5295e40895528e94c8e651e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#aa3c19268d5295e40895528e94c8e651e">operator*</a> (const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> &amp;lambda, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix)</td></tr>
+<tr class="memdesc:aa3c19268d5295e40895528e94c8e651e"><td class="mdescLeft"> </td><td class="mdescRight">Applies factor on each coefficients into a new matrix.  <br></td></tr>
+<tr class="separator:aa3c19268d5295e40895528e94c8e651e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa7f647fbe5065a15253d18bb489516fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#aa7f647fbe5065a15253d18bb489516fc">operator*</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> &amp;lambda)</td></tr>
+<tr class="memdesc:aa7f647fbe5065a15253d18bb489516fc"><td class="mdescLeft"> </td><td class="mdescRight">Applies factor on each coefficients into a new matrix.  <br></td></tr>
+<tr class="separator:aa7f647fbe5065a15253d18bb489516fc"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1cea2be4670399b042009e9fc06ac299"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a1cea2be4670399b042009e9fc06ac299">operator*=</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;other)</td></tr>
+<tr class="memdesc:a1cea2be4670399b042009e9fc06ac299"><td class="mdescLeft"> </td><td class="mdescRight">Multiplies a matrix and assign.  <br></td></tr>
+<tr class="separator:a1cea2be4670399b042009e9fc06ac299"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1ff15ef07123c15932c85af762b69534"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a1ff15ef07123c15932c85af762b69534">operator*</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;first, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;second)</td></tr>
+<tr class="memdesc:a1ff15ef07123c15932c85af762b69534"><td class="mdescLeft"> </td><td class="mdescRight">Performs multiplication between matrices and returns a new column-major matrix.  <br></td></tr>
+<tr class="separator:a1ff15ef07123c15932c85af762b69534"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac40a133c5931674af606115cff6007fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#ac40a133c5931674af606115cff6007fd">operator%</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;first, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;second)</td></tr>
+<tr class="memdesc:ac40a133c5931674af606115cff6007fd"><td class="mdescLeft"> </td><td class="mdescRight">Performs multiplication between matrices and returns a new row-major matrix.  <br></td></tr>
+<tr class="separator:ac40a133c5931674af606115cff6007fd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a347da801a1d0bd28015df496ae1d08ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a347da801a1d0bd28015df496ae1d08ff">operator*</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;column)</td></tr>
+<tr class="memdesc:a347da801a1d0bd28015df496ae1d08ff"><td class="mdescLeft"> </td><td class="mdescRight">Performs multiplication between a matrix and a column-based chain.  <br></td></tr>
+<tr class="separator:a347da801a1d0bd28015df496ae1d08ff"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa57e163810f1bdfafb642b10ed56ea08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#aa57e163810f1bdfafb642b10ed56ea08">operator*</a> (const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;row, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix)</td></tr>
+<tr class="memdesc:aa57e163810f1bdfafb642b10ed56ea08"><td class="mdescLeft"> </td><td class="mdescRight">Performs multiplication between a row-based chain and a matrix.  <br></td></tr>
+<tr class="separator:aa57e163810f1bdfafb642b10ed56ea08"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Access and blocks operations</h2></td></tr>
+<tr class="memitem:a74dca03c89884f066f50724a17ac76e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html#a012d9d609855f5563accab5b2b9d332f">Matrix_chain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a74dca03c89884f066f50724a17ac76e6">operator[]</a> (size_t index) const</td></tr>
+<tr class="memdesc:a74dca03c89884f066f50724a17ac76e6"><td class="mdescLeft"> </td><td class="mdescRight">Gets a chain from a const matrix.  <br></td></tr>
+<tr class="separator:a74dca03c89884f066f50724a17ac76e6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a89070469160ca7a5fdad2806e0827d51"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a89070469160ca7a5fdad2806e0827d51">cget_column</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i)</td></tr>
+<tr class="memdesc:a89070469160ca7a5fdad2806e0827d51"><td class="mdescLeft"> </td><td class="mdescRight">Gets a constant reference over the column of index<code>i</code> from a column matrix.  <br></td></tr>
+<tr class="separator:a89070469160ca7a5fdad2806e0827d51"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2739a391765532251ad796a2e022bb96"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a2739a391765532251ad796a2e022bb96">cget_row</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i)</td></tr>
+<tr class="memdesc:a2739a391765532251ad796a2e022bb96"><td class="mdescLeft"> </td><td class="mdescRight">Gets a constant reference over the row of index<code>i</code> from a row matrix.  <br></td></tr>
+<tr class="separator:a2739a391765532251ad796a2e022bb96"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a090262bb43e2d17e4a4136bd6a450e2e"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a090262bb43e2d17e4a4136bd6a450e2e">set_column</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i, const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;column)</td></tr>
+<tr class="memdesc:a090262bb43e2d17e4a4136bd6a450e2e"><td class="mdescLeft"> </td><td class="mdescRight">Sets a column in the matrix (whatever the <code>StorageFormat</code> of the matrix).  <br></td></tr>
+<tr class="separator:a090262bb43e2d17e4a4136bd6a450e2e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4c5b26ab1af556dd7cd98a99dc73dbf3"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a4c5b26ab1af556dd7cd98a99dc73dbf3">set_row</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i, const Sparse_chain &amp;row)</td></tr>
+<tr class="memdesc:a4c5b26ab1af556dd7cd98a99dc73dbf3"><td class="mdescLeft"> </td><td class="mdescRight">Sets a row in <code>matrix</code> (whatever the <code>StorageFormat</code> of the matrix).  <br></td></tr>
+<tr class="separator:a4c5b26ab1af556dd7cd98a99dc73dbf3"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a8f7e093c61bc2cc06f6f0d8fd5e8d66d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a8f7e093c61bc2cc06f6f0d8fd5e8d66d">operator/=</a> (const std::vector&lt; size_t &gt; &amp;indices)</td></tr>
+<tr class="memdesc:a8f7e093c61bc2cc06f6f0d8fd5e8d66d"><td class="mdescLeft"> </td><td class="mdescRight">Gets a submatrix from the matrix and assign.  <br></td></tr>
+<tr class="separator:a8f7e093c61bc2cc06f6f0d8fd5e8d66d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2cee7fc72902d8c256cad38ea9289398"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a2cee7fc72902d8c256cad38ea9289398">operator/=</a> (size_t i)</td></tr>
+<tr class="memdesc:a2cee7fc72902d8c256cad38ea9289398"><td class="mdescLeft"> </td><td class="mdescRight">Gets a submatrix from the matrix and assign.  <br></td></tr>
+<tr class="separator:a2cee7fc72902d8c256cad38ea9289398"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a67fc88f5aec204dacd1db7bd161462c4"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a67fc88f5aec204dacd1db7bd161462c4">set_coefficient</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i, size_t j, const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> d)</td></tr>
+<tr class="memdesc:a67fc88f5aec204dacd1db7bd161462c4"><td class="mdescLeft"> </td><td class="mdescRight">Sets a given coefficient.  <br></td></tr>
+<tr class="separator:a67fc88f5aec204dacd1db7bd161462c4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a419d32a4e5facd0e6151e071e1913813"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a419d32a4e5facd0e6151e071e1913813">get_coefficient</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i, size_t j)</td></tr>
+<tr class="memdesc:a419d32a4e5facd0e6151e071e1913813"><td class="mdescLeft"> </td><td class="mdescRight">Gets a given coefficient.  <br></td></tr>
+<tr class="separator:a419d32a4e5facd0e6151e071e1913813"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a0c4cc40840bf565348e255cb9ddbf427"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a0c4cc40840bf565348e255cb9ddbf427">get_column</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:a0c4cc40840bf565348e255cb9ddbf427"><td class="mdescLeft"> </td><td class="mdescRight">Gets the value of the column at a given <code>index</code> from the matrix (whatever the <code>StorageFormat</code> of the matrix).  <br></td></tr>
+<tr class="separator:a0c4cc40840bf565348e255cb9ddbf427"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a20473a2dc1acd8cbea07f3548898b687"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a20473a2dc1acd8cbea07f3548898b687">get_row</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:a20473a2dc1acd8cbea07f3548898b687"><td class="mdescLeft"> </td><td class="mdescRight">Gets the value of the row at a given <code>index</code> from the matrix (whatever the <code>StorageFormat</code> of the matrix).  <br></td></tr>
+<tr class="separator:a20473a2dc1acd8cbea07f3548898b687"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad1f17ca01dfeb8ff4a00253c9bb7ec53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#ad1f17ca01dfeb8ff4a00253c9bb7ec53">operator/</a> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i)</td></tr>
+<tr class="memdesc:ad1f17ca01dfeb8ff4a00253c9bb7ec53"><td class="mdescLeft"> </td><td class="mdescRight">Gets a submatrix from the matrix.  <br></td></tr>
+<tr class="separator:ad1f17ca01dfeb8ff4a00253c9bb7ec53"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a51fd4231654295f3f83fcfd8cb58c59c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a51fd4231654295f3f83fcfd8cb58c59c">remove_column</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:a51fd4231654295f3f83fcfd8cb58c59c"><td class="mdescLeft"> </td><td class="mdescRight">Nullifies a column from the matrix.  <br></td></tr>
+<tr class="separator:a51fd4231654295f3f83fcfd8cb58c59c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:afcec2e98423b52c9ef3b586b3f9a510e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#afcec2e98423b52c9ef3b586b3f9a510e">remove_row</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t index)</td></tr>
+<tr class="memdesc:afcec2e98423b52c9ef3b586b3f9a510e"><td class="mdescLeft"> </td><td class="mdescRight">Nullifies a row from the matrix.  <br></td></tr>
+<tr class="separator:afcec2e98423b52c9ef3b586b3f9a510e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a30f9119fa7ca7cf5713d10ecd3060aa9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classSparseMatrix.html#a30f9119fa7ca7cf5713d10ecd3060aa9">remove_coefficient</a> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, size_t i, size_t j)</td></tr>
+<tr class="memdesc:a30f9119fa7ca7cf5713d10ecd3060aa9"><td class="mdescLeft"> </td><td class="mdescRight">Nullifies a coefficient of the matrix.  <br></td></tr>
+<tr class="separator:a30f9119fa7ca7cf5713d10ecd3060aa9"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Output</h2></td></tr>
+<tr class="memitem:ad2bd64f8e3135de72b9df7a4657904ab"><td class="memItemLeft" align="right" valign="top"><a id="ad2bd64f8e3135de72b9df7a4657904ab" name="ad2bd64f8e3135de72b9df7a4657904ab"></a>
+std::ostream &amp; </td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;_stream, const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix)</td></tr>
+<tr class="memdesc:ad2bd64f8e3135de72b9df7a4657904ab"><td class="mdescLeft"> </td><td class="mdescRight">Inserts <code>matrix</code> in the output stream. <br></td></tr>
+<tr class="separator:ad2bd64f8e3135de72b9df7a4657904ab"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4d44d3245eab8e8012b87fd63e3c1b50"><td class="memItemLeft" align="right" valign="top"><a id="a4d44d3245eab8e8012b87fd63e3c1b50" name="a4d44d3245eab8e8012b87fd63e3c1b50"></a>
+std::ostream &amp; </td><td class="memItemRight" valign="bottom"><b>write_matrix</b> (const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, std::ostream &amp;out)</td></tr>
+<tr class="memdesc:a4d44d3245eab8e8012b87fd63e3c1b50"><td class="mdescLeft"> </td><td class="mdescRight">Inserts <code>matrix</code> in an output stream. <br></td></tr>
+<tr class="separator:a4d44d3245eab8e8012b87fd63e3c1b50"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2b06f2020fb8c75ba6cf847d615fbc67"><td class="memTemplParams" colspan="2"><a id="a2b06f2020fb8c75ba6cf847d615fbc67" name="a2b06f2020fb8c75ba6cf847d615fbc67"></a>
+template&lt;typename _CT &gt; </td></tr>
+<tr class="memitem:a2b06f2020fb8c75ba6cf847d615fbc67"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp; </td><td class="memTemplItemRight" valign="bottom"><b>read_matrix</b> (<a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp;matrix, std::istream &amp;in)</td></tr>
+<tr class="memdesc:a2b06f2020fb8c75ba6cf847d615fbc67"><td class="mdescLeft"> </td><td class="mdescRight">Extracts a sparse matrix from an input stream. <br></td></tr>
+<tr class="separator:a2b06f2020fb8c75ba6cf847d615fbc67"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac010252479e500b34324cb10c9dd4e98" name="ac010252479e500b34324cb10c9dd4e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac010252479e500b34324cb10c9dd4e98">◆ </a></span>SparseMatrix() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SparseMatrix::SparseMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates an empty new sparse matrix object. </p>
+<p>Default constructor, initialize an empty matrix of type <code>StorageFormat</code> with coefficients of type <code>Coefficient_ring</code>. The default matrix size is 0x0. </p>
+
+</div>
+</div>
+<a id="a161a93d616ce6181c5e60064e7b72c4e" name="a161a93d616ce6181c5e60064e7b72c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161a93d616ce6181c5e60064e7b72c4e">◆ </a></span>SparseMatrix() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SparseMatrix::SparseMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const size_t </td>
+          <td class="paramname"><em>rowCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t </td>
+          <td class="paramname"><em>columnCount</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a new sparse matrix object with given rows/columns sizes. </p>
+<p>Constructor with sizes, initialize an empty matrix of type <code>StorageFormat</code> with coefficients of type <code>Coefficient_ring</code> and a given size along rows/columns. </p>
+
+</div>
+</div>
+<a id="a7e7146582868a48c45490e651af92120" name="a7e7146582868a48c45490e651af92120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7146582868a48c45490e651af92120">◆ </a></span>SparseMatrix() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SparseMatrix::SparseMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>otherToCopy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a new sparse matrix from another sparse matrix object (with possibly a different <code>StorageFormat</code>). </p>
+<p>Copy constructor, initialize a sparse matrix of same sizes, containing the same coefficients (but not necessarly of the same <code>StorageFormat</code>). If types are different, the constructor performs conversion. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="afe6c47ee22257ce13ba18e916dbaae13" name="afe6c47ee22257ce13ba18e916dbaae13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6c47ee22257ce13ba18e916dbaae13">◆ </a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Non_zero_chain_indices::iterator SparseMatrix::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of the chain indices (visited by increasing indices). </p>
+<p>The function returns an iterator to the beginning of the (non zero) chain indices. </p>
+
+</div>
+</div>
+<a id="a89070469160ca7a5fdad2806e0827d51" name="a89070469160ca7a5fdad2806e0827d51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89070469160ca7a5fdad2806e0827d51">◆ </a></span>cget_column()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseMatrix::cget_column </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a constant reference over the column of index<code>i</code> from a column matrix. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>matrix.is_column()</code> must be <code>true</code>.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a constant reference to a column chain. </dd></dl>
+
+</div>
+</div>
+<a id="a2739a391765532251ad796a2e022bb96" name="a2739a391765532251ad796a2e022bb96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2739a391765532251ad796a2e022bb96">◆ </a></span>cget_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseMatrix::cget_row </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a constant reference over the row of index<code>i</code> from a row matrix. </p>
+<dl class="section pre"><dt>Precondition</dt><dd><code>matrix.is_row()</code> must be <code>true</code>.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a constant reference to a row chain. </dd></dl>
+
+</div>
+</div>
+<a id="a4c1e1a63d66bc8bde50b579c658df7c3" name="a4c1e1a63d66bc8bde50b579c658df7c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c1e1a63d66bc8bde50b579c658df7c3">◆ </a></span>dimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; size_t, size_t &gt; SparseMatrix::dimensions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the matrix size. </p>
+<p>The matrix size as a row/column pair. </p>
+
+</div>
+</div>
+<a id="a8ed1574222aa67d64143b4e088401e71" name="a8ed1574222aa67d64143b4e088401e71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ed1574222aa67d64143b4e088401e71">◆ </a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Non_zero_chain_indices::iterator SparseMatrix::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Past-the-end iterator of the chain indices (visited by increasing indices). </p>
+<p>The function returns an iterator past the end of the chain indices. </p>
+
+</div>
+</div>
+<a id="a45b823a8147396bc9e9d8f5993340b45" name="a45b823a8147396bc9e9d8f5993340b45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45b823a8147396bc9e9d8f5993340b45">◆ </a></span>is_null()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SparseMatrix::is_null </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tests if a sparse matrix is null. </p>
+<p>The function returns <code>true</code> if the sparse matrix is null (that is, empty) and <code>false</code> otherwise. </p>
+
+</div>
+</div>
+<a id="a76adfc9f772f123232405cc9ecb18fc6" name="a76adfc9f772f123232405cc9ecb18fc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76adfc9f772f123232405cc9ecb18fc6">◆ </a></span>nullify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SparseMatrix::nullify </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cleans a sparse matrix (set all coefficients to zero). </p>
+<p>Empty all structures of the sparse matrix. </p>
+
+</div>
+</div>
+<a id="a97081b6f8171ed347f1134a85d07d457" name="a97081b6f8171ed347f1134a85d07d457"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97081b6f8171ed347f1134a85d07d457">◆ </a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; SparseMatrix::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> &amp; </td>
+          <td class="paramname"><em>lambda</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applies factor on each coefficient and assign. </p>
+<p>This method multiplies the matrix by a scalar factor <code>lambda</code>. </p>
+
+</div>
+</div>
+<a id="acb4157b594c45e7ba3d3e1f221c1ac5a" name="acb4157b594c45e7ba3d3e1f221c1ac5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4157b594c45e7ba3d3e1f221c1ac5a">◆ </a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; SparseMatrix::operator-= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>other</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subtracts a matrix and assign. </p>
+<p>Subtracts each coefficient of the matrix together and stores the result in <code>matrix</code>. Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. </p>
+
+</div>
+</div>
+<a id="a8f7e093c61bc2cc06f6f0d8fd5e8d66d" name="a8f7e093c61bc2cc06f6f0d8fd5e8d66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f7e093c61bc2cc06f6f0d8fd5e8d66d">◆ </a></span>operator/=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; SparseMatrix::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp; </td>
+          <td class="paramname"><em>indices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a submatrix from the matrix and assign. </p>
+<p>Removes (along the major dimension) all indices provided in the vector <code>indices</code> from the matrix and returns it. </p>
+
+</div>
+</div>
+<a id="a2cee7fc72902d8c256cad38ea9289398" name="a2cee7fc72902d8c256cad38ea9289398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cee7fc72902d8c256cad38ea9289398">◆ </a></span>operator/=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; SparseMatrix::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a submatrix from the matrix and assign. </p>
+<p>Removes (along the major dimension) the chain of index <code>i</code> from the matrix and returns it. </p>
+
+</div>
+</div>
+<a id="a2c6bde8456a05927720f9ff287a43bb7" name="a2c6bde8456a05927720f9ff287a43bb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c6bde8456a05927720f9ff287a43bb7">◆ </a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; SparseMatrix::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>_otherToCopy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assigns to other matrix. </p>
+<p>Assign to other matrix coefficient-wise, equivalent to copying it.</p>
+<p>Matrices must have the same type. </p>
+
+</div>
+</div>
+<a id="a74dca03c89884f066f50724a17ac76e6" name="a74dca03c89884f066f50724a17ac76e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74dca03c89884f066f50724a17ac76e6">◆ </a></span>operator[]()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html#a012d9d609855f5563accab5b2b9d332f">Matrix_chain</a> SparseMatrix::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a chain from a const matrix. </p>
+<p>If the matrix is column-major, returns the <code>i</code>th column, and if the matrix is row-major, returns the <code>i</code>th row. </p>
+
+</div>
+</div>
+<a id="a4ba152351acee1c63eec5157eed882ba" name="a4ba152351acee1c63eec5157eed882ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ba152351acee1c63eec5157eed882ba">◆ </a></span>reverse_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Non_zero_chain_indices::iterator SparseMatrix::reverse_begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reverse iterator to the beginning of the chain indices (visited by decreasing indices). </p>
+<p>The function returns a reverse iterator to the beginning of the (non zero) chain indices. </p>
+
+</div>
+</div>
+<a id="aba02a653d6436e515d215f60c198c626" name="aba02a653d6436e515d215f60c198c626"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba02a653d6436e515d215f60c198c626">◆ </a></span>reverse_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Non_zero_chain_indices::iterator SparseMatrix::reverse_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Past-the-end reverse iterator of the chain indices (visited by decreasing indices). </p>
+<p>The function returns a past-the-end reverse iterator of the chain indices. </p>
+
+</div>
+</div>
+<a id="a090262bb43e2d17e4a4136bd6a450e2e" name="a090262bb43e2d17e4a4136bd6a450e2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a090262bb43e2d17e4a4136bd6a450e2e">◆ </a></span>set_column()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SparseMatrix::set_column </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td>
+          <td class="paramname"><em>column</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a column in the matrix (whatever the <code>StorageFormat</code> of the matrix). </p>
+<p>Set the <code>i</code>th column of <code>matrix</code> to <code>column</code>. For column-matrices, it should be equivalent to an assignment, however, for row-matrices, a traversal of the matrix is required (in \(\mathcal O(n)\)). </p><dl class="section pre"><dt>Precondition</dt><dd><code>column.is_column()</code> must be <code>true</code> </dd></dl>
+
+</div>
+</div>
+<a id="a4c5b26ab1af556dd7cd98a99dc73dbf3" name="a4c5b26ab1af556dd7cd98a99dc73dbf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c5b26ab1af556dd7cd98a99dc73dbf3">◆ </a></span>set_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SparseMatrix::set_row </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Sparse_chain &amp; </td>
+          <td class="paramname"><em>row</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a row in <code>matrix</code> (whatever the <code>StorageFormat</code> of the matrix). </p>
+<p>Set the <code>i</code>th row of <code>matrix</code> to <code>chain</code>. For row-matrices, it should be equivalent to an assignment, however, for column-matrices, a traversal of the matrix is required (in \(\mathcal O(n)\)). </p><dl class="section pre"><dt>Precondition</dt><dd><code>row.is_row()</code> must be <code>true</code> </dd></dl>
+
+</div>
+</div>
+<a id="adb2402dfc1467a42e6be3daad8088794" name="adb2402dfc1467a42e6be3daad8088794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb2402dfc1467a42e6be3daad8088794">◆ </a></span>transpose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> SparseMatrix::transpose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transposes a matrix. </p>
+<p>The function returns a new matrix where the <code>StorageFormat</code> is changed. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a419d32a4e5facd0e6151e071e1913813" name="a419d32a4e5facd0e6151e071e1913813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a419d32a4e5facd0e6151e071e1913813">◆ </a></span>get_coefficient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> get_coefficient </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>j</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a given coefficient. </p>
+<p>Returns the coefficient on row <code>i</code> and column <code>j</code> of the matrix. </p>
+
+</div>
+</div>
+<a id="a0c4cc40840bf565348e255cb9ddbf427" name="a0c4cc40840bf565348e255cb9ddbf427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c4cc40840bf565348e255cb9ddbf427">◆ </a></span>get_column</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> get_column </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the value of the column at a given <code>index</code> from the matrix (whatever the <code>StorageFormat</code> of the matrix). </p>
+<p>For column-matrices, it is equivalent to <code>operator[]</code>, for row-matrices a traversal of the matrix is required (in \(\mathcal O(n)\)).</p>
+<dl class="section return"><dt>Returns</dt><dd>a column chain. </dd></dl>
+
+</div>
+</div>
+<a id="a20473a2dc1acd8cbea07f3548898b687" name="a20473a2dc1acd8cbea07f3548898b687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20473a2dc1acd8cbea07f3548898b687">◆ </a></span>get_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> get_row </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the value of the row at a given <code>index</code> from the matrix (whatever the <code>StorageFormat</code> of the matrix). </p>
+<p>For row-matrices, it is equivalent to <code>operator[]</code>, for column-matrices a traversal of the matrix is required (in \(\mathcal O(n)\)).</p>
+<dl class="section return"><dt>Returns</dt><dd>a row chain. </dd></dl>
+
+</div>
+</div>
+<a id="ac40a133c5931674af606115cff6007fd" name="ac40a133c5931674af606115cff6007fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac40a133c5931674af606115cff6007fd">◆ </a></span>operator%</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator% </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>second</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs multiplication between matrices and returns a new row-major matrix. </p>
+<p>Perform standard linear algebra product between matrices and returns a new row-major matrix (when possible, prefer <code>*=</code> for efficiency). Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. Efficiency of the product depends of <code>StorageFormat</code>. </p>
+
+</div>
+</div>
+<a id="aa3c19268d5295e40895528e94c8e651e" name="aa3c19268d5295e40895528e94c8e651e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3c19268d5295e40895528e94c8e651e">◆ </a></span>operator* <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> &amp; </td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Applies factor on each coefficients into a new matrix. </p>
+<p>This method creates a new matrix obtained by multiplying the matrix by a scalar factor <code>lambda</code>. If <code>lambda</code> is zero, the function comes to nullify the matrix (when possible, prefer <code>*=</code> for efficiency). </p>
+
+</div>
+</div>
+<a id="aa57e163810f1bdfafb642b10ed56ea08" name="aa57e163810f1bdfafb642b10ed56ea08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57e163810f1bdfafb642b10ed56ea08">◆ </a></span>operator* <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs multiplication between a row-based chain and a matrix. </p>
+<p>Generates a row-based chain from the matrix multiplication and returns it.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>the matrix and the chain must have the same <code>Coefficient_ring</code>. </dd>
+<dd>
+<code>row.is_row()</code> must be <code>true</code> </dd></dl>
+
+</div>
+</div>
+<a id="a1ff15ef07123c15932c85af762b69534" name="a1ff15ef07123c15932c85af762b69534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff15ef07123c15932c85af762b69534">◆ </a></span>operator* <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>second</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs multiplication between matrices and returns a new column-major matrix. </p>
+<p>Perform standard linear algebra product between matrices and returns a new column-major matrix (when possible, prefer <code>*=</code> for efficiency). Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. Efficiency of the product depends of <code>StorageFormat</code> (when possible, prefer row-major by column-major products). </p>
+
+</div>
+</div>
+<a id="aa7f647fbe5065a15253d18bb489516fc" name="aa7f647fbe5065a15253d18bb489516fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7f647fbe5065a15253d18bb489516fc">◆ </a></span>operator* <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> &amp; </td>
+          <td class="paramname"><em>lambda</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Applies factor on each coefficients into a new matrix. </p>
+<p>This method creates a new matrix obtained by multiplying the matrix by a scalar factor <code>lambda</code>. If <code>lambda</code> is zero, the function comes to nullify the matrix (when possible, prefer <code>*=</code> for efficiency). </p>
+
+</div>
+</div>
+<a id="a347da801a1d0bd28015df496ae1d08ff" name="a347da801a1d0bd28015df496ae1d08ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347da801a1d0bd28015df496ae1d08ff">◆ </a></span>operator* <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td>
+          <td class="paramname"><em>column</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs multiplication between a matrix and a column-based chain. </p>
+<p>Generates a column-based chain from the matrix multiplication and returns it.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>the matrix and the chain must have the same <code>Coefficient_ring</code>. </dd>
+<dd>
+<code>column.is_column()</code> must be <code>true</code> </dd></dl>
+
+</div>
+</div>
+<a id="a1cea2be4670399b042009e9fc06ac299" name="a1cea2be4670399b042009e9fc06ac299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cea2be4670399b042009e9fc06ac299">◆ </a></span>operator*=</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; operator*= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>other</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplies a matrix and assign. </p>
+<p>Multiply each coefficient of the matrix together and stores the result in <code>matrix</code>. Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. </p>
+
+</div>
+</div>
+<a id="a99a2a540f5e6bfb7fa7b20fbb30aba44" name="a99a2a540f5e6bfb7fa7b20fbb30aba44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99a2a540f5e6bfb7fa7b20fbb30aba44">◆ </a></span>operator+</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>second</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two matrices together. </p>
+<p>Adds each coefficient of the matrices together and returns a new matrix (of the same type as <code>first</code>) representing the result (when possible, prefer <code>+=</code> for efficiency). Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. </p>
+
+</div>
+</div>
+<a id="a890c849b03f92a2597f409263493a8e0" name="a890c849b03f92a2597f409263493a8e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890c849b03f92a2597f409263493a8e0">◆ </a></span>operator+=</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; operator+= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>other</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a matrix and assign. </p>
+<p>Adds each coefficient of the matrix together and stores the result in <code>this</code>. Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. </p>
+
+</div>
+</div>
+<a id="a823ce09d757af58643b471ece6c2b68d" name="a823ce09d757af58643b471ece6c2b68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a823ce09d757af58643b471ece6c2b68d">◆ </a></span>operator- <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>second</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Subtracts two matrices together. </p>
+<p>Subtracts each coefficient of the matrix together and returns a new matrix (of the same type as <code>first</code>) representing the result (when possible, prefer <code>-=</code> for efficiency). Matrices must have the same <code>Coefficient_ring</code> but can have different <code>StorageFormat</code>. </p>
+
+</div>
+</div>
+<a id="a1654559b9351a9b7708995c89d2e61e7" name="a1654559b9351a9b7708995c89d2e61e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1654559b9351a9b7708995c89d2e61e7">◆ </a></span>operator- <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the negative of a matrix (unary operator). </p>
+<dl class="section return"><dt>Returns</dt><dd>The resulting matrix. </dd></dl>
+
+</div>
+</div>
+<a id="ad1f17ca01dfeb8ff4a00253c9bb7ec53" name="ad1f17ca01dfeb8ff4a00253c9bb7ec53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1f17ca01dfeb8ff4a00253c9bb7ec53">◆ </a></span>operator/</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a submatrix from the matrix. </p>
+<p>Nullifies the chain of index <code>i</code> along the major direction of a copy of the matrix amd returns it. </p>
+
+</div>
+</div>
+<a id="a30f9119fa7ca7cf5713d10ecd3060aa9" name="a30f9119fa7ca7cf5713d10ecd3060aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30f9119fa7ca7cf5713d10ecd3060aa9">◆ </a></span>remove_coefficient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; remove_coefficient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>j</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nullifies a coefficient of the matrix. </p>
+<p>Removes coefficient on row <code>i</code> / column <code>j</code> of the matrix. </p>
+
+</div>
+</div>
+<a id="a51fd4231654295f3f83fcfd8cb58c59c" name="a51fd4231654295f3f83fcfd8cb58c59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51fd4231654295f3f83fcfd8cb58c59c">◆ </a></span>remove_column</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; remove_column </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nullifies a column from the matrix. </p>
+<p>Removes column of index <code>i</code> whatever the <code>StorageFormat</code> of the matrix. For column matrices, it just comes to the <code>\=</code> operator and for row matrices, it entails a traversal of the matrix. </p>
+
+</div>
+</div>
+<a id="afcec2e98423b52c9ef3b586b3f9a510e" name="afcec2e98423b52c9ef3b586b3f9a510e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcec2e98423b52c9ef3b586b3f9a510e">◆ </a></span>remove_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; remove_row </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>index</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nullifies a row from the matrix. </p>
+<p>Removes row of index <code>i</code> whatever the <code>StorageFormat</code> of the matrix. For row matrices, it just comes to the <code>\=</code> operator and for column matrices, it entails a traversal of the matrix. </p>
+
+</div>
+</div>
+<a id="a67fc88f5aec204dacd1db7bd161462c4" name="a67fc88f5aec204dacd1db7bd161462c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67fc88f5aec204dacd1db7bd161462c4">◆ </a></span>set_coefficient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_coefficient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> &amp; </td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t </td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseMatrix.html#a588df459d24bb957f1cf713c191429af">Coefficient_ring</a> </td>
+          <td class="paramname"><em>d</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets a given coefficient. </p>
+<p>Assign the scalar <code>d</code> to the coefficient on row <code>i</code> and column <code>j</code>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.6-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classSparseMatrix.html">SparseMatrix</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.9.6 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

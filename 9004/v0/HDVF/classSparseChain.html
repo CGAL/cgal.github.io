@@ -1,0 +1,1429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/HDVF/classSparseChain.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png">
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<meta name="generator" content="Doxygen 1.17.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGAL 6.3-dev - Homological Discrete Vector Fields: SparseChain Concept Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script src="../Manual/jquery.js" type="text/javascript"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css">
+<script src="../Manual/cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', init_search);
+</script>
+<!-- Manually done below. -->
+<link href="../Manual/doxygen.css" rel="stylesheet" type="text/css">
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+//<![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      },
+      equationNumbers: { autoNumber: "AMS" }
+  }
+}
+);
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var PARSE = MathJax.InputJax.TeX.Parse,
+      TEXT = PARSE.prototype.InternalText;
+  PARSE.Augment({
+    InternalText: function (text,def) {
+      text = text.replace(/\\/g,"");
+      return TEXT.call(this,text,def);
+    }
+  });
+});
+//]]>
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script src="topics.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+        <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)">
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CGAL 6.3-dev - Homological Discrete Vector Fields
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search/",'.html');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.17.0 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classSparseChain.html','','classSparseChain-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classSparseChain-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">SparseChain Concept Reference<div class="ingroups"><a class="el" href="group__PkgHDVFRef.html">Homological Discrete Vector Fields Reference</a> » <a class="el" href="group__PkgHDVFConcepts.html">Concepts</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Definition</h2>
+<div class="textblock"><p>The concept <span class="tt"><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></span> describes the requirements for sparse vectors (called <em>sparse chains</em> in homology) optimized for topological computations. More precisely, <span class="tt"><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></span> provides all the operations on chains required by the <span class="tt"><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></span> concept. </p>
+  <p><span class="tt"><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></span> encodes non zero coefficients of a sparse vector.</p>
+<p><span class="tt"><a class="el" href="classSparseChain.html" title="The concept SparseChain describes the requirements for sparse vectors (called sparse chains in homolo...">SparseChain</a></span> can be either row or column vectors. The following integer constants, called <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>, encode the direction of sparse chains (and sparse matrices).</p><ul>
+<li><span class="tt">CGAL::OSM::COLUMN</span> for column-major chains and matrices (which is the default),</li>
+<li><span class="tt">CGAL::OSM::ROW</span> for row-major chains and matrices.</li>
+</ul>
+<dl>
+<dt>Has models</dt>
+<dd></dd>
+<dt></dt>
+<dd><span class="tt"><a class="el" href="classCGAL_1_1OSM_1_1Sparse__chain.html" title="The class Sparse_chain implements the concept SparseChain, that is, sparse vectors (encoding homologi...">CGAL::OSM::Sparse_chain</a>&lt;CoefficientRing, StorageFormat&gt;</span> </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><span class="tt"><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></span> </dd>
+<dd>
+<span class="tt"><a class="el" href="classSparseMatrix.html" title="The concept SparseMatrix describes the requirements for sparse matrices optimized for topological com...">SparseMatrix</a></span> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:aa5be8f819b01ebdd4e86786f0467a784" id="r_aa5be8f819b01ebdd4e86786f0467a784"><td class="memItemLeft"><a id="aa5be8f819b01ebdd4e86786f0467a784" name="aa5be8f819b01ebdd4e86786f0467a784"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>Coefficient_ring</b></td></tr>
+<tr class="memdesc:aa5be8f819b01ebdd4e86786f0467a784"><td class="mdescLeft"> </td><td class="mdescRight">Type of coefficients stored in the matrix (a model of <span class="tt"><a class="elRef" href="../Algebraic_foundations/classIntegralDomainWithoutDivision.html">IntegralDomainWithoutDivision</a></span>). <br></td></tr>
+<tr class="memitem:ab4cba7438ce84f3b40eb2b9fa15dfe65" id="r_ab4cba7438ce84f3b40eb2b9fa15dfe65"><td class="memTemplParams" colspan="2"><a id="ab4cba7438ce84f3b40eb2b9fa15dfe65" name="ab4cba7438ce84f3b40eb2b9fa15dfe65"></a>
+template&lt;typename CR, int SF&gt; </td></tr>
+<tr class="memitem:ab4cba7438ce84f3b40eb2b9fa15dfe65 template"><td class="memItemLeft">using </td><td class="memItemRight"><b>Sparse_matrix_derived</b> = OSM::Sparse_matrix_structure&lt;OSM::Sparse_chain&gt;::Sparse_matrix_type&lt;CR, SF&gt;</td></tr>
+<tr class="memdesc:ab4cba7438ce84f3b40eb2b9fa15dfe65"><td class="mdescLeft"> </td><td class="mdescRight">Type of derived sparse matrices. <br></td></tr>
+<tr class="memitem:ab1c5de599905b6612dc1fc430c58a8eb" id="r_ab1c5de599905b6612dc1fc430c58a8eb"><td class="memItemLeft"><a id="ab1c5de599905b6612dc1fc430c58a8eb" name="ab1c5de599905b6612dc1fc430c58a8eb"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>iterator</b></td></tr>
+<tr class="memdesc:ab1c5de599905b6612dc1fc430c58a8eb"><td class="mdescLeft"> </td><td class="mdescRight">Sparse chain iterator type. <br></td></tr>
+<tr class="memitem:a5d68e0fdf981a71577939c2652d5d1bf" id="r_a5d68e0fdf981a71577939c2652d5d1bf"><td class="memItemLeft"><a id="a5d68e0fdf981a71577939c2652d5d1bf" name="a5d68e0fdf981a71577939c2652d5d1bf"></a>
+typedef <a class="elRef" href="../Manual/classunspecified__type.html">unspecified_type</a> </td><td class="memItemRight"><b>const_iterator</b></td></tr>
+<tr class="memdesc:a5d68e0fdf981a71577939c2652d5d1bf"><td class="mdescLeft"> </td><td class="mdescRight">Sparse chain constant iterator type. <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Member data</h2></td></tr>
+<tr class="memitem:a015700f339bb9626b5078b221a09b0fe" id="r_a015700f339bb9626b5078b221a09b0fe"><td class="memItemLeft"><a id="a015700f339bb9626b5078b221a09b0fe" name="a015700f339bb9626b5078b221a09b0fe"></a>
+int </td><td class="memItemRight"><b>Storage_format</b></td></tr>
+<tr class="memdesc:a015700f339bb9626b5078b221a09b0fe"><td class="mdescLeft"> </td><td class="mdescRight">Chain storage format (either <span class="tt">CGAL::OSM::ROW</span> or <span class="tt">CGAL::OSM::COLUMN</span>). <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Creation, filling</h2></td></tr>
+<tr class="memitem:afcb56db17551231a0f370626f28048de" id="r_afcb56db17551231a0f370626f28048de"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#afcb56db17551231a0f370626f28048de">SparseChain</a> ()</td></tr>
+<tr class="memdesc:afcb56db17551231a0f370626f28048de"><td class="mdescLeft"> </td><td class="mdescRight">Creates new empty sparse chain.  <br></td></tr>
+<tr class="memitem:ae727bdf0845e1e0bc56cb6c4c0f4ca7f" id="r_ae727bdf0845e1e0bc56cb6c4c0f4ca7f"><td class="memItemLeft"> </td><td class="memItemRight"><a class="el" href="#ae727bdf0845e1e0bc56cb6c4c0f4ca7f">SparseChain</a> (size_t chainSize)</td></tr>
+<tr class="memdesc:ae727bdf0845e1e0bc56cb6c4c0f4ca7f"><td class="mdescLeft"> </td><td class="mdescRight">Creates new empty sparse chain (ie. zero-chain) of given size.  <br></td></tr>
+<tr class="memitem:a296b2394d8090c430da4956e70fa82d3" id="r_a296b2394d8090c430da4956e70fa82d3"><td class="memItemLeft">Sparse_chain &amp; </td><td class="memItemRight"><a class="el" href="#a296b2394d8090c430da4956e70fa82d3">operator=</a> (const Sparse_chain &amp;other)</td></tr>
+<tr class="memdesc:a296b2394d8090c430da4956e70fa82d3"><td class="mdescLeft"> </td><td class="mdescRight">Assignment.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Matrix informations and iterators</h2></td></tr>
+<tr class="memitem:a8befd07bdd258b9cede782f1121c8477" id="r_a8befd07bdd258b9cede782f1121c8477"><td class="memItemLeft">size_t </td><td class="memItemRight"><a class="el" href="#a8befd07bdd258b9cede782f1121c8477">dimension</a> () const</td></tr>
+<tr class="memdesc:a8befd07bdd258b9cede782f1121c8477"><td class="mdescLeft"> </td><td class="mdescRight">Size of the chain.  <br></td></tr>
+<tr class="memitem:a0a1eaa794cc46988965530d1769f5d30" id="r_a0a1eaa794cc46988965530d1769f5d30"><td class="memItemLeft"><a class="el" href="#ab1c5de599905b6612dc1fc430c58a8eb">iterator</a> </td><td class="memItemRight"><a class="el" href="#a0a1eaa794cc46988965530d1769f5d30">begin</a> () noexcept</td></tr>
+<tr class="memdesc:a0a1eaa794cc46988965530d1769f5d30"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of the chain.  <br></td></tr>
+<tr class="memitem:a09bcda38b177f5c896284f7c3e203dc0" id="r_a09bcda38b177f5c896284f7c3e203dc0"><td class="memItemLeft"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> </td><td class="memItemRight"><a class="el" href="#a09bcda38b177f5c896284f7c3e203dc0">begin</a> () const noexcept</td></tr>
+<tr class="memdesc:a09bcda38b177f5c896284f7c3e203dc0"><td class="mdescLeft"> </td><td class="mdescRight">Constant iterator to the beginning of the chain.  <br></td></tr>
+<tr class="memitem:aab091b8b2649c26cdd54bcbbb73ddaf8" id="r_aab091b8b2649c26cdd54bcbbb73ddaf8"><td class="memItemLeft"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> </td><td class="memItemRight"><a class="el" href="#aab091b8b2649c26cdd54bcbbb73ddaf8">cbegin</a> () const noexcept</td></tr>
+<tr class="memdesc:aab091b8b2649c26cdd54bcbbb73ddaf8"><td class="mdescLeft"> </td><td class="mdescRight">Constant iterator to the beginning of the chain.  <br></td></tr>
+<tr class="memitem:a828ec30c29fa5c3de4e3ebb2d9b4a646" id="r_a828ec30c29fa5c3de4e3ebb2d9b4a646"><td class="memItemLeft"><a class="el" href="#ab1c5de599905b6612dc1fc430c58a8eb">iterator</a> </td><td class="memItemRight"><a class="el" href="#a828ec30c29fa5c3de4e3ebb2d9b4a646">end</a> () noexcept</td></tr>
+<tr class="memdesc:a828ec30c29fa5c3de4e3ebb2d9b4a646"><td class="mdescLeft"> </td><td class="mdescRight"><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the end of the chain.  <br></td></tr>
+<tr class="memitem:adbeab1ed01a820f68562f17715eb9a52" id="r_adbeab1ed01a820f68562f17715eb9a52"><td class="memItemLeft"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> </td><td class="memItemRight"><a class="el" href="#adbeab1ed01a820f68562f17715eb9a52">end</a> () const noexcept</td></tr>
+<tr class="memdesc:adbeab1ed01a820f68562f17715eb9a52"><td class="mdescLeft"> </td><td class="mdescRight">Constant iterator to the end of the chain.  <br></td></tr>
+<tr class="memitem:a060cf480eac862f0a850ab30d0be1e2d" id="r_a060cf480eac862f0a850ab30d0be1e2d"><td class="memItemLeft"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> </td><td class="memItemRight"><a class="el" href="#a060cf480eac862f0a850ab30d0be1e2d">cend</a> () const noexcept</td></tr>
+<tr class="memdesc:a060cf480eac862f0a850ab30d0be1e2d"><td class="mdescLeft"> </td><td class="mdescRight">Constant iterator to the end of the chain.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Linear algebra operators</h2></td></tr>
+<tr class="memitem:a308d228628cceb550a9d53a9960cdfea" id="r_a308d228628cceb550a9d53a9960cdfea"><td class="memItemLeft">Sparse_chain </td><td class="memItemRight"><a class="el" href="#a308d228628cceb550a9d53a9960cdfea">operator+</a> (const Sparse_chain &amp;other)</td></tr>
+<tr class="memdesc:a308d228628cceb550a9d53a9960cdfea"><td class="mdescLeft"> </td><td class="mdescRight">Adds two chains.  <br></td></tr>
+<tr class="memitem:a84518d424b5268c1ce6fb1921a0aced5" id="r_a84518d424b5268c1ce6fb1921a0aced5"><td class="memItemLeft">Sparse_chain </td><td class="memItemRight"><a class="el" href="#a84518d424b5268c1ce6fb1921a0aced5">operator-</a> (const Sparse_chain &amp;other)</td></tr>
+<tr class="memdesc:a84518d424b5268c1ce6fb1921a0aced5"><td class="mdescLeft"> </td><td class="mdescRight">Subtracts a chain from current chain.  <br></td></tr>
+<tr class="memitem:ac0eb1cba409e9f01148c820c4608295c" id="r_ac0eb1cba409e9f01148c820c4608295c"><td class="memItemLeft">Sparse_chain </td><td class="memItemRight"><a class="el" href="#ac0eb1cba409e9f01148c820c4608295c">operator*</a> (const <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> &amp;lambda)</td></tr>
+<tr class="memdesc:ac0eb1cba409e9f01148c820c4608295c"><td class="mdescLeft"> </td><td class="mdescRight">Multiplies each coefficient of <span class="tt">chain</span> by <span class="tt">lambda</span>.  <br></td></tr>
+<tr class="memitem:aaab53cb0e942d9c7f0b0ac235716c8a4" id="r_aaab53cb0e942d9c7f0b0ac235716c8a4"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight"><a class="el" href="#aaab53cb0e942d9c7f0b0ac235716c8a4">operator+=</a> (const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;other)</td></tr>
+<tr class="memdesc:aaab53cb0e942d9c7f0b0ac235716c8a4"><td class="mdescLeft"> </td><td class="mdescRight">Adds a chain to <span class="tt">this</span>.  <br></td></tr>
+<tr class="memitem:ac9b5dffd6f1736d6cc5dc126ef7a330f" id="r_ac9b5dffd6f1736d6cc5dc126ef7a330f"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight"><a class="el" href="#ac9b5dffd6f1736d6cc5dc126ef7a330f">operator-=</a> (const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;other)</td></tr>
+<tr class="memdesc:ac9b5dffd6f1736d6cc5dc126ef7a330f"><td class="mdescLeft"> </td><td class="mdescRight">Sustracts a chain to <span class="tt">this</span>.  <br></td></tr>
+<tr class="memitem:aa4d502ce6c410314fa6820d0c0537350" id="r_aa4d502ce6c410314fa6820d0c0537350"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight"><a class="el" href="#aa4d502ce6c410314fa6820d0c0537350">operator*=</a> (const <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> &amp;lambda)</td></tr>
+<tr class="memdesc:aa4d502ce6c410314fa6820d0c0537350"><td class="mdescLeft"> </td><td class="mdescRight">Multiplies each coefficient of <span class="tt">this</span> by <span class="tt">lambda</span>.  <br></td></tr>
+<tr class="memitem:ad8bcce81b3dd6444baa3734c8d921f67" id="r_ad8bcce81b3dd6444baa3734c8d921f67"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight"><a class="el" href="#ad8bcce81b3dd6444baa3734c8d921f67">transpose</a> ()</td></tr>
+<tr class="memdesc:ad8bcce81b3dd6444baa3734c8d921f67"><td class="mdescLeft"> </td><td class="mdescRight">Transposes a sparse chain.  <br></td></tr>
+<tr class="memitem:a3141624a34d77209a2505ad87064f8e6" id="r_a3141624a34d77209a2505ad87064f8e6"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight"><a class="el" href="#a3141624a34d77209a2505ad87064f8e6">operator*</a> (const <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> &amp;lambda, const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;chain)</td></tr>
+<tr class="memdesc:a3141624a34d77209a2505ad87064f8e6"><td class="mdescLeft"> </td><td class="mdescRight">Multiplies each coefficient of <span class="tt">chain</span> by <span class="tt">lambda</span>.  <br></td></tr>
+<tr class="memitem:a0d9567e467af8840edb87c48ac4de056" id="r_a0d9567e467af8840edb87c48ac4de056"><td class="memItemLeft"><a class="el" href="#ab4cba7438ce84f3b40eb2b9fa15dfe65">Sparse_matrix_derived</a>&lt; <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a>, COLUMN &gt; </td><td class="memItemRight"><a class="el" href="#a0d9567e467af8840edb87c48ac4de056">operator*</a> (const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;column, const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;row)</td></tr>
+<tr class="memdesc:a0d9567e467af8840edb87c48ac4de056"><td class="mdescLeft"> </td><td class="mdescRight">Performs matrix multiplication between two chains (COLUMN x ROW) and return a COLUMN matrix.  <br></td></tr>
+<tr class="memitem:aa93f8832885774f69f6ee8b70621c24c" id="r_aa93f8832885774f69f6ee8b70621c24c"><td class="memItemLeft"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> </td><td class="memItemRight"><a class="el" href="#aa93f8832885774f69f6ee8b70621c24c">operator%</a> (const Sparse_chain &amp;column, const Sparse_chain &amp;row)</td></tr>
+<tr class="memdesc:aa93f8832885774f69f6ee8b70621c24c"><td class="mdescLeft"> </td><td class="mdescRight">Performs matrix multiplication between two chains (COLUMN x ROW) and return a ROW matrix.  <br></td></tr>
+<tr class="memitem:a7d711e1cfd38dc6184dd84cd3e2de414" id="r_a7d711e1cfd38dc6184dd84cd3e2de414"><td class="memItemLeft"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> </td><td class="memItemRight"><a class="el" href="#a7d711e1cfd38dc6184dd84cd3e2de414">operator*</a> (const Sparse_chain &amp;row, const Sparse_chain &amp;column)</td></tr>
+<tr class="memdesc:a7d711e1cfd38dc6184dd84cd3e2de414"><td class="mdescLeft"> </td><td class="mdescRight">Performs dot product between two chains (ROW x COLUMN).  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Test, access and modifications</h2></td></tr>
+<tr class="memitem:a626e44fc409b6cee802a54351e41bf91" id="r_a626e44fc409b6cee802a54351e41bf91"><td class="memItemLeft"><a id="a626e44fc409b6cee802a54351e41bf91" name="a626e44fc409b6cee802a54351e41bf91"></a>
+bool </td><td class="memItemRight"><b>is_column</b> () const</td></tr>
+<tr class="memdesc:a626e44fc409b6cee802a54351e41bf91"><td class="mdescLeft"> </td><td class="mdescRight">Checks if chain is a column. <br></td></tr>
+<tr class="memitem:a27d5f21fcc6d33c02a9d98409fca5bd9" id="r_a27d5f21fcc6d33c02a9d98409fca5bd9"><td class="memItemLeft"><a id="a27d5f21fcc6d33c02a9d98409fca5bd9" name="a27d5f21fcc6d33c02a9d98409fca5bd9"></a>
+bool </td><td class="memItemRight"><b>is_row</b> () const</td></tr>
+<tr class="memdesc:a27d5f21fcc6d33c02a9d98409fca5bd9"><td class="mdescLeft"> </td><td class="mdescRight">Checks if chain is a row. <br></td></tr>
+<tr class="memitem:a332d7b724ec5aaadb614961d1269f741" id="r_a332d7b724ec5aaadb614961d1269f741"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a332d7b724ec5aaadb614961d1269f741">is_null</a> (size_t index) const</td></tr>
+<tr class="memdesc:a332d7b724ec5aaadb614961d1269f741"><td class="mdescLeft"> </td><td class="mdescRight">Checks if a coefficient is null (that is, not store in the sparse chain).  <br></td></tr>
+<tr class="memitem:a57f2047eb346f099cfd9bf7f63070bdc" id="r_a57f2047eb346f099cfd9bf7f63070bdc"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a57f2047eb346f099cfd9bf7f63070bdc">is_null</a> () const</td></tr>
+<tr class="memdesc:a57f2047eb346f099cfd9bf7f63070bdc"><td class="mdescLeft"> </td><td class="mdescRight">Checks if the chain is null.  <br></td></tr>
+<tr class="memitem:ac9f0e357923bfc447c64930cc9e80604" id="r_ac9f0e357923bfc447c64930cc9e80604"><td class="memItemLeft"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> </td><td class="memItemRight"><a class="el" href="#ac9f0e357923bfc447c64930cc9e80604">get_coefficient</a> (size_t index) const</td></tr>
+<tr class="memdesc:ac9f0e357923bfc447c64930cc9e80604"><td class="mdescLeft"> </td><td class="mdescRight">Gets the value of a coefficient index of the chain.  <br></td></tr>
+<tr class="memitem:a36bc068448ba77f4907c2975b92a4189" id="r_a36bc068448ba77f4907c2975b92a4189"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a36bc068448ba77f4907c2975b92a4189">set_coefficient</a> (size_t index, <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> d)</td></tr>
+<tr class="memdesc:a36bc068448ba77f4907c2975b92a4189"><td class="mdescLeft"> </td><td class="mdescRight">Sets coefficient index of the chain to value <span class="tt">d</span>.  <br></td></tr>
+<tr class="memitem:a954e820cfb5cd889f28e8b02e7364906" id="r_a954e820cfb5cd889f28e8b02e7364906"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight"><a class="el" href="#a954e820cfb5cd889f28e8b02e7364906">operator/=</a> (const std::vector&lt; size_t &gt; &amp;indices)</td></tr>
+<tr class="memdesc:a954e820cfb5cd889f28e8b02e7364906"><td class="mdescLeft"> </td><td class="mdescRight">Restricts the chain to a sub-chain by removing indices.  <br></td></tr>
+<tr class="memitem:ac67a1825d503596a72aed8d34b07073e" id="r_ac67a1825d503596a72aed8d34b07073e"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; </td><td class="memItemRight"><a class="el" href="#ac67a1825d503596a72aed8d34b07073e">operator/=</a> (size_t index)</td></tr>
+<tr class="memdesc:ac67a1825d503596a72aed8d34b07073e"><td class="mdescLeft"> </td><td class="mdescRight">Restricts the chain to a sub-chain by removing a given index.  <br></td></tr>
+<tr class="memitem:af3eae70f298f824467ce875a1c97a7e6" id="r_af3eae70f298f824467ce875a1c97a7e6"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#af3eae70f298f824467ce875a1c97a7e6">nullify</a> ()</td></tr>
+<tr class="memdesc:af3eae70f298f824467ce875a1c97a7e6"><td class="mdescLeft"> </td><td class="mdescRight">Removes all coefficients from the chain.  <br></td></tr>
+<tr class="memitem:a81bd8a83c308303fd63f2528211d9185" id="r_a81bd8a83c308303fd63f2528211d9185"><td class="memItemLeft">bool </td><td class="memItemRight"><a class="el" href="#a81bd8a83c308303fd63f2528211d9185">operator==</a> (const Sparse_chain &amp;chain, const Sparse_chain &amp;other)</td></tr>
+<tr class="memdesc:a81bd8a83c308303fd63f2528211d9185"><td class="mdescLeft"> </td><td class="mdescRight">Tests if two chains are equal.  <br></td></tr>
+<tr class="memitem:a5a7a870008b9e3218cc3b0c4c31741d2" id="r_a5a7a870008b9e3218cc3b0c4c31741d2"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight"><a class="el" href="#a5a7a870008b9e3218cc3b0c4c31741d2">operator/</a> (const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;chain, const std::vector&lt; size_t &gt; &amp;indices)</td></tr>
+<tr class="memdesc:a5a7a870008b9e3218cc3b0c4c31741d2"><td class="mdescLeft"> </td><td class="mdescRight">Gets a subchain from the chain.  <br></td></tr>
+<tr class="memitem:a49ab53a03a019bbfc7b108c7ec3baad4" id="r_a49ab53a03a019bbfc7b108c7ec3baad4"><td class="memItemLeft"><a class="el" href="classSparseChain.html">SparseChain</a> </td><td class="memItemRight"><a class="el" href="#a49ab53a03a019bbfc7b108c7ec3baad4">operator/</a> (const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;chain, size_t index)</td></tr>
+<tr class="memdesc:a49ab53a03a019bbfc7b108c7ec3baad4"><td class="mdescLeft"> </td><td class="mdescRight">Gets a subchain from the chain.  <br></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-member-group" class="groupheader"><a id="member-group" name="member-group"></a>
+Output</h2></td></tr>
+<tr class="memitem:a6569bf34dbb0b8e5a7d77f079739969a" id="r_a6569bf34dbb0b8e5a7d77f079739969a"><td class="memItemLeft">std::ostream &amp; </td><td class="memItemRight"><a class="el" href="#a6569bf34dbb0b8e5a7d77f079739969a">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;chain)</td></tr>
+<tr class="memdesc:a6569bf34dbb0b8e5a7d77f079739969a"><td class="mdescLeft"> </td><td class="mdescRight">Inserts <span class="tt">chain</span> in the output stream with a compact "user friendly" format.  <br></td></tr>
+<tr class="memitem:a2e51b86f142580030b0dfc363891d630" id="r_a2e51b86f142580030b0dfc363891d630"><td class="memTemplParams" colspan="2">template&lt;typename _CT, int _SF&gt; </td></tr>
+<tr class="memitem:a2e51b86f142580030b0dfc363891d630 template"><td class="memItemLeft">std::ostream &amp; </td><td class="memItemRight"><a class="el" href="#a2e51b86f142580030b0dfc363891d630">write_chain</a> (const Sparse_chain&lt; _CT, _SF &gt; &amp;chain, std::ostream &amp;out)</td></tr>
+<tr class="memdesc:a2e51b86f142580030b0dfc363891d630"><td class="mdescLeft"> </td><td class="mdescRight">Write a sparse chain to an output stream using the <span class="tt">.osm</span> file format.  <br></td></tr>
+<tr class="memitem:a5ec8c51bf3ae9e2786ca8fc20a80f89a" id="r_a5ec8c51bf3ae9e2786ca8fc20a80f89a"><td class="memTemplParams" colspan="2">template&lt;typename _CT, int _SF&gt; </td></tr>
+<tr class="memitem:a5ec8c51bf3ae9e2786ca8fc20a80f89a template"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#a5ec8c51bf3ae9e2786ca8fc20a80f89a">write_chain</a> (const Sparse_chain&lt; _CT, _SF &gt; &amp;chain, std::string filename)</td></tr>
+<tr class="memdesc:a5ec8c51bf3ae9e2786ca8fc20a80f89a"><td class="mdescLeft"> </td><td class="mdescRight">Write a sparse chain to a file using the <span class="tt">.osm</span> file format.  <br></td></tr>
+<tr class="memitem:a31727f83f081e63fde72fc0dc5008ee0" id="r_a31727f83f081e63fde72fc0dc5008ee0"><td class="memTemplParams" colspan="2">template&lt;typename _CT, int _SF&gt; </td></tr>
+<tr class="memitem:a31727f83f081e63fde72fc0dc5008ee0 template"><td class="memItemLeft">std::istream &amp; </td><td class="memItemRight"><a class="el" href="#a31727f83f081e63fde72fc0dc5008ee0">read_chain</a> (Sparse_chain&lt; _CT, _SF &gt; &amp;chain, std::istream &amp;in)</td></tr>
+<tr class="memdesc:a31727f83f081e63fde72fc0dc5008ee0"><td class="mdescLeft"> </td><td class="mdescRight">Reads a sparse chain from an input stream using the <span class="tt">.osm</span> file format.  <br></td></tr>
+<tr class="memitem:ad1baa694d9f73b9657e0d087438b26f1" id="r_ad1baa694d9f73b9657e0d087438b26f1"><td class="memTemplParams" colspan="2">template&lt;typename _CT, int _SF&gt; </td></tr>
+<tr class="memitem:ad1baa694d9f73b9657e0d087438b26f1 template"><td class="memItemLeft">void </td><td class="memItemRight"><a class="el" href="#ad1baa694d9f73b9657e0d087438b26f1">read_chain</a> (Sparse_chain&lt; _CT, _SF &gt; &amp;chain, std::string filename)</td></tr>
+<tr class="memdesc:ad1baa694d9f73b9657e0d087438b26f1"><td class="mdescLeft"> </td><td class="mdescRight">Reads a sparse chain from a file using the <span class="tt">.osm</span> file format.  <br></td></tr>
+</table>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="afcb56db17551231a0f370626f28048de" name="afcb56db17551231a0f370626f28048de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb56db17551231a0f370626f28048de">◆ </a></span>SparseChain() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SparseChain::SparseChain </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates new empty sparse chain. </p>
+<p>Creates a sparse chain encoding an empty linear combination of cells. </p>
+
+</div>
+</div>
+<a id="ae727bdf0845e1e0bc56cb6c4c0f4ca7f" name="ae727bdf0845e1e0bc56cb6c4c0f4ca7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae727bdf0845e1e0bc56cb6c4c0f4ca7f">◆ </a></span>SparseChain() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SparseChain::SparseChain </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>chainSize</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates new empty sparse chain (ie. zero-chain) of given size. </p>
+<p>Constructor with size, initializes an empty sparse chain encoding a linear combination of cells with all coefficients null. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a09bcda38b177f5c896284f7c3e203dc0" name="a09bcda38b177f5c896284f7c3e203dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09bcda38b177f5c896284f7c3e203dc0">◆ </a></span>begin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> SparseChain::begin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constant iterator to the beginning of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain is stored unordered for speed reason.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns a constant iterator to the first non zero index. </dd></dl>
+
+</div>
+</div>
+<a id="a0a1eaa794cc46988965530d1769f5d30" name="a0a1eaa794cc46988965530d1769f5d30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a1eaa794cc46988965530d1769f5d30">◆ </a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ab1c5de599905b6612dc1fc430c58a8eb">iterator</a> SparseChain::begin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the beginning of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain is stored in an unordered map for speed reason.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns an iterator to the first non zero index. </dd></dl>
+
+</div>
+</div>
+<a id="aab091b8b2649c26cdd54bcbbb73ddaf8" name="aab091b8b2649c26cdd54bcbbb73ddaf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab091b8b2649c26cdd54bcbbb73ddaf8">◆ </a></span>cbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> SparseChain::cbegin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constant iterator to the beginning of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain is stored unordered for speed reason.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns a constant iterator to the first non zero index. </dd></dl>
+
+</div>
+</div>
+<a id="a060cf480eac862f0a850ab30d0be1e2d" name="a060cf480eac862f0a850ab30d0be1e2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a060cf480eac862f0a850ab30d0be1e2d">◆ </a></span>cend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> SparseChain::cend </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constant iterator to the end of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain is stored unordered for speed reason.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns a constant iterator to the ending of the chain. </dd></dl>
+
+</div>
+</div>
+<a id="a8befd07bdd258b9cede782f1121c8477" name="a8befd07bdd258b9cede782f1121c8477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8befd07bdd258b9cede782f1121c8477">◆ </a></span>dimension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t SparseChain::dimension </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Size of the chain. </p>
+<dl class="section return"><dt>Returns</dt><dd>Dimension of the basis (that is, the size of the chain). </dd></dl>
+
+</div>
+</div>
+<a id="adbeab1ed01a820f68562f17715eb9a52" name="adbeab1ed01a820f68562f17715eb9a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbeab1ed01a820f68562f17715eb9a52">◆ </a></span>end() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5d68e0fdf981a71577939c2652d5d1bf">const_iterator</a> SparseChain::end </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constant iterator to the end of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain is stored unordered for speed reason.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns a constant iterator past-the end of the chain. </dd></dl>
+
+</div>
+</div>
+<a id="a828ec30c29fa5c3de4e3ebb2d9b4a646" name="a828ec30c29fa5c3de4e3ebb2d9b4a646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a828ec30c29fa5c3de4e3ebb2d9b4a646">◆ </a></span>end() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ab1c5de599905b6612dc1fc430c58a8eb">iterator</a> SparseChain::end </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="elRef" href="../Manual/classIterator.html">Iterator</a> to the end of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain is stored unordered for speed reason.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The function returns an iterator past-the-end of the chain. </dd></dl>
+
+</div>
+</div>
+<a id="ac9f0e357923bfc447c64930cc9e80604" name="ac9f0e357923bfc447c64930cc9e80604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9f0e357923bfc447c64930cc9e80604">◆ </a></span>get_coefficient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> SparseChain::get_coefficient </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the value of a coefficient index of the chain. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The coefficient index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the coefficient. </dd></dl>
+
+</div>
+</div>
+<a id="a57f2047eb346f099cfd9bf7f63070bdc" name="a57f2047eb346f099cfd9bf7f63070bdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57f2047eb346f099cfd9bf7f63070bdc">◆ </a></span>is_null() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SparseChain::is_null </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the chain is null. </p>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if the chain is null (that is, contains no non zero coefficients), <span class="tt">false</span> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a332d7b724ec5aaadb614961d1269f741" name="a332d7b724ec5aaadb614961d1269f741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a332d7b724ec5aaadb614961d1269f741">◆ </a></span>is_null() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SparseChain::is_null </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a coefficient is null (that is, not store in the sparse chain). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if the data at given index is null, <span class="tt">false</span>. </dd></dl>
+
+</div>
+</div>
+<a id="af3eae70f298f824467ce875a1c97a7e6" name="af3eae70f298f824467ce875a1c97a7e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3eae70f298f824467ce875a1c97a7e6">◆ </a></span>nullify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SparseChain::nullify </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes all coefficients from the chain. </p>
+<p>The function comes to set all coefficients to zero. </p>
+
+</div>
+</div>
+<a id="ac0eb1cba409e9f01148c820c4608295c" name="ac0eb1cba409e9f01148c820c4608295c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0eb1cba409e9f01148c820c4608295c">◆ </a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sparse_chain SparseChain::operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lambda</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiplies each coefficient of <span class="tt">chain</span> by <span class="tt">lambda</span>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The factor to apply.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="aa4d502ce6c410314fa6820d0c0537350" name="aa4d502ce6c410314fa6820d0c0537350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4d502ce6c410314fa6820d0c0537350">◆ </a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseChain::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lambda</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiplies each coefficient of <span class="tt">this</span> by <span class="tt">lambda</span>. </p>
+<p>If <span class="tt">lambda</span> is null, this function comes to nullify the chain.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The factor to apply.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a308d228628cceb550a9d53a9960cdfea" name="a308d228628cceb550a9d53a9960cdfea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a308d228628cceb550a9d53a9960cdfea">◆ </a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sparse_chain SparseChain::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds two chains. </p>
+<p>Adds <span class="tt">other</span> chain to current chain and returns the result in a new matrix.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span> and the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the two chains are not the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+Will raise a compilation error if the two chains don't have the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="aaab53cb0e942d9c7f0b0ac235716c8a4" name="aaab53cb0e942d9c7f0b0ac235716c8a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaab53cb0e942d9c7f0b0ac235716c8a4">◆ </a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseChain::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a chain to <span class="tt">this</span>. </p>
+<p>Add a chain to <span class="tt">this</span>.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span> and the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the two chains are not the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+Will raise an error if the two chains don't have the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a84518d424b5268c1ce6fb1921a0aced5" name="a84518d424b5268c1ce6fb1921a0aced5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84518d424b5268c1ce6fb1921a0aced5">◆ </a></span>operator-()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sparse_chain SparseChain::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subtracts a chain from current chain. </p>
+<p>Subtracts <span class="tt">other</span> chain from current chain and returns the result in a new matrix.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span> and the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the two chains are not the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+Will raise a compilation error if the two chains don't have the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="ac9b5dffd6f1736d6cc5dc126ef7a330f" name="ac9b5dffd6f1736d6cc5dc126ef7a330f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b5dffd6f1736d6cc5dc126ef7a330f">◆ </a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseChain::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sustracts a chain to <span class="tt">this</span>. </p>
+<p>Subtract a chain to <span class="tt">this</span>.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span> and the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the two chains are not the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+Will raise an error if the two chains don't have the same <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The modified chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a954e820cfb5cd889f28e8b02e7364906" name="a954e820cfb5cd889f28e8b02e7364906"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a954e820cfb5cd889f28e8b02e7364906">◆ </a></span>operator/=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseChain::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>indices</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restricts the chain to a sub-chain by removing indices. </p>
+<p>Removes all indices provided in the vector from the chain. Returns a reference to the modified chain.</p>
+<dl class="section note"><dt>Note</dt><dd>Will not alter the chain if <span class="tt">indices</span> is empty.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>The indices to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the modified chain. </dd></dl>
+
+</div>
+</div>
+<a id="ac67a1825d503596a72aed8d34b07073e" name="ac67a1825d503596a72aed8d34b07073e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67a1825d503596a72aed8d34b07073e">◆ </a></span>operator/=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> &amp; SparseChain::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restricts the chain to a sub-chain by removing a given index. </p>
+<p>Removes the index provided from the chain.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the modified chain. </dd></dl>
+
+</div>
+</div>
+<a id="a296b2394d8090c430da4956e70fa82d3" name="a296b2394d8090c430da4956e70fa82d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a296b2394d8090c430da4956e70fa82d3">◆ </a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sparse_chain &amp; SparseChain::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignment. </p>
+<p>The assignment operator converts the storage format if needed (complexity \(\mathscr O(k)\) with \(k\) the number of non zero coefficients of <span class="tt">other</span>).</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Chain to copy into <span class="tt">this</span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a36bc068448ba77f4907c2975b92a4189" name="a36bc068448ba77f4907c2975b92a4189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36bc068448ba77f4907c2975b92a4189">◆ </a></span>set_coefficient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SparseChain::set_coefficient </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a></td>          <td class="paramname"><span class="paramname"><em>d</em></span> )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets coefficient index of the chain to value <span class="tt">d</span>. </p>
+<p>Sets the value of the coefficient in the chain at <span class="tt">index</span>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The chain will perform boundary check.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The coefficient index. </td></tr>
+    <tr><td class="paramname">d</td><td>Value of the coefficient. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad8bcce81b3dd6444baa3734c8d921f67" name="ad8bcce81b3dd6444baa3734c8d921f67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8bcce81b3dd6444baa3734c8d921f67">◆ </a></span>transpose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> SparseChain::transpose </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transposes a sparse chain. </p>
+<p>The result is a chain with <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span> switched between COLUMN and ROW.</p>
+<dl class="section return"><dt>Returns</dt><dd>A new chain where the <span class="tt"><a class="el" href="#a015700f339bb9626b5078b221a09b0fe" title="Chain storage format (either CGAL::OSM::ROW or CGAL::OSM::COLUMN).">Storage_format</a></span> is changed. </dd></dl>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="aa93f8832885774f69f6ee8b70621c24c" name="aa93f8832885774f69f6ee8b70621c24c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa93f8832885774f69f6ee8b70621c24c">◆ </a></span>operator%</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseMatrix.html">SparseMatrix</a> operator% </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>row</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs matrix multiplication between two chains (COLUMN x ROW) and return a ROW matrix. </p>
+<p>Generate a row-based matrix from the matrix multiplication and return it.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+<span class="tt">column.is_column()</span> and <span class="tt">row.is_row()</span> must be <span class="tt">true</span></dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if chains do not have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">column</td><td>The column chain. </td></tr>
+    <tr><td class="paramname">row</td><td>The row chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the matrix multiplication, row-based. </dd></dl>
+
+</div>
+</div>
+<a id="a3141624a34d77209a2505ad87064f8e6" name="a3141624a34d77209a2505ad87064f8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3141624a34d77209a2505ad87064f8e6">◆ </a></span>operator* <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lambda</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplies each coefficient of <span class="tt">chain</span> by <span class="tt">lambda</span>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lambda</td><td>The factor to apply. </td></tr>
+    <tr><td class="paramname">chain</td><td>The chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a7d711e1cfd38dc6184dd84cd3e2de414" name="a7d711e1cfd38dc6184dd84cd3e2de414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d711e1cfd38dc6184dd84cd3e2de414">◆ </a></span>operator* <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>column</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs dot product between two chains (ROW x COLUMN). </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+<span class="tt">row.is_row()</span> and <span class="tt">column.is_column()</span> must be <span class="tt">true</span></dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if the chains do not have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row chain. </td></tr>
+    <tr><td class="paramname">column</td><td>The column chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of type <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd></dl>
+
+</div>
+</div>
+<a id="a0d9567e467af8840edb87c48ac4de056" name="a0d9567e467af8840edb87c48ac4de056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d9567e467af8840edb87c48ac4de056">◆ </a></span>operator* <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ab4cba7438ce84f3b40eb2b9fa15dfe65">Sparse_matrix_derived</a>&lt; <a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784">Coefficient_ring</a>, COLUMN &gt; operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>row</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs matrix multiplication between two chains (COLUMN x ROW) and return a COLUMN matrix. </p>
+<p>Generate a column-based matrix from the matrix multiplication and return it.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Chains must have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>. </dd>
+<dd>
+<span class="tt">column.is_column()</span> and <span class="tt">row.is_row()</span> must be <span class="tt">true</span></dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Will raise an error if chains do not have the same <span class="tt"><a class="el" href="#aa5be8f819b01ebdd4e86786f0467a784" title="Type of coefficients stored in the matrix (a model of IntegralDomainWithoutDivision).">Coefficient_ring</a></span>.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">column</td><td>The column chain. </td></tr>
+    <tr><td class="paramname">row</td><td>The row chain.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the matrix multiplication, column-based. </dd></dl>
+
+</div>
+</div>
+<a id="a5a7a870008b9e3218cc3b0c4c31741d2" name="a5a7a870008b9e3218cc3b0c4c31741d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7a870008b9e3218cc3b0c4c31741d2">◆ </a></span>operator/ <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>indices</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a subchain from the chain. </p>
+<p>Returns a copy of <span class="tt">chain</span> where all coefficients of indices provided in the vector are removed.</p>
+<dl class="section note"><dt>Note</dt><dd>Will return a copy of the chain if <span class="tt">indices</span> is empty.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>The indices to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new chain representing the result. </dd></dl>
+
+</div>
+</div>
+<a id="a49ab53a03a019bbfc7b108c7ec3baad4" name="a49ab53a03a019bbfc7b108c7ec3baad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49ab53a03a019bbfc7b108c7ec3baad4">◆ </a></span>operator/ <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSparseChain.html">SparseChain</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a subchain from the chain. </p>
+<p>Returns a copy of <span class="tt">chain</span> where the coefficient at a given index is removed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6569bf34dbb0b8e5a7d77f079739969a" name="a6569bf34dbb0b8e5a7d77f079739969a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6569bf34dbb0b8e5a7d77f079739969a">◆ </a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSparseChain.html">SparseChain</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inserts <span class="tt">chain</span> in the output stream with a compact "user friendly" format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>The output stream. </td></tr>
+    <tr><td class="paramname">chain</td><td>The chain to display.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the modified stream. </dd></dl>
+
+</div>
+</div>
+<a id="a81bd8a83c308303fd63f2528211d9185" name="a81bd8a83c308303fd63f2528211d9185"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81bd8a83c308303fd63f2528211d9185">◆ </a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Sparse_chain &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tests if two chains are equal. </p>
+<p>If the storage formats of chains differ, return <span class="tt">false</span>, otherwise, tests if all coefficients are equal.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chain</td><td>First chain to compare. </td></tr>
+    <tr><td class="paramname">other</td><td>Second chain to compare. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a31727f83f081e63fde72fc0dc5008ee0" name="a31727f83f081e63fde72fc0dc5008ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31727f83f081e63fde72fc0dc5008ee0">◆ </a></span>read_chain <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _CT, int _SF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::istream &amp; read_chain </td>
+          <td>(</td>
+          <td class="paramtype">Sparse_chain&lt; _CT, _SF &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>in</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a sparse chain from an input stream using the <span class="tt">.osm</span> file format. </p>
+<p>Loads a sparse chain (the chain can be exported using <span class="tt"><a class="el" href="#a2e51b86f142580030b0dfc363891d630" title="Write a sparse chain to an output stream using the .osm file format.">write_chain</a></span>), see <a class="el" href="/home/runner/work/cgal/cgal/HDVF/doc/HDVF/HDVF.txt#OSM_FILE_FORMAT" title="OSM_FILE_FORMAT">OSM file format documentation</a>. </p>
+
+</div>
+</div>
+<a id="ad1baa694d9f73b9657e0d087438b26f1" name="ad1baa694d9f73b9657e0d087438b26f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1baa694d9f73b9657e0d087438b26f1">◆ </a></span>read_chain <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _CT, int _SF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_chain </td>
+          <td>(</td>
+          <td class="paramtype">Sparse_chain&lt; _CT, _SF &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>filename</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a sparse chain from a file using the <span class="tt">.osm</span> file format. </p>
+<p>Loads a sparse chain (the chain can be exported using <span class="tt"><a class="el" href="#a2e51b86f142580030b0dfc363891d630" title="Write a sparse chain to an output stream using the .osm file format.">write_chain</a></span>), see <a class="el" href="/home/runner/work/cgal/cgal/HDVF/doc/HDVF/HDVF.txt#OSM_FILE_FORMAT" title="OSM_FILE_FORMAT">OSM file format documentation</a>. </p>
+
+</div>
+</div>
+<a id="a2e51b86f142580030b0dfc363891d630" name="a2e51b86f142580030b0dfc363891d630"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e51b86f142580030b0dfc363891d630">◆ </a></span>write_chain <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _CT, int _SF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; write_chain </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain&lt; _CT, _SF &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>out</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write a sparse chain to an output stream using the <span class="tt">.osm</span> file format. </p>
+<p>Outputs a sparse chain (the chain can be reloaded using <span class="tt"><a class="el" href="#a31727f83f081e63fde72fc0dc5008ee0" title="Reads a sparse chain from an input stream using the .osm file format.">read_chain</a></span>), see <a class="el" href="/home/runner/work/cgal/cgal/HDVF/doc/HDVF/HDVF.txt#OSM_FILE_FORMAT" title="OSM_FILE_FORMAT">OSM file format documentation</a>. </p>
+
+</div>
+</div>
+<a id="a5ec8c51bf3ae9e2786ca8fc20a80f89a" name="a5ec8c51bf3ae9e2786ca8fc20a80f89a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ec8c51bf3ae9e2786ca8fc20a80f89a">◆ </a></span>write_chain <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _CT, int _SF&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_chain </td>
+          <td>(</td>
+          <td class="paramtype">const Sparse_chain&lt; _CT, _SF &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>filename</em></span> )</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write a sparse chain to a file using the <span class="tt">.osm</span> file format. </p>
+<p>Outputs a sparse chain (the chain can be reloaded using <span class="tt"><a class="el" href="#a31727f83f081e63fde72fc0dc5008ee0" title="Reads a sparse chain from an input stream using the .osm file format.">read_chain</a></span>), see <a class="el" href="/home/runner/work/cgal/cgal/HDVF/doc/HDVF/HDVF.txt#OSM_FILE_FORMAT" title="OSM_FILE_FORMAT">OSM file format documentation</a>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.14.0-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classSparseChain.html">SparseChain</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"></a> 1.17.0 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>
